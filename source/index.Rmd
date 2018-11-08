@@ -3,14 +3,15 @@ title: "Outline Metadata"
 author: "Rainer M. Krug"
 date: "11/7/2018"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 nocite: '@*'
 bibliography: microcosm_papers.bib
+link-citations: TRUE
 ---
 
-This outline is based on [Experimental Microbial Ecology Protocols](https://emeh-protocols.readthedocs.io/en/latest/). This protocoll is based on the paper by [@altermatt_big_2015]. 
-
+# Experimental Microbial Ecology Protocols
+In the  [supplement to their paper](https://emeh-protocols.readthedocs.io/en/latest/) to their paper, @altermatt_big_2015 specify the following sections for a protocoll. The sections are as followed:
 
 ```
 1. Materials
@@ -43,6 +44,8 @@ This outline is based on [Experimental Microbial Ecology Protocols](https://emeh
 3.6 temperature
 3.7 Biotic environment
 ```
+
+We use these sections as a starting point to define a metadata scheme to describe the microcosm experiment. The sections are supplemented byn evaluating the papers in the [References] section below.
 
 # References
 
