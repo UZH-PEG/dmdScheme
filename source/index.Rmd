@@ -10,6 +10,36 @@ bibliography: microcosm_papers.bib
 link-citations: TRUE
 ---
 
+```{r setup, echo = FALSE}
+library(magrittr)
+library(knitr)
+library(kableExtra)
+##
+knitr::opts_chunk$set(
+	echo = FALSE,
+	fig.height = 6,
+	fig.width = 6,
+	comment = NA
+)
+```
+
+# Introduction
+
+This scheme will provide a framework for describing aquatic microcosm experiments in the sense as used in the papers in the [Reference] section.
+
+This scheme **aims to** cover the following aspects:
+
+1. **Materials**: these include instrumentation, species, cultures, ...
+1. **Initialization**: run in time, treatment, conditions
+2. **Conditions / Manipulations**: different conditions for the different treatments and manipulations, conditions, transplantations, ...
+3. **Sampling** (how much is taken from microcosms and how much is re-filled with what and how often, ...)
+3. **Measuring** of the raw data (video, images, count, ...) using different methodologies and their instrumentations, protocols, ...
+4. **Extraction** of the needed measure  (density, ...) from the measured raw data (if needed) and the software, versions, parameter used (e.b. bemovi)
+
+By using this metadata one should be able to successfully re-generate the data.
+
+This scheme **does not** aim to cover aspects of the actual analysis of this data with the aim of answering specific questions.
+
 # Experimental Microbial Ecology Protocols
 In the  [supplement to their paper](https://emeh-protocols.readthedocs.io/en/latest/) to their paper, @altermatt_big_2015 specify the following sections for a protocoll. The sections are as followed:
 
@@ -46,6 +76,43 @@ In the  [supplement to their paper](https://emeh-protocols.readthedocs.io/en/lat
 ```
 
 We use these sections as a starting point to define a metadata scheme to describe the microcosm experiment. The sections are supplemented byn evaluating the papers in the [References] section below.
+
+# The microcosmScheme
+
+**<span style="color:red">Read from GoogleSheets and save to csv. This can tham be annotated here.</span>**
+
+Here we describe the different properties of the microcosmScheme We will start at the first level and go deeper into the different properties.
+
+## First Level Propertiers
+
+```{r prop_l1}
+caption <- "microcosmScheme first level Properties"
+
+p1 <- data.frame(
+  ID = 1:5,
+  Property = c("Materials", "Initialization", "Conditions", "Sampling", "MeasuringAndExtraction"),
+  Description = c(
+    "instrumentation, species, cultures, ..", 
+    "run-in time, conditions, densities, ...",
+    "for all treatments conditions, and manipulations during experiment", 
+    "how the sample is obtained", 
+    "measuring and extracting the measures from the sample"
+  )
+)
+
+
+knitr::kable(
+  p1, 
+  format = "html",
+  caption = caption
+)  %>% 
+  kable_styling(
+    bootstrap_options = c("striped", "bordered"), 
+    full_width = FALSE
+  )
+```
+
+
 
 # References
 
