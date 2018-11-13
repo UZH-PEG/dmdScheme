@@ -81,6 +81,9 @@ We use these sections as a starting point to define a metadata scheme to describ
 
 **<span style="color:red">Read from GoogleSheets and save to csv. This can tham be annotated here.</span>**
 
+The working copy can be found on a [Google Doc Sheet](https://docs.google.com/spreadsheets/d/1OAyRM1jGL5Vho-YfPffePhwGpQtaBUeTPJV6P98f0Bc/edit#gid=1455695282). **<span style="color:red">Link will be added later</span>**
+
+
 Here we describe the different properties of the microcosmScheme We will start at the first level and go deeper into the different properties.
 
 ## First Level Propertiers

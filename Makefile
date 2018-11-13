@@ -20,7 +20,7 @@
 ##	formats that you want to keep!
 
 ## All Rmarkdown files in the working directory
-OUTDIR='./doc/'
+OUTDIR='./docs/'
 
 SRC = $(wildcard ./source/*.Rmd)
 
