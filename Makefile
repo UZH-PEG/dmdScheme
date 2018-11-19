@@ -30,7 +30,7 @@ HTML  = $(SRC:.Rmd=.html)
 html:	$(HTML)
 
 %.html:	%.Rmd
-	@Rscript -e "rmarkdown::render('$<', output_format = 'html_document', output_dir = $(OUTDIR))"
+	@Rscript -e "rmarkdown::render('$<', output_format = 'prettydoc::html_pretty', output_dir = $(OUTDIR))"
 
 
 # clean: cleanhtml

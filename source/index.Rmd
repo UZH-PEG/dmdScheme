@@ -3,14 +3,21 @@ title: "Outline Metadata"
 author: "Rainer M. Krug"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
-  html_document: default
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+    toc: true
   pdf_document: default
+  html_document: 
+    theme: cerulean
+    toc: true
+    toc_float: true
 nocite: '@*'
 bibliography: microcosm_papers.bib
 link-citations: TRUE
 ---
 
-```{r setup, echo = FALSE}
+```{r setup, echo = FALSE, include = FALSE}
 library(googlesheets)
 library(dplyr)
 # library(magrittr)
