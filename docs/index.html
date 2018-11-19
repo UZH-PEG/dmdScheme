@@ -313,11 +313,37 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Outline Metadata</h1>
 <h4 class="author"><em>Rainer M. Krug</em></h4>
-<h4 class="date"><em>11/7/2018</em></h4>
+<h4 class="date"><em>19 November, 2018</em></h4>
 
 </div>
 
 
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre><code>## Auto-refreshing stale OAuth token.</code></pre>
+<pre><code>## Sheet successfully identified: &quot;microcosmScheme&quot;</code></pre>
+<pre><code>## Accessing worksheet titled &#39;Sheet 1&#39;.</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   `Property Level 1` = col_character(),
+##   `Property Level 2` = col_character(),
+##   `Property Level 3` = col_character(),
+##   `Property Level 4` = col_character(),
+##   `Property Level 5` = col_character(),
+##   `emeh number` = col_double(),
+##   `(Pennekamp et al., 2018)` = col_character(),
+##   `(Carrara et al., 2015)` = col_character(),
+##   `(Leary et al., 2012)` = col_character(),
+##   `(DeLong, 2012)` = col_character(),
+##   `(Vasseur and Fox, 2009); (Fox, 2002)` = col_character(),
+##   `(Griffiths et al., 2018)` = col_character()
+## )</code></pre>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <p>This scheme will provide a framework for describing aquatic microcosm experiments in the sense as used in the papers in the [Reference] section.</p>
@@ -333,8 +359,10 @@ $(document).ready(function () {
 <p>By using this metadata one should be able to successfully re-generate the data.</p>
 <p>This scheme <strong>does not</strong> aim to cover aspects of the actual analysis of this data with the aim of answering specific questions.</p>
 </div>
-<div id="experimental-microbial-ecology-protocols" class="section level1">
-<h1>Experimental Microbial Ecology Protocols</h1>
+<div id="the-microcosmscheme" class="section level1">
+<h1>The microcosmScheme</h1>
+<div id="experimental-microbial-ecology-protocols" class="section level2">
+<h2>Experimental Microbial Ecology Protocols</h2>
 <p>In the <a href="https://emeh-protocols.readthedocs.io/en/latest/">supplement to their paper</a> to their paper, <span class="citation">Altermatt et al. (<a href="#ref-altermatt_big_2015">2015</a>)</span> specify the following sections for a protocoll. The sections are as followed:</p>
 <pre><code>1. Materials
 1.1 Species used
@@ -365,86 +393,1638 @@ $(document).ready(function () {
 3.5 Spatial structure
 3.6 temperature
 3.7 Biotic environment</code></pre>
-<p>We use these sections as a starting point to define a metadata scheme to describe the microcosm experiment. The sections are supplemented byn evaluating the papers in the <a href="#references">References</a> section below.</p>
+<p>We use these sections as a starting point to define a metadata scheme to describe the microcosm experiment.</p>
 </div>
-<div id="the-microcosmscheme" class="section level1">
-<h1>The microcosmScheme</h1>
-<p><strong><span style="color:red">Read from GoogleSheets and save to csv. This can tham be annotated here.</span></strong></p>
-<p>The working copy can be found on a <a href="https://docs.google.com/spreadsheets/d/1OAyRM1jGL5Vho-YfPffePhwGpQtaBUeTPJV6P98f0Bc/edit#gid=1455695282">Google Doc Sheet</a>.</p>
+<div id="supplementing-re-ordfering-and-thinning" class="section level2">
+<h2>Supplementing, Re-ordfering and Thinning</h2>
+<p>The sections in the <a href="#experimental-microbial-ecology-protocols">Experimental Microbial Ecology Protocols</a> were supplemented and assessed by reviewing the methods in the papers in the <a href="#references">References</a> section below. This resulted in the document [microcosmScheme.numbers].</p>
+<p>This document was than re-ordered and thinned which resulted in the initial verions of <a href="https://docs.google.com/spreadsheets/d/1OAyRM1jGL5Vho-YfPffePhwGpQtaBUeTPJV6P98f0Bc">the Google Doc Sheet</a>.</p>
 <p>Here we describe the different properties of the microcosmScheme We will start at the first level and go deeper into the different properties.</p>
-<div id="first-level-propertiers" class="section level2">
-<h2>First Level Propertiers</h2>
+<p>The working copy can be found on a <a href="https://docs.google.com/spreadsheets/d/1OAyRM1jGL5Vho-YfPffePhwGpQtaBUeTPJV6P98f0Bc">Google Doc Sheet</a>.</p>
+</div>
+<div id="current-structure" class="section level2">
+<h2>Current Structure</h2>
+<p>The names of the proiperties folow the following convention:</p>
+<ul>
+<li>Properties starting with a <strong>capital letters</strong> contain sub-properties, i.e. can be considered as <strong>property sets</strong></li>
+<li>Properties starting with a <strong>small letter</strong> contain actual values of the types <strong>character</strong> or <strong>numeric</strong>. <strong><span style="color:red">types need to be specified</span></strong></li>
+</ul>
+<p><strong><span style="color:red">Inclusde mandatory, repeatable, …</span></strong> The structure as currently (last version updated at 2018-11-19 09:45:30) is as followed:</p>
 <table class="table table-striped table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
-microcosmScheme first level Properties
+microcosmScheme Properties.
 </caption>
 <thead>
 <tr>
-<th style="text-align:right;">
-ID
+<th style="text-align:left;">
+Property Level 1
 </th>
 <th style="text-align:left;">
-Property
+Property Level 2
 </th>
 <th style="text-align:left;">
-Description
+Property Level 3
+</th>
+<th style="text-align:left;">
+Property Level 4
+</th>
+<th style="text-align:left;">
+Property Level 5
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:right;">
-1
-</td>
 <td style="text-align:left;">
 Materials
 </td>
 <td style="text-align:left;">
-instrumentation, species, cultures, ..
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
 </td>
 </tr>
 <tr>
-<td style="text-align:right;">
-2
+<td style="text-align:left;">
 </td>
+<td style="text-align:left;">
+Apparatus
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Incubators
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+type / version, …
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Container
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+type
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+volume
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+covers
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Species
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+species
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+strain
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+source
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+concentration
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Culture medium
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+volume
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+type
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Bacteria + Flagellates
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+species
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+strain
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+source / pellet
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+concentration
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Lab practices
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Long term maintenance
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Long term preservation
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
 <td style="text-align:left;">
 Initialization
 </td>
 <td style="text-align:left;">
-run-in time, conditions, densities, …
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
 </td>
 </tr>
 <tr>
-<td style="text-align:right;">
-3
+<td style="text-align:left;">
 </td>
+<td style="text-align:left;">
+Initial conditions
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+run-in time
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Temperature
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Light
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Final conditions
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
 <td style="text-align:left;">
 Conditions
 </td>
 <td style="text-align:left;">
-for all treatments conditions, and manipulations during experiment
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
 </td>
 </tr>
 <tr>
-<td style="text-align:right;">
-4
+<td style="text-align:left;">
 </td>
+<td style="text-align:left;">
+During Experiment Maintenance
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Treatment
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Density
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+species
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+species
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+initial density
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+density changes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+temperature
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+temperature
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+temperature range
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+temperature change / rate
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+light
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+intensity
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+frequency
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+change
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+photoperiod
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+dispersal
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Biotic environment
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Disturbance
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Nutrients and viscosity
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Spatial structure
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
 <td style="text-align:left;">
 Sampling
 </td>
 <td style="text-align:left;">
-how the sample is obtained
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
 </td>
 </tr>
 <tr>
-<td style="text-align:right;">
-5
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-MeasuringAndExtraction
+Frequency
 </td>
 <td style="text-align:left;">
-measuring and extracting the measures from the sample
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+value
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+unit
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+volume in ml
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Measuring and Extraction
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Microscopy
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Sample
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+volume in ml
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+preparation
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+treatment
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+type of microscope
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Image analysis
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Video analysis
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Sample
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+volume in ml
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+preparation
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Recording
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+microscope / magnification
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+camera / resolution
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+length of recording
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Data extraction
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+analysis method
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+parameter used
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+FlowCam
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+type / version, …
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Settings / Parameter
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Volume in ml
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+treatment
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Bacterial density / Flowcytometry
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+type, version, …
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+volume in ml
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+treatment
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+data extraction
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Particle counter
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Raman microspectroscopy
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Barcoding
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Ge- prote- and epigenomics
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Respirometry
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Nutrients and decomposition
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Interactions
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
 </td>
 </tr>
 </tbody>

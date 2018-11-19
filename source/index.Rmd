@@ -1,7 +1,7 @@
 ---
 title: "Outline Metadata"
 author: "Rainer M. Krug"
-date: "11/7/2018"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   html_document: default
   pdf_document: default
@@ -11,7 +11,9 @@ link-citations: TRUE
 ---
 
 ```{r setup, echo = FALSE}
-library(magrittr)
+library(googlesheets)
+library(dplyr)
+# library(magrittr)
 library(knitr)
 library(kableExtra)
 ##
@@ -19,8 +21,13 @@ knitr::opts_chunk$set(
 	echo = FALSE,
 	fig.height = 6,
 	fig.width = 6,
-	comment = NA
+	comment = NA,
+	cache = FALSE
 )
+##
+gs_auth(token = "~/keys/googlesheets_token.rds")
+mcs <- gs_title("microcosmScheme")
+microcosmScheme <- gs_read(mcs)
 ```
 
 # Introduction
@@ -40,7 +47,9 @@ By using this metadata one should be able to successfully re-generate the data.
 
 This scheme **does not** aim to cover aspects of the actual analysis of this data with the aim of answering specific questions.
 
-# Experimental Microbial Ecology Protocols
+# The microcosmScheme
+
+## Experimental Microbial Ecology Protocols
 In the  [supplement to their paper](https://emeh-protocols.readthedocs.io/en/latest/) to their paper, @altermatt_big_2015 specify the following sections for a protocoll. The sections are as followed:
 
 ```
@@ -75,40 +84,42 @@ In the  [supplement to their paper](https://emeh-protocols.readthedocs.io/en/lat
 3.7 Biotic environment
 ```
 
-We use these sections as a starting point to define a metadata scheme to describe the microcosm experiment. The sections are supplemented byn evaluating the papers in the [References] section below.
+We use these sections as a starting point to define a metadata scheme to describe the microcosm experiment. 
 
-# The microcosmScheme
 
-**<span style="color:red">Read from GoogleSheets and save to csv. This can tham be annotated here.</span>**
+## Supplementing, Re-ordfering and Thinning
 
-The working copy can be found on a [Google Doc Sheet](https://docs.google.com/spreadsheets/d/1OAyRM1jGL5Vho-YfPffePhwGpQtaBUeTPJV6P98f0Bc/edit#gid=1455695282). 
+The sections in the [Experimental Microbial Ecology Protocols] were supplemented and assessed by reviewing the methods in the papers in the [References] section below. This resulted in the document [microcosmScheme.numbers].
 
+This document was than re-ordered and thinned which resulted in the initial verions of [the Google Doc Sheet](https://docs.google.com/spreadsheets/d/1OAyRM1jGL5Vho-YfPffePhwGpQtaBUeTPJV6P98f0Bc).
 
 Here we describe the different properties of the microcosmScheme We will start at the first level and go deeper into the different properties.
 
-## First Level Propertiers
-
-```{r prop_l1}
-caption <- "microcosmScheme first level Properties"
-
-p1 <- data.frame(
-  ID = 1:5,
-  Property = c("Materials", "Initialization", "Conditions", "Sampling", "MeasuringAndExtraction"),
-  Description = c(
-    "instrumentation, species, cultures, ..", 
-    "run-in time, conditions, densities, ...",
-    "for all treatments conditions, and manipulations during experiment", 
-    "how the sample is obtained", 
-    "measuring and extracting the measures from the sample"
-  )
-)
+The working copy can be found on a [Google Doc Sheet](https://docs.google.com/spreadsheets/d/1OAyRM1jGL5Vho-YfPffePhwGpQtaBUeTPJV6P98f0Bc). 
 
 
-knitr::kable(
-  p1, 
-  format = "html",
-  caption = caption
-)  %>% 
+
+## Current Structure
+
+The names of the proiperties folow the following convention:
+
+* Properties starting with a **capital letters** contain sub-properties, i.e. can be considered as **property sets**
+* Properties starting with a **small letter** contain actual values of the types **character** or **numeric**. **<span style="color:red">types need to be specified</span>**
+
+**<span style="color:red">Inclusde mandatory, repeatable, ...</span>**
+The structure as currently (last version updated at `r mcs$updated`) is as followed:
+
+```{r structure}
+caption <- "microcosmScheme Properties. "
+
+options(knitr.kable.NA = '')
+
+microcosmScheme %>%
+  select(starts_with("Property")) %>% 
+  knitr::kable(
+    format = "html",
+    caption = caption
+  )  %>% 
   kable_styling(
     bootstrap_options = c("striped", "bordered"), 
     full_width = FALSE
