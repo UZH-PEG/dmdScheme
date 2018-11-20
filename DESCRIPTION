@@ -1,8 +1,13 @@
 Package: microcosmScheme
 Title: Microcosm experiment metadata scheme.
-Version: 0.0.0.9000
-Authors@R: person("Rainer M.", "Krug", email = "Rainer.Krug@uzh.ch", role = c("aut", "cre"))
-Description: Providing and describ=ing the microcosmMetadata Scheme
+Version: 0.0.0.10
+Date: 2018-11-20
+Authors@R: person("Rainer M.", "Krug", email =
+       "Rainer.Krug@uzh.ch", role = c("aut", "cre"))
+Description: Providing and describing the microcosmMetadata
+       ---- 
+       Scheme - Data imported and version bumped at Tue Nov 20
+       14:51:50 2018 / Europe/Zurich
 Depends: R (>= 3.5.1)
 License: MIT + file LICENSE
 Encoding: UTF-8

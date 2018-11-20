@@ -18,6 +18,9 @@ link-citations: TRUE
 ---
 
 ```{r setup, echo = FALSE, include = FALSE}
+library(here)
+library(magrittr)
+library(devtools)
 library(googlesheets)
 library(dplyr)
 # library(magrittr)
@@ -34,7 +37,61 @@ knitr::opts_chunk$set(
 ##
 gs_auth(token = "~/keys/googlesheets_token.rds")
 mcs <- gs_title("microcosmScheme")
-microcosmScheme <- gs_read(mcs)
+microcosmScheme_gd <- 
+   mcs %>%
+  gs_read()
+gs_deauth()
+microcosmScheme <- microcosmScheme_gd %>%
+  select(starts_with("Property"))
+
+notNA <- microcosmScheme %>% 
+  is.na() %>% 
+  rowSums() %>% 
+  equals(ncol(microcosmScheme)) %>%
+  not()
+microcosmScheme <- microcosmScheme[notNA,]
+  
+save( microcosmScheme_gd, file = here("data", "mS_gd.rda"))
+pkgPath <- here("data")
+if (
+  tools::md5sum(here("data", "microcosmScheme_gd.rda")) == tools::md5sum(here("data", "mS_gd.rda"))
+) {      ##### no change in google sheet
+  unlink( file.path(pkgPath, "mS_gd.rda") )
+} else { ##### change in google sheet
+  unlink( here("data", "mS_gd.rda") )
+  unlink( fhere("data", "microcosmScheme_gd.rda") )
+  save( microcosmScheme_gd, file = here("data", "microcosmScheme_gd.rda"))
+  unlink( here("data", "microcosmScheme.rda") )
+  save( microcosmScheme, file = here("data", "microcosmScheme.rda"))
+  ##### bump version #####
+  ## read old DESCRIPION file
+  DESCRIPTION <- read.dcf(here("DESCRIPTION"))
+  ##
+  ## Increase Version
+  currVersion <- DESCRIPTION[1, "Version"]
+  splitVersion <- strsplit(currVersion, ".", fixed = TRUE)[[1]]
+  nVer <- length(splitVersion)
+  currEndVersion <- as.integer(splitVersion[nVer])
+  newEndVersion <- as.character(currEndVersion + 1)
+  splitVersion[nVer] <- newEndVersion
+  newVersion <- paste(splitVersion, collapse = ".")
+  DESCRIPTION[1, "Version"] <- newVersion
+  ##
+  ## Set Date
+  DESCRIPTION[1, "Date"] <- format(Sys.time(), '%Y-%m-%d')
+  ##
+  ## adjust Description
+  DESCRIPTION[1, "Description"] %<>%
+    strsplit(., "\n----\n") %>% 
+    extract2(1) %>%
+    extract(1) %>%
+    paste0("\n----\n", "Data imported and version bumped at ", date(), " / ", Sys.timezone())
+  
+  ## write new DESCRIPTION
+  write.dcf(DESCRIPTION, here("DESCRIPTION"))
+  rm( microcosmScheme, microcosmScheme_gd )
+  devtools::load_all(here())
+}
 ```
 
 # Introduction
