@@ -40,6 +40,11 @@ mcs <- gs_title("microcosmScheme")
 microcosmScheme_gd <- 
    mcs %>%
   gs_read()
+gs_download(
+  from = mcs,
+  to = here("inst", "googlesheet", "microcosmScheme.xlsx"),
+  overwrite = TRUE
+)
 gs_deauth()
 microcosmScheme <- microcosmScheme_gd %>%
   select(starts_with("Property"))
