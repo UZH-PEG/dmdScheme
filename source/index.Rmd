@@ -22,6 +22,7 @@ library(here)
 library(magrittr)
 library(knitr)
 library(kableExtra)
+library(plantuml)
 ##
 knitr::opts_chunk$set(
 	echo = FALSE,
@@ -127,6 +128,90 @@ microcosmScheme %>%
     bootstrap_options = c("striped", "bordered"), 
     full_width = FALSE
   )
+```
+
+# From Project to Dataset - how the microcosmScheme fits in
+
+Data can be separated into different classes. Each of these classes sontains of **one** (data) file and **one** metadata file. 
+
+These metadata files contain in the property **RelatedIdentifier** providing the possibility to link different (meta)data sets. 
+
+
+```{r data_layout, echo=FALSE, message=FALSE, warning=FALSE, cache = TRUE, fig.width = 33, fig.height = 49}
+'
+class Project {
+  {field} Project description
+  {method} - metadata
+}
+
+class Experiment_1 {
+  {field} Experimental description
+  {method} + Experimental Layout
+}
+class Experiment_n {
+  {field} Experimental description
+  {method} + Experimental Layout
+}
+
+
+class Treatment_1 {
+  {field} Treatment Description
+  {method} + Materials
+  {method} + Initialization
+  {method} + Conditions
+}
+
+class Treatment_n {
+  {field} Treatment Description
+  {method} + Materials
+  {method} + Initialization
+  {method} + Conditions
+}
+
+class Measurement_1 {
+  {field} Measurement description
+  {method} + Sampling
+  {method} + Measuring and Extraction
+}
+
+class Measurement_n {
+  {field} Measurement description
+  {method} + Sampling
+  {method} + Measuring and Extraction
+}
+
+class RawData {
+  {field} Measured Data
+  {method} - metadata
+}
+
+class ExtractedData_1 {
+  {field} Extracted Data
+  {method} - metadata
+  {method} + Measuring and Extraction
+}
+
+class ExtractedData_n {
+  {field} Extracted Data
+  {method} - metadata
+  {method} + Measuring and Extraction
+}
+
+
+Project "1" *-- "many" Experiment_1 : contains
+Project "1" *-- "many" Experiment_n : contains
+
+Experiment_n "1" *-- "many" Treatment_1 : contains
+Experiment_n "1" *-- "many" Treatment_n : contains
+
+Treatment_n "1" *-- "many" Measurement_1 : contains
+Treatment_n "1" *-- "many" Measurement_n : contains
+Measurement_n "1" *-- "1" RawData : contains
+RawData "1" *-- "many" ExtractedData_1 : contains
+RawData "1" *-- "many" ExtractedData_n : contains
+' %>%
+  plantuml %>%
+  plot()
 ```
 
 

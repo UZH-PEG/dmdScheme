@@ -5,3 +5,5 @@ index.html
 .httr-oauth
 .httr-oauth-SUSPENDED
 googlesheets_token.rds
+index_cache
+index_files
