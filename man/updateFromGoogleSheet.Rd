@@ -13,8 +13,5 @@ updateFromGoogleSheet(token = NULL)
 a googlesheet object
 }
 \description{
-Update the following data and increase the version in the DESCRIPTION if it has changed:
-\itemise{
-  \item{}
-}
+Update the data and increase the version in the DESCRIPTION if it has changed.
 }

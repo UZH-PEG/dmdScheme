@@ -32,8 +32,6 @@ knitr::opts_chunk$set(
 )
 ##
 devtools::load_all(here())
-microcosmScheme:::updateFromGoogleSheet(token = "~/keys/googlesheets_token.rds")
-devtools::load_all(here())
 ```
 
 # Introduction

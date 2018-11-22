@@ -1,24 +1,23 @@
 #' Update data from googlesheets
 #'
-#' Update the following data and increase the version in the DESCRIPTION if it has changed:
-#' \itemise{
-#'   \item{}
-#' }
+#' Update the data and increase the version in the DESCRIPTION if it has changed.
+#'
 #' @param token token for google access. If \code{NULL} (default), user will be asked
 #'
 #' @return a googlesheet object
 #'
 #' @importFrom googlesheets gs_auth gs_title gs_read gs_download gs_deauth
-#' @importFrom magrittr %>% equals not
+#' @importFrom magrittr %>% %<>% equals not extract extract2
 #' @importFrom here here
 #' @importFrom tools md5sum
+#' @importFrom dplyr select starts_with
 #'
 updateFromGoogleSheet <- function(
   token = NULL
 ) {
   on.exit(gs_deauth())
   ##
-  gs_auth(token = "~/keys/googlesheets_token.rds")
+  gs_auth(token = token)
   mcs <- gs_title("microcosmScheme")
   update <- mcs$updated %>% format("%Y-%m-%d %H:%M:%S")
   lastUpdate <- read.dcf(here("DESCRIPTION"))[1, "GSUpdate"]
@@ -68,7 +67,7 @@ updateFromGoogleSheet <- function(
     ##
     ## adjust Description
     DESCRIPTION[1, "Description"] %<>%
-      strsplit(., " ---- ") %>%
+      strsplit(" ---- ") %>%
       extract2(1) %>%
       extract(1) %>%
       paste0(" ---- ", "Data imported and version bumped at ", date(), " / ", Sys.timezone())

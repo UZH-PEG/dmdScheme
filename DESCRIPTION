@@ -1,14 +1,16 @@
 Package: microcosmScheme
-Title: Microcosm experiment metadata scheme.
-Version: 0.0.0.17
+Title: Microcosm experiment metadata scheme
+Version: 0.0.0.18
 Date: 2018-11-21
-Authors@R: person("Rainer M.", "Krug", email = "Rainer.Krug@uzh.ch", role = c("aut", "cre"))
-Description: Providing and describing the Microcosm Metadata ---- Data imported and version
-          bumped at Wed Nov 21 14:14:24 2018 / Europe/Zurich
-Depends: R (>= 3.5.1)
-Imports: googlesheets, magrittr, here, tools
+Authors@R: person("Rainer M.", "Krug", email = "Rainer.Krug@uzh.ch",
+        role = c("aut", "cre"))
+Description: Providing and describing the Microcosm Metadata. ---- Data
+        imported and version bumped at Wed Nov 21 14:44:50 2018 /
+        Europe/Zurich.
+Depends: R (>= 3.5.0)
+Imports: googlesheets, magrittr, here, tools, dplyr
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
-GSUpdate: 2018-11-21 12:15:01
+GSUpdate: 2018-11-21 13:32:36

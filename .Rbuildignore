@@ -1,3 +1,10 @@
+^README\..*$
+^NEWS\..*$
+^\.httr-oauth-SUSPENDED$
+^docs$
+^source$
+^Makefile$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.httr-oauth$
+^ONLYLOCAL
