@@ -1,5 +1,5 @@
 ---
-title: "Outline Metadata"
+title: "Experimental Microbial Ecology Metadata Scheme"
 author: "Rainer M. Krug"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
