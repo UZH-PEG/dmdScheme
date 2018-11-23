@@ -1,6 +1,6 @@
-#' microcosmScheme as imported from the Google sheet.
+#' emeScheme as imported from the Google sheet.
 #'
-#' The dataset contains the imported and trimmed googlesheet of the microcosmScheme definition.
+#' The dataset contains the imported and trimmed googlesheet of the emeScheme definition.
 #'
 #' @format TODO
 #' \describe{
@@ -8,4 +8,4 @@
 #'   ...
 #' }
 #' @source \url{https://docs.google.com/spreadsheets/d/1OAyRM1jGL5Vho-YfPffePhwGpQtaBUeTPJV6P98f0Bc}
-"microcosmScheme"
+"emeScheme"

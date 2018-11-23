@@ -18,34 +18,34 @@ updateFromGoogleSheet <- function(
   on.exit(gs_deauth())
   ##
   gs_auth(token = token)
-  mcs <- gs_title("microcosmScheme")
-  update <- mcs$updated %>% format("%Y-%m-%d %H:%M:%S")
+  emes <- gs_title("microcosmScheme")
+  update <- emes$updated %>% format("%Y-%m-%d %H:%M:%S")
   lastUpdate <- read.dcf(here("DESCRIPTION"))[1, "GSUpdate"]
   ##
   if ( update == lastUpdate ) {      ##### no change in google sheet
     gs_deauth()
   } else { ##### change in google sheet
-    ## update inst/googlesheet/microcosmSheme.xlsx
+    ## update inst/googlesheet/emeScheme.xlsx
     gs_download(
-      from = mcs,
-      to = here("inst", "googlesheet", "microcosmScheme.xlsx"),
+      from = emes,
+      to = here("inst", "googlesheet", "emeScheme.xlsx"),
       overwrite = TRUE
     )
-    ## update data/microcosmSheme_gd.rda
-    microcosmScheme_gd <- gs_read(mcs)
-    save( microcosmScheme_gd, file = here("data", "microcosmScheme_gd.rda"))
-    ## update data/microcosmSheme.rda
-    microcosmScheme <- microcosmScheme_gd %>%
+    ## update data/emeScheme_gd.rda
+    emeScheme_gd <- gs_read(emes)
+    save( emeScheme_gd, file = here("data", "emeScheme_gd.rda"))
+    ## update data/emeScheme.rda
+    emeScheme <- emeScheme_gd %>%
       select(starts_with("Property"))
 
-    notNA <- microcosmScheme %>%
+    notNA <- emeScheme %>%
       is.na() %>%
       rowSums() %>%
-      equals(ncol(microcosmScheme)) %>%
+      equals(ncol(emeScheme)) %>%
       not()
-    microcosmScheme <- microcosmScheme[notNA,]
+    emeScheme <- emeScheme[notNA,]
 
-    save( microcosmScheme, file = here("data", "microcosmScheme.rda"))
+    save( emeScheme, file = here("data", "emeScheme.rda"))
     ##
 
     ##### bump version #####
@@ -75,7 +75,7 @@ updateFromGoogleSheet <- function(
     DESCRIPTION[1, "GSUpdate"] <- update
     ## write new DESCRIPTION
     write.dcf(DESCRIPTION, here("DESCRIPTION"))
-    rm( microcosmScheme, microcosmScheme_gd )
+    rm( emeScheme, emeScheme_gd )
   }
-  return(mcs)
+  return(emes)
 }
