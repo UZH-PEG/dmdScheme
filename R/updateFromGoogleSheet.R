@@ -38,12 +38,17 @@ updateFromGoogleSheet <- function(
     emeScheme <- emeScheme_gd %>%
       select(starts_with("Property"))
 
-    notNA <- emeScheme %>%
+    notNARow <- emeScheme %>%
       is.na() %>%
       rowSums() %>%
       equals(ncol(emeScheme)) %>%
       not()
-    emeScheme <- emeScheme[notNA,]
+    notNACol <- emeScheme %>%
+      is.na() %>%
+      colSums() %>%
+      equals(nrow(emeScheme)) %>%
+      not()
+    emeScheme <- emeScheme[notNARow, notNACol]
 
     save( emeScheme, file = here("data", "emeScheme.rda"))
     ##
