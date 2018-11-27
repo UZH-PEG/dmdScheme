@@ -41,7 +41,7 @@ devtools::load_all(here())
 
 # Introduction
 
-This scheme will provide a framework for describing aquatic microcosm experiments in the sense as used in the papers in the [Reference] section.
+This scheme will provide a framework for describing aquatic microcosm experiments in the sense as used in the papers in the [References] section.
 
 This scheme **aims to** cover the following aspects:
 
@@ -110,18 +110,24 @@ The names of the properties folow the following convention:
 * Properties in starting with a **capital letters** (in **<span style="text-decoration:underline; color: blue" >Blue</span>**) are **property sets**, containing sub-properties
 * Properties starting with a **small letter** (in **<span style="color:black">black</span>**) are **value properties**, containing values of the types **character** or **numeric**. 
 
+The numbersi in brackets indicate if a property is mandatory or obligatory and non-repeatable or repeatable:
+
+|     | mandatory | repeatable |
+|-----|-----------|------------|
+| 0-1 |           |            | 
+| 0-n |           |     X      |  
+| 1-1 |     X     |            |
+| 1-n |     X     |     X      |
+
 * **<span style="color:red">Specify types for each value property </span>**
 * **<span style="color:red">Include repeatable, ...</span>**
 
 The structure as at **`r read.dcf(here("DESCRIPTION"))[1, "GSUpdate"]` GMT** is as followed:
 
 ```{r structure}
-caption <- "emeScheme Properties. <span style=\'font-weight: bold; text-decoration:underline; color: blue;\' >Blue</span> properties are property sets, i.e. contain other properties, **<span style='color:black'>black</span>** properties are value properties which contain values."
+caption <- "emeScheme Properties. <span style=\'font-weight: bold; text-decoration:underline; color: blue;\' >Blue</span> properties are property sets, i.e. contain other properties, **<span style='color:black'>black</span>** properties are value properties which contain values. In round brackets, the number of occurrances per metadataset of this property."
 
 options(knitr.kable.NA = '')
-
-dat <- emeScheme
-names(dat) <- gsub(" ", "_", names(dat))
 
 propColor <- function( x ) {
   fc <- substr(x, 1, 1)
@@ -150,7 +156,7 @@ propColor <- function( x ) {
   return(x)
 }
 
-dat %>% 
+emeScheme %>% 
   mutate(
     Property_Level_1 = propColor(Property_Level_1 ),
     Property_Level_2 = propColor(Property_Level_2 ),
@@ -185,11 +191,17 @@ class Project {
 
 class Experiment_1 {
   {field} Experimental description
-  {method} + Experimental Layout
+  {method} + ExperimentalDesign
 }
+
 class Experiment_n {
   {field} Experimental description
-  {method} + Experimental Layout
+  {method} + ExperimentalDesign
+}
+
+class Experiment_2 {
+  {field} Experimental description
+  {method} + ExperimentalDesign
 }
 
 
@@ -197,14 +209,21 @@ class Treatment_1 {
   {field} Treatment Description
   {method} + Materials
   {method} + Initialization
-  {method} + Conditions
+  {method} + Treatment
 }
 
 class Treatment_n {
   {field} Treatment Description
   {method} + Materials
   {method} + Initialization
-  {method} + Conditions
+  {method} + Treatment
+}
+
+class Treatment_2 {
+  {field} Treatment Description
+  {method} + Materials
+  {method} + Initialization
+  {method} + Treatment
 }
 
 class Measurement_1 {
@@ -214,6 +233,12 @@ class Measurement_1 {
 }
 
 class Measurement_n {
+  {field} Measurement description
+  {method} + Sampling
+  {method} + Measuring
+}
+
+class Measurement_2 {
   {field} Measurement description
   {method} + Sampling
   {method} + Measuring and Extraction
@@ -227,26 +252,38 @@ class RawData {
 class ExtractedData_1 {
   {field} Extracted Data
   {method} - metadata
-  {method} + Measuring and Extraction
+  {method} + Measuring
 }
 
 class ExtractedData_n {
   {field} Extracted Data
   {method} - metadata
-  {method} + Measuring and Extraction
+  {method} + Extraction
+}
+
+class ExtractedData_2 {
+  {field} Extracted Data
+  {method} - metadata
+  {method} + Measuring
 }
 
 
 Project "1" *-- "many" Experiment_1 : contains
+Project "1" *-- "many" Experiment_2 : contains
 Project "1" *-- "many" Experiment_n : contains
 
 Experiment_n "1" *-- "many" Treatment_1 : contains
+Experiment_n "1" *-- "many" Treatment_2 : contains
 Experiment_n "1" *-- "many" Treatment_n : contains
 
 Treatment_n "1" *-- "many" Measurement_1 : contains
+Treatment_n "1" *-- "many" Measurement_2 : contains
 Treatment_n "1" *-- "many" Measurement_n : contains
+
 Measurement_n "1" *-- "1" RawData : contains
+
 RawData "1" *-- "many" ExtractedData_1 : contains
+RawData "1" *-- "many" ExtractedData_2 : contains
 RawData "1" *-- "many" ExtractedData_n : contains
 ' %>%
   plantuml %>%
