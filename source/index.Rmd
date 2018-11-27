@@ -157,13 +157,7 @@ propColor <- function( x ) {
 }
 
 emeScheme %>% 
-  mutate(
-    Property_Level_1 = propColor(Property_Level_1 ),
-    Property_Level_2 = propColor(Property_Level_2 ),
-    Property_Level_3 = propColor(Property_Level_3 ),
-    Property_Level_4 = propColor(Property_Level_4 ),
-    Property_Level_5 = propColor(Property_Level_5 )
-  ) %>%
+  mutate_all( propColor ) %>%
   knitr::kable(
     escape = FALSE,
     format = "html",
