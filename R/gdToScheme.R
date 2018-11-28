@@ -49,6 +49,8 @@ gdToScheme <- function(x = emeScheme) {
         )
         remove <- !colAllNA
         sl[[propName]] <- sl[[propName]][,remove]
+        class(sl[[propName]]) <- append(class(sl[[propName]]), "emeScheme")
+        class(sl[[propName]]) <- append(class(sl[[propName]]), paste0("emeScheme_",propName))
       }
     }
     return(sl)
@@ -67,6 +69,10 @@ gdToScheme <- function(x = emeScheme) {
       if (tibble::is.tibble(x)) {
         result <- tibble::as_tibble(t(x))
         names(result) <- as.character(result)
+        #
+        # TODO - split at "()"
+        #
+        class(result) <- class(x)
       }
     }
     return(result)
