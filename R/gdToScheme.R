@@ -8,7 +8,7 @@
 #' @return \code{list} of \code{list} of ... \code{tibbles}
 #' @export
 #' @importFrom tibble is.tibble as_tibble
-#' @importFrom methods is
+#' @importFrom methods is as
 #' @importFrom magrittr set_names
 #'
 #' @examples
