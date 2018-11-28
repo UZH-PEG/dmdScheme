@@ -4,10 +4,12 @@
 \alias{updateFromGoogleSheet}
 \title{Update data from googlesheets}
 \usage{
-updateFromGoogleSheet(token = NULL)
+updateFromGoogleSheet(token = NULL, force = FALSE)
 }
 \arguments{
 \item{token}{token for google access. If \code{NULL} (default), user will be asked}
+
+\item{force}{force update even if no newer version on google docs}
 }
 \value{
 a googlesheet object

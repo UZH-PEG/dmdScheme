@@ -1,11 +1,9 @@
-#' emeScheme as imported from the Google sheet.
+#' Authorative definition of the emeScheme.
 #'
-#' The dataset contains the imported and trimmed googlesheet of the emeScheme definition.
+#' The dataset contains the authorative definition of the emeScheme.
 #'
-#' @format TODO
 #' \describe{
 #'   \item{Property Level x}{TODO}
 #'   ...
 #' }
-#' @source \url{https://docs.google.com/spreadsheets/d/1OAyRM1jGL5Vho-YfPffePhwGpQtaBUeTPJV6P98f0Bc}
 "emeScheme"

@@ -1,17 +1,18 @@
-#' Convert the data stored in \code{emeScheme} into a list of tibbles
+#' Convert the data stored in \code{emeScheme_gd} into a list of tibbles
 #'
 #' TODO: Add attriburtes for repeatability and check if tibble is appropriate (hopefully!!!!)
 #'
-#' @param x the \code{emeScheme} as a \code{tibble) (as from google docs). The default is usually fine.
+#' @param x the \code{emeScheme_gd} as a \code{tibble} (as from google docs). The default is usually fine.
 #'
 #' @return \code{list} of \code{list} of ... \code{tibbles}
 #' @export
 #' @importFrom tibble is.tibble as_tibble
+#' @importFrom methods is
 #'
 #' @examples
 #' gdToScheme()
 #'
-gdToScheme <- function(x = emeScheme) {
+gdToScheme <- function(x = emeScheme_gd) {
 
 # Calculate max ncol in list recursively ----------------------------------
 

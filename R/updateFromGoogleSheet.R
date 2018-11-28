@@ -3,6 +3,7 @@
 #' Update the data and increase the version in the DESCRIPTION if it has changed.
 #'
 #' @param token token for google access. If \code{NULL} (default), user will be asked
+#' @param force force update even if no newer version on google docs
 #'
 #' @return a googlesheet object
 #'
@@ -13,7 +14,8 @@
 #' @importFrom dplyr select starts_with
 #'
 updateFromGoogleSheet <- function(
-  token = NULL
+  token = NULL,
+  force = FALSE
 ) {
   on.exit(gs_deauth())
   ##
@@ -21,6 +23,9 @@ updateFromGoogleSheet <- function(
   emes <- gs_title("microcosmScheme")
   update <- emes$updated %>% format("%Y-%m-%d %H:%M:%S")
   lastUpdate <- read.dcf(here("DESCRIPTION"))[1, "GSUpdate"]
+  if (force) {
+    lastUpdate = -1
+  }
   ##
   if ( update == lastUpdate ) {      ##### no change in google sheet
     gs_deauth()
@@ -31,11 +36,9 @@ updateFromGoogleSheet <- function(
       to = here("inst", "googlesheet", "emeScheme.xlsx"),
       overwrite = TRUE
     )
-    ## update data/emeScheme_gd.rda
-    emeScheme_gd <- gs_read(emes)
-    save( emeScheme_gd, file = here("data", "emeScheme_gd.rda"))
     ## update data/emeScheme.rda
-    emeScheme <- emeScheme_gd %>%
+    gs_read(emes)
+    emeScheme_gd <- gs_read(emes) %>%
       select(starts_with("Property"))
 
     notNARow <- emeScheme %>%
@@ -50,8 +53,10 @@ updateFromGoogleSheet <- function(
       not()
     emeScheme <- emeScheme[notNARow, notNACol]
 
+    save( emeScheme_gd, file = here("data", "emeScheme_gd.rda"))
+    ## update data/emeScheme.rda
+    emeScheme <- gdToScheme(emeScheme_gd)
     save( emeScheme, file = here("data", "emeScheme.rda"))
-    ##
 
     ##### bump version #####
     ## read old DESCRIPION file
@@ -75,7 +80,7 @@ updateFromGoogleSheet <- function(
       strsplit(" ---- ") %>%
       extract2(1) %>%
       extract(1) %>%
-      paste0(" ---- ", "Data imported and version bumped at ", date(), " / ", Sys.timezone())
+      paste0(" ---- ", "Data imported and version bumped at ", date(), " / ", Sys.timezone(), ".")
     ## set GSUpdate
     DESCRIPTION[1, "GSUpdate"] <- update
     ## write new DESCRIPTION

@@ -3,19 +3,18 @@
 \docType{data}
 \name{emeScheme}
 \alias{emeScheme}
-\title{emeScheme as imported from the Google sheet.}
-\format{TODO
-\describe{
-  \item{Property Level x}{TODO}
-  ...
-}}
-\source{
-\url{https://docs.google.com/spreadsheets/d/1OAyRM1jGL5Vho-YfPffePhwGpQtaBUeTPJV6P98f0Bc}
-}
+\title{Authorative definition of the emeScheme.}
+\format{An object of class \code{list} of length 5.}
 \usage{
 emeScheme
 }
 \description{
-The dataset contains the imported and trimmed googlesheet of the emeScheme definition.
+The dataset contains the authorative definition of the emeScheme.
+}
+\details{
+\describe{
+  \item{Property Level x}{TODO}
+  ...
+}
 }
 \keyword{datasets}

@@ -2,9 +2,12 @@
 % Please edit documentation in R/gdToScheme.R
 \name{gdToScheme}
 \alias{gdToScheme}
-\title{Convert the data stored in \code{emeScheme} into a list of tibbles}
+\title{Convert the data stored in \code{emeScheme_gd} into a list of tibbles}
 \usage{
-gdToScheme(x = emeScheme)
+gdToScheme(x = emeScheme_gd)
+}
+\arguments{
+\item{x}{the \code{emeScheme_gd} as a \code{tibble} (as from google docs). The default is usually fine.}
 }
 \value{
 \code{list} of \code{list} of ... \code{tibbles}

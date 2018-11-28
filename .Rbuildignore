@@ -1,3 +1,6 @@
+^\.covrignore$
+^codecov\.yml$
+^\.travis\.yml$
 ^README\..*$
 ^NEWS\..*$
 ^\.httr-oauth-SUSPENDED$

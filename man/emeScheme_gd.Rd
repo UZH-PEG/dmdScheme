@@ -3,11 +3,10 @@
 \docType{data}
 \name{emeScheme_gd}
 \alias{emeScheme_gd}
-\title{Complete emeScheme Google sheet.}
+\title{emeScheme as imported from the Google sheet.}
 \format{TODO
 \describe{
   \item{Property Level x}{TODO}
-  \item{rest}{TODO}
   ...
 }}
 \source{
@@ -17,6 +16,6 @@
 emeScheme_gd
 }
 \description{
-The dataset contains the complete imported googlesheet of the emeScheme definition.
+The dataset contains the imported and trimmed googlesheet of the emeScheme definition.
 }
 \keyword{datasets}
