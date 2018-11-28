@@ -125,7 +125,7 @@ The numbersi in brackets indicate if a property is mandatory or obligatory and n
 The structure as at **`r read.dcf(here("DESCRIPTION"))[1, "GSUpdate"]` GMT** is as followed:
 
 ```{r structure}
-caption <- "emeScheme Properties. <span style=\'font-weight: bold; text-decoration:underline; color: blue;\' >Blue</span> properties are property sets, i.e. contain other properties, **<span style='color:black'>black</span>** properties are value properties which contain values. In round brackets, the number of occurrances per metadataset of this property."
+caption <- "emeScheme Properties. <span style=\'font-weight: bold; text-decoration:underline; color: blue;\' >Blue</span> properties are property sets, i.e. contain other properties, **<span style='color:black'>black</span>** properties are value properties which contain values."
 
 options(knitr.kable.NA = '')
 
@@ -171,94 +171,97 @@ emeScheme %>%
 
 # From Project to Dataset - how the emeScheme fits in
 
-Data can be separated into different classes. Each of these classes sontains of **one** (data) file and **one** metadata file. 
-
-These metadata files contain in the property **RelatedIdentifier** providing the possibility to link different (meta)data sets. 
 
 
 ```{r data_layout, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 33, fig.height = 49}
 '
-class Project {
+!define Description(name,desc) class name as "desc" << (D,cyan) >> 
+!define Method(name,desc) class name as "desc" << (M,lime) >>
+!define Data(name,desc) class name as "desc" << (D,crimson) >> #TECHNOLOGY
+!define Method(name,desc) class name as "desc" << (M,lime) >>
+
+Data(Project, Project) {
   {field} Project description
-  {method} - metadata
+  {method} - dataCite metadata
 }
 
-class Experiment_1 {
+Method(Experiment_1, Experiment_1) {
   {field} Experimental description
-  {method} + ExperimentalDesign
+  {method} + Experiment
 }
 
-class Experiment_n {
+Method(Experiment_n, Experiment_n) {
   {field} Experimental description
-  {method} + ExperimentalDesign
+  {method} + Experiment
 }
 
-class Experiment_2 {
+Method(Experiment_2, Experiment_2) {
   {field} Experimental description
-  {method} + ExperimentalDesign
+  {method} + Experiment
 }
 
-
-class Treatment_1 {
+Method(Treatment_1, Treatment_1) {
   {field} Treatment Description
-  {method} + Materials
-  {method} + Initialization
   {method} + Treatment
 }
 
-class Treatment_n {
+Method(Treatment_n, Treatment_n) {
   {field} Treatment Description
-  {method} + Materials
-  {method} + Initialization
   {method} + Treatment
 }
 
-class Treatment_2 {
+Method(Treatment_2, Treatment_2) {
   {field} Treatment Description
-  {method} + Materials
-  {method} + Initialization
   {method} + Treatment
 }
 
-class Measurement_1 {
-  {field} Measurement description
+Method(Sampling, Sampling) {
+  {field} Sampling of Microcosms
   {method} + Sampling
-  {method} + Measuring and Extraction
 }
 
-class Measurement_n {
+Method(Measurement_1, Measurement_1) {
   {field} Measurement description
-  {method} + Sampling
   {method} + Measuring
 }
 
-class Measurement_2 {
+
+Method(Measurement_n, Measurement_n) {
   {field} Measurement description
-  {method} + Sampling
-  {method} + Measuring and Extraction
-}
-
-class RawData {
-  {field} Measured Data
-  {method} - metadata
-}
-
-class ExtractedData_1 {
-  {field} Extracted Data
-  {method} - metadata
   {method} + Measuring
 }
 
-class ExtractedData_n {
-  {field} Extracted Data
-  {method} - metadata
+Method(Measurement_2, Measurement_2) {
+  {field} Measurement description
+  {method} + Measuring
+
+}
+Data( RawData, RawData) {
+  {field} Measured Raw Data
+  {method} - dataCite metadata
+  {method} - emeScheme metadata
+}
+
+Method( Extraction_1, Extraction_1) {
+  {field} Extraction Method
+  {method} + Measuring
+}
+
+Method( Extraction_n, Extraction_n) {
+  {field} Extraction Method
   {method} + Extraction
 }
 
-class ExtractedData_2 {
-  {field} Extracted Data
-  {method} - metadata
+Method( Extraction_2, Extraction_2) {
+  {field} Extraction Method
   {method} + Measuring
+}
+
+Data( ExtractedData, ExtractedData_1) {
+  {field} Extracted Data
+  {method} - dataCite metadata
+  {method} - emeScheme metadata
+
 }
 
 
@@ -270,15 +273,21 @@ Experiment_n "1" *-- "many" Treatment_1 : contains
 Experiment_n "1" *-- "many" Treatment_2 : contains
 Experiment_n "1" *-- "many" Treatment_n : contains
 
-Treatment_n "1" *-- "many" Measurement_1 : contains
-Treatment_n "1" *-- "many" Measurement_2 : contains
-Treatment_n "1" *-- "many" Measurement_n : contains
+Treatment_n "1" *-- "1" Sampling : contains
+
+Sampling "1" *-- "many" Measurement_1 : contains
+Sampling "1" *-- "many" Measurement_2 : contains
+Sampling "1" *-- "many" Measurement_n : contains
 
 Measurement_n "1" *-- "1" RawData : contains
 
-RawData "1" *-- "many" ExtractedData_1 : contains
-RawData "1" *-- "many" ExtractedData_2 : contains
-RawData "1" *-- "many" ExtractedData_n : contains
+RawData "1" *-- "many" Extraction_1 : contains
+RawData "1" *-- "many" Extraction_2 : contains
+RawData "1" *-- "many" Extraction_n : contains
+
+Extraction_n "1" *-- "1" ExtractedData : contains
+
+
 ' %>%
   plantuml %>%
   plot()
