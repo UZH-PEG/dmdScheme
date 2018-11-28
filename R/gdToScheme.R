@@ -3,16 +3,20 @@
 #' TODO: Add attriburtes for repeatability and check if tibble is appropriate (hopefully!!!!)
 #'
 #' @param x the \code{emeScheme_gd} as a \code{tibble} (as from google docs). The default is usually fine.
+#' @param debug should debug and progress mesaages be printed. Default is \code{FALSE}
 #'
 #' @return \code{list} of \code{list} of ... \code{tibbles}
 #' @export
 #' @importFrom tibble is.tibble as_tibble
 #' @importFrom methods is
+#' @importFrom magrittr set_names
 #'
 #' @examples
 #' gdToScheme()
 #'
-gdToScheme <- function(x = emeScheme_gd) {
+gdToScheme <- function(
+  x = emeScheme_gd,
+  debug = FALSE) {
 
 # Calculate max ncol in list recursively ----------------------------------
 
@@ -57,8 +61,7 @@ gdToScheme <- function(x = emeScheme_gd) {
     return(sl)
   }
 
-
-# Transpose function ------------------------------------------------------
+# Transpose function and set attributes and names -------------------------
 
   tIter <- function(x) {
     if (is(x, "list")) {
@@ -69,15 +72,41 @@ gdToScheme <- function(x = emeScheme_gd) {
     } else {
       if (tibble::is.tibble(x)) {
         result <- tibble::as_tibble(t(x))
-        names(result) <- as.character(result)
-        #
-        # TODO - split at "()"
-        #
+        names(result) <- result %>%
+          as.character() %>%
+          strsplit(" ") %>%
+          sapply("[", 1)
         class(result) <- class(x)
+        ##
+        unit <- result %>%
+          as.character() %>%
+          strsplit(" ") %>%
+          sapply("[", 2) %>%
+          gsub("\\(|\\)", "", .) %>%
+          set_names(names(result))
+        attr(result, which = "unit") <- unit
+        ##
+        type <- result %>%
+          as.character() %>%
+          strsplit(" ") %>%
+          sapply("[", 3) %>%
+          gsub("\\[|\\]", "", .) %>%
+          set_names(names(result))
+        if (debug) {cat(length(type), class(result))}
+        type[is.na(type)] <- "character"
+        if (debug) {cat(".")}
+        result[] <- NA
+        if (debug) {cat(".")}
+        for (i in 1:ncol(result)) {
+          result[,i] <- as(result[,i], Class = type[i])
+        }
+        if (debug) {cat(".\n")}
+        ##
       }
     }
     return(result)
   }
+
 
 # Do the splitting --------------------------------------------------------
 

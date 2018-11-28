@@ -4,10 +4,12 @@
 \alias{gdToScheme}
 \title{Convert the data stored in \code{emeScheme_gd} into a list of tibbles}
 \usage{
-gdToScheme(x = emeScheme_gd)
+gdToScheme(x = emeScheme_gd, debug = FALSE)
 }
 \arguments{
 \item{x}{the \code{emeScheme_gd} as a \code{tibble} (as from google docs). The default is usually fine.}
+
+\item{debug}{should debug and progress mesaages be printed. Default is \code{FALSE}}
 }
 \value{
 \code{list} of \code{list} of ... \code{tibbles}

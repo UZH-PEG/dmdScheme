@@ -41,17 +41,17 @@ updateFromGoogleSheet <- function(
     emeScheme_gd <- gs_read(emes) %>%
       select(starts_with("Property"))
 
-    notNARow <- emeScheme %>%
+    notNARow <- emeScheme_gd %>%
       is.na() %>%
       rowSums() %>%
-      equals(ncol(emeScheme)) %>%
+      equals(ncol(emeScheme_gd)) %>%
       not()
-    notNACol <- emeScheme %>%
+    notNACol <- emeScheme_gd %>%
       is.na() %>%
       colSums() %>%
-      equals(nrow(emeScheme)) %>%
+      equals(nrow(emeScheme_gd)) %>%
       not()
-    emeScheme <- emeScheme[notNARow, notNACol]
+    emeScheme_gd <- emeScheme_gd[notNARow, notNACol]
 
     save( emeScheme_gd, file = here("data", "emeScheme_gd.rda"))
     ## update data/emeScheme.rda

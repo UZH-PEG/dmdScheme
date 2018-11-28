@@ -39,11 +39,11 @@ devtools::load_all(here())
 [![DOI](https://zenodo.org/badge/156543918.svg)](https://zenodo.org/badge/latestdoi/156543918)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-[![Build Status](https://travis-ci.com/Exp-Micro-Ecol-Hub/emeScheme.svg?branch=master)](https://travis-ci.com/Exp-Micro-Ecol-Hub/emeScheme)
-[![Coverage status](https://codecov.io/gh/Exp-Micro-Ecol-Hub/emeScheme/branch/master/graph/badge.svg)](https://codecov.io/github/Exp-Micro-Ecol-Hub/emeScheme?branch=master)
+<!-- [![Build Status](https://travis-ci.com/Exp-Micro-Ecol-Hub/emeScheme.svg?branch=master)](https://travis-ci.com/Exp-Micro-Ecol-Hub/emeScheme) -->
+<!-- [![Coverage status](https://codecov.io/gh/Exp-Micro-Ecol-Hub/emeScheme/branch/master/graph/badge.svg)](https://codecov.io/github/Exp-Micro-Ecol-Hub/emeScheme?branch=master) -->
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-orange.png)](https://www.tidyverse.org/lifecycle/#mturing)
-
+[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 # Introduction
 
 This scheme will provide a framework for describing aquatic microcosm experiments in the sense as used in the papers in the [References] section.
@@ -113,24 +113,21 @@ The working copy can be found on a [Google Doc Sheet](https://docs.google.com/sp
 The names of the properties folow the following convention:
 
 * Properties in starting with a **capital letters** (in **<span style="text-decoration:underline; color: blue" >Blue</span>**) are **property sets**, containing sub-properties
-* Properties starting with a **small letter** (in **<span style="color:black">black</span>**) are **value properties**, containing values of the types **character** or **numeric**. 
+* Properties starting with a **small letter** (in **<span style="color:black">black</span>**) are **value properties**, containing values of the types **character**, **numeric** or **integer**. They follow the format **PropertyName (unit) [type]**. So a type can only be specified if a unit has been specified. Default type is `character`.
 
-The numbersi in brackets indicate if a property is mandatory or obligatory and non-repeatable or repeatable:
+<!-- The numbersi in brackets indicate if a property is mandatory or obligatory and non-repeatable or repeatable: -->
 
-|     | mandatory | repeatable |
-|-----|-----------|------------|
-| 0-1 |           |            | 
-| 0-n |           |     X      |  
-| 1-1 |     X     |            |
-| 1-n |     X     |     X      |
-
-* **<span style="color:red">Specify types for each value property </span>**
-* **<span style="color:red">Include repeatable, ...</span>**
+<!-- |     | mandatory | repeatable | -->
+<!-- |-----|-----------|------------| -->
+<!-- | 0-1 |           |            |  -->
+<!-- | 0-n |           |     X      |   -->
+<!-- | 1-1 |     X     |            | -->
+<!-- | 1-n |     X     |     X      | -->
 
 The structure as at **`r read.dcf(here("DESCRIPTION"))[1, "GSUpdate"]` GMT** is as followed:
 
 ```{r structure}
-caption <- "emeScheme Properties. <span style=\'font-weight: bold; text-decoration:underline; color: blue;\' >Blue</span> properties are property sets, i.e. contain other properties, **<span style='color:black'>black</span>** properties are value properties which contain values."
+caption <- "emeScheme Properties. '**PropertyName (unit) [field type in R]**'. <span style=\'font-weight: bold; text-decoration:underline; color: blue;\' >Blue</span> properties are property sets, i.e. contain value properties or property sets, **<span style='color:black'>black</span>** properties are value properties which contain values."
 
 options(knitr.kable.NA = '')
 
