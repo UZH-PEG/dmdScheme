@@ -1,6 +1,6 @@
 Package: emeScheme
 Title: Microcosm experiment metadata scheme
-Version: 0.0.3.4
+Version: 0.1.0.0
 Date: 2018-11-27
 Authors@R: c( person("Rainer M.", "Krug", email = "Rainer.Krug@uzh.ch",
         role = c("aut", "cre")), person("Owen L.", "Petchey", email =
