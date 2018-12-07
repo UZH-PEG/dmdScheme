@@ -4,14 +4,23 @@
 \name{emeScheme}
 \alias{emeScheme}
 \title{Authorative definition of the emeScheme.}
-\format{An object of class \code{emeScheme} (inherits from \code{list}) of length 5.}
+\format{An object of class \code{list} (inherits from \code{emeScheme}, \code{emeSchemeSet}, \code{emeSchemeSet_Experiment}) of length 5.}
 \usage{
 emeScheme
 }
 \description{
 The dataset contains the authorative definition of the emeScheme.
+There are three S3 classes defined and used:
+\describe{
+  \item{\code{emeScheme: }}{all all properties in the scheme have the class
+    \code{emeScheme}} \item{\code{emeSchemeSet: }}{Property Sets which contain
+    other Property Sets have the class \code{emeSchemeSet}}
+  \item{\code{emeSchemeData: }}{Propertiey Sets which contain only Value
+    Properties (in R a \code{tibblle}) have the class \code{emeSchemeData}}
+}
 }
 \details{
+In addition, the last two properties are available with a \code{_NAME} suiffix, specifyinf the name of the Property.
 \describe{
   \item{Property Level x}{TODO}
   ...

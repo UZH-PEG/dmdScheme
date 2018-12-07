@@ -36,6 +36,14 @@ gdToScheme <- function(
   splitProperty <- function(x) {
     if (is(x, "list")) {
       sl <- lapply(x, splitProperty)
+      class(sl) <- append(
+        x = class(sl),
+        values = c(
+          "emeScheme",
+          "emeSchemeSet",
+          paste0("emeSchemeSet_",names(x)[[1]])
+        )
+        )
     } else if (ncol(x) <= 1) {
       sl <- x
     } else {
@@ -54,8 +62,14 @@ gdToScheme <- function(
         )
         remove <- !colAllNA
         sl[[propName]] <- sl[[propName]][,remove]
-        class(sl[[propName]]) <- append(class(sl[[propName]]), "emeScheme")
-        class(sl[[propName]]) <- append(class(sl[[propName]]), paste0("emeScheme_",propName))
+        class(sl[[propName]]) <- append(
+          x = class(sl[[propName]]),
+          values = c(
+            "emeScheme",
+            "emeSchemeData",
+            paste0("emeSchemeData_",propName)
+          )
+        )
       }
     }
     return(sl)
@@ -70,7 +84,7 @@ gdToScheme <- function(
         x,
         tIter
       )
-      class(x) <- oldClass
+      class(result) <- oldClass
     } else {
       if (tibble::is.tibble(x)) {
         result <- tibble::as_tibble(t(x))
@@ -126,10 +140,6 @@ gdToScheme <- function(
 # Transpose indicidual tibbles --------------------------------------------
 
   result <- tIter(result)
-
-# Set class ---------------------------------------------------------------
-
-  class(result) <- append("emeScheme", class(result))
 
 # Return ------------------------------------------------------------------
 
