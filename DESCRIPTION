@@ -1,17 +1,17 @@
 Package: emeScheme
 Title: Microcosm experiment metadata scheme
-Version: 0.1.2.6
-Date: 2018-11-28
+Version: 0.1.2.14
+Date: 2018-12-07
 Authors@R: c( person("Rainer M.", "Krug", email = "Rainer.Krug@uzh.ch", role = c("aut", "cre")), person("Owen L.", "Petchey", email = "Owen.Petchey@uzh.ch", role =
-                   c("ctb")), person("Vanessa W.", "de Melo", email = "Vanessa Weber de Melo <vanessa.weberdemelo@uzh.ch>", role = c("ctb")), person("Frank", "Pennekamp",
-                   email = "Frank Pennekamp <frank.pennekamp@uzh.ch>", role = c("ctb")) )
-Description: This package provides and describes the Authoratative definition of th emeScheme (Experimental Microcosm Ecology Metadata). ---- Data imported and version
-                   bumped at Wed Nov 28 15:42:19 2018 / Europe/Zurich.
+                  c("ctb")), person("Vanessa W.", "de Melo", email = "Vanessa Weber de Melo <vanessa.weberdemelo@uzh.ch>", role = c("ctb")), person("Frank",
+                  "Pennekamp", email = "Frank Pennekamp <frank.pennekamp@uzh.ch>", role = c("ctb")) )
+Description: This package provides and describes the Authoratative definition of th emeScheme (Experimental Microcosm Ecology Metadata). ---- Data imported and
+                  version bumped at Fri Dec 7 09:31:42 2018 / Europe/Zurich.
 Depends: R (>= 3.5.0)
-Imports: googlesheets, magrittr, here, tools, dplyr, tibble, methods
+Imports: googlesheets, magrittr, here, tools, dplyr, tibble, methods, XML
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
-GSUpdate: 2018-11-28 14:40:30
+GSUpdate: 2018-12-06 11:38:29
 Suggests: covr, testthat

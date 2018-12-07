@@ -30,17 +30,19 @@ updateFromGoogleSheet <- function(
   if ( update == lastUpdate ) {      ##### no change in google sheet
     gs_deauth()
   } else { ##### change in google sheet
-    ## update inst/googlesheet/emeScheme.xlsx
+
+# update inst/googlesheet/emeScheme.xlsx ----------------------------------
+
     gs_download(
       from = emes,
       to = here("inst", "googlesheet", "emeScheme.xlsx"),
       overwrite = TRUE
     )
-    ## update data/emeScheme.rda
-    gs_read(emes)
-    emeScheme_gd <- gs_read(emes) %>%
-      select(starts_with("Property"))
 
+# update data/emeScheme.rda -----------------------------------------------
+
+    emeScheme_gd <- gs_read(emes)
+    ##
     notNARow <- emeScheme_gd %>%
       is.na() %>%
       rowSums() %>%
@@ -52,13 +54,18 @@ updateFromGoogleSheet <- function(
       equals(nrow(emeScheme_gd)) %>%
       not()
     emeScheme_gd <- emeScheme_gd[notNARow, notNACol]
-
+    ##
     save( emeScheme_gd, file = here("data", "emeScheme_gd.rda"))
-    ## update data/emeScheme.rda
+
+# update data/emeScheme.rda -----------------------------------------------
+
     emeScheme <- gdToScheme(emeScheme_gd)
+
     save( emeScheme, file = here("data", "emeScheme.rda"))
 
-    ##### bump version #####
+
+# bump version and change description in DECRIPTION -----------------------
+
     ## read old DESCRIPION file
     DESCRIPTION <- read.dcf(here("DESCRIPTION"))
     ##
@@ -87,5 +94,8 @@ updateFromGoogleSheet <- function(
     write.dcf(DESCRIPTION, here("DESCRIPTION"))
     rm( emeScheme, emeScheme_gd )
   }
+
+# Return emeScheme --------------------------------------------------------
+
   return(emes)
 }

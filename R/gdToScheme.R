@@ -9,7 +9,7 @@
 #' @export
 #' @importFrom tibble is.tibble as_tibble
 #' @importFrom methods is as
-#' @importFrom magrittr set_names
+#' @importFrom magrittr set_names %<>%
 #'
 #' @examples
 #' gdToScheme()
@@ -18,7 +18,7 @@ gdToScheme <- function(
   x = emeScheme_gd,
   debug = FALSE) {
 
-# Calculate max ncol in list recursively ----------------------------------
+# HELPER maxncol(): Calculate max ncol in list recursively ----------------------------------
 
   maxncol <- function(x) {
     if (is(x, "list")) {
@@ -31,7 +31,7 @@ gdToScheme <- function(
     }
   }
 
-# Recursive function to do the splitting ----------------------------------
+# HELPER splitProperty(): Recursive function to do the splitting ----------------------------------
 
   splitProperty <- function(x) {
     if (is(x, "list")) {
@@ -61,14 +61,16 @@ gdToScheme <- function(
     return(sl)
   }
 
-# Transpose function and set attributes and names -------------------------
+# HELPER tIter(): Transpose function and set attributes and names -------------------------
 
   tIter <- function(x) {
     if (is(x, "list")) {
+      oldClass <- class(x)
       result <- lapply(
         x,
         tIter
       )
+      class(x) <- oldClass
     } else {
       if (tibble::is.tibble(x)) {
         result <- tibble::as_tibble(t(x))
@@ -108,6 +110,12 @@ gdToScheme <- function(
   }
 
 
+
+# Select only Property ----------------------------------------------------
+
+  x %<>%
+    select(starts_with("Property"))
+
 # Do the splitting --------------------------------------------------------
 
   result <- splitProperty(x)
@@ -118,6 +126,10 @@ gdToScheme <- function(
 # Transpose indicidual tibbles --------------------------------------------
 
   result <- tIter(result)
+
+# Set class ---------------------------------------------------------------
+
+  class(result) <- append("emeScheme", class(result))
 
 # Return ------------------------------------------------------------------
 
