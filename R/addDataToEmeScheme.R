@@ -29,7 +29,7 @@ addDataToEmeScheme <- function(
     if (length(prop) > 6) {
       stop("Property level not supported!")
     }
-    switch(
+    result <- switch(
       length(prop),
       ncol( s[[prop[1]]] ),
       ncol( s[[prop[1]]][[prop[2]]] ),
@@ -38,6 +38,8 @@ addDataToEmeScheme <- function(
       ncol( s[[prop[1]]][[prop[2]]][[prop[3]]][[prop[4]]][[prop[5]]] ),
       ncol( s[[prop[1]]][[prop[2]]][[prop[3]]][[prop[4]]][[prop[5]]][[prop[6]]] )
     )
+    if (is.null(result)) {raise("Invalid Property name or the Property is a list and not a tibble!")}
+    return(result)
   }
 
 # HELPER: namesEmeSchemeProp ----------------------------------------------
@@ -46,7 +48,7 @@ addDataToEmeScheme <- function(
     if (length(prop) > 6) {
       stop("Property level not supported!")
     }
-    switch(
+    result <- switch(
       length(prop),
       names( s[[prop[1]]] ),
       names( s[[prop[1]]][[prop[2]]] ),
@@ -55,6 +57,8 @@ addDataToEmeScheme <- function(
       names( s[[prop[1]]][[prop[2]]][[prop[3]]][[prop[4]]][[prop[5]]] ),
       names( s[[prop[1]]][[prop[2]]][[prop[3]]][[prop[4]]][[prop[5]]][[prop[6]]] )
     )
+    if (is.null(result)) {raise("Invalid Property name or the Property has no names!")}
+    return(result)
   }
 
 # HELPER: setEmeSchemeProp ----------------------------------------------
