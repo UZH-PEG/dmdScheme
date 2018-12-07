@@ -98,79 +98,6 @@ In the  [supplement to their paper](https://emeh-protocols.readthedocs.io/en/lat
 
 We use these sections as a starting point to define a metadata scheme to describe the microcosm experiment. 
 
-# The emeScheme
-
-The sections in the [Experimental Microbial Ecology Protocols] were supplemented and assessed by reviewing the methods in the papers in the [References] section below.
-
-This document was than re-ordered and thinned which resulted in the initial verions of [the Google Doc Sheet](https://docs.google.com/spreadsheets/d/1OAyRM1jGL5Vho-YfPffePhwGpQtaBUeTPJV6P98f0Bc).
-
-Here we describe the different properties of the emeScheme We will start at the first level and go deeper into the different properties.
-
-The working copy can be found on a [Google Doc Sheet](https://docs.google.com/spreadsheets/d/1OAyRM1jGL5Vho-YfPffePhwGpQtaBUeTPJV6P98f0Bc). 
-
-## Current Structure
-
-The names of the properties folow the following convention:
-
-* Properties in starting with a **capital letters** (in **<span style="text-decoration:underline; color: blue" >Blue</span>**) are **property sets**, containing sub-properties
-* Properties starting with a **small letter** (in **<span style="color:black">black</span>**) are **value properties**, containing values of the types **character**, **numeric** or **integer**. They follow the format **PropertyName (unit) [type]**. So a type can only be specified if a unit has been specified. Default type is `character`.
-
-<!-- The numbersi in brackets indicate if a property is mandatory or obligatory and non-repeatable or repeatable: -->
-
-<!-- |     | mandatory | repeatable | -->
-<!-- |-----|-----------|------------| -->
-<!-- | 0-1 |           |            |  -->
-<!-- | 0-n |           |     X      |   -->
-<!-- | 1-1 |     X     |            | -->
-<!-- | 1-n |     X     |     X      | -->
-
-The structure as at **`r read.dcf(here("DESCRIPTION"))[1, "GSUpdate"]` GMT** is as followed:
-
-```{r structure}
-caption <- "emeScheme Properties. '**PropertyName (unit) [field type in R]**'. <span style=\'font-weight: bold; text-decoration:underline; color: blue;\' >Blue</span> properties are property sets, i.e. contain value properties or property sets, **<span style='color:black'>black</span>** properties are value properties which contain values."
-
-options(knitr.kable.NA = '')
-
-propColor <- function( x ) {
-  fc <- substr(x, 1, 1)
-  col <- ifelse( 
-    fc == tolower(fc), 
-    "black", 
-    "blue"
-  )
-  underl <- ifelse( 
-    fc == tolower(fc), 
-    FALSE, 
-    TRUE
-  )
-  bold <- ifelse( 
-    fc == tolower(fc), 
-    FALSE, 
-    TRUE
-  )
-  sel <- !is.na(x)
-  x[sel] <- cell_spec( 
-    x         = x[sel], 
-    color     = col[sel],
-    bold     = bold[sel],
-    underline = underl[sel]
-  )
-  return(x)
-}
-
-emeScheme_gd %>% 
-  mutate_all( propColor ) %>%
-  knitr::kable(
-    escape = FALSE,
-    format = "html",
-    caption = caption
-  )  %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "bordered"), 
-    full_width = FALSE
-  )
-```
-
 # From Project to Dataset - how the emeScheme fits in
 
 
@@ -296,6 +223,98 @@ Extraction_n "1" *-- "1" ExtractedData : contains
 ```
 
 
+
+# The emeScheme
+
+The sections in the [Experimental Microbial Ecology Protocols] were supplemented and assessed by reviewing the methods in the papers in the [References] section below.
+
+This document was than re-ordered and thinned which resulted in the initial verions of [the Google Doc Sheet](https://docs.google.com/spreadsheets/d/1OAyRM1jGL5Vho-YfPffePhwGpQtaBUeTPJV6P98f0Bc).
+
+Here we describe the different properties of the emeScheme We will start at the first level and go deeper into the different properties.
+
+The working copy can be found on a [Google Doc Sheet](https://docs.google.com/spreadsheets/d/1OAyRM1jGL5Vho-YfPffePhwGpQtaBUeTPJV6P98f0Bc). 
+
+## Current Structure
+
+The names of the properties folow the following convention:
+
+* Properties in starting with a **capital letters** (in **<span style="text-decoration:underline; color: blue" >Blue</span>**) are **property sets**, containing sub-properties
+* Properties starting with a **small letter** (in **<span style="color:black">black</span>**) are **value properties**, containing values of the types **character**, **numeric** or **integer**. They follow the format **PropertyName (unit) [type]**. So a type can only be specified if a unit has been specified. Default type is `character`.
+
+<!-- The numbersi in brackets indicate if a property is mandatory or obligatory and non-repeatable or repeatable: -->
+
+<!-- |     | mandatory | repeatable | -->
+<!-- |-----|-----------|------------| -->
+<!-- | 0-1 |           |            |  -->
+<!-- | 0-n |           |     X      |   -->
+<!-- | 1-1 |     X     |            | -->
+<!-- | 1-n |     X     |     X      | -->
+
+The structure as at **`r read.dcf(here("DESCRIPTION"))[1, "GSUpdate"]` GMT** is as followed:
+
+```{r structure}
+caption <- "emeScheme Properties. '**PropertyName (unit) [field type in R]**'. <span style=\'font-weight: bold; text-decoration:underline; color: blue;\' >Blue</span> properties are property sets, i.e. contain value properties or property sets, **<span style='color:black'>black</span>** properties are value properties which contain values. The <span style=\'font-weight: bold; text-decoration:underline; color: yellow;\' >yellow column</span> is an example for the data."
+
+options(knitr.kable.NA = '')
+
+propColor <- function( x ) {
+  fc <- substr(x, 1, 1)
+  col <- ifelse( 
+    fc == tolower(fc), 
+    "black", 
+    "blue"
+  )
+  underl <- ifelse( 
+    fc == tolower(fc), 
+    FALSE, 
+    TRUE
+  )
+  bold <- ifelse( 
+    fc == tolower(fc), 
+    FALSE, 
+    TRUE
+  )
+  sel <- !is.na(x)
+  x[sel] <- cell_spec( 
+    x         = x[sel], 
+    color     = col[sel],
+    bold     = bold[sel],
+    underline = underl[sel]
+  )
+  return(x)
+}
+
+emeScheme_gd %>% 
+  mutate_at( vars(starts_with("Property")), propColor ) %>%
+  knitr::kable(
+    escape = FALSE,
+    format = "html",
+    caption = caption
+  )  %>% 
+  kable_styling(
+    bootstrap_options = c("striped", "bordered"), 
+    full_width = FALSE
+  ) %>%
+  column_spec(ncol(emeScheme_gd), width = "30em", background = "yellow")
+```
+
+## Sample data exported as xml
+The example data in the yellow column looks exported to xml as followed:
+
+```{r example_export_xml}
+emeScheme_gd %>%
+  addDataToEmeScheme() %>%
+  emeSchemeToXml( ta = "Example Data" )
+```
+
+## Re-import from xml into R
+```{r example_import_xml}
+emeScheme_gd %>%
+  addDataToEmeScheme() %>%
+  emeSchemeToXml( tag = "Example Data" ) %>%
+  xmlToEmeScheme() %>%
+  str()
+```
 
 # References
 
