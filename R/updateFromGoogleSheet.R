@@ -63,7 +63,7 @@ updateFromGoogleSheet <- function(
       to = here("inst", "googlesheet", "emeScheme.xlsx"),
       overwrite = TRUE
     )
-    emeScheme:::format_emeScheme_xlsx(emeScheme_gd = emeScheme_gd)
+    format_emeScheme_xlsx(emeScheme_gd = emeScheme_gd)
 
 
 # bump version and change description in DECRIPTION -----------------------

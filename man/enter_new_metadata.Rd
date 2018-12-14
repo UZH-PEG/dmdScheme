@@ -6,9 +6,6 @@
 \usage{
 enter_new_metadata()
 }
-\value{
-invisibly \code(NULL)
-}
 \description{
 Open \code{emeScheme.xlsx} from system.file("inst", "googlesheet",
 "emeScheme.xlsx", package = "emeScheme") in excel. New data can be entered
@@ -19,4 +16,5 @@ file.
 \dontrun{
 enter_new_metadata()
 }
+
 }

@@ -38,7 +38,7 @@ addDataToEmeScheme <- function(
       ncol( s[[prop[1]]][[prop[2]]][[prop[3]]][[prop[4]]][[prop[5]]] ),
       ncol( s[[prop[1]]][[prop[2]]][[prop[3]]][[prop[4]]][[prop[5]]][[prop[6]]] )
     )
-    if (is.null(result)) {raise("Invalid Property name or the Property is a list and not a tibble!")}
+    if (is.null(result)) {stop("Invalid Property name or the Property is a list and not a tibble!")}
     return(result)
   }
 
@@ -57,7 +57,7 @@ addDataToEmeScheme <- function(
       names( s[[prop[1]]][[prop[2]]][[prop[3]]][[prop[4]]][[prop[5]]] ),
       names( s[[prop[1]]][[prop[2]]][[prop[3]]][[prop[4]]][[prop[5]]][[prop[6]]] )
     )
-    if (is.null(result)) {raise("Invalid Property name or the Property has no names!")}
+    if (is.null(result)) {stop("Invalid Property name or the Property has no names!")}
     return(result)
   }
 

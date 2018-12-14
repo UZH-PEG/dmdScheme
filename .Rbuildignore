@@ -1,3 +1,4 @@
+^emeScheme\.xml$
 ^\.covrignore$
 ^codecov\.yml$
 ^\.travis\.yml$
