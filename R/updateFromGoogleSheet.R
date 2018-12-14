@@ -31,14 +31,6 @@ updateFromGoogleSheet <- function(
     gs_deauth()
   } else { ##### change in google sheet
 
-# update inst/googlesheet/emeScheme.xlsx ----------------------------------
-
-    gs_download(
-      from = emes,
-      to = here("inst", "googlesheet", "emeScheme.xlsx"),
-      overwrite = TRUE
-    )
-
 # update data/emeScheme.rda -----------------------------------------------
 
     emeScheme_gd <- gs_read(emes)
@@ -62,6 +54,16 @@ updateFromGoogleSheet <- function(
     emeScheme <- gdToScheme(emeScheme_gd)
 
     save( emeScheme, file = here("data", "emeScheme.rda"))
+
+# update inst/googlesheet/emeScheme.xlsx ----------------------------------
+    Sys.chmod(here("inst", "googlesheet", "emeScheme.xlsx"), "0777")
+
+    gs_download(
+      from = emes,
+      to = here("inst", "googlesheet", "emeScheme.xlsx"),
+      overwrite = TRUE
+    )
+    emeScheme:::format_emeScheme_xlsx(emeScheme_gd = emeScheme_gd)
 
 
 # bump version and change description in DECRIPTION -----------------------

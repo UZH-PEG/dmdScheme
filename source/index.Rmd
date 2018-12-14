@@ -45,6 +45,7 @@ devtools::load_all(here())
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-orange.png)](https://www.tidyverse.org/lifecycle/#mturing)
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 
+Github site [https://github.com/Exp-Micro-Ecol-Hub/emeScheme](https://github.com/Exp-Micro-Ecol-Hub/emeScheme)
 
 # Introduction
 
@@ -103,66 +104,65 @@ We use these sections as a starting point to define a metadata scheme to describ
 # From Project to Dataset - how the emeScheme fits in
 
 
-
+ 
 ```{r data_layout, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 33, fig.height = 49}
 '
-!define Description(name,desc) class name as "desc" << (D,cyan) >> 
-!define Method(name,desc) class name as "desc" << (M,lime) >>
+!define Project(name,desc) class name as "desc" << (P,red) >> #TECHNOLOGY
 !define Data(name,desc) class name as "desc" << (D,crimson) >> #TECHNOLOGY
-!define Method(name,desc) class name as "desc" << (M,lime) >>
+!define MetaData(name,desc) class name as "desc" << (M,lime) >>
 
-Data(Project, Project) {
+Project(Project, Project) {
   {field} Project description
   {method} - dataCite metadata
 }
 
-Method(Experiment_1, Experiment_1) {
+MetaData(Experiment_1, Experiment_1) {
   {field} Experimental description
   {method} + Experiment
 }
 
-Method(Experiment_n, Experiment_n) {
+MetaData(Experiment_n, Experiment_n) {
   {field} Experimental description
   {method} + Experiment
 }
 
-Method(Experiment_2, Experiment_2) {
+MetaData(Experiment_2, Experiment_2) {
   {field} Experimental description
   {method} + Experiment
 }
 
-Method(Treatment_1, Treatment_1) {
+MetaData(Treatment_1, Treatment_1) {
   {field} Treatment Description
   {method} + Treatment
 }
 
-Method(Treatment_n, Treatment_n) {
+MetaData(Treatment_n, Treatment_n) {
   {field} Treatment Description
   {method} + Treatment
 }
 
-Method(Treatment_2, Treatment_2) {
+MetaData(Treatment_2, Treatment_2) {
   {field} Treatment Description
   {method} + Treatment
 }
 
-Method(Sampling, Sampling) {
+MetaData(Sampling, Sampling) {
   {field} Sampling of Microcosms
   {method} + Sampling
 }
 
-Method(Measurement_1, Measurement_1) {
+MetaData(Measurement_1, Measurement_1) {
   {field} Measurement description
   {method} + Measuring
 }
 
 
-Method(Measurement_n, Measurement_n) {
+MetaData(Measurement_n, Measurement_n) {
   {field} Measurement description
   {method} + Measuring
 }
 
-Method(Measurement_2, Measurement_2) {
+MetaData(Measurement_2, Measurement_2) {
   {field} Measurement description
   {method} + Measuring
 
@@ -173,19 +173,19 @@ Data( RawData, RawData) {
   {method} - emeScheme metadata
 }
 
-Method( Extraction_1, Extraction_1) {
+MetaData( DataExtraction_1, DataExtraction_1) {
   {field} Extraction Method
-  {method} + Measuring
+  {method} + DataExtraction
 }
 
-Method( Extraction_n, Extraction_n) {
+MetaData( DataExtraction_n, DataExtraction_n) {
   {field} Extraction Method
-  {method} + Extraction
+  {method} + DataExtraction
 }
 
-Method( Extraction_2, Extraction_2) {
+MetaData( DataExtraction_2, DataExtraction_2) {
   {field} Extraction Method
-  {method} + Measuring
+  {method} + DataExtraction
 }
 
 Data( ExtractedData, ExtractedData_1) {
@@ -212,13 +212,11 @@ Sampling "1" *-- "many" Measurement_n : contains
 
 Measurement_n "1" *-- "1" RawData : contains
 
-RawData "1" *-- "many" Extraction_1 : contains
-RawData "1" *-- "many" Extraction_2 : contains
-RawData "1" *-- "many" Extraction_n : contains
+RawData "1" *-- "many" DataExtraction_1 : contains
+RawData "1" *-- "many" DataExtraction_2 : contains
+RawData "1" *-- "many" DataExtraction_n : contains
 
-Extraction_n "1" *-- "1" ExtractedData : contains
-
-
+DataExtraction_n "1" *-- "1" ExtractedData : contains
 ' %>%
   plantuml %>%
   plot()

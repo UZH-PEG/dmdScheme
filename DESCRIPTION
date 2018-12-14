@@ -1,14 +1,14 @@
 Package: emeScheme
 Title: Microcosm experiment metadata scheme
-Version: 0.1.2.15
-Date: 2018-12-07
-Authors@R: c( person("Rainer M.", "Krug", email = "Rainer.Krug@uzh.ch", role = c("aut", "cre")), person("Owen L.", "Petchey", email = "Owen.Petchey@uzh.ch", role = c("ctb")), person("Vanessa
-                     W.", "de Melo", email = "Vanessa Weber de Melo <vanessa.weberdemelo@uzh.ch>", role = c("ctb")), person("Frank", "Pennekamp", email = "Frank Pennekamp
-                     <frank.pennekamp@uzh.ch>", role = c("ctb")) )
-Description: This package provides and describes the Authoratative definition of th emeScheme (Experimental Microcosm Ecology Metadata). ---- Data imported and version bumped at Fri Dec 7
-                     14:03:31 2018 / Europe/Zurich.
+Version: 0.1.2.20
+Date: 2018-12-14
+Authors@R: c( person("Rainer M.", "Krug", email = "Rainer.Krug@uzh.ch", role = c("aut", "cre")), person("Owen L.", "Petchey", email = "Owen.Petchey@uzh.ch", role = c("ctb")),
+                   person("Vanessa W.", "de Melo", email = "Vanessa Weber de Melo <vanessa.weberdemelo@uzh.ch>", role = c("ctb")), person("Frank", "Pennekamp", email = "Frank
+                   Pennekamp <frank.pennekamp@uzh.ch>", role = c("ctb")) )
+Description: This package provides and describes the Authoratative definition of th emeScheme (Experimental Microcosm Ecology Metadata). ---- Data imported and version bumped
+                   at Fri Dec 14 11:01:47 2018 / Europe/Zurich.
 Depends: R (>= 3.5.0)
-Imports: googlesheets, magrittr, here, tools, dplyr, tibble, methods, XML
+Imports: googlesheets, magrittr, here, tools, dplyr, tibble, methods, XML, xlsx
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
