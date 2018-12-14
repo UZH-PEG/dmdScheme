@@ -37,13 +37,13 @@ gdToScheme <- function(
     if (is(x, "list")) {
       sl <- lapply(x, splitProperty)
       class(sl) <- append(
-        x = class(sl),
-        values = c(
-          "emeScheme",
+        c(
+          # paste0("emeSchemeSet_",names(x)[[1]]),
           "emeSchemeSet",
-          paste0("emeSchemeSet_",names(x)[[1]])
-        )
-        )
+          "emeScheme"
+        ),
+        class(sl),
+      )
     } else if (ncol(x) <= 1) {
       sl <- x
     } else {
@@ -63,12 +63,12 @@ gdToScheme <- function(
         remove <- !colAllNA
         sl[[propName]] <- sl[[propName]][,remove]
         class(sl[[propName]]) <- append(
-          x = class(sl[[propName]]),
-          values = c(
-            "emeScheme",
+          c(
+            paste0("emeSchemeData_",propName),
             "emeSchemeData",
-            paste0("emeSchemeData_",propName)
-          )
+            "emeScheme"
+          ),
+          class(sl[[propName]]),
         )
       }
     }
