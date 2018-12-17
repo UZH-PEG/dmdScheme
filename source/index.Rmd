@@ -311,7 +311,7 @@ emeScheme_gd %>%
 
 TODO This needs some more work #5
 
-```{r example_import_xml}
+```{r example_import_xml, eval = FALSE}
 emeScheme_gd %>%
   addDataToEmeScheme() %>%
   emeSchemeToXml( tag = "Example Data" ) %>%
@@ -321,7 +321,12 @@ emeScheme_gd %>%
 
 # XSD Grammar
 The xsd grammar has been generated using [xmlgrid.net](http://xmlgrid.net/xml2xsd.html).
-You can download it from [here](./../inst/emeScheme.xsd.xml)
+You can download it from [here - right mouse click - Save Linked Content](./data/emeScheme.xsd.xml)
+
+# Other Resources
+## Presentations
+* [The emeScheme - an Introduction](https://rkrug.github.io/emeScheme_Introduction/The_emeScheme.html) by Rainer M Krug. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2247069.svg)](https://doi.org/10.5281/zenodo.2247069)
+
 
 # References
 

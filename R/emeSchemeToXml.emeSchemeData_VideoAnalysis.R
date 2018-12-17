@@ -1,5 +1,3 @@
-#' Convert \code{emeSchemeData_VideoAnalysis} object to XML
-#'
 #' @export
 #'
 #' @importFrom XML xmlNode xmlAttrs append.xmlNode saveXML

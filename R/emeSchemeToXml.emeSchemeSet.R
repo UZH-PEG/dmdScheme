@@ -1,5 +1,3 @@
-#' Convert \code{emeSchemeSet} object to XML
-#'
 #' @export
 #'
 #' @importFrom XML xmlNode xmlAttrs append.xmlNode saveXML

@@ -62,6 +62,9 @@ code > span.ot { color: #007020; }
 <li><a href="#re-import-from-xml-into-r">Re-import from xml into R</a></li>
 </ul></li>
 <li><a href="#xsd-grammar">XSD Grammar</a></li>
+<li><a href="#other-resources">Other Resources</a><ul>
+<li><a href="#presentations">Presentations</a></li>
+</ul></li>
 <li><a href="#references">References</a></li>
 </ul>
 </div>
@@ -145,7 +148,7 @@ code > span.ot { color: #007020; }
 <!-- | 0-n |           |     X      |   -->
 <!-- | 1-1 |     X     |            | -->
 <!-- | 1-n |     X     |     X      | -->
-<p>The structure as at <strong>2018-12-17 11:00:57 GMT</strong> is as followed:</p>
+<p>The structure as at <strong>2018-12-17 12:48:10 GMT</strong> is as followed:</p>
 <table class="table table-striped table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 emeScheme Properties. ‘<strong>PropertyName (unit) [field type in R]</strong>’. <span style="font-weight: bold; text-decoration:underline; color: blue;">Blue</span> properties are property sets, i.e. contain value properties or property sets, <strong><span style="color:black">black</span></strong> properties are value properties which contain values. The <span style="font-weight: bold; text-decoration:underline; color: yellow;">yellow column</span> is an example for the data.
@@ -996,7 +999,7 @@ na
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-<span style=" font-weight: bold;   text-decoration: underline; color: blue;">BacteriaFlagellates</span>
+<span style=" font-weight: bold;   text-decoration: underline; color: blue;">BacteriaFlagellatesTreatment</span>
 </td>
 <td style="text-align:left;">
 </td>
@@ -1051,7 +1054,7 @@ little things
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-<span style=" font-weight: bold;   text-decoration: underline; color: blue;">Temperature</span>
+<span style=" font-weight: bold;   text-decoration: underline; color: blue;">TemperatureTreatment</span>
 </td>
 <td style="text-align:left;">
 </td>
@@ -1106,7 +1109,7 @@ daily fluctuations
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-<span style=" font-weight: bold;   text-decoration: underline; color: blue;">Light</span>
+<span style=" font-weight: bold;   text-decoration: underline; color: blue;">LightTreatment</span>
 </td>
 <td style="text-align:left;">
 </td>
@@ -1200,7 +1203,7 @@ na
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-<span style=" font-weight: bold;   text-decoration: underline; color: blue;">Nutrients</span>
+<span style=" font-weight: bold;   text-decoration: underline; color: blue;">NutrientTreatment</span>
 </td>
 <td style="text-align:left;">
 </td>
@@ -2515,29 +2518,29 @@ a = 1; b = 2; c = 3; x = 35, a = 10; b = 3; y = 9999
     &lt;ecologicalRoleInTreatment&gt;na&lt;/ecologicalRoleInTreatment&gt;
    &lt;/species&gt;
   &lt;/SpeciesTreatmentList&gt;
-  &lt;BacteriaFlagellates&gt;
+  &lt;BacteriaFlagellatesTreatment&gt;
    &lt;species&gt;little things&lt;/species&gt;
    &lt;initial&gt;500&lt;/initial&gt;
    &lt;densityChanges&gt;5&lt;/densityChanges&gt;
-  &lt;/BacteriaFlagellates&gt;
-  &lt;Temperature&gt;
+  &lt;/BacteriaFlagellatesTreatment&gt;
+  &lt;TemperatureTreatment&gt;
    &lt;temperature&gt;25&lt;/temperature&gt;
    &lt;temperatureRange&gt;20-30&lt;/temperatureRange&gt;
    &lt;temperatureChangeRate&gt;daily fluctuations&lt;/temperatureChangeRate&gt;
-  &lt;/Temperature&gt;
-  &lt;Light&gt;
+  &lt;/TemperatureTreatment&gt;
+  &lt;LightTreatment&gt;
    &lt;intensity&gt;1000&lt;/intensity&gt;
    &lt;colour&gt;na&lt;/colour&gt;
    &lt;photoperiod&gt;20&lt;/photoperiod&gt;
-  &lt;/Light&gt;
+  &lt;/LightTreatment&gt;
   &lt;Dispersal&gt;
    &lt;spatialStructure&gt;NA&lt;/spatialStructure&gt;
    &lt;change&gt;NA&lt;/change&gt;
   &lt;/Dispersal&gt;
-  &lt;Nutrients&gt;
+  &lt;NutrientTreatment&gt;
    &lt;changeInTreatment&gt;NA&lt;/changeInTreatment&gt;
    &lt;comment&gt;NA&lt;/comment&gt;
-  &lt;/Nutrients&gt;
+  &lt;/NutrientTreatment&gt;
   &lt;Viscosity&gt;
    &lt;description&gt;NA&lt;/description&gt;
    &lt;comment&gt;NA&lt;/comment&gt;
@@ -2666,221 +2669,20 @@ a = 1; b = 2; c = 3; x = 35, a = 10; b = 3; y = 9999
 <div id="re-import-from-xml-into-r" class="section level2">
 <h2>Re-import from xml into R</h2>
 <p>TODO This needs some more work #5</p>
-<pre><code>Warning in emeSchemeToXml.emeSchemeSet(., tag = &quot;Example Data&quot;): Spaces are not allowed in tag names!
-  Offending tag = 'Example Data'
-  Replaced spaces with '_'</code></pre>
-<pre><code>List of 5
- $ Experiment    :List of 3
-  ..$ ExperimentalDesign:List of 3
-  .. ..$ noTreatments            : chr &quot;3&quot;
-  .. ..$ noReplicatesPerTreatment: chr &quot;10&quot;
-  .. ..$ description             : chr &quot;This is a great experiment&quot;
-  ..$ Materials         :List of 9
-  .. ..$ Incubators          :List of 2
-  .. .. ..$ makeTypeVersion: chr &quot;Hyper Incubator 2000&quot;
-  .. .. ..$ comment        : chr NA
-  .. ..$ Container           :List of 3
-  .. .. ..$ type  : chr &quot;bottle&quot;
-  .. .. ..$ volume: chr &quot;200&quot;
-  .. .. ..$ covers: chr &quot;foil&quot;
-  .. ..$ Shakers             :List of 2
-  .. .. ..$ makeTypeVersion: chr &quot;Krups&quot;
-  .. .. ..$ speed          : chr &quot;3000&quot;
-  .. ..$ SpeciesList         :List of 8
-  .. .. ..$ : chr &quot;yellow&quot;
-  .. .. ..$ : chr &quot;ebay&quot;
-  .. .. ..$ : chr &quot;122&quot;
-  .. .. ..$ : Named chr &quot;tarantula maximus&quot;
-  .. .. .. ..- attr(*, &quot;names&quot;)= chr &quot;name&quot;
-  .. .. ..$ : chr &quot;green&quot;
-  .. .. ..$ : chr &quot;amazon&quot;
-  .. .. ..$ : chr &quot;500&quot;
-  .. .. ..$ : Named chr &quot;elephantus minimus&quot;
-  .. .. .. ..- attr(*, &quot;names&quot;)= chr &quot;name&quot;
-  .. .. ..- attr(*, &quot;dim&quot;)= int [1:2] 4 2
-  .. .. ..- attr(*, &quot;dimnames&quot;)=List of 2
-  .. .. .. ..$ : chr [1:4] &quot;strain&quot; &quot;source&quot; &quot;density&quot; &quot;.attrs&quot;
-  .. .. .. ..$ : chr [1:2] &quot;species&quot; &quot;species&quot;
-  .. ..$ CultureMedium       :List of 2
-  .. .. ..$ volume: chr &quot;150&quot;
-  .. .. ..$ type  : chr &quot;Ultimate growth&quot;
-  .. ..$ BacteriaFlagellates :List of 3
-  .. .. ..$ species     : chr &quot;little things&quot;
-  .. .. ..$ strain      : chr NA
-  .. .. ..$ sourcePellet: chr NA
-  .. ..$ LabPractices        :List of 2
-  .. .. ..$ description: chr &quot;NA&quot;
-  .. .. ..$ comment    : chr &quot;NA&quot;
-  .. ..$ LongTermMaintenance :List of 2
-  .. .. ..$ description: chr &quot;NA&quot;
-  .. .. ..$ comment    : chr &quot;NA&quot;
-  .. ..$ LongTermPreservation:List of 2
-  .. .. ..$ description: chr &quot;NA&quot;
-  .. .. ..$ comment    : chr &quot;NA&quot;
-  ..$ Initialization    :List of 4
-  .. ..$ InitialConditions:List of 2
-  .. .. ..$ description: chr &quot;same temperature&quot;
-  .. .. ..$ runInTime  : chr &quot;240&quot;
-  .. ..$ Temperature      :List of 3
-  .. .. ..$ temperature          : chr &quot;20&quot;
-  .. .. ..$ temperatureRange     : chr &quot;0&quot;
-  .. .. ..$ temperatureChangeRate: chr &quot;0&quot;
-  .. ..$ Light            :List of 3
-  .. .. ..$ intensity  : chr &quot;500&quot;
-  .. .. ..$ colour     : chr NA
-  .. .. ..$ photoperiod: chr &quot;12&quot;
-  .. ..$ FinalConditions  :List of 2
-  .. .. ..$ description: chr &quot;green glow&quot;
-  .. .. ..$ comment    : chr NA
- $ Treatment     :List of 10
-  ..$ DuringExperimentMaintenance:List of 2
-  .. ..$ description: chr &quot;na&quot;
-  .. ..$ comment    : chr NA
-  ..$ SpeciesTreatmentList       :List of 8
-  .. ..$ : chr &quot;100&quot;
-  .. ..$ : chr &quot;na&quot;
-  .. ..$ : chr &quot;na&quot;
-  .. ..$ : Named chr &quot;tarantula maximus&quot;
-  .. .. ..- attr(*, &quot;names&quot;)= chr &quot;name&quot;
-  .. ..$ : chr &quot;200&quot;
-  .. ..$ : chr &quot;na&quot;
-  .. ..$ : chr &quot;na&quot;
-  .. ..$ : Named chr &quot;elephantus minimus&quot;
-  .. .. ..- attr(*, &quot;names&quot;)= chr &quot;name&quot;
-  .. ..- attr(*, &quot;dim&quot;)= int [1:2] 4 2
-  .. ..- attr(*, &quot;dimnames&quot;)=List of 2
-  .. .. ..$ : chr [1:4] &quot;initialDensity&quot; &quot;densityChanges&quot; &quot;ecologicalRoleInTreatment&quot; &quot;.attrs&quot;
-  .. .. ..$ : chr [1:2] &quot;species&quot; &quot;species&quot;
-  ..$ BacteriaFlagellates        :List of 3
-  .. ..$ species       : chr &quot;little things&quot;
-  .. ..$ initial       : chr &quot;500&quot;
-  .. ..$ densityChanges: chr &quot;5&quot;
-  ..$ Temperature                :List of 3
-  .. ..$ temperature          : chr &quot;25&quot;
-  .. ..$ temperatureRange     : chr &quot;20-30&quot;
-  .. ..$ temperatureChangeRate: chr &quot;daily fluctuations&quot;
-  ..$ Light                      :List of 3
-  .. ..$ intensity  : chr &quot;1000&quot;
-  .. ..$ colour     : chr &quot;na&quot;
-  .. ..$ photoperiod: chr &quot;20&quot;
-  ..$ Dispersal                  :List of 2
-  .. ..$ spatialStructure: chr &quot;NA&quot;
-  .. ..$ change          : chr &quot;NA&quot;
-  ..$ Nutrients                  :List of 2
-  .. ..$ changeInTreatment: chr &quot;NA&quot;
-  .. ..$ comment          : chr &quot;NA&quot;
-  ..$ Viscosity                  :List of 2
-  .. ..$ description: chr &quot;NA&quot;
-  .. ..$ comment    : chr &quot;NA&quot;
-  ..$ BioticEnvironment          :List of 3
-  .. ..$ type  : chr &quot;NA&quot;
-  .. ..$ value : chr &quot;NA&quot;
-  .. ..$ change: chr &quot;NA&quot;
-  ..$ Disturbance                :List of 2
-  .. ..$ description: chr &quot;NA&quot;
-  .. ..$ comment    : chr &quot;NA&quot;
- $ Sampling      :List of 3
-  ..$ frequency            : chr &quot;3&quot;
-  ..$ volume               : chr &quot;20&quot;
-  ..$ replacementMediumType: chr &quot;same&quot;
- $ Measuring     :List of 7
-  ..$ Microscopy                   :List of 5
-  .. ..$ volume          : chr &quot;10&quot;
-  .. ..$ preparation     : chr &quot;colour sample with whatever&quot;
-  .. ..$ typeOfMicroscope: chr &quot;nice one&quot;
-  .. ..$ microscopyMethod: chr &quot;dark field&quot;
-  .. ..$ comment         : chr &quot;coumting elephant&quot;
-  ..$ VideoRecording               :List of 14
-  .. ..$ volume           : chr &quot;10&quot;
-  .. ..$ preparation      : chr NA
-  .. ..$ microscope       : chr &quot;nice one&quot;
-  .. ..$ magnification    : chr &quot;100&quot;
-  .. ..$ camera           : chr &quot;supercom 4000&quot;
-  .. ..$ microscopyMethod : chr NA
-  .. ..$ resolution       : chr &quot;5000&quot;
-  .. ..$ colourSpace      : chr &quot;green&quot;
-  .. ..$ lengthOfRecording: chr &quot;10&quot;
-  .. ..$ frameRate        : chr &quot;50&quot;
-  .. ..$ lightIntensity   : chr &quot;2000&quot;
-  .. ..$ lightColour      : chr NA
-  .. ..$ videoFormat      : chr &quot;avi&quot;
-  .. ..$ comment          : chr NA
-  ..$ FlowCam                      :List of 4
-  .. ..$ makeTypeVersion: chr &quot;NA&quot;
-  .. ..$ settings       : chr &quot;NA&quot;
-  .. ..$ volume         : chr NA
-  .. ..$ treatment      : chr &quot;NA&quot;
-  ..$ BacterialDensityFlowcytometry:List of 4
-  .. ..$ typeVersion      : chr &quot;NA&quot;
-  .. ..$ volume           : chr NA
-  .. ..$ settingsParameter: chr &quot;NA&quot;
-  .. ..$ treatment        : chr &quot;NA&quot;
-  ..$ DNABarcoding                 :List of 2
-  .. ..$ description: chr &quot;NA&quot;
-  .. ..$ comment    : chr &quot;NA&quot;
-  ..$ Respirometry                 :List of 2
-  .. ..$ description      : chr &quot;NA&quot;
-  .. ..$ moreDetailsNeeded: chr &quot;NA&quot;
-  ..$ NutrientsDecomposition       :List of 2
-  .. ..$ description: chr &quot;NA&quot;
-  .. ..$ comment    : chr &quot;NA&quot;
- $ DataExtraction:List of 22
-  ..$ : chr &quot;counting and calculationof density&quot;
-  ..$ : chr NA
-  ..$ :List of 9
-  .. ..$       : chr &quot;1&quot;
-  .. ..$       : Named chr &quot;a&quot;
-  .. .. ..- attr(*, &quot;names&quot;)= chr &quot;name&quot;
-  .. ..$       : chr &quot;2&quot;
-  .. ..$       : Named chr &quot;b&quot;
-  .. .. ..- attr(*, &quot;names&quot;)= chr &quot;name&quot;
-  .. ..$       : chr &quot;3&quot;
-  .. ..$       : Named chr &quot;c&quot;
-  .. .. ..- attr(*, &quot;names&quot;)= chr &quot;name&quot;
-  .. ..$       : chr &quot;35&quot;
-  .. ..$       : Named chr &quot;x&quot;
-  .. .. ..- attr(*, &quot;names&quot;)= chr &quot;name&quot;
-  .. ..$ .attrs: Named chr &quot;bemovi&quot;
-  .. .. ..- attr(*, &quot;names&quot;)= chr &quot;name&quot;
-  ..$ :List of 7
-  .. ..$       : chr &quot;10&quot;
-  .. ..$       : Named chr &quot;a&quot;
-  .. .. ..- attr(*, &quot;names&quot;)= chr &quot;name&quot;
-  .. ..$       : chr &quot;3&quot;
-  .. ..$       : Named chr &quot;b&quot;
-  .. .. ..- attr(*, &quot;names&quot;)= chr &quot;name&quot;
-  .. ..$       : chr &quot;9999&quot;
-  .. ..$       : Named chr &quot;y&quot;
-  .. .. ..- attr(*, &quot;names&quot;)= chr &quot;name&quot;
-  .. ..$ .attrs: Named chr &quot;bemovi 2&quot;
-  .. .. ..- attr(*, &quot;names&quot;)= chr &quot;name&quot;
-  ..$ : chr &quot;NA&quot;
-  ..$ : chr &quot;NA&quot;
-  ..$ : chr &quot;NA&quot;
-  ..$ : chr &quot;NA&quot;
-  ..$ : chr &quot;NA&quot;
-  ..$ : chr &quot;NA&quot;
-  ..$ : chr &quot;NA&quot;
-  ..$ : chr &quot;NA&quot;
-  ..$ : chr &quot;NA&quot;
-  ..$ : chr &quot;NA&quot;
-  ..$ : chr &quot;NA&quot;
-  ..$ : chr &quot;NA&quot;
-  ..$ : chr &quot;NA&quot;
-  ..$ : chr &quot;NA&quot;
-  ..$ : chr &quot;NA&quot;
-  ..$ : chr &quot;NA&quot;
-  ..$ : chr &quot;NA&quot;
-  ..$ : chr &quot;NA&quot;
-  ..- attr(*, &quot;dim&quot;)= int [1:2] 2 11
-  ..- attr(*, &quot;dimnames&quot;)=List of 2
-  .. ..$ : chr [1:2] &quot;description&quot; &quot;comment&quot;
-  .. ..$ : chr [1:11] &quot;MicroscopyAnalysis&quot; &quot;VideoAnalysisList&quot; &quot;FlowCamAnalysis&quot; &quot;BacterialDensityFlowcytometryAnalysis&quot; ...</code></pre>
 </div>
 </div>
 <div id="xsd-grammar" class="section level1">
 <h1>XSD Grammar</h1>
-<p>The xsd grammar has been generated using <a href="http://xmlgrid.net/xml2xsd.html">xmlgrid.net</a>. You can download it from <a href="./../inst/emeScheme.xsd.xml">here</a></p>
+<p>The xsd grammar has been generated using <a href="http://xmlgrid.net/xml2xsd.html">xmlgrid.net</a>. You can download it from <a href="./data/emeScheme.xsd.xml">here - right mouse click - Save Linked Content</a></p>
+</div>
+<div id="other-resources" class="section level1">
+<h1>Other Resources</h1>
+<div id="presentations" class="section level2">
+<h2>Presentations</h2>
+<ul>
+<li><a href="https://rkrug.github.io/emeScheme_Introduction/The_emeScheme.html">The emeScheme - an Introduction</a> by Rainer M Krug. <a href="https://doi.org/10.5281/zenodo.2247069"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgICAgd2lkdGg9IjE4NiIgaGVpZ2h0PSIyMCI+CiAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJiIiB4Mj0iMCIgeTI9IjEwMCUiPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNiYmIiIHN0b3Atb3BhY2l0eT0iLjEiLz4KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLW9wYWNpdHk9Ii4xIi8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICA8bWFzayBpZD0iYSIgd2lkdGg9IjE4NiIgaGVpZ2h0PSIyMCI+CiAgICAgICAgICAgIDxyZWN0IHdpZHRoPSIxODYiIGhlaWdodD0iMjAiIHJ4PSIzIgogICAgICAgICAgICBmaWxsPSIjZmZmIi8+CiAgICAgICAgPC9tYXNrPgogICAgICAgIDxnIG1hc2s9InVybCgjYSkiPgogICAgICAgICAgICA8cGF0aCBmaWxsPSIjNTU1IiBkPSJNMCAwaDMxdjIwSDB6IiAvPgogICAgICAgICAgICA8cGF0aCBmaWxsPSIjMDA3ZWM2IgogICAgICAgICAgICBkPSJNMzEgMGgxNTV2MjBIMzF6IgogICAgICAgICAgICAvPgogICAgICAgICAgICA8cGF0aCBmaWxsPSJ1cmwoI2IpIiBkPSJNMCAwaDE4NnYyMEgweiIgLz4KICAgICAgICA8L2c+CiAgICAgICAgPGcgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkRlamFWdSBTYW5zLAogICAgICAgIFZlcmRhbmEsR2VuZXZhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiPgogICAgICAgICAgICA8dGV4dCB4PSIxNiIgeT0iMTUiIGZpbGw9IiMwMTAxMDEiCiAgICAgICAgICAgIGZpbGwtb3BhY2l0eT0iLjMiPgogICAgICAgICAgICAgICAgRE9JCiAgICAgICAgICAgIDwvdGV4dD4KICAgICAgICAgICAgPHRleHQgeD0iMTYiIHk9IjE0Ij4KICAgICAgICAgICAgICAgIERPSQogICAgICAgICAgICA8L3RleHQ+CiAgICAgICAgICAgIDx0ZXh0IHg9IjEwOCIKICAgICAgICAgICAgeT0iMTUiIGZpbGw9IiMwMTAxMDEiIGZpbGwtb3BhY2l0eT0iLjMiPgogICAgICAgICAgICAgICAgMTAuNTI4MS96ZW5vZG8uMjI0NzA2OQogICAgICAgICAgICA8L3RleHQ+CiAgICAgICAgICAgIDx0ZXh0IHg9IjEwOCIgeT0iMTQiPgogICAgICAgICAgICAgICAgMTAuNTI4MS96ZW5vZG8uMjI0NzA2OQogICAgICAgICAgICA8L3RleHQ+CiAgICAgICAgPC9nPgogICAgPC9zdmc+" alt="DOI" /></a></li>
+</ul>
+</div>
 </div>
 <div id="references" class="section level1 unnumbered">
 <h1>References</h1>
