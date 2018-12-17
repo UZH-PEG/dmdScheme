@@ -1,0 +1,63 @@
+#' Convert \code{emeSchemeSet} object to XML
+#'
+#' @export
+#'
+#' @importFrom XML xmlNode xmlAttrs append.xmlNode saveXML
+#' @importFrom tibble is_tibble
+#'
+emeSchemeToXml.emeSchemeSet <- function(
+  x,
+  tag,
+  file,
+  output = "metadata"
+) {
+  outputValues <- c("metadata", "complete")
+  if (!(output %in% outputValues)) {
+    stop("Wrong value for 'output'. 'output' has to be one of the following values:", paste(outputValues, collapse = " "))
+  }
+
+  if (missing(tag)) {
+    tag <- attr(x, "propertyName")
+    if (is.null(tag)) {
+      tag <- "emeScheme"
+    }
+  }
+  if (grepl(" ", tag)) {
+    warning("Spaces are not allowed in tag names!\n  Offending tag = '", tag, "'\n  Replaced spaces with '_'")
+    tag <- gsub(" ", "_", tag)
+  }
+
+  ## x is of type emeSchemeSet and contains therefore child nodes -------------------------
+
+  xml <- XML::xmlNode(tag)
+
+# Add attributes if output == complete ------------------------------------
+
+  if (output == "complete") {
+    XML::xmlAttrs(
+      node = xml,
+      append = TRUE
+    ) <- c(
+      class = paste(class(x), collapse = ", "),
+      names = paste(attr(x, "names"), collapse = ", ")
+    )
+  }
+
+# Call emeSchemeToXml() on list objects -----------------------------------
+
+  for(i in 1:length(x)) {
+    xml <- XML::append.xmlNode(xml, emeSchemeToXml(x[[i]], output = output))
+  }
+
+# If file  not missing, i.e. from root node as file not used in it --------
+
+  if (!missing(file)){
+    xml <- XML::saveXML(
+      doc = xml,
+      file = file
+    )
+  }
+# Return xml --------------------------------------------------------------
+
+  return(xml)
+}

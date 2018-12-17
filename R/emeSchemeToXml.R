@@ -10,14 +10,13 @@
 #' }
 #' Based on David LeBauer, Carl Davidson, Rob Kooper. See \url{https://stackoverflow.com/a/27865512/632423}
 #' @param x \code{emeScheme} object to be converted
-#' @param tag xml tag of the root level
+#' @param tag xml tag of the root level. \bold{Has to be "emeScheme for the initial call!}
 #' @param file empty, \code{NULL} or file name. See details below
+#' @param output either \code{"metadata"} for export of metadata only or
+#'   \code{"complete"} for export including classes et al.
 #'
 #' @return dependant on the value of \code{file}. See Details
 #' @export
-#'
-#' @importFrom XML xmlNode xmlAttrs append.xmlNode saveXML
-#' @importFrom tibble is_tibble
 #'
 #' @examples
 #' x <- addDataToEmeScheme()
@@ -27,58 +26,8 @@
 #'
 #' emeSchemeToXml( x, "GoogleData", file = NULL )
 #' ## returns string representation of the \code{XMLNode} object
-#'
-emeSchemeToXml <- function(
-  x,
-  tag = "emeScheme",
-  file
-) {
+emeSchemeToXml <- function (x, tag, file, output = "metadata") {
 
-  if(typeof(x) != 'list') {
-    # x is not e list, i.e. it will be a vector of some sort ------------------
-    if (length(x) > 1) {
-      xml <- lapply(
-        x,
-        function(value){
-          XML::xmlNode(
-            tag,
-            value
-          )
-        }
-      )
-    } else {
-      xml <- XML::xmlNode(tag, x)
-    }
-  } else {
-    # x is of type list, i.e. it contains child nodes -------------------------
-    xml <- XML::xmlNode(tag)
-    XML::xmlAttrs(
-      node = xml,
-      append = TRUE
-    ) <- c(
-      class = paste(class(x), collapse = ", ")
-    )
-    for(i in 1:length(x)) {
-      xml <- XML::append.xmlNode(xml, emeSchemeToXml(x[[i]], names(x)[i]))
-    }
+  UseMethod("emeSchemeToXml", x)
 
-    # add attributes to node
-    attrs <- x[['.attrs']]
-    for (name in names(attrs)) {
-      XML::xmlAttrs(xml)[[name]] <- attrs[[name]]
-    }
-  }
-
-# Save if asked for -------------------------------------------------------
-
-  if (!missing(file)){
-    xml <- XML::saveXML(
-      doc = xml,
-      file = file
-    )
-  }
-
-# Return xml --------------------------------------------------------------
-
-  return(xml)
 }
