@@ -308,6 +308,9 @@ emeScheme_gd %>%
 ```
 
 ## Re-import from xml into R
+
+TODO This needs some more work #5
+
 ```{r example_import_xml}
 emeScheme_gd %>%
   addDataToEmeScheme() %>%
@@ -315,6 +318,10 @@ emeScheme_gd %>%
   xmlToEmeScheme() %>%
   str()
 ```
+
+# XSD Grammar
+The xsd grammar has been generated using [xmlgrid.net](http://xmlgrid.net/xml2xsd.html).
+You can download it from [here](./../inst/emeScheme.xsd.xml)
 
 # References
 
