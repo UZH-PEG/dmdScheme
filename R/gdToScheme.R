@@ -38,7 +38,6 @@ gdToScheme <- function(
       sl <- lapply(x, splitProperty)
       class(sl) <- append(
         c(
-          # paste0("emeSchemeSet_",names(x)[[1]]),
           "emeSchemeSet",
           "emeScheme"
         ),
@@ -64,13 +63,21 @@ gdToScheme <- function(
         sl[[propName]] <- sl[[propName]][,remove]
         class(sl[[propName]]) <- append(
           c(
-            paste0("emeSchemeData_",propName),
             "emeSchemeData",
             "emeScheme"
           ),
           class(sl[[propName]]),
         )
       }
+      class(sl) <- append(
+        c(
+          # paste0("emeSchemeSet_",names(x)[[1]]),
+          "emeSchemeSet",
+          "emeScheme"
+        ),
+        class(sl),
+      )
+
     }
     return(sl)
   }
@@ -123,7 +130,23 @@ gdToScheme <- function(
     return(result)
   }
 
+# HELPER setPropertyName(): set attribute propertyName -------------------------
 
+  attrPropertyName <- function(x) {
+    if (is(x, "emeSchemeSet")) {
+      for (nm in names(x)) {
+        attr(x[[nm]], "propertyName") <- nm
+        x[[nm]] <- attrPropertyName(x[[nm]])
+        class(x[[nm]]) <- append(
+          paste(class(x[[nm]])[[1]], nm, sep = "_"),
+          class(x[[nm]]),
+        )
+      }
+    } else {
+      # it is a tibble and has been assigned already a propertyName attribute
+    }
+    return(x)
+  }
 
 # Select only Property ----------------------------------------------------
 
@@ -140,6 +163,11 @@ gdToScheme <- function(
 # Transpose indicidual tibbles --------------------------------------------
 
   result <- tIter(result)
+
+
+# Assign propertyName attributes ------------------------------------------
+
+  result <- attrPropertyName(result)
 
 # Return ------------------------------------------------------------------
 
