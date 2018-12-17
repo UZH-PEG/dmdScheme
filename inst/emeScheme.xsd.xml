@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+   <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+         <!-- XML Schema Generated from XML Document on Mon Dec 17 2018 13:15:12 GMT+0100 (CET) -->
+         <!-- with XmlGrid.net Free Online Service http://xmlgrid.net -->
+         <xs:element name="emeScheme">
+               <xs:complexType>
+                     <xs:sequence>
+                           <xs:element name="Experiment">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:element name="ExperimentalDesign">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="noTreatments" type="xs:int"></xs:element>
+                                                               <xs:element name="noReplicatesPerTreatment" type="xs:int"></xs:element>
+                                                               <xs:element name="description" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="Materials">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="Incubators">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="makeTypeVersion" type="xs:string"></xs:element>
+                                                                                 <xs:element name="comment" type="xs:string"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="Container">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="type" type="xs:string"></xs:element>
+                                                                                 <xs:element name="volume" type="xs:int"></xs:element>
+                                                                                 <xs:element name="covers" type="xs:string"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="Shakers">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="makeTypeVersion" type="xs:string"></xs:element>
+                                                                                 <xs:element name="speed" type="xs:int"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="SpeciesList">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="species" maxOccurs="unbounded">
+                                                                                       <xs:complexType>
+                                                                                             <xs:sequence>
+                                                                                                   <xs:element name="strain" type="xs:string"></xs:element>
+                                                                                                   <xs:element name="source" type="xs:string"></xs:element>
+                                                                                                   <xs:element name="density" type="xs:int"></xs:element>
+                                                                                             </xs:sequence>
+                                                                                             <xs:attribute name="name" type="xs:string"></xs:attribute>
+                                                                                       </xs:complexType>
+                                                                                 </xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="CultureMedium">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="volume" type="xs:int"></xs:element>
+                                                                                 <xs:element name="type" type="xs:string"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="BacteriaFlagellates">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="species" type="xs:string"></xs:element>
+                                                                                 <xs:element name="strain" type="xs:string"></xs:element>
+                                                                                 <xs:element name="sourcePellet" type="xs:string"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="LabPractices">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="description" type="xs:string"></xs:element>
+                                                                                 <xs:element name="comment" type="xs:string"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="LongTermMaintenance">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="description" type="xs:string"></xs:element>
+                                                                                 <xs:element name="comment" type="xs:string"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="LongTermPreservation">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="description" type="xs:string"></xs:element>
+                                                                                 <xs:element name="comment" type="xs:string"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="Initialization">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="InitialConditions">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="description" type="xs:string"></xs:element>
+                                                                                 <xs:element name="runInTime" type="xs:int"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="Temperature">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="temperature" type="xs:int"></xs:element>
+                                                                                 <xs:element name="temperatureRange" type="xs:int"></xs:element>
+                                                                                 <xs:element name="temperatureChangeRate" type="xs:int"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="Light">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="intensity" type="xs:int"></xs:element>
+                                                                                 <xs:element name="colour" type="xs:string"></xs:element>
+                                                                                 <xs:element name="photoperiod" type="xs:int"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="FinalConditions">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="description" type="xs:string"></xs:element>
+                                                                                 <xs:element name="comment" type="xs:string"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                       </xs:sequence>
+                                 </xs:complexType>
+                           </xs:element>
+                           <xs:element name="Treatment">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:element name="DuringExperimentMaintenance">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="description" type="xs:string"></xs:element>
+                                                               <xs:element name="comment" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="SpeciesTreatmentList">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="species" maxOccurs="unbounded">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="initialDensity" type="xs:int"></xs:element>
+                                                                                 <xs:element name="densityChanges" type="xs:string"></xs:element>
+                                                                                 <xs:element name="ecologicalRoleInTreatment" type="xs:string"></xs:element>
+                                                                           </xs:sequence>
+                                                                           <xs:attribute name="name" type="xs:string"></xs:attribute>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="BacteriaFlagellates">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="species" type="xs:string"></xs:element>
+                                                               <xs:element name="initial" type="xs:int"></xs:element>
+                                                               <xs:element name="densityChanges" type="xs:int"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="Temperature">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="temperature" type="xs:int"></xs:element>
+                                                               <xs:element name="temperatureRange" type="xs:string"></xs:element>
+                                                               <xs:element name="temperatureChangeRate" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="Light">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="intensity" type="xs:int"></xs:element>
+                                                               <xs:element name="colour" type="xs:string"></xs:element>
+                                                               <xs:element name="photoperiod" type="xs:int"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="Dispersal">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="spatialStructure" type="xs:string"></xs:element>
+                                                               <xs:element name="change" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="Nutrients">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="changeInTreatment" type="xs:string"></xs:element>
+                                                               <xs:element name="comment" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="Viscosity">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="description" type="xs:string"></xs:element>
+                                                               <xs:element name="comment" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="BioticEnvironment">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="type" type="xs:string"></xs:element>
+                                                               <xs:element name="value" type="xs:string"></xs:element>
+                                                               <xs:element name="change" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="Disturbance">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="description" type="xs:string"></xs:element>
+                                                               <xs:element name="comment" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                       </xs:sequence>
+                                 </xs:complexType>
+                           </xs:element>
+                           <xs:element name="Sampling">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:element name="frequency" type="xs:int"></xs:element>
+                                             <xs:element name="volume" type="xs:int"></xs:element>
+                                             <xs:element name="replacementMediumType" type="xs:string"></xs:element>
+                                       </xs:sequence>
+                                 </xs:complexType>
+                           </xs:element>
+                           <xs:element name="Measuring">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:element name="Microscopy">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="volume" type="xs:int"></xs:element>
+                                                               <xs:element name="preparation" type="xs:string"></xs:element>
+                                                               <xs:element name="typeOfMicroscope" type="xs:string"></xs:element>
+                                                               <xs:element name="microscopyMethod" type="xs:string"></xs:element>
+                                                               <xs:element name="comment" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="VideoRecording">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="volume" type="xs:int"></xs:element>
+                                                               <xs:element name="preparation" type="xs:string"></xs:element>
+                                                               <xs:element name="microscope" type="xs:string"></xs:element>
+                                                               <xs:element name="magnification" type="xs:int"></xs:element>
+                                                               <xs:element name="camera" type="xs:string"></xs:element>
+                                                               <xs:element name="microscopyMethod" type="xs:string"></xs:element>
+                                                               <xs:element name="resolution" type="xs:int"></xs:element>
+                                                               <xs:element name="colourSpace" type="xs:string"></xs:element>
+                                                               <xs:element name="lengthOfRecording" type="xs:int"></xs:element>
+                                                               <xs:element name="frameRate" type="xs:int"></xs:element>
+                                                               <xs:element name="lightIntensity" type="xs:int"></xs:element>
+                                                               <xs:element name="lightColour" type="xs:string"></xs:element>
+                                                               <xs:element name="videoFormat" type="xs:string"></xs:element>
+                                                               <xs:element name="comment" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="FlowCam">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="makeTypeVersion" type="xs:string"></xs:element>
+                                                               <xs:element name="settings" type="xs:string"></xs:element>
+                                                               <xs:element name="volume" type="xs:string"></xs:element>
+                                                               <xs:element name="treatment" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="BacterialDensityFlowcytometry">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="typeVersion" type="xs:string"></xs:element>
+                                                               <xs:element name="volume" type="xs:string"></xs:element>
+                                                               <xs:element name="settingsParameter" type="xs:string"></xs:element>
+                                                               <xs:element name="treatment" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="DNABarcoding">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="description" type="xs:string"></xs:element>
+                                                               <xs:element name="comment" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="Respirometry">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="description" type="xs:string"></xs:element>
+                                                               <xs:element name="moreDetailsNeeded" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="NutrientsDecomposition">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="description" type="xs:string"></xs:element>
+                                                               <xs:element name="comment" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                       </xs:sequence>
+                                 </xs:complexType>
+                           </xs:element>
+                           <xs:element name="DataExtraction">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:element name="MicroscopyAnalysis">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="description" type="xs:string"></xs:element>
+                                                               <xs:element name="comment" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="VideoAnalysisList">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="analysisMethod" maxOccurs="unbounded">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="parameter" maxOccurs="unbounded" type="xs:int">
+                                                                                       <xs:complexType>
+                                                                                             <xs:attribute name="name" type="xs:string"></xs:attribute>
+                                                                                       </xs:complexType>
+                                                                                 </xs:element>
+                                                                           </xs:sequence>
+                                                                           <xs:attribute name="name" type="xs:string"></xs:attribute>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="FlowCamAnalysis">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="description" type="xs:string"></xs:element>
+                                                               <xs:element name="comment" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="BacterialDensityFlowcytometryAnalysis">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="description" type="xs:string"></xs:element>
+                                                               <xs:element name="comment" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="ParticleCounterAnalysis">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="description" type="xs:string"></xs:element>
+                                                               <xs:element name="comment" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="RamanMicrospectroscopyAnalysis">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="description" type="xs:string"></xs:element>
+                                                               <xs:element name="comment" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="DNABarcodingAnalysis">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="description" type="xs:string"></xs:element>
+                                                               <xs:element name="comment" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="GenProteoEpigenomicsAnalysis">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="description" type="xs:string"></xs:element>
+                                                               <xs:element name="comment" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="RespirometryAnalysis">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="description" type="xs:string"></xs:element>
+                                                               <xs:element name="comment" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="NutrientsDecompositionAnalysis">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="description" type="xs:string"></xs:element>
+                                                               <xs:element name="comment" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="InteractionsAnalysis">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="description" type="xs:string"></xs:element>
+                                                               <xs:element name="comment" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                       </xs:sequence>
+                                 </xs:complexType>
+                           </xs:element>
+                     </xs:sequence>
+               </xs:complexType>
+         </xs:element>
+   </xs:schema>
+ 
