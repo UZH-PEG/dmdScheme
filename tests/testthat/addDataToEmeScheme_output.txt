@@ -1,0 +1,677 @@
+1 
+2 
+3 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2   Property_Level_3 `Example Data`
+  <chr>            <chr>              <chr>            <chr>         
+1 Experiment       ExperimentalDesign noTreatments     3             
+
+ Properties:
+[1] "Experiment"         "ExperimentalDesign"
+
+ Input Columns:
+# A tibble: 3 x 4
+  Property_Level_1 Property_Level_2   Property_Level_3     `Example Data`       
+  <chr>            <chr>              <chr>                <chr>                
+1 Experiment       ExperimentalDesign noTreatments         3                    
+2 Experiment       ExperimentalDesign noReplicatesPerTrea… 10                   
+3 Experiment       ExperimentalDesign description          This is a great expe…
+
+ Extracted data:
+# A tibble: 1 x 3
+  noTreatments noReplicatesPerTreatment description               
+  <chr>        <chr>                    <chr>                     
+1 3            10                       This is a great experiment
+
+
+6 
+7 
+8 
+
+ Working on identified row:
+# A tibble: 1 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Materials        Incubators       makeTypeVersion 
+# ... with 1 more variable: `Example Data` <chr>
+
+ Properties:
+[1] "Experiment" "Materials"  "Incubators"
+
+ Input Columns:
+# A tibble: 2 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Materials        Incubators       makeTypeVersion 
+2 Experiment       Materials        Incubators       comment         
+# ... with 1 more variable: `Example Data` <chr>
+
+ Extracted data:
+# A tibble: 1 x 2
+  makeTypeVersion      comment
+  <chr>                <chr>  
+1 Hyper Incubator 2000 <NA>   
+
+
+10 
+11 
+
+ Working on identified row:
+# A tibble: 1 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Materials        Container        type            
+# ... with 1 more variable: `Example Data` <chr>
+
+ Properties:
+[1] "Experiment" "Materials"  "Container" 
+
+ Input Columns:
+# A tibble: 3 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Materials        Container        type            
+2 Experiment       Materials        Container        volume          
+3 Experiment       Materials        Container        covers          
+# ... with 1 more variable: `Example Data` <chr>
+
+ Extracted data:
+# A tibble: 1 x 3
+  type   volume covers
+  <chr>  <chr>  <chr> 
+1 bottle 200    foil  
+
+
+14 
+15 
+
+ Working on identified row:
+# A tibble: 1 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Materials        Shakers          makeTypeVersion 
+# ... with 1 more variable: `Example Data` <chr>
+
+ Properties:
+[1] "Experiment" "Materials"  "Shakers"   
+
+ Input Columns:
+# A tibble: 2 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Materials        Shakers          makeTypeVersion 
+2 Experiment       Materials        Shakers          speed           
+# ... with 1 more variable: `Example Data` <chr>
+
+ Extracted data:
+# A tibble: 1 x 2
+  makeTypeVersion speed
+  <chr>           <chr>
+1 Krups           3000 
+
+
+17 
+18 
+
+ Working on identified row:
+# A tibble: 1 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Materials        Species          species         
+# ... with 1 more variable: `Example Data` <chr>
+
+ Properties:
+[1] "Experiment" "Materials"  "Species"   
+
+ Input Columns:
+# A tibble: 4 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Materials        Species          species         
+2 Experiment       Materials        Species          strain          
+3 Experiment       Materials        Species          source          
+4 Experiment       Materials        Species          density         
+# ... with 1 more variable: `Example Data` <chr>
+
+ Extracted data:
+# A tibble: 2 x 4
+  species            strain source density
+  <chr>              <chr>  <chr>  <chr>  
+1 tarantula maximus  yellow ebay   122    
+2 elephantus minimus green  amazon 500    
+
+
+22 
+23 
+
+ Working on identified row:
+# A tibble: 1 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Materials        CultureMedium    volume          
+# ... with 1 more variable: `Example Data` <chr>
+
+ Properties:
+[1] "Experiment"    "Materials"     "CultureMedium"
+
+ Input Columns:
+# A tibble: 2 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Materials        CultureMedium    volume          
+2 Experiment       Materials        CultureMedium    type            
+# ... with 1 more variable: `Example Data` <chr>
+
+ Extracted data:
+# A tibble: 1 x 2
+  volume type           
+  <chr>  <chr>          
+1 150    Ultimate growth
+
+
+25 
+26 
+
+ Working on identified row:
+# A tibble: 1 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Materials        BacteriaFlagell… species         
+# ... with 1 more variable: `Example Data` <chr>
+
+ Properties:
+[1] "Experiment"          "Materials"           "BacteriaFlagellates"
+
+ Input Columns:
+# A tibble: 3 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Materials        BacteriaFlagell… species         
+2 Experiment       Materials        BacteriaFlagell… strain          
+3 Experiment       Materials        BacteriaFlagell… sourcePellet    
+# ... with 1 more variable: `Example Data` <chr>
+
+ Extracted data:
+# A tibble: 1 x 3
+  species       strain sourcePellet
+  <chr>         <chr>  <chr>       
+1 little things <NA>   <NA>        
+
+
+29 
+30 
+31 
+32 
+33 
+34 
+35 
+36 
+37 
+38 
+39 
+40 
+
+ Working on identified row:
+# A tibble: 1 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Initialization   InitialConditio… description     
+# ... with 1 more variable: `Example Data` <chr>
+
+ Properties:
+[1] "Experiment"        "Initialization"    "InitialConditions"
+
+ Input Columns:
+# A tibble: 2 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Initialization   InitialConditio… description     
+2 Experiment       Initialization   InitialConditio… runInTime       
+# ... with 1 more variable: `Example Data` <chr>
+
+ Extracted data:
+# A tibble: 1 x 2
+  description      runInTime
+  <chr>            <chr>    
+1 same temperature 240      
+
+
+42 
+43 
+
+ Working on identified row:
+# A tibble: 1 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Initialization   Temperature      temperature     
+# ... with 1 more variable: `Example Data` <chr>
+
+ Properties:
+[1] "Experiment"     "Initialization" "Temperature"   
+
+ Input Columns:
+# A tibble: 3 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Initialization   Temperature      temperature     
+2 Experiment       Initialization   Temperature      temperatureRange
+3 Experiment       Initialization   Temperature      temperatureChan…
+# ... with 1 more variable: `Example Data` <chr>
+
+ Extracted data:
+# A tibble: 1 x 3
+  temperature temperatureRange temperatureChangeRate
+  <chr>       <chr>            <chr>                
+1 20          0                0                    
+
+
+46 
+47 
+
+ Working on identified row:
+# A tibble: 1 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Initialization   Light            intensity       
+# ... with 1 more variable: `Example Data` <chr>
+
+ Properties:
+[1] "Experiment"     "Initialization" "Light"         
+
+ Input Columns:
+# A tibble: 3 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Initialization   Light            intensity       
+2 Experiment       Initialization   Light            colour          
+3 Experiment       Initialization   Light            photoperiod     
+# ... with 1 more variable: `Example Data` <chr>
+
+ Extracted data:
+# A tibble: 1 x 3
+  intensity colour photoperiod
+  <chr>     <chr>  <chr>      
+1 500       <NA>   12         
+
+
+50 
+51 
+
+ Working on identified row:
+# A tibble: 1 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Initialization   FinalConditions  description     
+# ... with 1 more variable: `Example Data` <chr>
+
+ Properties:
+[1] "Experiment"      "Initialization"  "FinalConditions"
+
+ Input Columns:
+# A tibble: 2 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Initialization   FinalConditions  description     
+2 Experiment       Initialization   FinalConditions  comment         
+# ... with 1 more variable: `Example Data` <chr>
+
+ Extracted data:
+# A tibble: 1 x 2
+  description comment
+  <chr>       <chr>  
+1 green glow  <NA>   
+
+
+53 
+54 
+55 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2            Property_Level_3 `Example Data`
+  <chr>            <chr>                       <chr>            <chr>         
+1 Treatment        DuringExperimentMaintenance description      na            
+
+ Properties:
+[1] "Treatment"                   "DuringExperimentMaintenance"
+
+ Input Columns:
+# A tibble: 2 x 4
+  Property_Level_1 Property_Level_2            Property_Level_3 `Example Data`
+  <chr>            <chr>                       <chr>            <chr>         
+1 Treatment        DuringExperimentMaintenance description      na            
+2 Treatment        DuringExperimentMaintenance comment          <NA>          
+
+ Extracted data:
+# A tibble: 1 x 2
+  description comment
+  <chr>       <chr>  
+1 na          <NA>   
+
+
+57 
+58 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2 Property_Level_3 `Example Data`             
+  <chr>            <chr>            <chr>            <chr>                      
+1 Treatment        SpeciesTreatment species          tarantula maximus, elephan…
+
+ Properties:
+[1] "Treatment"        "SpeciesTreatment"
+
+ Input Columns:
+# A tibble: 4 x 4
+  Property_Level_1 Property_Level_2 Property_Level_3     `Example Data`         
+  <chr>            <chr>            <chr>                <chr>                  
+1 Treatment        SpeciesTreatment species              tarantula maximus, ele…
+2 Treatment        SpeciesTreatment initialDensity       100, 200               
+3 Treatment        SpeciesTreatment densityChanges       na                     
+4 Treatment        SpeciesTreatment ecologicalRoleInTre… na                     
+
+ Extracted data:
+# A tibble: 2 x 4
+  species            initialDensity densityChanges ecologicalRoleInTreatment
+  <chr>              <chr>          <chr>          <chr>                    
+1 tarantula maximus  100            na             na                       
+2 elephantus minimus 200            na             na                       
+
+
+62 
+63 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2             Property_Level_3 `Example Data`
+  <chr>            <chr>                        <chr>            <chr>         
+1 Treatment        BacteriaFlagellatesTreatment species          little things 
+
+ Properties:
+[1] "Treatment"                    "BacteriaFlagellatesTreatment"
+
+ Input Columns:
+# A tibble: 3 x 4
+  Property_Level_1 Property_Level_2             Property_Level_3 `Example Data`
+  <chr>            <chr>                        <chr>            <chr>         
+1 Treatment        BacteriaFlagellatesTreatment species          little things 
+2 Treatment        BacteriaFlagellatesTreatment initial          500           
+3 Treatment        BacteriaFlagellatesTreatment densityChanges   5             
+
+ Extracted data:
+# A tibble: 1 x 3
+  species       initial densityChanges
+  <chr>         <chr>   <chr>         
+1 little things 500     5             
+
+
+66 
+67 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2     Property_Level_3 `Example Data`
+  <chr>            <chr>                <chr>            <chr>         
+1 Treatment        TemperatureTreatment temperature      25            
+
+ Properties:
+[1] "Treatment"            "TemperatureTreatment"
+
+ Input Columns:
+# A tibble: 3 x 4
+  Property_Level_1 Property_Level_2     Property_Level_3      `Example Data`    
+  <chr>            <chr>                <chr>                 <chr>             
+1 Treatment        TemperatureTreatment temperature           25                
+2 Treatment        TemperatureTreatment temperatureRange      20-30             
+3 Treatment        TemperatureTreatment temperatureChangeRate daily fluctuations
+
+ Extracted data:
+# A tibble: 1 x 3
+  temperature temperatureRange temperatureChangeRate
+  <chr>       <chr>            <chr>                
+1 25          20-30            daily fluctuations   
+
+
+70 
+71 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2 Property_Level_3 `Example Data`
+  <chr>            <chr>            <chr>            <chr>         
+1 Treatment        LightTreatment   intensity        1000          
+
+ Properties:
+[1] "Treatment"      "LightTreatment"
+
+ Input Columns:
+# A tibble: 3 x 4
+  Property_Level_1 Property_Level_2 Property_Level_3 `Example Data`
+  <chr>            <chr>            <chr>            <chr>         
+1 Treatment        LightTreatment   intensity        1000          
+2 Treatment        LightTreatment   colour           na            
+3 Treatment        LightTreatment   photoperiod      20            
+
+ Extracted data:
+# A tibble: 1 x 3
+  intensity colour photoperiod
+  <chr>     <chr>  <chr>      
+1 1000      na     20         
+
+
+74 
+75 
+76 
+77 
+78 
+79 
+80 
+81 
+82 
+83 
+84 
+85 
+86 
+87 
+88 
+89 
+90 
+91 
+
+ Working on identified row:
+# A tibble: 1 x 3
+  Property_Level_1 Property_Level_2 `Example Data`
+  <chr>            <chr>            <chr>         
+1 Sampling         frequency        3             
+
+ Properties:
+[1] "Sampling"
+
+ Input Columns:
+# A tibble: 3 x 3
+  Property_Level_1 Property_Level_2      `Example Data`
+  <chr>            <chr>                 <chr>         
+1 Sampling         frequency             3             
+2 Sampling         volume                20            
+3 Sampling         replacementMediumType same          
+
+ Extracted data:
+# A tibble: 1 x 3
+  frequency volume replacementMediumType
+  <chr>     <chr>  <chr>                
+1 3         20     same                 
+
+
+94 
+95 
+96 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2 Property_Level_3 `Example Data`
+  <chr>            <chr>            <chr>            <chr>         
+1 Measuring        Microscopy       volume           10            
+
+ Properties:
+[1] "Measuring"  "Microscopy"
+
+ Input Columns:
+# A tibble: 5 x 4
+  Property_Level_1 Property_Level_2 Property_Level_3 `Example Data`             
+  <chr>            <chr>            <chr>            <chr>                      
+1 Measuring        Microscopy       volume           10                         
+2 Measuring        Microscopy       preparation      colour sample with whatever
+3 Measuring        Microscopy       typeOfMicroscope nice one                   
+4 Measuring        Microscopy       microscopyMethod dark field                 
+5 Measuring        Microscopy       comment          coumting elephant          
+
+ Extracted data:
+# A tibble: 1 x 5
+  volume preparation             typeOfMicroscope microscopyMethod comment      
+  <chr>  <chr>                   <chr>            <chr>            <chr>        
+1 10     colour sample with wha… nice one         dark field       coumting ele…
+
+
+101 
+102 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2 Property_Level_3 `Example Data`
+  <chr>            <chr>            <chr>            <chr>         
+1 Measuring        VideoRecording   volume           10            
+
+ Properties:
+[1] "Measuring"      "VideoRecording"
+
+ Input Columns:
+# A tibble: 14 x 4
+   Property_Level_1 Property_Level_2 Property_Level_3  `Example Data`
+   <chr>            <chr>            <chr>             <chr>         
+ 1 Measuring        VideoRecording   volume            10            
+ 2 Measuring        VideoRecording   preparation       <NA>          
+ 3 Measuring        VideoRecording   microscope        nice one      
+ 4 Measuring        VideoRecording   magnification     100           
+ 5 Measuring        VideoRecording   camera            supercom 4000 
+ 6 Measuring        VideoRecording   microscopyMethod  <NA>          
+ 7 Measuring        VideoRecording   resolution        5000          
+ 8 Measuring        VideoRecording   colourSpace       green         
+ 9 Measuring        VideoRecording   lengthOfRecording 10            
+10 Measuring        VideoRecording   frameRate         50            
+11 Measuring        VideoRecording   lightIntensity    2000          
+12 Measuring        VideoRecording   lightColour       <NA>          
+13 Measuring        VideoRecording   videoFormat       avi           
+14 Measuring        VideoRecording   comment           <NA>          
+
+ Extracted data:
+# A tibble: 1 x 14
+  volume preparation microscope magnification camera microscopyMethod resolution
+  <chr>  <chr>       <chr>      <chr>         <chr>  <chr>            <chr>     
+1 10     <NA>        nice one   100           super… <NA>             5000      
+# ... with 7 more variables: colourSpace <chr>, lengthOfRecording <chr>,
+#   frameRate <chr>, lightIntensity <chr>, lightColour <chr>,
+#   videoFormat <chr>, comment <chr>
+
+
+116 
+117 
+118 
+119 
+120 
+121 
+122 
+123 
+124 
+125 
+126 
+127 
+128 
+129 
+130 
+131 
+132 
+133 
+134 
+135 
+136 
+137 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2   Property_Level_3 `Example Data`           
+  <chr>            <chr>              <chr>            <chr>                    
+1 DataExtraction   MicroscopyAnalysis description      counting and calculation…
+
+ Properties:
+[1] "DataExtraction"     "MicroscopyAnalysis"
+
+ Input Columns:
+# A tibble: 2 x 4
+  Property_Level_1 Property_Level_2   Property_Level_3 `Example Data`           
+  <chr>            <chr>              <chr>            <chr>                    
+1 DataExtraction   MicroscopyAnalysis description      counting and calculation…
+2 DataExtraction   MicroscopyAnalysis comment          <NA>                     
+
+ Extracted data:
+# A tibble: 1 x 2
+  description                        comment
+  <chr>                              <chr>  
+1 counting and calculationof density <NA>   
+
+
+139 
+140 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2 Property_Level_3 `Example Data`  
+  <chr>            <chr>            <chr>            <chr>           
+1 DataExtraction   VideoAnalysis    analysisMethod   bemovi, bemovi 2
+
+ Properties:
+[1] "DataExtraction" "VideoAnalysis" 
+
+ Input Columns:
+# A tibble: 2 x 4
+  Property_Level_1 Property_Level_2 Property_Level_3 `Example Data`             
+  <chr>            <chr>            <chr>            <chr>                      
+1 DataExtraction   VideoAnalysis    analysisMethod   bemovi, bemovi 2           
+2 DataExtraction   VideoAnalysis    parameterUsed    a = 1; b = 2; c = 3; x = 3…
+
+ Extracted data:
+# A tibble: 2 x 2
+  analysisMethod parameterUsed              
+  <chr>          <chr>                      
+1 bemovi         a = 1; b = 2; c = 3; x = 35
+2 bemovi 2       a = 10; b = 3; y = 9999    
+
+
+142 
+143 
+144 
+145 
+146 
+147 
+148 
+149 
+150 
+151 
+152 
+153 
+154 
+155 
+156 
+157 
+158 
+159 
+160 
+161 
+162 
+163 
+164 
+165 
+166 
+167 
+168 
