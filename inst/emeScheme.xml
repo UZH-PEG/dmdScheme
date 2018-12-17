@@ -1,0 +1,241 @@
+<?xml version="1.0"?>
+<emeScheme>
+ <Experiment>
+  <ExperimentalDesign>
+   <noTreatments>3</noTreatments>
+   <noReplicatesPerTreatment>10</noReplicatesPerTreatment>
+   <description>This is a great experiment</description>
+  </ExperimentalDesign>
+  <Materials>
+   <Incubators>
+    <makeTypeVersion>Hyper Incubator 2000</makeTypeVersion>
+    <comment>NA</comment>
+   </Incubators>
+   <Container>
+    <type>bottle</type>
+    <volume>200</volume>
+    <covers>foil</covers>
+   </Container>
+   <Shakers>
+    <makeTypeVersion>Krups</makeTypeVersion>
+    <speed>3000</speed>
+   </Shakers>
+   <SpeciesList>
+    <species name="tarantula maximus">
+     <strain>yellow</strain>
+     <source>ebay</source>
+     <density>122</density>
+    </species>
+    <species name="elephantus minimus">
+     <strain>green</strain>
+     <source>amazon</source>
+     <density>500</density>
+    </species>
+   </SpeciesList>
+   <CultureMedium>
+    <volume>150</volume>
+    <type>Ultimate growth</type>
+   </CultureMedium>
+   <BacteriaFlagellates>
+    <species>little things</species>
+    <strain>NA</strain>
+    <sourcePellet>NA</sourcePellet>
+   </BacteriaFlagellates>
+   <LabPractices>
+    <description>NA</description>
+    <comment>NA</comment>
+   </LabPractices>
+   <LongTermMaintenance>
+    <description>NA</description>
+    <comment>NA</comment>
+   </LongTermMaintenance>
+   <LongTermPreservation>
+    <description>NA</description>
+    <comment>NA</comment>
+   </LongTermPreservation>
+  </Materials>
+  <Initialization>
+   <InitialConditions>
+    <description>same temperature</description>
+    <runInTime>240</runInTime>
+   </InitialConditions>
+   <Temperature>
+    <temperature>20</temperature>
+    <temperatureRange>0</temperatureRange>
+    <temperatureChangeRate>0</temperatureChangeRate>
+   </Temperature>
+   <Light>
+    <intensity>500</intensity>
+    <colour>NA</colour>
+    <photoperiod>12</photoperiod>
+   </Light>
+   <FinalConditions>
+    <description>green glow</description>
+    <comment>NA</comment>
+   </FinalConditions>
+  </Initialization>
+ </Experiment>
+ <Treatment>
+  <DuringExperimentMaintenance>
+   <description>na</description>
+   <comment>NA</comment>
+  </DuringExperimentMaintenance>
+  <SpeciesTreatmentList>
+   <species name="tarantula maximus">
+    <initialDensity>100</initialDensity>
+    <densityChanges>na</densityChanges>
+    <ecologicalRoleInTreatment>na</ecologicalRoleInTreatment>
+   </species>
+   <species name="elephantus minimus">
+    <initialDensity>200</initialDensity>
+    <densityChanges>na</densityChanges>
+    <ecologicalRoleInTreatment>na</ecologicalRoleInTreatment>
+   </species>
+  </SpeciesTreatmentList>
+  <BacteriaFlagellates>
+   <species>little things</species>
+   <initial>500</initial>
+   <densityChanges>5</densityChanges>
+  </BacteriaFlagellates>
+  <Temperature>
+   <temperature>25</temperature>
+   <temperatureRange>20-30</temperatureRange>
+   <temperatureChangeRate>daily fluctuations</temperatureChangeRate>
+  </Temperature>
+  <Light>
+   <intensity>1000</intensity>
+   <colour>na</colour>
+   <photoperiod>20</photoperiod>
+  </Light>
+  <Dispersal>
+   <spatialStructure>NA</spatialStructure>
+   <change>NA</change>
+  </Dispersal>
+  <Nutrients>
+   <changeInTreatment>NA</changeInTreatment>
+   <comment>NA</comment>
+  </Nutrients>
+  <Viscosity>
+   <description>NA</description>
+   <comment>NA</comment>
+  </Viscosity>
+  <BioticEnvironment>
+   <type>NA</type>
+   <value>NA</value>
+   <change>NA</change>
+  </BioticEnvironment>
+  <Disturbance>
+   <description>NA</description>
+   <comment>NA</comment>
+  </Disturbance>
+ </Treatment>
+ <Sampling>
+  <frequency>3</frequency>
+  <volume>20</volume>
+  <replacementMediumType>same</replacementMediumType>
+ </Sampling>
+ <Measuring>
+  <Microscopy>
+   <volume>10</volume>
+   <preparation>colour sample with whatever</preparation>
+   <typeOfMicroscope>nice one</typeOfMicroscope>
+   <microscopyMethod>dark field</microscopyMethod>
+   <comment>coumting elephant</comment>
+  </Microscopy>
+  <VideoRecording>
+   <volume>10</volume>
+   <preparation>NA</preparation>
+   <microscope>nice one</microscope>
+   <magnification>100</magnification>
+   <camera>supercom 4000</camera>
+   <microscopyMethod>NA</microscopyMethod>
+   <resolution>5000</resolution>
+   <colourSpace>green</colourSpace>
+   <lengthOfRecording>10</lengthOfRecording>
+   <frameRate>50</frameRate>
+   <lightIntensity>2000</lightIntensity>
+   <lightColour>NA</lightColour>
+   <videoFormat>avi</videoFormat>
+   <comment>NA</comment>
+  </VideoRecording>
+  <FlowCam>
+   <makeTypeVersion>NA</makeTypeVersion>
+   <settings>NA</settings>
+   <volume>NA</volume>
+   <treatment>NA</treatment>
+  </FlowCam>
+  <BacterialDensityFlowcytometry>
+   <typeVersion>NA</typeVersion>
+   <volume>NA</volume>
+   <settingsParameter>NA</settingsParameter>
+   <treatment>NA</treatment>
+  </BacterialDensityFlowcytometry>
+  <DNABarcoding>
+   <description>NA</description>
+   <comment>NA</comment>
+  </DNABarcoding>
+  <Respirometry>
+   <description>NA</description>
+   <moreDetailsNeeded>NA</moreDetailsNeeded>
+  </Respirometry>
+  <NutrientsDecomposition>
+   <description>NA</description>
+   <comment>NA</comment>
+  </NutrientsDecomposition>
+ </Measuring>
+ <DataExtraction>
+  <MicroscopyAnalysis>
+   <description>counting and calculationof density</description>
+   <comment>NA</comment>
+  </MicroscopyAnalysis>
+  <VideoAnalysisList>
+   <analysisMethod name="bemovi">
+    <parameter name="a">1</parameter>
+    <parameter name="b">2</parameter>
+    <parameter name="c">3</parameter>
+    <parameter name="x">35</parameter>
+   </analysisMethod>
+   <analysisMethod name="bemovi 2">
+    <parameter name="a">10</parameter>
+    <parameter name="b">3</parameter>
+    <parameter name="y">9999</parameter>
+   </analysisMethod>
+  </VideoAnalysisList>
+  <FlowCamAnalysis>
+   <description>NA</description>
+   <comment>NA</comment>
+  </FlowCamAnalysis>
+  <BacterialDensityFlowcytometryAnalysis>
+   <description>NA</description>
+   <comment>NA</comment>
+  </BacterialDensityFlowcytometryAnalysis>
+  <ParticleCounterAnalysis>
+   <description>NA</description>
+   <comment>NA</comment>
+  </ParticleCounterAnalysis>
+  <RamanMicrospectroscopyAnalysis>
+   <description>NA</description>
+   <comment>NA</comment>
+  </RamanMicrospectroscopyAnalysis>
+  <DNABarcodingAnalysis>
+   <description>NA</description>
+   <comment>NA</comment>
+  </DNABarcodingAnalysis>
+  <GenProteoEpigenomicsAnalysis>
+   <description>NA</description>
+   <comment>NA</comment>
+  </GenProteoEpigenomicsAnalysis>
+  <RespirometryAnalysis>
+   <description>NA</description>
+   <comment>NA</comment>
+  </RespirometryAnalysis>
+  <NutrientsDecompositionAnalysis>
+   <description>NA</description>
+   <comment>NA</comment>
+  </NutrientsDecompositionAnalysis>
+  <InteractionsAnalysis>
+   <description>NA</description>
+   <comment>NA</comment>
+  </InteractionsAnalysis>
+ </DataExtraction>
+</emeScheme>
