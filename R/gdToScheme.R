@@ -115,6 +115,7 @@ gdToScheme <- function(
           sapply("[", 3) %>%
           gsub("\\[|\\]", "", .) %>%
           set_names(names(result))
+        attr(result, which = "type") <- type
         if (debug) {cat(length(type), class(result))}
         type[is.na(type)] <- "character"
         if (debug) {cat(".")}
@@ -130,7 +131,7 @@ gdToScheme <- function(
     return(result)
   }
 
-# HELPER setPropertyName(): set attribute propertyName -------------------------
+# HELPER attrPropertyName(): set attribute propertyName -------------------------
 
   attrPropertyName <- function(x) {
     if (is(x, "emeSchemeSet")) {

@@ -82,6 +82,5 @@ format_emeScheme_xlsx <- function(emeScheme_gd) {
   ## save workbook again
   Sys.chmod(fn, "0777")
   xlsx::saveWorkbook(wb, fn)
-  Sys.chmod(fn, "0444")
 }
 

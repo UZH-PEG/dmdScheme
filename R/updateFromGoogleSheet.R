@@ -65,6 +65,9 @@ updateFromGoogleSheet <- function(
     )
     format_emeScheme_xlsx(emeScheme_gd = emeScheme_gd)
 
+    Sys.chmod(here("inst", "googlesheet", "emeScheme.xlsx"), "0444")
+
+    file.copy(here("inst", "googlesheet", "emeScheme.xlsx"), here("tests", "testthat", "emeScheme.xlsx"))
 
 # bump version and change description in DECRIPTION -----------------------
 

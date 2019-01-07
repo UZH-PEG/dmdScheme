@@ -1,17 +1,31 @@
 #' Title
 #'
-#' @param x object containing the data to be filled in. Has to be a
+#' @param x path to data file or object containing the data to be filled in. Has to be a
 #'   \code{data.frame} or \code{tibble}. The columns have to be the property
-#'   levels, starting with \code{Property}, and the data column(s). See \code{emeScheme_gd} as an example.
+#'   levels, starting with \code{Property}, and the data column(s). See
+#'   \code{emeScheme_gd} as an example.
+#'   Suppoerted data file formate:
+#'  \itemize{
+#'    \item{\code{xlsx} : }{xlsx file in the same format as the file which is loded when excuting \code{enter_new_metadata()} command. It is the best to use this sheet when entering data.}
+#'    \item{others : }{others will be added later}
+#'  }
+#' @param s the \code{emeScheme} object to which the data should be added. If
+#'   the data exists, it will be overwritten, \code{NA} and \code{NULL} values
+#'   will be treated as not given.
 #' @param dataCol data column indicator. Can be an index of data column (1 =
 #'   first data column, 2 = second, ...), or the name of the data column.
 #'   Default = 1.
-#' @param s the \code{emeScheme} object to which the data should be added. If the data exists, it will be overwritten, \code{NA} and \code{NULL} values will be treated as not given.
-#' @param verbose if \code{TRUE}, progress and diagnostig messages will be printed.
+#' @param dataSheet if x is an xlsx file, \code{dataSheet} specifies the sheet which
+#'   shoiuld be imported. This can be the sheet name or the index. Default is 1.
+#' @param verbose if \code{TRUE}, progress and diagnostig messages will be
+#'   printed.
 #'
 #' @return the emeScheme \code{s} filled in with the values as specified in \code{x}
 #' @importFrom magrittr %>% %<>% set_names
 #' @importFrom tibble as_tibble
+#' @importFrom readxl read_excel
+#' @importFrom dplyr mutate_all vars
+#' @importFrom tools file_ext
 #' @export
 #'
 #' @examples
@@ -19,6 +33,7 @@
 addDataToEmeScheme <- function(
   x = emeScheme_gd,
   s = emeScheme,
+  dataSheet = 1,
   dataCol = 1,
   verbose = FALSE
 ) {
@@ -64,38 +79,126 @@ addDataToEmeScheme <- function(
 # HELPER: setEmeSchemeProp ----------------------------------------------
 
   setEmeSchemeProp <- function(prop, s, data) {
+    oldWarn <- options(warn = 2)
+    on.exit(options(warn = oldWarn$warn))
+    ##
     if (length(prop) > 6) {
       stop("Property level not supported!")
     }
     switch(
       length(prop),
       {
+        tp <- sapply(s[[prop[1]]], class)
+        for (i in names(tp)) {
+          data %>%
+            dplyr::mutate_at(
+              dplyr::vars(i),
+              as,
+              Class = tp[i]
+            )
+        }
         s[[prop[1]]][1:nrow(data),] <- NA
         s[[prop[1]]][] <- data[]
       },
       {
+        tp <- sapply(s[[prop[1]]][[prop[2]]], class)
+        for (i in names(tp)) {
+          data %<>%
+            dplyr::mutate_at(
+              dplyr::vars(i),
+              as,
+              Class = tp[i]
+            )
+        }
         s[[prop[1]]][[prop[2]]][1:nrow(data),] <- NA
         s[[prop[1]]][[prop[2]]][] <- data[]
       },
       {
+        tp <- sapply(s[[prop[1]]][[prop[2]]][[prop[3]]], class)
+        for (i in names(tp)) {
+          data %>%
+            dplyr::mutate_at(
+              dplyr::vars(i),
+              as,
+              Class = tp[i]
+            )
+        }
         s[[prop[1]]][[prop[2]]][[prop[3]]][1:nrow(data),] <- NA
         s[[prop[1]]][[prop[2]]][[prop[3]]][] <- data[]
       },
       {
+        tp <- sapply(s[[prop[1]]][[prop[2]]][[prop[3]]][[prop[4]]], class)
+        for (i in names(tp)) {
+          data %>%
+            dplyr::mutate_at(
+              dplyr::vars(i),
+              as,
+              Class = tp[i]
+            )
+        }
         s[[prop[1]]][[prop[2]]][[prop[3]]][[prop[4]]][1:nrow(data),] <- NA
         s[[prop[1]]][[prop[2]]][[prop[3]]][[prop[4]]][] <- data[]
       },
       {
+        tp <- sapply(s[[prop[1]]][[prop[2]]][[prop[3]]][[prop[4]]][[prop[5]]], class)
+        for (i in names(tp)) {
+          data %>%
+            dplyr::mutate_at(
+              dplyr::vars(i),
+              as,
+              Class = tp[i]
+            )
+        }
         s[[prop[1]]][[prop[2]]][[prop[3]]][[prop[4]]][[prop[5]]][1:nrow(data),] <- NA
         s[[prop[1]]][[prop[2]]][[prop[3]]][[prop[4]]][[prop[5]]][] <- data[]
       },
       {
+        tp <- sapply(s[[prop[1]]][[prop[2]]][[prop[3]]][[prop[4]]][[prop[5]]][[prop[6]]], class)
+        for (i in names(tp)) {
+          data %>%
+            dplyr::mutate_at(
+              dplyr::vars(i),
+              as,
+              Class = tp[i]
+            )
+        }
         s[[prop[1]]][[prop[2]]][[prop[3]]][[prop[4]]][[prop[5]]][[prop[6]]][1:nrow(data),] <- NA
         s[[prop[1]]][[prop[2]]][[prop[3]]][[prop[4]]][[prop[5]]][[prop[6]]][] <- data[]
       }
     )
     return(s)
   }
+
+
+
+# If x is character(), load from file -------------------------------------
+
+if (is.character(x)) {
+  if (!file.exists(x)) {
+    stop("If x is a string, it needs to be the name of an existing file!")
+  }
+  switch(
+    tools::file_ext(x),
+    xlsx = {
+      x <- readxl::read_excel(path = x, sheet = dataSheet)
+      ##
+      notNARow <- x %>%
+        is.na() %>%
+        rowSums() %>%
+        equals(ncol(x)) %>%
+        not()
+      notNACol <- x %>%
+        is.na() %>%
+        colSums() %>%
+        equals(nrow(x)) %>%
+        not()
+      x <- x[notNARow, notNACol]
+      ##
+    },
+    stop("If x is a file name, it has to have the extension '.xlsx'")
+  )
+
+}
 
 
 # Determine data and property columns in x and delete all other columns --------------------------------
@@ -186,14 +289,10 @@ addDataToEmeScheme <- function(
         tibble::as_tibble( validate = FALSE) %>%
         magrittr::set_names( namesEmeSchemeProp( prop = prop, s = s ) )
 
+
       ## trim whitespace around data
       for (i in 1:ncol(data)) {
         data[[i]] <- trimws(data[[i]])
-      }
-
-      if (verbose) {
-        cat("\n Extracted data:\n")
-        print(data)
       }
 
       ## expand row tibble to match number of values and fill data in

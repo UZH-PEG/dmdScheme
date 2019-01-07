@@ -17,7 +17,7 @@ test_that(
     expect_known_value(
       object = emeSchemeToXml(x = addDataToEmeScheme(x = emeScheme_gd, s = emeScheme, dataCol = 1, verbose = FALSE), output = "metadata"  ),
       file   = "emeSchemeToXml_metadata.rds",
-      update = FALSE
+      update = TRUE
     )
   }
 )
@@ -28,7 +28,7 @@ test_that(
     expect_known_value(
       object = emeSchemeToXml(x = addDataToEmeScheme(x = emeScheme_gd, s = emeScheme, dataCol = 1, verbose = FALSE), output = "complete"  ),
       file   = "emeSchemeToXml_complete.rds",
-      update = FALSE
+      update = TRUE
     )
   }
 )
