@@ -56,6 +56,7 @@ updateFromGoogleSheet <- function(
     save( emeScheme, file = here("data", "emeScheme.rda"))
 
 # update inst/googlesheet/emeScheme.xlsx ----------------------------------
+
     ## make the xlsx writable
     Sys.chmod(here("inst", "googlesheet", "emeScheme.xlsx"), "0777")
 
@@ -74,6 +75,12 @@ updateFromGoogleSheet <- function(
 
     ## write protect it again
     Sys.chmod(here("inst", "googlesheet", "emeScheme.xlsx"), "0444")
+
+
+# Update emeScheme.xml file -----------------------------------------------
+
+    addDataToEmeScheme( x = emeScheme_gd, s = emeScheme, dataSheet = 1, dataCol = 1) %>%
+      emeSchemeToXml(file = here("inst", "emeScheme_exampe.xml"))
 
 # bump version and change description in DECRIPTION -----------------------
 

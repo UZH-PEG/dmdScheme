@@ -4,13 +4,15 @@
 \alias{format_emeScheme_xlsx}
 \title{Format the \code{googlesheet/emeScheme.xlsx}}
 \usage{
-format_emeScheme_xlsx(emeScheme_gd)
+format_emeScheme_xlsx(fn, emeScheme_gd)
 }
 \arguments{
+\item{fn}{file name where the final xlsx should be saved to. If missing, it will not be saved.}
+
 \item{emeScheme_gd}{specifying this, makes it possible to use this function even during the update process.}
 }
 \value{
-invisibly \code{NULL}
+invisibly the workbook as a workbook object as created by \code{xlsx.crerateWorkbook()}
 }
 \description{
 Takes no arguments. Loads  \code{system.file("inst", "googlesheet", "emeScheme.xlsx", package = "emeScheme")}, formats it and saves it under the same name.
