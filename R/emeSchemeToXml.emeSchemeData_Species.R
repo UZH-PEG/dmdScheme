@@ -16,7 +16,6 @@ emeSchemeToXml.emeSchemeData_Species <- function(
 
   if (missing(tag)) {
     tag <- attr(x, "propertyName")
-    tag <- paste0(tag, "List")
     if (is.null(tag)) {
       tag <- "emeScheme"
     }
@@ -28,12 +27,12 @@ emeSchemeToXml.emeSchemeData_Species <- function(
 
   # x is of type emeSchemeData and therefore a tibble ------------------
 
-  xml <- XML::xmlNode(tag)
+  xml <- XML::xmlNode(name = paste0(tag, "List"))
 
   if (length(x) > 1) {
 
     for (i in 1:nrow(x)) {
-      xmlField <- XML::xmlNode(name = "species", attrs = c(name = x[["species"]][i]))
+      xmlField <- XML::xmlNode(name = tag, attrs = c(name = x[["species"]][i]))
       xmlFields <- lapply(
         names(x)[-1],
         function(nm){
@@ -43,8 +42,14 @@ emeSchemeToXml.emeSchemeData_Species <- function(
           )
         }
       )
-      xmlField <- XML::append.xmlNode(xmlField, xmlFields)
-      xml <- XML::append.xmlNode(xml, xmlField)
+      xmlField <- XML::append.xmlNode(
+        to = xmlField,
+        xmlFields
+      )
+      xml <- XML::append.xmlNode(
+        to = xml,
+        xmlField
+      )
     }
 
   } else {
