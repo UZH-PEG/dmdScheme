@@ -34,6 +34,18 @@ knitr::opts_chunk$set(
 )
 ##
 devtools::load_all(here())
+## update files in docs/data
+file.copy(
+  from = here("inst", "emeScheme.xsd.xml"),
+  to = here("docs", "data", "emeScheme.xsd.xml"),
+  overwrite = TRUE
+)
+file.copy(
+  from = here("inst", "emeScheme_example.xml"),
+  to = here("docs", "data", "emeScheme_example.xml"),
+  overwrite = TRUE
+)
+
 ```
 
 [![DOI](https://zenodo.org/badge/156543918.svg)](https://zenodo.org/badge/latestdoi/156543918)
@@ -300,11 +312,13 @@ emeScheme_gd %>%
 ## Sample data exported as xml
 The example data in the yellow column looks exported to xml as followed:
 
-```{r example_export_xml}
+```{r example_export_xml, echo=FALSE}
 emeScheme_gd %>%
   addDataToEmeScheme() %>%
-  emeSchemeToXml( ta = "Example Data" )
+  emeSchemeToXml( ta = "ExampleData" )
 ```
+
+The xml file with the example data can be downloaded from [here](./data/emeScheme_example.xml)
 
 ## Re-import from xml into R
 
