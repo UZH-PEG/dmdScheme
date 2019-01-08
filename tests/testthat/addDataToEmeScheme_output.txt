@@ -159,13 +159,70 @@
 
 29 
 30 
-31 
+
+ Working on identified row:
+# A tibble: 1 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Materials        LabPractices     description     
+# … with 1 more variable: `Example Data` <chr>
+
+ Properties:
+[1] "Experiment"   "Materials"    "LabPractices"
+
+ Input Columns:
+# A tibble: 2 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Materials        LabPractices     description     
+2 Experiment       Materials        LabPractices     comment         
+# … with 1 more variable: `Example Data` <chr>
+
+
 32 
 33 
-34 
+
+ Working on identified row:
+# A tibble: 1 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Materials        LongTermMainten… description     
+# … with 1 more variable: `Example Data` <chr>
+
+ Properties:
+[1] "Experiment"          "Materials"           "LongTermMaintenance"
+
+ Input Columns:
+# A tibble: 2 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Materials        LongTermMainten… description     
+2 Experiment       Materials        LongTermMainten… comment         
+# … with 1 more variable: `Example Data` <chr>
+
+
 35 
 36 
-37 
+
+ Working on identified row:
+# A tibble: 1 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Materials        LongTermPreserv… description     
+# … with 1 more variable: `Example Data` <chr>
+
+ Properties:
+[1] "Experiment"           "Materials"            "LongTermPreservation"
+
+ Input Columns:
+# A tibble: 2 x 5
+  Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
+  <chr>            <chr>            <chr>            <chr>           
+1 Experiment       Materials        LongTermPreserv… description     
+2 Experiment       Materials        LongTermPreserv… comment         
+# … with 1 more variable: `Example Data` <chr>
+
+
 38 
 39 
 40 
@@ -260,7 +317,24 @@
 53 
 54 
 55 
-56 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2            Property_Level_3 `Example Data`
+  <chr>            <chr>                       <chr>            <chr>         
+1 Treatment        DuringExperimentMaintenance description      lot's of work 
+
+ Properties:
+[1] "Treatment"                   "DuringExperimentMaintenance"
+
+ Input Columns:
+# A tibble: 2 x 4
+  Property_Level_1 Property_Level_2            Property_Level_3 `Example Data` 
+  <chr>            <chr>                       <chr>            <chr>          
+1 Treatment        DuringExperimentMaintenance description      lot's of work  
+2 Treatment        DuringExperimentMaintenance comment          not another one
+
+
 57 
 58 
 
@@ -299,8 +373,8 @@
   <chr>            <chr>            <chr>                <chr>                  
 1 Treatment        SpeciesTreatment species              tarantula maximus, ele…
 2 Treatment        SpeciesTreatment initialDensity       100, 200               
-3 Treatment        SpeciesTreatment densityChanges       <NA>                   
-4 Treatment        SpeciesTreatment ecologicalRoleInTre… <NA>                   
+3 Treatment        SpeciesTreatment densityChanges       0, 0                   
+4 Treatment        SpeciesTreatment ecologicalRoleInTre… prey, predator         
 
 
 65 
@@ -362,26 +436,111 @@
   Property_Level_1 Property_Level_2 Property_Level_3 `Example Data`
   <chr>            <chr>            <chr>            <chr>         
 1 Treatment        LightTreatment   intensity        1000          
-2 Treatment        LightTreatment   colour           <NA>          
+2 Treatment        LightTreatment   colour           650           
 3 Treatment        LightTreatment   photoperiod      20            
 
 
 77 
 78 
-79 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2 Property_Level_3 `Example Data`  
+  <chr>            <chr>            <chr>            <chr>           
+1 Treatment        Dispersal        spatialStructure triangular tubes
+
+ Properties:
+[1] "Treatment" "Dispersal"
+
+ Input Columns:
+# A tibble: 2 x 4
+  Property_Level_1 Property_Level_2 Property_Level_3 `Example Data`      
+  <chr>            <chr>            <chr>            <chr>               
+1 Treatment        Dispersal        spatialStructure triangular tubes    
+2 Treatment        Dispersal        change           daily random changes
+
+
 80 
 81 
-82 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2  Property_Level_3  `Example Data`
+  <chr>            <chr>             <chr>             <chr>         
+1 Treatment        NutrientTreatment changeInTreatment ad lib        
+
+ Properties:
+[1] "Treatment"         "NutrientTreatment"
+
+ Input Columns:
+# A tibble: 2 x 4
+  Property_Level_1 Property_Level_2  Property_Level_3  `Example Data`         
+  <chr>            <chr>             <chr>             <chr>                  
+1 Treatment        NutrientTreatment changeInTreatment ad lib                 
+2 Treatment        NutrientTreatment comment           do I have to sayt more?
+
+
 83 
 84 
-85 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2 Property_Level_3 `Example Data`
+  <chr>            <chr>            <chr>            <chr>         
+1 Treatment        Viscosity        description      like mustard  
+
+ Properties:
+[1] "Treatment" "Viscosity"
+
+ Input Columns:
+# A tibble: 2 x 4
+  Property_Level_1 Property_Level_2 Property_Level_3 `Example Data`
+  <chr>            <chr>            <chr>            <chr>         
+1 Treatment        Viscosity        description      like mustard  
+2 Treatment        Viscosity        comment          hot mustard   
+
+
 86 
 87 
-88 
-89 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2  Property_Level_3 `Example Data`
+  <chr>            <chr>             <chr>            <chr>         
+1 Treatment        BioticEnvironment type             green         
+
+ Properties:
+[1] "Treatment"         "BioticEnvironment"
+
+ Input Columns:
+# A tibble: 3 x 4
+  Property_Level_1 Property_Level_2  Property_Level_3 `Example Data`
+  <chr>            <chr>             <chr>            <chr>         
+1 Treatment        BioticEnvironment type             green         
+2 Treatment        BioticEnvironment value            55            
+3 Treatment        BioticEnvironment change           constant      
+
+
 90 
 91 
-92 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2 Property_Level_3 `Example Data`             
+  <chr>            <chr>            <chr>            <chr>                      
+1 Treatment        Disturbance      description      weekly introduction of bot…
+
+ Properties:
+[1] "Treatment"   "Disturbance"
+
+ Input Columns:
+# A tibble: 2 x 4
+  Property_Level_1 Property_Level_2 Property_Level_3 `Example Data`             
+  <chr>            <chr>            <chr>            <chr>                      
+1 Treatment        Disturbance      description      weekly introduction of bot…
+2 Treatment        Disturbance      comment          dilution of 90%            
+
+
 93 
 94 
 
@@ -399,8 +558,8 @@
   Property_Level_1 Property_Level_2      `Example Data`
   <chr>            <chr>                 <chr>         
 1 Sampling         frequency             3             
-2 Sampling         noOfSamples           <NA>          
-3 Sampling         samplingTimeLength    <NA>          
+2 Sampling         noOfSamples           100           
+3 Sampling         samplingTimeLength    300           
 4 Sampling         volume                20            
 5 Sampling         replacementMediumType same          
 
@@ -426,7 +585,7 @@
 2 Measuring        Microscopy       preparation      colour sample with whatever
 3 Measuring        Microscopy       typeOfMicroscope nice one                   
 4 Measuring        Microscopy       microscopyMethod dark field                 
-5 Measuring        Microscopy       comment          coumting elephant          
+5 Measuring        Microscopy       comment          counting elephants         
 
 
 106 
@@ -443,43 +602,128 @@
 
  Input Columns:
 # A tibble: 14 x 4
-   Property_Level_1 Property_Level_2 Property_Level_3  `Example Data`
-   <chr>            <chr>            <chr>             <chr>         
- 1 Measuring        VideoRecording   volume            10            
- 2 Measuring        VideoRecording   preparation       <NA>          
- 3 Measuring        VideoRecording   microscope        nice one      
- 4 Measuring        VideoRecording   magnification     100           
- 5 Measuring        VideoRecording   camera            supercom 4000 
- 6 Measuring        VideoRecording   microscopyMethod  <NA>          
- 7 Measuring        VideoRecording   resolution        5000          
- 8 Measuring        VideoRecording   colourSpace       green         
- 9 Measuring        VideoRecording   lengthOfRecording 10            
-10 Measuring        VideoRecording   frameRate         50            
-11 Measuring        VideoRecording   lightIntensity    2000          
-12 Measuring        VideoRecording   lightColour       <NA>          
-13 Measuring        VideoRecording   videoFormat       avi           
-14 Measuring        VideoRecording   comment           <NA>          
+   Property_Level_1 Property_Level_2 Property_Level_3  `Example Data`           
+   <chr>            <chr>            <chr>             <chr>                    
+ 1 Measuring        VideoRecording   volume            10                       
+ 2 Measuring        VideoRecording   preparation       nothing in particular    
+ 3 Measuring        VideoRecording   microscope        nice one                 
+ 4 Measuring        VideoRecording   magnification     100                      
+ 5 Measuring        VideoRecording   camera            supercom 4000            
+ 6 Measuring        VideoRecording   microscopyMethod  light and such stuff     
+ 7 Measuring        VideoRecording   resolution        5000x10000               
+ 8 Measuring        VideoRecording   colourSpace       green                    
+ 9 Measuring        VideoRecording   lengthOfRecording 10                       
+10 Measuring        VideoRecording   frameRate         50                       
+11 Measuring        VideoRecording   lightIntensity    2000                     
+12 Measuring        VideoRecording   lightColour       333                      
+13 Measuring        VideoRecording   videoFormat       avi                      
+14 Measuring        VideoRecording   comment           nothing interesting here…
 
 
 121 
 122 
-123 
-124 
-125 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2 Property_Level_3 `Example Data`             
+  <chr>            <chr>            <chr>            <chr>                      
+1 Measuring        FlowCam          makeTypeVersion  A nice one model 999, and …
+
+ Properties:
+[1] "Measuring" "FlowCam"  
+
+ Input Columns:
+# A tibble: 4 x 4
+  Property_Level_1 Property_Level_2 Property_Level_3  `Example Data`            
+  <chr>            <chr>            <chr>             <chr>                     
+1 Measuring        FlowCam          makeTypeVersion   A nice one model 999, and…
+2 Measuring        FlowCam          settingsParameter a = 1; cc = 33; x = 4, a …
+3 Measuring        FlowCam          volume            10, 20                    
+4 Measuring        FlowCam          treatment         nothing                   
+
+
 126 
 127 
-128 
-129 
-130 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2         Property_Level_3 `Example Data`     
+  <chr>            <chr>                    <chr>            <chr>              
+1 Measuring        BacterialDensityFlowcyt… typeVersion      a better one Model…
+
+ Properties:
+[1] "Measuring"                     "BacterialDensityFlowcytometry"
+
+ Input Columns:
+# A tibble: 4 x 4
+  Property_Level_1 Property_Level_2        Property_Level_3  `Example Data`     
+  <chr>            <chr>                   <chr>             <chr>              
+1 Measuring        BacterialDensityFlowcy… typeVersion       a better one Model…
+2 Measuring        BacterialDensityFlowcy… volume            20                 
+3 Measuring        BacterialDensityFlowcy… settingsParameter tgp = 1; ccp = 33;…
+4 Measuring        BacterialDensityFlowcy… treatment         noyhing            
+
+
 131 
 132 
-133 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2 Property_Level_3 `Example Data`
+  <chr>            <chr>            <chr>            <chr>         
+1 Measuring        DNABarcoding     description      complicated   
+
+ Properties:
+[1] "Measuring"    "DNABarcoding"
+
+ Input Columns:
+# A tibble: 2 x 4
+  Property_Level_1 Property_Level_2 Property_Level_3 `Example Data`
+  <chr>            <chr>            <chr>            <chr>         
+1 Measuring        DNABarcoding     description      complicated   
+2 Measuring        DNABarcoding     comment          no idea       
+
+
 134 
 135 
-136 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2 Property_Level_3 `Example Data`  
+  <chr>            <chr>            <chr>            <chr>           
+1 Measuring        Respirometry     description      also complicated
+
+ Properties:
+[1] "Measuring"    "Respirometry"
+
+ Input Columns:
+# A tibble: 2 x 4
+  Property_Level_1 Property_Level_2 Property_Level_3  `Example Data`            
+  <chr>            <chr>            <chr>             <chr>                     
+1 Measuring        Respirometry     description       also complicated          
+2 Measuring        Respirometry     moreDetailsNeeded so what shoiuld I put her…
+
+
 137 
 138 
-139 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2     Property_Level_3 `Example Data`         
+  <chr>            <chr>                <chr>            <chr>                  
+1 Measuring        NutrientsDecomposit… description      something I don't know…
+
+ Properties:
+[1] "Measuring"              "NutrientsDecomposition"
+
+ Input Columns:
+# A tibble: 2 x 4
+  Property_Level_1 Property_Level_2     Property_Level_3 `Example Data`         
+  <chr>            <chr>                <chr>            <chr>                  
+1 Measuring        NutrientsDecomposit… description      something I don't know…
+2 Measuring        NutrientsDecomposit… comment          but somebody knows     
+
+
 140 
 141 
 142 
@@ -498,7 +742,7 @@
   Property_Level_1 Property_Level_2   Property_Level_3 `Example Data`           
   <chr>            <chr>              <chr>            <chr>                    
 1 DataExtraction   MicroscopyAnalysis description      counting and calculation…
-2 DataExtraction   MicroscopyAnalysis comment          <NA>                     
+2 DataExtraction   MicroscopyAnalysis comment          difficult counting       
 
 
 144 
@@ -523,28 +767,182 @@
 
 147 
 148 
-149 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2 Property_Level_3 `Example Data`
+  <chr>            <chr>            <chr>            <chr>         
+1 DataExtraction   FlowCamAnalysis  description      easy          
+
+ Properties:
+[1] "DataExtraction"  "FlowCamAnalysis"
+
+ Input Columns:
+# A tibble: 2 x 4
+  Property_Level_1 Property_Level_2 Property_Level_3 `Example Data`
+  <chr>            <chr>            <chr>            <chr>         
+1 DataExtraction   FlowCamAnalysis  description      easy          
+2 DataExtraction   FlowCamAnalysis  comment          nothing       
+
+
 150 
 151 
-152 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2             Property_Level_3 `Example Data` 
+  <chr>            <chr>                        <chr>            <chr>          
+1 DataExtraction   BacterialDensityFlowcytomet… description      so what is thi…
+
+ Properties:
+[1] "DataExtraction"                       
+[2] "BacterialDensityFlowcytometryAnalysis"
+
+ Input Columns:
+# A tibble: 2 x 4
+  Property_Level_1 Property_Level_2          Property_Level_3 `Example Data`    
+  <chr>            <chr>                     <chr>            <chr>             
+1 DataExtraction   BacterialDensityFlowcyto… description      so what is this?  
+2 DataExtraction   BacterialDensityFlowcyto… comment          no idea what to p…
+
+
 153 
 154 
-155 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2        Property_Level_3 `Example Data`    
+  <chr>            <chr>                   <chr>            <chr>             
+1 DataExtraction   ParticleCounterAnalysis description      and another method
+
+ Properties:
+[1] "DataExtraction"          "ParticleCounterAnalysis"
+
+ Input Columns:
+# A tibble: 2 x 4
+  Property_Level_1 Property_Level_2        Property_Level_3 `Example Data`    
+  <chr>            <chr>                   <chr>            <chr>             
+1 DataExtraction   ParticleCounterAnalysis description      and another method
+2 DataExtraction   ParticleCounterAnalysis comment          also nothing      
+
+
 156 
 157 
-158 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2              Property_Level_3 `Example Data`
+  <chr>            <chr>                         <chr>            <chr>         
+1 DataExtraction   RamanMicrospectroscopyAnalys… description      what is this? 
+
+ Properties:
+[1] "DataExtraction"                 "RamanMicrospectroscopyAnalysis"
+
+ Input Columns:
+# A tibble: 2 x 4
+  Property_Level_1 Property_Level_2              Property_Level_3 `Example Data`
+  <chr>            <chr>                         <chr>            <chr>         
+1 DataExtraction   RamanMicrospectroscopyAnalys… description      what is this? 
+2 DataExtraction   RamanMicrospectroscopyAnalys… comment          good question 
+
+
 159 
 160 
-161 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2     Property_Level_3 `Example Data`         
+  <chr>            <chr>                <chr>            <chr>                  
+1 DataExtraction   DNABarcodingAnalysis description      very complicated as we…
+
+ Properties:
+[1] "DataExtraction"       "DNABarcodingAnalysis"
+
+ Input Columns:
+# A tibble: 2 x 4
+  Property_Level_1 Property_Level_2     Property_Level_3 `Example Data`         
+  <chr>            <chr>                <chr>            <chr>                  
+1 DataExtraction   DNABarcodingAnalysis description      very complicated as we…
+2 DataExtraction   DNABarcodingAnalysis comment          nothing                
+
+
 162 
 163 
-164 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2             Property_Level_3 `Example Data`
+  <chr>            <chr>                        <chr>            <chr>         
+1 DataExtraction   GenProteoEpigenomicsAnalysis description      even worse    
+
+ Properties:
+[1] "DataExtraction"               "GenProteoEpigenomicsAnalysis"
+
+ Input Columns:
+# A tibble: 2 x 4
+  Property_Level_1 Property_Level_2             Property_Level_3 `Example Data`
+  <chr>            <chr>                        <chr>            <chr>         
+1 DataExtraction   GenProteoEpigenomicsAnalysis description      even worse    
+2 DataExtraction   GenProteoEpigenomicsAnalysis comment          no idea       
+
+
 165 
 166 
-167 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2     Property_Level_3 `Example Data`
+  <chr>            <chr>                <chr>            <chr>         
+1 DataExtraction   RespirometryAnalysis description      some stats    
+
+ Properties:
+[1] "DataExtraction"       "RespirometryAnalysis"
+
+ Input Columns:
+# A tibble: 2 x 4
+  Property_Level_1 Property_Level_2     Property_Level_3 `Example Data`
+  <chr>            <chr>                <chr>            <chr>         
+1 DataExtraction   RespirometryAnalysis description      some stats    
+2 DataExtraction   RespirometryAnalysis comment          and sums      
+
+
 168 
 169 
-170 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2           Property_Level_3 `Example Data`   
+  <chr>            <chr>                      <chr>            <chr>            
+1 DataExtraction   NutrientsDecompositionAna… description      much less afterw…
+
+ Properties:
+[1] "DataExtraction"                 "NutrientsDecompositionAnalysis"
+
+ Input Columns:
+# A tibble: 2 x 4
+  Property_Level_1 Property_Level_2           Property_Level_3 `Example Data`   
+  <chr>            <chr>                      <chr>            <chr>            
+1 DataExtraction   NutrientsDecompositionAna… description      much less afterw…
+2 DataExtraction   NutrientsDecompositionAna… comment          something nice   
+
+
 171 
 172 
-173 
+
+ Working on identified row:
+# A tibble: 1 x 4
+  Property_Level_1 Property_Level_2     Property_Level_3 `Example Data` 
+  <chr>            <chr>                <chr>            <chr>          
+1 DataExtraction   InteractionsAnalysis description      and here we are
+
+ Properties:
+[1] "DataExtraction"       "InteractionsAnalysis"
+
+ Input Columns:
+# A tibble: 2 x 4
+  Property_Level_1 Property_Level_2     Property_Level_3 `Example Data` 
+  <chr>            <chr>                <chr>            <chr>          
+1 DataExtraction   InteractionsAnalysis description      and here we are
+2 DataExtraction   InteractionsAnalysis comment          the end        
+
+

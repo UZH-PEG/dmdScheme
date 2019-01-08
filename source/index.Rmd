@@ -103,8 +103,6 @@ We use these sections as a starting point to define a metadata scheme to describ
 
 # From Project to Dataset - how the emeScheme fits in
 
-
- 
 ```{r data_layout, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 33, fig.height = 49}
 '
 !define Project(name,desc) class name as "desc" << (P,red) >> #TECHNOLOGY
@@ -236,19 +234,20 @@ The working copy can be found on a [Google Doc Sheet](https://docs.google.com/sp
 
 ## Current Structure
 
-The names of the properties folow the following convention:
+The properties follow these conventions:
 
-* Properties in starting with a **capital letters** (in **<span style="text-decoration:underline; color: blue" >Blue</span>**) are **property sets**, containing sub-properties
-* Properties starting with a **small letter** (in **<span style="color:black">black</span>**) are **value properties**, containing values of the types **character**, **numeric** or **integer**. They follow the format **PropertyName (unit) [type]**. So a type can only be specified if a unit has been specified. Default type is `character`.
+* Properties in starting with a **capital letters** (in **<span style="text-decoration:underline; color: blue" >Blue</span>**) are **property sets**, containing either other property sets or other value properties, but not both. 
+* Properties starting with a **small letter** (in **<span style="color:black">black</span>**) are **value properties**, containing values. They follow the format **PropertyName (unit) [type]**.
+  * **Unit** is the unit of the value (e.g. l, rpm, ...)
+  * **type** is the type of the value. Possible values are **integer**, **numeric**, **logical**, and, the default, **character**. This is used as the data type in R.
+  * all **value properties** in one **property set** have to have the same number of entries, separated by a comma.
+  * in some **value properties** several entries belong together and are considered one meta data point (e.g. **parameterUsed** in **VideoAnalysis**. These entries are separated by a semicolon, and will **only** be split during the export ot the xml file.
+* No properties are mandatory!
+* Some properties are repeatable **<span style="color:red">TODO: Needs to be specified!</span>**
 
-<!-- The numbersi in brackets indicate if a property is mandatory or obligatory and non-repeatable or repeatable: -->
-
-<!-- |     | mandatory | repeatable | -->
-<!-- |-----|-----------|------------| -->
-<!-- | 0-1 |           |            |  -->
-<!-- | 0-n |           |     X      |   -->
-<!-- | 1-1 |     X     |            | -->
-<!-- | 1-n |     X     |     X      | -->
+  
+  
+A **property set** which contains **value properties** must be seen as tables and must therefore have the same number of entries for each value property.
 
 The structure as at **`r read.dcf(here("DESCRIPTION"))[1, "GSUpdate"]` GMT** is as followed:
 

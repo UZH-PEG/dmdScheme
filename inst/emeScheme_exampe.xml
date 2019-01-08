@@ -1,25 +1,33 @@
 <?xml version="1.0"?>
 <emeScheme>
  <Experiment>
-  <ExperimentalDesign>
-   <noTreatments>3</noTreatments>
-   <noReplicatesPerTreatment>10</noReplicatesPerTreatment>
-   <description>This is a great experiment</description>
-  </ExperimentalDesign>
+  <ExperimentalDesignList>
+   <ExperimentalDesign>
+    <noTreatments>3</noTreatments>
+    <noReplicatesPerTreatment>10</noReplicatesPerTreatment>
+    <description>This is a great experiment</description>
+   </ExperimentalDesign>
+  </ExperimentalDesignList>
   <Materials>
-   <Incubators>
-    <makeTypeVersion>Hyper Incubator 2000</makeTypeVersion>
-    <comment>NA</comment>
-   </Incubators>
-   <Container>
-    <type>bottle</type>
-    <volume>200</volume>
-    <covers>foil</covers>
-   </Container>
-   <Shakers>
-    <makeTypeVersion>Krups</makeTypeVersion>
-    <speed>3000</speed>
-   </Shakers>
+   <IncubatorsList>
+    <Incubators>
+     <makeTypeVersion>Hyper Incubator 2000</makeTypeVersion>
+     <comment>bought on ebay</comment>
+    </Incubators>
+   </IncubatorsList>
+   <ContainerList>
+    <Container>
+     <type>bottle</type>
+     <volume>200</volume>
+     <covers>foil</covers>
+    </Container>
+   </ContainerList>
+   <ShakersList>
+    <Shakers>
+     <makeTypeVersion>Krups</makeTypeVersion>
+     <speed>3000</speed>
+    </Shakers>
+   </ShakersList>
    <SpeciesList>
     <species name="tarantula maximus">
      <strain>yellow</strain>
@@ -32,216 +40,302 @@
      <density>500</density>
     </species>
    </SpeciesList>
-   <CultureMedium>
-    <volume>150</volume>
-    <type>Ultimate growth</type>
-   </CultureMedium>
-   <BacteriaFlagellates>
-    <species>little things</species>
-    <strain>NA</strain>
-    <sourcePellet>NA</sourcePellet>
-   </BacteriaFlagellates>
-   <LabPractices>
-    <description>NA</description>
-    <comment>NA</comment>
-   </LabPractices>
-   <LongTermMaintenance>
-    <description>NA</description>
-    <comment>NA</comment>
-   </LongTermMaintenance>
-   <LongTermPreservation>
-    <description>NA</description>
-    <comment>NA</comment>
-   </LongTermPreservation>
+   <CultureMediumList>
+    <CultureMedium>
+     <volume>150</volume>
+     <type>Ultimate growth</type>
+    </CultureMedium>
+   </CultureMediumList>
+   <BacteriaFlagellatesList>
+    <BacteriaFlagellates>
+     <species>little things</species>
+     <strain>actually no idea</strain>
+     <sourcePellet>also ebay</sourcePellet>
+    </BacteriaFlagellates>
+   </BacteriaFlagellatesList>
+   <LabPracticesList>
+    <LabPractices>
+     <description>very good</description>
+     <comment>do I have to say more?</comment>
+    </LabPractices>
+   </LabPracticesList>
+   <LongTermMaintenanceList>
+    <LongTermMaintenance>
+     <description>no idea</description>
+     <comment>nothing to say here</comment>
+    </LongTermMaintenance>
+   </LongTermMaintenanceList>
+   <LongTermPreservationList>
+    <LongTermPreservation>
+     <description>freezer</description>
+     <comment>-80</comment>
+    </LongTermPreservation>
+   </LongTermPreservationList>
   </Materials>
   <Initialization>
-   <InitialConditions>
-    <description>same temperature</description>
-    <runInTime>240</runInTime>
-   </InitialConditions>
-   <Temperature>
-    <temperature>20</temperature>
-    <temperatureRange>0</temperatureRange>
-    <temperatureChangeRate>0</temperatureChangeRate>
-   </Temperature>
-   <Light>
-    <intensity>500</intensity>
-    <colour>NA</colour>
-    <photoperiod>12</photoperiod>
-   </Light>
-   <FinalConditions>
-    <description>green glow</description>
-    <comment>NA</comment>
-   </FinalConditions>
+   <InitialConditionsList>
+    <InitialConditions>
+     <description>same temperature</description>
+     <runInTime>240</runInTime>
+    </InitialConditions>
+   </InitialConditionsList>
+   <TemperatureList>
+    <Temperature>
+     <temperature>20</temperature>
+     <temperatureRange>0</temperatureRange>
+     <temperatureChangeRate>0</temperatureChangeRate>
+    </Temperature>
+   </TemperatureList>
+   <LightList>
+    <Light>
+     <intensity>500</intensity>
+     <colour>650</colour>
+     <photoperiod>12</photoperiod>
+    </Light>
+   </LightList>
+   <FinalConditionsList>
+    <FinalConditions>
+     <description>green glow</description>
+     <comment>nice - isn&apos;t it?</comment>
+    </FinalConditions>
+   </FinalConditionsList>
   </Initialization>
  </Experiment>
  <Treatment>
-  <DuringExperimentMaintenance>
-   <description>NA</description>
-   <comment>NA</comment>
-  </DuringExperimentMaintenance>
-  <SpeciesArrangement>
-   <noOfSpecies>2</noOfSpecies>
-   <interaction>food web or competition or etc</interaction>
-  </SpeciesArrangement>
+  <DuringExperimentMaintenanceList>
+   <DuringExperimentMaintenance>
+    <description>lot&apos;s of work</description>
+    <comment>not another one</comment>
+   </DuringExperimentMaintenance>
+  </DuringExperimentMaintenanceList>
+  <SpeciesArrangementList>
+   <SpeciesArrangement>
+    <noOfSpecies>2</noOfSpecies>
+    <interaction>food web or competition or etc</interaction>
+   </SpeciesArrangement>
+  </SpeciesArrangementList>
   <SpeciesTreatmentList>
    <species name="tarantula maximus">
     <initialDensity>100</initialDensity>
-    <densityChanges>NA</densityChanges>
-    <ecologicalRoleInTreatment>NA</ecologicalRoleInTreatment>
+    <densityChanges>0</densityChanges>
+    <ecologicalRoleInTreatment>prey</ecologicalRoleInTreatment>
    </species>
    <species name="elephantus minimus">
     <initialDensity>200</initialDensity>
-    <densityChanges>NA</densityChanges>
-    <ecologicalRoleInTreatment>NA</ecologicalRoleInTreatment>
+    <densityChanges>0</densityChanges>
+    <ecologicalRoleInTreatment>predator</ecologicalRoleInTreatment>
    </species>
   </SpeciesTreatmentList>
-  <BacteriaFlagellatesTreatment>
-   <species>little things</species>
-   <initial>500</initial>
-   <densityChanges>5</densityChanges>
-  </BacteriaFlagellatesTreatment>
-  <TemperatureTreatment>
-   <temperature>25</temperature>
-   <temperatureRange>20-30</temperatureRange>
-   <temperatureChangeRate>daily fluctuations</temperatureChangeRate>
-  </TemperatureTreatment>
-  <LightTreatment>
-   <intensity>1000</intensity>
-   <colour>NA</colour>
-   <photoperiod>20</photoperiod>
-  </LightTreatment>
-  <Dispersal>
-   <spatialStructure>NA</spatialStructure>
-   <change>NA</change>
-  </Dispersal>
-  <NutrientTreatment>
-   <changeInTreatment>NA</changeInTreatment>
-   <comment>NA</comment>
-  </NutrientTreatment>
-  <Viscosity>
-   <description>NA</description>
-   <comment>NA</comment>
-  </Viscosity>
-  <BioticEnvironment>
-   <type>NA</type>
-   <value>NA</value>
-   <change>NA</change>
-  </BioticEnvironment>
-  <Disturbance>
-   <description>NA</description>
-   <comment>NA</comment>
-  </Disturbance>
+  <BacteriaFlagellatesTreatmentList>
+   <BacteriaFlagellatesTreatment>
+    <species>little things</species>
+    <initial>500</initial>
+    <densityChanges>5</densityChanges>
+   </BacteriaFlagellatesTreatment>
+  </BacteriaFlagellatesTreatmentList>
+  <TemperatureTreatmentList>
+   <TemperatureTreatment>
+    <temperature>25</temperature>
+    <temperatureRange>20-30</temperatureRange>
+    <temperatureChangeRate>daily fluctuations</temperatureChangeRate>
+   </TemperatureTreatment>
+  </TemperatureTreatmentList>
+  <LightTreatmentList>
+   <LightTreatment>
+    <intensity>1000</intensity>
+    <colour>650</colour>
+    <photoperiod>20</photoperiod>
+   </LightTreatment>
+  </LightTreatmentList>
+  <DispersalList>
+   <Dispersal>
+    <spatialStructure>triangular tubes</spatialStructure>
+    <change>daily random changes</change>
+   </Dispersal>
+  </DispersalList>
+  <NutrientTreatmentList>
+   <NutrientTreatment>
+    <changeInTreatment>ad lib</changeInTreatment>
+    <comment>do I have to sayt more?</comment>
+   </NutrientTreatment>
+  </NutrientTreatmentList>
+  <ViscosityList>
+   <Viscosity>
+    <description>like mustard</description>
+    <comment>hot mustard</comment>
+   </Viscosity>
+  </ViscosityList>
+  <BioticEnvironmentList>
+   <BioticEnvironment>
+    <type>green</type>
+    <value>55</value>
+    <change>constant</change>
+   </BioticEnvironment>
+  </BioticEnvironmentList>
+  <DisturbanceList>
+   <Disturbance>
+    <description>weekly introduction of bottle necks</description>
+    <comment>dilution of 90%</comment>
+   </Disturbance>
+  </DisturbanceList>
  </Treatment>
- <Sampling>
-  <frequency>3</frequency>
-  <noOfSamples>NA</noOfSamples>
-  <samplingTimeLength>NA</samplingTimeLength>
-  <volume>20</volume>
-  <replacementMediumType>same</replacementMediumType>
- </Sampling>
+ <SamplingList>
+  <Sampling>
+   <frequency>3</frequency>
+   <noOfSamples>100</noOfSamples>
+   <samplingTimeLength>300</samplingTimeLength>
+   <volume>20</volume>
+   <replacementMediumType>same</replacementMediumType>
+  </Sampling>
+ </SamplingList>
  <Measuring>
-  <Microscopy>
-   <volume>10</volume>
-   <preparation>colour sample with whatever</preparation>
-   <typeOfMicroscope>nice one</typeOfMicroscope>
-   <microscopyMethod>dark field</microscopyMethod>
-   <comment>coumting elephant</comment>
-  </Microscopy>
-  <VideoRecording>
-   <volume>10</volume>
-   <preparation>NA</preparation>
-   <microscope>nice one</microscope>
-   <magnification>100</magnification>
-   <camera>supercom 4000</camera>
-   <microscopyMethod>NA</microscopyMethod>
-   <resolution>5000</resolution>
-   <colourSpace>green</colourSpace>
-   <lengthOfRecording>10</lengthOfRecording>
-   <frameRate>50</frameRate>
-   <lightIntensity>2000</lightIntensity>
-   <lightColour>NA</lightColour>
-   <videoFormat>avi</videoFormat>
-   <comment>NA</comment>
-  </VideoRecording>
-  <FlowCam>
-   <makeTypeVersion>NA</makeTypeVersion>
-   <settings>NA</settings>
-   <volume>NA</volume>
-   <treatment>NA</treatment>
-  </FlowCam>
-  <BacterialDensityFlowcytometry>
-   <typeVersion>NA</typeVersion>
-   <volume>NA</volume>
-   <settingsParameter>NA</settingsParameter>
-   <treatment>NA</treatment>
-  </BacterialDensityFlowcytometry>
-  <DNABarcoding>
-   <description>NA</description>
-   <comment>NA</comment>
-  </DNABarcoding>
-  <Respirometry>
-   <description>NA</description>
-   <moreDetailsNeeded>NA</moreDetailsNeeded>
-  </Respirometry>
-  <NutrientsDecomposition>
-   <description>NA</description>
-   <comment>NA</comment>
-  </NutrientsDecomposition>
+  <MicroscopyList>
+   <Microscopy>
+    <volume>10</volume>
+    <preparation>colour sample with whatever</preparation>
+    <typeOfMicroscope>nice one</typeOfMicroscope>
+    <microscopyMethod>dark field</microscopyMethod>
+    <comment>counting elephants</comment>
+   </Microscopy>
+  </MicroscopyList>
+  <VideoRecordingList>
+   <VideoRecording>
+    <volume>10</volume>
+    <preparation>nothing in particular</preparation>
+    <microscope>nice one</microscope>
+    <magnification>100</magnification>
+    <camera>supercom 4000</camera>
+    <microscopyMethod>light and such stuff</microscopyMethod>
+    <resolution>5000x10000</resolution>
+    <colourSpace>green</colourSpace>
+    <lengthOfRecording>10</lengthOfRecording>
+    <frameRate>50</frameRate>
+    <lightIntensity>2000</lightIntensity>
+    <lightColour>333</lightColour>
+    <videoFormat>avi</videoFormat>
+    <comment>nothing interesting here to read</comment>
+   </VideoRecording>
+  </VideoRecordingList>
+  <FlowCamList>
+   <FlowCam>
+    <makeTypeVersion>A nice one model 999</makeTypeVersion>
+    <settingsParameter name="a">1</settingsParameter>
+    <settingsParameter name="cc">33</settingsParameter>
+    <settingsParameter name="x">4</settingsParameter>
+    <volume>10</volume>
+    <treatment>nothing</treatment>
+   </FlowCam>
+   <FlowCam>
+    <makeTypeVersion>and another model</makeTypeVersion>
+    <settingsParameter name="a">11</settingsParameter>
+    <settingsParameter name="dd">44</settingsParameter>
+    <settingsParameter name="x">5</settingsParameter>
+    <volume>20</volume>
+    <treatment>nothing</treatment>
+   </FlowCam>
+  </FlowCamList>
+  <BacterialDensityFlowcytometryList>
+   <BacterialDensityFlowcytometry>
+    <typeVersion>a better one Modell 53rf9</typeVersion>
+    <volume>20</volume>
+    <settingsParameter>tgp = 1; ccp = 33; y = 4</settingsParameter>
+    <treatment>noyhing</treatment>
+   </BacterialDensityFlowcytometry>
+  </BacterialDensityFlowcytometryList>
+  <DNABarcodingList>
+   <DNABarcoding>
+    <description>complicated</description>
+    <comment>no idea</comment>
+   </DNABarcoding>
+  </DNABarcodingList>
+  <RespirometryList>
+   <Respirometry>
+    <description>also complicated</description>
+    <moreDetailsNeeded>so what shoiuld I put here?</moreDetailsNeeded>
+   </Respirometry>
+  </RespirometryList>
+  <NutrientsDecompositionList>
+   <NutrientsDecomposition>
+    <description>something I don&apos;t know about</description>
+    <comment>but somebody knows</comment>
+   </NutrientsDecomposition>
+  </NutrientsDecompositionList>
  </Measuring>
  <DataExtraction>
-  <MicroscopyAnalysis>
-   <description>counting and calculationof density</description>
-   <comment>NA</comment>
-  </MicroscopyAnalysis>
+  <MicroscopyAnalysisList>
+   <MicroscopyAnalysis>
+    <description>counting and calculation of density</description>
+    <comment>difficult counting</comment>
+   </MicroscopyAnalysis>
+  </MicroscopyAnalysisList>
   <VideoAnalysisList>
-   <analysisMethod name="bemovi">
+   <VideoAnalysis>
+    <analysisMethod>bemovi</analysisMethod>
     <parameter name="a">1</parameter>
     <parameter name="b">2</parameter>
     <parameter name="c">3</parameter>
     <parameter name="x">35</parameter>
-   </analysisMethod>
-   <analysisMethod name="bemovi 2">
+   </VideoAnalysis>
+   <VideoAnalysis>
+    <analysisMethod>bemovi 2</analysisMethod>
     <parameter name="a">10</parameter>
     <parameter name="b">3</parameter>
     <parameter name="y">9999</parameter>
-   </analysisMethod>
+   </VideoAnalysis>
   </VideoAnalysisList>
-  <FlowCamAnalysis>
-   <description>NA</description>
-   <comment>NA</comment>
-  </FlowCamAnalysis>
-  <BacterialDensityFlowcytometryAnalysis>
-   <description>NA</description>
-   <comment>NA</comment>
-  </BacterialDensityFlowcytometryAnalysis>
-  <ParticleCounterAnalysis>
-   <description>NA</description>
-   <comment>NA</comment>
-  </ParticleCounterAnalysis>
-  <RamanMicrospectroscopyAnalysis>
-   <description>NA</description>
-   <comment>NA</comment>
-  </RamanMicrospectroscopyAnalysis>
-  <DNABarcodingAnalysis>
-   <description>NA</description>
-   <comment>NA</comment>
-  </DNABarcodingAnalysis>
-  <GenProteoEpigenomicsAnalysis>
-   <description>NA</description>
-   <comment>NA</comment>
-  </GenProteoEpigenomicsAnalysis>
-  <RespirometryAnalysis>
-   <description>NA</description>
-   <comment>NA</comment>
-  </RespirometryAnalysis>
-  <NutrientsDecompositionAnalysis>
-   <description>NA</description>
-   <comment>NA</comment>
-  </NutrientsDecompositionAnalysis>
-  <InteractionsAnalysis>
-   <description>NA</description>
-   <comment>NA</comment>
-  </InteractionsAnalysis>
+  <FlowCamAnalysisList>
+   <FlowCamAnalysis>
+    <description>easy</description>
+    <comment>nothing</comment>
+   </FlowCamAnalysis>
+  </FlowCamAnalysisList>
+  <BacterialDensityFlowcytometryAnalysisList>
+   <BacterialDensityFlowcytometryAnalysis>
+    <description>so what is this?</description>
+    <comment>no idea what to put here</comment>
+   </BacterialDensityFlowcytometryAnalysis>
+  </BacterialDensityFlowcytometryAnalysisList>
+  <ParticleCounterAnalysisList>
+   <ParticleCounterAnalysis>
+    <description>and another method</description>
+    <comment>also nothing</comment>
+   </ParticleCounterAnalysis>
+  </ParticleCounterAnalysisList>
+  <RamanMicrospectroscopyAnalysisList>
+   <RamanMicrospectroscopyAnalysis>
+    <description>what is this?</description>
+    <comment>good question</comment>
+   </RamanMicrospectroscopyAnalysis>
+  </RamanMicrospectroscopyAnalysisList>
+  <DNABarcodingAnalysisList>
+   <DNABarcodingAnalysis>
+    <description>very complicated as well</description>
+    <comment>nothing</comment>
+   </DNABarcodingAnalysis>
+  </DNABarcodingAnalysisList>
+  <GenProteoEpigenomicsAnalysisList>
+   <GenProteoEpigenomicsAnalysis>
+    <description>even worse</description>
+    <comment>no idea</comment>
+   </GenProteoEpigenomicsAnalysis>
+  </GenProteoEpigenomicsAnalysisList>
+  <RespirometryAnalysisList>
+   <RespirometryAnalysis>
+    <description>some stats</description>
+    <comment>and sums</comment>
+   </RespirometryAnalysis>
+  </RespirometryAnalysisList>
+  <NutrientsDecompositionAnalysisList>
+   <NutrientsDecompositionAnalysis>
+    <description>much less afterwards</description>
+    <comment>something nice</comment>
+   </NutrientsDecompositionAnalysis>
+  </NutrientsDecompositionAnalysisList>
+  <InteractionsAnalysisList>
+   <InteractionsAnalysis>
+    <description>and here we are</description>
+    <comment>the end</comment>
+   </InteractionsAnalysis>
+  </InteractionsAnalysisList>
  </DataExtraction>
 </emeScheme>
