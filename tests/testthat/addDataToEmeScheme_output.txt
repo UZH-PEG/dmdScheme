@@ -29,7 +29,7 @@
   Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
   <chr>            <chr>            <chr>            <chr>           
 1 Experiment       Materials        Incubators       makeTypeVersion 
-# ... with 1 more variable: `Example Data` <chr>
+# … with 1 more variable: `Example Data` <chr>
 
  Properties:
 [1] "Experiment" "Materials"  "Incubators"
@@ -40,7 +40,7 @@
   <chr>            <chr>            <chr>            <chr>           
 1 Experiment       Materials        Incubators       makeTypeVersion 
 2 Experiment       Materials        Incubators       comment         
-# ... with 1 more variable: `Example Data` <chr>
+# … with 1 more variable: `Example Data` <chr>
 
 
 10 
@@ -51,7 +51,7 @@
   Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
   <chr>            <chr>            <chr>            <chr>           
 1 Experiment       Materials        Container        type            
-# ... with 1 more variable: `Example Data` <chr>
+# … with 1 more variable: `Example Data` <chr>
 
  Properties:
 [1] "Experiment" "Materials"  "Container" 
@@ -63,7 +63,7 @@
 1 Experiment       Materials        Container        type            
 2 Experiment       Materials        Container        volume          
 3 Experiment       Materials        Container        covers          
-# ... with 1 more variable: `Example Data` <chr>
+# … with 1 more variable: `Example Data` <chr>
 
 
 14 
@@ -74,7 +74,7 @@
   Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
   <chr>            <chr>            <chr>            <chr>           
 1 Experiment       Materials        Shakers          makeTypeVersion 
-# ... with 1 more variable: `Example Data` <chr>
+# … with 1 more variable: `Example Data` <chr>
 
  Properties:
 [1] "Experiment" "Materials"  "Shakers"   
@@ -85,7 +85,7 @@
   <chr>            <chr>            <chr>            <chr>           
 1 Experiment       Materials        Shakers          makeTypeVersion 
 2 Experiment       Materials        Shakers          speed           
-# ... with 1 more variable: `Example Data` <chr>
+# … with 1 more variable: `Example Data` <chr>
 
 
 17 
@@ -96,7 +96,7 @@
   Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
   <chr>            <chr>            <chr>            <chr>           
 1 Experiment       Materials        Species          species         
-# ... with 1 more variable: `Example Data` <chr>
+# … with 1 more variable: `Example Data` <chr>
 
  Properties:
 [1] "Experiment" "Materials"  "Species"   
@@ -109,7 +109,7 @@
 2 Experiment       Materials        Species          strain          
 3 Experiment       Materials        Species          source          
 4 Experiment       Materials        Species          density         
-# ... with 1 more variable: `Example Data` <chr>
+# … with 1 more variable: `Example Data` <chr>
 
 
 22 
@@ -120,7 +120,7 @@
   Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
   <chr>            <chr>            <chr>            <chr>           
 1 Experiment       Materials        CultureMedium    volume          
-# ... with 1 more variable: `Example Data` <chr>
+# … with 1 more variable: `Example Data` <chr>
 
  Properties:
 [1] "Experiment"    "Materials"     "CultureMedium"
@@ -131,7 +131,7 @@
   <chr>            <chr>            <chr>            <chr>           
 1 Experiment       Materials        CultureMedium    volume          
 2 Experiment       Materials        CultureMedium    type            
-# ... with 1 more variable: `Example Data` <chr>
+# … with 1 more variable: `Example Data` <chr>
 
 
 25 
@@ -142,7 +142,7 @@
   Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
   <chr>            <chr>            <chr>            <chr>           
 1 Experiment       Materials        BacteriaFlagell… species         
-# ... with 1 more variable: `Example Data` <chr>
+# … with 1 more variable: `Example Data` <chr>
 
  Properties:
 [1] "Experiment"          "Materials"           "BacteriaFlagellates"
@@ -154,7 +154,7 @@
 1 Experiment       Materials        BacteriaFlagell… species         
 2 Experiment       Materials        BacteriaFlagell… strain          
 3 Experiment       Materials        BacteriaFlagell… sourcePellet    
-# ... with 1 more variable: `Example Data` <chr>
+# … with 1 more variable: `Example Data` <chr>
 
 
 29 
@@ -175,7 +175,7 @@
   Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
   <chr>            <chr>            <chr>            <chr>           
 1 Experiment       Initialization   InitialConditio… description     
-# ... with 1 more variable: `Example Data` <chr>
+# … with 1 more variable: `Example Data` <chr>
 
  Properties:
 [1] "Experiment"        "Initialization"    "InitialConditions"
@@ -186,7 +186,7 @@
   <chr>            <chr>            <chr>            <chr>           
 1 Experiment       Initialization   InitialConditio… description     
 2 Experiment       Initialization   InitialConditio… runInTime       
-# ... with 1 more variable: `Example Data` <chr>
+# … with 1 more variable: `Example Data` <chr>
 
 
 42 
@@ -197,7 +197,7 @@
   Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
   <chr>            <chr>            <chr>            <chr>           
 1 Experiment       Initialization   Temperature      temperature     
-# ... with 1 more variable: `Example Data` <chr>
+# … with 1 more variable: `Example Data` <chr>
 
  Properties:
 [1] "Experiment"     "Initialization" "Temperature"   
@@ -209,7 +209,7 @@
 1 Experiment       Initialization   Temperature      temperature     
 2 Experiment       Initialization   Temperature      temperatureRange
 3 Experiment       Initialization   Temperature      temperatureChan…
-# ... with 1 more variable: `Example Data` <chr>
+# … with 1 more variable: `Example Data` <chr>
 
 
 46 
@@ -220,7 +220,7 @@
   Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
   <chr>            <chr>            <chr>            <chr>           
 1 Experiment       Initialization   Light            intensity       
-# ... with 1 more variable: `Example Data` <chr>
+# … with 1 more variable: `Example Data` <chr>
 
  Properties:
 [1] "Experiment"     "Initialization" "Light"         
@@ -232,7 +232,7 @@
 1 Experiment       Initialization   Light            intensity       
 2 Experiment       Initialization   Light            colour          
 3 Experiment       Initialization   Light            photoperiod     
-# ... with 1 more variable: `Example Data` <chr>
+# … with 1 more variable: `Example Data` <chr>
 
 
 50 
@@ -243,7 +243,7 @@
   Property_Level_1 Property_Level_2 Property_Level_3 Property_Level_4
   <chr>            <chr>            <chr>            <chr>           
 1 Experiment       Initialization   FinalConditions  description     
-# ... with 1 more variable: `Example Data` <chr>
+# … with 1 more variable: `Example Data` <chr>
 
  Properties:
 [1] "Experiment"      "Initialization"  "FinalConditions"
@@ -254,7 +254,7 @@
   <chr>            <chr>            <chr>            <chr>           
 1 Experiment       Initialization   FinalConditions  description     
 2 Experiment       Initialization   FinalConditions  comment         
-# ... with 1 more variable: `Example Data` <chr>
+# … with 1 more variable: `Example Data` <chr>
 
 
 53 

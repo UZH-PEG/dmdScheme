@@ -6,7 +6,7 @@ test_that(
     expect_known_value(
       object = gdToScheme( x = readRDS("emeScheme_gd.rds"), debug = FALSE ),
       file   = "emeScheme.rds",
-      update = FALSE
+      update = TRUE
     )
   }
 )
@@ -17,7 +17,7 @@ test_that(
     expect_known_output(
       object = gdToScheme( x = readRDS("emeScheme_gd.rds"), debug = TRUE ),
       file   = "emeScheme_output.txt",
-      update = FALSE
+      update = TRUE
     )
   }
 )
