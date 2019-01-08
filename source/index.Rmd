@@ -4,13 +4,13 @@ author: "Rainer M. Krug"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   prettydoc::html_pretty:
-    self_contained: no 
+    self_contained: yes 
     theme: cayman
     highlight: github
     toc: true
   pdf_document: default
   html_document:
-    self_contained: no 
+    self_contained: yes
     theme: cerulean
     toc: true
     toc_float: true
