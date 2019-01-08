@@ -71,7 +71,7 @@ updateFromGoogleSheet <- function(
       emeScheme_gd = emeScheme_gd
     )
 
-    file.copy(here("inst", "googlesheet", "emeScheme.xlsx"), here("tests", "testthat", "emeScheme.xlsx"))
+    file.copy(here("inst", "googlesheet", "emeScheme.xlsx"), here("tests", "testthat", "emeScheme.xlsx"), overwrite = TRUE)
 
     ## write protect it again
     Sys.chmod(here("inst", "googlesheet", "emeScheme.xlsx"), "0444")
