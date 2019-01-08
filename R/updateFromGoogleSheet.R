@@ -80,7 +80,7 @@ updateFromGoogleSheet <- function(
 # Update emeScheme.xml file -----------------------------------------------
 
     addDataToEmeScheme( x = emeScheme_gd, s = emeScheme, dataSheet = 1, dataCol = 1) %>%
-      emeSchemeToXml(file = here("inst", "emeScheme_exampe.xml"))
+      emeSchemeToXml(file = here("inst", "emeScheme_example.xml"))
 
 # bump version and change description in DECRIPTION -----------------------
 
