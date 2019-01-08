@@ -1,14 +1,13 @@
 #' Format the \code{googlesheet/emeScheme.xlsx}
 #'
 #' Takes no arguments. Loads  \code{system.file("inst", "googlesheet", "emeScheme.xlsx", package = "emeScheme")}, formats it and saves it under the same name.
+#' @param fn file name where the final xlsx should be saved to. If missing, it will not be saved.
 #' @param emeScheme_gd specifying this, makes it possible to use this function even during the update process.
-#' @return invisibly \code{NULL}
+#' @return invisibly the workbook as a workbook object as created by \code{xlsx.crerateWorkbook()}
 #' @importFrom xlsx loadWorkbook getSheets getRows getCells getCellValue CellStyle CellProtection Fill Border setCellStyle setColumnWidth saveWorkbook
 #' @importFrom magrittr %>%
 #'
-format_emeScheme_xlsx <- function(emeScheme_gd) {
-  ## define file name
-  fn <- system.file("inst", "googlesheet", "emeScheme.xlsx", package = "emeScheme")
+format_emeScheme_xlsx <- function(fn, emeScheme_gd) {
 
   ## get logical vector indicating if row contains a value property
   valueRows <- emeScheme_gd %>%
@@ -79,8 +78,12 @@ format_emeScheme_xlsx <- function(emeScheme_gd) {
 
   ## Protect sheet with password
   sheet$protectSheet("not_very_secure_but_ok")
+
   ## save workbook again
-  Sys.chmod(fn, "0777")
-  xlsx::saveWorkbook(wb, fn)
+  if (!missing(fn)) {
+    xlsx::saveWorkbook(wb, fn)
+  }
+
+  invisible( wb )
 }
 

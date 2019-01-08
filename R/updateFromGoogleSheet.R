@@ -56,6 +56,7 @@ updateFromGoogleSheet <- function(
     save( emeScheme, file = here("data", "emeScheme.rda"))
 
 # update inst/googlesheet/emeScheme.xlsx ----------------------------------
+    ## make the xlsx writable
     Sys.chmod(here("inst", "googlesheet", "emeScheme.xlsx"), "0777")
 
     gs_download(
@@ -63,11 +64,16 @@ updateFromGoogleSheet <- function(
       to = here("inst", "googlesheet", "emeScheme.xlsx"),
       overwrite = TRUE
     )
-    format_emeScheme_xlsx(emeScheme_gd = emeScheme_gd)
 
-    Sys.chmod(here("inst", "googlesheet", "emeScheme.xlsx"), "0444")
+    format_emeScheme_xlsx(
+      fn = here("inst", "googlesheet", "emeScheme.xlsx"),
+      emeScheme_gd = emeScheme_gd
+    )
 
     file.copy(here("inst", "googlesheet", "emeScheme.xlsx"), here("tests", "testthat", "emeScheme.xlsx"))
+
+    ## write protect it again
+    Sys.chmod(here("inst", "googlesheet", "emeScheme.xlsx"), "0444")
 
 # bump version and change description in DECRIPTION -----------------------
 
