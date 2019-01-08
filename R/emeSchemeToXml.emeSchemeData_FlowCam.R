@@ -3,7 +3,7 @@
 #' @importFrom XML xmlNode xmlAttrs append.xmlNode saveXML
 #' @importFrom tibble is_tibble
 #'
-emeSchemeToXml.emeSchemeData <- function(
+emeSchemeToXml.emeSchemeData_FlowCam <- function(
   x,
   tag = "emeScheme",
   file,
@@ -30,27 +30,53 @@ emeSchemeToXml.emeSchemeData <- function(
   xml <- XML::xmlNode(paste0(tag, "List"))
 
   if (length(x) > 1) {
+
     for (i in 1:nrow(x)) {
+      nn <- XML::xmlNode(name = "makeTypeVersion",  x[["makeTypeVersion"]][i])
+      xmlField <- XML::append.xmlNode(
+        to = XML::xmlNode(tag),
+        nn
+      )
+      ##
+      parms <- strsplit(x[["settingsParameter"]][i], ";")[[1]] %>%
+        trimws() %>%
+        strsplit("=")
+
       xmlFields <- lapply(
-        names(x),
-        function(nm){
+        parms,
+        function(p){
           XML::xmlNode(
-            name = nm,
-            x[[nm]][i]
+            name = "settingsParameter",
+            attrs = c(name = trimws(p[[1]])),
+            trimws(p[[2]])
           )
         }
       )
+      ##
       xmlField <- XML::append.xmlNode(
-        to = XML::xmlNode(tag),
+        to = xmlField,
         xmlFields
       )
+      ##
+      nn <- XML::xmlNode(name = "volume",  x[["volume"]][i])
+      xmlField <- XML::append.xmlNode(
+        to = xmlField,
+        nn
+      )
+      ##
+      nn <- XML::xmlNode(name = "treatment",  x[["treatment"]][i])
+      xmlField <- XML::append.xmlNode(
+        to = xmlField,
+        nn
+      )
+      ##
       xml <- XML::append.xmlNode(
         to = xml,
         xmlField
       )
     }
-  }
-  else {
+
+  } else {
     xml <- XML::xmlNode(tag, x)
   }
 

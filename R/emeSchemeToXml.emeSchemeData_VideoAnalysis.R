@@ -16,7 +16,6 @@ emeSchemeToXml.emeSchemeData_VideoAnalysis <- function(
 
   if (missing(tag)) {
     tag <- attr(x, "propertyName")
-    tag <- paste0(tag, "List")
     if (is.null(tag)) {
       tag <- "emeScheme"
     }
@@ -28,12 +27,17 @@ emeSchemeToXml.emeSchemeData_VideoAnalysis <- function(
 
   # x is of type emeSchemeData and therefore a tibble ------------------
 
-  xml <- XML::xmlNode(tag)
+  xml <- XML::xmlNode(paste0(tag, "List"))
 
   if (length(x) > 1) {
 
     for (i in 1:nrow(x)) {
-      xmlField <- XML::xmlNode(name = "analysisMethod", attrs = c(name = x[["analysisMethod"]][i]))
+      analysisMethod <- XML::xmlNode(name = "analysisMethod",  x[["analysisMethod"]][i])
+      xmlField <- XML::append.xmlNode(
+        to = XML::xmlNode(tag),
+        analysisMethod
+      )
+      ##
       parms <- strsplit(x[["parameterUsed"]][i], ";")[[1]] %>%
         trimws() %>%
         strsplit("=")
@@ -48,8 +52,15 @@ emeSchemeToXml.emeSchemeData_VideoAnalysis <- function(
           )
         }
       )
-      xmlField <- XML::append.xmlNode(xmlField, xmlFields)
-      xml <- XML::append.xmlNode(xml, xmlField)
+      ##
+      xmlField <- XML::append.xmlNode(
+        to = xmlField,
+        xmlFields
+      )
+      xml <- XML::append.xmlNode(
+        to = xml,
+        xmlField
+      )
     }
 
   } else {
