@@ -311,7 +311,55 @@ emeScheme_gd %>%
   column_spec(ncol(emeScheme_gd), width = "30em", background = "yellow")
 ```
 
-## Sample data exported as xml
+## Example emeScheme Data
+
+the package contains exapmle data which can be used as followed:
+
+```{r}
+x <- addDataToEmeScheme()
+```
+
+### Print emeScheme Data
+
+emeScheme Data can be printed by using the `print()` function. The function has two arguments which control the printout, i.e. `printAttr` and `printData`.
+
+```{r, echo = TRUE}
+print(
+  x,
+  printAttr = FALSE,
+  printExtAttr = FALSE,
+  printData = FALSE
+)
+```
+
+```{r, echo = TRUE}
+print(
+  x,
+  printAttr = TRUE,
+  printExtAttr = FALSE,
+  printData = FALSE
+)
+```
+
+```{r, echo = TRUE}
+print(
+  x,
+  printAttr = TRUE,
+  printExtAttr = TRUE,
+  printData = FALSE
+)
+```
+
+```{r, echo = TRUE}
+print(
+  x,
+  printAttr = TRUE,
+  printExtAttr = TRUE,
+  printData = TRUE
+)
+```
+
+### Exported as xml
 The example data in the yellow column looks exported to xml as followed:
 
 ```{r example_export_xml, echo=FALSE}
@@ -359,6 +407,8 @@ The package is not yet on CRAN. Therefore it needs to be installed from github. 
 devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme")
 ```
 
+## Entering new Metadata
+
 To enter new data to the emeScheme, you have to
 
 ```{r echo=TRUE, eval = FALSE}
@@ -375,6 +425,8 @@ This should open Excel and the file should look similar to this:
 3) Green rows indicate Property Names at the different levels
 
 After entering the data, save it to alocation for further processing.
+
+## Converting Metadata to xml
 
 In R, you have to import the metadata and export to an xml file:
 
