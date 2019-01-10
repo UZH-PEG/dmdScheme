@@ -6,6 +6,9 @@
 \usage{
 cat_ln(...)
 }
+\arguments{
+\item{...}{will be handed over to \code{cat(..., "\n")}}
+}
 \description{
-cat with linefeed at the end Title
+Copied from tibble::cat_line()
 }
