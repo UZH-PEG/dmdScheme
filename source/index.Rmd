@@ -332,13 +332,19 @@ The Definition of the emeScheme is done in an R package, which gives all the too
 
 The package is not yet on CRAN. Therefore it needs to be installed from github. This will install the last verion on github. 
 
+For a list of releases see [here](https://github.com/Exp-Micro-Ecol-Hub/emeScheme/releases)
+
 ```{r echo=TRUE, eval = FALSE}
 ## install the devtools package if not installed yet
 # install.packages("devtools")
 
-## install emeScheme from github
+## install the last version of emeScheme from github
 devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme")
+
+## install a specific release, e.g. v0.5.2, of emeScheme from github
+devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme", rev = "v0.5.2")
 ```
+
 
 ## Entering new Metadata
 

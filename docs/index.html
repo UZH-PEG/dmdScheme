@@ -2646,11 +2646,15 @@ the end
 <div id="installation" class="section level2">
 <h2>Installation</h2>
 <p>The package is not yet on CRAN. Therefore it needs to be installed from github. This will install the last verion on github.</p>
+<p>For a list of releases see <a href="https://github.com/Exp-Micro-Ecol-Hub/emeScheme/releases">here</a></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co">## install the devtools package if not installed yet</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co"># install.packages(&quot;devtools&quot;)</span></a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">## install emeScheme from github</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;Exp-Micro-Ecol-Hub/emeScheme&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">## install the last version of emeScheme from github</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;Exp-Micro-Ecol-Hub/emeScheme&quot;</span>)</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">## install a specific release, e.g. v0.5.2, of emeScheme from github</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;Exp-Micro-Ecol-Hub/emeScheme&quot;</span>, <span class="dt">rev =</span> <span class="st">&quot;v0.5.2&quot;</span>)</a></code></pre></div>
 </div>
 <div id="entering-new-metadata" class="section level2">
 <h2>Entering new Metadata</h2>
