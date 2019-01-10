@@ -9,10 +9,11 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' enter_new_metadata()
+#' # enter_new_metadata()
 #' }
 #'
 enter_new_metadata <- function() {
   fn <- system.file("inst", "googlesheet", "emeScheme.xlsx", package = "emeScheme")
   browseURL(fn)
 }
+
