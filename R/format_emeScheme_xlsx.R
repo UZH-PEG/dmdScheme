@@ -1,6 +1,6 @@
 #' Format the \code{googlesheet/emeScheme.xlsx}
 #'
-#' Takes no arguments. Loads  \code{system.file("inst", "googlesheet", "emeScheme.xlsx", package = "emeScheme")}, formats it and saves it under the same name.
+#' Takes no arguments. Loads  \code{system.file("googlesheet", "emeScheme.xlsx", package = "emeScheme")}, formats it and saves it under the same name.
 #' @param fn file name where the final xlsx should be saved to. If missing, it will not be saved.
 #' @param emeScheme_gd specifying this, makes it possible to use this function even during the update process.
 #' @return invisibly the workbook as a workbook object as created by \code{xlsx.crerateWorkbook()}

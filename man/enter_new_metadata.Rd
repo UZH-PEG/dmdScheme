@@ -7,14 +7,14 @@
 enter_new_metadata()
 }
 \description{
-Open \code{emeScheme.xlsx} from system.file("inst", "googlesheet",
+Open \code{emeScheme.xlsx} from system.file("googlesheet",
 "emeScheme.xlsx", package = "emeScheme") in excel. New data can be entered
 and the file has to be saved at a different location as it is a read-only
 file.
 }
 \examples{
 \dontrun{
-# enter_new_metadata()
+enter_new_metadata()
 }
 
 }

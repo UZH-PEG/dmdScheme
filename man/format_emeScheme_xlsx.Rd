@@ -15,5 +15,5 @@ format_emeScheme_xlsx(fn, emeScheme_gd)
 invisibly the workbook as a workbook object as created by \code{xlsx.crerateWorkbook()}
 }
 \description{
-Takes no arguments. Loads  \code{system.file("inst", "googlesheet", "emeScheme.xlsx", package = "emeScheme")}, formats it and saves it under the same name.
+Takes no arguments. Loads  \code{system.file("googlesheet", "emeScheme.xlsx", package = "emeScheme")}, formats it and saves it under the same name.
 }
