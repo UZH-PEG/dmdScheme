@@ -1,6 +1,7 @@
 #' Generic print function for \code{emeSchemeData}
 #'
 #' @param x object of type \code{emeSchemeSet}
+#' @param ... additional arguments - not used here
 #' @param printAttr default \code{TRUE} - attributes are printed
 #' @param printExtAttr default \code{FALSE} - additional attributes are not printed (e.g. \code{class})
 #' @param printData default \code{TRUE} - data is printed
@@ -9,7 +10,7 @@
 #' @return invisibly x
 #' @export
 #'
-print.emeSchemeData <- function(x, printAttr = TRUE, printExtAttr = FALSE, printData = TRUE, .prefix = ""){
+print.emeSchemeData <- function(x, ..., printAttr = TRUE, printExtAttr = FALSE, printData = TRUE, .prefix = ""){
   ##
   cat_ln(.prefix, " ", attr(x, "propertyName"), " - emeSchemeData")
   if (printAttr) {

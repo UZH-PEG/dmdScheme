@@ -4,11 +4,13 @@
 \alias{print.emeSchemeSet}
 \title{Generic print function for \code{emeSchemeSet}}
 \usage{
-\method{print}{emeSchemeSet}(x, printAttr = TRUE, printExtAttr = FALSE,
-  printData = TRUE, .prefix = "")
+\method{print}{emeSchemeSet}(x, ..., printAttr = TRUE,
+  printExtAttr = FALSE, printData = TRUE, .prefix = "")
 }
 \arguments{
 \item{x}{object of type \code{emeSchemeSet}}
+
+\item{...}{additional arguments - not used here}
 
 \item{printAttr}{default \code{TRUE} - attributes are printed}
 
