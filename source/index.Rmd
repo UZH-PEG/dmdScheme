@@ -311,76 +311,9 @@ emeScheme_gd %>%
   column_spec(ncol(emeScheme_gd), width = "30em", background = "yellow")
 ```
 
-## Example emeScheme Data
+# Example data
 
-the package contains exapmle data which can be used as followed:
-
-```{r}
-x <- addDataToEmeScheme()
-```
-
-### Print emeScheme Data
-
-emeScheme Data can be printed by using the `print()` function. The function has two arguments which control the printout, i.e. `printAttr` and `printData`.
-
-```{r, echo = TRUE}
-print(
-  x,
-  printAttr = FALSE,
-  printExtAttr = FALSE,
-  printData = FALSE
-)
-```
-
-```{r, echo = TRUE}
-print(
-  x,
-  printAttr = TRUE,
-  printExtAttr = FALSE,
-  printData = FALSE
-)
-```
-
-```{r, echo = TRUE}
-print(
-  x,
-  printAttr = TRUE,
-  printExtAttr = TRUE,
-  printData = FALSE
-)
-```
-
-```{r, echo = TRUE}
-print(
-  x,
-  printAttr = TRUE,
-  printExtAttr = TRUE,
-  printData = TRUE
-)
-```
-
-### Exported as xml
-The example data in the yellow column looks exported to xml as followed:
-
-```{r example_export_xml, echo=FALSE}
-emeScheme_gd %>%
-  addDataToEmeScheme() %>%
-  emeSchemeToXml( ta = "ExampleData" )
-```
-
-The xml file with the example data can be downloaded from [here](./data/emeScheme_example.xml)
-
-## Re-import from xml into R
-
-TODO This needs some more work #5
-
-```{r example_import_xml, eval = FALSE}
-emeScheme_gd %>%
-  addDataToEmeScheme() %>%
-  emeSchemeToXml( tag = "Example Data" ) %>%
-  xmlToEmeScheme() %>%
-  str()
-```
+An xml file with the example data can be downloaded from [here](./data/emeScheme_example.xml)
 
 # XSD Grammar
 The xsd grammar has been generated using [xmlgrid.net](http://xmlgrid.net/xml2xsd.html).
@@ -426,18 +359,94 @@ This should open Excel and the file should look similar to this:
 
 After entering the data, save it to alocation for further processing.
 
+## Importing Data from Excel Sheet
+
+Next, you have to import the data entered in the Excel sheet int R:
+
+```{r echo = TRUE, eval = FALSE}
+x <- addDataToEmeScheme( x = "PATH/WHERE/THE/FILE/IS/file.xlsx")
+```
+
+For convenience, we use the exapmle data included in the package by using
+
+```{r}
+x <- addDataToEmeScheme()
+```
+
+## Print emeScheme Data
+
+emeScheme Data can be printed by using the `print()` function. The function has two arguments which control the printout, i.e. `printAttr` and `printData`.
+
+```{r, echo = TRUE}
+print(
+  x,
+  printAttr = FALSE,
+  printExtAttr = FALSE,
+  printData = FALSE
+)
+```
+
+```{r, echo = TRUE}
+print(
+  x,
+  printAttr = TRUE,
+  printExtAttr = FALSE,
+  printData = FALSE
+)
+```
+
+```{r, echo = TRUE}
+print(
+  x,
+  printAttr = TRUE,
+  printExtAttr = TRUE,
+  printData = FALSE
+)
+```
+
+```{r, echo = TRUE}
+print(
+  x,
+  printAttr = TRUE,
+  printExtAttr = TRUE,
+  printData = TRUE
+)
+```
 ## Converting Metadata to xml
 
-In R, you have to import the metadata and export to an xml file:
+You can export the data to an an xml file:
 
-```{r  echo=TRUE, eval = FALSE}
-x <- addDataToEmeScheme( x = "PATH/WHERE/THE/FILE/IS/file.xlsx")
-emeSchemeToXml(x, file = ""PATH/WHERE/YOU/WANT/TO/HAVE/THE/FILE/file.xlm"")
+```{r example_export_xml, echo=TRUE}
+emeSchemeToXml( x, tag = "ExampleData" )
 ```
+
+When you specify the argument `file`, the xml will be saved:
+
+```{r example_export_xml_file, echo=TRUE, eval = FALSE}
+emeSchemeToXml( x, tag = "ExampleData", file = "ExampleData.xml" )
+```
+
+
+## Re-import from xml into R
+
+**<span style="color:red">TODO This needs some more work see issue #5 </span>** 
+
+```{r example_import_xml, eval = FALSE}
+addDataToEmeScheme() %>%
+  emeSchemeToXml( tag = "Example Data" ) %>%
+  xmlToEmeScheme() %>%
+  str()
+```
+
+## Validation of xml against xsd
+
+**<span style="color:red">TODO: include validation of xml against the emeScheme.xsd.xml</span>**
+
+## General things
 
 The emeScheme data in R can be also saved, loaded, and edited using the standard R commands.
 
-**<span style="color:red">TODO: include validation of xml against the emeScheme.xsd.xml</span>**
+
 
 # References
 
