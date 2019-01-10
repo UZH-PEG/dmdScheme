@@ -4,7 +4,7 @@
 #' @param fn file name where the final xlsx should be saved to. If missing, it will not be saved.
 #' @param emeScheme_gd specifying this, makes it possible to use this function even during the update process.
 #' @return invisibly the workbook as a workbook object as created by \code{xlsx.crerateWorkbook()}
-#' @importFrom xlsx loadWorkbook getSheets getRows getCells getCellValue CellStyle CellProtection Fill Border setCellStyle setColumnWidth saveWorkbook
+#' importFrom xlsx loadWorkbook getSheets getRows getCells getCellValue CellStyle CellProtection Fill Border setCellStyle setColumnWidth saveWorkbook
 #' @importFrom magrittr %>%
 #'
 format_emeScheme_xlsx <- function(fn, emeScheme_gd) {

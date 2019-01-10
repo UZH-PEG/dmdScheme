@@ -7,9 +7,9 @@
 #'
 #' @return a googlesheet object
 #'
-#' @importFrom googlesheets gs_auth gs_title gs_read gs_download gs_deauth
+#' importFrom googlesheets gs_auth gs_title gs_read gs_download gs_deauth
+#' importFrom here here
 #' @importFrom magrittr %>% %<>% equals not extract extract2
-#' @importFrom here here
 #' @importFrom tools md5sum
 #' @importFrom dplyr select starts_with
 #'
@@ -17,23 +17,23 @@ updateFromGoogleSheet <- function(
   token = NULL,
   force = FALSE
 ) {
-  on.exit(gs_deauth())
+  on.exit(googlesheets::gs_deauth())
   ##
-  gs_auth(token = token)
-  emes <- gs_title("microcosmScheme")
+  googlesheets::gs_auth(token = token)
+  emes <- googlesheets::gs_title("microcosmScheme")
   update <- emes$updated %>% format("%Y-%m-%d %H:%M:%S")
-  lastUpdate <- read.dcf(here("DESCRIPTION"))[1, "GSUpdate"]
+  lastUpdate <- read.dcf(here::here("DESCRIPTION"))[1, "GSUpdate"]
   if (force) {
     lastUpdate = -1
   }
   ##
   if ( update == lastUpdate ) {      ##### no change in google sheet
-    gs_deauth()
+    googlesheets::gs_deauth()
   } else { ##### change in google sheet
 
 # update data/emeScheme.rda -----------------------------------------------
 
-    emeScheme_gd <- gs_read(emes)
+    emeScheme_gd <- googlesheets::gs_read(emes)
     ##
     notNARow <- emeScheme_gd %>%
       is.na() %>%
@@ -47,45 +47,45 @@ updateFromGoogleSheet <- function(
       not()
     emeScheme_gd <- emeScheme_gd[notNARow, notNACol]
     ##
-    save( emeScheme_gd, file = here("data", "emeScheme_gd.rda"))
+    save( emeScheme_gd, file = here::here("data", "emeScheme_gd.rda"))
 
 # update data/emeScheme.rda -----------------------------------------------
 
     emeScheme <- gdToScheme(emeScheme_gd)
 
-    save( emeScheme, file = here("data", "emeScheme.rda"))
+    save( emeScheme, file = here::here("data", "emeScheme.rda"))
 
 # update inst/googlesheet/emeScheme.xlsx ----------------------------------
 
     ## make the xlsx writable
-    Sys.chmod(here("inst", "googlesheet", "emeScheme.xlsx"), "0777")
+    Sys.chmod(here::here("inst", "googlesheet", "emeScheme.xlsx"), "0777")
 
-    gs_download(
+    googlesheets::gs_download(
       from = emes,
-      to = here("inst", "googlesheet", "emeScheme.xlsx"),
+      to = here::here("inst", "googlesheet", "emeScheme.xlsx"),
       overwrite = TRUE
     )
 
     format_emeScheme_xlsx(
-      fn = here("inst", "googlesheet", "emeScheme.xlsx"),
+      fn = here::here("inst", "googlesheet", "emeScheme.xlsx"),
       emeScheme_gd = emeScheme_gd
     )
 
-    file.copy(here("inst", "googlesheet", "emeScheme.xlsx"), here("tests", "testthat", "emeScheme.xlsx"), overwrite = TRUE)
+    file.copy(here::here("inst", "googlesheet", "emeScheme.xlsx"), here::here("tests", "testthat", "emeScheme.xlsx"), overwrite = TRUE)
 
     ## write protect it again
-    Sys.chmod(here("inst", "googlesheet", "emeScheme.xlsx"), "0444")
+    Sys.chmod(here::here("inst", "googlesheet", "emeScheme.xlsx"), "0444")
 
 
 # Update emeScheme.xml file -----------------------------------------------
 
     addDataToEmeScheme( x = emeScheme_gd, s = emeScheme, dataSheet = 1, dataCol = 1) %>%
-      emeSchemeToXml(file = here("inst", "emeScheme_example.xml"))
+      emeSchemeToXml(file = here::here("inst", "emeScheme_example.xml"))
 
 # bump version and change description in DECRIPTION -----------------------
 
     ## read old DESCRIPION file
-    DESCRIPTION <- read.dcf(here("DESCRIPTION"))
+    DESCRIPTION <- read.dcf(here::here("DESCRIPTION"))
     ##
     ## Increase Version
     currVersion <- DESCRIPTION[1, "Version"]
@@ -109,7 +109,7 @@ updateFromGoogleSheet <- function(
     ## set GSUpdate
     DESCRIPTION[1, "GSUpdate"] <- update
     ## write new DESCRIPTION
-    write.dcf(DESCRIPTION, here("DESCRIPTION"))
+    write.dcf(DESCRIPTION, here::here("DESCRIPTION"))
     rm( emeScheme, emeScheme_gd )
   }
 

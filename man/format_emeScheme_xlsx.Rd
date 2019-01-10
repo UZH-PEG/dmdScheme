@@ -13,6 +13,7 @@ format_emeScheme_xlsx(fn, emeScheme_gd)
 }
 \value{
 invisibly the workbook as a workbook object as created by \code{xlsx.crerateWorkbook()}
+importFrom xlsx loadWorkbook getSheets getRows getCells getCellValue CellStyle CellProtection Fill Border setCellStyle setColumnWidth saveWorkbook
 }
 \description{
 Takes no arguments. Loads  \code{system.file("googlesheet", "emeScheme.xlsx", package = "emeScheme")}, formats it and saves it under the same name.
