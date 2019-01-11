@@ -11,7 +11,6 @@
 #' importFrom here here
 #' @importFrom magrittr %>% %<>% equals not extract extract2
 #' @importFrom tools md5sum
-#' @importFrom dplyr select starts_with
 #'
 updateFromGoogleSheet <- function(
   token = NULL,

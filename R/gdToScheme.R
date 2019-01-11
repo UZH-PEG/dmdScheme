@@ -8,6 +8,7 @@
 #' @return \code{list} of \code{list} of ... \code{tibbles}
 #' @export
 #' @importFrom tibble is.tibble as_tibble
+#' @importFrom dplyr select starts_with
 #' @importFrom methods is as
 #' @importFrom magrittr set_names %<>%
 #'
@@ -152,7 +153,7 @@ gdToScheme <- function(
 # Select only Property ----------------------------------------------------
 
   x %<>%
-    select(starts_with("Property"))
+    dplyr::select(dplyr::starts_with("Property"))
 
 # Do the splitting --------------------------------------------------------
 

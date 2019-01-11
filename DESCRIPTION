@@ -1,6 +1,6 @@
 Package: emeScheme
 Title: Microcosm experiment metadata scheme
-Version: 0.5.2
+Version: 0.5.3
 Date: 2019-01-08
 Authors@R: c( person("Rainer M.", "Krug", email = "Rainer.Krug@uzh.ch",
         role = c("aut", "cre")), person("Owen L.", "Petchey", email =
@@ -14,8 +14,9 @@ Description: This package provides and describes the Authoratative
         Metadata). ---- Data imported and version bumped at Tue Jan 8
         13:46:32 2019 / Europe/Zurich.
 Depends: R (>= 3.5.0)
-Imports: magrittr, tools, dplyr, tibble, methods,
-        XML, readxl, utils
+Imports: tools, methods, utils, 
+        magrittr, dplyr, tibble, readxl,
+        XML
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

@@ -4,7 +4,22 @@
 \alias{enter_new_metadata}
 \title{Enter new metadata to fill a new scheme}
 \usage{
-enter_new_metadata()
+enter_new_metadata(file = NULL, open = TRUE, overwrite = FALSE,
+  verbose = FALSE, .skipBrowseURL = FALSE)
+}
+\arguments{
+\item{file}{if not \code{NULL}, the te,plate will be saved to this file.}
+
+\item{open}{if \code{TRUE}, the file will be opened. This can produce different results depending on the OS, browsr and browser settings.}
+
+\item{overwrite}{if \code{TRUE}, the file specified in \code{file} will be overwritten. if \code{FALSE}, an error will be raised ehen the file exists.}
+
+\item{verbose}{if \code{TRUE} print usefull information}
+
+\item{.skipBrowseURL}{internal use (testing only). if \code{TRUE} skip the call of \code{browseURL()}}
+}
+\value{
+invisibly the fully qualified path to the file which \bold{would} have been opened, if \code{open == TRUE}.
 }
 \description{
 Open \code{emeScheme.xlsx} from system.file("googlesheet",
