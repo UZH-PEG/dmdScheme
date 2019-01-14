@@ -9,6 +9,8 @@ MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.or
 
 [![Build
 Status](https://travis-ci.com/Exp-Micro-Ecol-Hub/emeScheme.svg?branch=master)](https://travis-ci.com/Exp-Micro-Ecol-Hub/emeScheme)
+<!-- [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/Exp-Micro-Ecol-Hub/emeScheme?branch=master&svg=true)](https://ci.appveyor.com/project/Exp-Micro-Ecol-Hub/emeScheme) -->
+
 [![Coverage
 status](https://codecov.io/gh/Exp-Micro-Ecol-Hub/emeScheme/branch/master/graph/badge.svg)](https://codecov.io/github/Exp-Micro-Ecol-Hub/emeScheme?branch=master)
 
