@@ -1,0 +1,155 @@
+---
+title: "Introduction"
+author: "Rainer M Krug <Rainer@uzh.ch>"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+  collapse = TRUE,
+  comment = "#>"
+)
+library(emeScheme)
+# library(here)
+# library(magrittr)
+# library(dplyr)
+# library(knitr)
+# library(kableExtra)
+# library(plantuml)
+```
+
+# The R Package
+
+The Definition of the emeScheme is done in an R package, which gives all the tools to enter the meatada and to export it into xml.
+
+## Installation
+
+The package is not yet on CRAN. Therefore it needs to be installed from github. This will install the last verion on github. 
+
+For a list of releases see [here](https://github.com/Exp-Micro-Ecol-Hub/emeScheme/releases)
+
+```{r echo=TRUE, eval = FALSE}
+## install the devtools package if not installed yet
+# install.packages("devtools")
+
+## install the last version of emeScheme from github
+devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme")
+
+## install a specific release, e.g. v0.5.2, of emeScheme from github
+devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme", rev = "v0.5.2")
+```
+
+
+## Entering new Metadata
+
+To enter new data to the emeScheme, you have to
+
+```{r echo=TRUE, eval = FALSE}
+library("emeScheme")
+enter_new_metadata()
+```
+
+This should open Excel and the file should look similar to this:
+
+![](./figs/enter_new_data.png)
+
+1) The file is read only. It needs to be saved at a different location. Therefore the template can not be changed.
+2) Data can only be entered in the cells with the light grey fields with the red borders. All other cells are write protected.
+3) Green rows indicate Property Names at the different levels
+
+After entering the data, save it to alocation for further processing.
+
+## Importing Data from Excel Sheet
+
+Next, you have to import the data entered in the Excel sheet int R:
+
+```{r echo = TRUE, eval = FALSE}
+x <- addDataToEmeScheme( x = "PATH/WHERE/THE/FILE/IS/file.xlsx")
+```
+
+For convenience, we use the exapmle data included in the package by using
+
+```{r}
+x <- addDataToEmeScheme()
+```
+
+## Print emeScheme Data
+
+emeScheme Data can be printed by using the `print()` function. The function has two arguments which control the printout, i.e. `printAttr` and `printData`.
+
+```{r, echo = TRUE}
+print(
+  x,
+  printAttr = FALSE,
+  printExtAttr = FALSE,
+  printData = FALSE
+)
+```
+
+```{r, echo = TRUE}
+print(
+  x,
+  printAttr = TRUE,
+  printExtAttr = FALSE,
+  printData = FALSE
+)
+```
+
+```{r, echo = TRUE}
+print(
+  x,
+  printAttr = TRUE,
+  printExtAttr = TRUE,
+  printData = FALSE
+)
+```
+
+```{r, echo = TRUE}
+print(
+  x,
+  printAttr = TRUE,
+  printExtAttr = TRUE,
+  printData = TRUE
+)
+```
+## Converting Metadata to xml
+
+You can export the data to an an xml file:
+
+```{r example_export_xml, echo=TRUE}
+emeSchemeToXml( x, tag = "ExampleData" )
+```
+
+When you specify the argument `file`, the xml will be saved:
+
+```{r example_export_xml_file, echo=TRUE, eval = FALSE}
+emeSchemeToXml( x, tag = "ExampleData", file = "ExampleData.xml" )
+```
+
+
+## Re-import from xml into R
+
+**<span style="color:red">TODO This needs some more work see issue #5 </span>** 
+
+```{r example_import_xml, eval = FALSE}
+addDataToEmeScheme() %>%
+  emeSchemeToXml( tag = "Example Data" ) %>%
+  xmlToEmeScheme() %>%
+  str()
+```
+
+## Validation of xml against xsd
+
+**<span style="color:red">TODO: include validation of xml against the emeScheme.xsd.xml</span>**
+
+## General things
+
+The emeScheme data in R can be also saved, loaded, and edited using the standard R commands.
+
+

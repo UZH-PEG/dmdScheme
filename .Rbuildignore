@@ -1,3 +1,5 @@
+^Meta$
+^doc$
 ^emeScheme\.xml$
 ^\.covrignore$
 ^codecov\.yml$
