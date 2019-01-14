@@ -18,10 +18,23 @@ RMD = $(wildcard $(SRCDIR)/*.Rmd)
 TMP2  = $(RMD:.Rmd=.html)
 HTML = ${subst $(SRCDIR),$(OUTDIR),$(TMP2)}
 
+READMERMD = Readme.Rmd
+READMEMD = Readme.md
+READMEHTML = Readme.html
 
 #############
 
 all: clean update web
+
+#############
+
+readme: $(READMEMD)
+Readme.md: $(READMERMD)
+	@Rscript -e "rmarkdown::render('$(READMERMD)', output_format = 'rmarkdown::github_document')"
+	rm -f $(READMEHTML)
+
+clean_readme:
+	rm -f $(READMEMD)
 
 #############
 
@@ -45,13 +58,13 @@ clean_html:
 
 #############
 
-web: html vignettes
+web: html vignettes readme
 	cp -f $(VIGHTML) $(VIGHTMLOUT)
 	mkdir -p $(DATADIR)
 	cp -f ./inst/emeScheme.xsd.xml $(DATADIR)/
 	cp -f ./inst/emeScheme_example.xml $(DATADIR)/
 
-clean_web:
+clean_web: clean_html clean_vignettes clean_readme
 	rm -f VIGHTMLOUT
 	rm -rf $(DATADIR)
 
@@ -69,7 +82,7 @@ publish:
 
 #############
 
-clean: clean_vignettes clean_html clean_web
+clean: clean_web
 
 #############
 
@@ -80,6 +93,9 @@ list_files:
 	@echo
 	@echo VIGDIR  : $(VIGDIR)
 	@echo DOCDIR  : $(DOCDIR)
+	@echo
+	@echo READMERMD : $(READMERMD)
+	@echo READMEMD : $(READMEMD)
 	@echo
 	@echo VIGRMD  : $(VIGRMD)
 	@echo TMP1    : $(TMP1)
