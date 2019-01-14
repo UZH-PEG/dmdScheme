@@ -1,8 +1,18 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+# see https://www.r-bloggers.com/travis-ci-for-r%E2%80%8A-%E2%80%8Aadvanced-guide/ for more info
 
-language: R
 sudo: false
 cache: packages
 
-after_success:
-  - Rscript -e 'covr::codecov()'
+# Use R language
+language: r
+
+#Define multiple R-versions, one from bioconductor
+matrix:
+  include:
+  - r: release
+    after_success:
+  - r: devel
+  - r: release
+    os: osx
+    osx_image: xcode7.3
