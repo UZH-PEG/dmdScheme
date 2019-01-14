@@ -54,7 +54,7 @@ test_that(
   "enter_new_metadata() reports correct output when opening file after saving with verbose = TRUE",
   {
     expect_known_output(
-      object = (nfn <- enter_new_metadata(file = fn, open = TRUE, overwrite = FALSE, .skipBrowseURL = TRUE)),
+      object = (nfn <- enter_new_metadata(file = fn, open = TRUE, overwrite = FALSE, verbose = FALSE, .skipBrowseURL = TRUE)),
       file   = "enter_new_metadata_output.txt",
       update = TRUE
     )
