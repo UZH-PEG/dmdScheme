@@ -4,7 +4,7 @@
 \alias{gdToScheme}
 \title{Convert the data stored in \code{emeScheme_gd} into a list of tibbles}
 \usage{
-gdToScheme(x = emeScheme_gd, debug = FALSE)
+gdToScheme(x = emeScheme_gd, keepData = FALSE, debug = FALSE)
 }
 \arguments{
 \item{x}{the \code{emeScheme_gd} as a \code{tibble} (as from google docs). The default is usually fine.}

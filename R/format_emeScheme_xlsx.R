@@ -8,6 +8,10 @@
 #' @importFrom magrittr %>%
 #'
 format_emeScheme_xlsx <- function(fn, emeScheme_gd) {
+  cat_ln("format_emeScheme_xlsx not implemented!")
+  warning("format_emeScheme_xlsx not implemented!")
+  return(invisible(NULL))
+
 
   ## get logical vector indicating if row contains a value property
   valueRows <- emeScheme_gd %>%

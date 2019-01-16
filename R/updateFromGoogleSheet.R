@@ -7,8 +7,9 @@
 #'
 #' @return a googlesheet object
 #'
-#' importFrom googlesheets gs_auth gs_title gs_read gs_download gs_deauth
+#' importFrom googlesheets gs_auth gs_title gs_download gs_deauth
 #' importFrom here here
+#' @importFrom readxl read_excel
 #' @importFrom magrittr %>% %<>% equals not extract extract2
 #' @importFrom tools md5sum
 #'
@@ -19,7 +20,7 @@ updateFromGoogleSheet <- function(
   on.exit(googlesheets::gs_deauth())
   ##
   googlesheets::gs_auth(token = token)
-  emes <- googlesheets::gs_title("microcosmScheme")
+  emes <- googlesheets::gs_title("emeScheme")
   update <- emes$updated %>% format("%Y-%m-%d %H:%M:%S")
   lastUpdate <- read.dcf(here::here("DESCRIPTION"))[1, "GSUpdate"]
   if (force) {
@@ -29,30 +30,6 @@ updateFromGoogleSheet <- function(
   if ( update == lastUpdate ) {      ##### no change in google sheet
     googlesheets::gs_deauth()
   } else { ##### change in google sheet
-
-# update data/emeScheme.rda -----------------------------------------------
-
-    emeScheme_gd <- googlesheets::gs_read(emes)
-    ##
-    notNARow <- emeScheme_gd %>%
-      is.na() %>%
-      rowSums() %>%
-      equals(ncol(emeScheme_gd)) %>%
-      not()
-    notNACol <- emeScheme_gd %>%
-      is.na() %>%
-      colSums() %>%
-      equals(nrow(emeScheme_gd)) %>%
-      not()
-    emeScheme_gd <- emeScheme_gd[notNARow, notNACol]
-    ##
-    save( emeScheme_gd, file = here::here("data", "emeScheme_gd.rda"))
-
-# update data/emeScheme.rda -----------------------------------------------
-
-    emeScheme <- gdToScheme(emeScheme_gd)
-
-    save( emeScheme, file = here::here("data", "emeScheme.rda"))
 
 # update inst/googlesheet/emeScheme.xlsx ----------------------------------
 
@@ -75,6 +52,42 @@ updateFromGoogleSheet <- function(
     ## write protect it again
     Sys.chmod(here::here("inst", "googlesheet", "emeScheme.xlsx"), "0444")
 
+
+
+
+# update data/emeScheme_gd.rda -----------------------------------------------
+
+    path <- here::here("inst", "googlesheet", "emeScheme.xlsx")
+    emeScheme_gd <- lapply(
+      propSets,
+      function(sheet) {
+        x <- readxl::read_excel(
+          path = path,
+          sheet = sheet
+        )
+        notNARow <- x %>%
+          is.na() %>%
+          rowSums() %>%
+          equals(ncol(x)) %>%
+          not()
+        notNACol <- x %>%
+          is.na() %>%
+          colSums() %>%
+          equals(nrow(x)) %>%
+          not()
+        x <- x[notNARow, notNACol]
+        return(x)
+      }
+    )
+    names(emeScheme_gd) <- propSets
+    ##
+    save( emeScheme_gd, file = here::here("data", "emeScheme_gd.rda"))
+
+# update data/emeScheme.rda -----------------------------------------------
+
+    emeScheme <- gdToScheme(emeScheme_gd)
+
+    save( emeScheme, file = here::here("data", "emeScheme.rda"))
 
 # Update emeScheme.xml file -----------------------------------------------
 

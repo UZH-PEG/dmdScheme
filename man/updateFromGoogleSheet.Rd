@@ -14,7 +14,7 @@ updateFromGoogleSheet(token = NULL, force = FALSE)
 \value{
 a googlesheet object
 
-importFrom googlesheets gs_auth gs_title gs_read gs_download gs_deauth
+importFrom googlesheets gs_auth gs_title gs_download gs_deauth
 importFrom here here
 }
 \description{
