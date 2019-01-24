@@ -1,12 +1,12 @@
-context("emeSchemeToXml")
+context("emeSchemeToXml()")
 
 
 test_that(
-  "emeSchemeToXml() raises error with wrong output value",
+  "emeSchemeToXml() raises error with wrong input value",
   {
     expect_error(
-      object = emeSchemeToXml(x = addDataToEmeScheme(x = emeScheme_gd, s = emeScheme, dataCol = 1, verbose = FALSE), output = "nonsense"  ),
-      regexp = "Wrong value for 'output'. 'output' has to be one of the following values:"
+      object = emeSchemeToXml(x = emeScheme_raw),
+      regexp = "no applicable method for 'emeSchemeToXml' applied to an object of class"
     )
   }
 )
@@ -15,7 +15,7 @@ test_that(
   "emeSchemeToXml() returns expected xml for output = metadata",
   {
     expect_known_value(
-      object = emeSchemeToXml(x = addDataToEmeScheme(x = emeScheme_gd, s = emeScheme, dataCol = 1, verbose = FALSE), output = "metadata"  ),
+      object = emeSchemeToXml(x = emeScheme_example, output = "metadata"  ),
       file   = "emeSchemeToXml_metadata.rds",
       update = TRUE
     )
@@ -26,7 +26,7 @@ test_that(
   "emeSchemeToXml() returns expected xml for output = complete",
   {
     expect_known_value(
-      object = emeSchemeToXml(x = addDataToEmeScheme(x = emeScheme_gd, s = emeScheme, dataCol = 1, verbose = FALSE), output = "complete"  ),
+      object = emeSchemeToXml(x = emeScheme_example, output = "complete"  ),
       file   = "emeSchemeToXml_complete.rds",
       update = TRUE
     )
@@ -37,12 +37,9 @@ test_that(
   "emeSchemeToXml() raises warning with space in tag name",
   {
     expect_warning(
-      object = emeSchemeToXml(
-        x = addDataToEmeScheme(x = emeScheme_gd, s = emeScheme, dataCol = 1, verbose = FALSE),
-        tag = "a test",
-        output = "metadata"
-      ),
+      object = emeSchemeToXml( x = emeScheme_example, tag = "a test" ),
       regexp = "Spaces are not allowed in tag names!"
     )
   }
 )
+

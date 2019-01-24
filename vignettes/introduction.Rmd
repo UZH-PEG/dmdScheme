@@ -70,13 +70,23 @@ After entering the data, save it to alocation for further processing.
 Next, you have to import the data entered in the Excel sheet int R:
 
 ```{r echo = TRUE, eval = FALSE}
-x <- addDataToEmeScheme( x = "PATH/WHERE/THE/FILE/IS/file.xlsx")
+x <- read_from_excel(
+      file = "PATH/WHERE/THE/FILE/IS/file.xlsx",
+      keepData = TRUE,
+      verbose = TRUE,
+      raw = FALSE 
+)
 ```
 
 For convenience, we use the exapmle data included in the package by using
 
 ```{r}
-x <- addDataToEmeScheme()
+x <- read_from_excel(
+      file = system.file("googlesheet", "emeScheme.xlsx", package = "emeScheme"),
+      keepData = TRUE,
+      verbose = TRUE,
+      raw = FALSE 
+)
 ```
 
 ## Print emeScheme Data

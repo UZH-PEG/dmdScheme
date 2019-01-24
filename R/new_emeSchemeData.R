@@ -1,19 +1,62 @@
-#' Create new \code{emeSehemeData} class object from specifications
+#' Create new \code{emeSchemeData} class object from specifications
 #'
-#' @param x tibble as imported from the google sheet
+#' Usually only called from within the function \code{new_emeSchemeSet()}.
+#' @param x a sheet of the spreadsheet displayed by calling
+#'   \code{enter_new_metadata()} converted to a \code{data.frame} or
+#'   \code{tibble} by calling \code{readxl::read_excel()}. Class has to be \code{emeSchemeData_raw}.
+#' @param keepData if the data should be trimmed to one row with NAs
+#' @param verbose give messages to make finding errors in data easier
 #'
-#' @return \code{emeSchemeData} object complete with all attributes
+#' @return \code{emeSchemeData} Data object
+#'
 #' @importFrom dplyr filter
 #' @importFrom magrittr %<>% %>%
+#' @importFrom rlang .data
+#'
 #' @export
 #'
 #' @examples
-#' new_emeSchemeData( x = emeSCheme_gd)
+#' new_emeSchemeData(emeScheme_raw$Experiment)
+#'
 new_emeSchemeData <- function(
   x,
-  trimToOne = TRUE,
-  debug = FALSE
+  keepData = TRUE,
+  verbose = FALSE
   ) {
+
+  if(verbose) cat_ln("propertySet : ", names(x)[[2]])
+
+
+# Check for class emeSchemeSet_raw ----------------------------------------
+
+  if (!inherits(x, "emeSchemeData_raw")) {
+    stop("x has to be of class 'emeSchemeData_raw'")
+  }
+
+# Set warn to 2 to convert warnings to errors -----------------------------
+
+  oldWarn <- options()$warn
+  options(warn = 2)
+
+  on.exit(options(warn = oldWarn))
+
+# transpose when Experiment -----------------------------------------------
+
+  if (x[[1,1]] == "Experiment") {
+    if(verbose) cat_ln("Transposing...")
+    #
+    x %<>%
+      t() %>%
+      tibble::as_tibble(rownames = NA) %>%
+      tibble::rownames_to_column("propertySet") %>%
+      dplyr::rename(Experiment = 2) %>%
+      dplyr::filter( .data$propertySet != "propertySet")
+  }
+
+
+# set all NA in valueProperty column to "NA" ------------------------------
+
+  x$propertySet[is.na(x$propertySet)] <- "NA"
 
 # set propertySetName -----------------------------------------------------
 
@@ -21,44 +64,55 @@ new_emeSchemeData <- function(
 
 # set names ---------------------------------------------------------------
 
-  names(x) <- dplyr::filter(x, propertySet == "valueProperty")
-  x %<>% dplyr::filter(valueProperty != "valueProperty")
+  if(verbose) cat_ln("Set names...")
+  #
+  names(x) <- dplyr::filter(x, .data$propertySet == "valueProperty")
+
+  x %<>% dplyr::filter(.data$valueProperty != "valueProperty")
 
 # extract attributes to set -----------------------------------------------
 
   attrToSet <- x$valueProperty
-  attrToSet <- attrToSet[1:(which(x$valueProperty == "Data for one dataset")-1)]
+  attrToSet <- attrToSet[1:(which(x$valueProperty == "DATA")-1)]
 
 # set attributes ----------------------------------------------------------
 
+  if(verbose) cat_ln("Set attributes...")
+  #
   for (a in attrToSet) {
-    attr(x, which = a) <- dplyr::filter(x, valueProperty == a)[,-1] %>%
+    attr(x, which = a) <- dplyr::filter(x, .data$valueProperty == a)[,-1] %>%
       unlist()
-    x %<>% dplyr::filter(valueProperty != a)
+    x %<>% dplyr::filter(.data$valueProperty != a)
   }
 
 # remove valueProperty column ---------------------------------------------
 
-  x %<>% dplyr::select(-valueProperty)
+  x %<>% dplyr::select(-.data$valueProperty)
+
+# if !keepData remove all but one data column ----------------------------
+
+  if (!keepData) {
+    if(verbose) cat_ln("Trimming to one row of NAs...")
+    #
+    x %<>% dplyr::filter(c(TRUE, rep(FALSE, nrow(x)-1)) )
+    x[] <- NA
+  }
 
 # apply type --------------------------------------------------------------
 
+  if(verbose) cat_ln("Apply types...")
+  #
   type <- attr(x, "type")
   for (i in 1:ncol(x)) {
-    if (debug) {
-      cat_ln()
-    }
+    if(verbose) cat_ln("   Apply type '", type[i], "' to '", names(x)[[i]], "'...")
+    #
     x[[i]] <- as(x[[i]], Class = type[i])
-  }
-
-# if TrimToOne remove all but one data column ----------------------------
-
-  if (trimToOne) {
-    x %<>% dplyr::filter(c(TRUE, rep(FALSE, nrow(x)-1)) )
   }
 
 # set class ---------------------------------------------------------------
 
+  if(verbose) cat_ln("Set class...")
+  #
   class(x) <- append(
     c(
       paste("emeSchemeData", attr(x, "propertyName"), sep = "_"),
@@ -68,6 +122,8 @@ new_emeSchemeData <- function(
     class(x),
   )
 
+  if(verbose) cat_ln("Done")
+  #
 # return object -----------------------------------------------------------
 
   return(x)

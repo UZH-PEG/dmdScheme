@@ -17,6 +17,9 @@ updateFromGoogleSheet <- function(
   token = NULL,
   force = FALSE
 ) {
+
+# Some preparations -------------------------------------------------------
+
   on.exit(googlesheets::gs_deauth())
   ##
   googlesheets::gs_auth(token = token)
@@ -26,15 +29,15 @@ updateFromGoogleSheet <- function(
   if (force) {
     lastUpdate = -1
   }
-  ##
+
+# Check if update needed --------------------------------------------------
+
   if ( update == lastUpdate ) {      ##### no change in google sheet
     googlesheets::gs_deauth()
-  } else { ##### change in google sheet
+  } else {
 
-# update inst/googlesheet/emeScheme.xlsx ----------------------------------
-
-    ## make the xlsx writable
-    Sys.chmod(here::here("inst", "googlesheet", "emeScheme.xlsx"), "0777")
+    # update inst/googlesheet/emeScheme.xlsx ----------------------------------
+    cat_ln("##### Downloading emeScheme.xls...")
 
     googlesheets::gs_download(
       from = emes,
@@ -42,59 +45,56 @@ updateFromGoogleSheet <- function(
       overwrite = TRUE
     )
 
-    format_emeScheme_xlsx(
-      fn = here::here("inst", "googlesheet", "emeScheme.xlsx"),
-      emeScheme_gd = emeScheme_gd
-    )
-
     file.copy(here::here("inst", "googlesheet", "emeScheme.xlsx"), here::here("tests", "testthat", "emeScheme.xlsx"), overwrite = TRUE)
 
-    ## write protect it again
-    Sys.chmod(here::here("inst", "googlesheet", "emeScheme.xlsx"), "0444")
+    # update data/emeScheme_raw.rda -----------------------------------------------
 
-
-
-
-# update data/emeScheme_gd.rda -----------------------------------------------
+    cat_ln("##### Generating emeScheme_raw...")
 
     path <- here::here("inst", "googlesheet", "emeScheme.xlsx")
-    emeScheme_gd <- lapply(
-      propSets,
-      function(sheet) {
-        x <- readxl::read_excel(
-          path = path,
-          sheet = sheet
-        )
-        notNARow <- x %>%
-          is.na() %>%
-          rowSums() %>%
-          equals(ncol(x)) %>%
-          not()
-        notNACol <- x %>%
-          is.na() %>%
-          colSums() %>%
-          equals(nrow(x)) %>%
-          not()
-        x <- x[notNARow, notNACol]
-        return(x)
-      }
+    emeScheme_raw <- read_from_excel(
+      file = path,
+      keepData = FALSE,
+      verbose = TRUE,
+      raw = TRUE
     )
-    names(emeScheme_gd) <- propSets
     ##
-    save( emeScheme_gd, file = here::here("data", "emeScheme_gd.rda"))
+    save( emeScheme_raw, file = here::here("data", "emeScheme_raw.rda"))
 
-# update data/emeScheme.rda -----------------------------------------------
+    # update data/emeScheme.rda -----------------------------------------------
 
-    emeScheme <- gdToScheme(emeScheme_gd)
-
+    cat_ln("##### Generating emeScheme...")
+    emeScheme <- new_emeSchemeSet(
+      x = emeScheme_raw,
+      keepData = FALSE,
+      verbose = TRUE
+    )
     save( emeScheme, file = here::here("data", "emeScheme.rda"))
 
-# Update emeScheme.xml file -----------------------------------------------
+    # update data/emeScheme_exmple.rda ----------------------------------------
 
-    addDataToEmeScheme( x = emeScheme_gd, s = emeScheme, dataSheet = 1, dataCol = 1) %>%
-      emeSchemeToXml(file = here::here("inst", "emeScheme_example.xml"))
+    cat_ln("##### Generating emeScheme_example...")
+    emeScheme_example <- new_emeSchemeSet(
+      x = emeScheme_raw,
+      keepData = TRUE,
+      verbose = TRUE
+    )
+    save( emeScheme_example, file = here::here("data", "emeScheme_example.rda"))
 
-# bump version and change description in DECRIPTION -----------------------
+    # Update emeScheme.xml files -----------------------------------------------
+
+    cat_ln("##### Generating emeScheme_example.xml...")
+
+    dfs <- unique(emeScheme_example$DataFile$dataFileName)
+    for (df in dfs) {
+      x <- extract_emeScheme_for_datafile(x = emeScheme_example, df)
+      for (output in c("metadata", "complete")) {
+        fn <- paste( here::here("inst", "emeScheme_example"), df, output, "xml", sep = ".")
+        emeSchemeToXml(x, file = fn, output = "complete")
+      }
+    }
+
+    # bump version and change description in DECRIPTION -----------------------
 
     ## read old DESCRIPION file
     DESCRIPTION <- read.dcf(here::here("DESCRIPTION"))
@@ -122,7 +122,7 @@ updateFromGoogleSheet <- function(
     DESCRIPTION[1, "GSUpdate"] <- update
     ## write new DESCRIPTION
     write.dcf(DESCRIPTION, here::here("DESCRIPTION"))
-    rm( emeScheme, emeScheme_gd )
+    rm( emeScheme, emeScheme_raw )
   }
 
 # Return emeScheme --------------------------------------------------------

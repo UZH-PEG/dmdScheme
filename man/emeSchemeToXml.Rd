@@ -32,11 +32,11 @@ Depending on the value of \code{file}, the function returns different results:
 Based on David LeBauer, Carl Davidson, Rob Kooper. See \url{https://stackoverflow.com/a/27865512/632423}
 }
 \examples{
-x <- addDataToEmeScheme()
 
-emeSchemeToXml( x, "GoogleData" )
+emeSchemeToXml( emeScheme_example, "GoogleData" )
 ## returns \\code{XMLNode} object
 
-emeSchemeToXml( x, "GoogleData", file = NULL )
+emeSchemeToXml( emeScheme_example, "GoogleData", file = NULL )
 ## returns string representation of the \\code{XMLNode} object
+
 }

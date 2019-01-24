@@ -36,7 +36,7 @@ emeSchemeToXml.emeSchemeData <- function(
         function(nm){
           XML::xmlNode(
             name = nm,
-            x[[nm]][i]
+            ifelse(is.na(x[[nm]][i]), "", x[[nm]][i])
           )
         }
       )
@@ -61,9 +61,11 @@ emeSchemeToXml.emeSchemeData <- function(
       node = xml,
       append = TRUE
     ) <- c(
-      class = paste(class(x), collapse = ", "),
+      unit = paste(attr(x, "unit"), collapse = ", "),
+      type = paste(attr(x, "type"), collapse = ", "),
+      allowedValues = paste(attr(x, "allowedValues"), collapse = ", "),
       names = paste(attr(x, "names"), collapse = ", "),
-      unit = paste(attr(x, "unit"), collapse = ", ")
+      class = paste(class(x), collapse = ", ")
     )
   }
 

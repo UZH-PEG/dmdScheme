@@ -15,4 +15,14 @@
 #'   \item{Property Level x}{TODO}
 #'   ...
 #' }
+#'
+#' @examples
+#' \dontrun{
+#' ## Created by using
+#' emeScheme <- new_emeSchemeSet(
+#'   x = emeScheme_raw,
+#'   keepData = FALSE,
+#'   verbose = TRUE
+#' )
+#' }
 "emeScheme"

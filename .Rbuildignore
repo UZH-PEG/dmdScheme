@@ -1,4 +1,5 @@
 ^appveyor\.yml$
+^appveyor\.yml\.org$
 ^Meta$
 ^doc$
 ^emeScheme\.xml$

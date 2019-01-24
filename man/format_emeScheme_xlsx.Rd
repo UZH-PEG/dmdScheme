@@ -4,16 +4,17 @@
 \alias{format_emeScheme_xlsx}
 \title{Format the \code{googlesheet/emeScheme.xlsx}}
 \usage{
-format_emeScheme_xlsx(fn, emeScheme_gd)
+format_emeScheme_xlsx(fn_org, fn_new, keepData = TRUE)
 }
 \arguments{
-\item{fn}{file name where the final xlsx should be saved to. If missing, it will not be saved.}
+\item{fn_org}{file name of the original excel file to be formated}
 
-\item{emeScheme_gd}{specifying this, makes it possible to use this function even during the update process.}
+\item{fn_new}{file name where the final xlsx should be saved to. If missing, it will not be saved.}
+
+\item{keepData}{if \code{TRUE}, data from data cells will be empty}
 }
 \value{
 invisibly the workbook as a workbook object as created by \code{xlsx.crerateWorkbook()}
-importFrom xlsx loadWorkbook getSheets getRows getCells getCellValue CellStyle CellProtection Fill Border setCellStyle setColumnWidth saveWorkbook
 }
 \description{
 Takes no arguments. Loads  \code{system.file("googlesheet", "emeScheme.xlsx", package = "emeScheme")}, formats it and saves it under the same name.

@@ -3,7 +3,7 @@
 SRCDIR = source
 OUTDIR = docs
 DATADIR = $(OUTDIR)/data
-
+INSTDIR = inst
 
 VIGDIR = vignettes
 DOCDIR = doc
@@ -13,6 +13,7 @@ TMP1  = $(VIGRMD:.Rmd=.html)
 VIGHTML = ${subst $(VIGDIR),$(DOCDIR),$(TMP1)}
 VIGHTMLOUT = ${subst $(VIGDIR),$(OUTDIR),$(TMP1)}
 
+EXAMPLEXML = $(wildcard $(INSTDIR)/emeScheme_example.*.xml)
 
 RMD = $(wildcard $(SRCDIR)/*.Rmd)
 TMP2  = $(RMD:.Rmd=.html)
@@ -61,8 +62,7 @@ clean_html:
 web: html vignettes readme
 	cp -f $(VIGHTML) $(VIGHTMLOUT)
 	mkdir -p $(DATADIR)
-	cp -f ./inst/emeScheme.xsd.xml $(DATADIR)/
-	cp -f ./inst/emeScheme_example.xml $(DATADIR)/
+	cp -f $(EXAMPLEXML) $(DATADIR)/
 
 clean_web: clean_html clean_vignettes clean_readme
 	rm -f VIGHTMLOUT
@@ -105,6 +105,8 @@ list_files:
 	@echo RMD     : $(RMD)
 	@echo TMP2    : $(TMP2)
 	@echo HTML    : $(HTML)
+	@echo
+	@echo EXAMPLEXML : $(EXAMPLEXML)
 
 ## from https://stackoverflow.com/a/26339924/632423
 list: list_files

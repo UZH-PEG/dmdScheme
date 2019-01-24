@@ -2,19 +2,26 @@
 % Please edit documentation in R/new_emeSchemeData.R
 \name{new_emeSchemeData}
 \alias{new_emeSchemeData}
-\title{Create new \code{emeSehemeData} class object from specifications}
+\title{Create new \code{emeSchemeData} class object from specifications}
 \usage{
-new_emeSchemeData(x, trimToOne = TRUE, debug = FALSE)
+new_emeSchemeData(x, keepData = TRUE, verbose = FALSE)
 }
 \arguments{
-\item{x}{tibble as imported from the google sheet}
+\item{x}{a sheet of the spreadsheet displayed by calling
+\code{enter_new_metadata()} converted to a \code{data.frame} or
+\code{tibble} by calling \code{readxl::read_excel()}. Class has to be \code{emeSchemeData_raw}.}
+
+\item{keepData}{if the data should be trimmed to one row with NAs}
+
+\item{verbose}{give messages to make finding errors in data easier}
 }
 \value{
-\code{emeSchemeData} object complete with all attributes
+\code{emeSchemeData} Data object
 }
 \description{
-Create new \code{emeSehemeData} class object from specifications
+Usually only called from within the function \code{new_emeSchemeSet()}.
 }
 \examples{
-new_emeSchemeData( x = emeSCheme_gd)
+new_emeSchemeData(emeScheme_raw$Experiment)
+
 }

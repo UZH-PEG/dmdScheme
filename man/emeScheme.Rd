@@ -4,7 +4,7 @@
 \name{emeScheme}
 \alias{emeScheme}
 \title{Authorative definition of the emeScheme.}
-\format{An object of class \code{emeSchemeSet} (inherits from \code{emeScheme}, \code{list}) of length 5.}
+\format{An object of class \code{emeSchemeSet} (inherits from \code{emeScheme}, \code{list}) of length 6.}
 \usage{
 emeScheme
 }
@@ -24,6 +24,16 @@ In addition, the last two properties are available with a \code{_NAME} suiffix, 
 \describe{
   \item{Property Level x}{TODO}
   ...
+}
+}
+\examples{
+\dontrun{
+## Created by using
+emeScheme <- new_emeSchemeSet(
+  x = emeScheme_raw,
+  keepData = FALSE,
+  verbose = TRUE
+)
 }
 }
 \keyword{datasets}

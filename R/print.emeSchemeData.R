@@ -14,22 +14,41 @@ print.emeSchemeData <- function(x, ..., printAttr = TRUE, printExtAttr = FALSE, 
   ##
   cat_ln(.prefix, " ", attr(x, "propertyName"), " - emeSchemeData")
   if (printAttr) {
-    cat_ln("A   ", .prefix, "Names : ", paste(attr(x, "names"), collapse = " "))
-    cat_ln("A   ", .prefix, "Units : ", paste(attr(x, "unit"), collapse = " "))
-    cat_ln("A   ", .prefix, "Class : ", paste(attr(x, "type"), collapse = " "))
+    cat_ln("A   ", .prefix, "Names : ", paste(attr(x, "names"), collapse = " | "))
+    cat_ln("A   ", .prefix, "Units : ", paste(attr(x, "unit"), collapse = " | "))
+    cat_ln("A   ", .prefix, "Type  : ", paste(attr(x, "type"), collapse = " | "))
     cat_ln()
   }
   #
   if (printExtAttr) {
-    cat_ln("XA  ", .prefix, "Types : ", paste(attr(x, "class"), collapse = " "))
+    for (a in names(attributes(x))) {
+      if (!(a %in% c("names", "unit", "type"))) {
+        cat_ln("XA  ", .prefix, a, ": ", paste(attr(x, a), collapse = " | "))
+      }
+    }
     cat_ln()
   }
   ##
   if (printData) {
     x <- as.data.frame(x)
-    .prefix <- paste0("D   ", .prefix, row.names(x))
-    .rowNamesDF(x, make.names = TRUE) <- .prefix
-    print(x)
+
+    ### adapted from print.data.frame
+    n <- length(row.names(x))
+    if (length(x) == 0L) {
+      cat(sprintf(ngettext(n, "data with 0 columns and %d row",
+                           "data with 0 columns and %d rows"), n), "\n",
+          sep = "")
+    }
+    else if (n == 0L) {
+      cat_ln("D   ", .prefix, "###### No Data in emeSchemeData ######")
+    }
+    else {
+      .prefix <- paste0("D   ", .prefix, row.names(x))
+      .rowNamesDF(x, make.names = TRUE) <- .prefix
+      print(x)
+    }
+    ###
+
     cat_ln()
   }
   ##

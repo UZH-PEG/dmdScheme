@@ -40,10 +40,8 @@ test_that(
 test_that(
   "enter_new_metadata() returns path when opening template",
   {
-    expect_equal(
-      object = enter_new_metadata(file = NULL, open = TRUE, overwrite = FALSE, .skipBrowseURL = TRUE),
-      expected = system.file("googlesheet", "emeScheme.xlsx", package = "emeScheme"),
-      update = TRUE
+    expect_true(
+      object = file.exists( enter_new_metadata(file = NULL, open = TRUE, overwrite = FALSE, .skipBrowseURL = TRUE) )
     )
   }
 )
@@ -64,4 +62,15 @@ test_that(
   }
 )
 unlink(fn)
+#
+# test_that(
+#   "enter_new_metadata() has correct output",
+#   {
+#     expect_known_output(
+#       object = enter_new_metadata(verbose = TRUE, .skipBrowseURL = TRUE),
+#       file = "enter_new_metadata.output",
+#       update = TRUE
+#     )
+#   }
+# )
 

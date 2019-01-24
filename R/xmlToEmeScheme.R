@@ -10,40 +10,42 @@
 #' @export
 #'
 #' @examples
-#' x <- addDataToEmeScheme()
+#' x <- emeScheme_example
 #'
-#' y <- emeSchemeToXml( x, "GoogleData" )
-#' xmlToEmeScheme( y )
-#' ## works with an \code{XMLNode} object
+#' # y <- emeSchemeToXml( x, "GoogleData" )
+#' # xmlToEmeScheme( y )
 #'
-#' y <- emeSchemeToXml( x, "GoogleData", file = NULL )
-#' xmlToEmeScheme( y )
-#' ## works with the string representation of an \code{XMLNode} object
+#' ## returns an \code{XML::XMLNode} object
+#'
+#' # y <- emeSchemeToXml( x, "GoogleData", file = NULL )
+#' # xmlToEmeScheme( y )
+#' ## returns the string representation of an \code{XML::XMLNode} object
 #'
 
 xmlToEmeScheme <- function(
   xml
 ){
 
-# HELPER: listToTibble to internally convert the tibbles back -------------
-
-  listToTibble <- function(x){
-    if (isTRUE(grepl("data.frame", x$.attrs[["class"]]))) {
-
-    } else {
-      result <- x
-    }
-  }
-
-
-# Do the initial conversion -----------------------------------------------
-
-  result <- XML::xmlToList(xml)
-
-# Do the conversion iteratively -------------------------------------------
-
-
-# Return ------------------------------------------------------------------
-
-  return(result)
+  stop("not implemented yet!")
+# # HELPER: listToTibble to internally convert the tibbles back -------------
+#
+#   listToTibble <- function(x){
+#     if (isTRUE(grepl("data.frame", x$.attrs[["class"]]))) {
+#
+#     } else {
+#       result <- x
+#     }
+#   }
+#
+#
+# # Do the initial conversion -----------------------------------------------
+#
+#   result <- XML::xmlToList(xml)
+#
+# # Do the conversion iteratively -------------------------------------------
+#
+#
+# # Return ------------------------------------------------------------------
+#
+#   return(result)
 }

@@ -19,13 +19,13 @@
 #' @export
 #'
 #' @examples
-#' x <- addDataToEmeScheme()
 #'
-#' emeSchemeToXml( x, "GoogleData" )
+#' emeSchemeToXml( emeScheme_example, "GoogleData" )
 #' ## returns \code{XMLNode} object
 #'
-#' emeSchemeToXml( x, "GoogleData", file = NULL )
+#' emeSchemeToXml( emeScheme_example, "GoogleData", file = NULL )
 #' ## returns string representation of the \code{XMLNode} object
+#'
 emeSchemeToXml <- function (x, tag, file, output = "metadata") {
 
   UseMethod("emeSchemeToXml", x)

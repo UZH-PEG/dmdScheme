@@ -52,6 +52,7 @@ devtools::load_all(here())
 
 Github site [https://github.com/Exp-Micro-Ecol-Hub/emeScheme](https://github.com/Exp-Micro-Ecol-Hub/emeScheme)
 
+
 # Introduction
 
 This scheme will provide a framework for describing aquatic microcosm experiments in the sense as used in the papers in the [References] section.
@@ -68,43 +69,6 @@ This scheme **aims to** cover the following aspects:
 By using this metadata one should be able to successfully re-generate the data.
 
 This scheme **does not** aim to cover aspects of the actual analysis of this data with the aim of answering specific questions.
-
-# Experimental Microbial Ecology Protocols
-In the  [supplement to their paper](https://emeh-protocols.readthedocs.io/en/latest/) to their paper, @altermatt_big_2015 specify the following sections for a protocoll. The sections are as followed:
-
-```
-1. Materials
-1.1 Species used
-1.2 Culture medium
-1.3 Bacteria
-1.4 Apparatus
-1.5 Lab practices
-1.6 Long term maintenance
-1.7 Long term preservation
-2. Measurements
-2.1 Sampling
-2.2 Microscopy
-2.3 Image analysis
-2.4 Particle counter
-2.5 Bacterial density
-2.6 Raman microspectroscopy
-2.7 Barcoding
-2.8 Ge-, prote- and epigenomics
-2.9 Respirometry
-2.10 Nutrients and decomposition
-2.11 Protocol unavailable
-2.12 Interactions
-3. Manipulations
-3.1 Protocol unavailable
-3.2 Density
-3.3 Disturbance
-3.4 Nutrients and viscosity
-3.5 Spatial structure
-3.6 temperature
-3.7 Biotic environment
-```
-
-We use these sections as a starting point to define a metadata scheme to describe the microcosm experiment. 
 
 # From Project to Dataset - how the emeScheme fits in
 
@@ -226,29 +190,40 @@ DataExtraction_n "1" *-- "1" ExtractedData : contains
 ```
 
 
+# Terminology and Conventions
+
+## Terminology
+
+* **value property:** a property containing only values. Equivalent to a table.
+* **property set:** a property contining other **property sets** or **value properties**
+* **emeScheme: the general name of this scheme. All properties inherit from the **emeScheme class**
+* **emeSchemeSet property:** a property containing emeSchemeData properties
+    * **propertyName:** the name of the propertynames of the properties contined in this emeSchemeSet
+    * **class:** a string defining the class (**emeSchemeSet**, **emeScheme**, plus internal ones)
+* **emeSchemeData property:** a table containing metadata. The table has the followiung attributes:
+    * **propertyName:** the name of the property
+    * **names:** the column names of the table
+    * **units:** the units used each in the column
+    * **type:** the yype of each column. Can be **numeric** (== **double**), **integer**, **logical** or **character** (== empty)
+    * **allowedValues:** a string of comma separated allowed values. *...* indicates that additional velues are allowed
+    * **class:** a string defining the class (**emeSchemeData_PROPERTYNAME**, **emeSchemeData**, **emeScheme**, plus internal ones)
+
+## Conventions
+
+* Properties starting with a **capital letters** are **property sets**. 
+* Properties starting with a **small letter** are **value properties**.
+* No properties are mandatory!
+* All **property sets** except of **Experiment** can contain multiple rows of metadata
 
 # The emeScheme
+This document was than re-ordered and thinned which resulted in the initial verions of [the Google Doc Sheet](https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg).
 
-The sections in the [Experimental Microbial Ecology Protocols] were supplemented and assessed by reviewing the methods in the papers in the [References] section below.
-
-This document was than re-ordered and thinned which resulted in the initial verions of [the Google Doc Sheet](https://docs.google.com/spreadsheets/d/1OAyRM1jGL5Vho-YfPffePhwGpQtaBUeTPJV6P98f0Bc).
-
-Here we describe the different properties of the emeScheme We will start at the first level and go deeper into the different properties.
-
-The working copy can be found on a [Google Doc Sheet](https://docs.google.com/spreadsheets/d/1OAyRM1jGL5Vho-YfPffePhwGpQtaBUeTPJV6P98f0Bc). 
+Here we describe the structure of the **emeScheme**
 
 ## Current Structure
 
 The properties follow these conventions:
 
-* Properties in starting with a **capital letters** (in **<span style="text-decoration:underline; color: blue" >Blue</span>**) are **property sets**, containing either other property sets or other value properties, but not both. 
-* Properties starting with a **small letter** (in **<span style="color:black">black</span>**) are **value properties**, containing values. They follow the format **PropertyName (unit) [type]**.
-  * **Unit** is the unit of the value (e.g. l, rpm, ...)
-  * **type** is the type of the value. Possible values are **integer**, **numeric**, **logical**, and, the default, **character**. This is used as the data type in R.
-  * all **value properties** in one **property set** have to have the same number of entries, separated by a comma.
-  * in some **value properties** several entries belong together and are considered one meta data point (e.g. **parameterUsed** in **VideoAnalysis**. These entries are separated by a semicolon, and will **only** be split during the export ot the xml file.
-* No properties are mandatory!
-* Some properties are repeatable **<span style="color:red">TODO: Needs to be specified!</span>**
 
   
   
@@ -288,8 +263,8 @@ propColor <- function( x ) {
   return(x)
 }
 
-emeScheme_gd %>% 
-  mutate_at( vars(starts_with("Property")), propColor ) %>%
+emeScheme_raw %>% 
+  # mutate_at( vars(starts_with("Property")), propColor ) %>%
   knitr::kable(
     escape = FALSE,
     format = "html",
@@ -298,8 +273,8 @@ emeScheme_gd %>%
   kable_styling(
     bootstrap_options = c("striped", "bordered"), 
     full_width = FALSE
-  ) %>%
-  column_spec(ncol(emeScheme_gd), width = "30em", background = "yellow")
+  ) # %>%
+  # column_spec(ncol(emeScheme_raw), width = "30em", background = "yellow")
 ```
 
 # Example data
@@ -339,6 +314,46 @@ devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme", rev = "v0.5.2")
 
 See the vignette "Introduction" at <a href="Introduction.html" target="_blank">vignette 'Introduction'</a>.
 
+
+# Appendix
+## Experimental Microbial Ecology Protocols
+In the  [supplement to their paper](https://emeh-protocols.readthedocs.io/en/latest/) to their paper, @altermatt_big_2015 specify the following sections for a protocoll. The sections are as followed:
+
+```
+1. Materials
+1.1 Species used
+1.2 Culture medium
+1.3 Bacteria
+1.4 Apparatus
+1.5 Lab practices
+1.6 Long term maintenance
+1.7 Long term preservation
+2. Measurements
+2.1 Sampling
+2.2 Microscopy
+2.3 Image analysis
+2.4 Particle counter
+2.5 Bacterial density
+2.6 Raman microspectroscopy
+2.7 Barcoding
+2.8 Ge-, prote- and epigenomics
+2.9 Respirometry
+2.10 Nutrients and decomposition
+2.11 Protocol unavailable
+2.12 Interactions
+3. Manipulations
+3.1 Protocol unavailable
+3.2 Density
+3.3 Disturbance
+3.4 Nutrients and viscosity
+3.5 Spatial structure
+3.6 temperature
+3.7 Biotic environment
+```
+
+We use these sections as a starting point to define a metadata scheme to describe the microcosm experiment. 
+
+The sections in the [Experimental Microbial Ecology Protocols] were supplemented and assessed by reviewing the methods in the papers in the [References] section below.
 
 # References
 

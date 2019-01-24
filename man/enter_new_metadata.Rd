@@ -4,13 +4,18 @@
 \alias{enter_new_metadata}
 \title{Enter new metadata to fill a new scheme}
 \usage{
-enter_new_metadata(file = NULL, open = TRUE, overwrite = FALSE,
-  verbose = FALSE, .skipBrowseURL = FALSE)
+enter_new_metadata(file = NULL, open = TRUE, keepData = FALSE,
+  format = TRUE, overwrite = FALSE, verbose = FALSE,
+  .skipBrowseURL = FALSE)
 }
 \arguments{
 \item{file}{if not \code{NULL}, the te,plate will be saved to this file.}
 
 \item{open}{if \code{TRUE}, the file will be opened. This can produce different results depending on the OS, browsr and browser settings.}
+
+\item{keepData}{if \code{TRUE} the data entry areas will be emptied. If \code{FALSE}. the example data will be included.}
+
+\item{format}{if \code{FALSE} the sheet will be opened as the googledoc sheet formated is. if \code{TRUE}, it will be formated nicely.}
 
 \item{overwrite}{if \code{TRUE}, the file specified in \code{file} will be overwritten. if \code{FALSE}, an error will be raised ehen the file exists.}
 

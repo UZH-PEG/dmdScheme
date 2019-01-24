@@ -1,33 +1,19 @@
 Package: emeScheme
 Title: Microcosm experiment metadata scheme
-Version: 0.5.3.1
-Date: 2019-01-08
-Authors@R: c( person("Rainer M.", "Krug", email = "Rainer.Krug@uzh.ch",
-        role = c("aut", "cre")), person("Owen L.", "Petchey", email =
-        "Owen.Petchey@uzh.ch", role = c("ctb")), person("Vanessa W.",
-        "de Melo", email = "Vanessa Weber de Melo
-        <vanessa.weberdemelo@uzh.ch>", role = c("ctb")),
-        person("Frank", "Pennekamp", email = "Frank Pennekamp
-        <frank.pennekamp@uzh.ch>", role = c("ctb")) )
-Description: This package provides and describes the Authoratative
-        definition of th emeScheme (Experimental Microcosm Ecology
-        Metadata). ---- Data imported and version bumped at Tue Jan 8
-        13:46:32 2019 / Europe/Zurich.
+Version: 0.5.3.30
+Date: 2019-01-23
+Authors@R: c( person("Rainer M.", "Krug", email = "Rainer.Krug@uzh.ch", role = c("aut", "cre")), person("Owen L.",
+             "Petchey", email = "Owen.Petchey@uzh.ch", role = c("ctb")), person("Vanessa W.", "de Melo", email = "Vanessa
+             Weber de Melo <vanessa.weberdemelo@uzh.ch>", role = c("ctb")), person("Frank", "Pennekamp", email = "Frank
+             Pennekamp <frank.pennekamp@uzh.ch>", role = c("ctb")) )
+Description: This package provides and describes the Authoratative definition of th emeScheme (Experimental Microcosm
+             Ecology Metadata). ---- Data imported and version bumped at Wed Jan 23 14:01:01 2019 / Europe/Zurich.
 Depends: R (>= 3.2.0)
-Imports: tools, methods, utils, 
-        magrittr, dplyr, tibble, readxl,
-        XML
+Imports: tools, methods, utils, magrittr, dplyr, tibble, readxl, openxlsx, XML, rlang
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
-GSUpdate: 2019-01-08 12:46:14
-Suggests: 
-    covr,
-    testthat,
-    xlsx,
-    googlesheets,
-    here,
-    knitr,
-    rmarkdown
+GSUpdate: 2019-01-21 13:10:53
+Suggests: covr, testthat, xlsx, googlesheets, here, knitr, rmarkdown
 VignetteBuilder: knitr

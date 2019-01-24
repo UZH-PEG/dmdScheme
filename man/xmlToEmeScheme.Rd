@@ -17,14 +17,15 @@ The resulting \code{emeScheme} does only contain the non-missing values which
 are specified in the xml file.
 }
 \examples{
-x <- addDataToEmeScheme()
+x <- emeScheme_example
 
-y <- emeSchemeToXml( x, "GoogleData" )
-xmlToEmeScheme( y )
-## works with an \\code{XMLNode} object
+# y <- emeSchemeToXml( x, "GoogleData" )
+# xmlToEmeScheme( y )
 
-y <- emeSchemeToXml( x, "GoogleData", file = NULL )
-xmlToEmeScheme( y )
-## works with the string representation of an \\code{XMLNode} object
+## returns an \\code{XML::XMLNode} object
+
+# y <- emeSchemeToXml( x, "GoogleData", file = NULL )
+# xmlToEmeScheme( y )
+## returns the string representation of an \\code{XML::XMLNode} object
 
 }

@@ -32,13 +32,13 @@ emeSchemeToXml.emeSchemeData_Species <- function(
   if (length(x) > 1) {
 
     for (i in 1:nrow(x)) {
-      xmlField <- XML::xmlNode(name = tag, attrs = c(name = x[["species"]][i]))
+      xmlField <- XML::xmlNode(name = tag, attrs = c(name = x[["name"]][i]))
       xmlFields <- lapply(
         names(x)[-1],
         function(nm){
           XML::xmlNode(
             nm,
-            x[[nm]][i]
+            ifelse(is.na(x[[nm]][i]), "", x[[nm]][i])
           )
         }
       )
@@ -63,9 +63,11 @@ emeSchemeToXml.emeSchemeData_Species <- function(
       node = xml,
       append = TRUE
     ) <- c(
-      class = paste(class(x), collapse = ", "),
+      unit = paste(attr(x, "unit"), collapse = ", "),
+      type = paste(attr(x, "type"), collapse = ", "),
+      allowedValues = paste(attr(x, "allowedValues"), collapse = ", "),
       names = paste(attr(x, "names"), collapse = ", "),
-      unit = paste(attr(x, "unit"), collapse = ", ")
+      class = paste(class(x), collapse = ", ")
     )
   }
 
