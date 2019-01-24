@@ -8,7 +8,7 @@ Authors@R: c( person("Rainer M.", "Krug", email = "Rainer.Krug@uzh.ch", role = c
              Pennekamp <frank.pennekamp@uzh.ch>", role = c("ctb")) )
 Description: This package provides and describes the Authoratative definition of th emeScheme (Experimental Microcosm
              Ecology Metadata). ---- Data imported and version bumped at Wed Jan 23 14:01:01 2019 / Europe/Zurich.
-Depends: R (>= 3.1.0)
+Depends: R (>= 3.5.0)
 Imports: tools, methods, utils, magrittr, dplyr, tibble, readxl, openxlsx, XML, rlang
 Remotes: awalker89/openxlsx
 License: MIT + file LICENSE
