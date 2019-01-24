@@ -56,7 +56,8 @@ updateFromGoogleSheet <- function(
       file = path,
       keepData = FALSE,
       verbose = TRUE,
-      raw = TRUE
+      raw = TRUE,
+      validate = FALSE
     )
     ##
     save( emeScheme_raw, file = here::here("data", "emeScheme_raw.rda"))
