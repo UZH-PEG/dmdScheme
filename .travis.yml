@@ -7,6 +7,9 @@ cache: packages
 # Use R language
 language: r
 
+r_github_packages:
+  - awalker89/openxlsx
+
 #Define multiple R-versions, one from bioconductor
 matrix:
   include:
