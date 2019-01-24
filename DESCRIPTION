@@ -15,7 +15,7 @@ Description: This package provides and describes the Authoratative
         11:44:05 2019 / Europe/Zurich.
 Depends: R (>= 3.1.0)
 Imports: tools, methods, utils, magrittr, dplyr, tibble, readxl,
-        openxlsx, XML, rlang
+        openxlsx (>= 4.1.1), XML, rlang
 Remotes: awalker89/openxlsx
 License: MIT + file LICENSE
 Encoding: UTF-8

@@ -21,5 +21,5 @@ matrix:
     osx_image: xcode7.3
   - r: oldrel
   - r: 3.3
-  - r: 3.2
-  - r: 3.1
+#  - r: 3.2 # Because of openxlsx requires R >= 3.3
+#  - r: 3.1 # Because of openxlsx requires R >= 3.3
