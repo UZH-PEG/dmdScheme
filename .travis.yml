@@ -7,18 +7,19 @@ cache: packages
 # Use R language
 language: r
 
-r_github_packages:
-  - awalker89/openxlsx
-
 #Define multiple R-versions, one from bioconductor
 matrix:
   include:
-  - r: release
-    after_success:
   - r: devel
-  - r: release
-    os: osx
-    osx_image: xcode7.3
 #   - r: devel
 #     os: osx
 #     osx_image: xcode10.1
+  - r: release
+    after_success:
+  - r: release
+    os: osx
+    osx_image: xcode7.3
+  - r: oldrel
+  - r: 3.3
+  - r: 3.2
+  - 3.1
