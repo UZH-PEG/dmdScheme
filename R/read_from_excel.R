@@ -11,6 +11,12 @@
 #' @param verbose give verbose progress info. Useful for debugging.
 #' @param raw if \code{TRUE} the excel file will be read as-is and not converted
 #'   to an \code{emeScheme} object.
+#' @param validate Results are usually validated using \code{ validate_raw(
+#'   errorIfFalse = TRUE )}. Consequently, an error is raised if the resulting
+#'   scheme can not be successfully validated against the one in the package.
+#'   There are not many cases where you want to change this value to
+#'   \code{FALSE}. But if you do, the result will not be validated. \bold{This
+#'   can lead to invalid schemes!}.
 #'
 #' @return either if \code{raw = TRUE} a list of tibbles from the worksheets as
 #'   defined in \code{propSets} of Class \code{emeScheme_raw}, otgherwise an
@@ -29,7 +35,8 @@ read_from_excel <- function(
   file,
   keepData = TRUE,
   verbose = FALSE,
-  raw = FALSE
+  raw = FALSE,
+  validate = TRUE
 ) {
 
 # Check if file exists ----------------------------------------------------
@@ -89,7 +96,9 @@ read_from_excel <- function(
 
 # Validate imported structure against emeScheme ---------------------------
 
-  validate_raw( x = result, errorIfFalse = TRUE )
+  if (validate) {
+    validate_raw( x = result, errorIfFalse = TRUE )
+  }
 
 # Convert to emeScheme if asked for ---------------------------------------
 
