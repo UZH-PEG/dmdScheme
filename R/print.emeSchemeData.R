@@ -44,7 +44,8 @@ print.emeSchemeData <- function(x, ..., printAttr = TRUE, printExtAttr = FALSE, 
     }
     else {
       .prefix <- paste0("D   ", .prefix, row.names(x))
-      .rowNamesDF(x, make.names = TRUE) <- .prefix
+      rownames(x) <- .prefix
+      # .rowNamesDF(x, make.names = TRUE) <- .prefix
       print(x)
     }
     ###
