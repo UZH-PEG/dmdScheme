@@ -68,7 +68,7 @@
    <comment></comment>
   </DataExtraction>
  </DataExtractionList>
- <DataFileList unit="NA, NA, NA, NA, NA" type="character, character, character, character, character" allowedValues="NA, Name of the treatment. Each name specifies one treatment and can (should) occur multiple times., coldlight, hot, highdens, Name of the Measurement process. This includes methodology, variables, ... . Each name specifies one Measurement process and can occur multiple times., video_lf, o2_hf, mc, os_lf, video_hf, Name of the DataExtraction process. This includes methodology, variables, ... . Each name specifies one Measurement process and can occur multiple times in the case of multiple parameters in the analysis., bemovi_1, bemovi_2, raw, NA" names="dataFileName, treatmentName, measurementName, dataExtractionName, comment" class="emeSchemeData_DataFile, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
+ <DataFileList unit="NA, NA, NA, NA, NA" type="character, character, character, character, character" allowedValues="NA, coldlight, hot, highdens, video_lf, o2_hf, mc, os_lf, video_hf, bemovi_1, bemovi_2, raw, NA" names="dataFileName, treatmentName, measurementName, dataExtractionName, comment" class="emeSchemeData_DataFile, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
   <DataFile>
    <dataFileName>vid.zip</dataFileName>
    <treatmentName>hot</treatmentName>
