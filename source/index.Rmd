@@ -55,7 +55,7 @@ v <- read.dcf(here::here('DESCRIPTION'), all = TRUE)[['Version']]
 
 Github site [https://github.com/Exp-Micro-Ecol-Hub/emeScheme](https://github.com/Exp-Micro-Ecol-Hub/emeScheme)
 
-
+Googlesheet document of the [emeScheme](https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg)
 
 # Desription and Definition of the emeScheme
 See the vignette "Description" at <a href="description.html" target="_blank">vignette 'Description'</a>.
