@@ -89,7 +89,7 @@ for a list of releases see this [link on github](https://github.com/Exp-Micro-Ec
 
 ## Introduction
 
-See the vignette "Introduction" at <a href="Introduction.html" target="_blank">vignette 'Introduction'</a>.
+See the vignette "Introduction" at <a href="introduction.html" target="_blank">vignette 'Introduction'</a>.
 
 # Other Resources
 ## Outdated Presentations
