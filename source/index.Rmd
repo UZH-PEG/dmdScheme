@@ -1,5 +1,6 @@
 ---
 title: "Experimental Microbial Ecology Metadata Scheme"
+subtitle: "emeScheme version v`r read.dcf(here::here('DESCRIPTION'), all = TRUE)[['Version']]`"
 author: "Rainer M. Krug"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
@@ -35,8 +36,10 @@ knitr::opts_chunk$set(
 	cache = FALSE
 )
 ##
+options(knitr.kable.NA = '')
+##
 devtools::load_all(here())
-## update files in docs/data
+v <- read.dcf(here::here('DESCRIPTION'), all = TRUE)[['Version']]
 ```
 
 [![DOI](https://zenodo.org/badge/156543918.svg)](https://zenodo.org/badge/latestdoi/156543918)
@@ -53,241 +56,9 @@ devtools::load_all(here())
 Github site [https://github.com/Exp-Micro-Ecol-Hub/emeScheme](https://github.com/Exp-Micro-Ecol-Hub/emeScheme)
 
 
-# Introduction
 
-This scheme will provide a framework for describing aquatic microcosm experiments in the sense as used in the papers in the [References] section.
-
-This scheme **aims to** cover the following aspects:
-
-1. **Materials**: these include instrumentation, species, cultures, ...
-1. **Initialization**: run in time, treatment, conditions
-2. **Conditions / Manipulations**: different conditions for the different treatments and manipulations, conditions, transplantations, ...
-3. **Sampling** (how much is taken from microcosms and how much is re-filled with what and how often, ...)
-3. **Measuring** of the raw data (video, images, count, ...) using different methodologies and their instrumentations, protocols, ...
-4. **Extraction** of the needed measure  (density, ...) from the measured raw data (if needed) and the software, versions, parameter used (e.b. bemovi)
-
-By using this metadata one should be able to successfully re-generate the data.
-
-This scheme **does not** aim to cover aspects of the actual analysis of this data with the aim of answering specific questions.
-
-# From Project to Dataset - how the emeScheme fits in
-
-```{r data_layout, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 33, fig.height = 49}
-'
-!define Project(name,desc) class name as "desc" << (P,red) >> #TECHNOLOGY
-!define Data(name,desc) class name as "desc" << (D,crimson) >> #TECHNOLOGY
-!define MetaData(name,desc) class name as "desc" << (M,lime) >>
-
-Project(Project, Project) {
-  {field} Project description
-  {method} - dataCite metadata
-}
-
-MetaData(Experiment_1, Experiment_1) {
-  {field} Experimental description
-  {method} + Experiment
-}
-
-MetaData(Experiment_n, Experiment_n) {
-  {field} Experimental description
-  {method} + Experiment
-}
-
-MetaData(Experiment_2, Experiment_2) {
-  {field} Experimental description
-  {method} + Experiment
-}
-
-MetaData(Treatment_1, Treatment_1) {
-  {field} Treatment Description
-  {method} + Treatment
-}
-
-MetaData(Treatment_n, Treatment_n) {
-  {field} Treatment Description
-  {method} + Treatment
-}
-
-MetaData(Treatment_2, Treatment_2) {
-  {field} Treatment Description
-  {method} + Treatment
-}
-
-MetaData(Sampling, Sampling) {
-  {field} Sampling of Microcosms
-  {method} + Sampling
-}
-
-MetaData(Measurement_1, Measurement_1) {
-  {field} Measurement description
-  {method} + Measuring
-}
-
-
-MetaData(Measurement_n, Measurement_n) {
-  {field} Measurement description
-  {method} + Measuring
-}
-
-MetaData(Measurement_2, Measurement_2) {
-  {field} Measurement description
-  {method} + Measuring
-
-}
-Data( RawData, RawData) {
-  {field} Measured Raw Data
-  {method} - dataCite metadata
-  {method} - emeScheme metadata
-}
-
-MetaData( DataExtraction_1, DataExtraction_1) {
-  {field} Extraction Method
-  {method} + DataExtraction
-}
-
-MetaData( DataExtraction_n, DataExtraction_n) {
-  {field} Extraction Method
-  {method} + DataExtraction
-}
-
-MetaData( DataExtraction_2, DataExtraction_2) {
-  {field} Extraction Method
-  {method} + DataExtraction
-}
-
-Data( ExtractedData, ExtractedData_1) {
-  {field} Extracted Data
-  {method} - dataCite metadata
-  {method} - emeScheme metadata
-
-}
-
-
-Project "1" *-- "many" Experiment_1 : contains
-Project "1" *-- "many" Experiment_2 : contains
-Project "1" *-- "many" Experiment_n : contains
-
-Experiment_n "1" *-- "many" Treatment_1 : contains
-Experiment_n "1" *-- "many" Treatment_2 : contains
-Experiment_n "1" *-- "many" Treatment_n : contains
-
-Treatment_n "1" *-- "1" Sampling : contains
-
-Sampling "1" *-- "many" Measurement_1 : contains
-Sampling "1" *-- "many" Measurement_2 : contains
-Sampling "1" *-- "many" Measurement_n : contains
-
-Measurement_n "1" *-- "1" RawData : contains
-
-RawData "1" *-- "many" DataExtraction_1 : contains
-RawData "1" *-- "many" DataExtraction_2 : contains
-RawData "1" *-- "many" DataExtraction_n : contains
-
-DataExtraction_n "1" *-- "1" ExtractedData : contains
-' %>%
-  plantuml %>%
-  plot()
-```
-
-
-# Terminology and Conventions
-
-## Terminology
-
-* **value property:** a property containing only values. Equivalent to a table.
-* **property set:** a property contining other **property sets** or **value properties**
-* **emeScheme: the general name of this scheme. All properties inherit from the **emeScheme class**
-* **emeSchemeSet property:** a property containing emeSchemeData properties
-    * **propertyName:** the name of the propertynames of the properties contined in this emeSchemeSet
-    * **class:** a string defining the class (**emeSchemeSet**, **emeScheme**, plus internal ones)
-* **emeSchemeData property:** a table containing metadata. The table has the followiung attributes:
-    * **propertyName:** the name of the property
-    * **names:** the column names of the table
-    * **units:** the units used each in the column
-    * **type:** the yype of each column. Can be **numeric** (== **double**), **integer**, **logical** or **character** (== empty)
-    * **allowedValues:** a string of comma separated allowed values. *...* indicates that additional velues are allowed
-    * **class:** a string defining the class (**emeSchemeData_PROPERTYNAME**, **emeSchemeData**, **emeScheme**, plus internal ones)
-
-## Conventions
-
-* Properties starting with a **capital letters** are **property sets**. 
-* Properties starting with a **small letter** are **value properties**.
-* No properties are mandatory!
-* All **property sets** except of **Experiment** can contain multiple rows of metadata
-
-# The emeScheme
-This document was than re-ordered and thinned which resulted in the initial verions of [the Google Doc Sheet](https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg).
-
-Here we describe the structure of the **emeScheme**
-
-## Current Structure
-
-The properties follow these conventions:
-
-
-  
-  
-A **property set** which contains **value properties** must be seen as tables and must therefore have the same number of entries for each value property.
-
-The structure as at **`r read.dcf(here("DESCRIPTION"))[1, "GSUpdate"]` GMT** is as followed:
-
-```{r structure}
-caption <- "emeScheme Properties. '**PropertyName (unit) [field type in R]**'. <span style=\'font-weight: bold; text-decoration:underline; color: blue;\' >Blue</span> properties are property sets, i.e. contain value properties or property sets, **<span style='color:black'>black</span>** properties are value properties which contain values. The <span style=\'font-weight: bold; text-decoration:underline; color: yellow;\' >yellow column</span> is an example for the data."
-
-options(knitr.kable.NA = '')
-
-propColor <- function( x ) {
-  fc <- substr(x, 1, 1)
-  col <- ifelse( 
-    fc == tolower(fc), 
-    "black", 
-    "blue"
-  )
-  underl <- ifelse( 
-    fc == tolower(fc), 
-    FALSE, 
-    TRUE
-  )
-  bold <- ifelse( 
-    fc == tolower(fc), 
-    FALSE, 
-    TRUE
-  )
-  sel <- !is.na(x)
-  x[sel] <- cell_spec( 
-    x         = x[sel], 
-    color     = col[sel],
-    bold     = bold[sel],
-    underline = underl[sel]
-  )
-  return(x)
-}
-
-emeScheme_raw %>% 
-  # mutate_at( vars(starts_with("Property")), propColor ) %>%
-  knitr::kable(
-    escape = FALSE,
-    format = "html",
-    caption = caption
-  )  %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "bordered"), 
-    full_width = FALSE
-  ) # %>%
-  # column_spec(ncol(emeScheme_raw), width = "30em", background = "yellow")
-```
-
-# Example data
-
-An xml file with the example data can be downloaded from [here](./data/emeScheme_example.xml)
-
-# XSD Grammar
-The xsd grammar has been generated using [xmlgrid.net](http://xmlgrid.net/xml2xsd.html).
-You can download it from [here - right mouse click - Save Linked Content](./data/emeScheme.xsd.xml)
-
-# Other Resources
-## Presentations
-* [The emeScheme - an Introduction](https://rkrug.github.io/emeScheme_Introduction/The_emeScheme.html) by Rainer M Krug. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2247069.svg)](https://doi.org/10.5281/zenodo.2247069)
+# Desription and Definition of the emeScheme
+See the vignette "Description" at <a href="description.html" target="_blank">vignette 'Description'</a>.
 
 
 # The R Package
@@ -299,6 +70,10 @@ The package is not yet on CRAN. Therefore it needs to be installed from github. 
 
 For a list of releases see [here](https://github.com/Exp-Micro-Ecol-Hub/emeScheme/releases)
 
+```{r echo = FALSE, eval = TRUE, options}
+
+```
+
 ```{r echo=TRUE, eval = FALSE}
 ## install the devtools package if not installed yet
 # install.packages("devtools")
@@ -306,13 +81,19 @@ For a list of releases see [here](https://github.com/Exp-Micro-Ecol-Hub/emeSchem
 ## install the last version of emeScheme from github
 devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme")
 
-## install a specific release, e.g. v0.5.2, of emeScheme from github
-devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme", rev = "v0.5.2")
+## install a specific release of emeScheme from github
+devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme", rev = "vx.y.z")
 ```
+
+for a list of releases see this [link on github](https://github.com/Exp-Micro-Ecol-Hub/emeScheme/tags).
 
 ## Introduction
 
 See the vignette "Introduction" at <a href="Introduction.html" target="_blank">vignette 'Introduction'</a>.
+
+# Other Resources
+## Outdated Presentations
+* [The emeScheme - an Introduction](https://rkrug.github.io/emeScheme_Introduction/The_emeScheme.html) by Rainer M Krug. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2247069.svg)](https://doi.org/10.5281/zenodo.2247069)
 
 
 # Appendix

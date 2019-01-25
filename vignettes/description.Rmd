@@ -1,0 +1,238 @@
+---
+title: "Description"
+subtitle: "emeScheme Version v`r read.dcf(here::here('DESCRIPTION'), all = TRUE)[['Version']]`"
+author: "Rainer M Krug <Rainer@uzh.ch>"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(emeScheme)
+library(here)
+library(magrittr)
+library(dplyr)
+library(knitr)
+library(kableExtra)
+library(plantuml)
+#
+v <- read.dcf(here::here('DESCRIPTION'), all = TRUE)[['Version']]
+```
+
+# Introduction
+
+This scheme will provide a framework for describing aquatic microcosm experiments in the sense as used in the papers in the [References] section.
+
+It aims at providing a structured way to describe the data and to make finding the data using the provided metadata possible.
+
+This scheme **does neither** aim at covering aspects of the actual analysis of the extracted data **nor** does it aim at giving all information to re-run the experiment.
+
+# Terminology and Conventions
+
+## Terminology
+
+* **property set:** a property containing other **property sets** or **data properties**
+* **data property:** a property containing only **value properties**. Equivalent to a table.
+* **value property:** a column in a **data property**.
+* **emeScheme:** the name of this scheme. All properties inherit from the **emeScheme class**
+* **emeSchemeSet:** a property set in the emeScheme. It contains the following attributes
+    * **propertyName:** the name of the properties contained in this emeSchemeSet
+    * **class:** a string defining the class (**emeSchemeSet**, **emeScheme**, plus internal ones)
+* **emeSchemeData:** a value property in the emeSAcheme, i.e. a table containing metadata. It contains the following attributes:
+    * **propertyName:** the name of the property
+    * **names:** the column names of the table
+    * **units:** the units used each in the column
+    * **type:** the type of each column. Can be **numeric** (== **double**), **integer**, **logical** or **character** (== empty)
+    * **allowedValues:** a string of comma separated allowed values. *...* indicates that additional velues are allowed
+    * **class:** a string defining the class (**emeSchemeData_PROPERTYNAME**, **emeSchemeData**, **emeScheme**, plus internal ones)
+
+## Conventions
+
+* Properties starting with a **capital letters** are **property sets** or **data properties**. 
+* Properties starting with a **small letter** are **value properties**.
+
+# Structure of the emeScheme
+
+The **emeScheme** is providing meta data for a single datafile. It is a **property set** (`emeSchemeSet`) which contains of five different sets of **data properties** (`emeSchemeData`) which are tables of metadata.
+
+These five **data properties** are:
+
+1. **Experiment**: General informtion about the experiment. Each dataset can only have one.
+2. **Species**: Species used in the experiment. Each dataset can have multiple of these.
+3. **Treatment**: Description of the treatment and their differences. Each dataset can have multiple of these. 
+4. **Measurement**: Measurement methodology and parameter. Each dataset can have multiple of these.
+5. **DataExtraction**: Methodology of extraction to extract the data to be analysed from the raw data resulting from the Measurement. Each dataset can have multiple of these.
+
+An special role plays the `DataFile` **data property as it is not part of the actual metadata of a data file. It';s role will be discussed when discussing the data entering b y using the data sheet.
+
+It is important to note that
+
+1. All **data properties** can obtain multiple rows (i.e. are repeatable) of metadata with the exception of the **Experiment** which can contain only one row of metadata.
+2. Many **value properties** have an attribute `allowedValues`. If `...` is included in this attribute, any value can be entered, but, if possible, one should choose a value from the list. 
+
+```{r data_layout, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 15, fig.height = 15}
+'
+!define Project(name,desc) class name as "desc" << (P,pink) >> #TECHNOLOGY
+!define Data(name,desc) class name as "desc" << (D,crimson) >> #TECHNOLOGY
+!define MetaData(name,desc) class name as "desc" << (M,lime) >>
+
+Project(PhysExperiment, Experiment) {
+  {field} In the Lab
+}
+
+
+MetaData(Experiment, Experiment) {
+  {field} Experimental MetaData
+  {method} + Single Experiment
+}
+
+
+MetaData(Species, Species) {
+  {field} Species metadata
+  {method} + List of Species
+}
+
+
+MetaData(Treatment, Treatment) {
+  {field} Treatment MetaData
+  {method} + List of Treatments
+}
+
+
+
+MetaData(Measurement, Measurement) {
+  {field} Measurement MetaData
+  {method} + List of Measurings
+}
+
+Data( RawData, Raw Data DataFile) {
+  {field} Contains Raw Data
+  {method} - dataCite metadata
+  {method} - emeScheme metadata
+  {method} + Experiment
+  {method} + Species
+  {method} + Set of Treatment (names)
+  {method} + Set of Measurements (names)
+}
+
+MetaData( DataExtraction, DataExtraction) {
+  {field} Extraction Method MetaData
+  {method} + List of DataExtractions
+}
+
+
+Data( ExtractedData, Extracted Data DataFile) {
+  {field} Contains Extracted Data
+  {method} - dataCite metadata
+  {method} - emeScheme metadata
+  {method} - reference to Raw Data DataFile
+  {method} + Experiment
+  {method} + Species
+  {method} + Set of Treatment (names)
+  {method} + Set of Measurement (names)
+  {method} + Set of DataExtraction (names)
+}
+
+
+PhysExperiment "1" *-- "many" Experiment : contains
+
+Experiment "1" *-- "many" Species : contains
+Experiment "1" *-- "many" Treatment : contains
+Experiment "1" *-- "many" Measurement : contains
+Experiment "1" *-- "many" DataExtraction : contains
+
+Species "1" *-- "many" RawData : contains
+Treatment "1" *-- "many" RawData : contains
+Measurement "1" *-- "many" RawData : contains
+
+Species "1" *-- "many" ExtractedData : contains
+Treatment "1" *-- "many" ExtractedData : contains
+Measurement "1" *-- "many" ExtractedData : contains
+DataExtraction "1" *-- "many" ExtractedData : contains
+' %>%
+  plantuml %>%
+  plot()
+```
+
+
+
+# The emeScheme
+This document was than re-ordered and thinned which resulted in the initial verions of [the Google Doc Sheet](https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg).
+
+Here we describe the structure of the **emeScheme**
+
+## emeScheme Structure
+```{r struct_emeScheme}
+print(emeScheme, printData = F, printAttr = FALSE, printExtAttr = FALSE)
+```
+
+### Experiment
+
+```{r struct_Experiment}
+emeScheme_raw$Experiment %>% 
+  kable() %>%
+  kable_styling(bootstrap_options = "striped")
+```
+
+### Species
+
+```{r Species}
+emeScheme_raw$Species %>% 
+  kable() %>%
+  kable_styling(bootstrap_options = "striped")
+```
+
+### Treatment
+
+```{r struct_Treatment}
+emeScheme_raw$Treatment %>% 
+  kable() %>%
+  kable_styling(bootstrap_options = "striped")
+```
+
+### Measurement
+
+```{r struct_Measurement}
+emeScheme_raw$Measurement %>% 
+  kable() %>%
+  kable_styling(bootstrap_options = "striped")
+```
+
+### DataExtraction
+
+```{r struct_DataExtraction}
+emeScheme_raw$DataExtraction %>% 
+  kable() %>%
+  kable_styling(bootstrap_options = "striped")
+```
+
+### DataFile
+
+```{r struct_DataFile}
+emeScheme_raw$DataFile %>% 
+  kable() %>%
+  kable_styling(bootstrap_options = "striped")
+```
+
+
+A **property set** which contains **data properties** must be seen as tables and must therefore have the same number of entries for each data property.
+
+The structure as at **`r read.dcf(here("DESCRIPTION"))[1, "GSUpdate"]` GMT** is as followed:
+
+
+# Example data
+
+An xml file with the example data can be downloaded from [here](./data/emeScheme_example.xml)
+
+# XSD Grammar
+The xsd grammar has been generated using [xmlgrid.net](http://xmlgrid.net/xml2xsd.html).
+You can download it from [here - right mouse click - Save Linked Content](./data/emeScheme.xsd.xml)
+
+

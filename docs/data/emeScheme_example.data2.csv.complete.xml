@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <emeScheme class="emeSchemeSet, emeScheme, list" names="Experiment, Species, Treatment, Measurement, DataExtraction, DataFile">
- <ExperimentList unit="NA, NA, NA, NA, NA, NA, ml, NA, g/l, NA, NA" type="character, character, character, character, character, character, numeric, character, numeric, character, character" allowedValues="NA, treatment, ..., treatment, ..., treatment, ..., none, bench, ..., NA, NA, NA, NA, axenic, dirty, clean, …, treatment, single trophic level, multiple trophic level, …" names="name, temperature, light, humidity, incubator, container, microcosmVolume, mediaType, mediaConcentration, cultureConditions, comunityType" class="emeSchemeData_Experiment, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
+ <ExperimentList unit="NA, NA, NA, NA, NA, NA, ml, NA, g/l, NA, NA, NA" type="character, character, character, character, character, character, numeric, character, numeric, character, character, character" allowedValues="NA, treatment, ..., treatment, ..., treatment, ..., none, bench, ..., NA, NA, NA, NA, axenic, dirty, clean, …, treatment, single trophic level, multiple trophic level, …, NA" names="name, temperature, light, humidity, incubator, container, microcosmVolume, mediaType, mediaConcentration, cultureConditions, comunityType, comment" class="emeSchemeData_Experiment, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
   <Experiment>
    <name>nice experiment</name>
    <temperature>22.0</temperature>
@@ -13,61 +13,54 @@
    <mediaConcentration>20</mediaConcentration>
    <cultureConditions>dirty</cultureConditions>
    <comunityType>single trophic level</comunityType>
+   <comment></comment>
   </Experiment>
  </ExperimentList>
- <SpeciesList unit="NA, NA, NA, NA, cells / ml, NA" type="character, character, character, character, numeric, character" allowedValues="NA, NA, NA, NA, NA, bacteria, bacteriavore, predator, phototroph, …" names="name, strain, source, comment, density, functionalGroup" class="emeSchemeData_Species, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
+ <SpeciesList unit="NA, NA, NA, cells / ml, NA, NA" type="character, character, character, numeric, character, character" allowedValues="NA, NA, NA, treatment, value, bacteria, bacteriavore, predator, phototroph, …, NA" names="name, strain, source, density, functionalGroup, comment" class="emeSchemeData_Species, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
   <Species name="tarantula maximus">
    <strain>green</strain>
    <source>ebay</source>
-   <comment>nice expression of disgust</comment>
    <density>20</density>
    <functionalGroup>bacteria</functionalGroup>
+   <comment>nice expression of disgust</comment>
   </Species>
  </SpeciesList>
- <TreatmentList unit="NA, NA, NA, NA, NA, NA" type="character, character, character, character, character, character" allowedValues="NA, temp, light, initial density, comunity composition, densities, dispersal, viscosity, disturbance, communityType, species, …}, C, lux, name, ..., value,  variable: freetext, ..., NA, NA" names="name, parameter, unit, treatmentLevel, comment, datafile" class="emeSchemeData_Treatment, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
+ <TreatmentList unit="NA, NA, NA, NA, NA" type="character, character, character, character, character" allowedValues="NA, temp, light, initial density, comunity composition, densities, dispersal, viscosity, disturbance, communityType, species, …}, C, lux, name, ..., value,  variable: freetext, ..., NA" names="name, parameter, unit, treatmentLevel, comment" class="emeSchemeData_Treatment, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
   <Treatment name="hot">
    <parameter>temp</parameter>
    <unit>C</unit>
    <treatmentLevel>35.0</treatmentLevel>
    <comment></comment>
-   <datafile></datafile>
   </Treatment>
   <Treatment name="hot">
    <parameter>species</parameter>
    <unit>name</unit>
    <treatmentLevel>tarantula maximus</treatmentLevel>
    <comment></comment>
-   <datafile></datafile>
   </Treatment>
  </TreatmentList>
- <MeasurementList unit="NA, NA, NA, NA, NA, NA, NA, days between sampling, ml, days, NA, NA, NA" type="character, character, character, character, character, character, integer, numeric, numeric, integer, character, character, character" allowedValues="NA, O2 concentration, video, manual count, …, presens Optode, microscopy, …, %, mmol, count, …, species, OUT, gene, community, …, NA, NA, NA, NA, NA, raw, bemovi, ..., NA, NA" names="name, variable, method, unit, object, comments, noOfSamplesInTimeSeries, samplingAverageFrequency, samplingVolume, lengthOfTimeSeries, dataExtractionMethod, rawDataFile, datafile" class="emeSchemeData_Measurement, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
+ <MeasurementList unit="NA, NA, NA, NA, NA, days, NA, days between sampling, ml, NA" type="character, character, character, character, character, integer, integer, numeric, numeric, character" allowedValues="NA, O2 concentration, video, manual count, …, presens Optode, microscopy, …, %, mmol, count, …, species, OUT, gene, community, particles, …, NA, NA, NA, NA, NA" names="name, variable, method, unit, object, lengthOfTimeSeries, noOfSamplesInTimeSeries, samplingAverageFrequency, samplingVolume, comment" class="emeSchemeData_Measurement, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
   <Measurement name="NA">
    <variable></variable>
    <method></method>
    <unit></unit>
    <object></object>
-   <comments></comments>
+   <lengthOfTimeSeries></lengthOfTimeSeries>
    <noOfSamplesInTimeSeries></noOfSamplesInTimeSeries>
    <samplingAverageFrequency></samplingAverageFrequency>
    <samplingVolume></samplingVolume>
-   <lengthOfTimeSeries></lengthOfTimeSeries>
-   <dataExtractionMethod></dataExtractionMethod>
-   <rawDataFile></rawDataFile>
-   <datafile></datafile>
+   <comment></comment>
   </Measurement>
   <Measurement>
    <variable></variable>
    <method></method>
    <unit></unit>
    <object></object>
-   <comments></comments>
+   <lengthOfTimeSeries></lengthOfTimeSeries>
    <noOfSamplesInTimeSeries></noOfSamplesInTimeSeries>
    <samplingAverageFrequency></samplingAverageFrequency>
    <samplingVolume></samplingVolume>
-   <lengthOfTimeSeries></lengthOfTimeSeries>
-   <dataExtractionMethod></dataExtractionMethod>
-   <rawDataFile></rawDataFile>
-   <datafile></datafile>
+   <comment></comment>
   </Measurement>
  </MeasurementList>
  <DataExtractionList unit="NA, NA, NA, NA, NA" type="character, character, character, character, character" allowedValues="NA, bemovi x.y.z, ..., NA, NA, NA" names="name, method, parameter, value, comment" class="emeSchemeData_DataExtraction, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">

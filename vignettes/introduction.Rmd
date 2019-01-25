@@ -1,5 +1,6 @@
 ---
 title: "Introduction"
+subtitle: "emeScheme Version v`r read.dcf(here::here('DESCRIPTION'), all = TRUE)[['Version']]`"
 author: "Rainer M Krug <Rainer@uzh.ch>"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -22,6 +23,8 @@ library(emeScheme)
 # library(knitr)
 # library(kableExtra)
 # library(plantuml)
+#
+v <- read.dcf(here::here('DESCRIPTION'), all = TRUE)[['Version']]
 ```
 
 # The R Package
@@ -41,8 +44,8 @@ For a list of releases see [here](https://github.com/Exp-Micro-Ecol-Hub/emeSchem
 ## install the last version of emeScheme from github
 devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme")
 
-## install a specific release, e.g. v0.5.2, of emeScheme from github
-devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme", rev = "v0.5.2")
+## install a specific release, e.g. v0.6.0, of emeScheme from github
+devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme", rev = "v0.6.0")
 ```
 
 
@@ -59,11 +62,10 @@ This should open Excel and the file should look similar to this:
 
 ![](./figs/enter_new_data.png)
 
-1) The file is read only. It needs to be saved at a different location. Therefore the template can not be changed.
-2) Data can only be entered in the cells with the light grey fields with the red borders. All other cells are write protected.
-3) Green rows indicate Property Names at the different levels
+1) The file is saved in a temporary directory. It needs to be saved at a different location, if you want to keep the changes. 
+2) Data can only be entered in the green cells with. All other cells are write protected.
 
-After entering the data, save it to alocation for further processing.
+After entering the data, save it to a location for further processing.
 
 ## Importing Data from Excel Sheet
 
@@ -91,7 +93,11 @@ x <- read_from_excel(
 
 ## Print emeScheme Data
 
-emeScheme Data can be printed by using the `print()` function. The function has two arguments which control the printout, i.e. `printAttr` and `printData`.
+emeScheme Data can be printed by using the `print()` function. The function has three arguments which control the printout:
+
+* `printAttr`: if `TRUE` (default) print the **basic** attributes prefixed with `A   `
+* `printExAttr`: if `TRUE` print the **all** attributes prefixed with `X   `
+* `printData`: if `TRUE` (default) print the data prefixed with `D   `
 
 ```{r, echo = TRUE}
 print(
@@ -143,20 +149,25 @@ emeSchemeToXml( x, tag = "ExampleData", file = "ExampleData.xml" )
 ```
 
 
-## Re-import from xml into R
+<!-- ## Re-import from xml into R -->
 
-**<span style="color:red">TODO This needs some more work see issue #5 </span>** 
+<!-- **<span style="color:red">TODO This needs some more work see issue #5 </span>**  -->
 
-```{r example_import_xml, eval = FALSE}
-addDataToEmeScheme() %>%
-  emeSchemeToXml( tag = "Example Data" ) %>%
-  xmlToEmeScheme() %>%
-  str()
-```
+<!-- ```{r example_import_xml, eval = FALSE} -->
+<!-- addDataToEmeScheme() %>% -->
+<!--   emeSchemeToXml( tag = "Example Data" ) %>% -->
+<!--   xmlToEmeScheme() %>% -->
+<!--   str() -->
+<!-- ``` -->
 
-## Validation of xml against xsd
+## Validation
+### `emeSchemeSet_raw` against `emeScheme`
 
-**<span style="color:red">TODO: include validation of xml against the emeScheme.xsd.xml</span>**
+When running `read_from_excel()`, the dafault is to validate the raw data before conversion to an `emeScheme` object to guarantee a valid `emeScheme` is returned. If the validation fails, an error is raised.
+
+### xml against xsd
+
+Not incorporated yet but planned.
 
 ## General things
 
