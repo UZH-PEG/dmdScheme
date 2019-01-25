@@ -60,7 +60,7 @@ clean_html:
 #############
 
 web: html vignettes readme
-	cp -f $(VIGHTML) $(VIGHTMLOUT)
+	cp -f $(VIGHTML) $(OUTDIR)/
 	mkdir -p $(DATADIR)
 	cp -f $(EXAMPLEXML) $(DATADIR)/
 
