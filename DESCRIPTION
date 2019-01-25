@@ -1,6 +1,6 @@
 Package: emeScheme
 Title: Microcosm experiment metadata scheme
-Version: 0.6.3.2
+Version: 0.7.0
 Date: 2019-01-25
 Authors@R: c( person("Rainer M.", "Krug", email = "Rainer.Krug@uzh.ch",
         role = c("aut", "cre")), person("Owen L.", "Petchey", email =
@@ -26,10 +26,10 @@ GSUpdate: 2019-01-25 09:44:23
 Suggests: 
     covr (>= 3.2.1),
     testthat (>= 2.0.1),
-    googlesheets (>=
-        0.3.0),
+    googlesheets (>= 0.3.0),
     here (>= 0.1),
-    knitr,
-    rmarkdown,
+    knitr (>= 1.21),
+    rmarkdown (>= 1.11),
+    kableExtra (>= 0.9.0), 
     plantuml (>= 0.2.3.2)
 VignetteBuilder: knitr

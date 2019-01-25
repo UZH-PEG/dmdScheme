@@ -16,7 +16,7 @@ test_that(
   {
     expect_known_hash(
       object = extract_emeScheme_for_datafile(x = emeScheme_example, file = "data1.csv"),
-      hash = "f66fe0fd3c"
+      hash = "644f73496f"
     )
   }
 )
@@ -26,7 +26,7 @@ test_that(
   {
     expect_known_hash(
       object = extract_emeScheme_for_datafile(x = emeScheme_example, file = "vid.zip"),
-      hash = "abc60ada4c"
+      hash = "9f33f871cc"
     )
   }
 )

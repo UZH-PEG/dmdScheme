@@ -21,7 +21,7 @@ library(emeScheme)
 # library(magrittr)
 # library(dplyr)
 # library(knitr)
-# library(kableExtra)
+library(kableExtra)
 # library(plantuml)
 #
 v <- read.dcf(here::here('DESCRIPTION'), all = TRUE)[['Version']]

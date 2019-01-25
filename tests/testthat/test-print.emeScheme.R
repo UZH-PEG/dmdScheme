@@ -28,7 +28,7 @@ test_that(
   {
     expect_known_hash(
       object = capture_output(print(emeScheme_example, printAttr = TRUE, printExtAttr = TRUE, printData = FALSE)),
-      hash = "36eb73bd28"
+      hash = "6fc7d3c2d5"
     )
   }
 )
@@ -38,7 +38,7 @@ test_that(
   {
     expect_known_hash(
       object = capture_output(print(emeScheme_example, printAttr = TRUE, printExtAttr = TRUE, printData = TRUE)),
-      hash = "f49bbbcbdb"
+      hash = "849a4748e0"
     )
   }
 )
@@ -48,7 +48,7 @@ test_that(
   {
     expect_known_hash(
       object = capture_output(print(extract_emeScheme_for_datafile(emeScheme_example, "vid.zip"), printAttr = TRUE, printExtAttr = TRUE, printData = TRUE)),
-      hash = "966e5472f8"
+      hash = "589cf99183"
     )
   }
 )
