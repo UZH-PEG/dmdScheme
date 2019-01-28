@@ -18,7 +18,7 @@ matrix:
     after_success:
   - r: release
     os: osx
-    osx_image: xcode7.3
+    osx_image: xcode10.1
 #     brew_packages: ghostscript pgaphviz
   - r: oldrel
   - r: 3.3
