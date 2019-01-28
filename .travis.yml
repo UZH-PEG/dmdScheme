@@ -19,15 +19,25 @@ matrix:
   - r: release
     os: osx
     osx_image: xcode7.3
+#     brew_packages: ghostscript pgaphviz
   - r: oldrel
   - r: 3.3
 #  - r: 3.2 # Because of openxlsx requires R >= 3.3
 #  - r: 3.1 # Because of openxlsx requires R >= 3.3
 
-apt_packages:
-  - ghostscript
-  - graphviz
+# apt_packages:
+#   - ghostscript
+#   - graphviz
 
 before_install:
   - echo "TRAVIS_OS_NAME = $TRAVIS_OS_NAME"
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install ghostscript; fi;
+
+addons:
+  apt:
+    packages:
+    - ghostscript
+    - graphviz
+  homebrew:
+    packages:
+    - ghostscript
+    - graphviz
