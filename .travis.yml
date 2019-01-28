@@ -26,6 +26,7 @@ matrix:
 
 apt_packages:
   - ghostscript
+  - graphviz
 
 before_install:
   - echo "TRAVIS_OS_NAME = $TRAVIS_OS_NAME"
