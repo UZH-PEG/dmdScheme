@@ -28,8 +28,8 @@ Suggests:
     testthat (>= 2.0.1),
     googlesheets (>= 0.3.0),
     here (>= 0.1),
-    knitr (>= 1.21),
-    rmarkdown (>= 1.11),
-    kableExtra (>= 0.9.0), 
+    knitr,
+    rmarkdown,
+    kableExtra (>= 0.9.0),
     plantuml (>= 0.2.3.2)
 VignetteBuilder: knitr
