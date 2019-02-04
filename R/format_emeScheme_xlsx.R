@@ -341,31 +341,6 @@ format_emeScheme_xlsx <- function(
   }
 
 
-
-# delete DataFile alowedValues if keepData is FALSE ----------------------------------------
-
-    if (!keepData) {
-      data <- openxlsx::readWorkbook(wb, sheet = "DataFile", colNames = FALSE, rowNames = FALSE)
-      rowNames <- data[[1]]
-      nameRow <- which(rowNames == "valueProperty")
-      colNames <- unlist(data[nameRow,])
-
-      dataCols <- 2:ncol(data)
-      dataRows <- which(rowNames == "DATA"):nrow(data)
-
-      dataRows <- 2:nrow(data)
-
-      openxlsx::deleteData(
-        wb = wb,
-        sheet = sheet,
-        cols = dataCols,
-        rows = which(rowNames == "allowedValues"),
-        gridExpand = TRUE
-      )
-    }
-
-
-
 # TODO write formulas in DataFile ----------------------------------------------
 
   # data <- openxlsx::readWorkbook(wb, sheet = "Treatment", colNames = FALSE, rowNames = FALSE)

@@ -86,14 +86,11 @@ updateFromGoogleSheet <- function(
 
     cat_ln("##### Generating emeScheme_example.xml...")
 
-    dfs <- unique(emeScheme_example$DataFile$dataFileName)
-    for (df in dfs) {
-      x <- extract_emeScheme_for_datafile(x = emeScheme_example, df)
-      for (output in c("metadata", "complete")) {
-        fn <- paste( here::here("inst", "emeScheme_example"), df, output, "xml", sep = ".")
-        emeSchemeToXml(x, file = fn, output = "complete")
-      }
-    }
+    emeSchemeToXml(
+      x = emeScheme_example,
+      file = here::here("inst", "emeScheme_example.xml"),
+      output = "complete"
+    )
 
     # bump version and change description in DECRIPTION -----------------------
 

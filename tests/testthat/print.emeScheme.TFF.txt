@@ -1,0 +1,31 @@
+ emeScheme - emeSchemeSet
+     Experiment - emeSchemeData
+A       Names : name | temperature | light | humidity | incubator | container | microcosmVolume | mediaType | mediaConcentration | cultureConditions | comunityType | mediaAdditions | comment
+A       Units : NA | NA | NA | NA | NA | NA | ml | NA | g/l | NA | NA | NA | NA
+A       Type  : character | character | character | character | character | character | numeric | character | numeric | character | character | character | character
+
+     Species - emeSchemeData
+A       Names : name | strain | source | density | functionalGroup | comment
+A       Units : NA | NA | NA | cells / ml | NA | NA
+A       Type  : character | character | character | numeric | character | character
+
+     Treatment - emeSchemeData
+A       Names : parameter | unit | treatmentLevel | comment
+A       Units : NA | NA | NA | NA
+A       Type  : character | character | character | character
+
+     Measurement - emeSchemeData
+A       Names : name | variable | method | unit | object | lengthOfTimeSeries | noOfSamplesInTimeSeries | samplingAverageFrequency | samplingVolume | dataExtractionName | measuredFrom | dataFiles | comment
+A       Units : NA | NA | NA | NA | NA | days | NA | days between sampling | ml | NA | NA | NA | NA
+A       Type  : character | character | character | character | character | integer | integer | numeric | numeric | character | character | character | character
+
+     DataExtraction - emeSchemeData
+A       Names : name | method | parameter | value | comment
+A       Units : NA | NA | NA | NA | NA
+A       Type  : character | character | character | character | character
+
+     TableMetaData - emeSchemeData
+A       Names : filename | variable_name | unit | type | description | treatmentParameter | comment
+A       Units : NA | NA | NA | NA | NA | NA | NA
+A       Type  : character | character | character | character | character | character | character
+

@@ -1,0 +1,108 @@
+ emeScheme - emeSchemeSet
+     Experiment - emeSchemeData
+A       Names : name | temperature | light | humidity | incubator | container | microcosmVolume | mediaType | mediaConcentration | cultureConditions | comunityType | mediaAdditions | comment
+A       Units : NA | NA | NA | NA | NA | NA | ml | NA | g/l | NA | NA | NA | NA
+A       Type  : character | character | character | character | character | character | numeric | character | numeric | character | character | character | character
+
+XA      row.names: 1
+XA      propertyName: Experiment
+XA      allowedValues: NA | treatment, ... | treatment, ... | treatment, ... | none, bench, ... | NA | NA | NA | NA | axenic, dirty, clean, … | treatment, single trophic level, multiple trophic level, … | NA | NA
+XA      Description: The name of the experiment. | Temperature used for all treatments. If different between treatments, use "treatment" and specify in the Treatment sheet. | Light used for all treatments. If different between treatments, use "treatment" and specify in the Treatment sheet. | Humidity used for all treatments. If different between treatments, use "treatment" and specify in the Treatment sheet. | What type of incubator is used. | What type of container is used. | Volume of the microcosm container. Not the volume of the culture medium! | NA | NA | Conditions of the cultures for all treatments. | Characterisation of the cmicrobe community. | NA | NA
+XA      class: emeSchemeData_Experiment | emeSchemeData | emeScheme | tbl_df | tbl | data.frame
+
+          name temperature light humidity incubator container microcosmVolume
+D       1 <NA>        <NA>  <NA>     <NA>      <NA>      <NA>              NA
+          mediaType mediaConcentration cultureConditions comunityType
+D       1      <NA>                 NA              <NA>         <NA>
+          mediaAdditions comment
+D       1           <NA>    <NA>
+
+     Species - emeSchemeData
+A       Names : name | strain | source | density | functionalGroup | comment
+A       Units : NA | NA | NA | cells / ml | NA | NA
+A       Type  : character | character | character | numeric | character | character
+
+XA      row.names: 1
+XA      propertyName: Species
+XA      allowedValues: NA | NA | NA | treatment, value | bacteria, bacteriavore, predator, phototroph, … | NA
+XA      Description: Scientific name of the species. Should only occur once. Or unknown. | NA | Where the species was obtained from. | Initial density used for all treatments. If different between treatments, use "treatment" and specify in the Treatment sheet. | Functional group of the species. | NA
+XA      class: emeSchemeData_Species | emeSchemeData | emeScheme | tbl_df | tbl | data.frame
+
+          name strain source density functionalGroup comment
+D       1 <NA>   <NA>   <NA>      NA            <NA>    <NA>
+
+     Treatment - emeSchemeData
+A       Names : parameter | unit | treatmentLevel | comment
+A       Units : NA | NA | NA | NA
+A       Type  : character | character | character | character
+
+XA      row.names: 1
+XA      propertyName: Treatment
+XA      allowedValues: temperatur, light, initial density, comunity composition, densities, dispersal, viscosity, disturbance, communityType, …} | C, lux, name, ... | value,  variable: freetext, ... | NA
+XA      Description: The parameter decribed in this a column in a data sheet. | The unit of the parameter. | The value of the parameter if the parameter is constant over time, or a description of the variability. | NA
+XA      class: emeSchemeData_Treatment | emeSchemeData | emeScheme | tbl_df | tbl | data.frame
+
+          parameter unit treatmentLevel comment
+D       1      <NA> <NA>           <NA>    <NA>
+
+     Measurement - emeSchemeData
+A       Names : name | variable | method | unit | object | lengthOfTimeSeries | noOfSamplesInTimeSeries | samplingAverageFrequency | samplingVolume | dataExtractionName | measuredFrom | dataFiles | comment
+A       Units : NA | NA | NA | NA | NA | days | NA | days between sampling | ml | NA | NA | NA | NA
+A       Type  : character | character | character | character | character | integer | integer | numeric | numeric | character | character | character | character
+
+XA      row.names: 1
+XA      propertyName: Measurement
+XA      allowedValues: NA | O2 concentration, video, manual count, … | presens Optode, microscopy, … | %, mmol, count, … | species, OUT, gene, community, particles, … | NA | NA | NA | NA | NA | NA | NA | NA
+XA      Description: Name of the Measurement process. This includes methodology, variables, ... . Each name specifies one Measurement process and can occur multiple times. | The variable measured. | Name of the method used. | Unit of the measured variable | The object measured. E.g. species in the case of manual count, gene for genetic analysis, particle for particle counters. | Total length of the time series in days. | Total number of all samples in the time series. | The average sampling frequency, i.e. noOfSamplesInTimeSeries divided by lengthOfTimeSeries | The sampling volumne. | as used in the sheet DataExtraction, column name | if measured from the experiment, raw, elxe the name *first column) of the measurement it is based on. | data file(s) using this measurement method. If more than one, separated by comma. | NA
+XA      class: emeSchemeData_Measurement | emeSchemeData | emeScheme | tbl_df | tbl | data.frame
+
+          name variable method unit object lengthOfTimeSeries
+D       1 <NA>     <NA>   <NA> <NA>   <NA>                 NA
+          noOfSamplesInTimeSeries samplingAverageFrequency samplingVolume
+D       1                      NA                       NA             NA
+          dataExtractionName measuredFrom dataFiles comment
+D       1               <NA>         <NA>      <NA>    <NA>
+
+     DataExtraction - emeSchemeData
+A       Names : name | method | parameter | value | comment
+A       Units : NA | NA | NA | NA | NA
+A       Type  : character | character | character | character | character
+
+XA      row.names: 1
+XA      propertyName: DataExtraction
+XA      allowedValues: NA | bemovi x.y.z, ... | NA | NA | NA
+XA      Description: Name of the DataExtraction process. This includes methodology, variables, ... . Each name specifies one Measurement process and can occur multiple times in the case of multiple parameters in the analysis. | Method used for the DataExtraction process. If possible including version (in the case of R packages). | parameter in the analysis. Only needs to be specified if it varies from the default.
+
+Should we use a format like 
+
+a = 3; n = 30; minSize = 40
+
+instead of one row per parameter?
+ | value of the parameter
+
+Should we use a format like 
+
+a = 3; n = 30; minSize = 40
+
+instead of one row per parameter? | NA
+XA      class: emeSchemeData_DataExtraction | emeSchemeData | emeScheme | tbl_df | tbl | data.frame
+
+          name method parameter value comment
+D       1 <NA>   <NA>      <NA>  <NA>    <NA>
+
+     TableMetaData - emeSchemeData
+A       Names : filename | variable_name | unit | type | description | treatmentParameter | comment
+A       Units : NA | NA | NA | NA | NA | NA | NA
+A       Type  : character | character | character | character | character | character | character
+
+XA      row.names: 1
+XA      propertyName: TableMetaData
+XA      allowedValues: NA | video_lf, o2_hf, mc, os_lf, video_hf | NA | integer, numeric, character, logical, datetime, ... | NA | NA | NA
+XA      Description: the name of the data set. | The column name as in the dataFiles column in the Measurement tab. | unit of the colum | type of the column | general description. If datatime column, the format used | Corresponding parameter in the Treatment tab. | NA
+XA      class: emeSchemeData_TableMetaData | emeSchemeData | emeScheme | tbl_df | tbl | data.frame
+
+          filename variable_name unit type description treatmentParameter
+D       1     <NA>          <NA> <NA> <NA>        <NA>               <NA>
+          comment
+D       1    <NA>
+
