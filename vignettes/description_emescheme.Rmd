@@ -60,7 +60,9 @@ This scheme **does neither** aim at covering aspects of the actual analysis of t
 
 # Structure of the emeScheme
 
-The **emeScheme** is providing meta data for a single datafile. It is a **property set** (`emeSchemeSet`) which contains of five different sets of **data properties** (`emeSchemeData`) which are tables of metadata.
+The **emeScheme** is providing meta data for a **data file bundle**. A **data bundle** is an archive (e.g. tar.gz or zip) cosisting of multiple **data files** and one file with the metadata **<span style="color:red">TODO we have to decide on the format of this file - should be a text file?</span>**. If the data files represent tabular data, they should be in csv format, otherwise any open format. 
+
+It is a **property set** (`emeSchemeSet`) which contains of five different sets of **data properties** (`emeSchemeData`) which are tables of metadata.
 
 These five **data properties** are:
 
@@ -69,8 +71,8 @@ These five **data properties** are:
 3. **Treatment**: Description of the treatment and their differences. Each dataset can have multiple of these. 
 4. **Measurement**: Measurement methodology and parameter. Each dataset can have multiple of these.
 5. **DataExtraction**: Methodology of extraction to extract the data to be analysed from the raw data resulting from the Measurement. Each dataset can have multiple of these.
+6. **TableMetaData**: Meta data for each data file. If the data file contains tabular data, a description of the columns and a specification of the column containing the different parameters between treeatments, if other format, e.g. video, a short description of the video and the name of the treatment. 
 
-An special role plays the `DataFile` **data property as it is not part of the actual metadata of a data file. It';s role will be discussed when discussing the data entering b y using the data sheet.
 
 It is important to note that
 
