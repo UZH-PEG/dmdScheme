@@ -13,7 +13,7 @@ TMP1  = $(VIGRMD:.Rmd=.html)
 VIGHTML = ${subst $(VIGDIR),$(DOCDIR),$(TMP1)}
 VIGHTMLOUT = ${subst $(VIGDIR),$(OUTDIR),$(TMP1)}
 
-EXAMPLEXML = $(wildcard $(INSTDIR)/emeScheme_example.*.xml)
+EXAMPLEXML = $(wildcard $(INSTDIR)/emeScheme_example.xml)
 
 RMD = $(wildcard $(SRCDIR)/*.Rmd)
 TMP2  = $(RMD:.Rmd=.html)

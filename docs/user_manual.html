@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Owen and Rainer" />
+
+<meta name="date" content="2019-02-04" />
+
+<title>User manual for experimental microbial ecology metadata tool</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#header {
+text-align: center;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">User manual for experimental microbial ecology metadata tool</h1>
+<h4 class="author"><em>Owen and Rainer</em></h4>
+<h4 class="date"><em>2019-02-04</em></h4>
+
+
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>Researchers are increasingly being required to make the data they produce findable, accessible, interoperable, and reusable <a href="https://en.wikipedia.org/wiki/FAIR_data">wikipedia FAIR entry</a>. Providing metadata that describes our studies, experiments, treatments, measurements, and so on is a key part of this endeavour.</p>
+<p>The aim of the experimental microbial ecology metadata tool is to help you describe your study and its data, i.e. to produce useful metadata. You will do this by preparing your datasets for archiving (more on this below), filling in your metadata the spreadsheet supplied, validating the combination of the metadata and data (this will be largely automatic), fixing any issues revealed by the validation step, and once satisfactorily validated deposit the metadata and data in a repository of your choice.</p>
+<p>What is meant by <em>useful</em> metadata? Imagine we would like to use the metadata to find experiments (and potentially return the relevant data from them) that involve <em>Colpidium striatum</em> grown at 20C in 0.55 g per litre protist pellet medium. To do this we need to ensure that the species name, the temperature, and the growth media information are contained in the metadata. We also need to make sure that when temperature is described it is described in a standard fashion, and the the growth media description is standardised. So there must be some standardisation. But its clear that most experiments have some unique features, such that we can’t standardise everything in advance. The metadata scheme we use here is intended to be a good balance of standardised and flexible.</p>
+</div>
+<div id="when-should-i-enter-metadata" class="section level1">
+<h1>When should I enter metadata</h1>
+<p>You will benefit from starting this when you design your study. You’ll likely find out that doing to will help with the planning of the study. You may then choose to work in a slightly different way, since this will make things more efficient later (this might especially be so for data handling issues). No problem, however, if you decide to do it at the end (or you are reading this after a study is complete).</p>
+</div>
+<div id="getting-started" class="section level1">
+<h1>Getting started</h1>
+<p>You will enter the metadata in a supplied spreadsheet (Googlesheets or Excel), but then use R to do some tasks, like validation and transormation of metadata into more machine readable form. So the first thing to do is get and load the <strong>emeScheme</strong> R package:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">## install the devtools package if not installed yet</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">## install.packages(&quot;devtools&quot;)</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">## install the last version of emeScheme from github</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">#devtools::install_github(&quot;Exp-Micro-Ecol-Hub/emeScheme&quot;)</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw">library</span>(emeScheme)</a></code></pre></div>
+<p>To get a copy of the spreadsheet you will enter the metadata in, you can run this R command to get an Excel version, or use <a href="https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg">this copy on googlesheets</a>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">enter_new_metadata</span>()</a></code></pre></div>
+<p>Either way, make a copy of the spreadsheet and save it somewhere safe, like in the folder for your study/experiment.</p>
+<p>Its probably worth now looking at the spreadsheet (but don’t yet try to fill in anything), to see what metadata you will need to enter. There are several worksheets:</p>
+<ul>
+<li><strong>Experiment</strong> Here you enter details of your experiment, e.g. what temperature was the experiment conducted at. If temperature was a treatment, then you state that here and supply the levels in the <strong>Treatments</strong> worksheet.</li>
+<li><strong>Species</strong> Give details of the species involved in the experiment.</li>
+<li><strong>Treatments</strong> Here we give the manipulations involved in the experiment.</li>
+<li><strong>Measurements</strong> Details of what was measured, and in which data files these measurements are.</li>
+<li><strong>DataExtraction</strong> Details of how measurements were extracted from raw data, if that happened.</li>
+<li><strong>VariablesInDatafiles</strong> A list of the data files and description of the variables they contain.</li>
+</ul>
+</div>
+<div id="preparating-data-for-archiving" class="section level1">
+<h1>Preparating data for archiving</h1>
+<p>There are no hard and fast rules, but there are some guidelines that will make things easier, or are otherwise recommended for datasets (e.g. data that we can have in a spreadsheet):</p>
+<ul>
+<li>Use long / tidy arrangement of data.</li>
+<li>Always include a variable for each treatment.</li>
+<li>Always include a variable that allows one data file to be related to others (e.g. Microcosm_ID).</li>
+<li>Put all measurement of one type in a single data file. E.g. one datafile of dissolved oxygen measures, one datafile of adundance data, one data file of sequence data.</li>
+</ul>
+<p>If your data does not fit these guidelines, e.g. is a collection of videos files or a collection of files containing DNA sequence data, put it in a container of some kind (e.g. folder or zip file) and describe this in the metadata.</p>
+<div id="a-worked-example-of-preparation-of-data-for-archiving" class="section level2">
+<h2>A worked example of preparation of data for archiving</h2>
+<p>The worked example shows appropriate preparation of data for archiving and ease of further use. Its an example of what you could do, not what you have to do, though probably you benefit from doing something similar.</p>
+<p>Get the worked example folder and files therein from (here)[<a href="https://drive.google.com/open?id=14ciYlIvQZ8DehMfqDE7s5K5GlYbZpqsH" class="uri">https://drive.google.com/open?id=14ciYlIvQZ8DehMfqDE7s5K5GlYbZpqsH</a>]. Put the folder somewhere on your computer and have a look in it. You will see:</p>
+<ul>
+<li>An R-project file <code>expt1.Rproj</code></li>
+<li>A googlesheet file <code>expt1 emeScheme.gsheet</code></li>
+<li>A folder named <code>code</code> and a folder named <code>data</code></li>
+<li>The <code>data</code> folder contains two folders, one named <code>raw_data</code> and one named <code>archiving_data</code>.</li>
+<li>The <code>raw_data</code> folder contains files and folders of files that contain the data as it was entered by the researcher, or produced by the measurement machine.</li>
+<li>The <code>archiving_data</code> folder contains data files that have been prepared for archiving.</li>
+<li>The <code>code</code> folder contains two files: <code>data_preparation.Rmd</code> and <code>analyses.Rmd</code>.</li>
+<li><code>data_preparation.Rmd</code> contains code that takes the information in the files in the <code>raw_data</code> folder, prepares this information for easy use by researchers (which also makes them suitable for archiving), and then writes this nicely prepared information/data into files in the <code>archiving_data</code> folder.</li>
+<li><code>analyses.Rmd</code> starts by reading the nicely prepared data files from the <code>archiving_data</code> folder, and would then proceed with analyses.</li>
+</ul>
+<p>You will not be able to use the code in <code>data_preparation.Rmd</code> as it is highly specific to this example.</p>
+<p><strong>Note</strong> that the preparation of the data for easy use by researchers and for archiving (done in <code>data_preparation.Rmd</code>) in no way changes, subsets, or otherwise manipulates the data. It is just a rearrangement of the raw data and addition of treatment and other useful information.</p>
+<p>Super. Now we have nicely prepared data. We are ready to fill in the metadata.</p>
+</div>
+</div>
+<div id="fill-in-the-metadata" class="section level1">
+<h1>Fill in the metadata</h1>
+<p>There’s no more putting it off… lets try filling in the metadata. First find and open your copy of the metadata spreadsheet you made.</p>
+<p>In the worked example, open the <code>expt1 emeScheme.gsheet</code> file.</p>
+<ul>
+<li>Green cells are where you enter information.</li>
+<li>Pink cells are places where you should not try to type anything.</li>
+</ul>
+<div id="experiment-worksheet" class="section level2">
+<h2>Experiment worksheet</h2>
+<p>This one should not need too much explanation. One important point is, however, what to enter in a field (e.g. temperature) if your experiment involved different temperatures (i.e. temperature was a treatment). The answer is you should enter the word “treatment”.</p>
+<p>When you fill in this information, think about standardisation. If you enter a temperature, you should therefore enter only a numeric value in degrees Celcius. Writing “twelve degrees” is going to be quite unhelpful! (We could constrain the possible entries here, but then we lose flexibility; recall the discussion above about balancing standardisation and flexibility.)</p>
+<p>Something else of note: Look at the field “media Additions” and you will see the entry is “Wheat seeds added on specific dates, see file wheat_seed_additions.csv”. Here we see the possibility for great flexibility… we refer to information in a separate data file. Note though that this data file is just a list of dates and number of wheat seeds added–it is not information about an experimental treatment, because all experimental treatments experience the same additions (i.e. these additions are feature of the experiment).</p>
+</div>
+<div id="species-worksheet" class="section level2">
+<h2>Species worksheet</h2>
+<p>This worksheet should also not need much explanation. Note that this is just a list of the species in the experiment. Its not a description of any treatments involving species composition.</p>
+<p>During validation of your metadata the species names will be automatically checked against an online database of species names, and you will get a report on matches or lack of matches. (This helps increase interoperability of the data.)</p>
+<p>In the worked example the experiment was set up by adding a pool of unknown species composition. So no entries in this worksheet. The composition could be “measured” using e.g. molecular methods, and would then be an entry in the <strong>Measurements</strong> worksheet (see below for more details on that worksheet).</p>
+<p>If any of your data sets contain species names, it will be very helpful to make them match the names in this sheet. You will be told about the presence or absence of such matches in the validation report.</p>
+</div>
+<div id="treatments-worksheet" class="section level2">
+<h2>Treatments worksheet</h2>
+<p>Here enter in each row each of the treatment levels in each treatment. In the “parameter” column put the name of the treatment (in the worked example this is “Lid_treatment”).</p>
+<p>You do not need to, and should not, attempt to include information about treatment combinations. So if your experiment involved a temperature treatment with three levels (15, 20, and 25) and a species composition treatment with four treatments (species A alone, species B alone, species C alone, and all three together) you would enter seven rows of information. You would not enter 12 rows if your experiment was a two-way fully factorial design with these two treatments.</p>
+<p>It would be very nice here to make the names of your treatment and the descriptions of the levels exactly the same as those used in your data files. You will be told about the presence or absence of such matches in the validation report.</p>
+</div>
+<div id="measurements-worksheet" class="section level2">
+<h2>Measurements worksheet</h2>
+<p>Here enter a row of inforamtion for each type of measurement made. In the worked example there are four types of measurement: oxygen concentration, community composition, smell, and DNA sequences. Much of the information required in the rows should be quite self explanatory, apart perhaps from:</p>
+<ul>
+<li>Data extraction method: Fill in something here if the measurement required some processing of another data file / measurement. E.g. in the worked example the commmunity composition measure comes from the DNA data by extraction method “Mol_Analy_pipeline1”.</li>
+<li>Source measurement: should be one of the names of the other rows of measurements. E.g. in the worked example the community composition measure comes from the “sequenceData” measurement.</li>
+</ul>
+<p>It would be very nice/useful if the entries in the “variable” column correspond with variables in the data file mentioned in the “data file” column. You will be told about the presence or absence of such matches in the validation report.</p>
+</div>
+<div id="dataextraction" class="section level2">
+<h2>DataExtraction</h2>
+<p>Here you can give details of any (and please all) data extraction methods mentioned in the <strong>Measurements</strong> worksheet. You can enter any parameters and values of these you like (i.e. there is high flexibility here because we do not anticipate a lot of standardisation to exploit). In the worked example we wrote “See description in file xxx.yyy”. This file could be a script or text description of the pipeline.</p>
+</div>
+<div id="variables-in-data-files-description-worksheet" class="section level2">
+<h2>Variables in data files description worksheet</h2>
+<p>Here you give a row for each of the variables in each of the data files.</p>
+<ul>
+<li><strong>Variable name</strong> Here enter the exact variable name used in the datasheet.</li>
+<li><strong>Unit</strong> Here enter the measurement units (e.g. % or grams).</li>
+<li><strong>Type</strong> Enter the variable type (e.g. numeric, character, date).</li>
+<li><strong>Description</strong> Anything you think relevant.</li>
+<li><strong>Mapping_field</strong> Here enter “treatment” if the variable contains the levels of one of the treatments specified in the <strong>Treatments</strong> worksheet, “measurement” if the variable contains the levels of of one of the measurement specified in the <strong>Measurements</strong> worksheet, or NA if neither.</li>
+<li><strong>Mapping_value</strong> Here enter the treatment name, measurement name, or NA if neither, corresponding to the exact treamtent name used in the <strong>Treatment</strong> worksheet or the exact measurement name used in the <strong>Measurement</strong> worksheet.</li>
+</ul>
+<p>You will get a report on things such as matches and lack of matches with entered variable names and those in the actual datasets, matches of treatment names and measurement names, absences of data about things that were measured, absence about treatment information for things that were measured, and so on.</p>
+</div>
+<div id="validation" class="section level2">
+<h2>Validation</h2>
+<p>To be done…</p>
+</div>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
