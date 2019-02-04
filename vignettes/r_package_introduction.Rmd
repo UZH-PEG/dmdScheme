@@ -1,11 +1,11 @@
 ---
-title: "Introduction"
+title: "R Package Introduction"
 subtitle: "emeScheme Version v`r read.dcf(here::here('DESCRIPTION'), all = TRUE)[['Version']]`"
 author: "Rainer M Krug <Rainer@uzh.ch>"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introduction}
+  %\VignetteIndexEntry{R Package Introduction}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
