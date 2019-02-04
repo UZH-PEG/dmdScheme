@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<emeScheme class="emeSchemeSet, emeScheme, list" names="Experiment, Species, Treatment, Measurement, DataExtraction, TableMetaData">
+<emeScheme class="emeSchemeSet, emeScheme, list" names="Experiment, Species, Treatment, Measurement, DataExtraction, DataFileMetaData">
  <ExperimentList unit="NA, NA, NA, NA, NA, NA, ml, NA, g/l, NA, NA, NA, NA" type="character, character, character, character, character, character, numeric, character, numeric, character, character, character, character" allowedValues="NA, treatment, ..., treatment, ..., treatment, ..., none, bench, ..., NA, NA, NA, NA, axenic, dirty, clean, …, treatment, single trophic level, multiple trophic level, …, NA, NA" names="name, temperature, light, humidity, incubator, container, microcosmVolume, mediaType, mediaConcentration, cultureConditions, comunityType, mediaAdditions, comment" class="emeSchemeData_Experiment, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
   <Experiment>
    <name>nice experiment</name>
@@ -176,123 +176,162 @@
    <comment></comment>
   </DataExtraction>
  </DataExtractionList>
- <TableMetaDataList unit="NA, NA, NA, NA, NA, NA, NA" type="character, character, character, character, character, character, character" allowedValues="NA, video_lf, o2_hf, mc, os_lf, video_hf, NA, integer, numeric, character, logical, datetime, ..., NA, NA, NA" names="filename, variable_name, unit, type, description, treatmentParameter, comment" class="emeSchemeData_TableMetaData, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
-  <TableMetaData>
-   <filename>dissolved_oxygen_measures.csv</filename>
-   <variable_name>Jar_ID</variable_name>
+ <DataFileMetaDataList unit="NA, NA, NA, NA, NA, NA, NA, NA, NA, NA" type="character, character, character, character, character, character, character, numeric, numeric, character" allowedValues="NA, video_lf, o2_hf, mc, os_lf, video_hf, NA, integer, numeric, character, logical, datetime, ..., NA, temp, light, comunity composition, temp, initial density, NA, NA, NA, NA" names="dataFileName, variableName, unit, type, description, treatmentParameter, comment, min, max, allowedValues" class="emeSchemeData_DataFileMetaData, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
+  <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+   <variableName>Jar_ID</variableName>
    <unit></unit>
    <type>character</type>
    <description></description>
    <treatmentParameter></treatmentParameter>
    <comment></comment>
-  </TableMetaData>
-  <TableMetaData>
-   <filename>dissolved_oxygen_measures.csv</filename>
-   <variable_name>DO</variable_name>
+   <min></min>
+   <max></max>
+   <allowedValues></allowedValues>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+   <variableName>DO</variableName>
    <unit></unit>
    <type>numeric</type>
    <description></description>
    <treatmentParameter></treatmentParameter>
    <comment></comment>
-  </TableMetaData>
-  <TableMetaData>
-   <filename>dissolved_oxygen_measures.csv</filename>
-   <variable_name>Unit_1</variable_name>
+   <min></min>
+   <max></max>
+   <allowedValues></allowedValues>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+   <variableName>Unit_1</variableName>
    <unit></unit>
    <type>character</type>
    <description></description>
    <treatmentParameter></treatmentParameter>
    <comment></comment>
-  </TableMetaData>
-  <TableMetaData>
-   <filename>dissolved_oxygen_measures.csv</filename>
-   <variable_name>Mode</variable_name>
+   <min></min>
+   <max></max>
+   <allowedValues></allowedValues>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+   <variableName>Mode</variableName>
    <unit></unit>
    <type>character</type>
    <description></description>
    <treatmentParameter></treatmentParameter>
    <comment></comment>
-  </TableMetaData>
-  <TableMetaData>
-   <filename>dissolved_oxygen_measures.csv</filename>
-   <variable_name>Location</variable_name>
+   <min></min>
+   <max></max>
+   <allowedValues></allowedValues>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+   <variableName>Location</variableName>
    <unit></unit>
    <type>character</type>
    <description></description>
    <treatmentParameter></treatmentParameter>
    <comment></comment>
-  </TableMetaData>
-  <TableMetaData>
-   <filename>dissolved_oxygen_measures.csv</filename>
-   <variable_name>Date_time</variable_name>
+   <min></min>
+   <max></max>
+   <allowedValues></allowedValues>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+   <variableName>Date_time</variableName>
    <unit></unit>
    <type>datetime</type>
    <description>YYmmdd hhmmss</description>
    <treatmentParameter></treatmentParameter>
    <comment></comment>
-  </TableMetaData>
-  <TableMetaData>
-   <filename>dissolved_oxygen_measures.csv</filename>
-   <variable_name>Lid_status</variable_name>
+   <min></min>
+   <max></max>
+   <allowedValues></allowedValues>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+   <variableName>Lid_status</variableName>
    <unit></unit>
    <type>character</type>
    <description></description>
    <treatmentParameter>Lid_treatment</treatmentParameter>
    <comment></comment>
-  </TableMetaData>
-  <TableMetaData>
-   <filename>dissolved_oxygen_measures.csv</filename>
-   <variable_name>Jar_type</variable_name>
+   <min></min>
+   <max></max>
+   <allowedValues></allowedValues>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+   <variableName>Jar_type</variableName>
    <unit></unit>
    <type>character</type>
    <description></description>
    <treatmentParameter></treatmentParameter>
    <comment></comment>
-  </TableMetaData>
-  <TableMetaData>
-   <filename>dissolved_oxygen_measures.csv</filename>
-   <variable_name>o2_channel</variable_name>
+   <min></min>
+   <max></max>
+   <allowedValues></allowedValues>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+   <variableName>o2_channel</variableName>
    <unit></unit>
    <type>numeric</type>
    <description></description>
    <treatmentParameter></treatmentParameter>
    <comment></comment>
-  </TableMetaData>
-  <TableMetaData>
-   <filename>smell.csv</filename>
-   <variable_name>Jar_ID</variable_name>
+   <min></min>
+   <max></max>
+   <allowedValues></allowedValues>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>smell.csv</dataFileName>
+   <variableName>Jar_ID</variableName>
    <unit></unit>
    <type></type>
    <description></description>
    <treatmentParameter></treatmentParameter>
    <comment></comment>
-  </TableMetaData>
-  <TableMetaData>
-   <filename>smell.csv</filename>
-   <variable_name>smell</variable_name>
+   <min></min>
+   <max></max>
+   <allowedValues></allowedValues>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>smell.csv</dataFileName>
+   <variableName>smell</variableName>
    <unit></unit>
    <type></type>
    <description></description>
    <treatmentParameter></treatmentParameter>
    <comment></comment>
-  </TableMetaData>
-  <TableMetaData>
-   <filename>smell.csv</filename>
-   <variable_name>Date_time</variable_name>
+   <min></min>
+   <max></max>
+   <allowedValues></allowedValues>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>smell.csv</dataFileName>
+   <variableName>Date_time</variableName>
    <unit></unit>
    <type></type>
    <description></description>
    <treatmentParameter></treatmentParameter>
    <comment></comment>
-  </TableMetaData>
-  <TableMetaData>
-   <filename>smell.csv</filename>
-   <variable_name>Lid_status</variable_name>
+   <min></min>
+   <max></max>
+   <allowedValues></allowedValues>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>smell.csv</dataFileName>
+   <variableName>Lid_status</variableName>
    <unit></unit>
    <type>character</type>
    <description></description>
    <treatmentParameter>Lid_treatment</treatmentParameter>
    <comment></comment>
-  </TableMetaData>
- </TableMetaDataList>
+   <min></min>
+   <max></max>
+   <allowedValues></allowedValues>
+  </DataFileMetaData>
+ </DataFileMetaDataList>
 </emeScheme>
