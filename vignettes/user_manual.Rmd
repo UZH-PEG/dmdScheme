@@ -16,7 +16,7 @@ Researchers are increasingly being required to make the data they produce findab
 
 The aim of the experimental microbial ecology metadata tool is to help you describe your study and its data, i.e. to produce useful metadata. You will do this by preparing your datasets for archiving (more on this below), filling in your metadata the spreadsheet supplied, validating the combination of the metadata and data (this will be largely automatic), fixing any issues revealed by the validation step, and once satisfactorily validated deposit the metadata and data in a repository of your choice.
 
-What is meant by *useful* metadata? Imagine we would like to use the metadata to find experiments (and potentially return the relevant data from them) that involve *Colpidium striatum* grown at 20C in 0.55 g per litre protist pellet medium. To do this we need to ensure that the species name, the temperature, and the growth media information are contained in the metadata. We also need to make sure that when temperature is described it is described in a standard fashion, and the the growth media description is standardised. So there must be some standardisation. But its clear that most experiments have some unique features, such that we can't standardise everything in advance. The metadata scheme we use here is intended to be a good balance of standardised and flexible.
+What is meant by *useful* metadata? Imagine we would like to use the metadata to find experiments (and potentially return the relevant data from them) that involve *Colpidium striatum* grown at 20ºC in 0.55g per litre protist pellet medium. To do this we need to ensure that the species name, the temperature, and the growth media information are contained in the metadata. We also need to make sure that when temperature is described it is described in a standard fashion, and the the growth media description is standardised. So there must be some standardisation. But its clear that most experiments have some unique features, such that we can't standardise everything in advance. The metadata scheme we use here is intended to be a good balance of standardised and flexible.
 
 # When should I enter metadata
 
@@ -47,9 +47,9 @@ Its probably worth now looking at the spreadsheet (but don't yet try to fill in 
 * **Experiment** Here you enter details of your experiment, e.g. what temperature was the experiment conducted at. If temperature was a treatment, then you state that here and supply the levels in the **Treatments** worksheet.
 * **Species** Give details of the species involved in the experiment.
 * **Treatments** Here we give the manipulations involved in the experiment.
-* **Measurements** Details of what was measured, and in which data files these measurements are.
+* **Measurements** Details of what was measured, and how data was extracted from the measurements.
 * **DataExtraction** Details of how measurements were extracted from raw data, if that happened.
-* **VariablesInDatafiles** A list of the data files and description of the variables they contain.
+* **DataFileMetaDat** Details of the data files, description of the variables they contain, and validation conditions for the data.
 
 # Preparating data for archiving
 
@@ -58,9 +58,9 @@ There are no hard and fast rules, but there are some guidelines that will make t
 * Use long / tidy arrangement of data.
 * Always include a variable for each treatment.
 * Always include a variable that allows one data file to be related to others (e.g. Microcosm_ID).
-* Put all measurement of one type in a single data file. E.g. one datafile of dissolved oxygen measures, one datafile of adundance data, one data file of sequence data.
+* Put all measurement of one type in a single data file. E.g. one datafile of dissolved oxygen measures, one datafile of adundance data, one data file of sequence data, containing all measurements from all treatments.
 
-If your data does not fit these guidelines, e.g. is a collection of videos files or a collection of files containing DNA sequence data, put it in a container of some kind (e.g. folder or zip file) and describe this in the metadata.
+If your data does not fit these guidelines, e.g. is a collection of videos files or a collection of files containing DNA sequence data, put it in a container of some kind (e.g. compressed folder or zip file) and describe this in the metadata.
 
 ## A worked example of preparation of data for archiving
 
@@ -78,9 +78,9 @@ Get the worked example folder and files therein from (here)[https://drive.google
 * `data_preparation.Rmd` contains code that takes the information in the files in the `raw_data` folder, prepares this information for easy use by researchers (which also makes them suitable for archiving), and then writes this nicely prepared information/data into files in the `archiving_data` folder.
 * `analyses.Rmd` starts by reading the nicely prepared data files from the `archiving_data` folder, and would then proceed with analyses.
 
-You will not be able to use the code in `data_preparation.Rmd` as it is highly specific to this example.
+**You will not be able to use the code in `data_preparation.Rmd` as it is highly specific to this example.**
 
-**Note** that the preparation of the data for easy use by researchers and for archiving (done in `data_preparation.Rmd`) in no way changes, subsets, or otherwise manipulates the data. It is just a rearrangement of the raw data and addition of treatment and other useful information.
+**Note** that it is **very important** thet the preparation of the data for easy use by researchers and for archiving (done in `data_preparation.Rmd`) in no way changes, subsets, or otherwise manipulates the data. It is just a rearrangement of the raw data and addition of treatment and other useful information.
 
 Super. Now we have nicely prepared data. We are ready to fill in the metadata.
 
@@ -91,7 +91,7 @@ There's no more putting it off... lets try filling in the metadata. First find a
 In the worked example, open the `expt1 emeScheme.gsheet` file.
 
 * Green cells are where you enter information.
-* Pink cells are places where you should not try to type anything.
+* Pink cells are places where you should not try to type anything (they should be locked anyway).
 
 ## Experiment worksheet
 
@@ -130,23 +130,24 @@ It would be very nice/useful if the entries in the "variable" column correspond 
 
 ## DataExtraction
 
-Here you can give details of any (and please all) data extraction methods mentioned in the **Measurements** worksheet. You can enter any parameters and values of these you like (i.e. there is high flexibility here because we do not anticipate a lot of standardisation to exploit). In the worked example we wrote "See description in file xxx.yyy". This file could be a script or text description of the pipeline.
+Here you can give details of any (and please all - this will be validated in the validation report) data extraction methods mentioned in the **Measurements** worksheet. You can enter any parameters and values of these you like (i.e. there is high flexibility here because we do not anticipate a lot of standardisation to exploit). In the worked example we wrote "See description in file xxx.yyy". This file could be a script or text description of the pipeline.
 
-## Variables in data files description worksheet
+## DataFileMetaData worksheet
 
 Here you give a row for each of the variables in each of the data files.
 
-* **Variable name** Here enter the exact variable name used in the datasheet.
-* **Unit** Here enter the measurement units (e.g. % or grams).
-* **Type** Enter the variable type (e.g. numeric, character, date).
-* **Description** Anything you think relevant.
-* **Mapping_field** Here enter "treatment" if the variable contains the levels of one of the treatments specified in the **Treatments** worksheet, "measurement" if the variable contains the levels of of one of the measurement specified in the **Measurements** worksheet, or NA if neither.
-* **Mapping_value** Here enter the treatment name, measurement name, or NA if neither, corresponding to the exact treamtent name used in the **Treatment** worksheet or the exact measurement name used in the **Measurement** worksheet.
+* **dataFileName** Here enter the file name of the data file.
+* **columnname** Here enter the exact variable name used in the datasheet / database / tabular data.
+* **measurementName** Here enter the measurement name, corresponding to the exact measurement name used in the **Measurement** worksheet, if the column contains a measurement.
+* **unit** Here enter the measurement units (e.g. % or grams).
+* **type** Enter the variable type (e.g. numeric, character, date).
+* **description** Anything you think relevant.
+* **treatmentParameter** Here enter the treatment name corresponding to the exact treamtent name used in the **Treatment** worksheet, if the column contains treatment information.
 
 You will get a report on things such as matches and lack of matches with entered variable names and those in the actual datasets, matches of treatment names and measurement names, absences of data about things that were measured, absence about treatment information for things that were measured, and so on.
 
 ## Validation
 
-To be done...
+**<span style="color:red">To be done..</span>**.
 
 
