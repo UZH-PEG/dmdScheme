@@ -176,10 +176,11 @@
    <comment></comment>
   </DataExtraction>
  </DataExtractionList>
- <DataFileMetaDataList unit="NA, NA, NA, NA, NA, NA, NA, NA, NA, NA" type="character, character, character, character, character, character, character, numeric, numeric, character" allowedValues="NA, video_lf, o2_hf, mc, os_lf, video_hf, NA, integer, numeric, character, logical, datetime, ..., NA, temp, light, comunity composition, temp, initial density, NA, NA, NA, NA" names="dataFileName, variableName, unit, type, description, treatmentParameter, comment, min, max, allowedValues" class="emeSchemeData_DataFileMetaData, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
+ <DataFileMetaDataList unit="NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA" type="character, character, character, character, character, character, character, character, numeric, numeric, character" allowedValues="NA, NA, video_lf, o2_hf, mc, os_lf, video_hf, NA, integer, numeric, character, logical, datetime, ..., NA, temp, light, comunity composition, temp, initial density, NA, NA, NA, NA" names="dataFileName, columnName, measurementName, unit, type, description, treatmentParameter, comment, min, max, allowedValues" class="emeSchemeData_DataFileMetaData, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
   <DataFileMetaData>
    <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
-   <variableName>Jar_ID</variableName>
+   <columnName></columnName>
+   <measurementName>Jar_ID</measurementName>
    <unit></unit>
    <type>character</type>
    <description></description>
@@ -191,7 +192,8 @@
   </DataFileMetaData>
   <DataFileMetaData>
    <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
-   <variableName>DO</variableName>
+   <columnName></columnName>
+   <measurementName>DO</measurementName>
    <unit></unit>
    <type>numeric</type>
    <description></description>
@@ -203,7 +205,8 @@
   </DataFileMetaData>
   <DataFileMetaData>
    <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
-   <variableName>Unit_1</variableName>
+   <columnName></columnName>
+   <measurementName>Unit_1</measurementName>
    <unit></unit>
    <type>character</type>
    <description></description>
@@ -215,7 +218,8 @@
   </DataFileMetaData>
   <DataFileMetaData>
    <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
-   <variableName>Mode</variableName>
+   <columnName></columnName>
+   <measurementName>Mode</measurementName>
    <unit></unit>
    <type>character</type>
    <description></description>
@@ -227,7 +231,8 @@
   </DataFileMetaData>
   <DataFileMetaData>
    <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
-   <variableName>Location</variableName>
+   <columnName></columnName>
+   <measurementName>Location</measurementName>
    <unit></unit>
    <type>character</type>
    <description></description>
@@ -239,7 +244,8 @@
   </DataFileMetaData>
   <DataFileMetaData>
    <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
-   <variableName>Date_time</variableName>
+   <columnName></columnName>
+   <measurementName>Date_time</measurementName>
    <unit></unit>
    <type>datetime</type>
    <description>YYmmdd hhmmss</description>
@@ -251,7 +257,8 @@
   </DataFileMetaData>
   <DataFileMetaData>
    <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
-   <variableName>Lid_status</variableName>
+   <columnName></columnName>
+   <measurementName>Lid_status</measurementName>
    <unit></unit>
    <type>character</type>
    <description></description>
@@ -263,7 +270,8 @@
   </DataFileMetaData>
   <DataFileMetaData>
    <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
-   <variableName>Jar_type</variableName>
+   <columnName></columnName>
+   <measurementName>Jar_type</measurementName>
    <unit></unit>
    <type>character</type>
    <description></description>
@@ -275,7 +283,8 @@
   </DataFileMetaData>
   <DataFileMetaData>
    <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
-   <variableName>o2_channel</variableName>
+   <columnName></columnName>
+   <measurementName>o2_channel</measurementName>
    <unit></unit>
    <type>numeric</type>
    <description></description>
@@ -287,7 +296,8 @@
   </DataFileMetaData>
   <DataFileMetaData>
    <dataFileName>smell.csv</dataFileName>
-   <variableName>Jar_ID</variableName>
+   <columnName></columnName>
+   <measurementName>Jar_ID</measurementName>
    <unit></unit>
    <type></type>
    <description></description>
@@ -299,7 +309,8 @@
   </DataFileMetaData>
   <DataFileMetaData>
    <dataFileName>smell.csv</dataFileName>
-   <variableName>smell</variableName>
+   <columnName></columnName>
+   <measurementName>smell</measurementName>
    <unit></unit>
    <type></type>
    <description></description>
@@ -311,7 +322,8 @@
   </DataFileMetaData>
   <DataFileMetaData>
    <dataFileName>smell.csv</dataFileName>
-   <variableName>Date_time</variableName>
+   <columnName></columnName>
+   <measurementName>Date_time</measurementName>
    <unit></unit>
    <type></type>
    <description></description>
@@ -323,7 +335,8 @@
   </DataFileMetaData>
   <DataFileMetaData>
    <dataFileName>smell.csv</dataFileName>
-   <variableName>Lid_status</variableName>
+   <columnName></columnName>
+   <measurementName>Lid_status</measurementName>
    <unit></unit>
    <type>character</type>
    <description></description>

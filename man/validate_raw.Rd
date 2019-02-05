@@ -9,7 +9,7 @@ validate_raw(x, errorIfFalse = TRUE)
 \arguments{
 \item{x}{object of class \code{emeSchemeSet_raw} as returned from \code{read_from_excel( keepData = FALSE, raw = TRUE)}}
 
-\item{errorIfFalse}{if \code{TRUE} an error will be raised if the schemes are nbot identical}
+\item{errorIfFalse}{if \code{TRUE} an error will be raised if the schemes are not identical, i.e. there are structural differences.}
 }
 \value{
 \code{TRUE} if they are identical or character vector describing the differences

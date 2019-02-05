@@ -4,4 +4,4 @@
      Treatment - emeSchemeData
      Measurement - emeSchemeData
      DataExtraction - emeSchemeData
-     TableMetaData - emeSchemeData
+     DataFileMetaData - emeSchemeData

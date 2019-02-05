@@ -53,7 +53,7 @@ A       Type  : character | character | character | character | character | inte
 XA      row.names: 1
 XA      propertyName: Measurement
 XA      allowedValues: NA | O2 concentration, video, manual count, … | presens Optode, microscopy, … | %, mmol, count, … | species, OUT, gene, community, particles, … | NA | NA | NA | NA | NA | NA | NA | NA
-XA      Description: Name of the Measurement process. This includes methodology, variables, ... . Each name specifies one Measurement process and can occur multiple times. | The variable measured. | Name of the method used. | Unit of the measured variable | The object measured. E.g. species in the case of manual count, gene for genetic analysis, particle for particle counters. | Total length of the time series in days. | Total number of all samples in the time series. | The average sampling frequency, i.e. noOfSamplesInTimeSeries divided by lengthOfTimeSeries | The sampling volumne. | as used in the sheet DataExtraction, column name | if measured from the experiment, raw, elxe the name *first column) of the measurement it is based on. | data file(s) using this measurement method. If more than one, separated by comma. | NA
+XA      Description: Name of the Measurement process. This includes methodology, variables, ... . Each name specifies one Measurement process and can occur multiple times. | The variable measured. | Name of the method used. | Unit of the measured variable | The object measured. E.g. species in the case of manual count, gene for genetic analysis, particle for particle counters. | Total length of the time series in days. | Total number of all samples in the time series. | The average sampling frequency, i.e. noOfSamplesInTimeSeries divided by lengthOfTimeSeries | The sampling volumne. | as used in the sheet DataExtraction, column name | if measured from the experiment, raw, else the name (first column) of the measurement it is based on. | data file(s) using this measurement method. If more than one, separated by comma. | NA
 XA      class: emeSchemeData_Measurement | emeSchemeData | emeScheme | tbl_df | tbl | data.frame
 
           name variable method unit object lengthOfTimeSeries
@@ -90,19 +90,19 @@ XA      class: emeSchemeData_DataExtraction | emeSchemeData | emeScheme | tbl_df
           name method parameter value comment
 D       1 <NA>   <NA>      <NA>  <NA>    <NA>
 
-     TableMetaData - emeSchemeData
-A       Names : filename | variable_name | unit | type | description | treatmentParameter | comment
-A       Units : NA | NA | NA | NA | NA | NA | NA
-A       Type  : character | character | character | character | character | character | character
+     DataFileMetaData - emeSchemeData
+A       Names : dataFileName | columnName | measurementName | unit | type | description | treatmentParameter | comment | min | max | allowedValues
+A       Units : NA | NA | NA | NA | NA | NA | NA | NA | NA | NA | NA
+A       Type  : character | character | character | character | character | character | character | character | numeric | numeric | character
 
 XA      row.names: 1
-XA      propertyName: TableMetaData
-XA      allowedValues: NA | video_lf, o2_hf, mc, os_lf, video_hf | NA | integer, numeric, character, logical, datetime, ... | NA | NA | NA
-XA      Description: the name of the data set. | The column name as in the dataFiles column in the Measurement tab. | unit of the colum | type of the column | general description. If datatime column, the format used | Corresponding parameter in the Treatment tab. | NA
-XA      class: emeSchemeData_TableMetaData | emeSchemeData | emeScheme | tbl_df | tbl | data.frame
+XA      propertyName: DataFileMetaData
+XA      allowedValues: NA | NA | video_lf, o2_hf, mc, os_lf, video_hf | NA | integer, numeric, character, logical, datetime, ... | NA | temp, light, comunity composition, temp, initial density | NA | NA | NA | NA
+XA      Description: the name of the data set. | Name of column in the data file. Each column in the data file needs to be documented! | If column contains measurement: The corresponding name as in the Measurement sheet. | If column contains measurement: Unit of the measurementName. | If column contains measurement: Type of the measurementName. | if column contains measurement: General description. If type is datatime, the format used (e.g. 'YYmmdd hhmmss'). See  https://en.wikipedia.org/wiki/ISO_8601 for formats and and how to specify these. | If column contains treatment info: Corresponding parameter in the Treatment tab. | NA | For validation of the variable - if numeric or integer, minimum value | For validation of the variable - if numeric or integer, maximum value | For validation of the variable - if only a set of values are allowed, allowed values
+XA      class: emeSchemeData_DataFileMetaData | emeSchemeData | emeScheme | tbl_df | tbl | data.frame
 
-          filename variable_name unit type description treatmentParameter
-D       1     <NA>          <NA> <NA> <NA>        <NA>               <NA>
-          comment
-D       1    <NA>
+          dataFileName columnName measurementName unit type description
+D       1         <NA>       <NA>            <NA> <NA> <NA>        <NA>
+          treatmentParameter comment min max allowedValues
+D       1               <NA>    <NA>  NA  NA          <NA>
 

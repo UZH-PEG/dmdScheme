@@ -24,8 +24,8 @@ A       Names : name | method | parameter | value | comment
 A       Units : NA | NA | NA | NA | NA
 A       Type  : character | character | character | character | character
 
-     TableMetaData - emeSchemeData
-A       Names : filename | variable_name | unit | type | description | treatmentParameter | comment
-A       Units : NA | NA | NA | NA | NA | NA | NA
-A       Type  : character | character | character | character | character | character | character
+     DataFileMetaData - emeSchemeData
+A       Names : dataFileName | columnName | measurementName | unit | type | description | treatmentParameter | comment | min | max | allowedValues
+A       Units : NA | NA | NA | NA | NA | NA | NA | NA | NA | NA | NA
+A       Type  : character | character | character | character | character | character | character | character | numeric | numeric | character
 
