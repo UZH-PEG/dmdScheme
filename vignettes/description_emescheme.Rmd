@@ -58,6 +58,17 @@ This scheme **does neither** aim at covering aspects of the actual analysis of t
 * Properties starting with a **capital letters** are **property sets** or **data properties**. 
 * Properties starting with a **small letter** are **value properties**.
 
+# Relationship to other schemes
+
+The emeScheme is a metadata scheme for Ecological Microcosm Experiments. As these are essentially ecological data, the use of other schemes geareed towards ecological data also comes to mind. One widely used scheme is the [eml scheme](https://knb.ecoinformatics.org/external//emlparser/docs/index.html). 
+
+The main difference between the emeScheme and other ecological meta data schemes is that in the development of the emeScheme the aim was to develop a scheme specific for a certain type of experiment. This specificity went together with the objective of keeping the scheme simple to fill in and to understand. This resulted in a meta data scheme which contains all information necessary to describe the data generated in these aquatic ecological microcosm experiments, while at the same time being simple enough to be filled in by the researcher without to much time required. It should be possible to use e.g. the afore mentioned [eml scheme](https://knb.ecoinformatics.org/external//emlparser/docs/index.html) to store the meta data contained in the emeScheme, but it would require a much larger investment in time to fill in the eml scheme as it is much more general per definition.
+
+The emeScheme is neither intended nor suited for experiments outside of ecological and aquatic microcosm experiments.
+
+
+
+
 # Structure of the emeScheme
 
 The **emeScheme** is providing meta data for a **data file bundle**. A **data bundle** is an archive (e.g. tar.gz or zip) cosisting of multiple **data files** and one file with the metadata **<span style="color:red">TODO we have to decide on the format of this file - should be a text file?</span>**. If the data files represent tabular data, they should be in csv format, otherwise any open format. 
@@ -236,5 +247,65 @@ An xml file with the example data can be downloaded from [here](./data/emeScheme
 # XSD Grammar
 The xsd grammar has been generated using [xmlgrid.net](http://xmlgrid.net/xml2xsd.html).
 You can download it from [here - right mouse click - Save Linked Content](./data/emeScheme.xsd.xml)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
