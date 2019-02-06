@@ -45,7 +45,18 @@ updateFromGoogleSheet <- function(
       overwrite = TRUE
     )
 
+
+    # update tests/testthat/emeScheme.xlsx ------------------------------------
+
     file.copy(here::here("inst", "googlesheet", "emeScheme.xlsx"), here::here("tests", "testthat", "emeScheme.xlsx"), overwrite = TRUE)
+
+    # update /inst/example/exp1_emeScheme.xlsx --------------------------------
+
+    format_emeScheme_xlsx(
+      fn_org = here::here("inst", "googlesheet", "emeScheme.xlsx"),
+      fn_new = here::here("inst", "example", "expt1_emeScheme.xlsx"),
+      keepData = TRUE
+    )
 
     # update data/emeScheme_raw.rda -----------------------------------------------
 

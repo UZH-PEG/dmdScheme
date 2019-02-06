@@ -3,13 +3,25 @@
 #' @param x object of class \code{emeSchemeSet_raw} as returned from \code{read_from_excel( keepData = FALSE, raw = TRUE)}
 #' @param path path to the data files
 #' @param validateData if \code{TRUE} data is validated as well; the structure is always validated
+#' @param report determines if and in which format a report of the validation should be generated. Allowed values are:
+#' \itemize{
+#'   \item{\bold{missing}  : } {no report is generated (the \code{default})}
+#'   \item{\bold{'html'}   : } {a html (.html) report is generated and opened}
+#'   \item{\bold{'pdf'}    : } {a pdf (.pdf) report is generated and opened}
+#'   \item{\bold{'word'}   : } {a word (.docx)report is generated and opened}
+#'   \item{\bold{'all'}    : } {all of the defined reports}
+#' }
+#' @param report_author name of the author for the report
+#' @param report_title title of the report for the report
 #' @param errorIfFalse if \code{TRUE} an error will be raised if the schemes are not identical, i.e. there are structural differences.
 #'
-#' @return \code{TRUE} if they are identical or character vector describing the differences
+#' @return return invisibly the report in form of a \code{list}
 #'
 #' @importFrom taxize gnr_resolve
 #' @importFrom magrittr %>% %<>%
 #' @importFrom dplyr filter
+#' @importFrom utils browseURL
+#' @importFrom rmarkdown render
 #' @export
 #'
 #' @examples
@@ -19,73 +31,131 @@ validate <- function(
   x,
   path = "",
   validateData = TRUE,
+  report = "none",
+  report_author = "Tester",
+  report_title = "Validation of data against emeScheme",
   errorIfFalse = TRUE
-  ) {
+) {
 
-# HELPER: Validate Species ------------------------------------------------
+  # HELPER: Validate Experiment ------------------------------------------------
 
-validateSpecies <- function( x ){
-  result <- list()
+  validateExperiment <- function( x ){
+    s <- x$Experiment
+    ##
+    result <- list()
+    result$result <- "TODO"
+    ##
+    return(result)
+  }
 
-  # Validate species names --------------------------------------------------
-  result$speciesNames <- taxize::gnr_resolve(x$name, best_match_only = TRUE)
-  return(result)
-}
+  # HELPER: Validate Species ------------------------------------------------
 
-# HELPER: Validate Columns ------------------------------------------------
+  validateSpecies <- function( x ){
+    s <- x$Species
+    ##
+    result <- list()
 
-valCol <- function( x ){
-  cols <- unique(x$variableName)
-  names(cols) <- cols
+    # Validate species names --------------------------------------------------
+    result$speciesNames <- taxize::gnr_resolve(s$name, best_match_only = TRUE)
+    return(result)
+  }
 
-  result$columns <- lapply(
-    cols,
-    function (col) {
-      result <- list()
-      result$correctType <- "TODO"
-      result$inDataFile <- "TODO"
-      result$range <- c(NA, NA) # range(0,0)
-      result$uniqueValues <- NA # unique(letters)
-    }
-  )
-  return(result)
-}
+  # HELPER: Validate Treatment ------------------------------------------------
 
+  validateTreatment <- function( x ){
+    s <- x$Treatment
+    ##
+    result <- list()
+    result$result <- "TODO"
+    ##
+    return(result)
+  }
 
-# HELPER: Validate DataFileMetaData ---------------------------------------
+  # HELPER: Validate Measurement ------------------------------------------------
 
-validateDataFileMetaData <- function( x ){
-  dfns <- unique(x$dataFileName)
-  names(dfns) <- dfns
-  dfns <- file.path(path, dfns)
-  result <- lapply(
-    dfns,
-    function(dfn) {
-      result <- list()
+  validateMeasurement <- function( x ){
+    s <- x$Measurement
+    ##
+    result <- list()
+    result$result <- "TODO"
+    ##
+    return(result)
+  }
 
-      # Validate existence of data files ----------------------------------------
-      result$fileExists <- file.exists(dfn)
-      if (file.exists(dfn)) {
+  # HELPER: Validate DataExtraction ------------------------------------------------
 
-        # Validate columne --------------------------------------------------------
+  validateDataExtraction <- function( x ){
+    s <- x$DataExtraction
+    ##
+    result <- list()
+    result$result <- "TODO"
+    ##
+    return(result)
+  }
 
-        result$valColumns <- valCol(
-          x %>% dplyr::filter(.data$dataFileName == dfn)
-        )
+  # HELPER: Validate Columns ------------------------------------------------
 
+  valCol <- function( x ){
+    cols <- unique(x$variableName)
+    names(cols) <- cols
+
+    result$columns <- lapply(
+      cols,
+      function (col) {
+        result <- list()
+        result$correctType <- "TODO"
+        result$inDataFile <- "TODO"
+        result$range <- c(NA, NA) # range(0,0)
+        result$uniqueValues <- NA # unique(letters)
       }
-      return(result)
-    }
-  )
-  return(result)
-}
+    )
+    return(result)
+  }
 
 
-# Define result structure -------------------------------------------------
+  # HELPER: Validate DataFileMetaData ---------------------------------------
+
+  validateDataFileMetaData <- function( x ){
+    s <- x$DataFileMetaData
+    dfns <- unique(s$dataFileName)
+    names(dfns) <- dfns
+    dfns <- file.path(path, dfns)
+    result <- lapply(
+      dfns,
+      function(dfn) {
+        result <- list()
+
+        # Validate existence of data files ----------------------------------------
+        result$fileExists <- file.exists(dfn)
+        if (file.exists(dfn)) {
+
+          # Validate columne --------------------------------------------------------
+
+          result$valColumns <- valCol(
+            s %>% dplyr::filter(.data$dataFileName == dfn)
+          )
+
+        }
+        return(result)
+      }
+    )
+    return(result)
+  }
+
+
+
+  # Check arguments ---------------------------------------------------------
+
+  allowedFormats <- c("none", "html", "pdf", "word", "all")
+  if (!(report %in% allowedFormats)) {
+    stop("'report' has to be one of the following values: ", allowedFormats)
+  }
+
+  # Define result structure -------------------------------------------------
 
   result <- list()
 
-# Validate structure ------------------------------------------------------
+  # Validate structure ------------------------------------------------------
 
   struct <- new_emeSchemeSet( x, keepData = FALSE, verbose = FALSE)
   attr(struct, "propertyName") <- "emeScheme"
@@ -95,26 +165,67 @@ validateDataFileMetaData <- function( x ){
     stop("x would result in a scheme which is not identical to the emeScheme!")
   }
 
-# Validata data -----------------------------------------------------------
+  # Validata data -----------------------------------------------------------
 
 
   if (isTRUE(result$structOK) & validateData){
     dat <- new_emeSchemeSet( x, keepData = TRUE, verbose = FALSE)
 
-  # Validate Species --------------------------------------------------------
+    # Validate Experiment --------------------------------------------------------
 
-    result$Species <- validateSpecies(dat$Species)
+    result$Experiment <- validateExperiment(dat)
 
-  # Validate DataFileMetaData -----------------------------------------------
+    # Validate Species --------------------------------------------------------
 
-    result$DataFileMetaData <- validateDataFileMetaData(dat$DataFileMetaData)
+    result$Species <- validateSpecies(dat)
 
+    # Validate Treatment --------------------------------------------------------
+
+    result$Treatment <- validateTreatment(dat)
+
+    # Validate Measurement --------------------------------------------------------
+
+    result$Measurement <- validateMeasurement(dat)
+
+    # Validate DataExtraction --------------------------------------------------------
+
+    result$DataExtraction <- validateDataExtraction(dat)
+
+    # Validate DataFileMetaData -----------------------------------------------
+
+    result$DataFileMetaData <- validateDataFileMetaData(dat)
 
   }
 
-# Return result -----------------------------------------------------------
+  # Generate report ---------------------------------------------------------
 
-  return(result)
+  if (report %in% allowedFormats[-1]) {
+    reportDir <- tempfile( pattern = "validation_report" )
+    dir.create(reportDir)
+    rmarkdown::render(
+      input = system.file("reports", "validation_report.Rmd", package = "emeScheme"),
+      output_format = ifelse(
+        report == "all",
+        "all",
+        paste0(report, "_document")
+      ),
+      output_dir = reportDir,
+      params = list(
+        author = report_author,
+        title = report_title,
+        x = x,
+        result = result
+      )
+    ) %>%
+      lapply(
+        utils::browseURL,
+        encodeIfNeeded = TRUE
+      )
+  }
+
+  # Return result -----------------------------------------------------------
+
+  invisible(result)
 }
 
 

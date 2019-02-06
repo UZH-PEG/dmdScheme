@@ -1,0 +1,78 @@
+---
+params:
+  author: unknown
+  title: Validation
+  x: NULL
+  result: NULL
+title: "`r params$title`"
+author: "`r params$author`"
+date: "`r Sys.Date()`"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+x <- params$x
+result <- params$result
+
+## only for debugging ##
+if (is.null(x)) {
+  if (!require("emeScheme")) {
+    devtools::load_all()
+  }
+  x <- emeScheme::emeScheme_raw
+  result <- validate(x = emeScheme_raw, validateData = TRUE, report = "none")
+}
+## ##
+```
+
+# General Info
+* **Author**: `r params$author`
+* **emeScheme data name**: `r attr(x, "fileName")`
+* ???
+```{r info}
+attributes(x)
+```
+
+
+# Validate General Structure
+```{r val_struct, options}
+result$structOK
+```
+
+
+# Validate Experiment
+```{r val_Experiment}
+result$Experiment
+```
+# Validate Species
+```{r val_species, options}
+result$Species
+```
+
+# Validate Treatment
+```{r val_treatment, options}
+result$Treatment
+```
+
+# Validate Measurement
+```{r val_measurement, options}
+result$Measurement
+```
+
+# Validate DataExtraction
+```{r val_dataextraction, options}
+result$DataExtraction
+```
+
+# Validate DataFileMetaData
+```{r val_datafilemetadata, options}
+result$DataFileMetaData
+```
+
+
+

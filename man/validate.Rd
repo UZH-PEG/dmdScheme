@@ -4,7 +4,10 @@
 \alias{validate}
 \title{Validate structure of object of class \code{emeSchemeSet_raw} against \code{emeScheme}.}
 \usage{
-validate(x, path = "", validateData = TRUE, errorIfFalse = TRUE)
+validate(x, path = "", validateData = TRUE, report = "none",
+  report_author = "Tester",
+  report_title = "Validation of data against emeScheme",
+  errorIfFalse = TRUE)
 }
 \arguments{
 \item{x}{object of class \code{emeSchemeSet_raw} as returned from \code{read_from_excel( keepData = FALSE, raw = TRUE)}}
@@ -13,10 +16,23 @@ validate(x, path = "", validateData = TRUE, errorIfFalse = TRUE)
 
 \item{validateData}{if \code{TRUE} data is validated as well; the structure is always validated}
 
+\item{report}{determines if and in which format a report of the validation should be generated. Allowed values are:
+\itemize{
+  \item{\bold{missing}  : } {no report is generated (the \code{default})}
+  \item{\bold{'html'}   : } {a html (.html) report is generated and opened}
+  \item{\bold{'pdf'}    : } {a pdf (.pdf) report is generated and opened}
+  \item{\bold{'word'}   : } {a word (.docx)report is generated and opened}
+  \item{\bold{'all'}    : } {all of the defined reports}
+}}
+
+\item{report_author}{name of the author for the report}
+
+\item{report_title}{title of the report for the report}
+
 \item{errorIfFalse}{if \code{TRUE} an error will be raised if the schemes are not identical, i.e. there are structural differences.}
 }
 \value{
-\code{TRUE} if they are identical or character vector describing the differences
+return invisibly the report in form of a \code{list}
 }
 \description{
 Validate structure of object of class \code{emeSchemeSet_raw} against \code{emeScheme}.
