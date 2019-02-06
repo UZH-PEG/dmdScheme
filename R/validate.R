@@ -1,6 +1,8 @@
 #' Validate structure of object of class \code{emeSchemeSet_raw} against \code{emeScheme}.
 #'
 #' @param x object of class \code{emeSchemeSet_raw} as returned from \code{read_from_excel( keepData = FALSE, raw = TRUE)}
+#' @param path path to the data files
+#' @param validateData if \code{TRUE} data is validated as well; the structure is always validated
 #' @param errorIfFalse if \code{TRUE} an error will be raised if the schemes are not identical, i.e. there are structural differences.
 #'
 #' @return \code{TRUE} if they are identical or character vector describing the differences
@@ -11,10 +13,12 @@
 #' @export
 #'
 #' @examples
-#' validate_raw( emeScheme_raw )
+#' validate( emeScheme_raw )
 #'
-validate_raw <- function(
+validate <- function(
   x,
+  path = "",
+  validateData = TRUE,
   errorIfFalse = TRUE
   ) {
 
@@ -38,11 +42,10 @@ valCol <- function( x ){
     cols,
     function (col) {
       result <- list()
-      result$correctType <- FALSE
-      result$inDataFile <- FALSE
-      result$largerMin <- FALSE
-      result$smallerMax <- FALSE
-      result$inAllowedValues <- FALSE
+      result$correctType <- "TODO"
+      result$inDataFile <- "TODO"
+      result$range <- c(NA, NA) # range(0,0)
+      result$uniqueValues <- NA # unique(letters)
     }
   )
   return(result)
@@ -54,13 +57,13 @@ valCol <- function( x ){
 validateDataFileMetaData <- function( x ){
   dfns <- unique(x$dataFileName)
   names(dfns) <- dfns
+  dfns <- file.path(path, dfns)
   result <- lapply(
     dfns,
     function(dfn) {
       result <- list()
 
       # Validate existence of data files ----------------------------------------
-
       result$fileExists <- file.exists(dfn)
       if (file.exists(dfn)) {
 
@@ -85,8 +88,9 @@ validateDataFileMetaData <- function( x ){
 # Validate structure ------------------------------------------------------
 
   struct <- new_emeSchemeSet( x, keepData = FALSE, verbose = FALSE)
-  result$structOK <- isTRUE(all.equal(struct, emeScheme))
-  if (!result$structOK & errorIfFalse){
+  attr(struct, "propertyName") <- "emeScheme"
+  result$structOK <- all.equal(struct, emeScheme)
+  if (!isTRUE(result$structOK) & errorIfFalse){
     cat_ln(result)
     stop("x would result in a scheme which is not identical to the emeScheme!")
   }
@@ -94,7 +98,7 @@ validateDataFileMetaData <- function( x ){
 # Validata data -----------------------------------------------------------
 
 
-  if (result$structOK){
+  if (isTRUE(result$structOK) & validateData){
     dat <- new_emeSchemeSet( x, keepData = TRUE, verbose = FALSE)
 
   # Validate Species --------------------------------------------------------

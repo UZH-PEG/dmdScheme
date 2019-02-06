@@ -1,4 +1,4 @@
-context("validate_raw()")
+context("validate()")
 
 
 # returns TRUE -------------------------------------------------------------
@@ -7,8 +7,8 @@ test_that(
   "validata_raw() returns correct value when correct",
   {
     expect_known_value(
-      object = validate_raw( x = emeScheme_raw, errorIfFalse = TRUE),
-      file = "validate_raw.CORRECT.rda"
+      object = validate( x = emeScheme_raw, errorIfFalse = TRUE),
+      file = "validate.CORRECT.rda"
     )
   }
 )
@@ -23,8 +23,8 @@ test_that(
   "validata_raw() fails",
   {
     expect_known_value(
-      object =  validate_raw( x = x, errorIfFalse = FALSE),
-      file = "validate_raw.DIFFERENCES.rda"
+      object =  validate( x = x, errorIfFalse = FALSE),
+      file = "validate.DIFFERENCES.rda"
     )
   }
 )
@@ -35,7 +35,7 @@ test_that(
   "validata_raw() fails",
   {
     expect_error(
-      object = validate_raw( x = x, errorIfFalse = TRUE),
+      object = validate( x = x, errorIfFalse = TRUE),
       regexp = ("x would result in a scheme which is not identical to the emeScheme!")
     )
   }

@@ -20,7 +20,7 @@ of the \code{emeScheme} as in the variable \code{emeScheme}.}
 \item{raw}{if \code{TRUE} the excel file will be read as-is and not converted
 to an \code{emeScheme} object.}
 
-\item{validate}{Results are usually validated using \code{ validate_raw(
+\item{validate}{Results are usually validated using \code{ validate(
 errorIfFalse = TRUE )}. Consequently, an error is raised if the resulting
 scheme can not be successfully validated against the one in the package.
 There are not many cases where you want to change this value to

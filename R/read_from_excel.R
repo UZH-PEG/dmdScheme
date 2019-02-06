@@ -11,7 +11,7 @@
 #' @param verbose give verbose progress info. Useful for debugging.
 #' @param raw if \code{TRUE} the excel file will be read as-is and not converted
 #'   to an \code{emeScheme} object.
-#' @param validate Results are usually validated using \code{ validate_raw(
+#' @param validate Results are usually validated using \code{ validate(
 #'   errorIfFalse = TRUE )}. Consequently, an error is raised if the resulting
 #'   scheme can not be successfully validated against the one in the package.
 #'   There are not many cases where you want to change this value to
@@ -97,7 +97,11 @@ read_from_excel <- function(
 # Validate imported structure against emeScheme ---------------------------
 
   if (validate) {
-    validate_raw( x = result, errorIfFalse = TRUE )
+    validate(
+      x = result,
+      validateData = FALSE,
+      errorIfFalse = TRUE
+    )
   }
 
 # Convert to emeScheme if asked for ---------------------------------------
