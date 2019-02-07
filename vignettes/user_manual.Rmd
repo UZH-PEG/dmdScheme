@@ -62,6 +62,15 @@ There are no hard and fast rules, but there are some guidelines that will make t
 
 If your data does not fit these guidelines, e.g. is a collection of videos files or a collection of files containing DNA sequence data, put it in a container of some kind (e.g. compressed folder or zip file) and describe this in the metadata.
 
+## About dates and times
+
+It will be very useful if during data preparation you standardise (parse) any dates and times in the data. A good method for this is to use functions in the **lubridate** R package, such as `dmy`, `hms`, and `dmy_hms` to create the standardise dates, and then write these to the ready for research/archiving data version.
+
+## A note on allowed entries in the **google** version of the spreadsheet
+
+For some cells there are suggested entries available in a dropdown list. Please use these suggestions if you can. If the dropdown list contains an item that is three dots (...) you can enter an item not in the provided list: just type what you like in the cell. If you do this, you will get the message "Invalid:
+Input must be an item on specified list". You can ignore this message. 
+
 ## A worked example of preparation of data for archiving
 
 The worked example shows appropriate preparation of data for archiving and ease of further use. Its an example of what you could do, not what you have to do, though probably you benefit from doing something similar.
@@ -101,6 +110,8 @@ When you fill in this information, think about standardisation. If you enter a t
 
 Something else of note: Look at the field "media Additions" and you will see the entry is "Wheat seeds added on specific dates, see file wheat_seed_additions.csv". Here we see the possibility for great flexibility... we refer to information in a separate data file. Note though that this data file is just a list of dates and number of wheat seeds added--it is not information about an experimental treatment, because all experimental treatments experience the same additions (i.e. these additions are feature of the experiment).
 
+If you believe that other features of your experiment are important to include, please do so by adding the information in new rows and completing mandatory columns `valueProperty` (here put the name of the feature), `Description` (here describe what the feature is), and `DATA` (here put the value that the feature took in your experiment). 
+
 ## Species worksheet
 
 This worksheet should also not need much explanation. Note that this is just a list of the species in the experiment. Its not a description of any treatments involving species composition.
@@ -121,12 +132,14 @@ It would be very nice here to make the names of your treatment and the descripti
 
 ## Measurements worksheet
 
-Here enter a row of inforamtion for each type of measurement made. In the worked example there are four types of measurement: oxygen concentration, community composition, smell, and DNA sequences. Much of the information required in the rows should be quite self explanatory, apart perhaps from:
+Here enter a row of information for each type of measurement made. In the worked example there are four types of measurement: oxygen concentration, community composition, smell, and DNA sequences. Much of the information required in the rows should be quite self explanatory, apart perhaps from:
 
 * Data extraction method: Fill in something here if the measurement required some processing of another data file / measurement. E.g. in the worked example the commmunity composition measure comes from the DNA data by extraction method "Mol_Analy_pipeline1".
 * Source measurement: should be one of the names of the other rows of measurements. E.g. in the worked example the community composition measure comes from the "sequenceData" measurement.
 
-It would be very nice/useful if the entries in the "variable" column correspond with variables in the data file mentioned in the "data file" column. You will be told about the presence or absence of such matches in the validation report.
+It would be **very** nice/useful if the entries in the "variable" column correspond with variables in the data file mentioned in the "data file" column. You will be told about the presence or absence of such matches in the validation report.
+
+You might think you should enter here the data file in which the measurements occur, but this information you will give in the *DataFileMetaData* worksheet.
 
 ## DataExtraction
 

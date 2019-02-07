@@ -74,5 +74,9 @@ result$DataExtraction
 result$DataFileMetaData
 ```
 
+## Validate mappingColumn
 
+## Validation out of attempt to parse date variables
+
+# To do
 
