@@ -19,6 +19,8 @@ matrix:
   - r: release
     os: osx
     osx_image: xcode10.1
+    before_install:
+    - tlmgr install inconsolata
   - r: oldrel
   - r: 3.3
 #  - r: 3.2 # Because of openxlsx requires R >= 3.3
