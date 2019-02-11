@@ -1,5 +1,5 @@
 ---
-  title: "Expt1 - data prep example"
+title: "Expt1 - data prep example"
 author: "Owen Petchey"
 date: "11/12/2018"
 output: html_document
