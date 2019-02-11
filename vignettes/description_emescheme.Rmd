@@ -91,6 +91,7 @@ It is important to note that
 2. Many **value properties** have an attribute `allowedValues`. If `...` is included in this attribute, any value can be entered, but, if possible, one should choose a value from the list. 
 
 ```{r data_layout, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 15, fig.height = 15}
+if (!file.exists("figs/dataLayout.svg")) {
 '
 !define Project(name,desc) class name as "desc" << (P,pink) >> #TECHNOLOGY
 !define Data(name,desc) class name as "desc" << (D,crimson) >> #TECHNOLOGY
@@ -171,9 +172,10 @@ Measurement "1" *-- "many" ExtractedData : contains
 DataExtraction "1" *-- "many" ExtractedData : contains
 ' %>%
   plantuml %>%
-  plot()
+  plot( file = "figs/dataLayout.svg")
+}
 ```
-
+![label](figs/dataLayout.svg)
 
 
 # The emeScheme
