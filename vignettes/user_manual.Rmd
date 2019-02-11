@@ -115,7 +115,7 @@ The worked **basic** example shows appropriate preparation of data for archiving
 The `basic` folder contains:
 
 * An R-project file `expt1.Rproj`
-* A spreadsheet file `expt1 emeScheme.xlsx` (identical to this [googlesheet](https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg))
+* A spreadsheet file `expt1_emeScheme.xlsx` (identical to this [googlesheet](https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg))
 * A folder named `data` with two subfolders:
   * A `raw_data` folder containing files and folders of files that contain the data as it was entered by the researcher, or produced by the measurement machine.
   * A `archiving_data` folder containing data files that have been prepared for archiving.
@@ -136,7 +136,7 @@ Super. Now we have nicely prepared data. We are ready to fill in the metadata.
 
 There's no more putting it off... lets try filling in the metadata. First, find and open your copy of the metadata spreadsheet you made.
 
-If you're working through the worked example (`basic`), open the `emeScheme.xlsx` file, or open the [googlesheet](https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg).
+If you're working through the worked example (`basic`), open the `expt1_emeScheme.xlsx` file, or open the [googlesheet](https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg).
 
 * Green cells are where you enter information.
 * Pink cells are places where you should not try to type anything (they should be locked anyway).
