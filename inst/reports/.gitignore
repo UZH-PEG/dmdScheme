@@ -1,4 +1,4 @@
-validate.docx
-validate.pdf
-validation_report.html
-validation_report.pdf
+*.docx
+*.pdf
+*.html
+*.pdf
