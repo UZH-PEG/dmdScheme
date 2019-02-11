@@ -30,14 +30,21 @@ if (is.null(x)) {
 ## ##
 ```
 
-# General Info
 * **Author**: `r params$author`
-* **emeScheme data name**: `r attr(x, "fileName")`
-* ???
+* **emeScheme metadata name**: `r attr(x, "fileName")`
+* **data package path**: `add this`
+
+# Overall validation outcome
+
+Here there will be a report on the overall validation outcome, e.g., your metadata-data combination passed x/y critical tests, and passed z/n desirable tests. Please see below for details of each test result.
+
+
+Put this in an appendix.
 ```{r info}
 attributes(x)
 ```
 
+Use conditional text to explicitly say pass or fail, so that users don't have to read the R output (or at least get lovely green text for pass, and red for fail!)
 
 # Validate General Structure
 ```{r val_struct, options}
