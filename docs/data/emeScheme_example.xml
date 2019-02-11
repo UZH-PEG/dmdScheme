@@ -1,298 +1,237 @@
 <?xml version="1.0"?>
-<emeScheme class="emeSchemeSet, emeScheme, list" names="Experiment, Species, Treatment, Measurement, DataExtraction, TableMetaData">
- <ExperimentList unit="NA, NA, NA, NA, NA, NA, ml, NA, g/l, NA, NA, NA, NA" type="character, character, character, character, character, character, numeric, character, numeric, character, character, character, character" allowedValues="NA, treatment, ..., treatment, ..., treatment, ..., none, bench, ..., NA, NA, NA, NA, axenic, dirty, clean, …, treatment, single trophic level, multiple trophic level, …, NA, NA" names="name, temperature, light, humidity, incubator, container, microcosmVolume, mediaType, mediaConcentration, cultureConditions, comunityType, mediaAdditions, comment" class="emeSchemeData_Experiment, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
+<emeScheme class="emeSchemeSet, emeScheme, list" names="Experiment, Species, Treatment, Measurement, DataExtraction, DataFileMetaData">
+ <ExperimentList unit="NA, NA, NA, NA, NA, NA, ml, NA, g/l, NA, NA, NA, NA" type="character, character, character, character, character, character, numeric, character, numeric, character, character, character, character" allowedValues="" names="name, temperature, light, humidity, incubator, container, microcosmVolume, mediaType, mediaConcentration, cultureConditions, comunityType, mediaAdditions, comment" class="emeSchemeData_Experiment, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
   <Experiment>
-   <name>nice experiment</name>
-   <temperature>22.0</temperature>
-   <light>treatment</light>
-   <humidity>20.0</humidity>
-   <incubator>none</incubator>
-   <container>bottle</container>
-   <microcosmVolume>200</microcosmVolume>
-   <mediaType>xyz</mediaType>
-   <mediaConcentration>20</mediaConcentration>
+   <name>ASR-expt1</name>
+   <temperature>20.0</temperature>
+   <light>semi-ambient</light>
+   <humidity>ambient</humidity>
+   <incubator>not given here</incubator>
+   <container>Duran type bottle, red lids, 250ml</container>
+   <microcosmVolume>100</microcosmVolume>
+   <mediaType>PPM</mediaType>
+   <mediaConcentration>0.55</mediaConcentration>
    <cultureConditions>dirty</cultureConditions>
-   <comunityType>single trophic level</comunityType>
-   <mediaAdditions></mediaAdditions>
-   <comment></comment>
+   <comunityType>initially unknown</comunityType>
+   <mediaAdditions>Wheat seeds added on specific dates, see file wheat_seed_additions.csv</mediaAdditions>
+   <comment>NA</comment>
   </Experiment>
  </ExperimentList>
- <SpeciesList unit="NA, NA, NA, cells / ml, NA, NA" type="character, character, character, numeric, character, character" allowedValues="NA, NA, NA, treatment, value, bacteria, bacteriavore, predator, phototroph, …, NA" names="name, strain, source, density, functionalGroup, comment" class="emeSchemeData_Species, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
-  <Species name="tarantula maximus">
-   <strain>green</strain>
-   <source>ebay</source>
-   <density>20</density>
-   <functionalGroup>bacteria</functionalGroup>
-   <comment>nice expression of disgust</comment>
+ <SpeciesList unit="NA, NA, NA, cells / ml, NA, NA" type="character, character, character, numeric, character, character" allowedValues="" names="name, strain, source, density, functionalGroup, comment" class="emeSchemeData_Species, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
+  <Species name="Tetrahymena thermophila">
+   <strain>WH-6 (WHI) [ATCC 16539]</strain>
+   <source>ATCC</source>
+   <density>1</density>
+   <functionalGroup>bacterivore</functionalGroup>
+   <comment>http://www.lgcstandards-atcc.org/products/all/30007.aspx</comment>
   </Species>
-  <Species name="elephantus minimus">
-   <strain>blue</strain>
-   <source>amazon</source>
-   <density>40</density>
-   <functionalGroup>predator</functionalGroup>
-   <comment>does not like ebay</comment>
+  <Species name="NA">
+   <strain></strain>
+   <source></source>
+   <density></density>
+   <functionalGroup></functionalGroup>
+   <comment></comment>
   </Species>
  </SpeciesList>
- <TreatmentList unit="NA, NA, NA, NA" type="character, character, character, character" allowedValues="temperatur, light, initial density, comunity composition, densities, dispersal, viscosity, disturbance, communityType, …}, C, lux, name, ..., value,  variable: freetext, ..., NA" names="parameter, unit, treatmentLevel, comment" class="emeSchemeData_Treatment, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
+ <TreatmentList unit="NA, NA, NA, NA" type="character, character, character, character" allowedValues="" names="parameter, unit, treatmentLevel, comment" class="emeSchemeData_Treatment, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
   <Treatment>
-   <unit>C</unit>
-   <treatmentLevel>20.0</treatmentLevel>
+   <unit>None</unit>
+   <treatmentLevel>Loose</treatmentLevel>
    <comment></comment>
   </Treatment>
   <Treatment>
-   <unit>lux</unit>
-   <treatmentLevel>a lot</treatmentLevel>
-   <comment></comment>
-  </Treatment>
-  <Treatment>
-   <unit></unit>
-   <treatmentLevel>complex</treatmentLevel>
-   <comment></comment>
-  </Treatment>
-  <Treatment>
-   <unit>C</unit>
-   <treatmentLevel>35.0</treatmentLevel>
-   <comment></comment>
-  </Treatment>
-  <Treatment>
-   <unit>ind per ml</unit>
-   <treatmentLevel>1000.0</treatmentLevel>
+   <unit>NA</unit>
+   <treatmentLevel>Tight</treatmentLevel>
    <comment></comment>
   </Treatment>
  </TreatmentList>
- <MeasurementList unit="NA, NA, NA, NA, NA, days, NA, days between sampling, ml, NA, NA, NA, NA" type="character, character, character, character, character, integer, integer, numeric, numeric, character, character, character, character" allowedValues="NA, O2 concentration, video, manual count, …, presens Optode, microscopy, …, %, mmol, count, …, species, OUT, gene, community, particles, …, NA, NA, NA, NA, NA, NA, NA, NA" names="name, variable, method, unit, object, lengthOfTimeSeries, noOfSamplesInTimeSeries, samplingAverageFrequency, samplingVolume, dataExtractionName, measuredFrom, dataFiles, comment" class="emeSchemeData_Measurement, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
-  <Measurement name="video_lf">
-   <variable>video</variable>
-   <method>microscopy</method>
-   <unit></unit>
-   <object></object>
-   <lengthOfTimeSeries>50</lengthOfTimeSeries>
-   <noOfSamplesInTimeSeries>25</noOfSamplesInTimeSeries>
-   <samplingAverageFrequency>2</samplingAverageFrequency>
-   <samplingVolume></samplingVolume>
-   <dataExtractionName></dataExtractionName>
-   <measuredFrom></measuredFrom>
-   <dataFiles>dat1.csv</dataFiles>
-   <comment></comment>
-  </Measurement>
-  <Measurement name="o2_hf">
-   <variable>O2 concentration</variable>
+ <MeasurementList unit="NA, NA, NA, NA, NA, days, NA, days between sampling, ml, NA, NA, NA" type="character, character, character, character, character, integer, integer, numeric, numeric, character, character, character" allowedValues="" names="name, variable, method, unit, object, lengthOfTimeSeries, noOfSamplesInTimeSeries, samplingAverageFrequency, samplingVolume, dataExtractionName, measuredFrom, comment" class="emeSchemeData_Measurement, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
+  <Measurement name="oxygen concentration">
+   <variable>DO</variable>
    <method>presens Optode</method>
-   <unit></unit>
-   <object></object>
+   <unit>%</unit>
+   <object>community</object>
    <lengthOfTimeSeries>50</lengthOfTimeSeries>
    <noOfSamplesInTimeSeries>50</noOfSamplesInTimeSeries>
    <samplingAverageFrequency>1</samplingAverageFrequency>
-   <samplingVolume></samplingVolume>
-   <dataExtractionName></dataExtractionName>
-   <measuredFrom></measuredFrom>
-   <dataFiles>dat3.csv</dataFiles>
-   <comment></comment>
+   <samplingVolume>0</samplingVolume>
+   <dataExtractionName>NA</dataExtractionName>
+   <measuredFrom>NA</measuredFrom>
+   <comment>data stil being collected</comment>
   </Measurement>
-  <Measurement name="mc">
-   <variable>manual count</variable>
-   <method>microscopy</method>
-   <unit></unit>
-   <object></object>
-   <lengthOfTimeSeries>50</lengthOfTimeSeries>
-   <noOfSamplesInTimeSeries>10</noOfSamplesInTimeSeries>
-   <samplingAverageFrequency>5</samplingAverageFrequency>
-   <samplingVolume></samplingVolume>
-   <dataExtractionName></dataExtractionName>
-   <measuredFrom></measuredFrom>
-   <dataFiles></dataFiles>
-   <comment></comment>
+  <Measurement name="community_composition">
+   <variable>abundance</variable>
+   <method>molecular</method>
+   <unit>count</unit>
+   <object>species</object>
+   <lengthOfTimeSeries>100</lengthOfTimeSeries>
+   <noOfSamplesInTimeSeries>6</noOfSamplesInTimeSeries>
+   <samplingAverageFrequency>16.66666667</samplingAverageFrequency>
+   <samplingVolume>0.5</samplingVolume>
+   <dataExtractionName>Mol_Analy_pipeline1</dataExtractionName>
+   <measuredFrom>sequenceData</measuredFrom>
+   <comment>May collect more</comment>
   </Measurement>
-  <Measurement name="os_lf">
-   <variable>O2 concentration</variable>
-   <method>presens Optode</method>
-   <unit></unit>
-   <object></object>
-   <lengthOfTimeSeries>50</lengthOfTimeSeries>
-   <noOfSamplesInTimeSeries>10</noOfSamplesInTimeSeries>
-   <samplingAverageFrequency>5</samplingAverageFrequency>
-   <samplingVolume></samplingVolume>
-   <dataExtractionName></dataExtractionName>
-   <measuredFrom></measuredFrom>
-   <dataFiles></dataFiles>
-   <comment></comment>
+  <Measurement name="smell">
+   <variable>smell</variable>
+   <method>nose</method>
+   <unit>rotten eggs or not</unit>
+   <object>community</object>
+   <lengthOfTimeSeries>100</lengthOfTimeSeries>
+   <noOfSamplesInTimeSeries>6</noOfSamplesInTimeSeries>
+   <samplingAverageFrequency>16.66666667</samplingAverageFrequency>
+   <samplingVolume>0</samplingVolume>
+   <dataExtractionName>NA</dataExtractionName>
+   <measuredFrom>NA</measuredFrom>
+   <comment>May collect more</comment>
   </Measurement>
-  <Measurement name="video_hf">
-   <variable>video</variable>
-   <method>microscopy</method>
-   <unit></unit>
-   <object></object>
-   <lengthOfTimeSeries>50</lengthOfTimeSeries>
-   <noOfSamplesInTimeSeries>100</noOfSamplesInTimeSeries>
-   <samplingAverageFrequency>0.5</samplingAverageFrequency>
-   <samplingVolume></samplingVolume>
-   <dataExtractionName></dataExtractionName>
-   <measuredFrom></measuredFrom>
-   <dataFiles></dataFiles>
-   <comment></comment>
+  <Measurement name="sequenceData">
+   <variable>DNA</variable>
+   <method>NGS</method>
+   <unit>Nucleotide</unit>
+   <object>DNA fragment</object>
+   <lengthOfTimeSeries>100</lengthOfTimeSeries>
+   <noOfSamplesInTimeSeries>6</noOfSamplesInTimeSeries>
+   <samplingAverageFrequency>16.66666667</samplingAverageFrequency>
+   <samplingVolume>0</samplingVolume>
+   <dataExtractionName>NA</dataExtractionName>
+   <measuredFrom>NA</measuredFrom>
+   <comment>May collect more</comment>
   </Measurement>
  </MeasurementList>
- <DataExtractionList unit="NA, NA, NA, NA, NA" type="character, character, character, character, character" allowedValues="NA, bemovi x.y.z, ..., NA, NA, NA" names="name, method, parameter, value, comment" class="emeSchemeData_DataExtraction, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
+ <DataExtractionList unit="NA, NA, NA, NA, NA" type="character, character, character, character, character" allowedValues="" names="name, method, parameter, value, comment" class="emeSchemeData_DataExtraction, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
   <DataExtraction>
-   <name>bemovi_1</name>
-   <method>bemovi 1.5.4</method>
-   <parameter>a</parameter>
-   <value>3.0</value>
-   <comment></comment>
+   <name>Mol_Analy_pipeline1</name>
+   <method>NA</method>
+   <parameter>NA</parameter>
+   <value>NA</value>
+   <comment>See description in file xxx.yyy</comment>
   </DataExtraction>
   <DataExtraction>
-   <name>bemovi_1</name>
-   <method>bemovi 1.5.4</method>
-   <parameter>n</parameter>
-   <value>40.0</value>
-   <comment></comment>
-  </DataExtraction>
-  <DataExtraction>
-   <name>bemovi_1</name>
-   <method>bemovi 1.5.4</method>
-   <parameter>minsize</parameter>
-   <value>40.0</value>
-   <comment></comment>
-  </DataExtraction>
-  <DataExtraction>
-   <name>bemovi_2</name>
-   <method>bemovi 2.0.0</method>
-   <parameter>a</parameter>
-   <value>3.0</value>
-   <comment></comment>
-  </DataExtraction>
-  <DataExtraction>
-   <name>bemovi_2</name>
-   <method>bemovi 2.0.0</method>
-   <parameter>n</parameter>
-   <value>40.0</value>
-   <comment></comment>
-  </DataExtraction>
-  <DataExtraction>
-   <name>bemovi_2</name>
-   <method>bemovi 2.0.0</method>
-   <parameter>minsize</parameter>
-   <value>40.0</value>
+   <name></name>
+   <method></method>
+   <parameter></parameter>
+   <value></value>
    <comment></comment>
   </DataExtraction>
  </DataExtractionList>
- <TableMetaDataList unit="NA, NA, NA, NA, NA, NA, NA" type="character, character, character, character, character, character, character" allowedValues="NA, video_lf, o2_hf, mc, os_lf, video_hf, NA, integer, numeric, character, logical, datetime, ..., NA, NA, NA" names="filename, variable_name, unit, type, description, treatmentParameter, comment" class="emeSchemeData_TableMetaData, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
-  <TableMetaData>
-   <filename>dissolved_oxygen_measures.csv</filename>
-   <variable_name>Jar_ID</variable_name>
-   <unit></unit>
+ <DataFileMetaDataList unit="NA, NA, NA, NA, NA, NA, NA" type="character, character, character, character, character, character, character" allowedValues="NA, NA, ID, Treatment, Measurement, other, Lid_treatment, Lid_treatment, -------, oxygen concentration, community_composition, smell, sequenceData, integer, numeric, character, logical, datetime, date, time, NA, NA" names="dataFileName, columnName, columnData, mappingColumn, type, description, comment" class="emeSchemeData_DataFileMetaData, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
+  <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+   <columnName>Jar_ID</columnName>
+   <columnData>ID</columnData>
+   <mappingColumn>NA</mappingColumn>
    <type>character</type>
    <description></description>
-   <treatmentParameter></treatmentParameter>
    <comment></comment>
-  </TableMetaData>
-  <TableMetaData>
-   <filename>dissolved_oxygen_measures.csv</filename>
-   <variable_name>DO</variable_name>
-   <unit></unit>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+   <columnName>DO</columnName>
+   <columnData>Measurement</columnData>
+   <mappingColumn>oxygen concentration</mappingColumn>
    <type>numeric</type>
    <description></description>
-   <treatmentParameter></treatmentParameter>
    <comment></comment>
-  </TableMetaData>
-  <TableMetaData>
-   <filename>dissolved_oxygen_measures.csv</filename>
-   <variable_name>Unit_1</variable_name>
-   <unit></unit>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+   <columnName>Unit_1</columnName>
+   <columnData>other</columnData>
+   <mappingColumn>NA</mappingColumn>
    <type>character</type>
    <description></description>
-   <treatmentParameter></treatmentParameter>
    <comment></comment>
-  </TableMetaData>
-  <TableMetaData>
-   <filename>dissolved_oxygen_measures.csv</filename>
-   <variable_name>Mode</variable_name>
-   <unit></unit>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+   <columnName>Mode</columnName>
+   <columnData>other</columnData>
+   <mappingColumn>NA</mappingColumn>
    <type>character</type>
    <description></description>
-   <treatmentParameter></treatmentParameter>
    <comment></comment>
-  </TableMetaData>
-  <TableMetaData>
-   <filename>dissolved_oxygen_measures.csv</filename>
-   <variable_name>Location</variable_name>
-   <unit></unit>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+   <columnName>Location</columnName>
+   <columnData>other</columnData>
+   <mappingColumn>NA</mappingColumn>
    <type>character</type>
    <description></description>
-   <treatmentParameter></treatmentParameter>
    <comment></comment>
-  </TableMetaData>
-  <TableMetaData>
-   <filename>dissolved_oxygen_measures.csv</filename>
-   <variable_name>Date_time</variable_name>
-   <unit></unit>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+   <columnName>Date_time</columnName>
+   <columnData>other</columnData>
+   <mappingColumn>NA</mappingColumn>
    <type>datetime</type>
-   <description>YYmmdd hhmmss</description>
-   <treatmentParameter></treatmentParameter>
+   <description>ymdhms</description>
    <comment></comment>
-  </TableMetaData>
-  <TableMetaData>
-   <filename>dissolved_oxygen_measures.csv</filename>
-   <variable_name>Lid_status</variable_name>
-   <unit></unit>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+   <columnName>Lid_treatment</columnName>
+   <columnData>Treatment</columnData>
+   <mappingColumn>Lid_treatment</mappingColumn>
    <type>character</type>
    <description></description>
-   <treatmentParameter>Lid_treatment</treatmentParameter>
    <comment></comment>
-  </TableMetaData>
-  <TableMetaData>
-   <filename>dissolved_oxygen_measures.csv</filename>
-   <variable_name>Jar_type</variable_name>
-   <unit></unit>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+   <columnName>Jar_type</columnName>
+   <columnData>other</columnData>
+   <mappingColumn>NA</mappingColumn>
    <type>character</type>
    <description></description>
-   <treatmentParameter></treatmentParameter>
    <comment></comment>
-  </TableMetaData>
-  <TableMetaData>
-   <filename>dissolved_oxygen_measures.csv</filename>
-   <variable_name>o2_channel</variable_name>
-   <unit></unit>
-   <type>numeric</type>
-   <description></description>
-   <treatmentParameter></treatmentParameter>
-   <comment></comment>
-  </TableMetaData>
-  <TableMetaData>
-   <filename>smell.csv</filename>
-   <variable_name>Jar_ID</variable_name>
-   <unit></unit>
-   <type></type>
-   <description></description>
-   <treatmentParameter></treatmentParameter>
-   <comment></comment>
-  </TableMetaData>
-  <TableMetaData>
-   <filename>smell.csv</filename>
-   <variable_name>smell</variable_name>
-   <unit></unit>
-   <type></type>
-   <description></description>
-   <treatmentParameter></treatmentParameter>
-   <comment></comment>
-  </TableMetaData>
-  <TableMetaData>
-   <filename>smell.csv</filename>
-   <variable_name>Date_time</variable_name>
-   <unit></unit>
-   <type></type>
-   <description></description>
-   <treatmentParameter></treatmentParameter>
-   <comment></comment>
-  </TableMetaData>
-  <TableMetaData>
-   <filename>smell.csv</filename>
-   <variable_name>Lid_status</variable_name>
-   <unit></unit>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+   <columnName>Jar_ID</columnName>
+   <columnData>ID</columnData>
+   <mappingColumn>NA</mappingColumn>
    <type>character</type>
    <description></description>
-   <treatmentParameter>Lid_treatment</treatmentParameter>
    <comment></comment>
-  </TableMetaData>
- </TableMetaDataList>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>smell.csv</dataFileName>
+   <columnName>smell</columnName>
+   <columnData>Measurement</columnData>
+   <mappingColumn>smell</mappingColumn>
+   <type>character</type>
+   <description></description>
+   <comment></comment>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>smell.csv</dataFileName>
+   <columnName>Date</columnName>
+   <columnData>other</columnData>
+   <mappingColumn>NA</mappingColumn>
+   <type>datetime</type>
+   <description>ymdhms</description>
+   <comment></comment>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>smell.csv</dataFileName>
+   <columnName>Lid_treatment</columnName>
+   <columnData>Treatment</columnData>
+   <mappingColumn>NA</mappingColumn>
+   <type>character</type>
+   <description></description>
+   <comment></comment>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>smell.csv</dataFileName>
+   <columnName>Jar_type</columnName>
+   <columnData>other</columnData>
+   <mappingColumn>Lid_treatment</mappingColumn>
+   <type>character</type>
+   <description></description>
+   <comment></comment>
+  </DataFileMetaData>
+ </DataFileMetaDataList>
 </emeScheme>
