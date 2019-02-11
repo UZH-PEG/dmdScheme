@@ -10,7 +10,7 @@ validate(x, path = "", validateData = TRUE, report = "none",
   errorIfFalse = TRUE)
 }
 \arguments{
-\item{x}{object of class \code{emeSchemeSet_raw} as returned from \code{read_from_excel( keepData = FALSE, raw = TRUE)}}
+\item{x}{object of class \code{emeSchemeSet_raw} as returned from \code{read_from_excel( keepData = FALSE, raw = TRUE)} or file name of an xlsx file containing the metadata.}
 
 \item{path}{path to the data files}
 

@@ -1,6 +1,6 @@
 #' Validate structure of object of class \code{emeSchemeSet_raw} against \code{emeScheme}.
 #'
-#' @param x object of class \code{emeSchemeSet_raw} as returned from \code{read_from_excel( keepData = FALSE, raw = TRUE)}
+#' @param x object of class \code{emeSchemeSet_raw} as returned from \code{read_from_excel( keepData = FALSE, raw = TRUE)} or file name of an xlsx file containing the metadata.
 #' @param path path to the data files
 #' @param validateData if \code{TRUE} data is validated as well; the structure is always validated
 #' @param report determines if and in which format a report of the validation should be generated. Allowed values are:
@@ -144,6 +144,18 @@ validate <- function(
 
 
 
+
+
+  # Load from excel sheet if x == character ---------------------------------
+
+  if (is.character(x)) {
+    x <- read_from_excel(
+      file = x,
+      keepData = TRUE,
+      validate = FALSE,
+      raw = TRUE
+    )
+  }
   # Check arguments ---------------------------------------------------------
 
   allowedFormats <- c("none", "html", "pdf", "word", "all")
