@@ -6,13 +6,14 @@
 #' @return invisibly \code{NULL}
 #'
 #' @importFrom knitr purl
+#' @importFrom utils RShowDoc
 #'
 #' @export
 #'
 #' @examples
 #' make_exapme()
 #' \dontrun{
-#' make_example("basic)
+#' make_example("basic")
 #' }
 make_example <- function(
   name
@@ -46,9 +47,11 @@ make_example <- function(
         knitr::purl(
           input = file.path(".", "basic", "code", f),
           output = file.path(".", "basic", "code", gsub("Rmd", "R", f)),
-          documentation = 2
+          documentation = 2,
+          quiet = TRUE
         )
       }
+      utils::RShowDoc("user_manual", package = "emeScheme")
   }
   }
   return(invisible(NULL))

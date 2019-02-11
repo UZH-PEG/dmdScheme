@@ -15,3 +15,9 @@ invisibly \code{NULL}
 \description{
 This function copies the installed example into the working directory so that it can be used.
 }
+\examples{
+make_exapme()
+\dontrun{
+make_example("basic")
+}
+}
