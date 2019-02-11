@@ -115,7 +115,7 @@ The `basic` folder contains:
 
 * An R-project file `expt1.Rproj`
 * A spreadsheet file `expt1 emeScheme.gsheet` (identical to this [googlesheet](https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg))
-* A folder named `code` with two subfolders:
+* A folder named `data` with two subfolders:
   * A `raw_data` folder containing files and folders of files that contain the data as it was entered by the researcher, or produced by the measurement machine.
   * A `archiving_data` folder containing data files that have been prepared for archiving.
 * A `code` folder containing two files:
