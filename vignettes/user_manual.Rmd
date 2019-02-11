@@ -12,21 +12,23 @@ vignette: >
 
 # Introduction
 
-Researchers are increasingly being required to make the data they produce findable, accessible, interoperable, and reusable [wikipedia FAIR entry](https://en.wikipedia.org/wiki/FAIR_data). Providing metadata that describes our studies, experiments, treatments, measurements, and so on is a key part of this endeavour.
+Researchers are increasingly required to make the data they produce findable, accessible, interoperable, and reusable ([wikipedia FAIR entry](https://en.wikipedia.org/wiki/FAIR_data)). Providing metadata that describes our studies, experiments, treatments, measurements, data, and so on is a key part of this endeavour.
 
 The aim of the experimental microbial ecology metadata tool and the associated experimental microbial ecologal experiments metadata scheme (emeScheme) is to help you describe your study and its data, i.e. to produce useful metadata. You will do this by 
 
-1. preparing your datasets for archiving (see [Prepare Data for Archiving](#PrepareDataForArchiving)), 
-2. filling in your metadata the spreadsheet supplied (see [Fill in Metadata](#FillInMetadata)), 
-2. validating the combination of the metadata and data (this will be largely automatic) (see [Validation](#Validation)), 
-4. fixing any issues revealed by the validation step, and once satisfactorily validated 
-5. deposit the metadata and data in a repository of your choice.
+1. Preparing your datasets for archiving (see [Prepare Data for Archiving](#PrepareDataForArchiving)), 
+2. Filling in your metadata the spreadsheet supplied (see [Fill in Metadata](#FillInMetadata)), 
+2. Validating the combination of the metadata and data (this will be largely automatic) (see [Validation](#Validation)), 
+4. Fixing any issues revealed by the validation step, and once satisfactorily validated (see [Fixing issues](#Fixing)), 
+5. Deposit the metadata and data in a repository of your choice (see [Depositing in a repository](#depositing)).
 
-What is meant by *useful* metadata? Imagine we would like to use the metadata to find experiments (and potentially return the relevant data from them) that involve *Colpidium striatum* grown at **20ºC** in **0.55g per litre protist pellet medium**. To do this we need to ensure that the **species name**, the **temperature**, and the **growth media information** are contained in the metadata. We also need to make sure that when temperature is described it is described in a **standard fashion**, and that the growth media description is standardised. So there must be some standardisation. But its clear that most experiments have some unique features, such that we can't standardise everything in advance. The metadata scheme we use here is intended to be a good balance of standardised and flexible.
+# What is *useful* metadata?
 
-# When should I enter metadata
+Imagine we would like to use the metadata to find experiments (and potentially return the relevant data from them) that involve *Colpidium striatum* grown at **20ºC** in **0.55g per litre protist pellet medium**. To do this we need to ensure that the **species name**, the **temperature**, and the **growth media information** are contained in the metadata. We also need to make sure that when temperature is described it is described in a **standard fashion**, and that the growth media description is standardised. So there must be some standardisation. But its clear that most experiments have some unique features, such that we can't standardise everything in advance. The metadata scheme we use here is intended to be a good balance of standardised and flexible.
 
-You will benefit from starting this when you design your study. You'll likely find out that doing to will help with the planning of the study. You may then choose to work in a slightly different way, since this will make things more efficient later (this might especially be so for data handling issues). No problem, however, if you decide to do it at the end (or you are reading this after a study is complete).
+# At what point of my study should I enter metadata
+
+You will benefit from starting metadata entry when you design your study. You'll likely find out that doing to will help with the planning of the study. You may then choose to work in a slightly different way, since this will make things more efficient later (this might especially be so for data handling issues). No problem, however, if you decide to do it at the end (or you are reading this after a study is complete).
 
 # Getting started
 
@@ -43,7 +45,7 @@ You will enter the metadata in a supplied spreadsheet (Googlesheets or Excel), b
 library(emeScheme)
 ```
 
-To get a copy of the spreadsheet to enter the data, either make a copy of [this googlesheets](https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg) (File -- Make a copy) and delete the example data in the **green cells** wherer you can enter the metadata in, or you can run this R command to get an Excel version of the same but already empty sheet: 
+You can get either a googlesheet or Excel copy of the spreadsheet (they are identical) in which you enter the metadata. Here is [the googlesheet version](https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg). Make a copy (File -- Make a copy) and delete the example data in the **green cells**. If you prefer Excel, you can run this R command to get an Excel version of the same but already empty sheet: 
 
 ```{r eval=FALSE}
 enter_new_metadata()
@@ -89,32 +91,31 @@ For some cells there are suggested entries listed in the row **suggestedValues**
 
 The package `emeScheme` includes examples of raw data, processing scripts, processed data for archiving and the associated metadata.
 
-The examples are:
+The examples (so far only one) are:
 - `basic`: a basic simple example
 
 More examples wll follow later.
 
-You can always see a lidt of examples included by running the command
+You can always see a list of examples included by running the command
 
 ```{r}
 make_example()
 ```
 
-
-By running
+You can get one of the examples, e.g. the basic example by running:
 
 ```{r eval = FALSE}
 make_example("basic")
 ```
 
-you will copy the example into your current working directory in a folder named `basic`.
+This will copy the basic example into your current working directory in a folder named `basic`.
 
 The worked **basic** example shows appropriate preparation of data for archiving and ease of further use. Its an example of what you could do, not what you have to do, though probably you benefit from doing something similar.
 
 The `basic` folder contains:
 
 * An R-project file `expt1.Rproj`
-* A spreadsheet file `expt1 emeScheme.gsheet` (identical to this [googlesheet](https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg))
+* A spreadsheet file `expt1 emeScheme.xlsx` (identical to this [googlesheet](https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg))
 * A folder named `data` with two subfolders:
   * A `raw_data` folder containing files and folders of files that contain the data as it was entered by the researcher, or produced by the measurement machine.
   * A `archiving_data` folder containing data files that have been prepared for archiving.
@@ -135,7 +136,7 @@ Super. Now we have nicely prepared data. We are ready to fill in the metadata.
 
 There's no more putting it off... lets try filling in the metadata. First, find and open your copy of the metadata spreadsheet you made.
 
-In the worked example (`basic`), open the `emeScheme.xlsx` file, or open the [googlesheet](https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg).
+If you're working through the worked example (`basic`), open the `emeScheme.xlsx` file, or open the [googlesheet](https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg).
 
 * Green cells are where you enter information.
 * Pink cells are places where you should not try to type anything (they should be locked anyway).
@@ -146,7 +147,7 @@ This one should not need too much explanation. One important point is, however, 
 
 When you fill in this information, think about standardisation. If you enter a temperature, you should therefore enter only a numeric value in degrees Celcius. Writing "twelve degrees" is going to be quite unhelpful! (We could constrain the possible entries here, but then we lose flexibility; recall the discussion above about balancing standardisation and flexibility.)
 
-Something else of note: Look at the field `mediaAdditions` and you will see the entry is "Wheat seeds added on specific dates, see file wheat_seed_additions.csv". Here we see the possibility for great flexibility... we refer to information in a separate data file. Note though that this data file is just a list of dates and number of wheat seeds added--it is not information about an experimental treatment, because all experimental treatments experience the same additions (i.e. these additions are feature of the experiment). In addition, the information in these additional files is **not indexed** when submitting the data to a repository for archiving. In other words:L you can search for all entries in this metadata sheet, but not for the data in the files (data files, additional files as wheat_seet_additions.csv)!
+Something else of note: Look at the field `mediaAdditions` and you will see the entry is "Wheat seeds added on specific dates, see file wheat_seed_additions.csv". Here we see the possibility for great flexibility... we refer to information in a separate data file. Note though that this data file is just a list of dates and number of wheat seeds added--it is not information about an experimental treatment, because all experimental treatments experience the same additions (i.e. these additions are feature of the experiment). In addition, the information in these additional files is **not indexed** when submitting the data to a repository for archiving. In other words: researcher will be able to search for all entries in this metadata sheet, but not be able to directly search the data in the data files (data files, additional files as wheat_seet_additions.csv)! So such information as is in the wheat_seed_additions.csv file are effectively hidden from such searches. This is an example of flexibility dominating over standardisation, with some findability thereby being lost.
 
 If you believe that other features of your experiment are important to include, please do so by adding these in the `comment` row. 
 
@@ -172,27 +173,27 @@ It would be very nice here (i.e. it will make your life easier) to make the name
 
 Here enter a row of information for each type of measurement made. In the worked example there are four types of measurement: oxygen concentration, community composition, smell, and DNA sequences. Much of the information required in the rows should be quite self explanatory, apart perhaps from:
 
+* The *name* and *variable* columns are a bit redundant at present. Please give us your feedback on if you find it useful to make the distinction between a general *name* for the measurement, and then a more exact/standardised *variable*.
 * `dataExtractionName`: Fill in something here if the measurement required some processing of another data file / measurement. E.g. in the worked example the commmunity composition measure (**abundance**) comes from the **DNA** data (`measuredFrom` coumn) by extraction method **Mol_Analy_pipeline1** (see [DataExtraction](#DataExtraxction) for further details).
 * `measuredFrom`: should be one of the names of the other rows of measurements. E.g. in the worked example the community composition measure comes from the **DNA** measurement, or `raw` if it is raw data directly from the measurements.
 
 It would be **very** nice/useful (i.e. make your life easier) if the entries in the `variable` column correspond with the names of the columns in thedata file containing the datae (see [DataFileMetaData](#DataFileMetaData) for further details). You will be told about the presence or absence of such matches in the validation report.
 
 
-## DataExtraction
+## DataExtraction worksheet
 
 Here you can give details of any (and please all - this will be validated in the validation report) data extraction methods mentioned in the **Measurements** worksheet. You can enter any parameters and values of these you like (i.e. there is high flexibility here because we do not anticipate a lot of standardisation to exploit). In the worked example we wrote "See description in file xxx.yyy". This file could be a script or text description of the pipeline.
 
-## DataFileMetaData
+## DataFileMetaData worksheet
 
 Here you give a row for each of the variables in each of the data files.
 
 * **dataFileName** Here enter the file name of the data file.
-* **columnname** Here enter the exact variable name used in the datasheet / database / tabular data.
-* **measurementName** Here enter the measurement name, corresponding to the exact measurement name used in the **Measurement** worksheet, if the column contains a measurement.
-* **unit** Here enter the measurement units (e.g. % or grams).
+* **columnName** Here enter the exact variable name used in the datasheet / database / tabular data.
+* **columnData** Here enter whether the variable/column in the datafile contains a *measurement*, a *treatment*, an *ID* variable, or something else (*other*).
+* **mappingColumn** Here enter the name of the *measurement* (as entered in the *Measurement* sheet, *variable* column), treatment (as entered in the *Treatment* sheet, *parameter* column), or ID variable (this will be the variable that contains the unique identifiers of your units of replication, e.g. each microcosm has a unique code).
 * **type** Enter the variable type (e.g. numeric, character, date).
-* **description** Anything you think relevant.
-* **treatmentParameter** Here enter the treatment name corresponding to the exact treamtent name used in the **Treatment** worksheet, if the column contains treatment information.
+* **description** Anything you think relevant. Please enter the date/time format for variables that contain date/times.
 
 You will get a report on things such as matches and lack of matches with entered variable names and those in the actual datasets, matches of treatment names and measurement names, absences of data about things that were measured, absence about treatment information for things that were measured, and so on.
 
@@ -200,12 +201,24 @@ You will get a report on things such as matches and lack of matches with entered
 
 **<span style="color:red">This is work in progress and does change regularly.</span>**
 
-After entering your data, you should do a validation of your data. The validation checks many different aspects of your data and returns a report (html, pdf, docx or all of trhe above) containing where your metadata is not consistent and wheer it dies not conform with the data. 
+After entering your data, you should do a validation test of your metadata and data. The validation will check many different aspects of your metadata and data, and returns a report (html, pdf, docx or all three). The validation and resulting report is a work in progress
 
-Before you can evaluate your data, you have to read it in R (I am using the xlsx supplied in the package as an example:
+To produce a validation report, use the `validate` function and give it your spreadsheet, the path to your data folder, and the type of report you want:
 
 ```{r eval = FALSE}
-validate( x = system.file("googlesheet", "emeScheme.xlsx"), report = "html")
+validate("thenameofyourmetadataspreadsheet.xlsx", "the/path/to/your/datafiles", report = "html")
 ```
 
+As mentioned already, the validation and resulting report is a work in progress. Please let us know if you suggest particular validation checks.
 
+# Fixing issues {#Fixing}
+
+The validation report will suggest improvement you can make to your metadata. It may also say that some changes/additions are *required* in order to produce valid metadata. The more of these improvements you can make, the more useful will be your metadata-data combination.
+
+# Making the final xml version
+
+This section to be written: why, how, and final validation report should be also made.
+
+# Depositing in a repository {#depositing}
+
+We suggest that your metadata (the produced xml file), data, and validation report are deposited as one submission, e.g. to a repository such as dryad or zenodo. 
