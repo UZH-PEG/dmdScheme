@@ -57,9 +57,11 @@ read_from_excel <- function(
   result <- lapply(
     propSets,
     function(sheet) {
-      x <- readxl::read_excel(
-        path = file,
-        sheet = sheet
+      x <- suppressMessages(
+        readxl::read_excel(
+          path = file,
+          sheet = sheet
+        )
       )
       notNARow <- x %>%
         is.na() %>%
