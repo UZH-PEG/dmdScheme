@@ -141,7 +141,7 @@ If you're working through the worked example (`basic`), open the `expt1_emeSchem
 * Pink cells are places where you should not try to type anything (they should be locked anyway).
 
 Two important points to remember: 
-1. **Don't not use any formulas! Only enter values directly! Formulas can (wnd likely will) cause strange messages later!**
+1. **Please don't not use any formulas! Only enter values directly! Formulas can (and likely will) cause strange messages later!**
 2. **Enter in cells, which do not have a value for your data set, "NA". This avoids misunderstandings. The `comment` column can be left empty if you don't have any additional remarks.**
 
 ## Experiment worksheet
@@ -176,9 +176,9 @@ It would be very nice here (i.e. it will make your life easier) to make the name
 
 Here enter a row of information for each type of measurement made. In the worked example there are four types of measurement: oxygen concentration, community composition, smell, and DNA sequences. Much of the information required in the rows should be quite self explanatory, apart perhaps from:
 
-* The *name* and *variable* columns are a bit redundant at present. Please give us your feedback on if you find it useful to make the distinction between a general *name* for the measurement, and then a more exact/standardised *variable*.
-* `dataExtractionName`: Fill in something here if the measurement required some processing of another data file / measurement. E.g. in the worked example the commmunity composition measure (**abundance**) comes from the **DNA** data (`measuredFrom` coumn) by extraction method **Mol_Analy_pipeline1** (see [DataExtraction](#DataExtraxction) for further details).
-* `measuredFrom`: should be one of the names of the other rows of measurements. E.g. in the worked example the community composition measure comes from the **DNA** measurement, or `raw` if it is raw data directly from the measurements.
+* The *name* and *variable* columns might be a bit redundant. Please give us your feedback on if you find it useful to make the distinction between a general *name/description* for the measurement, and then a more exact/standardised *variable*.
+* `dataExtractionName`: Fill in something here if the measurement required some processing of another data file / measurement. E.g. in the worked example the commmunity composition measure (**abundance**) comes from the **sequenceData** data (`measuredFrom` coumn) by extraction method **Mol_Analy_pipeline1** (see [DataExtraction](#DataExtraxction) for further details).
+* `measuredFrom`: should be one of the names of the other rows of measurements. E.g. in the worked example the community composition measure comes from the **sequenceData** measurement, or `raw` if it is raw data directly from the measurements.
 
 It would be **very** nice/useful (i.e. make your life easier) if the entries in the `variable` column correspond with the names of the columns in thedata file containing the datae (see [DataFileMetaData](#DataFileMetaData) for further details). You will be told about the presence or absence of such matches in the validation report.
 
@@ -199,6 +199,8 @@ Here you give a row for each of the variables in each of the data files.
 * **description** Anything you think relevant. Please enter the date/time format for variables that contain date/times.
 
 You will get a report on things such as matches and lack of matches with entered variable names and those in the actual datasets, matches of treatment names and measurement names, absences of data about things that were measured, absence about treatment information for things that were measured, and so on.
+
+Note that the example contains a datafile in this worksheet that does not exist in the data folder. This is intended to simulate an error (i.e. forgetting to include a datafile) and to then result notification of this error in the validation report.
 
 # Validation {#Validation}
 
