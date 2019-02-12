@@ -5,6 +5,8 @@
 #'   \code{enter_new_metadata()} converted to a \code{data.frame} or
 #'   \code{tibble} by calling \code{readxl::read_excel()}. Class has to be \code{emeSchemeData_raw}.
 #' @param keepData if the data should be trimmed to one row with NAs
+#' @param convertTypes if \code{TRUE}, the types specified in the types column
+#'   are used for the data type. Otherwise, they are left at type \code{character}
 #' @param verbose give messages to make finding errors in data easier
 #'
 #' @return \code{emeSchemeData} Data object
@@ -21,6 +23,7 @@
 new_emeSchemeData <- function(
   x,
   keepData = TRUE,
+  convertTypes = TRUE,
   verbose = FALSE
   ) {
 
@@ -52,7 +55,6 @@ new_emeSchemeData <- function(
       dplyr::rename(Experiment = 2) %>%
       dplyr::filter( .data$propertySet != "propertySet")
   }
-
 
 # set all NA in valueProperty column to "NA" ------------------------------
 
@@ -100,13 +102,15 @@ new_emeSchemeData <- function(
 
 # apply type --------------------------------------------------------------
 
-  if(verbose) cat_ln("Apply types...")
-  #
-  type <- attr(x, "type")
-  for (i in 1:ncol(x)) {
-    if(verbose) cat_ln("   Apply type '", type[i], "' to '", names(x)[[i]], "'...")
+  if (convertTypes) {
+    if(verbose) cat_ln("Apply types...")
     #
-    x[[i]] <- as(x[[i]], Class = type[i])
+    type <- attr(x, "type")
+    for (i in 1:ncol(x)) {
+      if(verbose) cat_ln("   Apply type '", type[i], "' to '", names(x)[[i]], "'...")
+      #
+      x[[i]] <- as(x[[i]], Class = type[i])
+    }
   }
 
 # set class ---------------------------------------------------------------

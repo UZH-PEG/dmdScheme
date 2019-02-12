@@ -4,7 +4,8 @@
 \alias{new_emeSchemeData}
 \title{Create new \code{emeSchemeData} class object from specifications}
 \usage{
-new_emeSchemeData(x, keepData = TRUE, verbose = FALSE)
+new_emeSchemeData(x, keepData = TRUE, convertTypes = TRUE,
+  verbose = FALSE)
 }
 \arguments{
 \item{x}{a sheet of the spreadsheet displayed by calling
@@ -12,6 +13,9 @@ new_emeSchemeData(x, keepData = TRUE, verbose = FALSE)
 \code{tibble} by calling \code{readxl::read_excel()}. Class has to be \code{emeSchemeData_raw}.}
 
 \item{keepData}{if the data should be trimmed to one row with NAs}
+
+\item{convertTypes}{if \code{TRUE}, the types specified in the types column
+are used for the data type. Otherwise, they are left at type \code{character}}
 
 \item{verbose}{give messages to make finding errors in data easier}
 }

@@ -4,12 +4,16 @@
 \alias{new_emeSchemeSet}
 \title{Convert the data stored in \code{emeScheme_raw} into a list of tibbles}
 \usage{
-new_emeSchemeSet(x, keepData = FALSE, verbose = FALSE)
+new_emeSchemeSet(x, keepData = FALSE, convertTypes = TRUE,
+  verbose = FALSE)
 }
 \arguments{
 \item{x}{object of class \code{emeSchemeSet_raw} as e.g. returned by \code{read_from_excel(raw = TRUE)}}
 
 \item{keepData}{if the data should be kept or replaced with one row with NAs}
+
+\item{convertTypes}{if \code{TRUE}, the types specified in the types column
+are used for the data type. Otherwise, they are left at type \code{character}}
 
 \item{verbose}{give messages to make finding errors in data easier}
 }

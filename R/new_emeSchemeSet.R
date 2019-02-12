@@ -1,8 +1,10 @@
 #' Convert the data stored in \code{emeScheme_raw} into a list of tibbles
 #'
 #' @param x object of class \code{emeSchemeSet_raw} as e.g. returned by \code{read_from_excel(raw = TRUE)}
-#' @param verbose give messages to make finding errors in data easier
 #' @param keepData if the data should be kept or replaced with one row with NAs
+#' @param convertTypes if \code{TRUE}, the types specified in the types column
+#'   are used for the data type. Otherwise, they are left at type \code{character}
+#' @param verbose give messages to make finding errors in data easier
 #'
 #' @return \code{list} of \code{list} of ... \code{tibbles}
 #' @export
@@ -18,6 +20,7 @@
 new_emeSchemeSet <- function(
   x,
   keepData = FALSE,
+  convertTypes = TRUE,
   verbose = FALSE
 ) {
 
@@ -34,7 +37,8 @@ new_emeSchemeSet <- function(
     x,
     new_emeSchemeData,
     keepData = keepData,
-    verbose = verbose
+    verbose = verbose,
+    convertTypes = convertTypes
   )
 
 # Set attributes ----------------------------------------------------------
