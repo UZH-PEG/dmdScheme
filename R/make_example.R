@@ -44,11 +44,13 @@ make_example <- function(
       )
       rmd <- list.files( file.path(".", "basic", "code"), pattern = "Rmd")
       for (f in rmd) {
-        knitr::purl(
-          input = file.path(".", "basic", "code", f),
-          output = file.path(".", "basic", "code", gsub("Rmd", "R", f)),
-          documentation = 2,
-          quiet = TRUE
+        suppressMessages(
+          knitr::purl(
+            input = file.path(".", "basic", "code", f),
+            output = file.path(".", "basic", "code", gsub("Rmd", "R", f)),
+            documentation = 2,
+            quiet = TRUE
+          )
         )
       }
       utils::RShowDoc("user_manual", package = "emeScheme")
