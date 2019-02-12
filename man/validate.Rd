@@ -2,12 +2,12 @@
 % Please edit documentation in R/validate.R
 \name{validate}
 \alias{validate}
-\title{Validate structure of object of class \code{emeSchemeSet_raw} against \code{emeScheme}.}
+\title{Validate Excel workbook or object of class \code{emeSchemeSet_raw} against \code{emeScheme}.}
 \usage{
 validate(x, path = "", validateData = TRUE, report = "none",
   report_author = "Tester",
   report_title = "Validation of data against emeScheme",
-  errorIfFalse = TRUE)
+  errorIfStructFalse = TRUE)
 }
 \arguments{
 \item{x}{object of class \code{emeSchemeSet_raw} as returned from \code{read_from_excel( keepData = FALSE, raw = TRUE)} or file name of an xlsx file containing the metadata.}
@@ -29,13 +29,17 @@ validate(x, path = "", validateData = TRUE, report = "none",
 
 \item{report_title}{title of the report for the report}
 
-\item{errorIfFalse}{if \code{TRUE} an error will be raised if the schemes are not identical, i.e. there are structural differences.}
+\item{errorIfStructFalse}{if \code{TRUE} an error will be raised if the schemes are not identical, i.e. there are structural differences.}
 }
 \value{
-return invisibly the report in form of a \code{list}
+return the \code{emeScheme_validation} object
 }
 \description{
-Validate structure of object of class \code{emeSchemeSet_raw} against \code{emeScheme}.
+This function validates either an excel workbook or an object of class
+\code{emeScheme_raw} against the definition of the \code{emeScheme}. It
+validates the structure, the types, suggested values, ... and returns an object of class \code{emeScheme_validation}.
+TODO: DESCRIBE THE CLASS!
+Based on this result, a report is created if asked fore (see below for details).
 }
 \examples{
 validate( emeScheme_raw )

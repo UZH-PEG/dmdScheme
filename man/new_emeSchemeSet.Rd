@@ -5,7 +5,7 @@
 \title{Convert the data stored in \code{emeScheme_raw} into a list of tibbles}
 \usage{
 new_emeSchemeSet(x, keepData = FALSE, convertTypes = TRUE,
-  verbose = FALSE)
+  verbose = FALSE, warnToError = TRUE)
 }
 \arguments{
 \item{x}{object of class \code{emeSchemeSet_raw} as e.g. returned by \code{read_from_excel(raw = TRUE)}}
@@ -16,6 +16,8 @@ new_emeSchemeSet(x, keepData = FALSE, convertTypes = TRUE,
 are used for the data type. Otherwise, they are left at type \code{character}}
 
 \item{verbose}{give messages to make finding errors in data easier}
+
+\item{warnToError}{if \code{TRUE}, warnings generated during the conversion will raise an error}
 }
 \value{
 \code{list} of \code{list} of ... \code{tibbles}

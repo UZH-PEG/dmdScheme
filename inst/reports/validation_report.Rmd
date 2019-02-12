@@ -15,6 +15,8 @@ output:
 
 
 ```{r setup, include=FALSE}
+library(magrittr)
+library(knitr)
 knitr::opts_chunk$set(echo = TRUE)
 x <- params$x
 result <- params$result
@@ -53,32 +55,87 @@ result$structOK
 
 
 # Validate Experiment
-```{r val_Experiment}
-result$Experiment
+## Types
+```{r}
+result$Experiment$types %>%
+  kable()
 ```
+
+## Suggested Values
+```{r}
+result$Experiment$suggestedValues %>%
+  kable()
+```
+
 # Validate Species
-```{r val_species, options}
-result$Species
+## Types
+```{r}
+result$Species$types %>%
+  kable()
+```
+
+## Suggested Values
+```{r}
+result$Species$suggestedValues %>%
+  kable()
+```
+
+## Species Names
+```{r}
+result$Species$speciesNames %>%
+  kable()
 ```
 
 # Validate Treatment
-```{r val_treatment, options}
-result$Treatment
+## Types
+```{r}
+result$Treatment$types %>%
+  kable()
+```
+
+## Suggested Values
+```{r}
+result$Treatment$suggestedValues %>%
+  kable()
 ```
 
 # Validate Measurement
-```{r val_measurement, options}
-result$Measurement
+## Types
+```{r}
+result$Measurement$types %>%
+  kable()
+```
+
+## Suggested Values
+```{r}
+result$Measurement$suggestedValues %>%
+  kable()
 ```
 
 # Validate DataExtraction
-```{r val_dataextraction, options}
-result$DataExtraction
+## Types
+```{r}
+result$DataExtraction$types %>%
+  kable()
+```
+
+## Suggested Values
+```{r}
+result$DataExtraction$suggestedValues %>%
+  kable()
 ```
 
 # Validate DataFileMetaData
-```{r val_datafilemetadata, options}
-result$DataFileMetaData
+## Types
+```{r}
+result$DataFileMetaData$types %>%
+  kable()
+```
+
+## Suggested Values
+```{r}
+result$DataFileMetaData$suggestedValues %>%
+  kable()
 ```
 
 ## Validate mappingColumn

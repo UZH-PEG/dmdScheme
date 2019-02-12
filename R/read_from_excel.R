@@ -60,7 +60,8 @@ read_from_excel <- function(
       x <- suppressMessages(
         readxl::read_excel(
           path = file,
-          sheet = sheet
+          sheet = sheet,
+          na = c("", "NA", "na")
         )
       )
       notNARow <- x %>%
@@ -102,7 +103,7 @@ read_from_excel <- function(
     validate(
       x = result,
       validateData = FALSE,
-      errorIfFalse = TRUE
+      errorIfStructFalse = TRUE
     )
   }
 

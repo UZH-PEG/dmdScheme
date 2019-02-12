@@ -7,7 +7,7 @@ test_that(
   "validata_raw() returns correct value when correct",
   {
     expect_known_value(
-      object = validate( x = emeScheme_raw, errorIfFalse = TRUE),
+      object = validate( x = emeScheme_raw, errorIfStructFalse = TRUE),
       file = "validate.CORRECT.rda"
     )
   }
@@ -23,7 +23,7 @@ test_that(
   "validata_raw() fails",
   {
     expect_known_value(
-      object =  validate( x = x, errorIfFalse = FALSE),
+      object =  validate( x = x, errorIfStructFalse = FALSE),
       file = "validate.DIFFERENCES.rda"
     )
   }
@@ -35,8 +35,8 @@ test_that(
   "validata_raw() fails",
   {
     expect_error(
-      object = validate( x = x, errorIfFalse = TRUE),
-      regexp = ("x would result in a scheme which is not identical to the emeScheme!")
+      object = validate( x = x, errorIfStructFalse = TRUE),
+      regexp = ("Structure of the object to be evaluated is wrong. See the info above for details.")
     )
   }
 )

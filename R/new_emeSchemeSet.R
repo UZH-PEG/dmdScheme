@@ -5,6 +5,7 @@
 #' @param convertTypes if \code{TRUE}, the types specified in the types column
 #'   are used for the data type. Otherwise, they are left at type \code{character}
 #' @param verbose give messages to make finding errors in data easier
+#' @param warnToError if \code{TRUE}, warnings generated during the conversion will raise an error
 #'
 #' @return \code{list} of \code{list} of ... \code{tibbles}
 #' @export
@@ -21,7 +22,8 @@ new_emeSchemeSet <- function(
   x,
   keepData = FALSE,
   convertTypes = TRUE,
-  verbose = FALSE
+  verbose = FALSE,
+  warnToError = TRUE
 ) {
 
 
@@ -37,8 +39,9 @@ new_emeSchemeSet <- function(
     x,
     new_emeSchemeData,
     keepData = keepData,
+    convertTypes = convertTypes,
     verbose = verbose,
-    convertTypes = convertTypes
+    warnToError = warnToError
   )
 
 # Set attributes ----------------------------------------------------------

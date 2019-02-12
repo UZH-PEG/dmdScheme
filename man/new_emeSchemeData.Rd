@@ -5,7 +5,7 @@
 \title{Create new \code{emeSchemeData} class object from specifications}
 \usage{
 new_emeSchemeData(x, keepData = TRUE, convertTypes = TRUE,
-  verbose = FALSE)
+  verbose = FALSE, warnToError = TRUE)
 }
 \arguments{
 \item{x}{a sheet of the spreadsheet displayed by calling
@@ -18,6 +18,8 @@ new_emeSchemeData(x, keepData = TRUE, convertTypes = TRUE,
 are used for the data type. Otherwise, they are left at type \code{character}}
 
 \item{verbose}{give messages to make finding errors in data easier}
+
+\item{warnToError}{if \code{TRUE}, warnings generated during the conversion will raise an error}
 }
 \value{
 \code{emeSchemeData} Data object

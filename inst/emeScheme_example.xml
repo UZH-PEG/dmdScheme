@@ -3,7 +3,7 @@
  <ExperimentList unit="NA, NA, NA, NA, NA, NA, ml, NA, g/l, NA, NA, NA, NA" type="character, character, character, character, character, character, numeric, character, numeric, character, character, character, character" allowedValues="" names="name, temperature, light, humidity, incubator, container, microcosmVolume, mediaType, mediaConcentration, cultureConditions, comunityType, mediaAdditions, comment" class="emeSchemeData_Experiment, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
   <Experiment>
    <name>ASR-expt1</name>
-   <temperature>20.0</temperature>
+   <temperature>20</temperature>
    <light>semi-ambient</light>
    <humidity>ambient</humidity>
    <incubator>not given here</incubator>
@@ -25,11 +25,11 @@
    <functionalGroup>bacterivore</functionalGroup>
    <comment>http://www.lgcstandards-atcc.org/products/all/30007.aspx</comment>
   </Species>
-  <Species name="NA">
-   <strain></strain>
-   <source></source>
+  <Species name="unknown">
+   <strain>unknown</strain>
+   <source>unknown</source>
    <density></density>
-   <functionalGroup></functionalGroup>
+   <functionalGroup>unknown</functionalGroup>
    <comment></comment>
   </Species>
  </SpeciesList>
@@ -56,7 +56,7 @@
    <samplingAverageFrequency>1</samplingAverageFrequency>
    <samplingVolume>0</samplingVolume>
    <dataExtractionName>NA</dataExtractionName>
-   <measuredFrom>NA</measuredFrom>
+   <measuredFrom>raw</measuredFrom>
    <comment>data stil being collected</comment>
   </Measurement>
   <Measurement name="community_composition">
@@ -66,10 +66,10 @@
    <object>species</object>
    <lengthOfTimeSeries>100</lengthOfTimeSeries>
    <noOfSamplesInTimeSeries>6</noOfSamplesInTimeSeries>
-   <samplingAverageFrequency>16.66666667</samplingAverageFrequency>
+   <samplingAverageFrequency>16.6666666666667</samplingAverageFrequency>
    <samplingVolume>0.5</samplingVolume>
    <dataExtractionName>Mol_Analy_pipeline1</dataExtractionName>
-   <measuredFrom>sequenceData</measuredFrom>
+   <measuredFrom>DNA</measuredFrom>
    <comment>May collect more</comment>
   </Measurement>
   <Measurement name="smell">
@@ -79,10 +79,10 @@
    <object>community</object>
    <lengthOfTimeSeries>100</lengthOfTimeSeries>
    <noOfSamplesInTimeSeries>6</noOfSamplesInTimeSeries>
-   <samplingAverageFrequency>16.66666667</samplingAverageFrequency>
+   <samplingAverageFrequency>16.6666666666667</samplingAverageFrequency>
    <samplingVolume>0</samplingVolume>
    <dataExtractionName>NA</dataExtractionName>
-   <measuredFrom>NA</measuredFrom>
+   <measuredFrom>raw</measuredFrom>
    <comment>May collect more</comment>
   </Measurement>
   <Measurement name="sequenceData">
@@ -92,10 +92,10 @@
    <object>DNA fragment</object>
    <lengthOfTimeSeries>100</lengthOfTimeSeries>
    <noOfSamplesInTimeSeries>6</noOfSamplesInTimeSeries>
-   <samplingAverageFrequency>16.66666667</samplingAverageFrequency>
+   <samplingAverageFrequency>16.6666666666667</samplingAverageFrequency>
    <samplingVolume>0</samplingVolume>
    <dataExtractionName>NA</dataExtractionName>
-   <measuredFrom>NA</measuredFrom>
+   <measuredFrom>raw</measuredFrom>
    <comment>May collect more</comment>
   </Measurement>
  </MeasurementList>

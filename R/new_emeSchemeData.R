@@ -8,6 +8,7 @@
 #' @param convertTypes if \code{TRUE}, the types specified in the types column
 #'   are used for the data type. Otherwise, they are left at type \code{character}
 #' @param verbose give messages to make finding errors in data easier
+#' @param warnToError if \code{TRUE}, warnings generated during the conversion will raise an error
 #'
 #' @return \code{emeSchemeData} Data object
 #'
@@ -24,7 +25,8 @@ new_emeSchemeData <- function(
   x,
   keepData = TRUE,
   convertTypes = TRUE,
-  verbose = FALSE
+  verbose = FALSE,
+  warnToError = TRUE
   ) {
 
   if(verbose) cat_ln("propertySet : ", names(x)[[2]])
@@ -38,10 +40,12 @@ new_emeSchemeData <- function(
 
 # Set warn to 2 to convert warnings to errors -----------------------------
 
-  oldWarn <- options()$warn
-  options(warn = 2)
+  if (warnToError) {
+    oldWarn <- options()$warn
+    options(warn = 2)
 
-  on.exit(options(warn = oldWarn))
+    on.exit(options(warn = oldWarn))
+  }
 
 # transpose when Experiment -----------------------------------------------
 
