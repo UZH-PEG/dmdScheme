@@ -16,7 +16,7 @@ invisibly \code{NULL}
 This function copies the installed example into the working directory so that it can be used.
 }
 \examples{
-make_exapme()
+make_example()
 \dontrun{
 make_example("basic")
 }
