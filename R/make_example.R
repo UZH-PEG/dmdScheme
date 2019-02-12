@@ -11,7 +11,7 @@
 #' @export
 #'
 #' @examples
-#' make_exapme()
+#' make_example()
 #' \dontrun{
 #' make_example("basic")
 #' }
