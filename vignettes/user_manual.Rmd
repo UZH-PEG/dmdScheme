@@ -129,7 +129,6 @@ The `basic` folder contains:
 
 If you want to try it, delete all the files in the `data/archiving_data` foilder and knit the `data_preparation.Rmd` or execute / source the `data_preparation.R` file which will re-create the files in the `archiving_data` folder.
 
-
 Super. Now we have nicely prepared data. We are ready to fill in the metadata.
 
 # Fill in the Metadata {#FillInMetadata}
@@ -140,6 +139,10 @@ If you're working through the worked example (`basic`), open the `expt1_emeSchem
 
 * Green cells are where you enter information.
 * Pink cells are places where you should not try to type anything (they should be locked anyway).
+
+Two important points to remember: 
+1. **Don't not use any formulas! Only enter values directly! Formulas can (wnd likely will) cause strange messages later!**
+2. **Enter in cells, which do not have a value for your data set, "NA". This avoids misunderstandings. The `comment` column can be left empty if you don't have any additional remarks.**
 
 ## Experiment worksheet
 
