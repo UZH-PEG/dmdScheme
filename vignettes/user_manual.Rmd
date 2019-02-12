@@ -9,7 +9,6 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-
 # Introduction
 
 Researchers are increasingly required to make the data they produce findable, accessible, interoperable, and reusable ([wikipedia FAIR entry](https://en.wikipedia.org/wiki/FAIR_data)). Providing metadata that describes our studies, experiments, treatments, measurements, data, and so on is a key part of this endeavour.
@@ -25,6 +24,11 @@ The aim of the experimental microbial ecology metadata tool and the associated e
 # What is *useful* metadata?
 
 Imagine we would like to use the metadata to find experiments (and potentially return the relevant data from them) that involve *Colpidium striatum* grown at **20ºC** in **0.55g per litre protist pellet medium**. To do this we need to ensure that the **species name**, the **temperature**, and the **growth media information** are contained in the metadata. We also need to make sure that when temperature is described it is described in a **standard fashion**, and that the growth media description is standardised. So there must be some standardisation. But its clear that most experiments have some unique features, such that we can't standardise everything in advance. The metadata scheme we use here is intended to be a good balance of standardised and flexible.
+
+# What metadata is covered in the emeScheme, and what is not
+
+The emeScheme metadata only covers that necessary/helpful to describe an "experimental microbial ecology" study (though as an aside we think/wonder if it might be useful for many other settings of ecological experiments). Other important/essential metadata is not included, and will not be included, **in the emeScheme** because it is in other schemes such as the *DataCite* scheme and/or the *Ecological Metadata Language/Scheme*. We may, however, add tools that help researchers enter this important/essential metadata also.  
+
 
 # At what point of my study should I enter metadata
 
@@ -204,7 +208,7 @@ Note that the example contains a datafile in this worksheet that does not exist 
 
 # Validation {#Validation}
 
-**<span style="color:red">This is work in progress and does change regularly.</span>**
+**<span style="color:red">This is work in progress. Please give it a go and have a look at the produced validation report, but note that we are leaving most of the development to the next stage of development.</span>**
 
 After entering your data, you should do a validation test of your metadata and data. The validation will check many different aspects of your metadata and data, and returns a report (html, pdf, docx or all three). The validation and resulting report is a work in progress
 
@@ -214,7 +218,7 @@ To produce a validation report, use the `validate` function and give it your spr
 validate("thenameofyourmetadataspreadsheet.xlsx", "the/path/to/your/datafiles", report = "html")
 ```
 
-As mentioned already, the validation and resulting report is a work in progress. Please let us know if you suggest particular validation checks.
+As mentioned already, the validation and resulting report is a work in progress. Don't feel the need to look at it so hard. Please let us know if you suggest particular validation checks.
 
 # Fixing issues {#Fixing}
 
@@ -222,7 +226,16 @@ The validation report will suggest improvement you can make to your metadata. It
 
 # Making the final xml version
 
-This section to be written: why, how, and final validation report should be also made.
+The Excel/googlesheet version of the metadata is most useful for us to enter the metadata easily. It is not so useful for standardised/automated metadata enquiry/search/submission... i.e. excel/googlesheet versions of metadata are not really FAIR compliable. The metadata gurus decided that it should be stored as xml files, as it is plain text, it is in principle readable by humans (though is not meant to be read by humans really), it is machine readable (and then easily converted into any other format, e.g. ones easy for humans to read).
+
+Therefore, you should submit the final xml version of your metadata. Only do this after you have a satisfactory validation. Use this function:
+
+```{r}
+my_medata_spreadsheet <- read_from_excel("thenameofyourmetadataspreadsheet.xlsx")
+emeSchemeToXml(my_medata_spreadsheet, file="my_expt1_metadata.xml")
+```
+
+
 
 # Depositing in a repository {#depositing}
 
