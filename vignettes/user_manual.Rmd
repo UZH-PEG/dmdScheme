@@ -230,7 +230,7 @@ The Excel/googlesheet version of the metadata is most useful for us to enter the
 
 Therefore, you should submit the final xml version of your metadata. Only do this after you have a satisfactory validation. Use this function:
 
-```{r}
+```{r eval=FALSE}
 my_medata_spreadsheet <- read_from_excel("thenameofyourmetadataspreadsheet.xlsx")
 emeSchemeToXml(my_medata_spreadsheet, file="my_expt1_metadata.xml")
 ```
