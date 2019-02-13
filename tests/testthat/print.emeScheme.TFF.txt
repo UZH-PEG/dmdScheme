@@ -15,9 +15,9 @@ A       Units : NA | NA | NA | NA
 A       Type  : character | character | character | character
 
      Measurement - emeSchemeData
-A       Names : name | variable | method | unit | object | lengthOfTimeSeries | noOfSamplesInTimeSeries | samplingAverageFrequency | samplingVolume | dataExtractionName | measuredFrom | comment
-A       Units : NA | NA | NA | NA | NA | days | NA | days between sampling | ml | NA | NA | NA
-A       Type  : character | character | character | character | character | integer | integer | numeric | numeric | character | character | character
+A       Names : name | variable | method | unit | object | lengthOfTimeSeries | noOfSamplesInTimeSeries | samplingVolume | dataExtractionName | measuredFrom | comment
+A       Units : NA | NA | NA | NA | NA | days | NA | ml | NA | NA | NA
+A       Type  : character | character | character | character | character | integer | integer | numeric | character | character | character
 
      DataExtraction - emeSchemeData
 A       Names : name | method | parameter | value | comment

@@ -1,7 +1,7 @@
 Package: emeScheme
 Title: Microcosm experiment metadata scheme
-Version: 0.7.9.14
-Date: 2019-02-12
+Version: 0.7.9.16
+Date: 2019-02-13
 Authors@R: c( person("Rainer M.", "Krug", email = "Rainer.Krug@uzh.ch",
         role = c("aut", "cre")), person("Owen L.", "Petchey", email =
         "Owen.Petchey@uzh.ch", role = c("ctb")), person("Vanessa W.",
@@ -11,8 +11,8 @@ Authors@R: c( person("Rainer M.", "Krug", email = "Rainer.Krug@uzh.ch",
         <frank.pennekamp@uzh.ch>", role = c("ctb")) )
 Description: This package provides and describes the Authoratative
         definition of th emeScheme (Experimental Microcosm Ecology
-        Metadata). ---- Data imported and version bumped at Tue Feb 12
-        12:50:26 2019 / Europe/Zurich.
+        Metadata). ---- Data imported and version bumped at Wed Feb 13
+        09:11:03 2019 / Europe/Zurich.
 Depends: R (>= 3.3.0)
 Imports: tools, methods, utils, magrittr (>= 1.5), dplyr (>= 0.1.8),
         tibble (>= 2.0.0), readxl (>= 1.2.0), openxlsx (>= 4.1.1), XML
@@ -26,5 +26,5 @@ RoxygenNote: 6.1.1
 Suggests: covr (>= 3.2.1), testthat (>= 2.0.1), googlesheets (>=
         0.3.0), here (>= 0.1), kableExtra (>= 0.9.0), plantuml (>=
         0.2.3.2)
-GSUpdate: 2019-02-12 11:42:58
+GSUpdate: 2019-02-13 08:10:06
 VignetteBuilder: knitr

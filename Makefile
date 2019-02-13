@@ -75,6 +75,16 @@ update:
 
 #############
 
+test:
+	@Rscript -e "devtools::test()"
+
+#############
+
+check:
+	@Rscript -e "devtools::check(args = c('--as-cran'))"
+
+#############
+
 publish:
 	git add DESCRIPTION data/emeScheme.rda data/emeScheme_gd.rda inst/googlesheet/emeScheme.xlsx docs/index.html
 	git commit -m "Update From Googlesheets"
