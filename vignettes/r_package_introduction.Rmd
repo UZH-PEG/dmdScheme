@@ -42,10 +42,10 @@ For a list of releases see [here](https://github.com/Exp-Micro-Ecol-Hub/emeSchem
 # install.packages("devtools")
 
 ## install the last version of emeScheme from github
-devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme")
+devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme", build_opts = c("--no-resave-data"))
 
-## install a specific release, e.g. v0.6.0, of emeScheme from github
-devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme", rev = "v0.6.0")
+## install a specific release, e.g. v0.8, of emeScheme from github
+devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme", ref = "v0.8", build_opts = c("--no-resave-data"))
 ```
 
 

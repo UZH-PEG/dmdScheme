@@ -1,6 +1,6 @@
 # install the package
 # only run once
-#devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme", build_opts = c("--no-resave-data"))
+# devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme", ref = "v0.8", build_opts = c("--no-resave-data"))
 
 # load the library
 library(emeScheme)

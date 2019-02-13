@@ -12,7 +12,7 @@
 
 <meta name="author" content="Owen and Rainer" />
 
-<meta name="date" content="2019-02-11" />
+<meta name="date" content="2019-02-13" />
 
 <title>User manual for experimental microbial ecology metadata tool</title>
 
@@ -300,39 +300,50 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">User manual for experimental microbial ecology metadata tool</h1>
 <h4 class="author"><em>Owen and Rainer</em></h4>
-<h4 class="date"><em>2019-02-11</em></h4>
+<h4 class="date"><em>2019-02-13</em></h4>
 
 
 
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<p>Researchers are increasingly being required to make the data they produce findable, accessible, interoperable, and reusable <a href="https://en.wikipedia.org/wiki/FAIR_data">wikipedia FAIR entry</a>. Providing metadata that describes our studies, experiments, treatments, measurements, and so on is a key part of this endeavour.</p>
+<p>Researchers are increasingly required to make the data they produce findable, accessible, interoperable, and reusable (<a href="https://en.wikipedia.org/wiki/FAIR_data">wikipedia FAIR entry</a>). Providing metadata that describes our studies, experiments, treatments, measurements, data, and so on is a key part of this endeavour.</p>
 <p>The aim of the experimental microbial ecology metadata tool and the associated experimental microbial ecologal experiments metadata scheme (emeScheme) is to help you describe your study and its data, i.e. to produce useful metadata. You will do this by</p>
 <ol style="list-style-type: decimal">
-<li>preparing your datasets for archiving (see <a href="#PrepareDataForArchiving">Prepare Data for Archiving</a>),</li>
-<li>filling in your metadata the spreadsheet supplied (see <a href="#FillInMetadata">Fill in Metadata</a>),</li>
-<li>validating the combination of the metadata and data (this will be largely automatic) (see <a href="#Validation">Validation</a>),</li>
-<li>fixing any issues revealed by the validation step, and once satisfactorily validated</li>
-<li>deposit the metadata and data in a repository of your choice.</li>
+<li>Preparing your datasets for archiving (see <a href="#PrepareDataForArchiving">Prepare Data for Archiving</a>),</li>
+<li>Filling in your metadata the spreadsheet supplied (see <a href="#FillInMetadata">Fill in Metadata</a>),</li>
+<li>Validating the combination of the metadata and data (this will be largely automatic) (see <a href="#Validation">Validation</a>),</li>
+<li>Fixing any issues revealed by the validation step, and once satisfactorily validated (see <a href="#Fixing">Fixing issues</a>),</li>
+<li>Deposit the metadata and data in a repository of your choice (see <a href="#depositing">Depositing in a repository</a>).</li>
 </ol>
-<p>What is meant by <em>useful</em> metadata? Imagine we would like to use the metadata to find experiments (and potentially return the relevant data from them) that involve <em>Colpidium striatum</em> grown at <strong>20ºC</strong> in <strong>0.55g per litre protist pellet medium</strong>. To do this we need to ensure that the <strong>species name</strong>, the <strong>temperature</strong>, and the <strong>growth media information</strong> are contained in the metadata. We also need to make sure that when temperature is described it is described in a <strong>standard fashion</strong>, and that the growth media description is standardised. So there must be some standardisation. But its clear that most experiments have some unique features, such that we can’t standardise everything in advance. The metadata scheme we use here is intended to be a good balance of standardised and flexible.</p>
 </div>
-<div id="when-should-i-enter-metadata" class="section level1">
-<h1>When should I enter metadata</h1>
-<p>You will benefit from starting this when you design your study. You’ll likely find out that doing to will help with the planning of the study. You may then choose to work in a slightly different way, since this will make things more efficient later (this might especially be so for data handling issues). No problem, however, if you decide to do it at the end (or you are reading this after a study is complete).</p>
+<div id="what-is-useful-metadata" class="section level1">
+<h1>What is <em>useful</em> metadata?</h1>
+<p>Imagine we would like to use the metadata to find experiments (and potentially return the relevant data from them) that involve <em>Colpidium striatum</em> grown at <strong>20ºC</strong> in <strong>0.55g per litre protist pellet medium</strong>. To do this we need to ensure that the <strong>species name</strong>, the <strong>temperature</strong>, and the <strong>growth media information</strong> are contained in the metadata. We also need to make sure that when temperature is described it is described in a <strong>standard fashion</strong>, and that the growth media description is standardised. So there must be some standardisation. But its clear that most experiments have some unique features, such that we can’t standardise everything in advance. The metadata scheme we use here is intended to be a good balance of standardised and flexible.</p>
+</div>
+<div id="what-metadata-is-covered-in-the-emescheme-and-what-is-not" class="section level1">
+<h1>What metadata is covered in the emeScheme, and what is not</h1>
+<p>The emeScheme metadata only covers that necessary/helpful to describe an “experimental microbial ecology” study (though as an aside we think/wonder if it might be useful for many other settings of ecological experiments). Other important/essential metadata is not included, and will not be included, <strong>in the emeScheme</strong> because it is in other schemes such as the <em>DataCite</em> scheme and/or the <em>Ecological Metadata Language/Scheme</em>. We may, however, add tools that help researchers enter this important/essential metadata also.</p>
+</div>
+<div id="at-what-point-of-my-study-should-i-enter-metadata" class="section level1">
+<h1>At what point of my study should I enter metadata</h1>
+<p>You will benefit from starting metadata entry when you design your study. You’ll likely find out that doing to will help with the planning of the study. You may then choose to work in a slightly different way, since this will make things more efficient later (this might especially be so for data handling issues). No problem, however, if you decide to do it at the end (or you are reading this after a study is complete).</p>
 </div>
 <div id="getting-started" class="section level1">
 <h1>Getting started</h1>
 <p>You will enter the metadata in a supplied spreadsheet (Googlesheets or Excel), but then use R to do some tasks, like validation and transormation of metadata into more machine readable form. So the first thing to do is get and load the <strong>emeScheme</strong> R package:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">## install the devtools package if not installed yet</span></a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">## install.packages(&quot;devtools&quot;)</span></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">## install the last version of emeScheme from github including the vignettes, run:</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">## install the version of emeScheme corresponding to this user manual from github including the vignettes, run:</span></a>
 <a class="sourceLine" id="cb1-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co"># devtools::install_github(&quot;Exp-Micro-Ecol-Hub/emeScheme&quot;, build_opts = c(&quot;--no-resave-data&quot;))</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co"># devtools::install_github(&quot;Exp-Micro-Ecol-Hub/emeScheme&quot;, ref = &quot;v0.8&quot;, build_opts = c(&quot;--no-resave-data&quot;))</span></a>
 <a class="sourceLine" id="cb1-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">## than load the package</span></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="kw">library</span>(emeScheme)</a></code></pre></div>
-<p>To get a copy of the spreadsheet to enter the data, either make a copy of <a href="https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg">this googlesheets</a> (File – Make a copy) and delete the example data in the <strong>green cells</strong> wherer you can enter the metadata in, or you can run this R command to get an Excel version of the same but already empty sheet:</p>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">## to install the newest version emeScheme from github including the vignettes, run:</span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co"># devtools::install_github(&quot;Exp-Micro-Ecol-Hub/emeScheme&quot;, build_opts = c(&quot;--no-resave-data&quot;))</span></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="co">## than load the package</span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="kw">library</span>(emeScheme)</a></code></pre></div>
+<p>You can get either a googlesheet or Excel copy of the spreadsheet (they are identical) in which you enter the metadata. Here is <a href="https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg">the googlesheet version</a>. Make a copy (File – Make a copy) and delete the example data in the <strong>green cells</strong>. If you prefer Excel, you can run this R command to get an Excel version of the same but already empty sheet:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">enter_new_metadata</span>()</a></code></pre></div>
 <p>The following command opens the sheet with the example data in:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">enter_new_metadata</span>(<span class="dt">keepData =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
@@ -368,21 +379,21 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div id="a-worked-example-of-preparation-of-data-for-archiving" class="section level2">
 <h2>A worked example of preparation of data for archiving</h2>
 <p>The package <code>emeScheme</code> includes examples of raw data, processing scripts, processed data for archiving and the associated metadata.</p>
-<p>The examples are: - <code>basic</code>: a basic simple example</p>
+<p>The examples (so far only one) are: - <code>basic</code>: a basic simple example</p>
 <p>More examples wll follow later.</p>
-<p>You can always see a lidt of examples included by running the command</p>
+<p>You can always see a list of examples included by running the command</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">make_example</span>()</a></code></pre></div>
 <pre><code>## Included examples are:
 ## basic</code></pre>
-<p>By running</p>
+<p>You can get one of the examples, e.g. the basic example by running:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">make_example</span>(<span class="st">&quot;basic&quot;</span>)</a></code></pre></div>
-<p>you will copy the example into your current working directory in a folder named <code>basic</code>.</p>
+<p>This will copy the basic example into your current working directory in a folder named <code>basic</code>.</p>
 <p>The worked <strong>basic</strong> example shows appropriate preparation of data for archiving and ease of further use. Its an example of what you could do, not what you have to do, though probably you benefit from doing something similar.</p>
 <p>The <code>basic</code> folder contains:</p>
 <ul>
 <li>An R-project file <code>expt1.Rproj</code></li>
-<li>A spreadsheet file <code>expt1 emeScheme.gsheet</code> (identical to this <a href="https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg">googlesheet</a>)</li>
-<li>A folder named <code>code</code> with two subfolders:
+<li>A spreadsheet file <code>expt1_emeScheme.xlsx</code> (identical to this <a href="https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg">googlesheet</a>)</li>
+<li>A folder named <code>data</code> with two subfolders:
 <ul>
 <li>A <code>raw_data</code> folder containing files and folders of files that contain the data as it was entered by the researcher, or produced by the measurement machine.</li>
 <li>A <code>archiving_data</code> folder containing data files that have been prepared for archiving.</li>
@@ -402,16 +413,17 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div id="FillInMetadata" class="section level1">
 <h1>Fill in the Metadata</h1>
 <p>There’s no more putting it off… lets try filling in the metadata. First, find and open your copy of the metadata spreadsheet you made.</p>
-<p>In the worked example (<code>basic</code>), open the <code>emeScheme.xlsx</code> file, or open the <a href="https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg">googlesheet</a>.</p>
+<p>If you’re working through the worked example (<code>basic</code>), open the <code>expt1_emeScheme.xlsx</code> file, or open the <a href="https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg">googlesheet</a>.</p>
 <ul>
 <li>Green cells are where you enter information.</li>
 <li>Pink cells are places where you should not try to type anything (they should be locked anyway).</li>
 </ul>
+<p>Two important points to remember: 1. <strong>Please don’t not use any formulas! Only enter values directly! Formulas can (and likely will) cause strange messages later!</strong> 2. <strong>Enter in cells, which do not have a value for your data set, “NA”. This avoids misunderstandings. The <code>comment</code> column can be left empty if you don’t have any additional remarks.</strong></p>
 <div id="experiment-worksheet" class="section level2">
 <h2>Experiment worksheet</h2>
 <p>This one should not need too much explanation. One important point is, however, what to enter in a field (e.g. temperature) if your experiment involved different temperatures (i.e. temperature was a treatment). The answer is you should enter the word “treatment”.</p>
 <p>When you fill in this information, think about standardisation. If you enter a temperature, you should therefore enter only a numeric value in degrees Celcius. Writing “twelve degrees” is going to be quite unhelpful! (We could constrain the possible entries here, but then we lose flexibility; recall the discussion above about balancing standardisation and flexibility.)</p>
-<p>Something else of note: Look at the field <code>mediaAdditions</code> and you will see the entry is “Wheat seeds added on specific dates, see file wheat_seed_additions.csv”. Here we see the possibility for great flexibility… we refer to information in a separate data file. Note though that this data file is just a list of dates and number of wheat seeds added–it is not information about an experimental treatment, because all experimental treatments experience the same additions (i.e. these additions are feature of the experiment). In addition, the information in these additional files is <strong>not indexed</strong> when submitting the data to a repository for archiving. In other words:L you can search for all entries in this metadata sheet, but not for the data in the files (data files, additional files as wheat_seet_additions.csv)!</p>
+<p>Something else of note: Look at the field <code>mediaAdditions</code> and you will see the entry is “Wheat seeds added on specific dates, see file wheat_seed_additions.csv”. Here we see the possibility for great flexibility… we refer to information in a separate data file. Note though that this data file is just a list of dates and number of wheat seeds added–it is not information about an experimental treatment, because all experimental treatments experience the same additions (i.e. these additions are feature of the experiment). In addition, the information in these additional files is <strong>not indexed</strong> when submitting the data to a repository for archiving. In other words: researcher will be able to search for all entries in this metadata sheet, but not be able to directly search the data in the data files (data files, additional files as wheat_seet_additions.csv)! So such information as is in the wheat_seed_additions.csv file are effectively hidden from such searches. This is an example of flexibility dominating over standardisation, with some findability thereby being lost.</p>
 <p>If you believe that other features of your experiment are important to include, please do so by adding these in the <code>comment</code> row.</p>
 </div>
 <div id="species-worksheet" class="section level2">
@@ -431,36 +443,53 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <h2>Measurements worksheet</h2>
 <p>Here enter a row of information for each type of measurement made. In the worked example there are four types of measurement: oxygen concentration, community composition, smell, and DNA sequences. Much of the information required in the rows should be quite self explanatory, apart perhaps from:</p>
 <ul>
-<li><code>dataExtractionName</code>: Fill in something here if the measurement required some processing of another data file / measurement. E.g. in the worked example the commmunity composition measure (<strong>abundance</strong>) comes from the <strong>DNA</strong> data (<code>measuredFrom</code> coumn) by extraction method <strong>Mol_Analy_pipeline1</strong> (see <a href="#DataExtraxction">DataExtraction</a> for further details).</li>
-<li><code>measuredFrom</code>: should be one of the names of the other rows of measurements. E.g. in the worked example the community composition measure comes from the <strong>DNA</strong> measurement, or <code>raw</code> if it is raw data directly from the measurements.</li>
+<li>The <em>name</em> and <em>variable</em> columns might be a bit redundant. Please give us your feedback on if you find it useful to make the distinction between a general <em>name/description</em> for the measurement, and then a more exact/standardised <em>variable</em>.</li>
+<li><code>dataExtractionName</code>: Fill in something here if the measurement required some processing of another data file / measurement. E.g. in the worked example the commmunity composition measure (<strong>abundance</strong>) comes from the <strong>sequenceData</strong> data (<code>measuredFrom</code> coumn) by extraction method <strong>Mol_Analy_pipeline1</strong> (see <a href="#DataExtraxction">DataExtraction</a> for further details).</li>
+<li><code>measuredFrom</code>: should be one of the names of the other rows of measurements. E.g. in the worked example the community composition measure comes from the <strong>sequenceData</strong> measurement, or <code>raw</code> if it is raw data directly from the measurements.</li>
 </ul>
 <p>It would be <strong>very</strong> nice/useful (i.e. make your life easier) if the entries in the <code>variable</code> column correspond with the names of the columns in thedata file containing the datae (see <a href="#DataFileMetaData">DataFileMetaData</a> for further details). You will be told about the presence or absence of such matches in the validation report.</p>
 </div>
-<div id="dataextraction" class="section level2">
-<h2>DataExtraction</h2>
+<div id="dataextraction-worksheet" class="section level2">
+<h2>DataExtraction worksheet</h2>
 <p>Here you can give details of any (and please all - this will be validated in the validation report) data extraction methods mentioned in the <strong>Measurements</strong> worksheet. You can enter any parameters and values of these you like (i.e. there is high flexibility here because we do not anticipate a lot of standardisation to exploit). In the worked example we wrote “See description in file xxx.yyy”. This file could be a script or text description of the pipeline.</p>
 </div>
-<div id="datafilemetadata" class="section level2">
-<h2>DataFileMetaData</h2>
+<div id="datafilemetadata-worksheet" class="section level2">
+<h2>DataFileMetaData worksheet</h2>
 <p>Here you give a row for each of the variables in each of the data files.</p>
 <ul>
 <li><strong>dataFileName</strong> Here enter the file name of the data file.</li>
-<li><strong>columnname</strong> Here enter the exact variable name used in the datasheet / database / tabular data.</li>
-<li><strong>measurementName</strong> Here enter the measurement name, corresponding to the exact measurement name used in the <strong>Measurement</strong> worksheet, if the column contains a measurement.</li>
-<li><strong>unit</strong> Here enter the measurement units (e.g. % or grams).</li>
+<li><strong>columnName</strong> Here enter the exact variable name used in the datasheet / database / tabular data.</li>
+<li><strong>columnData</strong> Here enter whether the variable/column in the datafile contains a <em>measurement</em>, a <em>treatment</em>, an <em>ID</em> variable, or something else (<em>other</em>).</li>
+<li><strong>mappingColumn</strong> Here enter the name of the <em>measurement</em> (as entered in the <em>Measurement</em> sheet, <em>variable</em> column), treatment (as entered in the <em>Treatment</em> sheet, <em>parameter</em> column), or ID variable (this will be the variable that contains the unique identifiers of your units of replication, e.g. each microcosm has a unique code).</li>
 <li><strong>type</strong> Enter the variable type (e.g. numeric, character, date).</li>
-<li><strong>description</strong> Anything you think relevant.</li>
-<li><strong>treatmentParameter</strong> Here enter the treatment name corresponding to the exact treamtent name used in the <strong>Treatment</strong> worksheet, if the column contains treatment information.</li>
+<li><strong>description</strong> Anything you think relevant. Please enter the date/time format for variables that contain date/times.</li>
 </ul>
 <p>You will get a report on things such as matches and lack of matches with entered variable names and those in the actual datasets, matches of treatment names and measurement names, absences of data about things that were measured, absence about treatment information for things that were measured, and so on.</p>
+<p>Note that the example contains a datafile in this worksheet that does not exist in the data folder. This is intended to simulate an error (i.e. forgetting to include a datafile) and to then result notification of this error in the validation report.</p>
 </div>
 </div>
 <div id="Validation" class="section level1">
 <h1>Validation</h1>
-<p><strong><span style="color:red">This is work in progress and does change regularly.</span></strong></p>
-<p>After entering your data, you should do a validation of your data. The validation checks many different aspects of your data and returns a report (html, pdf, docx or all of trhe above) containing where your metadata is not consistent and wheer it dies not conform with the data.</p>
-<p>Before you can evaluate your data, you have to read it in R (I am using the xlsx supplied in the package as an example:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">validate</span>( <span class="dt">x =</span> <span class="kw">system.file</span>(<span class="st">&quot;googlesheet&quot;</span>, <span class="st">&quot;emeScheme.xlsx&quot;</span>), <span class="dt">report =</span> <span class="st">&quot;html&quot;</span>)</a></code></pre></div>
+<p><strong><span style="color:red">This is work in progress. Please give it a go and have a look at the produced validation report, but note that we are leaving most of the development to the next stage of development.</span></strong></p>
+<p>After entering your data, you should do a validation test of your metadata and data. The validation will check many different aspects of your metadata and data, and returns a report (html, pdf, docx or all three). The validation and resulting report is a work in progress</p>
+<p>To produce a validation report, use the <code>validate</code> function and give it your spreadsheet, the path to your data folder, and the type of report you want:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">validate</span>(<span class="st">&quot;thenameofyourmetadataspreadsheet.xlsx&quot;</span>, <span class="st">&quot;the/path/to/your/datafiles&quot;</span>, <span class="dt">report =</span> <span class="st">&quot;html&quot;</span>)</a></code></pre></div>
+<p>As mentioned already, the validation and resulting report is a work in progress. Don’t feel the need to look at it so hard. Please let us know if you suggest particular validation checks.</p>
+</div>
+<div id="Fixing" class="section level1">
+<h1>Fixing issues</h1>
+<p>The validation report will suggest improvement you can make to your metadata. It may also say that some changes/additions are <em>required</em> in order to produce valid metadata. The more of these improvements you can make, the more useful will be your metadata-data combination.</p>
+</div>
+<div id="making-the-final-xml-version" class="section level1">
+<h1>Making the final xml version</h1>
+<p>The Excel/googlesheet version of the metadata is most useful for us to enter the metadata easily. It is not so useful for standardised/automated metadata enquiry/search/submission… i.e. excel/googlesheet versions of metadata are not really FAIR compliable. The metadata gurus decided that it should be stored as xml files, as it is plain text, it is in principle readable by humans (though is not meant to be read by humans really), it is machine readable (and then easily converted into any other format, e.g. ones easy for humans to read).</p>
+<p>Therefore, you should submit the final xml version of your metadata. Only do this after you have a satisfactory validation. Use this function:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">my_medata_spreadsheet &lt;-<span class="st"> </span><span class="kw">read_from_excel</span>(<span class="st">&quot;thenameofyourmetadataspreadsheet.xlsx&quot;</span>)</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">emeSchemeToXml</span>(my_medata_spreadsheet, <span class="dt">file=</span><span class="st">&quot;my_expt1_metadata.xml&quot;</span>)</a></code></pre></div>
+</div>
+<div id="depositing" class="section level1">
+<h1>Depositing in a repository</h1>
+<p>We suggest that your metadata (the produced xml file), data, and validation report are deposited as one submission, e.g. to a repository such as dryad or zenodo.</p>
 </div>
 
 

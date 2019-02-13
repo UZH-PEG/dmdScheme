@@ -12,7 +12,7 @@
 
 <meta name="author" content="Rainer M Krug Rainer@uzh.ch" />
 
-<meta name="date" content="2019-02-11" />
+<meta name="date" content="2019-02-13" />
 
 <title>Description of emeScheme</title>
 
@@ -304,9 +304,9 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 
 <h1 class="title toc-ignore">Description of emeScheme</h1>
-<h3 class="subtitle"><em>emeScheme Version v0.7.9.10</em></h3>
+<h3 class="subtitle"><em>emeScheme Version v0.8.1.0</em></h3>
 <h4 class="author"><em>Rainer M Krug <a href="mailto:Rainer@uzh.ch" class="email">Rainer@uzh.ch</a></em></h4>
-<h4 class="date"><em>2019-02-11</em></h4>
+<h4 class="date"><em>2019-02-13</em></h4>
 
 
 
@@ -467,7 +467,7 @@ treatment, …
 Temperature used for all treatments. If different between treatments, use “treatment” and specify in the Treatment sheet.
 </td>
 <td style="text-align:left;">
-20.0
+20
 </td>
 </tr>
 <tr>
@@ -582,7 +582,7 @@ NA
 Volume of the microcosm container. Not the volume of the culture medium!
 </td>
 <td style="text-align:left;">
-100.0
+100
 </td>
 </tr>
 <tr>
@@ -841,7 +841,7 @@ NA
 NA
 </td>
 <td style="text-align:left;">
-treatment, value
+treatment, …
 </td>
 <td style="text-align:left;">
 bacteria, bacterivore, predator, phototroph, …
@@ -887,7 +887,7 @@ WH-6 (WHI) [ATCC 16539]
 ATCC
 </td>
 <td style="text-align:left;">
-1.0
+1
 </td>
 <td style="text-align:left;">
 bacterivore
@@ -901,19 +901,19 @@ bacterivore
 MULTIPLE ROWS
 </td>
 <td style="text-align:left;">
-NA
+unknown
+</td>
+<td style="text-align:left;">
+unknown
+</td>
+<td style="text-align:left;">
+unknown
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
+unknown
 </td>
 <td style="text-align:left;">
 NA
@@ -1114,9 +1114,6 @@ Measurement
 <th style="text-align:left;">
 ..12
 </th>
-<th style="text-align:left;">
-..13
-</th>
 </tr>
 </thead>
 <tbody>
@@ -1144,9 +1141,6 @@ lengthOfTimeSeries
 </td>
 <td style="text-align:left;">
 noOfSamplesInTimeSeries
-</td>
-<td style="text-align:left;">
-samplingAverageFrequency
 </td>
 <td style="text-align:left;">
 samplingVolume
@@ -1187,9 +1181,6 @@ days
 NA
 </td>
 <td style="text-align:left;">
-days between sampling
-</td>
-<td style="text-align:left;">
 ml
 </td>
 <td style="text-align:left;">
@@ -1226,9 +1217,6 @@ integer
 </td>
 <td style="text-align:left;">
 integer
-</td>
-<td style="text-align:left;">
-numeric
 </td>
 <td style="text-align:left;">
 numeric
@@ -1280,9 +1268,6 @@ NA
 <td style="text-align:left;">
 NA
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -1308,9 +1293,6 @@ Total length of the time series in days.
 </td>
 <td style="text-align:left;">
 Total number of all samples in the time series.
-</td>
-<td style="text-align:left;">
-The average sampling frequency, i.e. noOfSamplesInTimeSeries divided by lengthOfTimeSeries
 </td>
 <td style="text-align:left;">
 The sampling volumne. If e.g. atmosphere in container is sampled (oxygen measurements), than enter 0.
@@ -1345,22 +1327,19 @@ presens Optode
 community
 </td>
 <td style="text-align:left;">
-50.0
+50
 </td>
 <td style="text-align:left;">
-50.0
+50
 </td>
 <td style="text-align:left;">
-1.0
-</td>
-<td style="text-align:left;">
-0.0
+0
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
+raw
 </td>
 <td style="text-align:left;">
 data stil being collected
@@ -1371,7 +1350,7 @@ data stil being collected
 MULTIPLE ROWS
 </td>
 <td style="text-align:left;">
-community_composition
+abundance
 </td>
 <td style="text-align:left;">
 abundance
@@ -1386,13 +1365,10 @@ count
 species
 </td>
 <td style="text-align:left;">
-100.0
+100
 </td>
 <td style="text-align:left;">
-6.0
-</td>
-<td style="text-align:left;">
-16.66666667
+6
 </td>
 <td style="text-align:left;">
 0.5
@@ -1427,22 +1403,19 @@ rotten eggs or not
 community
 </td>
 <td style="text-align:left;">
-100.0
+100
 </td>
 <td style="text-align:left;">
-6.0
+6
 </td>
 <td style="text-align:left;">
-16.66666667
-</td>
-<td style="text-align:left;">
-0.0
+0
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
+raw
 </td>
 <td style="text-align:left;">
 May collect more
@@ -1468,22 +1441,19 @@ Nucleotide
 DNA fragment
 </td>
 <td style="text-align:left;">
-100.0
+100
 </td>
 <td style="text-align:left;">
-6.0
+6
 </td>
 <td style="text-align:left;">
-16.66666667
-</td>
-<td style="text-align:left;">
-0.0
+0
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
+raw
 </td>
 <td style="text-align:left;">
 May collect more
@@ -1791,7 +1761,7 @@ NA
 ID, Treatment, Measurement, other
 </td>
 <td style="text-align:left;">
-Lid_treatment, Lid_treatment, ——-, oxygen concentration, community_composition, smell, sequenceData
+Lid_treatment, Lid_treatment, ——-, oxygen concentration, abundance, smell, sequenceData
 </td>
 <td style="text-align:left;">
 integer, numeric, character, logical, datetime, date, time
@@ -2167,10 +2137,140 @@ NA
 NA
 </td>
 </tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+abundances.csv
+</td>
+<td style="text-align:left;">
+Jar_ID
+</td>
+<td style="text-align:left;">
+ID
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+abundances.csv
+</td>
+<td style="text-align:left;">
+Date_time
+</td>
+<td style="text-align:left;">
+other
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+datetime
+</td>
+<td style="text-align:left;">
+ymdhms
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+abundances.csv
+</td>
+<td style="text-align:left;">
+Lid_treatment
+</td>
+<td style="text-align:left;">
+Treatment
+</td>
+<td style="text-align:left;">
+Lid_treatment
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+abundances.csv
+</td>
+<td style="text-align:left;">
+Jar_type
+</td>
+<td style="text-align:left;">
+other
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+abundances.csv
+</td>
+<td style="text-align:left;">
+count_number
+</td>
+<td style="text-align:left;">
+Measurement
+</td>
+<td style="text-align:left;">
+abundance
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
 </tbody>
 </table>
 <p>A <strong>property set</strong> which contains <strong>data properties</strong> must be seen as tables and must therefore have the same number of entries for each data property.</p>
-<p>The structure as at <strong>2019-02-07 12:25:15 GMT</strong> is as followed:</p>
+<p>The structure as at <strong>2019-02-13 08:10:06 GMT</strong> is as followed:</p>
 </div>
 </div>
 </div>

@@ -41,7 +41,11 @@ You will enter the metadata in a supplied spreadsheet (Googlesheets or Excel), b
 ```{r}
 ## install the devtools package if not installed yet
 ## install.packages("devtools")
-## install the last version of emeScheme from github including the vignettes, run:
+## install the version of emeScheme corresponding to this user manual from github including the vignettes, run:
+
+# devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme", ref = "v0.8", build_opts = c("--no-resave-data"))
+
+## to install the newest version emeScheme from github including the vignettes, run:
 
 # devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme", build_opts = c("--no-resave-data"))
 

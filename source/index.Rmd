@@ -57,9 +57,11 @@ Github site [https://github.com/Exp-Micro-Ecol-Hub/emeScheme](https://github.com
 
 Googlesheet document of the [emeScheme](https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg)
 
-# Desription and Definition of the emeScheme
-See the vignette "Description" at <a href="description.html" target="_blank">vignette 'Description'</a>.
+# User Manual of the emeScheme
+See the vignette "User Manual" at <a href="user_manual.html" target="_blank">vignette 'User manual'</a>.
 
+# Desription and Definition of the emeScheme
+See the vignette "Description" at <a href="description_emescheme.html" target="_blank">vignette 'Description'</a>.
 
 # The R Package
 The Definition of the emeScheme is done in an R package, which gives all the tools to enter the metadata and to export it into xml.
@@ -82,14 +84,14 @@ For a list of releases see [here](https://github.com/Exp-Micro-Ecol-Hub/emeSchem
 devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme", build_opts = c("--no-resave-data"))
 
 ## install a specific release of emeScheme from github
-devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme", rev = "vx.y.z", build_opts = c("--no-resave-data"))
+devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme", ref = "v0.8", build_opts = c("--no-resave-data"))
 ```
 
 for a list of releases see this [link on github](https://github.com/Exp-Micro-Ecol-Hub/emeScheme/tags).
 
 ## Introduction
 
-See the vignette "Introduction" at <a href="introduction.html" target="_blank">vignette 'Introduction'</a>.
+See the vignette "Introduction" at <a href="r_package_introduction.html" target="_blank">vignette 'Introduction'</a>.
 
 # Other Resources
 ## Outdated Presentations

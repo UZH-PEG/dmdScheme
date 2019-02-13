@@ -6,11 +6,13 @@ DATADIR = $(OUTDIR)/data
 INSTDIR = inst
 
 VIGDIR = vignettes
+VIGHTMLDIR = doc
+
 DOCDIR = doc
 
 VIGRMD = $(wildcard $(VIGDIR)/*.Rmd)
 TMP1  = $(VIGRMD:.Rmd=.html)
-VIGHTML = ${subst $(VIGDIR),$(DOCDIR),$(TMP1)}
+VIGHTML = ${subst $(VIGDIR),$(VIGHTMLDIR),$(TMP1)}
 VIGHTMLOUT = ${subst $(VIGDIR),$(OUTDIR),$(TMP1)}
 
 EXAMPLEXML = $(wildcard $(INSTDIR)/emeScheme_example.xml)
@@ -102,7 +104,7 @@ list_files:
 	@echo DATADIR : $(DATADIR)
 	@echo
 	@echo VIGDIR  : $(VIGDIR)
-	@echo DOCDIR  : $(DOCDIR)
+	@echo VIGHTMLDIR  : $(VIGHTMLDIR)
 	@echo
 	@echo READMERMD : $(READMERMD)
 	@echo READMEMD : $(READMEMD)

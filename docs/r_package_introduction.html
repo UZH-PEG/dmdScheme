@@ -12,7 +12,7 @@
 
 <meta name="author" content="Rainer M Krug Rainer@uzh.ch" />
 
-<meta name="date" content="2019-02-11" />
+<meta name="date" content="2019-02-13" />
 
 <title>R Package Introduction</title>
 
@@ -299,9 +299,9 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 
 <h1 class="title toc-ignore">R Package Introduction</h1>
-<h3 class="subtitle"><em>emeScheme Version v0.7.9.10</em></h3>
+<h3 class="subtitle"><em>emeScheme Version v0.8.1.0</em></h3>
 <h4 class="author"><em>Rainer M Krug <a href="mailto:Rainer@uzh.ch" class="email">Rainer@uzh.ch</a></em></h4>
-<h4 class="date"><em>2019-02-11</em></h4>
+<h4 class="date"><em>2019-02-13</em></h4>
 
 
 
@@ -316,10 +316,10 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co"># install.packages(&quot;devtools&quot;)</span></a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">## install the last version of emeScheme from github</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;Exp-Micro-Ecol-Hub/emeScheme&quot;</span>)</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;Exp-Micro-Ecol-Hub/emeScheme&quot;</span>, <span class="dt">build_opts =</span> <span class="kw">c</span>(<span class="st">&quot;--no-resave-data&quot;</span>))</a>
 <a class="sourceLine" id="cb1-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">## install a specific release, e.g. v0.6.0, of emeScheme from github</span></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;Exp-Micro-Ecol-Hub/emeScheme&quot;</span>, <span class="dt">rev =</span> <span class="st">&quot;v0.6.0&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">## install a specific release, e.g. v0.8, of emeScheme from github</span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;Exp-Micro-Ecol-Hub/emeScheme&quot;</span>, <span class="dt">ref =</span> <span class="st">&quot;v0.8&quot;</span>, <span class="dt">build_opts =</span> <span class="kw">c</span>(<span class="st">&quot;--no-resave-data&quot;</span>))</a></code></pre></div>
 </div>
 <div id="entering-new-metadata" class="section level2">
 <h2>Entering new Metadata</h2>
@@ -344,36 +344,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb3-5" data-line-number="5">      <span class="dt">raw =</span> <span class="ot">FALSE</span> </a>
 <a class="sourceLine" id="cb3-6" data-line-number="6">)</a></code></pre></div>
 <p>For convenience, we use the exapmle data included in the package by using</p>
-<pre><code>#&gt; New names:
-#&gt; * `` -&gt; `..3`
-#&gt; * `` -&gt; `..4`
-#&gt; * `` -&gt; `..5`
-#&gt; * `` -&gt; `..6`
-#&gt; * `` -&gt; `..7`
-#&gt; New names:
-#&gt; * `` -&gt; `..3`
-#&gt; * `` -&gt; `..4`
-#&gt; * `` -&gt; `..5`
-#&gt; New names:
-#&gt; * `` -&gt; `..3`
-#&gt; * `` -&gt; `..4`
-#&gt; * `` -&gt; `..5`
-#&gt; * `` -&gt; `..6`
-#&gt; * `` -&gt; `..7`
-#&gt; * … and 6 more
-#&gt; New names:
-#&gt; * `` -&gt; `..3`
-#&gt; * `` -&gt; `..4`
-#&gt; * `` -&gt; `..5`
-#&gt; * `` -&gt; `..6`
-#&gt; New names:
-#&gt; * `` -&gt; `..3`
-#&gt; * `` -&gt; `..4`
-#&gt; * `` -&gt; `..5`
-#&gt; * `` -&gt; `..6`
-#&gt; * `` -&gt; `..7`
-#&gt; * … and 1 more
-#&gt; propertySet : valueProperty
+<pre><code>#&gt; propertySet : valueProperty
 #&gt; Transposing...
 #&gt; Set names...
 #&gt; Set attributes...
@@ -426,7 +397,6 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 #&gt;    Apply type 'character' to 'object'...
 #&gt;    Apply type 'integer' to 'lengthOfTimeSeries'...
 #&gt;    Apply type 'integer' to 'noOfSamplesInTimeSeries'...
-#&gt;    Apply type 'numeric' to 'samplingAverageFrequency'...
 #&gt;    Apply type 'numeric' to 'samplingVolume'...
 #&gt;    Apply type 'character' to 'dataExtractionName'...
 #&gt;    Apply type 'character' to 'measuredFrom'...
@@ -502,9 +472,9 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">#&gt; A       Type  : character | character | character | character</span></a>
 <a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb6-23" data-line-number="23"><span class="co">#&gt;      Measurement - emeSchemeData</span></a>
-<a class="sourceLine" id="cb6-24" data-line-number="24"><span class="co">#&gt; A       Names : name | variable | method | unit | object | lengthOfTimeSeries | noOfSamplesInTimeSeries | samplingAverageFrequency | samplingVolume | dataExtractionName | measuredFrom | comment</span></a>
-<a class="sourceLine" id="cb6-25" data-line-number="25"><span class="co">#&gt; A       Units : NA | NA | NA | NA | NA | days | NA | days between sampling | ml | NA | NA | NA</span></a>
-<a class="sourceLine" id="cb6-26" data-line-number="26"><span class="co">#&gt; A       Type  : character | character | character | character | character | integer | integer | numeric | numeric | character | character | character</span></a>
+<a class="sourceLine" id="cb6-24" data-line-number="24"><span class="co">#&gt; A       Names : name | variable | method | unit | object | lengthOfTimeSeries | noOfSamplesInTimeSeries | samplingVolume | dataExtractionName | measuredFrom | comment</span></a>
+<a class="sourceLine" id="cb6-25" data-line-number="25"><span class="co">#&gt; A       Units : NA | NA | NA | NA | NA | days | NA | ml | NA | NA | NA</span></a>
+<a class="sourceLine" id="cb6-26" data-line-number="26"><span class="co">#&gt; A       Type  : character | character | character | character | character | integer | integer | numeric | character | character | character</span></a>
 <a class="sourceLine" id="cb6-27" data-line-number="27"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb6-28" data-line-number="28"><span class="co">#&gt;      DataExtraction - emeSchemeData</span></a>
 <a class="sourceLine" id="cb6-29" data-line-number="29"><span class="co">#&gt; A       Names : name | method | parameter | value | comment</span></a>
@@ -540,7 +510,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb7-23" data-line-number="23"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb7-24" data-line-number="24"><span class="co">#&gt; XA      row.names: 1 | 2</span></a>
 <a class="sourceLine" id="cb7-25" data-line-number="25"><span class="co">#&gt; XA      propertyName: Species</span></a>
-<a class="sourceLine" id="cb7-26" data-line-number="26"><span class="co">#&gt; XA      suggestedValues: NA | NA | NA | treatment, value | bacteria, bacterivore, predator, phototroph, … | NA</span></a>
+<a class="sourceLine" id="cb7-26" data-line-number="26"><span class="co">#&gt; XA      suggestedValues: NA | NA | NA | treatment, ... | bacteria, bacterivore, predator, phototroph, … | NA</span></a>
 <a class="sourceLine" id="cb7-27" data-line-number="27"><span class="co">#&gt; XA      Description: Scientific name of the species. Should only occur once. Or unknown. | NA | Where the species was obtained from. | Initial density used for all treatments. If different between treatments, use &quot;treatment&quot; and specify in the Treatment sheet. | Functional group of the species. | NA</span></a>
 <a class="sourceLine" id="cb7-28" data-line-number="28"><span class="co">#&gt; XA      class: emeSchemeData_Species | emeSchemeData | emeScheme | tbl_df | tbl | data.frame</span></a>
 <a class="sourceLine" id="cb7-29" data-line-number="29"><span class="co">#&gt; </span></a>
@@ -556,14 +526,14 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb7-39" data-line-number="39"><span class="co">#&gt; XA      class: emeSchemeData_Treatment | emeSchemeData | emeScheme | tbl_df | tbl | data.frame</span></a>
 <a class="sourceLine" id="cb7-40" data-line-number="40"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb7-41" data-line-number="41"><span class="co">#&gt;      Measurement - emeSchemeData</span></a>
-<a class="sourceLine" id="cb7-42" data-line-number="42"><span class="co">#&gt; A       Names : name | variable | method | unit | object | lengthOfTimeSeries | noOfSamplesInTimeSeries | samplingAverageFrequency | samplingVolume | dataExtractionName | measuredFrom | comment</span></a>
-<a class="sourceLine" id="cb7-43" data-line-number="43"><span class="co">#&gt; A       Units : NA | NA | NA | NA | NA | days | NA | days between sampling | ml | NA | NA | NA</span></a>
-<a class="sourceLine" id="cb7-44" data-line-number="44"><span class="co">#&gt; A       Type  : character | character | character | character | character | integer | integer | numeric | numeric | character | character | character</span></a>
+<a class="sourceLine" id="cb7-42" data-line-number="42"><span class="co">#&gt; A       Names : name | variable | method | unit | object | lengthOfTimeSeries | noOfSamplesInTimeSeries | samplingVolume | dataExtractionName | measuredFrom | comment</span></a>
+<a class="sourceLine" id="cb7-43" data-line-number="43"><span class="co">#&gt; A       Units : NA | NA | NA | NA | NA | days | NA | ml | NA | NA | NA</span></a>
+<a class="sourceLine" id="cb7-44" data-line-number="44"><span class="co">#&gt; A       Type  : character | character | character | character | character | integer | integer | numeric | character | character | character</span></a>
 <a class="sourceLine" id="cb7-45" data-line-number="45"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb7-46" data-line-number="46"><span class="co">#&gt; XA      row.names: 1 | 2 | 3 | 4</span></a>
 <a class="sourceLine" id="cb7-47" data-line-number="47"><span class="co">#&gt; XA      propertyName: Measurement</span></a>
-<a class="sourceLine" id="cb7-48" data-line-number="48"><span class="co">#&gt; XA      suggestedValues: NA | O2 concentration, video, manual count, abundance, DNA, … | presens Optode, microscopy, … | %, mmol, count, … | species, OUT, gene, community, particles, … | NA | NA | NA | NA | NA | NA | NA</span></a>
-<a class="sourceLine" id="cb7-49" data-line-number="49"><span class="co">#&gt; XA      Description: Name of the Measurement process. This includes methodology, variables, ... . Each name specifies one Measurement process and can occur multiple times. | The variable measured. | Name of the method used. | Unit of the measured variable | The object measured. E.g. species in the case of manual count, gene for genetic analysis, particle for particle counters. | Total length of the time series in days. | Total number of all samples in the time series. | The average sampling frequency, i.e. noOfSamplesInTimeSeries divided by lengthOfTimeSeries | The sampling volumne. If e.g. atmosphere in container is sampled (oxygen measurements), than enter 0. | as used in the sheet DataExtraction, column name | if measured from the experiment, raw, else the name (first column) of the measurement it is based on. | NA</span></a>
+<a class="sourceLine" id="cb7-48" data-line-number="48"><span class="co">#&gt; XA      suggestedValues: NA | O2 concentration, video, manual count, abundance, DNA, … | presens Optode, microscopy, … | %, mmol, count, … | species, OUT, gene, community, particles, … | NA | NA | NA | NA | NA | NA</span></a>
+<a class="sourceLine" id="cb7-49" data-line-number="49"><span class="co">#&gt; XA      Description: Name of the Measurement process. This includes methodology, variables, ... . Each name specifies one Measurement process and can occur multiple times. | The variable measured. | Name of the method used. | Unit of the measured variable | The object measured. E.g. species in the case of manual count, gene for genetic analysis, particle for particle counters. | Total length of the time series in days. | Total number of all samples in the time series. | The sampling volumne. If e.g. atmosphere in container is sampled (oxygen measurements), than enter 0. | as used in the sheet DataExtraction, column name | if measured from the experiment, raw, else the name (first column) of the measurement it is based on. | NA</span></a>
 <a class="sourceLine" id="cb7-50" data-line-number="50"><span class="co">#&gt; XA      class: emeSchemeData_Measurement | emeSchemeData | emeScheme | tbl_df | tbl | data.frame</span></a>
 <a class="sourceLine" id="cb7-51" data-line-number="51"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb7-52" data-line-number="52"><span class="co">#&gt;      DataExtraction - emeSchemeData</span></a>
@@ -582,9 +552,9 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb7-65" data-line-number="65"><span class="co">#&gt; A       Units : NA | NA | NA | NA | NA | NA | NA</span></a>
 <a class="sourceLine" id="cb7-66" data-line-number="66"><span class="co">#&gt; A       Type  : character | character | character | character | character | character | character</span></a>
 <a class="sourceLine" id="cb7-67" data-line-number="67"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb7-68" data-line-number="68"><span class="co">#&gt; XA      row.names: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13</span></a>
+<a class="sourceLine" id="cb7-68" data-line-number="68"><span class="co">#&gt; XA      row.names: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18</span></a>
 <a class="sourceLine" id="cb7-69" data-line-number="69"><span class="co">#&gt; XA      propertyName: DataFileMetaData</span></a>
-<a class="sourceLine" id="cb7-70" data-line-number="70"><span class="co">#&gt; XA      allowedValues: NA | NA | ID, Treatment, Measurement, other | Lid_treatment, Lid_treatment, -------, oxygen concentration, community_composition, smell, sequenceData | integer, numeric, character, logical, datetime, date, time | NA | NA</span></a>
+<a class="sourceLine" id="cb7-70" data-line-number="70"><span class="co">#&gt; XA      allowedValues: NA | NA | ID, Treatment, Measurement, other | Lid_treatment, Lid_treatment, -------, oxygen concentration, abundance, smell, sequenceData | integer, numeric, character, logical, datetime, date, time | NA | NA</span></a>
 <a class="sourceLine" id="cb7-71" data-line-number="71"><span class="co">#&gt; XA      Description: the name of the data set. | Name of column in the data file. Each column in the data file needs to be documented! | The type of the data in the column. ID: ID field (unique ID of unit of replication); Treatment: specifies treatment; Measurement: contains measurements; other: other type of data | Treatment: parameter as in the Treatment tab; Measurement: name as in the Measurement tab | Type of the column. | if column contains measurement: General description. If type is datatime, date, or time, give the order of year month day hour minute second as e.g. ymdhms, ymd, or hms. (Do not give any other information, e.g. give nothing about how months are entered (e.g. number or name), or how years, months, day, etc are separated. | NA</span></a>
 <a class="sourceLine" id="cb7-72" data-line-number="72"><span class="co">#&gt; XA      class: emeSchemeData_DataFileMetaData | emeSchemeData | emeScheme | tbl_df | tbl | data.frame</span></a></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">print</span>(</a>
@@ -606,7 +576,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb8-17" data-line-number="17"><span class="co">#&gt; XA      class: emeSchemeData_Experiment | emeSchemeData | emeScheme | tbl_df | tbl | data.frame</span></a>
 <a class="sourceLine" id="cb8-18" data-line-number="18"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb8-19" data-line-number="19"><span class="co">#&gt;                name temperature        light humidity      incubator</span></a>
-<a class="sourceLine" id="cb8-20" data-line-number="20"><span class="co">#&gt; D       1 ASR-expt1        20.0 semi-ambient  ambient not given here</span></a>
+<a class="sourceLine" id="cb8-20" data-line-number="20"><span class="co">#&gt; D       1 ASR-expt1          20 semi-ambient  ambient not given here</span></a>
 <a class="sourceLine" id="cb8-21" data-line-number="21"><span class="co">#&gt;                                    container microcosmVolume mediaType</span></a>
 <a class="sourceLine" id="cb8-22" data-line-number="22"><span class="co">#&gt; D       1 Duran type bottle, red lids, 250ml             100       PPM</span></a>
 <a class="sourceLine" id="cb8-23" data-line-number="23"><span class="co">#&gt;           mediaConcentration cultureConditions      comunityType</span></a>
@@ -614,7 +584,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb8-25" data-line-number="25"><span class="co">#&gt;                                                                   mediaAdditions</span></a>
 <a class="sourceLine" id="cb8-26" data-line-number="26"><span class="co">#&gt; D       1 Wheat seeds added on specific dates, see file wheat_seed_additions.csv</span></a>
 <a class="sourceLine" id="cb8-27" data-line-number="27"><span class="co">#&gt;           comment</span></a>
-<a class="sourceLine" id="cb8-28" data-line-number="28"><span class="co">#&gt; D       1      NA</span></a>
+<a class="sourceLine" id="cb8-28" data-line-number="28"><span class="co">#&gt; D       1    &lt;NA&gt;</span></a>
 <a class="sourceLine" id="cb8-29" data-line-number="29"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb8-30" data-line-number="30"><span class="co">#&gt;      Species - emeSchemeData</span></a>
 <a class="sourceLine" id="cb8-31" data-line-number="31"><span class="co">#&gt; A       Names : name | strain | source | density | functionalGroup | comment</span></a>
@@ -623,16 +593,16 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb8-34" data-line-number="34"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb8-35" data-line-number="35"><span class="co">#&gt; XA      row.names: 1 | 2</span></a>
 <a class="sourceLine" id="cb8-36" data-line-number="36"><span class="co">#&gt; XA      propertyName: Species</span></a>
-<a class="sourceLine" id="cb8-37" data-line-number="37"><span class="co">#&gt; XA      suggestedValues: NA | NA | NA | treatment, value | bacteria, bacterivore, predator, phototroph, … | NA</span></a>
+<a class="sourceLine" id="cb8-37" data-line-number="37"><span class="co">#&gt; XA      suggestedValues: NA | NA | NA | treatment, ... | bacteria, bacterivore, predator, phototroph, … | NA</span></a>
 <a class="sourceLine" id="cb8-38" data-line-number="38"><span class="co">#&gt; XA      Description: Scientific name of the species. Should only occur once. Or unknown. | NA | Where the species was obtained from. | Initial density used for all treatments. If different between treatments, use &quot;treatment&quot; and specify in the Treatment sheet. | Functional group of the species. | NA</span></a>
 <a class="sourceLine" id="cb8-39" data-line-number="39"><span class="co">#&gt; XA      class: emeSchemeData_Species | emeSchemeData | emeScheme | tbl_df | tbl | data.frame</span></a>
 <a class="sourceLine" id="cb8-40" data-line-number="40"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb8-41" data-line-number="41"><span class="co">#&gt;                              name                  strain source density</span></a>
-<a class="sourceLine" id="cb8-42" data-line-number="42"><span class="co">#&gt; D       1 Tetrahymena thermophila WH-6 (WHI) [ATCC 16539]   ATCC       1</span></a>
-<a class="sourceLine" id="cb8-43" data-line-number="43"><span class="co">#&gt; D       2                    &lt;NA&gt;                    &lt;NA&gt;   &lt;NA&gt;      NA</span></a>
+<a class="sourceLine" id="cb8-41" data-line-number="41"><span class="co">#&gt;                              name                  strain  source density</span></a>
+<a class="sourceLine" id="cb8-42" data-line-number="42"><span class="co">#&gt; D       1 Tetrahymena thermophila WH-6 (WHI) [ATCC 16539]    ATCC       1</span></a>
+<a class="sourceLine" id="cb8-43" data-line-number="43"><span class="co">#&gt; D       2                 unknown                 unknown unknown      NA</span></a>
 <a class="sourceLine" id="cb8-44" data-line-number="44"><span class="co">#&gt;           functionalGroup</span></a>
 <a class="sourceLine" id="cb8-45" data-line-number="45"><span class="co">#&gt; D       1     bacterivore</span></a>
-<a class="sourceLine" id="cb8-46" data-line-number="46"><span class="co">#&gt; D       2            &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb8-46" data-line-number="46"><span class="co">#&gt; D       2         unknown</span></a>
 <a class="sourceLine" id="cb8-47" data-line-number="47"><span class="co">#&gt;                                                            comment</span></a>
 <a class="sourceLine" id="cb8-48" data-line-number="48"><span class="co">#&gt; D       1 http://www.lgcstandards-atcc.org/products/all/30007.aspx</span></a>
 <a class="sourceLine" id="cb8-49" data-line-number="49"><span class="co">#&gt; D       2                                                     &lt;NA&gt;</span></a>
@@ -650,39 +620,39 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb8-61" data-line-number="61"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb8-62" data-line-number="62"><span class="co">#&gt;               parameter unit treatmentLevel comment</span></a>
 <a class="sourceLine" id="cb8-63" data-line-number="63"><span class="co">#&gt; D       1 Lid_treatment None          Loose    &lt;NA&gt;</span></a>
-<a class="sourceLine" id="cb8-64" data-line-number="64"><span class="co">#&gt; D       2 Lid_treatment   NA          Tight    &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb8-64" data-line-number="64"><span class="co">#&gt; D       2 Lid_treatment &lt;NA&gt;          Tight    &lt;NA&gt;</span></a>
 <a class="sourceLine" id="cb8-65" data-line-number="65"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb8-66" data-line-number="66"><span class="co">#&gt;      Measurement - emeSchemeData</span></a>
-<a class="sourceLine" id="cb8-67" data-line-number="67"><span class="co">#&gt; A       Names : name | variable | method | unit | object | lengthOfTimeSeries | noOfSamplesInTimeSeries | samplingAverageFrequency | samplingVolume | dataExtractionName | measuredFrom | comment</span></a>
-<a class="sourceLine" id="cb8-68" data-line-number="68"><span class="co">#&gt; A       Units : NA | NA | NA | NA | NA | days | NA | days between sampling | ml | NA | NA | NA</span></a>
-<a class="sourceLine" id="cb8-69" data-line-number="69"><span class="co">#&gt; A       Type  : character | character | character | character | character | integer | integer | numeric | numeric | character | character | character</span></a>
+<a class="sourceLine" id="cb8-67" data-line-number="67"><span class="co">#&gt; A       Names : name | variable | method | unit | object | lengthOfTimeSeries | noOfSamplesInTimeSeries | samplingVolume | dataExtractionName | measuredFrom | comment</span></a>
+<a class="sourceLine" id="cb8-68" data-line-number="68"><span class="co">#&gt; A       Units : NA | NA | NA | NA | NA | days | NA | ml | NA | NA | NA</span></a>
+<a class="sourceLine" id="cb8-69" data-line-number="69"><span class="co">#&gt; A       Type  : character | character | character | character | character | integer | integer | numeric | character | character | character</span></a>
 <a class="sourceLine" id="cb8-70" data-line-number="70"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb8-71" data-line-number="71"><span class="co">#&gt; XA      row.names: 1 | 2 | 3 | 4</span></a>
 <a class="sourceLine" id="cb8-72" data-line-number="72"><span class="co">#&gt; XA      propertyName: Measurement</span></a>
-<a class="sourceLine" id="cb8-73" data-line-number="73"><span class="co">#&gt; XA      suggestedValues: NA | O2 concentration, video, manual count, abundance, DNA, … | presens Optode, microscopy, … | %, mmol, count, … | species, OUT, gene, community, particles, … | NA | NA | NA | NA | NA | NA | NA</span></a>
-<a class="sourceLine" id="cb8-74" data-line-number="74"><span class="co">#&gt; XA      Description: Name of the Measurement process. This includes methodology, variables, ... . Each name specifies one Measurement process and can occur multiple times. | The variable measured. | Name of the method used. | Unit of the measured variable | The object measured. E.g. species in the case of manual count, gene for genetic analysis, particle for particle counters. | Total length of the time series in days. | Total number of all samples in the time series. | The average sampling frequency, i.e. noOfSamplesInTimeSeries divided by lengthOfTimeSeries | The sampling volumne. If e.g. atmosphere in container is sampled (oxygen measurements), than enter 0. | as used in the sheet DataExtraction, column name | if measured from the experiment, raw, else the name (first column) of the measurement it is based on. | NA</span></a>
+<a class="sourceLine" id="cb8-73" data-line-number="73"><span class="co">#&gt; XA      suggestedValues: NA | O2 concentration, video, manual count, abundance, DNA, … | presens Optode, microscopy, … | %, mmol, count, … | species, OUT, gene, community, particles, … | NA | NA | NA | NA | NA | NA</span></a>
+<a class="sourceLine" id="cb8-74" data-line-number="74"><span class="co">#&gt; XA      Description: Name of the Measurement process. This includes methodology, variables, ... . Each name specifies one Measurement process and can occur multiple times. | The variable measured. | Name of the method used. | Unit of the measured variable | The object measured. E.g. species in the case of manual count, gene for genetic analysis, particle for particle counters. | Total length of the time series in days. | Total number of all samples in the time series. | The sampling volumne. If e.g. atmosphere in container is sampled (oxygen measurements), than enter 0. | as used in the sheet DataExtraction, column name | if measured from the experiment, raw, else the name (first column) of the measurement it is based on. | NA</span></a>
 <a class="sourceLine" id="cb8-75" data-line-number="75"><span class="co">#&gt; XA      class: emeSchemeData_Measurement | emeSchemeData | emeScheme | tbl_df | tbl | data.frame</span></a>
 <a class="sourceLine" id="cb8-76" data-line-number="76"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb8-77" data-line-number="77"><span class="co">#&gt;                            name  variable         method</span></a>
-<a class="sourceLine" id="cb8-78" data-line-number="78"><span class="co">#&gt; D       1  oxygen concentration        DO presens Optode</span></a>
-<a class="sourceLine" id="cb8-79" data-line-number="79"><span class="co">#&gt; D       2 community_composition abundance      molecular</span></a>
-<a class="sourceLine" id="cb8-80" data-line-number="80"><span class="co">#&gt; D       3                 smell     smell           nose</span></a>
-<a class="sourceLine" id="cb8-81" data-line-number="81"><span class="co">#&gt; D       4          sequenceData       DNA            NGS</span></a>
-<a class="sourceLine" id="cb8-82" data-line-number="82"><span class="co">#&gt;                         unit       object lengthOfTimeSeries</span></a>
-<a class="sourceLine" id="cb8-83" data-line-number="83"><span class="co">#&gt; D       1                  %    community                 50</span></a>
-<a class="sourceLine" id="cb8-84" data-line-number="84"><span class="co">#&gt; D       2              count      species                100</span></a>
-<a class="sourceLine" id="cb8-85" data-line-number="85"><span class="co">#&gt; D       3 rotten eggs or not    community                100</span></a>
-<a class="sourceLine" id="cb8-86" data-line-number="86"><span class="co">#&gt; D       4         Nucleotide DNA fragment                100</span></a>
-<a class="sourceLine" id="cb8-87" data-line-number="87"><span class="co">#&gt;           noOfSamplesInTimeSeries samplingAverageFrequency samplingVolume</span></a>
-<a class="sourceLine" id="cb8-88" data-line-number="88"><span class="co">#&gt; D       1                      50                  1.00000            0.0</span></a>
-<a class="sourceLine" id="cb8-89" data-line-number="89"><span class="co">#&gt; D       2                       6                 16.66667            0.5</span></a>
-<a class="sourceLine" id="cb8-90" data-line-number="90"><span class="co">#&gt; D       3                       6                 16.66667            0.0</span></a>
-<a class="sourceLine" id="cb8-91" data-line-number="91"><span class="co">#&gt; D       4                       6                 16.66667            0.0</span></a>
-<a class="sourceLine" id="cb8-92" data-line-number="92"><span class="co">#&gt;            dataExtractionName measuredFrom                   comment</span></a>
-<a class="sourceLine" id="cb8-93" data-line-number="93"><span class="co">#&gt; D       1                  NA           NA data stil being collected</span></a>
-<a class="sourceLine" id="cb8-94" data-line-number="94"><span class="co">#&gt; D       2 Mol_Analy_pipeline1 sequenceData          May collect more</span></a>
-<a class="sourceLine" id="cb8-95" data-line-number="95"><span class="co">#&gt; D       3                  NA           NA          May collect more</span></a>
-<a class="sourceLine" id="cb8-96" data-line-number="96"><span class="co">#&gt; D       4                  NA           NA          May collect more</span></a>
+<a class="sourceLine" id="cb8-77" data-line-number="77"><span class="co">#&gt;                           name  variable         method               unit</span></a>
+<a class="sourceLine" id="cb8-78" data-line-number="78"><span class="co">#&gt; D       1 oxygen concentration        DO presens Optode                  %</span></a>
+<a class="sourceLine" id="cb8-79" data-line-number="79"><span class="co">#&gt; D       2            abundance abundance      molecular              count</span></a>
+<a class="sourceLine" id="cb8-80" data-line-number="80"><span class="co">#&gt; D       3                smell     smell           nose rotten eggs or not</span></a>
+<a class="sourceLine" id="cb8-81" data-line-number="81"><span class="co">#&gt; D       4         sequenceData       DNA            NGS         Nucleotide</span></a>
+<a class="sourceLine" id="cb8-82" data-line-number="82"><span class="co">#&gt;                 object lengthOfTimeSeries noOfSamplesInTimeSeries</span></a>
+<a class="sourceLine" id="cb8-83" data-line-number="83"><span class="co">#&gt; D       1    community                 50                      50</span></a>
+<a class="sourceLine" id="cb8-84" data-line-number="84"><span class="co">#&gt; D       2      species                100                       6</span></a>
+<a class="sourceLine" id="cb8-85" data-line-number="85"><span class="co">#&gt; D       3    community                100                       6</span></a>
+<a class="sourceLine" id="cb8-86" data-line-number="86"><span class="co">#&gt; D       4 DNA fragment                100                       6</span></a>
+<a class="sourceLine" id="cb8-87" data-line-number="87"><span class="co">#&gt;           samplingVolume  dataExtractionName measuredFrom</span></a>
+<a class="sourceLine" id="cb8-88" data-line-number="88"><span class="co">#&gt; D       1            0.0                &lt;NA&gt;          raw</span></a>
+<a class="sourceLine" id="cb8-89" data-line-number="89"><span class="co">#&gt; D       2            0.5 Mol_Analy_pipeline1 sequenceData</span></a>
+<a class="sourceLine" id="cb8-90" data-line-number="90"><span class="co">#&gt; D       3            0.0                &lt;NA&gt;          raw</span></a>
+<a class="sourceLine" id="cb8-91" data-line-number="91"><span class="co">#&gt; D       4            0.0                &lt;NA&gt;          raw</span></a>
+<a class="sourceLine" id="cb8-92" data-line-number="92"><span class="co">#&gt;                             comment</span></a>
+<a class="sourceLine" id="cb8-93" data-line-number="93"><span class="co">#&gt; D       1 data stil being collected</span></a>
+<a class="sourceLine" id="cb8-94" data-line-number="94"><span class="co">#&gt; D       2          May collect more</span></a>
+<a class="sourceLine" id="cb8-95" data-line-number="95"><span class="co">#&gt; D       3          May collect more</span></a>
+<a class="sourceLine" id="cb8-96" data-line-number="96"><span class="co">#&gt; D       4          May collect more</span></a>
 <a class="sourceLine" id="cb8-97" data-line-number="97"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb8-98" data-line-number="98"><span class="co">#&gt;      DataExtraction - emeSchemeData</span></a>
 <a class="sourceLine" id="cb8-99" data-line-number="99"><span class="co">#&gt; A       Names : name | method | parameter | value | comment</span></a>
@@ -696,7 +666,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb8-107" data-line-number="107"><span class="co">#&gt; XA      class: emeSchemeData_DataExtraction | emeSchemeData | emeScheme | tbl_df | tbl | data.frame</span></a>
 <a class="sourceLine" id="cb8-108" data-line-number="108"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb8-109" data-line-number="109"><span class="co">#&gt;                          name method parameter value</span></a>
-<a class="sourceLine" id="cb8-110" data-line-number="110"><span class="co">#&gt; D       1 Mol_Analy_pipeline1     NA        NA    NA</span></a>
+<a class="sourceLine" id="cb8-110" data-line-number="110"><span class="co">#&gt; D       1 Mol_Analy_pipeline1   &lt;NA&gt;      &lt;NA&gt;  &lt;NA&gt;</span></a>
 <a class="sourceLine" id="cb8-111" data-line-number="111"><span class="co">#&gt; D       2                &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;  &lt;NA&gt;</span></a>
 <a class="sourceLine" id="cb8-112" data-line-number="112"><span class="co">#&gt;                                   comment</span></a>
 <a class="sourceLine" id="cb8-113" data-line-number="113"><span class="co">#&gt; D       1 See description in file xxx.yyy</span></a>
@@ -707,9 +677,9 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb8-118" data-line-number="118"><span class="co">#&gt; A       Units : NA | NA | NA | NA | NA | NA | NA</span></a>
 <a class="sourceLine" id="cb8-119" data-line-number="119"><span class="co">#&gt; A       Type  : character | character | character | character | character | character | character</span></a>
 <a class="sourceLine" id="cb8-120" data-line-number="120"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb8-121" data-line-number="121"><span class="co">#&gt; XA      row.names: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13</span></a>
+<a class="sourceLine" id="cb8-121" data-line-number="121"><span class="co">#&gt; XA      row.names: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18</span></a>
 <a class="sourceLine" id="cb8-122" data-line-number="122"><span class="co">#&gt; XA      propertyName: DataFileMetaData</span></a>
-<a class="sourceLine" id="cb8-123" data-line-number="123"><span class="co">#&gt; XA      allowedValues: NA | NA | ID, Treatment, Measurement, other | Lid_treatment, Lid_treatment, -------, oxygen concentration, community_composition, smell, sequenceData | integer, numeric, character, logical, datetime, date, time | NA | NA</span></a>
+<a class="sourceLine" id="cb8-123" data-line-number="123"><span class="co">#&gt; XA      allowedValues: NA | NA | ID, Treatment, Measurement, other | Lid_treatment, Lid_treatment, -------, oxygen concentration, abundance, smell, sequenceData | integer, numeric, character, logical, datetime, date, time | NA | NA</span></a>
 <a class="sourceLine" id="cb8-124" data-line-number="124"><span class="co">#&gt; XA      Description: the name of the data set. | Name of column in the data file. Each column in the data file needs to be documented! | The type of the data in the column. ID: ID field (unique ID of unit of replication); Treatment: specifies treatment; Measurement: contains measurements; other: other type of data | Treatment: parameter as in the Treatment tab; Measurement: name as in the Measurement tab | Type of the column. | if column contains measurement: General description. If type is datatime, date, or time, give the order of year month day hour minute second as e.g. ymdhms, ymd, or hms. (Do not give any other information, e.g. give nothing about how months are entered (e.g. number or name), or how years, months, day, etc are separated. | NA</span></a>
 <a class="sourceLine" id="cb8-125" data-line-number="125"><span class="co">#&gt; XA      class: emeSchemeData_DataFileMetaData | emeSchemeData | emeScheme | tbl_df | tbl | data.frame</span></a>
 <a class="sourceLine" id="cb8-126" data-line-number="126"><span class="co">#&gt; </span></a>
@@ -727,20 +697,30 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb8-138" data-line-number="138"><span class="co">#&gt; D       11                     smell.csv          Date       other</span></a>
 <a class="sourceLine" id="cb8-139" data-line-number="139"><span class="co">#&gt; D       12                     smell.csv Lid_treatment   Treatment</span></a>
 <a class="sourceLine" id="cb8-140" data-line-number="140"><span class="co">#&gt; D       13                     smell.csv      Jar_type       other</span></a>
-<a class="sourceLine" id="cb8-141" data-line-number="141"><span class="co">#&gt;                   mappingColumn      type description comment</span></a>
-<a class="sourceLine" id="cb8-142" data-line-number="142"><span class="co">#&gt; D       1                    NA character        &lt;NA&gt;    &lt;NA&gt;</span></a>
-<a class="sourceLine" id="cb8-143" data-line-number="143"><span class="co">#&gt; D       2  oxygen concentration   numeric        &lt;NA&gt;    &lt;NA&gt;</span></a>
-<a class="sourceLine" id="cb8-144" data-line-number="144"><span class="co">#&gt; D       3                    NA character        &lt;NA&gt;    &lt;NA&gt;</span></a>
-<a class="sourceLine" id="cb8-145" data-line-number="145"><span class="co">#&gt; D       4                    NA character        &lt;NA&gt;    &lt;NA&gt;</span></a>
-<a class="sourceLine" id="cb8-146" data-line-number="146"><span class="co">#&gt; D       5                    NA character        &lt;NA&gt;    &lt;NA&gt;</span></a>
-<a class="sourceLine" id="cb8-147" data-line-number="147"><span class="co">#&gt; D       6                    NA  datetime      ymdhms    &lt;NA&gt;</span></a>
-<a class="sourceLine" id="cb8-148" data-line-number="148"><span class="co">#&gt; D       7         Lid_treatment character        &lt;NA&gt;    &lt;NA&gt;</span></a>
-<a class="sourceLine" id="cb8-149" data-line-number="149"><span class="co">#&gt; D       8                    NA character        &lt;NA&gt;    &lt;NA&gt;</span></a>
-<a class="sourceLine" id="cb8-150" data-line-number="150"><span class="co">#&gt; D       9                    NA character        &lt;NA&gt;    &lt;NA&gt;</span></a>
-<a class="sourceLine" id="cb8-151" data-line-number="151"><span class="co">#&gt; D       10                smell character        &lt;NA&gt;    &lt;NA&gt;</span></a>
-<a class="sourceLine" id="cb8-152" data-line-number="152"><span class="co">#&gt; D       11                   NA  datetime      ymdhms    &lt;NA&gt;</span></a>
-<a class="sourceLine" id="cb8-153" data-line-number="153"><span class="co">#&gt; D       12                   NA character        &lt;NA&gt;    &lt;NA&gt;</span></a>
-<a class="sourceLine" id="cb8-154" data-line-number="154"><span class="co">#&gt; D       13        Lid_treatment character        &lt;NA&gt;    &lt;NA&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb8-141" data-line-number="141"><span class="co">#&gt; D       14                abundances.csv        Jar_ID          ID</span></a>
+<a class="sourceLine" id="cb8-142" data-line-number="142"><span class="co">#&gt; D       15                abundances.csv     Date_time       other</span></a>
+<a class="sourceLine" id="cb8-143" data-line-number="143"><span class="co">#&gt; D       16                abundances.csv Lid_treatment   Treatment</span></a>
+<a class="sourceLine" id="cb8-144" data-line-number="144"><span class="co">#&gt; D       17                abundances.csv      Jar_type       other</span></a>
+<a class="sourceLine" id="cb8-145" data-line-number="145"><span class="co">#&gt; D       18                abundances.csv  count_number Measurement</span></a>
+<a class="sourceLine" id="cb8-146" data-line-number="146"><span class="co">#&gt;                   mappingColumn      type description comment</span></a>
+<a class="sourceLine" id="cb8-147" data-line-number="147"><span class="co">#&gt; D       1                  &lt;NA&gt; character        &lt;NA&gt;    &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb8-148" data-line-number="148"><span class="co">#&gt; D       2  oxygen concentration   numeric        &lt;NA&gt;    &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb8-149" data-line-number="149"><span class="co">#&gt; D       3                  &lt;NA&gt; character        &lt;NA&gt;    &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb8-150" data-line-number="150"><span class="co">#&gt; D       4                  &lt;NA&gt; character        &lt;NA&gt;    &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb8-151" data-line-number="151"><span class="co">#&gt; D       5                  &lt;NA&gt; character        &lt;NA&gt;    &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb8-152" data-line-number="152"><span class="co">#&gt; D       6                  &lt;NA&gt;  datetime      ymdhms    &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb8-153" data-line-number="153"><span class="co">#&gt; D       7         Lid_treatment character        &lt;NA&gt;    &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb8-154" data-line-number="154"><span class="co">#&gt; D       8                  &lt;NA&gt; character        &lt;NA&gt;    &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb8-155" data-line-number="155"><span class="co">#&gt; D       9                  &lt;NA&gt; character        &lt;NA&gt;    &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb8-156" data-line-number="156"><span class="co">#&gt; D       10                smell character        &lt;NA&gt;    &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb8-157" data-line-number="157"><span class="co">#&gt; D       11                 &lt;NA&gt;  datetime      ymdhms    &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb8-158" data-line-number="158"><span class="co">#&gt; D       12                 &lt;NA&gt; character        &lt;NA&gt;    &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb8-159" data-line-number="159"><span class="co">#&gt; D       13        Lid_treatment character        &lt;NA&gt;    &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb8-160" data-line-number="160"><span class="co">#&gt; D       14                 &lt;NA&gt; character        &lt;NA&gt;    &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb8-161" data-line-number="161"><span class="co">#&gt; D       15                 &lt;NA&gt;  datetime      ymdhms    &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb8-162" data-line-number="162"><span class="co">#&gt; D       16        Lid_treatment character        &lt;NA&gt;    &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb8-163" data-line-number="163"><span class="co">#&gt; D       17                 &lt;NA&gt; character        &lt;NA&gt;    &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb8-164" data-line-number="164"><span class="co">#&gt; D       18            abundance   numeric        &lt;NA&gt;    &lt;NA&gt;</span></a></code></pre></div>
 </div>
 <div id="converting-metadata-to-xml" class="section level2">
 <h2>Converting Metadata to xml</h2>
@@ -750,7 +730,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt;  &lt;ExperimentList&gt;</span></a>
 <a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">#&gt;   &lt;Experiment&gt;</span></a>
 <a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt;    &lt;name&gt;ASR-expt1&lt;/name&gt;</span></a>
-<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt;    &lt;temperature&gt;20.0&lt;/temperature&gt;</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt;    &lt;temperature&gt;20&lt;/temperature&gt;</span></a>
 <a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt;    &lt;light&gt;semi-ambient&lt;/light&gt;</span></a>
 <a class="sourceLine" id="cb9-8" data-line-number="8"><span class="co">#&gt;    &lt;humidity&gt;ambient&lt;/humidity&gt;</span></a>
 <a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">#&gt;    &lt;incubator&gt;not given here&lt;/incubator&gt;</span></a>
@@ -761,7 +741,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb9-14" data-line-number="14"><span class="co">#&gt;    &lt;cultureConditions&gt;dirty&lt;/cultureConditions&gt;</span></a>
 <a class="sourceLine" id="cb9-15" data-line-number="15"><span class="co">#&gt;    &lt;comunityType&gt;initially unknown&lt;/comunityType&gt;</span></a>
 <a class="sourceLine" id="cb9-16" data-line-number="16"><span class="co">#&gt;    &lt;mediaAdditions&gt;Wheat seeds added on specific dates, see file wheat_seed_additions.csv&lt;/mediaAdditions&gt;</span></a>
-<a class="sourceLine" id="cb9-17" data-line-number="17"><span class="co">#&gt;    &lt;comment&gt;NA&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-17" data-line-number="17"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
 <a class="sourceLine" id="cb9-18" data-line-number="18"><span class="co">#&gt;   &lt;/Experiment&gt;</span></a>
 <a class="sourceLine" id="cb9-19" data-line-number="19"><span class="co">#&gt;  &lt;/ExperimentList&gt;</span></a>
 <a class="sourceLine" id="cb9-20" data-line-number="20"><span class="co">#&gt;  &lt;SpeciesList&gt;</span></a>
@@ -772,11 +752,11 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb9-25" data-line-number="25"><span class="co">#&gt;    &lt;functionalGroup&gt;bacterivore&lt;/functionalGroup&gt;</span></a>
 <a class="sourceLine" id="cb9-26" data-line-number="26"><span class="co">#&gt;    &lt;comment&gt;http://www.lgcstandards-atcc.org/products/all/30007.aspx&lt;/comment&gt;</span></a>
 <a class="sourceLine" id="cb9-27" data-line-number="27"><span class="co">#&gt;   &lt;/Species&gt;</span></a>
-<a class="sourceLine" id="cb9-28" data-line-number="28"><span class="co">#&gt;   &lt;Species name=&quot;NA&quot;&gt;</span></a>
-<a class="sourceLine" id="cb9-29" data-line-number="29"><span class="co">#&gt;    &lt;strain&gt;&lt;/strain&gt;</span></a>
-<a class="sourceLine" id="cb9-30" data-line-number="30"><span class="co">#&gt;    &lt;source&gt;&lt;/source&gt;</span></a>
+<a class="sourceLine" id="cb9-28" data-line-number="28"><span class="co">#&gt;   &lt;Species name=&quot;unknown&quot;&gt;</span></a>
+<a class="sourceLine" id="cb9-29" data-line-number="29"><span class="co">#&gt;    &lt;strain&gt;unknown&lt;/strain&gt;</span></a>
+<a class="sourceLine" id="cb9-30" data-line-number="30"><span class="co">#&gt;    &lt;source&gt;unknown&lt;/source&gt;</span></a>
 <a class="sourceLine" id="cb9-31" data-line-number="31"><span class="co">#&gt;    &lt;density&gt;&lt;/density&gt;</span></a>
-<a class="sourceLine" id="cb9-32" data-line-number="32"><span class="co">#&gt;    &lt;functionalGroup&gt;&lt;/functionalGroup&gt;</span></a>
+<a class="sourceLine" id="cb9-32" data-line-number="32"><span class="co">#&gt;    &lt;functionalGroup&gt;unknown&lt;/functionalGroup&gt;</span></a>
 <a class="sourceLine" id="cb9-33" data-line-number="33"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
 <a class="sourceLine" id="cb9-34" data-line-number="34"><span class="co">#&gt;   &lt;/Species&gt;</span></a>
 <a class="sourceLine" id="cb9-35" data-line-number="35"><span class="co">#&gt;  &lt;/SpeciesList&gt;</span></a>
@@ -787,7 +767,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb9-40" data-line-number="40"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
 <a class="sourceLine" id="cb9-41" data-line-number="41"><span class="co">#&gt;   &lt;/Treatment&gt;</span></a>
 <a class="sourceLine" id="cb9-42" data-line-number="42"><span class="co">#&gt;   &lt;Treatment&gt;</span></a>
-<a class="sourceLine" id="cb9-43" data-line-number="43"><span class="co">#&gt;    &lt;unit&gt;NA&lt;/unit&gt;</span></a>
+<a class="sourceLine" id="cb9-43" data-line-number="43"><span class="co">#&gt;    &lt;unit&gt;&lt;/unit&gt;</span></a>
 <a class="sourceLine" id="cb9-44" data-line-number="44"><span class="co">#&gt;    &lt;treatmentLevel&gt;Tight&lt;/treatmentLevel&gt;</span></a>
 <a class="sourceLine" id="cb9-45" data-line-number="45"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
 <a class="sourceLine" id="cb9-46" data-line-number="46"><span class="co">#&gt;   &lt;/Treatment&gt;</span></a>
@@ -800,188 +780,229 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb9-53" data-line-number="53"><span class="co">#&gt;    &lt;object&gt;community&lt;/object&gt;</span></a>
 <a class="sourceLine" id="cb9-54" data-line-number="54"><span class="co">#&gt;    &lt;lengthOfTimeSeries&gt;50&lt;/lengthOfTimeSeries&gt;</span></a>
 <a class="sourceLine" id="cb9-55" data-line-number="55"><span class="co">#&gt;    &lt;noOfSamplesInTimeSeries&gt;50&lt;/noOfSamplesInTimeSeries&gt;</span></a>
-<a class="sourceLine" id="cb9-56" data-line-number="56"><span class="co">#&gt;    &lt;samplingAverageFrequency&gt;1&lt;/samplingAverageFrequency&gt;</span></a>
-<a class="sourceLine" id="cb9-57" data-line-number="57"><span class="co">#&gt;    &lt;samplingVolume&gt;0&lt;/samplingVolume&gt;</span></a>
-<a class="sourceLine" id="cb9-58" data-line-number="58"><span class="co">#&gt;    &lt;dataExtractionName&gt;NA&lt;/dataExtractionName&gt;</span></a>
-<a class="sourceLine" id="cb9-59" data-line-number="59"><span class="co">#&gt;    &lt;measuredFrom&gt;NA&lt;/measuredFrom&gt;</span></a>
-<a class="sourceLine" id="cb9-60" data-line-number="60"><span class="co">#&gt;    &lt;comment&gt;data stil being collected&lt;/comment&gt;</span></a>
-<a class="sourceLine" id="cb9-61" data-line-number="61"><span class="co">#&gt;   &lt;/Measurement&gt;</span></a>
-<a class="sourceLine" id="cb9-62" data-line-number="62"><span class="co">#&gt;   &lt;Measurement name=&quot;community_composition&quot;&gt;</span></a>
-<a class="sourceLine" id="cb9-63" data-line-number="63"><span class="co">#&gt;    &lt;variable&gt;abundance&lt;/variable&gt;</span></a>
-<a class="sourceLine" id="cb9-64" data-line-number="64"><span class="co">#&gt;    &lt;method&gt;molecular&lt;/method&gt;</span></a>
-<a class="sourceLine" id="cb9-65" data-line-number="65"><span class="co">#&gt;    &lt;unit&gt;count&lt;/unit&gt;</span></a>
-<a class="sourceLine" id="cb9-66" data-line-number="66"><span class="co">#&gt;    &lt;object&gt;species&lt;/object&gt;</span></a>
-<a class="sourceLine" id="cb9-67" data-line-number="67"><span class="co">#&gt;    &lt;lengthOfTimeSeries&gt;100&lt;/lengthOfTimeSeries&gt;</span></a>
-<a class="sourceLine" id="cb9-68" data-line-number="68"><span class="co">#&gt;    &lt;noOfSamplesInTimeSeries&gt;6&lt;/noOfSamplesInTimeSeries&gt;</span></a>
-<a class="sourceLine" id="cb9-69" data-line-number="69"><span class="co">#&gt;    &lt;samplingAverageFrequency&gt;16.66666667&lt;/samplingAverageFrequency&gt;</span></a>
-<a class="sourceLine" id="cb9-70" data-line-number="70"><span class="co">#&gt;    &lt;samplingVolume&gt;0.5&lt;/samplingVolume&gt;</span></a>
-<a class="sourceLine" id="cb9-71" data-line-number="71"><span class="co">#&gt;    &lt;dataExtractionName&gt;Mol_Analy_pipeline1&lt;/dataExtractionName&gt;</span></a>
-<a class="sourceLine" id="cb9-72" data-line-number="72"><span class="co">#&gt;    &lt;measuredFrom&gt;sequenceData&lt;/measuredFrom&gt;</span></a>
-<a class="sourceLine" id="cb9-73" data-line-number="73"><span class="co">#&gt;    &lt;comment&gt;May collect more&lt;/comment&gt;</span></a>
-<a class="sourceLine" id="cb9-74" data-line-number="74"><span class="co">#&gt;   &lt;/Measurement&gt;</span></a>
-<a class="sourceLine" id="cb9-75" data-line-number="75"><span class="co">#&gt;   &lt;Measurement name=&quot;smell&quot;&gt;</span></a>
-<a class="sourceLine" id="cb9-76" data-line-number="76"><span class="co">#&gt;    &lt;variable&gt;smell&lt;/variable&gt;</span></a>
-<a class="sourceLine" id="cb9-77" data-line-number="77"><span class="co">#&gt;    &lt;method&gt;nose&lt;/method&gt;</span></a>
-<a class="sourceLine" id="cb9-78" data-line-number="78"><span class="co">#&gt;    &lt;unit&gt;rotten eggs or not&lt;/unit&gt;</span></a>
-<a class="sourceLine" id="cb9-79" data-line-number="79"><span class="co">#&gt;    &lt;object&gt;community&lt;/object&gt;</span></a>
-<a class="sourceLine" id="cb9-80" data-line-number="80"><span class="co">#&gt;    &lt;lengthOfTimeSeries&gt;100&lt;/lengthOfTimeSeries&gt;</span></a>
-<a class="sourceLine" id="cb9-81" data-line-number="81"><span class="co">#&gt;    &lt;noOfSamplesInTimeSeries&gt;6&lt;/noOfSamplesInTimeSeries&gt;</span></a>
-<a class="sourceLine" id="cb9-82" data-line-number="82"><span class="co">#&gt;    &lt;samplingAverageFrequency&gt;16.66666667&lt;/samplingAverageFrequency&gt;</span></a>
-<a class="sourceLine" id="cb9-83" data-line-number="83"><span class="co">#&gt;    &lt;samplingVolume&gt;0&lt;/samplingVolume&gt;</span></a>
-<a class="sourceLine" id="cb9-84" data-line-number="84"><span class="co">#&gt;    &lt;dataExtractionName&gt;NA&lt;/dataExtractionName&gt;</span></a>
-<a class="sourceLine" id="cb9-85" data-line-number="85"><span class="co">#&gt;    &lt;measuredFrom&gt;NA&lt;/measuredFrom&gt;</span></a>
-<a class="sourceLine" id="cb9-86" data-line-number="86"><span class="co">#&gt;    &lt;comment&gt;May collect more&lt;/comment&gt;</span></a>
-<a class="sourceLine" id="cb9-87" data-line-number="87"><span class="co">#&gt;   &lt;/Measurement&gt;</span></a>
-<a class="sourceLine" id="cb9-88" data-line-number="88"><span class="co">#&gt;   &lt;Measurement name=&quot;sequenceData&quot;&gt;</span></a>
-<a class="sourceLine" id="cb9-89" data-line-number="89"><span class="co">#&gt;    &lt;variable&gt;DNA&lt;/variable&gt;</span></a>
-<a class="sourceLine" id="cb9-90" data-line-number="90"><span class="co">#&gt;    &lt;method&gt;NGS&lt;/method&gt;</span></a>
-<a class="sourceLine" id="cb9-91" data-line-number="91"><span class="co">#&gt;    &lt;unit&gt;Nucleotide&lt;/unit&gt;</span></a>
-<a class="sourceLine" id="cb9-92" data-line-number="92"><span class="co">#&gt;    &lt;object&gt;DNA fragment&lt;/object&gt;</span></a>
-<a class="sourceLine" id="cb9-93" data-line-number="93"><span class="co">#&gt;    &lt;lengthOfTimeSeries&gt;100&lt;/lengthOfTimeSeries&gt;</span></a>
-<a class="sourceLine" id="cb9-94" data-line-number="94"><span class="co">#&gt;    &lt;noOfSamplesInTimeSeries&gt;6&lt;/noOfSamplesInTimeSeries&gt;</span></a>
-<a class="sourceLine" id="cb9-95" data-line-number="95"><span class="co">#&gt;    &lt;samplingAverageFrequency&gt;16.66666667&lt;/samplingAverageFrequency&gt;</span></a>
-<a class="sourceLine" id="cb9-96" data-line-number="96"><span class="co">#&gt;    &lt;samplingVolume&gt;0&lt;/samplingVolume&gt;</span></a>
-<a class="sourceLine" id="cb9-97" data-line-number="97"><span class="co">#&gt;    &lt;dataExtractionName&gt;NA&lt;/dataExtractionName&gt;</span></a>
-<a class="sourceLine" id="cb9-98" data-line-number="98"><span class="co">#&gt;    &lt;measuredFrom&gt;NA&lt;/measuredFrom&gt;</span></a>
-<a class="sourceLine" id="cb9-99" data-line-number="99"><span class="co">#&gt;    &lt;comment&gt;May collect more&lt;/comment&gt;</span></a>
-<a class="sourceLine" id="cb9-100" data-line-number="100"><span class="co">#&gt;   &lt;/Measurement&gt;</span></a>
-<a class="sourceLine" id="cb9-101" data-line-number="101"><span class="co">#&gt;  &lt;/MeasurementList&gt;</span></a>
-<a class="sourceLine" id="cb9-102" data-line-number="102"><span class="co">#&gt;  &lt;DataExtractionList&gt;</span></a>
-<a class="sourceLine" id="cb9-103" data-line-number="103"><span class="co">#&gt;   &lt;DataExtraction&gt;</span></a>
-<a class="sourceLine" id="cb9-104" data-line-number="104"><span class="co">#&gt;    &lt;name&gt;Mol_Analy_pipeline1&lt;/name&gt;</span></a>
-<a class="sourceLine" id="cb9-105" data-line-number="105"><span class="co">#&gt;    &lt;method&gt;NA&lt;/method&gt;</span></a>
-<a class="sourceLine" id="cb9-106" data-line-number="106"><span class="co">#&gt;    &lt;parameter&gt;NA&lt;/parameter&gt;</span></a>
-<a class="sourceLine" id="cb9-107" data-line-number="107"><span class="co">#&gt;    &lt;value&gt;NA&lt;/value&gt;</span></a>
-<a class="sourceLine" id="cb9-108" data-line-number="108"><span class="co">#&gt;    &lt;comment&gt;See description in file xxx.yyy&lt;/comment&gt;</span></a>
-<a class="sourceLine" id="cb9-109" data-line-number="109"><span class="co">#&gt;   &lt;/DataExtraction&gt;</span></a>
-<a class="sourceLine" id="cb9-110" data-line-number="110"><span class="co">#&gt;   &lt;DataExtraction&gt;</span></a>
-<a class="sourceLine" id="cb9-111" data-line-number="111"><span class="co">#&gt;    &lt;name&gt;&lt;/name&gt;</span></a>
-<a class="sourceLine" id="cb9-112" data-line-number="112"><span class="co">#&gt;    &lt;method&gt;&lt;/method&gt;</span></a>
-<a class="sourceLine" id="cb9-113" data-line-number="113"><span class="co">#&gt;    &lt;parameter&gt;&lt;/parameter&gt;</span></a>
-<a class="sourceLine" id="cb9-114" data-line-number="114"><span class="co">#&gt;    &lt;value&gt;&lt;/value&gt;</span></a>
-<a class="sourceLine" id="cb9-115" data-line-number="115"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
-<a class="sourceLine" id="cb9-116" data-line-number="116"><span class="co">#&gt;   &lt;/DataExtraction&gt;</span></a>
-<a class="sourceLine" id="cb9-117" data-line-number="117"><span class="co">#&gt;  &lt;/DataExtractionList&gt;</span></a>
-<a class="sourceLine" id="cb9-118" data-line-number="118"><span class="co">#&gt;  &lt;DataFileMetaDataList&gt;</span></a>
-<a class="sourceLine" id="cb9-119" data-line-number="119"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-120" data-line-number="120"><span class="co">#&gt;    &lt;dataFileName&gt;dissolved_oxygen_measures.csv&lt;/dataFileName&gt;</span></a>
-<a class="sourceLine" id="cb9-121" data-line-number="121"><span class="co">#&gt;    &lt;columnName&gt;Jar_ID&lt;/columnName&gt;</span></a>
-<a class="sourceLine" id="cb9-122" data-line-number="122"><span class="co">#&gt;    &lt;columnData&gt;ID&lt;/columnData&gt;</span></a>
-<a class="sourceLine" id="cb9-123" data-line-number="123"><span class="co">#&gt;    &lt;mappingColumn&gt;NA&lt;/mappingColumn&gt;</span></a>
-<a class="sourceLine" id="cb9-124" data-line-number="124"><span class="co">#&gt;    &lt;type&gt;character&lt;/type&gt;</span></a>
-<a class="sourceLine" id="cb9-125" data-line-number="125"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
-<a class="sourceLine" id="cb9-126" data-line-number="126"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
-<a class="sourceLine" id="cb9-127" data-line-number="127"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-128" data-line-number="128"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-129" data-line-number="129"><span class="co">#&gt;    &lt;dataFileName&gt;dissolved_oxygen_measures.csv&lt;/dataFileName&gt;</span></a>
-<a class="sourceLine" id="cb9-130" data-line-number="130"><span class="co">#&gt;    &lt;columnName&gt;DO&lt;/columnName&gt;</span></a>
-<a class="sourceLine" id="cb9-131" data-line-number="131"><span class="co">#&gt;    &lt;columnData&gt;Measurement&lt;/columnData&gt;</span></a>
-<a class="sourceLine" id="cb9-132" data-line-number="132"><span class="co">#&gt;    &lt;mappingColumn&gt;oxygen concentration&lt;/mappingColumn&gt;</span></a>
-<a class="sourceLine" id="cb9-133" data-line-number="133"><span class="co">#&gt;    &lt;type&gt;numeric&lt;/type&gt;</span></a>
-<a class="sourceLine" id="cb9-134" data-line-number="134"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
-<a class="sourceLine" id="cb9-135" data-line-number="135"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
-<a class="sourceLine" id="cb9-136" data-line-number="136"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-137" data-line-number="137"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-138" data-line-number="138"><span class="co">#&gt;    &lt;dataFileName&gt;dissolved_oxygen_measures.csv&lt;/dataFileName&gt;</span></a>
-<a class="sourceLine" id="cb9-139" data-line-number="139"><span class="co">#&gt;    &lt;columnName&gt;Unit_1&lt;/columnName&gt;</span></a>
-<a class="sourceLine" id="cb9-140" data-line-number="140"><span class="co">#&gt;    &lt;columnData&gt;other&lt;/columnData&gt;</span></a>
-<a class="sourceLine" id="cb9-141" data-line-number="141"><span class="co">#&gt;    &lt;mappingColumn&gt;NA&lt;/mappingColumn&gt;</span></a>
-<a class="sourceLine" id="cb9-142" data-line-number="142"><span class="co">#&gt;    &lt;type&gt;character&lt;/type&gt;</span></a>
-<a class="sourceLine" id="cb9-143" data-line-number="143"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
-<a class="sourceLine" id="cb9-144" data-line-number="144"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
-<a class="sourceLine" id="cb9-145" data-line-number="145"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-146" data-line-number="146"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-147" data-line-number="147"><span class="co">#&gt;    &lt;dataFileName&gt;dissolved_oxygen_measures.csv&lt;/dataFileName&gt;</span></a>
-<a class="sourceLine" id="cb9-148" data-line-number="148"><span class="co">#&gt;    &lt;columnName&gt;Mode&lt;/columnName&gt;</span></a>
-<a class="sourceLine" id="cb9-149" data-line-number="149"><span class="co">#&gt;    &lt;columnData&gt;other&lt;/columnData&gt;</span></a>
-<a class="sourceLine" id="cb9-150" data-line-number="150"><span class="co">#&gt;    &lt;mappingColumn&gt;NA&lt;/mappingColumn&gt;</span></a>
-<a class="sourceLine" id="cb9-151" data-line-number="151"><span class="co">#&gt;    &lt;type&gt;character&lt;/type&gt;</span></a>
-<a class="sourceLine" id="cb9-152" data-line-number="152"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
-<a class="sourceLine" id="cb9-153" data-line-number="153"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
-<a class="sourceLine" id="cb9-154" data-line-number="154"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-155" data-line-number="155"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-156" data-line-number="156"><span class="co">#&gt;    &lt;dataFileName&gt;dissolved_oxygen_measures.csv&lt;/dataFileName&gt;</span></a>
-<a class="sourceLine" id="cb9-157" data-line-number="157"><span class="co">#&gt;    &lt;columnName&gt;Location&lt;/columnName&gt;</span></a>
-<a class="sourceLine" id="cb9-158" data-line-number="158"><span class="co">#&gt;    &lt;columnData&gt;other&lt;/columnData&gt;</span></a>
-<a class="sourceLine" id="cb9-159" data-line-number="159"><span class="co">#&gt;    &lt;mappingColumn&gt;NA&lt;/mappingColumn&gt;</span></a>
-<a class="sourceLine" id="cb9-160" data-line-number="160"><span class="co">#&gt;    &lt;type&gt;character&lt;/type&gt;</span></a>
-<a class="sourceLine" id="cb9-161" data-line-number="161"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
-<a class="sourceLine" id="cb9-162" data-line-number="162"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
-<a class="sourceLine" id="cb9-163" data-line-number="163"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-164" data-line-number="164"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-165" data-line-number="165"><span class="co">#&gt;    &lt;dataFileName&gt;dissolved_oxygen_measures.csv&lt;/dataFileName&gt;</span></a>
-<a class="sourceLine" id="cb9-166" data-line-number="166"><span class="co">#&gt;    &lt;columnName&gt;Date_time&lt;/columnName&gt;</span></a>
-<a class="sourceLine" id="cb9-167" data-line-number="167"><span class="co">#&gt;    &lt;columnData&gt;other&lt;/columnData&gt;</span></a>
-<a class="sourceLine" id="cb9-168" data-line-number="168"><span class="co">#&gt;    &lt;mappingColumn&gt;NA&lt;/mappingColumn&gt;</span></a>
-<a class="sourceLine" id="cb9-169" data-line-number="169"><span class="co">#&gt;    &lt;type&gt;datetime&lt;/type&gt;</span></a>
-<a class="sourceLine" id="cb9-170" data-line-number="170"><span class="co">#&gt;    &lt;description&gt;ymdhms&lt;/description&gt;</span></a>
-<a class="sourceLine" id="cb9-171" data-line-number="171"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
-<a class="sourceLine" id="cb9-172" data-line-number="172"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-173" data-line-number="173"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-174" data-line-number="174"><span class="co">#&gt;    &lt;dataFileName&gt;dissolved_oxygen_measures.csv&lt;/dataFileName&gt;</span></a>
-<a class="sourceLine" id="cb9-175" data-line-number="175"><span class="co">#&gt;    &lt;columnName&gt;Lid_treatment&lt;/columnName&gt;</span></a>
-<a class="sourceLine" id="cb9-176" data-line-number="176"><span class="co">#&gt;    &lt;columnData&gt;Treatment&lt;/columnData&gt;</span></a>
-<a class="sourceLine" id="cb9-177" data-line-number="177"><span class="co">#&gt;    &lt;mappingColumn&gt;Lid_treatment&lt;/mappingColumn&gt;</span></a>
-<a class="sourceLine" id="cb9-178" data-line-number="178"><span class="co">#&gt;    &lt;type&gt;character&lt;/type&gt;</span></a>
-<a class="sourceLine" id="cb9-179" data-line-number="179"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
-<a class="sourceLine" id="cb9-180" data-line-number="180"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
-<a class="sourceLine" id="cb9-181" data-line-number="181"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-182" data-line-number="182"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-183" data-line-number="183"><span class="co">#&gt;    &lt;dataFileName&gt;dissolved_oxygen_measures.csv&lt;/dataFileName&gt;</span></a>
-<a class="sourceLine" id="cb9-184" data-line-number="184"><span class="co">#&gt;    &lt;columnName&gt;Jar_type&lt;/columnName&gt;</span></a>
-<a class="sourceLine" id="cb9-185" data-line-number="185"><span class="co">#&gt;    &lt;columnData&gt;other&lt;/columnData&gt;</span></a>
-<a class="sourceLine" id="cb9-186" data-line-number="186"><span class="co">#&gt;    &lt;mappingColumn&gt;NA&lt;/mappingColumn&gt;</span></a>
-<a class="sourceLine" id="cb9-187" data-line-number="187"><span class="co">#&gt;    &lt;type&gt;character&lt;/type&gt;</span></a>
-<a class="sourceLine" id="cb9-188" data-line-number="188"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
-<a class="sourceLine" id="cb9-189" data-line-number="189"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
-<a class="sourceLine" id="cb9-190" data-line-number="190"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-191" data-line-number="191"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-192" data-line-number="192"><span class="co">#&gt;    &lt;dataFileName&gt;dissolved_oxygen_measures.csv&lt;/dataFileName&gt;</span></a>
-<a class="sourceLine" id="cb9-193" data-line-number="193"><span class="co">#&gt;    &lt;columnName&gt;Jar_ID&lt;/columnName&gt;</span></a>
-<a class="sourceLine" id="cb9-194" data-line-number="194"><span class="co">#&gt;    &lt;columnData&gt;ID&lt;/columnData&gt;</span></a>
-<a class="sourceLine" id="cb9-195" data-line-number="195"><span class="co">#&gt;    &lt;mappingColumn&gt;NA&lt;/mappingColumn&gt;</span></a>
-<a class="sourceLine" id="cb9-196" data-line-number="196"><span class="co">#&gt;    &lt;type&gt;character&lt;/type&gt;</span></a>
-<a class="sourceLine" id="cb9-197" data-line-number="197"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
-<a class="sourceLine" id="cb9-198" data-line-number="198"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
-<a class="sourceLine" id="cb9-199" data-line-number="199"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-200" data-line-number="200"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-201" data-line-number="201"><span class="co">#&gt;    &lt;dataFileName&gt;smell.csv&lt;/dataFileName&gt;</span></a>
-<a class="sourceLine" id="cb9-202" data-line-number="202"><span class="co">#&gt;    &lt;columnName&gt;smell&lt;/columnName&gt;</span></a>
-<a class="sourceLine" id="cb9-203" data-line-number="203"><span class="co">#&gt;    &lt;columnData&gt;Measurement&lt;/columnData&gt;</span></a>
-<a class="sourceLine" id="cb9-204" data-line-number="204"><span class="co">#&gt;    &lt;mappingColumn&gt;smell&lt;/mappingColumn&gt;</span></a>
-<a class="sourceLine" id="cb9-205" data-line-number="205"><span class="co">#&gt;    &lt;type&gt;character&lt;/type&gt;</span></a>
-<a class="sourceLine" id="cb9-206" data-line-number="206"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
-<a class="sourceLine" id="cb9-207" data-line-number="207"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
-<a class="sourceLine" id="cb9-208" data-line-number="208"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-209" data-line-number="209"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-210" data-line-number="210"><span class="co">#&gt;    &lt;dataFileName&gt;smell.csv&lt;/dataFileName&gt;</span></a>
-<a class="sourceLine" id="cb9-211" data-line-number="211"><span class="co">#&gt;    &lt;columnName&gt;Date&lt;/columnName&gt;</span></a>
-<a class="sourceLine" id="cb9-212" data-line-number="212"><span class="co">#&gt;    &lt;columnData&gt;other&lt;/columnData&gt;</span></a>
-<a class="sourceLine" id="cb9-213" data-line-number="213"><span class="co">#&gt;    &lt;mappingColumn&gt;NA&lt;/mappingColumn&gt;</span></a>
-<a class="sourceLine" id="cb9-214" data-line-number="214"><span class="co">#&gt;    &lt;type&gt;datetime&lt;/type&gt;</span></a>
-<a class="sourceLine" id="cb9-215" data-line-number="215"><span class="co">#&gt;    &lt;description&gt;ymdhms&lt;/description&gt;</span></a>
-<a class="sourceLine" id="cb9-216" data-line-number="216"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
-<a class="sourceLine" id="cb9-217" data-line-number="217"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-218" data-line-number="218"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-219" data-line-number="219"><span class="co">#&gt;    &lt;dataFileName&gt;smell.csv&lt;/dataFileName&gt;</span></a>
-<a class="sourceLine" id="cb9-220" data-line-number="220"><span class="co">#&gt;    &lt;columnName&gt;Lid_treatment&lt;/columnName&gt;</span></a>
-<a class="sourceLine" id="cb9-221" data-line-number="221"><span class="co">#&gt;    &lt;columnData&gt;Treatment&lt;/columnData&gt;</span></a>
-<a class="sourceLine" id="cb9-222" data-line-number="222"><span class="co">#&gt;    &lt;mappingColumn&gt;NA&lt;/mappingColumn&gt;</span></a>
-<a class="sourceLine" id="cb9-223" data-line-number="223"><span class="co">#&gt;    &lt;type&gt;character&lt;/type&gt;</span></a>
-<a class="sourceLine" id="cb9-224" data-line-number="224"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
-<a class="sourceLine" id="cb9-225" data-line-number="225"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
-<a class="sourceLine" id="cb9-226" data-line-number="226"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-227" data-line-number="227"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-228" data-line-number="228"><span class="co">#&gt;    &lt;dataFileName&gt;smell.csv&lt;/dataFileName&gt;</span></a>
-<a class="sourceLine" id="cb9-229" data-line-number="229"><span class="co">#&gt;    &lt;columnName&gt;Jar_type&lt;/columnName&gt;</span></a>
-<a class="sourceLine" id="cb9-230" data-line-number="230"><span class="co">#&gt;    &lt;columnData&gt;other&lt;/columnData&gt;</span></a>
-<a class="sourceLine" id="cb9-231" data-line-number="231"><span class="co">#&gt;    &lt;mappingColumn&gt;Lid_treatment&lt;/mappingColumn&gt;</span></a>
-<a class="sourceLine" id="cb9-232" data-line-number="232"><span class="co">#&gt;    &lt;type&gt;character&lt;/type&gt;</span></a>
-<a class="sourceLine" id="cb9-233" data-line-number="233"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
-<a class="sourceLine" id="cb9-234" data-line-number="234"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
-<a class="sourceLine" id="cb9-235" data-line-number="235"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
-<a class="sourceLine" id="cb9-236" data-line-number="236"><span class="co">#&gt;  &lt;/DataFileMetaDataList&gt;</span></a>
-<a class="sourceLine" id="cb9-237" data-line-number="237"><span class="co">#&gt; &lt;/ExampleData&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb9-56" data-line-number="56"><span class="co">#&gt;    &lt;samplingVolume&gt;0&lt;/samplingVolume&gt;</span></a>
+<a class="sourceLine" id="cb9-57" data-line-number="57"><span class="co">#&gt;    &lt;dataExtractionName&gt;&lt;/dataExtractionName&gt;</span></a>
+<a class="sourceLine" id="cb9-58" data-line-number="58"><span class="co">#&gt;    &lt;measuredFrom&gt;raw&lt;/measuredFrom&gt;</span></a>
+<a class="sourceLine" id="cb9-59" data-line-number="59"><span class="co">#&gt;    &lt;comment&gt;data stil being collected&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-60" data-line-number="60"><span class="co">#&gt;   &lt;/Measurement&gt;</span></a>
+<a class="sourceLine" id="cb9-61" data-line-number="61"><span class="co">#&gt;   &lt;Measurement name=&quot;abundance&quot;&gt;</span></a>
+<a class="sourceLine" id="cb9-62" data-line-number="62"><span class="co">#&gt;    &lt;variable&gt;abundance&lt;/variable&gt;</span></a>
+<a class="sourceLine" id="cb9-63" data-line-number="63"><span class="co">#&gt;    &lt;method&gt;molecular&lt;/method&gt;</span></a>
+<a class="sourceLine" id="cb9-64" data-line-number="64"><span class="co">#&gt;    &lt;unit&gt;count&lt;/unit&gt;</span></a>
+<a class="sourceLine" id="cb9-65" data-line-number="65"><span class="co">#&gt;    &lt;object&gt;species&lt;/object&gt;</span></a>
+<a class="sourceLine" id="cb9-66" data-line-number="66"><span class="co">#&gt;    &lt;lengthOfTimeSeries&gt;100&lt;/lengthOfTimeSeries&gt;</span></a>
+<a class="sourceLine" id="cb9-67" data-line-number="67"><span class="co">#&gt;    &lt;noOfSamplesInTimeSeries&gt;6&lt;/noOfSamplesInTimeSeries&gt;</span></a>
+<a class="sourceLine" id="cb9-68" data-line-number="68"><span class="co">#&gt;    &lt;samplingVolume&gt;0.5&lt;/samplingVolume&gt;</span></a>
+<a class="sourceLine" id="cb9-69" data-line-number="69"><span class="co">#&gt;    &lt;dataExtractionName&gt;Mol_Analy_pipeline1&lt;/dataExtractionName&gt;</span></a>
+<a class="sourceLine" id="cb9-70" data-line-number="70"><span class="co">#&gt;    &lt;measuredFrom&gt;sequenceData&lt;/measuredFrom&gt;</span></a>
+<a class="sourceLine" id="cb9-71" data-line-number="71"><span class="co">#&gt;    &lt;comment&gt;May collect more&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-72" data-line-number="72"><span class="co">#&gt;   &lt;/Measurement&gt;</span></a>
+<a class="sourceLine" id="cb9-73" data-line-number="73"><span class="co">#&gt;   &lt;Measurement name=&quot;smell&quot;&gt;</span></a>
+<a class="sourceLine" id="cb9-74" data-line-number="74"><span class="co">#&gt;    &lt;variable&gt;smell&lt;/variable&gt;</span></a>
+<a class="sourceLine" id="cb9-75" data-line-number="75"><span class="co">#&gt;    &lt;method&gt;nose&lt;/method&gt;</span></a>
+<a class="sourceLine" id="cb9-76" data-line-number="76"><span class="co">#&gt;    &lt;unit&gt;rotten eggs or not&lt;/unit&gt;</span></a>
+<a class="sourceLine" id="cb9-77" data-line-number="77"><span class="co">#&gt;    &lt;object&gt;community&lt;/object&gt;</span></a>
+<a class="sourceLine" id="cb9-78" data-line-number="78"><span class="co">#&gt;    &lt;lengthOfTimeSeries&gt;100&lt;/lengthOfTimeSeries&gt;</span></a>
+<a class="sourceLine" id="cb9-79" data-line-number="79"><span class="co">#&gt;    &lt;noOfSamplesInTimeSeries&gt;6&lt;/noOfSamplesInTimeSeries&gt;</span></a>
+<a class="sourceLine" id="cb9-80" data-line-number="80"><span class="co">#&gt;    &lt;samplingVolume&gt;0&lt;/samplingVolume&gt;</span></a>
+<a class="sourceLine" id="cb9-81" data-line-number="81"><span class="co">#&gt;    &lt;dataExtractionName&gt;&lt;/dataExtractionName&gt;</span></a>
+<a class="sourceLine" id="cb9-82" data-line-number="82"><span class="co">#&gt;    &lt;measuredFrom&gt;raw&lt;/measuredFrom&gt;</span></a>
+<a class="sourceLine" id="cb9-83" data-line-number="83"><span class="co">#&gt;    &lt;comment&gt;May collect more&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-84" data-line-number="84"><span class="co">#&gt;   &lt;/Measurement&gt;</span></a>
+<a class="sourceLine" id="cb9-85" data-line-number="85"><span class="co">#&gt;   &lt;Measurement name=&quot;sequenceData&quot;&gt;</span></a>
+<a class="sourceLine" id="cb9-86" data-line-number="86"><span class="co">#&gt;    &lt;variable&gt;DNA&lt;/variable&gt;</span></a>
+<a class="sourceLine" id="cb9-87" data-line-number="87"><span class="co">#&gt;    &lt;method&gt;NGS&lt;/method&gt;</span></a>
+<a class="sourceLine" id="cb9-88" data-line-number="88"><span class="co">#&gt;    &lt;unit&gt;Nucleotide&lt;/unit&gt;</span></a>
+<a class="sourceLine" id="cb9-89" data-line-number="89"><span class="co">#&gt;    &lt;object&gt;DNA fragment&lt;/object&gt;</span></a>
+<a class="sourceLine" id="cb9-90" data-line-number="90"><span class="co">#&gt;    &lt;lengthOfTimeSeries&gt;100&lt;/lengthOfTimeSeries&gt;</span></a>
+<a class="sourceLine" id="cb9-91" data-line-number="91"><span class="co">#&gt;    &lt;noOfSamplesInTimeSeries&gt;6&lt;/noOfSamplesInTimeSeries&gt;</span></a>
+<a class="sourceLine" id="cb9-92" data-line-number="92"><span class="co">#&gt;    &lt;samplingVolume&gt;0&lt;/samplingVolume&gt;</span></a>
+<a class="sourceLine" id="cb9-93" data-line-number="93"><span class="co">#&gt;    &lt;dataExtractionName&gt;&lt;/dataExtractionName&gt;</span></a>
+<a class="sourceLine" id="cb9-94" data-line-number="94"><span class="co">#&gt;    &lt;measuredFrom&gt;raw&lt;/measuredFrom&gt;</span></a>
+<a class="sourceLine" id="cb9-95" data-line-number="95"><span class="co">#&gt;    &lt;comment&gt;May collect more&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-96" data-line-number="96"><span class="co">#&gt;   &lt;/Measurement&gt;</span></a>
+<a class="sourceLine" id="cb9-97" data-line-number="97"><span class="co">#&gt;  &lt;/MeasurementList&gt;</span></a>
+<a class="sourceLine" id="cb9-98" data-line-number="98"><span class="co">#&gt;  &lt;DataExtractionList&gt;</span></a>
+<a class="sourceLine" id="cb9-99" data-line-number="99"><span class="co">#&gt;   &lt;DataExtraction&gt;</span></a>
+<a class="sourceLine" id="cb9-100" data-line-number="100"><span class="co">#&gt;    &lt;name&gt;Mol_Analy_pipeline1&lt;/name&gt;</span></a>
+<a class="sourceLine" id="cb9-101" data-line-number="101"><span class="co">#&gt;    &lt;method&gt;&lt;/method&gt;</span></a>
+<a class="sourceLine" id="cb9-102" data-line-number="102"><span class="co">#&gt;    &lt;parameter&gt;&lt;/parameter&gt;</span></a>
+<a class="sourceLine" id="cb9-103" data-line-number="103"><span class="co">#&gt;    &lt;value&gt;&lt;/value&gt;</span></a>
+<a class="sourceLine" id="cb9-104" data-line-number="104"><span class="co">#&gt;    &lt;comment&gt;See description in file xxx.yyy&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-105" data-line-number="105"><span class="co">#&gt;   &lt;/DataExtraction&gt;</span></a>
+<a class="sourceLine" id="cb9-106" data-line-number="106"><span class="co">#&gt;   &lt;DataExtraction&gt;</span></a>
+<a class="sourceLine" id="cb9-107" data-line-number="107"><span class="co">#&gt;    &lt;name&gt;&lt;/name&gt;</span></a>
+<a class="sourceLine" id="cb9-108" data-line-number="108"><span class="co">#&gt;    &lt;method&gt;&lt;/method&gt;</span></a>
+<a class="sourceLine" id="cb9-109" data-line-number="109"><span class="co">#&gt;    &lt;parameter&gt;&lt;/parameter&gt;</span></a>
+<a class="sourceLine" id="cb9-110" data-line-number="110"><span class="co">#&gt;    &lt;value&gt;&lt;/value&gt;</span></a>
+<a class="sourceLine" id="cb9-111" data-line-number="111"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-112" data-line-number="112"><span class="co">#&gt;   &lt;/DataExtraction&gt;</span></a>
+<a class="sourceLine" id="cb9-113" data-line-number="113"><span class="co">#&gt;  &lt;/DataExtractionList&gt;</span></a>
+<a class="sourceLine" id="cb9-114" data-line-number="114"><span class="co">#&gt;  &lt;DataFileMetaDataList&gt;</span></a>
+<a class="sourceLine" id="cb9-115" data-line-number="115"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-116" data-line-number="116"><span class="co">#&gt;    &lt;dataFileName&gt;dissolved_oxygen_measures.csv&lt;/dataFileName&gt;</span></a>
+<a class="sourceLine" id="cb9-117" data-line-number="117"><span class="co">#&gt;    &lt;columnName&gt;Jar_ID&lt;/columnName&gt;</span></a>
+<a class="sourceLine" id="cb9-118" data-line-number="118"><span class="co">#&gt;    &lt;columnData&gt;ID&lt;/columnData&gt;</span></a>
+<a class="sourceLine" id="cb9-119" data-line-number="119"><span class="co">#&gt;    &lt;mappingColumn&gt;&lt;/mappingColumn&gt;</span></a>
+<a class="sourceLine" id="cb9-120" data-line-number="120"><span class="co">#&gt;    &lt;type&gt;character&lt;/type&gt;</span></a>
+<a class="sourceLine" id="cb9-121" data-line-number="121"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
+<a class="sourceLine" id="cb9-122" data-line-number="122"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-123" data-line-number="123"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-124" data-line-number="124"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-125" data-line-number="125"><span class="co">#&gt;    &lt;dataFileName&gt;dissolved_oxygen_measures.csv&lt;/dataFileName&gt;</span></a>
+<a class="sourceLine" id="cb9-126" data-line-number="126"><span class="co">#&gt;    &lt;columnName&gt;DO&lt;/columnName&gt;</span></a>
+<a class="sourceLine" id="cb9-127" data-line-number="127"><span class="co">#&gt;    &lt;columnData&gt;Measurement&lt;/columnData&gt;</span></a>
+<a class="sourceLine" id="cb9-128" data-line-number="128"><span class="co">#&gt;    &lt;mappingColumn&gt;oxygen concentration&lt;/mappingColumn&gt;</span></a>
+<a class="sourceLine" id="cb9-129" data-line-number="129"><span class="co">#&gt;    &lt;type&gt;numeric&lt;/type&gt;</span></a>
+<a class="sourceLine" id="cb9-130" data-line-number="130"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
+<a class="sourceLine" id="cb9-131" data-line-number="131"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-132" data-line-number="132"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-133" data-line-number="133"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-134" data-line-number="134"><span class="co">#&gt;    &lt;dataFileName&gt;dissolved_oxygen_measures.csv&lt;/dataFileName&gt;</span></a>
+<a class="sourceLine" id="cb9-135" data-line-number="135"><span class="co">#&gt;    &lt;columnName&gt;Unit_1&lt;/columnName&gt;</span></a>
+<a class="sourceLine" id="cb9-136" data-line-number="136"><span class="co">#&gt;    &lt;columnData&gt;other&lt;/columnData&gt;</span></a>
+<a class="sourceLine" id="cb9-137" data-line-number="137"><span class="co">#&gt;    &lt;mappingColumn&gt;&lt;/mappingColumn&gt;</span></a>
+<a class="sourceLine" id="cb9-138" data-line-number="138"><span class="co">#&gt;    &lt;type&gt;character&lt;/type&gt;</span></a>
+<a class="sourceLine" id="cb9-139" data-line-number="139"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
+<a class="sourceLine" id="cb9-140" data-line-number="140"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-141" data-line-number="141"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-142" data-line-number="142"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-143" data-line-number="143"><span class="co">#&gt;    &lt;dataFileName&gt;dissolved_oxygen_measures.csv&lt;/dataFileName&gt;</span></a>
+<a class="sourceLine" id="cb9-144" data-line-number="144"><span class="co">#&gt;    &lt;columnName&gt;Mode&lt;/columnName&gt;</span></a>
+<a class="sourceLine" id="cb9-145" data-line-number="145"><span class="co">#&gt;    &lt;columnData&gt;other&lt;/columnData&gt;</span></a>
+<a class="sourceLine" id="cb9-146" data-line-number="146"><span class="co">#&gt;    &lt;mappingColumn&gt;&lt;/mappingColumn&gt;</span></a>
+<a class="sourceLine" id="cb9-147" data-line-number="147"><span class="co">#&gt;    &lt;type&gt;character&lt;/type&gt;</span></a>
+<a class="sourceLine" id="cb9-148" data-line-number="148"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
+<a class="sourceLine" id="cb9-149" data-line-number="149"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-150" data-line-number="150"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-151" data-line-number="151"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-152" data-line-number="152"><span class="co">#&gt;    &lt;dataFileName&gt;dissolved_oxygen_measures.csv&lt;/dataFileName&gt;</span></a>
+<a class="sourceLine" id="cb9-153" data-line-number="153"><span class="co">#&gt;    &lt;columnName&gt;Location&lt;/columnName&gt;</span></a>
+<a class="sourceLine" id="cb9-154" data-line-number="154"><span class="co">#&gt;    &lt;columnData&gt;other&lt;/columnData&gt;</span></a>
+<a class="sourceLine" id="cb9-155" data-line-number="155"><span class="co">#&gt;    &lt;mappingColumn&gt;&lt;/mappingColumn&gt;</span></a>
+<a class="sourceLine" id="cb9-156" data-line-number="156"><span class="co">#&gt;    &lt;type&gt;character&lt;/type&gt;</span></a>
+<a class="sourceLine" id="cb9-157" data-line-number="157"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
+<a class="sourceLine" id="cb9-158" data-line-number="158"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-159" data-line-number="159"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-160" data-line-number="160"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-161" data-line-number="161"><span class="co">#&gt;    &lt;dataFileName&gt;dissolved_oxygen_measures.csv&lt;/dataFileName&gt;</span></a>
+<a class="sourceLine" id="cb9-162" data-line-number="162"><span class="co">#&gt;    &lt;columnName&gt;Date_time&lt;/columnName&gt;</span></a>
+<a class="sourceLine" id="cb9-163" data-line-number="163"><span class="co">#&gt;    &lt;columnData&gt;other&lt;/columnData&gt;</span></a>
+<a class="sourceLine" id="cb9-164" data-line-number="164"><span class="co">#&gt;    &lt;mappingColumn&gt;&lt;/mappingColumn&gt;</span></a>
+<a class="sourceLine" id="cb9-165" data-line-number="165"><span class="co">#&gt;    &lt;type&gt;datetime&lt;/type&gt;</span></a>
+<a class="sourceLine" id="cb9-166" data-line-number="166"><span class="co">#&gt;    &lt;description&gt;ymdhms&lt;/description&gt;</span></a>
+<a class="sourceLine" id="cb9-167" data-line-number="167"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-168" data-line-number="168"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-169" data-line-number="169"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-170" data-line-number="170"><span class="co">#&gt;    &lt;dataFileName&gt;dissolved_oxygen_measures.csv&lt;/dataFileName&gt;</span></a>
+<a class="sourceLine" id="cb9-171" data-line-number="171"><span class="co">#&gt;    &lt;columnName&gt;Lid_treatment&lt;/columnName&gt;</span></a>
+<a class="sourceLine" id="cb9-172" data-line-number="172"><span class="co">#&gt;    &lt;columnData&gt;Treatment&lt;/columnData&gt;</span></a>
+<a class="sourceLine" id="cb9-173" data-line-number="173"><span class="co">#&gt;    &lt;mappingColumn&gt;Lid_treatment&lt;/mappingColumn&gt;</span></a>
+<a class="sourceLine" id="cb9-174" data-line-number="174"><span class="co">#&gt;    &lt;type&gt;character&lt;/type&gt;</span></a>
+<a class="sourceLine" id="cb9-175" data-line-number="175"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
+<a class="sourceLine" id="cb9-176" data-line-number="176"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-177" data-line-number="177"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-178" data-line-number="178"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-179" data-line-number="179"><span class="co">#&gt;    &lt;dataFileName&gt;dissolved_oxygen_measures.csv&lt;/dataFileName&gt;</span></a>
+<a class="sourceLine" id="cb9-180" data-line-number="180"><span class="co">#&gt;    &lt;columnName&gt;Jar_type&lt;/columnName&gt;</span></a>
+<a class="sourceLine" id="cb9-181" data-line-number="181"><span class="co">#&gt;    &lt;columnData&gt;other&lt;/columnData&gt;</span></a>
+<a class="sourceLine" id="cb9-182" data-line-number="182"><span class="co">#&gt;    &lt;mappingColumn&gt;&lt;/mappingColumn&gt;</span></a>
+<a class="sourceLine" id="cb9-183" data-line-number="183"><span class="co">#&gt;    &lt;type&gt;character&lt;/type&gt;</span></a>
+<a class="sourceLine" id="cb9-184" data-line-number="184"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
+<a class="sourceLine" id="cb9-185" data-line-number="185"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-186" data-line-number="186"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-187" data-line-number="187"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-188" data-line-number="188"><span class="co">#&gt;    &lt;dataFileName&gt;dissolved_oxygen_measures.csv&lt;/dataFileName&gt;</span></a>
+<a class="sourceLine" id="cb9-189" data-line-number="189"><span class="co">#&gt;    &lt;columnName&gt;Jar_ID&lt;/columnName&gt;</span></a>
+<a class="sourceLine" id="cb9-190" data-line-number="190"><span class="co">#&gt;    &lt;columnData&gt;ID&lt;/columnData&gt;</span></a>
+<a class="sourceLine" id="cb9-191" data-line-number="191"><span class="co">#&gt;    &lt;mappingColumn&gt;&lt;/mappingColumn&gt;</span></a>
+<a class="sourceLine" id="cb9-192" data-line-number="192"><span class="co">#&gt;    &lt;type&gt;character&lt;/type&gt;</span></a>
+<a class="sourceLine" id="cb9-193" data-line-number="193"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
+<a class="sourceLine" id="cb9-194" data-line-number="194"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-195" data-line-number="195"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-196" data-line-number="196"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-197" data-line-number="197"><span class="co">#&gt;    &lt;dataFileName&gt;smell.csv&lt;/dataFileName&gt;</span></a>
+<a class="sourceLine" id="cb9-198" data-line-number="198"><span class="co">#&gt;    &lt;columnName&gt;smell&lt;/columnName&gt;</span></a>
+<a class="sourceLine" id="cb9-199" data-line-number="199"><span class="co">#&gt;    &lt;columnData&gt;Measurement&lt;/columnData&gt;</span></a>
+<a class="sourceLine" id="cb9-200" data-line-number="200"><span class="co">#&gt;    &lt;mappingColumn&gt;smell&lt;/mappingColumn&gt;</span></a>
+<a class="sourceLine" id="cb9-201" data-line-number="201"><span class="co">#&gt;    &lt;type&gt;character&lt;/type&gt;</span></a>
+<a class="sourceLine" id="cb9-202" data-line-number="202"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
+<a class="sourceLine" id="cb9-203" data-line-number="203"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-204" data-line-number="204"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-205" data-line-number="205"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-206" data-line-number="206"><span class="co">#&gt;    &lt;dataFileName&gt;smell.csv&lt;/dataFileName&gt;</span></a>
+<a class="sourceLine" id="cb9-207" data-line-number="207"><span class="co">#&gt;    &lt;columnName&gt;Date&lt;/columnName&gt;</span></a>
+<a class="sourceLine" id="cb9-208" data-line-number="208"><span class="co">#&gt;    &lt;columnData&gt;other&lt;/columnData&gt;</span></a>
+<a class="sourceLine" id="cb9-209" data-line-number="209"><span class="co">#&gt;    &lt;mappingColumn&gt;&lt;/mappingColumn&gt;</span></a>
+<a class="sourceLine" id="cb9-210" data-line-number="210"><span class="co">#&gt;    &lt;type&gt;datetime&lt;/type&gt;</span></a>
+<a class="sourceLine" id="cb9-211" data-line-number="211"><span class="co">#&gt;    &lt;description&gt;ymdhms&lt;/description&gt;</span></a>
+<a class="sourceLine" id="cb9-212" data-line-number="212"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-213" data-line-number="213"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-214" data-line-number="214"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-215" data-line-number="215"><span class="co">#&gt;    &lt;dataFileName&gt;smell.csv&lt;/dataFileName&gt;</span></a>
+<a class="sourceLine" id="cb9-216" data-line-number="216"><span class="co">#&gt;    &lt;columnName&gt;Lid_treatment&lt;/columnName&gt;</span></a>
+<a class="sourceLine" id="cb9-217" data-line-number="217"><span class="co">#&gt;    &lt;columnData&gt;Treatment&lt;/columnData&gt;</span></a>
+<a class="sourceLine" id="cb9-218" data-line-number="218"><span class="co">#&gt;    &lt;mappingColumn&gt;&lt;/mappingColumn&gt;</span></a>
+<a class="sourceLine" id="cb9-219" data-line-number="219"><span class="co">#&gt;    &lt;type&gt;character&lt;/type&gt;</span></a>
+<a class="sourceLine" id="cb9-220" data-line-number="220"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
+<a class="sourceLine" id="cb9-221" data-line-number="221"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-222" data-line-number="222"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-223" data-line-number="223"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-224" data-line-number="224"><span class="co">#&gt;    &lt;dataFileName&gt;smell.csv&lt;/dataFileName&gt;</span></a>
+<a class="sourceLine" id="cb9-225" data-line-number="225"><span class="co">#&gt;    &lt;columnName&gt;Jar_type&lt;/columnName&gt;</span></a>
+<a class="sourceLine" id="cb9-226" data-line-number="226"><span class="co">#&gt;    &lt;columnData&gt;other&lt;/columnData&gt;</span></a>
+<a class="sourceLine" id="cb9-227" data-line-number="227"><span class="co">#&gt;    &lt;mappingColumn&gt;Lid_treatment&lt;/mappingColumn&gt;</span></a>
+<a class="sourceLine" id="cb9-228" data-line-number="228"><span class="co">#&gt;    &lt;type&gt;character&lt;/type&gt;</span></a>
+<a class="sourceLine" id="cb9-229" data-line-number="229"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
+<a class="sourceLine" id="cb9-230" data-line-number="230"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-231" data-line-number="231"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-232" data-line-number="232"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-233" data-line-number="233"><span class="co">#&gt;    &lt;dataFileName&gt;abundances.csv&lt;/dataFileName&gt;</span></a>
+<a class="sourceLine" id="cb9-234" data-line-number="234"><span class="co">#&gt;    &lt;columnName&gt;Jar_ID&lt;/columnName&gt;</span></a>
+<a class="sourceLine" id="cb9-235" data-line-number="235"><span class="co">#&gt;    &lt;columnData&gt;ID&lt;/columnData&gt;</span></a>
+<a class="sourceLine" id="cb9-236" data-line-number="236"><span class="co">#&gt;    &lt;mappingColumn&gt;&lt;/mappingColumn&gt;</span></a>
+<a class="sourceLine" id="cb9-237" data-line-number="237"><span class="co">#&gt;    &lt;type&gt;character&lt;/type&gt;</span></a>
+<a class="sourceLine" id="cb9-238" data-line-number="238"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
+<a class="sourceLine" id="cb9-239" data-line-number="239"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-240" data-line-number="240"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-241" data-line-number="241"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-242" data-line-number="242"><span class="co">#&gt;    &lt;dataFileName&gt;abundances.csv&lt;/dataFileName&gt;</span></a>
+<a class="sourceLine" id="cb9-243" data-line-number="243"><span class="co">#&gt;    &lt;columnName&gt;Date_time&lt;/columnName&gt;</span></a>
+<a class="sourceLine" id="cb9-244" data-line-number="244"><span class="co">#&gt;    &lt;columnData&gt;other&lt;/columnData&gt;</span></a>
+<a class="sourceLine" id="cb9-245" data-line-number="245"><span class="co">#&gt;    &lt;mappingColumn&gt;&lt;/mappingColumn&gt;</span></a>
+<a class="sourceLine" id="cb9-246" data-line-number="246"><span class="co">#&gt;    &lt;type&gt;datetime&lt;/type&gt;</span></a>
+<a class="sourceLine" id="cb9-247" data-line-number="247"><span class="co">#&gt;    &lt;description&gt;ymdhms&lt;/description&gt;</span></a>
+<a class="sourceLine" id="cb9-248" data-line-number="248"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-249" data-line-number="249"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-250" data-line-number="250"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-251" data-line-number="251"><span class="co">#&gt;    &lt;dataFileName&gt;abundances.csv&lt;/dataFileName&gt;</span></a>
+<a class="sourceLine" id="cb9-252" data-line-number="252"><span class="co">#&gt;    &lt;columnName&gt;Lid_treatment&lt;/columnName&gt;</span></a>
+<a class="sourceLine" id="cb9-253" data-line-number="253"><span class="co">#&gt;    &lt;columnData&gt;Treatment&lt;/columnData&gt;</span></a>
+<a class="sourceLine" id="cb9-254" data-line-number="254"><span class="co">#&gt;    &lt;mappingColumn&gt;Lid_treatment&lt;/mappingColumn&gt;</span></a>
+<a class="sourceLine" id="cb9-255" data-line-number="255"><span class="co">#&gt;    &lt;type&gt;character&lt;/type&gt;</span></a>
+<a class="sourceLine" id="cb9-256" data-line-number="256"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
+<a class="sourceLine" id="cb9-257" data-line-number="257"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-258" data-line-number="258"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-259" data-line-number="259"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-260" data-line-number="260"><span class="co">#&gt;    &lt;dataFileName&gt;abundances.csv&lt;/dataFileName&gt;</span></a>
+<a class="sourceLine" id="cb9-261" data-line-number="261"><span class="co">#&gt;    &lt;columnName&gt;Jar_type&lt;/columnName&gt;</span></a>
+<a class="sourceLine" id="cb9-262" data-line-number="262"><span class="co">#&gt;    &lt;columnData&gt;other&lt;/columnData&gt;</span></a>
+<a class="sourceLine" id="cb9-263" data-line-number="263"><span class="co">#&gt;    &lt;mappingColumn&gt;&lt;/mappingColumn&gt;</span></a>
+<a class="sourceLine" id="cb9-264" data-line-number="264"><span class="co">#&gt;    &lt;type&gt;character&lt;/type&gt;</span></a>
+<a class="sourceLine" id="cb9-265" data-line-number="265"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
+<a class="sourceLine" id="cb9-266" data-line-number="266"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-267" data-line-number="267"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-268" data-line-number="268"><span class="co">#&gt;   &lt;DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-269" data-line-number="269"><span class="co">#&gt;    &lt;dataFileName&gt;abundances.csv&lt;/dataFileName&gt;</span></a>
+<a class="sourceLine" id="cb9-270" data-line-number="270"><span class="co">#&gt;    &lt;columnName&gt;count_number&lt;/columnName&gt;</span></a>
+<a class="sourceLine" id="cb9-271" data-line-number="271"><span class="co">#&gt;    &lt;columnData&gt;Measurement&lt;/columnData&gt;</span></a>
+<a class="sourceLine" id="cb9-272" data-line-number="272"><span class="co">#&gt;    &lt;mappingColumn&gt;abundance&lt;/mappingColumn&gt;</span></a>
+<a class="sourceLine" id="cb9-273" data-line-number="273"><span class="co">#&gt;    &lt;type&gt;numeric&lt;/type&gt;</span></a>
+<a class="sourceLine" id="cb9-274" data-line-number="274"><span class="co">#&gt;    &lt;description&gt;&lt;/description&gt;</span></a>
+<a class="sourceLine" id="cb9-275" data-line-number="275"><span class="co">#&gt;    &lt;comment&gt;&lt;/comment&gt;</span></a>
+<a class="sourceLine" id="cb9-276" data-line-number="276"><span class="co">#&gt;   &lt;/DataFileMetaData&gt;</span></a>
+<a class="sourceLine" id="cb9-277" data-line-number="277"><span class="co">#&gt;  &lt;/DataFileMetaDataList&gt;</span></a>
+<a class="sourceLine" id="cb9-278" data-line-number="278"><span class="co">#&gt; &lt;/ExampleData&gt;</span></a></code></pre></div>
 <p>When you specify the argument <code>file</code>, the xml will be saved:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">emeSchemeToXml</span>( x, <span class="dt">tag =</span> <span class="st">&quot;ExampleData&quot;</span>, <span class="dt">file =</span> <span class="st">&quot;ExampleData.xml&quot;</span> )</a></code></pre></div>
 <!-- ## Re-import from xml into R -->
