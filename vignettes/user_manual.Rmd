@@ -102,7 +102,7 @@ The package `emeScheme` includes examples of raw data, processing scripts, proce
 The examples (so far only one) are:
 - `basic`: a basic simple example
 
-More examples wll follow later.
+More examples will follow later.
 
 You can always see a list of examples included by running the command
 
