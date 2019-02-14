@@ -1,3 +1,8 @@
+
+* added suggestedValues to Measurement$dataExtractionMethod and Measurement$measuredFrom on spreadsheet
+* added suggestedValues to Measurement$dataExtractionMethod and Measurement$measuredFrom on spreadsheet
+* Measurement$dataExtractionMethod uses **none** as sugested on spreadsheet
+
 # release 0.8
 This is the first **beta** release for public testing and contains numerous changes from the earlier versions.
 The scheme itself as well as the functions should be stable now.
@@ -11,3 +16,4 @@ The scheme itself as well as the functions should be stable now.
 
 
 
+**<span style="color:red">TODO</span>**
