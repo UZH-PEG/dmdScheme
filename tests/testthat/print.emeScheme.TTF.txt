@@ -39,7 +39,7 @@ A       Type  : character | character | character | character | character | inte
 
 XA      row.names: 1 | 2 | 3 | 4
 XA      propertyName: Measurement
-XA      suggestedValues: NA | O2 concentration, video, manual count, abundance, DNA, … | presens Optode, microscopy, … | %, mmol, count, … | species, OUT, gene, community, particles, … | NA | NA | NA | NA | NA | NA
+XA      suggestedValues: NA | O2 concentration, video, manual count, abundance, DNA, … | presens Optode, microscopy, … | %, mmol, count, … | species, OUT, gene, community, particles, … | NA | NA | NA | Mol_Analy_pipeline1, none | oxygen concentration, abundance, smell, sequenceData, raw | NA
 XA      Description: Name of the Measurement process. This includes methodology, variables, ... . Each name specifies one Measurement process and can occur multiple times. | The variable measured. | Name of the method used. | Unit of the measured variable | The object measured. E.g. species in the case of manual count, gene for genetic analysis, particle for particle counters. | Total length of the time series in days. | Total number of all samples in the time series. | The sampling volumne. If e.g. atmosphere in container is sampled (oxygen measurements), than enter 0. | as used in the sheet DataExtraction, column name | if measured from the experiment, raw, else the name (first column) of the measurement it is based on. | NA
 XA      class: emeSchemeData_Measurement | emeSchemeData | emeScheme | tbl_df | tbl | data.frame
 

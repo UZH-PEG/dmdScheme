@@ -43,91 +43,110 @@ validate <- function(
   errorIfStructFalse = TRUE
 ) {
 
+  # HELPER: new_emeScheme_validation ----------------------------------------
+
+  new_emeScheme_validation <- function() {
+    result <- list(
+      error = NA,
+      details = NA
+    )
+    class(result) <- append( "emeScheme_validation", class(result) )
+    return(result)
+  }
+
   # HELPER: checkTypes ------------------------------------------------------
 
   checkTypes <- function(sraw, sconv) {
+    result <- new_emeScheme_validation()
+    ##
     t <- sraw == sconv
     na <- is.na(t)
     t[na] <- TRUE
-    result <- as.data.frame(sraw)
-    result[t] <- "OK"
-    result[!t] <- paste( result[!t], "!=", as.data.frame(sconv)[!t])
-    result[na] <- NA
+    result$details <- as.data.frame(sraw)
+    result$details[t] <- "OK"
+    result$details[!t] <- paste( result$details[!t], "!=", as.data.frame(sconv)[!t])
+    result$details[na] <- NA
+    result$details <- as_tibble(result$details)
     ##
-    return(as_tibble(result))
+    result$error = ifelse( all(result$details == "OK",na.rm = TRUE), 0, 3)
+    ##
+    return( result )
   }
 
 
   # HELPER: checkSuggestedValues --------------------------------------------
 
   checkSuggestedValues <- function(sraw) {
-    result <- as_tibble(sraw)
+    result <- new_emeScheme_validation()
+    ##
+    result$details <- as_tibble(sraw)
     sugVal <- strsplit(attr(sraw, "suggestedValues"), ",")
     ##
     for (colN in 1:ncol(sraw)) {
       v <- trimws(sugVal[[colN]] )
       for (rowN in 1:nrow(sraw)) {
-        if ( all(is.na(v)) | is.na(result[rowN, colN]) ) {
+        if ( all(is.na(v)) | is.na(result$details[rowN, colN]) ) {
           sug <- NA
         } else {
-          sug <- result[rowN, colN] %in% v
+          sug <- result$details[rowN, colN] %in% v
           sug <- ifelse(
             sug,
             "OK",
-            paste0("'", result[rowN, colN], "' not in suggested Values!")
+            paste0("'", result$details[rowN, colN], "' not in suggested Values!")
           )
         }
-        result[rowN, colN] <- sug
+        result$details[rowN, colN] <- sug
       }
     }
     ##
-    return(result)
+    result$error = ifelse( all(result$details == "OK",na.rm = TRUE), 0, 2)
+    ##
+    return( result )
   }
 
   # HELPER: checkAllowedValues --------------------------------------------
 
   checkAllowedValues <- function(sraw) {
-    result <- as_tibble(sraw)
+    result <- new_emeScheme_validation()
+    ##
+    result$details <- as_tibble(sraw)
     allVal <- strsplit(attr(sraw, "allowedValues"), ",")
     ##
     for (colN in 1:ncol(sraw)) {
       v <- trimws(allVal[[colN]] )
       for (rowN in 1:nrow(sraw)) {
-        if ( all(is.na(v)) | is.na(result[rowN, colN]) ) {
+        if ( all(is.na(v)) | is.na(result$details[rowN, colN]) ) {
           al <- NA
         } else {
-          al <- result[rowN, colN] %in% v
+          al <- result$details[rowN, colN] %in% v
           al <- ifelse(
             al,
             "OK",
-            paste0("'", result[rowN, colN], "' not in allowed Values!")
+            paste0("'", result$details[rowN, colN], "' not in allowed Values!")
           )
         }
-        result[rowN, colN] <- al
+        result$details[rowN, colN] <- al
       }
     }
     ##
-    return(result)
+    result$error = ifelse( all(result$details == "OK",na.rm = TRUE), 0, 3)
+    ##
+    return( result )
   }
 
 
   # HELPER: Validate Structure ------------------------------------------------
 
   validateStructure <- function( x ){
-    ##
-    result <- list(
-      result = FALSE,
-      details = NA
-    )
+    result <- new_emeScheme_validation()
     ##
     struct <- new_emeSchemeSet( x, keepData = FALSE, verbose = FALSE)
     attr(struct, "propertyName") <- "emeScheme"
     result$details <- all.equal(struct, emeScheme)
     if (isTRUE(result$details)){
-      result$result <- TRUE
-      result$details <- "OK"
+      result$error <- 0
     } else {
-      result$result <- FALSE
+      result$error <- 3
     }
     ##
     return(result)
@@ -136,30 +155,21 @@ validate <- function(
   # HELPER: Validate Experiment ------------------------------------------------
 
   validateExperiment <- function( x, xraw, xconv ){
-    s <- x$Experiment
-    ##
-    result <- list(
-      result = FALSE,
-      details = NA
-    )
-    ##
+    result <- new_emeScheme_validation()
     ##
     result$types <- checkTypes(xraw$Experiment, xconv$Experiment)
     ##
     result$suggestedValues <- checkSuggestedValues(xraw$Experiment)
-    # return ------------------------------------------------------------------
-
+    ##
+    result$error <- max(valErr_extract(result), na.rm = TRUE)
+    ##
     return(result)
   }
 
   # HELPER: Validate Species ------------------------------------------------
 
   validateSpecies <- function( x, xraw, xconv ){
-    ##
-    result <- list(
-      result = FALSE,
-      details = NA
-    )
+    result <- new_emeScheme_validation()
     ##
     result$types <- checkTypes(xraw$Species, xconv$Species)
     ##
@@ -167,7 +177,15 @@ validate <- function(
     ##
 
     # Validate species names --------------------------------------------------
-    result$speciesNames <- taxize::gnr_resolve(xraw$Species$name, best_match_only = TRUE)
+    result$speciesNames <- new_emeScheme_validation()
+    result$speciesNames$details <- taxize::gnr_resolve(xraw$Species$name, best_match_only = TRUE)
+    if (length(attr(result$speciesNames$details, "not_known")) > 0) {
+      result$speciesNames$error <- 2
+    } else if (min(result$speciesNames$details$score) < 0.7) {
+      result$speciesNames$error <- 2
+    }
+    ##
+    result$error <- max(valErr_extract(result), na.rm = TRUE)
     ##
     return(result)
   }
@@ -175,14 +193,26 @@ validate <- function(
   # HELPER: Validate Treatment ------------------------------------------------
 
   validateTreatment <- function( x, xraw, xconv ){
-    s <- x$Treatment
+    result <- new_emeScheme_validation()
     ##
-    result <- list()
-    result$result <- "TODO"
+    s <- x$Treatment
     ##
     result$types <- checkTypes(xraw$Treatment, xconv$Treatment)
     ##
     result$suggestedValues <- checkSuggestedValues(xraw$Treatment)
+    ##
+    res <- new_emeScheme_validation()
+    res$details <- unique(xraw$Treatment$parameter) %in% xraw$DataFileMetaData$mappingColumn
+    names(res$details) <- unique(xraw$Treatment$parameter)
+    res$error <- ifelse(
+      all(res$details),
+      0,
+      2
+    )
+    result$parameterInMappinColumn <- res
+    rm(res)
+    ##
+    result$error <- max(valErr_extract(result), na.rm = TRUE)
     ##
     return(result)
   }
@@ -190,15 +220,50 @@ validate <- function(
   # HELPER: Validate Measurement ------------------------------------------------
 
   validateMeasurement <- function( x, xraw, xconv ){
-    ##
-    result <- list(
-      result = FALSE,
-      details = NA
-    )
+    result <- new_emeScheme_validation()
     ##
     result$types <- checkTypes(xraw$Measurement, xconv$Measurement)
     ##
     result$suggestedValues <- checkSuggestedValues(xraw$Measurement)
+    ##
+    ## names unique
+    nu <- !duplicated(xraw$Measurement$name)
+    names(nu) <- xraw$Measurement$name
+    result$nameUnique <- list(
+      error = ifelse(
+        all(nu),
+        0,
+        3
+      ),
+      details = nu
+    )
+    rm(nu)
+    ##
+    ##  measuredFrom in name, raw, "NA" or NA
+    mf <- xraw$Measurement$measuredFrom %in% c(xraw$Measurement$name, "raw", "NA", NA)
+    names(mf) <- xraw$Measurement$name
+    result$measuredFrom <- list(
+      error = ifelse(
+        all(mf),
+        0,
+        3
+      ),
+      details = mf
+    )
+    rm(mf)
+    ##
+    res <- new_emeScheme_validation()
+    res$details <- unique(xraw$Measurement$variable) %in% xraw$DataFileMetaData$mappingColumn
+    names(res$details) <- unique(xraw$Measurement$variable)
+    res$error <- ifelse(
+      all(res$details),
+      0,
+      2
+    )
+    result$variableInMappinColumn <- res
+    rm(res)
+    ##
+    result$error <- max(valErr_extract(result), na.rm = TRUE)
     ##
     return(result)
   }
@@ -206,20 +271,30 @@ validate <- function(
   # HELPER: Validate DataExtraction ------------------------------------------------
 
   validateDataExtraction <- function( x, xraw, xconv ){
-    ##
-    result <- list(
-      result = FALSE,
-      details = NA
-    )
+    result <- new_emeScheme_validation()
     ##
     result$types <- checkTypes(xraw$DataExtraction, xconv$DataExtraction)
     ##
     result$suggestedValues <- checkSuggestedValues(xraw$DataExtraction)
+    ## names unique
+    nu <- !duplicated(xraw$DataExtraction$name)
+    names(nu) <- xraw$DataExtraction$name
+    result$nameUnique <- list(
+      error = ifelse(
+        all(nu),
+        0,
+        3
+      ),
+      details = nu
+    )
+    rm(nu)
+    ##
+    result$error <- max(valErr_extract(result), na.rm = TRUE)
     ##
     return(result)
   }
 
-  # HELPER: Validate Columns ------------------------------------------------
+  # HELPER: Validate xxx Columns ------------------------------------------------
 
   valCol <- function( x ){
     cols <- unique(x$variableName)
@@ -242,39 +317,33 @@ validate <- function(
   # HELPER: Validate DataFileMetaData ---------------------------------------
 
   validateDataFileMetaData <- function( x, xraw, xconv ){
-    ##
-    result <- list(
-      result = FALSE,
-      details = NA
-    )
+    result <- new_emeScheme_validation()
     ##
     result$types <- checkTypes(xraw$DataFileMetaData, xconv$DataFileMetaData)
     ##
     result$allowedValues <- checkAllowedValues(xraw$DataFileMetaData)
     ##
-    dfns <- unique(xraw$DataFileMetaData$dataFileName)
-    names(dfns) <- dfns
-    dfns <- file.path(path, dfns)
-    result$fileExists <- file.exists(dfns)
-    names(result$fileExists) <- dfns
-    #
-    #   lapply(
-    #   dfns,
-    #   function(dfn) {
-    #     # Validate existence of data files ----------------------------------------
-    #     file.exists(dfn)
-    #     if (file.exists(dfn)) {
-    #
-    #       # Validate columne --------------------------------------------------------
-    #
-    #       result$valColumns <- valCol(
-    #         s %>% dplyr::filter(.data$dataFileName == dfn)
-    #       )
-    #
-    #     }
-    #     return(result)
-    #   }
-    # )
+    result$dataFilesExist <- new_emeScheme_validation()
+    fns <- unique(xraw$DataFileMetaData$dataFileName)
+    fns <- file.path(path, fns)
+    result$dataFilesExist$details <- file.exists(fns)
+    names(result$dataFilesExist$details) <- fns
+    result$dataFilesExist$error <- ifelse(
+      all(result$dataFilesExist$details),
+      0,
+      3
+    )
+    ##
+    result$datetimeFormatSpecified <- new_emeScheme_validation()
+    result$datetimeFormatSpecified$details <- xraw$DataFileMetaData %>% dplyr::select(type, description) %>%
+      filter( type %in% c("date", "time", "datetime") )
+    result$datetimeFormatSpecified$error <- ifelse(
+      any( !is.na(result$datetimeFormatSpecified$details$description) ),
+      0,
+      3
+    )
+    ##
+    result$error <- max(valErr_extract(result), na.rm = TRUE)
     ##
     return(result)
   }
@@ -282,6 +351,17 @@ validate <- function(
 
 
 
+
+
+  # HELPER: Validate dataFile -----------------------------------------------
+
+  validateDataFile <- function( x, xraw, xconv ){
+    result <- new_emeScheme_validation()
+    ##
+    result$error <- max(valErr_extract(result), na.rm = TRUE)
+    ##
+    return(result)
+  }
 
   # Check arguments ---------------------------------------------------------
 
@@ -303,35 +383,21 @@ validate <- function(
 
   # Define result structure of class emeScheme_validation ----------------------
 
-  result <- list(
-    structure = list(
-      result = NA
-    ),
-    Experiment = list(
-      result = NA
-    ),
-    Species = list(
-      result = NA
-    ),
-    Treatment = list(
-      result = NA
-    ),
-    Measurement = list(
-      result = NA
-    ),
-    DataExtraction = list(
-      result = NA
-    ),
-    DataFileMetaData = list(
-      result = NA
-    )
-  )
-  class(result) <- append( "emeScheme_validation", class(result) )
+  result <- new_emeScheme_validation()
+  ##
+  result$Experiment <- new_emeScheme_validation()
+  result$Species <- new_emeScheme_validation()
+  result$Treatment <- new_emeScheme_validation()
+  result$Measurement <- new_emeScheme_validation()
+  result$DataExtraction <- new_emeScheme_validation()
+  result$DataFileMetaData <- new_emeScheme_validation()
+  result$dataFile <- new_emeScheme_validation()
+  ##
 
   # Validate structure ------------------------------------------------------
 
   result$structure <- validateStructure( x )
-  if (!result$structure$result & errorIfStructFalse) {
+  if (result$structure$error != 0 & errorIfStructFalse) {
     cat_ln(result$structure$details)
     stop("Structure of the object to be evaluated is wrong. See the info above for details.")
   }
@@ -339,7 +405,7 @@ validate <- function(
 
   # Validata data -----------------------------------------------------------
 
-  if (result$structure$result & validateData){
+  if ((result$structure$error == 0) & validateData){
 
     # convert with and without conversion -------------------------------------
 
@@ -371,6 +437,10 @@ validate <- function(
     result$DataFileMetaData <- validateDataFileMetaData(x, xraw, xconv)
 
   }
+
+  # Set overall error -------------------------------------------------------
+
+  result$error <- max(valErr_extract(result), na.rm = TRUE)
 
   # Generate report ---------------------------------------------------------
 

@@ -54,7 +54,7 @@
    <lengthOfTimeSeries>50</lengthOfTimeSeries>
    <noOfSamplesInTimeSeries>50</noOfSamplesInTimeSeries>
    <samplingVolume>0</samplingVolume>
-   <dataExtractionName></dataExtractionName>
+   <dataExtractionName>none</dataExtractionName>
    <measuredFrom>raw</measuredFrom>
    <comment>data stil being collected</comment>
   </Measurement>
@@ -78,7 +78,7 @@
    <lengthOfTimeSeries>100</lengthOfTimeSeries>
    <noOfSamplesInTimeSeries>6</noOfSamplesInTimeSeries>
    <samplingVolume>0</samplingVolume>
-   <dataExtractionName></dataExtractionName>
+   <dataExtractionName>none</dataExtractionName>
    <measuredFrom>raw</measuredFrom>
    <comment>May collect more</comment>
   </Measurement>
@@ -90,7 +90,7 @@
    <lengthOfTimeSeries>100</lengthOfTimeSeries>
    <noOfSamplesInTimeSeries>6</noOfSamplesInTimeSeries>
    <samplingVolume>0</samplingVolume>
-   <dataExtractionName></dataExtractionName>
+   <dataExtractionName>none</dataExtractionName>
    <measuredFrom>raw</measuredFrom>
    <comment>May collect more</comment>
   </Measurement>

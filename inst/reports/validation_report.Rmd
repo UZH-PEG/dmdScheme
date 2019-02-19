@@ -8,7 +8,10 @@ title: "`r params$title`"
 author: "`r params$author`"
 date: "`r Sys.Date()`"
 output:
-  html_document: default
+  html_document: 
+    toc_depth: 3
+    toc: true
+    toc_float: true
   pdf_document: default
   word_document: default
 ---
@@ -30,13 +33,105 @@ if (is.null(x)) {
   result <- validate(x = emeScheme_raw, validateData = TRUE, report = "none")
 }
 ## ##
+## Define colours for results of evaluation
+
 ```
 
 * **Author**: `r params$author`
 * **emeScheme metadata name**: `r attr(x, "fileName")`
 * **data package path**: `add this`
 
-# Overall validation outcome
+# Overview
+
+## `r valErr_TextErrCol("Structural / Formal validity", result$structure$error)`
+
+## `r valErr_TextErrCol("Experiment", result$Experiment$error)`
+- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$Experiment$types$error)` [See Details](#ExperimentTypesD)
+- `r valErr_TextErrCol("values in suggestedValues", result$Experiment$suggestedValues$error)` [See Details](#ExperimentSuggestD)
+
+## `r valErr_TextErrCol("Species", result$Species$error)`
+
+- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$Species$types$error)` [See Details](#SpeciesTypesD)
+- `r valErr_TextErrCol("values in suggestedValues", result$Species$suggestedValues$error)` [See Details](#SpeciesSuggestD)
+- `r valErr_TextErrCol("name in species database and report score (using taxize::gnr_resolve())", result$Species$suggestedValues$error)` [See Details](#SpeciesNamesD)
+
+## `r valErr_TextErrCol("Treatment", result$Treatment$error)`
+- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$Treatment$types$error)`
+- `r valErr_TextErrCol("values in suggestedValues", result$Treatment$suggestedValues$error)`
+
+### <== DataFileMetaData
+- `r valErr_TextErrCol("parameter is in mappingColumn", result$Treatment$parameterInMappinColumn$error)`
+
+
+
+## `r valErr_TextErrCol("Measurement", result$Measurement$error)`
+- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$Measurement$types$error)`
+- `r valErr_TextErrCol("values in suggestedValues", result$Measurement$suggestedValues$error)`
+- `r valErr_TextErrCol("names unique", result$Measurement$nameUnique$error)`
+- `r valErr_TextErrCol("measuredFrom is 'raw', 'NA', NA or in name", result$Measurement$measuredFrom$error)`
+
+### <== DataFileMetaData
+- `r valErr_TextErrCol("variable is in mappingColumn", result$Measurement$variableInMappinColumn$error)`
+
+### <== DataExtractionName
+- [ ] `dataExtractionName` is "none", "NA", or in `DataExtraction$name`
+
+
+
+
+
+## `r valErr_TextErrCol("DataExtraction", result$DataExtraction$error)`
+- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$DataExtraction$types$error)`
+- `r valErr_TextErrCol("values in suggestedValues", result$DataExtraction$suggestedValues$error)`
+- `r valErr_TextErrCol("names unique", result$DataExtraction$nameUnique$error)`
+
+### <== Measurement
+- [ ] `name` is in `Measurement$dataExtractionName`
+
+## `r valErr_TextErrCol("DataFileMetaData", result$DataFileMetaData$error)`
+- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$DataFileMetaData$types$error)`
+- `r valErr_TextErrCol("values in allowedValues", result$DataFileMetaData$allowedValues$error)`
+- `r valErr_TextErrCol("dataFile exists in path", result$DataFileMetaData$dataFilesExist$error)`
+- `r valErr_TextErrCol("if type == 'datetime', description has format information", result$DataFileMetaData$datetimeFormatSpecified$error)`
+
+## <== Measurement
+- [ ] if `columnData` == "Measurement", `mappingColumn` has to be in `Measurement$name`
+
+## <== Treatment
+- [ ] if `columnData` == "Treatment", `mappingColumn` has to be in `Treatment$name`
+
+### <== data file
+- [ ] `columnName` has to be in the data file `dataFileName`
+- [ ] the date, time and date time can be converted using the format specifications in `description`
+
+## Data Files
+- [ ] ranges of numeric columns
+- [ ] values of text columns
+- [ ] ???
+
+### <== DataFileMetaData
+- [ ] column names have to be in `DataFileName$columnName`
+
+### <== Treatment
+- [ ] the **values** in the column describing the treatment (i.e. treatment levels) have to be in the column `Treatment$treatmentLevel` of the corresponding `Treatment$parameter`
+
+### <== Measurement
+- [ ] type checks of `columnName` compared to `type`
+
+# Other Validity Checks
+- [ ] ???
+
+
+
+
+
+
+
+
+# Details
+
+
+## Overall validation outcome
 
 Here there will be a report on the overall validation outcome, e.g., your metadata-data combination passed x/y critical tests, and passed z/n desirable tests. Please see below for details of each test result.
 
@@ -48,99 +143,99 @@ attributes(x)
 
 Use conditional text to explicitly say pass or fail, so that users don't have to read the R output (or at least get lovely green text for pass, and red for fail!)
 
-# Validate General Structure
+## Validate General Structure
 ```{r val_struct, options}
 result$structOK
 ```
 
 
-# Validate Experiment
-## Types
+## Validate Experiment
+### Types {#ExperimentTypesD}
 ```{r}
 result$Experiment$types %>%
   kable()
 ```
 
-## Suggested Values
+### Suggested Values {#ExperimentSuggestD}
 ```{r}
 result$Experiment$suggestedValues %>%
   kable()
 ```
 
-# Validate Species
-## Types
+## Validate Species 
+### Types {#SpeciesTypesD}
 ```{r}
 result$Species$types %>%
   kable()
 ```
 
-## Suggested Values
+### Suggested Values {#SpeciesSuggestD}
 ```{r}
 result$Species$suggestedValues %>%
   kable()
 ```
 
-## Species Names
+### Species Names {#SpeciesNamesD}
 ```{r}
 result$Species$speciesNames %>%
   kable()
 ```
 
-# Validate Treatment
-## Types
+## Validate Treatment
+### Types
 ```{r}
 result$Treatment$types %>%
   kable()
 ```
 
-## Suggested Values
+### Suggested Values
 ```{r}
 result$Treatment$suggestedValues %>%
   kable()
 ```
 
-# Validate Measurement
-## Types
+## Validate Measurement
+### Types
 ```{r}
 result$Measurement$types %>%
   kable()
 ```
 
-## Suggested Values
+### Suggested Values
 ```{r}
 result$Measurement$suggestedValues %>%
   kable()
 ```
 
-# Validate DataExtraction
-## Types
+## Validate DataExtraction
+### Types
 ```{r}
 result$DataExtraction$types %>%
   kable()
 ```
 
-## Suggested Values
+### Suggested Values
 ```{r}
 result$DataExtraction$suggestedValues %>%
   kable()
 ```
 
-# Validate DataFileMetaData
-## Types
+## Validate DataFileMetaData
+### Types
 ```{r}
 result$DataFileMetaData$types %>%
   kable()
 ```
 
-## Suggested Values
+### Suggested Values
 ```{r}
 result$DataFileMetaData$suggestedValues %>%
   kable()
 ```
 
-## Validate mappingColumn
+### Validate mappingColumn
 
-## Validation out of attempt to parse date variables
+### Validation out of attempt to parse date variables
 
-# To do
+## To do
 
