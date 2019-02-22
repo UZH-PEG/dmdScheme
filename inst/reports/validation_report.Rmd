@@ -41,68 +41,93 @@ if (is.null(x)) {
 * **emeScheme metadata name**: `r attr(x, "fileName")`
 * **data package path**: `add this`
 
+<!-- ################################### -->
+<!-- ################################### -->
+<!-- Overview -->
+<!-- ################################### -->
+<!-- ################################### -->
+
 # Overview
+
+<!-- ################################### -->
+<!-- Structural -->
+<!-- ################################### -->
 
 ## `r valErr_TextErrCol("Structural / Formal validity", result$structure$error)`
 
 ## `r valErr_TextErrCol("Experiment", result$Experiment$error)`
-- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$Experiment$types$error)` [See Details](#ExperimentTypesD)
-- `r valErr_TextErrCol("values in suggestedValues", result$Experiment$suggestedValues$error)` [See Details](#ExperimentSuggestD)
+- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$Experiment$types$error)` [See Details](#ExperimentTypes)
+- `r valErr_TextErrCol("values in suggestedValues", result$Experiment$suggestedValues$error)` [See Details](#ExperimentSuggested)
+
+<!-- ################################### -->
+<!-- Species -->
+<!-- ################################### -->
 
 ## `r valErr_TextErrCol("Species", result$Species$error)`
 
-- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$Species$types$error)` [See Details](#SpeciesTypesD)
-- `r valErr_TextErrCol("values in suggestedValues", result$Species$suggestedValues$error)` [See Details](#SpeciesSuggestD)
-- `r valErr_TextErrCol("name in species database and report score (using taxize::gnr_resolve())", result$Species$suggestedValues$error)` [See Details](#SpeciesNamesD)
+- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$Species$types$error)` [See Details](#SpeciesTypes)
+- `r valErr_TextErrCol("values in suggestedValues", result$Species$suggestedValues$error)` [See Details](#SpeciesSuggested)
+- `r valErr_TextErrCol("name in species database and report score (using taxize::gnr_resolve())", result$Species$suggestedValues$error)` [See Details](#SpeciesNames)
+
+<!-- ################################### -->
+<!-- Treatment -->
+<!-- ################################### -->
 
 ## `r valErr_TextErrCol("Treatment", result$Treatment$error)`
-- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$Treatment$types$error)`
-- `r valErr_TextErrCol("values in suggestedValues", result$Treatment$suggestedValues$error)`
+- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$Treatment$types$error)` [See Details](#TreatmentTypes)
+- `r valErr_TextErrCol("values in suggestedValues", result$Treatment$suggestedValues$error)` [See Details](#TreatmentSuggested)
 
 ### <== DataFileMetaData
-- `r valErr_TextErrCol("parameter is in mappingColumn", result$Treatment$parameterInMappinColumn$error)`
+- `r valErr_TextErrCol("parameter is in mappingColumn", result$Treatment$parameterInMappinColumn$error)` [see Details](#TreatmentParameter)
 
-
+<!-- ################################### -->
+<!-- Measurement -->
+<!-- ################################### -->
 
 ## `r valErr_TextErrCol("Measurement", result$Measurement$error)`
-- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$Measurement$types$error)`
-- `r valErr_TextErrCol("values in suggestedValues", result$Measurement$suggestedValues$error)`
-- `r valErr_TextErrCol("names unique", result$Measurement$nameUnique$error)`
-- `r valErr_TextErrCol("measuredFrom is 'raw', 'NA', NA or in name", result$Measurement$measuredFrom$error)`
+- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$Measurement$types$error)` [See Details](#MeasurementTypes)
+- `r valErr_TextErrCol("values in suggestedValues", result$Measurement$suggestedValues$error)` [See Details](#MeasurementSuggested)
+- `r valErr_TextErrCol("names unique", result$Measurement$nameUnique$error)` [details](#MeasurementNameUnique)
+- `r valErr_TextErrCol("measuredFrom is 'raw', 'NA', NA or in name", result$Measurement$measuredFrom$error)` [details](#MeasurementFrom)
 
 ### <== DataFileMetaData
 - `r valErr_TextErrCol("variable is in mappingColumn", result$Measurement$variableInMappinColumn$error)`
 
 ### <== DataExtractionName
-- [ ] `dataExtractionName` is "none", "NA", or in `DataExtraction$name`
+- `r valErr_TextErrCol("dataExtractionName is 'none', 'NA', NA, or in DataExtraction$name", result$Measurement$dataExtractionNameInDataExtractionName$error)`
 
-
-
-
+<!-- ################################### -->
+<!-- DataExtraction -->
+<!-- ################################### -->
 
 ## `r valErr_TextErrCol("DataExtraction", result$DataExtraction$error)`
-- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$DataExtraction$types$error)`
-- `r valErr_TextErrCol("values in suggestedValues", result$DataExtraction$suggestedValues$error)`
-- `r valErr_TextErrCol("names unique", result$DataExtraction$nameUnique$error)`
+- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$DataExtraction$types$error)` [See Details](#DataExtractionTypes)
+- `r valErr_TextErrCol("values in suggestedValues", result$DataExtraction$suggestedValues$error)` [See Details](#DataExtractionSuggested)
+- `r valErr_TextErrCol("names unique", result$DataExtraction$nameUnique$error)` [See Details](#DataExtractionNameUnique})
 
 ### <== Measurement
-- [ ] `name` is in `Measurement$dataExtractionName`
+- `r valErr_TextErrCol("name is in Measurement$dataExtractionName", result$DataExtraction$nameInDataExtractionName$error)` [See Details](#DataExtractionNameName})
+
+<!-- ################################### -->
+<!-- DataFileMetaData -->
+<!-- ################################### -->
 
 ## `r valErr_TextErrCol("DataFileMetaData", result$DataFileMetaData$error)`
-- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$DataFileMetaData$types$error)`
-- `r valErr_TextErrCol("values in allowedValues", result$DataFileMetaData$allowedValues$error)`
+- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$DataFileMetaData$types$error)` (#DataFileMetaDataTypes)
+- `r valErr_TextErrCol("values in allowedValues", result$DataFileMetaData$allowedValues$error)` (#DataFileMetaDataAllowed)
 - `r valErr_TextErrCol("dataFile exists in path", result$DataFileMetaData$dataFilesExist$error)`
 - `r valErr_TextErrCol("if type == 'datetime', description has format information", result$DataFileMetaData$datetimeFormatSpecified$error)`
 
-## <== Measurement
-- [ ] if `columnData` == "Measurement", `mappingColumn` has to be in `Measurement$name`
-
-## <== Treatment
-- [ ] if `columnData` == "Treatment", `mappingColumn` has to be in `Treatment$name`
+## <== Measurement & Treatment
+- `r valErr_TextErrCol("correct values in mappingColumn in dependence on columnData", result$DataFileMetaData$mappingColumnInNameOrParameter$error)` [See details](location)
 
 ### <== data file
 - [ ] `columnName` has to be in the data file `dataFileName`
 - [ ] the date, time and date time can be converted using the format specifications in `description`
+
+<!-- ################################### -->
+<!-- Data Files -->
+<!-- ################################### -->
 
 ## Data Files
 - [ ] ranges of numeric columns
@@ -122,10 +147,11 @@ if (is.null(x)) {
 - [ ] ???
 
 
-
-
-
-
+<!-- ################################### -->
+<!-- ################################### -->
+<!-- Details -->
+<!-- ################################### -->
+<!-- ################################### -->
 
 
 # Details
@@ -150,86 +176,121 @@ result$structOK
 
 
 ## Validate Experiment
-### Types {#ExperimentTypesD}
+### Types {#ExperimentTypes}
 ```{r}
-result$Experiment$types %>%
+result$Experiment$types$details %>%
   kable()
 ```
 
-### Suggested Values {#ExperimentSuggestD}
+### Suggested Values {#ExperimentSuggested}
 ```{r}
-result$Experiment$suggestedValues %>%
+result$Experiment$suggestedValues$details %>%
   kable()
 ```
 
 ## Validate Species 
-### Types {#SpeciesTypesD}
+### Types {#SpeciesTypes}
 ```{r}
-result$Species$types %>%
+result$Species$types$details %>%
   kable()
 ```
 
-### Suggested Values {#SpeciesSuggestD}
+### Suggested Values {#SpeciesSuggested}
 ```{r}
-result$Species$suggestedValues %>%
+result$Species$suggestedValues$details %>%
   kable()
 ```
 
-### Species Names {#SpeciesNamesD}
+### Species Names {#SpeciesNames}
 ```{r}
-result$Species$speciesNames %>%
+result$Species$speciesNames$details %>%
   kable()
 ```
 
 ## Validate Treatment
-### Types
+### Types {#TreatmentTypes}
 ```{r}
-result$Treatment$types %>%
+result$Treatment$types$details %>%
   kable()
 ```
 
-### Suggested Values
+### Suggested Values {#TreatmentSuggested}
 ```{r}
-result$Treatment$suggestedValues %>%
+result$Treatment$suggestedValues$details %>%
+  kable()
+```
+
+### Suggested Values {#TreatmentParameter}
+```{r}
+result$Treatment$parameterInMappinColumn$details %>%
   kable()
 ```
 
 ## Validate Measurement
-### Types
+### Types {#MeasurementTypes}
 ```{r}
-result$Measurement$types %>%
+result$Measurement$types$details %>%
   kable()
 ```
 
-### Suggested Values
-```{r}
-result$Measurement$suggestedValues %>%
+### suggested values {#MeasurementSuggested}
+ ```{r}
+result$Measurement$suggestedValue$detailss %>%
   kable()
 ```
 
+### name unique {#MeasurementNameUnique}
+```{r}
+ result$Measurement$nameUnique$details %>%
+  kable()
+```
+
+### measuredFrom is 'raw', 'NA' or NA {#MeasurementFrom}
+```{r}
+result$Measurement$measuredFrom$details %>%
+  kable()
+```
+
+
+
+ 
 ## Validate DataExtraction
-### Types
+### Types {#DataExtractionTypes}
 ```{r}
-result$DataExtraction$types %>%
+result$DataExtraction$types$details %>%
   kable()
 ```
 
-### Suggested Values
-```{r}
-result$DataExtraction$suggestedValues %>%
+### Suggested Values {#DataExtractionSuggested}
+```{r} 
+result$DataExtraction$suggestedValues$details %>%
   kable()
+```
+
+### name unique {#DataExtractionNameUnique}
+```{r} 
+cat_ln("CHECK - TODO")
+# result$DataExtraction$nameUnique$details %>%
+#  kable()
+```
+
+### name in DataExtraction$name {#DataExtractionNameName}
+```{r} 
+cat_ln("CHECK - TODO")
+# result$DataExtraction$nameInDataExtractionName$details %>%
+#   kable()
 ```
 
 ## Validate DataFileMetaData
-### Types
+### Types {#DataFileMetadataFilesTypes}
 ```{r}
-result$DataFileMetaData$types %>%
+result$DataFileMetaData$types$details %>%
   kable()
 ```
 
-### Suggested Values
+### Suggested Values {#DataFileMetadataAllowed}
 ```{r}
-result$DataFileMetaData$suggestedValues %>%
+result$DataFileMetaData$allowedValues$details %>%
   kable()
 ```
 

@@ -252,6 +252,7 @@ validate <- function(
     )
     rm(mf)
     ##
+    ## variable is in mappingColumn
     res <- new_emeScheme_validation()
     res$details <- unique(xraw$Measurement$variable) %in% xraw$DataFileMetaData$mappingColumn
     names(res$details) <- unique(xraw$Measurement$variable)
@@ -261,6 +262,18 @@ validate <- function(
       2
     )
     result$variableInMappinColumn <- res
+    rm(res)
+    ##
+    ## dataExtractionName is “none”, “NA”, or in DataExtraction$name
+    res <- new_emeScheme_validation()
+    res$details <- xraw$Measurement$dataExtractionName %in% c(xraw$DataExtraction$name, "none", "NA", NA)
+    names(res$details) <- xraw$Measurement$dataExtractionName
+    res$error <- ifelse(
+      all(res$details),
+      0,
+      3
+    )
+    result$dataExtractionNameInDataExtractionName <- res
     rm(res)
     ##
     result$error <- max(valErr_extract(result), na.rm = TRUE)
@@ -288,6 +301,21 @@ validate <- function(
       details = nu
     )
     rm(nu)
+    ##
+    result$error <- max(valErr_extract(result), na.rm = TRUE)
+    ##
+    ##
+    ##  `name` is in `Measurement$dataExtractionName`
+    res <- new_emeScheme_validation()
+    res$details <- xraw$DataExtraction$name %in% xraw$Measurement$dataExtractionName
+    names(res$details) <- xraw$DataExtraction$name
+    res$error <- ifelse(
+      all(res$details),
+      0,
+      2
+    )
+    result$nameInDataExtractionName <- res
+    rm(res)
     ##
     result$error <- max(valErr_extract(result), na.rm = TRUE)
     ##
@@ -335,13 +363,39 @@ validate <- function(
     )
     ##
     result$datetimeFormatSpecified <- new_emeScheme_validation()
-    result$datetimeFormatSpecified$details <- xraw$DataFileMetaData %>% dplyr::select(type, description) %>%
-      filter( type %in% c("date", "time", "datetime") )
+    result$datetimeFormatSpecified$details <- xraw$DataFileMetaData %>%
+      dplyr::select(.data$type, .data$description) %>%
+      filter( .data$type %in% c("date", "time", "datetime") )
     result$datetimeFormatSpecified$error <- ifelse(
       any( !is.na(result$datetimeFormatSpecified$details$description) ),
       0,
       3
     )
+    ## if columnData == “Measurement”, mappingColumn has to be in Measurement$name and
+    ## if columnData == “Treatment”, mappingColumn has to be in Treatment$parameter and
+    ## if columnData %in% c(ID, other), mapping column has to be "NA" or NA
+    res <- new_emeScheme_validation()
+    res$details <- xraw$DataFileMetaData$mappingColumn
+    res$details[] <- NA
+    #
+    i <- xraw$DataFileMetaData$columnData == "Treatment"
+    res$details[i] <- xraw$DataFileMetaData$mappingColumn[i] %in% xraw$Treatment$parameter
+    i <- xraw$DataFileMetaData$columnData == "Measurement"
+    res$details[i] <- xraw$DataFileMetaData$mappingColumn[i] %in% xraw$Measurement$name
+    i <- xraw$DataFileMetaData$columnData == "ID"
+    res$details[i] <- xraw$DataFileMetaData$mappingColumn[i] %in% c("NA", NA)
+    i <- xraw$DataFileMetaData$columnData == "other"
+    res$details[i] <- xraw$DataFileMetaData$mappingColumn[i] %in% c("NA", NA)
+    #
+    res$details <- as.logical(res$details)
+    names(res$details) <- xraw$DataFileMetaData$mappingColumn
+    res$error <- ifelse(
+      all(res$details),
+      0,
+      3
+    )
+    result$mappingColumnInNameOrParameter <- res
+    rm(res)
     ##
     result$error <- max(valErr_extract(result), na.rm = TRUE)
     ##
