@@ -24,7 +24,7 @@
 #'
 #' @importFrom taxize gnr_resolve
 #' @importFrom magrittr %>% %<>%
-#' @importFrom dplyr filter
+#' @importFrom dplyr filter select
 #' @importFrom utils browseURL
 #' @importFrom rmarkdown render
 #' @importFrom tibble tibble
@@ -322,24 +322,6 @@ validate <- function(
     return(result)
   }
 
-  # HELPER: Validate xxx Columns ------------------------------------------------
-
-  valCol <- function( x ){
-    cols <- unique(x$variableName)
-    names(cols) <- cols
-
-    result$columns <- lapply(
-      cols,
-      function (col) {
-        result <- list()
-        result$correctType <- "TODO"
-        result$inDataFile <- "TODO"
-        result$range <- c(NA, NA) # range(0,0)
-        result$uniqueValues <- NA # unique(letters)
-      }
-    )
-    return(result)
-  }
 
 
   # HELPER: Validate DataFileMetaData ---------------------------------------
@@ -395,6 +377,30 @@ validate <- function(
       3
     )
     result$mappingColumnInNameOrParameter <- res
+    rm(res)
+    ##
+    ## column name in data file
+    res <- new_emeScheme_validation()
+    #
+    res$details <- xraw$DataFileMetaData$columnName
+    for (i in 1:nrow(xraw$DataFileMetaData)) {
+      df <- file.path(path, xraw$DataFileMetaData$dataFileName[i])
+      cn <- xraw$DataFileMetaData$columnName[i]
+      if (file.exists(df)) {
+        res$details[i] <- cn %in% names(read.csv(df))
+      } else {
+        res$details[i] <- FALSE
+      }
+    }
+    res$details <- as.logical(res$details)
+    names(res$details) <- xraw$DataFileMetaData$columnName
+    #
+    res$error <- ifelse(
+      all(res$details),
+      0,
+      3
+    )
+    result$columnInDataFile <- res
     rm(res)
     ##
     result$error <- max(valErr_extract(result), na.rm = TRUE)

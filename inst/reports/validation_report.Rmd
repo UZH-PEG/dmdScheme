@@ -113,15 +113,16 @@ if (is.null(x)) {
 <!-- ################################### -->
 
 ## `r valErr_TextErrCol("DataFileMetaData", result$DataFileMetaData$error)`
-- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$DataFileMetaData$types$error)` (#DataFileMetaDataTypes)
-- `r valErr_TextErrCol("values in allowedValues", result$DataFileMetaData$allowedValues$error)` (#DataFileMetaDataAllowed)
-- `r valErr_TextErrCol("dataFile exists in path", result$DataFileMetaData$dataFilesExist$error)`
-- `r valErr_TextErrCol("if type == 'datetime', description has format information", result$DataFileMetaData$datetimeFormatSpecified$error)`
+- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$DataFileMetaData$types$error)` [See Details](#DataFileMetadataFilesTypes)
+- `r valErr_TextErrCol("values in allowedValues", result$DataFileMetaData$allowedValues$error)` [See Details](#DataFileMetaDataAllowed)
+- `r valErr_TextErrCol("dataFile exists in path", result$DataFileMetaData$dataFilesExist$error)` [See Details](#DataFileExists)
+- `r valErr_TextErrCol("if type == 'datetime', description has format information", result$DataFileMetaData$datetimeFormatSpecified$error)`  [See Details](#DataFileMetaDataDateTimeExists)
 
 ## <== Measurement & Treatment
-- `r valErr_TextErrCol("correct values in mappingColumn in dependence on columnData", result$DataFileMetaData$mappingColumnInNameOrParameter$error)` [See details](location)
+- `r valErr_TextErrCol("correct values in mappingColumn in dependence on columnData", result$DataFileMetaData$mappingColumnInNameOrParameter$error)` [See details](#DataFileMetaDataMapping)
 
 ### <== data file
+- `r valErr_TextErrCol("columnName in dataFileName", result$DataFileMetaData$columnInDataFile$error)` [See details](#DataFileMetaDataColumnInDataFile)
 - [ ] `columnName` has to be in the data file `dataFileName`
 - [ ] the date, time and date time can be converted using the format specifications in `description`
 
@@ -255,6 +256,7 @@ result$Measurement$measuredFrom$details %>%
 
  
 ## Validate DataExtraction
+
 ### Types {#DataExtractionTypes}
 ```{r}
 result$DataExtraction$types$details %>%
@@ -288,13 +290,37 @@ result$DataFileMetaData$types$details %>%
   kable()
 ```
 
-### Suggested Values {#DataFileMetadataAllowed}
+### Allowed Values {#DataFileMetaDataAllowed}
 ```{r}
 result$DataFileMetaData$allowedValues$details %>%
   kable()
 ```
 
-### Validate mappingColumn
+### Validate mappingColumn {#DataFileMetaDataMapping}
+```{r}
+cbind(result$DataFileMetaData$mappingColumnInNameOrParameter$details) %>%
+  kable()
+```
+
+
+### Data file exists in path {#DataFileExists}
+```{r}
+result$DataFileMetaData$dataFilesExist$details %>%
+  kable()
+```
+
+### If `type == 'datetime'`, description has format information {#DataFileMetaDataDateTimeExists}
+```{r}
+result$DataFileMetaData$datetimeFormatSpecified$details %>%
+  kable()
+```
+
+### `columnName` in `dataFile` {#DataFileMetaDataColumnInDataFile}
+```{r}
+cbind(result$DataFileMetaData$columnInDataFile$details) %>%
+  kable()
+```
+
 
 ### Validation out of attempt to parse date variables
 
