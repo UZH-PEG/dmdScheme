@@ -28,6 +28,7 @@
 #' @importFrom utils browseURL
 #' @importFrom rmarkdown render
 #' @importFrom tibble tibble
+#' @importFrom utils read.csv
 #' @export
 #'
 #' @examples
@@ -387,7 +388,7 @@ validate <- function(
       df <- file.path(path, xraw$DataFileMetaData$dataFileName[i])
       cn <- xraw$DataFileMetaData$columnName[i]
       if (file.exists(df)) {
-        res$details[i] <- cn %in% names(read.csv(df))
+        res$details[i] <- cn %in% names(utils::read.csv(df))
       } else {
         res$details[i] <- FALSE
       }
