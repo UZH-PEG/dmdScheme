@@ -47,82 +47,86 @@ if (is.null(x)) {
 <!-- ################################### -->
 <!-- ################################### -->
 
-# Overview
+# `r result$header`
 
 <!-- ################################### -->
 <!-- Structural -->
 <!-- ################################### -->
 
-## `r valErr_TextErrCol("Structural / Formal validity", result$structure$error)`
+## `r result$structure$header`
 
-## `r valErr_TextErrCol("Experiment", result$Experiment$error)`
-- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$Experiment$types$error)` [See Details](#ExperimentTypes)
-- `r valErr_TextErrCol("values in suggestedValues", result$Experiment$suggestedValues$error)` [See Details](#ExperimentSuggested)
+<!-- ################################### -->
+<!-- Experiment -->
+<!-- ################################### -->
+
+## `r result$Experiment$header`
+- `r result$Experiment$types$header` [See Details](#ExperimentTypes)
+- `r result$Experiment$suggestedValues$header` [See Details](#ExperimentSuggested)
 
 <!-- ################################### -->
 <!-- Species -->
 <!-- ################################### -->
 
-## `r valErr_TextErrCol("Species", result$Species$error)`
+## `r result$Species$header`
 
-- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$Species$types$error)` [See Details](#SpeciesTypes)
-- `r valErr_TextErrCol("values in suggestedValues", result$Species$suggestedValues$error)` [See Details](#SpeciesSuggested)
-- `r valErr_TextErrCol("name in species database and report score (using taxize::gnr_resolve())", result$Species$suggestedValues$error)` [See Details](#SpeciesNames)
+- `r result$Species$types$header` [See Details](#SpeciesTypes)
+- `r result$Species$suggestedValues$header` [See Details](#SpeciesSuggested)
+- `r result$Species$speciesNames$header` [See Details](#SpeciesNames)
 
 <!-- ################################### -->
 <!-- Treatment -->
 <!-- ################################### -->
 
-## `r valErr_TextErrCol("Treatment", result$Treatment$error)`
-- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$Treatment$types$error)` [See Details](#TreatmentTypes)
-- `r valErr_TextErrCol("values in suggestedValues", result$Treatment$suggestedValues$error)` [See Details](#TreatmentSuggested)
+## `r result$Treatment$header`
+- `r result$Treatment$types$header` [See Details](#TreatmentTypes)
+- `r result$Treatment$suggestedValues$header` [See Details](#TreatmentSuggested)
 
 ### <== DataFileMetaData
-- `r valErr_TextErrCol("parameter is in mappingColumn", result$Treatment$parameterInMappinColumn$error)` [see Details](#TreatmentParameter)
+- `r result$Treatment$parameterInMappinColumn$header` [see Details](#TreatmentParameter)
 
 <!-- ################################### -->
 <!-- Measurement -->
 <!-- ################################### -->
 
-## `r valErr_TextErrCol("Measurement", result$Measurement$error)`
-- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$Measurement$types$error)` [See Details](#MeasurementTypes)
-- `r valErr_TextErrCol("values in suggestedValues", result$Measurement$suggestedValues$error)` [See Details](#MeasurementSuggested)
-- `r valErr_TextErrCol("names unique", result$Measurement$nameUnique$error)` [details](#MeasurementNameUnique)
-- `r valErr_TextErrCol("measuredFrom is 'raw', 'NA', NA or in name", result$Measurement$measuredFrom$error)` [details](#MeasurementFrom)
+## `r result$Measurement$header`
+- `r result$Measurement$types$header` [See Details](#MeasurementTypes)
+- `r result$Measurement$suggestedValues$header` [See Details](#MeasurementSuggested)
+- `r result$Measurement$nameUnique$header` [details](#MeasurementNameUnique)
+- `r result$Measurement$measuredFrom$header` [details](#MeasurementFrom)
 
 ### <== DataFileMetaData
-- `r valErr_TextErrCol("variable is in mappingColumn", result$Measurement$variableInMappinColumn$error)`
+- `r result$Measurement$variableInMappinColumn$header`
 
 ### <== DataExtractionName
-- `r valErr_TextErrCol("dataExtractionName is 'none', 'NA', NA, or in DataExtraction$name", result$Measurement$dataExtractionNameInDataExtractionName$error)`
+- `r result$Measurement$dataExtractionNameInDataExtractionName$header`
 
 <!-- ################################### -->
 <!-- DataExtraction -->
 <!-- ################################### -->
 
-## `r valErr_TextErrCol("DataExtraction", result$DataExtraction$error)`
-- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$DataExtraction$types$error)` [See Details](#DataExtractionTypes)
-- `r valErr_TextErrCol("values in suggestedValues", result$DataExtraction$suggestedValues$error)` [See Details](#DataExtractionSuggested)
-- `r valErr_TextErrCol("names unique", result$DataExtraction$nameUnique$error)` [See Details](#DataExtractionNameUnique})
+## `r result$DataExtraction$header`
+- `r result$DataExtraction$types$header` [See Details](#DataExtractionTypes)
+- `r result$DataExtraction$suggestedValues$header` [See Details](#DataExtractionSuggested)
+- `r result$DataExtraction$nameUnique$header` [See Details](#DataExtractionNameUnique})
 
 ### <== Measurement
-- `r valErr_TextErrCol("name is in Measurement$dataExtractionName", result$DataExtraction$nameInDataExtractionName$error)` [See Details](#DataExtractionNameName})
+- `r result$DataExtraction$nameInDataExtractionName$header` [See Details](#DataExtractionNameName})
 
 <!-- ################################### -->
 <!-- DataFileMetaData -->
 <!-- ################################### -->
 
-## `r valErr_TextErrCol("DataFileMetaData", result$DataFileMetaData$error)`
-- `r valErr_TextErrCol("conversion of values into specified type lossless possible", result$DataFileMetaData$types$error)` [See Details](#DataFileMetadataFilesTypes)
-- `r valErr_TextErrCol("values in allowedValues", result$DataFileMetaData$allowedValues$error)` [See Details](#DataFileMetaDataAllowed)
-- `r valErr_TextErrCol("dataFile exists in path", result$DataFileMetaData$dataFilesExist$error)` [See Details](#DataFileExists)
-- `r valErr_TextErrCol("if type == 'datetime', description has format information", result$DataFileMetaData$datetimeFormatSpecified$error)`  [See Details](#DataFileMetaDataDateTimeExists)
+## `r result$DataFileMetaData$header`
+- `r result$DataFileMetaData$types$header` [See Details](#DataFileMetadataFilesTypes)
+- `r result$DataFileMetaData$allowedValues$header` [See Details](#DataFileMetaDataAllowed)
+- `r result$DataFileMetaData$dataFilesExist$header` [See Details](#DataFileExists)
+- `r result$DataFileMetaData$datetimeFormatSpecified$header`  [See Details](#DataFileMetaDataDateTimeExists)
 
 ## <== Measurement & Treatment
-- `r valErr_TextErrCol("correct values in mappingColumn in dependence on columnData", result$DataFileMetaData$mappingColumnInNameOrParameter$error)` [See details](#DataFileMetaDataMapping)
+- `r result$DataFileMetaData$mappingColumnInNameOrParameter$header` [See details](#DataFileMetaDataMapping)
 
 ### <== data file
-- `r valErr_TextErrCol("columnName in dataFileName", result$DataFileMetaData$columnInDataFile$error)` [See details](#DataFileMetaDataColumnInDataFile)
+- `r result$DataFileMetaData$columnInDataFile$header` [See details](#DataFileMetaDataColumnInDataFile)
 - [ ] `columnName` has to be in the data file `dataFileName`
 - [ ] the date, time and date time can be converted using the format specifications in `description`
 
@@ -130,7 +134,7 @@ if (is.null(x)) {
 <!-- Data Files -->
 <!-- ################################### -->
 
-## Data Files
+## `r result$DataFiles$header`
 - [ ] ranges of numeric columns
 - [ ] values of text columns
 - [ ] ???
