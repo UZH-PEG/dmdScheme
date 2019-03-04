@@ -4,10 +4,12 @@
 \alias{valErr_extract}
 \title{Extract all fields named object of class \code{emeScheme_validation}}
 \usage{
-valErr_extract(x)
+valErr_extract(x, returnRootError = FALSE)
 }
 \arguments{
 \item{x}{object of class \code{emeScheme_validation}}
+
+\item{returnRootError}{if \code{TRUE}, return all errors \bold{including} the error in the object x.}
 }
 \value{
 named numeric vector of the error levels of the different validations done

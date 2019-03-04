@@ -3,9 +3,9 @@
 # error levels ------------------------------------------------------------
 
 valErr_errorLevels <- data.frame(
-  level = c( 0,    1,      2,         3     ),
-  text  = c("OK", "note", "warning", "error"),
-  colour = colorRampPalette(colors = c("green", "red"))(4),
+  level = c( 0,    1,      2,         3,       NA ),
+  text  = c("OK", "note", "warning", "error", "NA"),
+  colour = c(colorRampPalette(colors = c("green", "red"))(4), "black"),
   stringsAsFactors = FALSE
 )
 
@@ -21,14 +21,18 @@ valErr_errorLevels <- data.frame(
 #' @export
 #'
 valErr_info <- function(error) {
-  level <- which(valErr_errorLevels$text == error)
-  if (length(level) == 0) {
+  level <- ifelse (
+    is.na(error),
+    5,
+    which(valErr_errorLevels$text == error)
+  )
+  if (is.na(level)) {
     level <- which(valErr_errorLevels$colour == error)
     if (length(level) == 0) {
       level <- which(valErr_errorLevels$level == error)
     }
   }
-  if (length(level) == 0) {
+  if ((length(level) == 0) | is.na(level)) {
     stop(error, " not a valid error identifier. See the variable 'valErr_errorLevels' for allowed values.")
   }
   return( valErr_errorLevels[level,] )
@@ -70,11 +74,12 @@ valErr_TextErrCol <- function(text, error, addError = TRUE) {
 #' Extract all fields named object of class \code{emeScheme_validation}
 #'
 #' @param x object of class \code{emeScheme_validation}
+#' @param returnRootError if \code{TRUE}, return all errors \bold{including} the error in the object x.
 #'
 #' @return named numeric vector of the error levels of the different validations done
 #' @export
 #'
-valErr_extract <- function(x) {
+valErr_extract <- function(x, returnRootError = FALSE) {
   if (!inherits(x, "emeScheme_validation")) {
     stop(" x has to be an object of type 'emeScheme_validation'.")
   }
@@ -84,5 +89,8 @@ valErr_extract <- function(x) {
   nms <- names(err)
   err <-  as.numeric(err)
   names(err) <- nms
+  if (!returnRootError) {
+    err <- err[-1]
+  }
   return(err)
 }
