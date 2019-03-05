@@ -138,7 +138,7 @@ print(
 
 You can export the data to an an xml file:
 
-```{r example_export_xml, echo=TRUE}
+```{r example_export_xml, echo=TRUE, eval = FALSE}
 emeSchemeToXml( x, tag = "ExampleData" )
 ```
 

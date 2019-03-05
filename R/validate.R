@@ -29,6 +29,8 @@
 #' @importFrom rmarkdown render
 #' @importFrom tibble tibble
 #' @importFrom utils read.csv
+#' @importFrom magrittr extract2
+#' @importFrom digest digest
 #' @export
 #'
 #' @examples
@@ -162,27 +164,26 @@ checkSuggestedValues <- function(sraw) {
   ##
   result$details <- as_tibble(sraw)
   sugVal <- strsplit(attr(sraw, "suggestedValues"), ",")
+  result$details <- result$details[,!is.na(sugVal)]
+  sugVal <- sugVal[!is.na(sugVal)]
   ##
-  for (colN in 1:ncol(sraw)) {
-    v <- trimws(sugVal[[colN]] )
-    for (rowN in 1:nrow(sraw)) {
-      if ( all(is.na(v)) | is.na(result$details[rowN, colN]) ) {
-        sug <- NA
-      } else {
-        sug <- result$details[rowN, colN] %in% v
-        sug <- ifelse(
-          sug,
-          "OK",
-          paste0("'", result$details[rowN, colN], "' not in suggested Values!")
-        )
-      }
-      result$details[rowN, colN] <- sug
+  for (colN in 1:ncol(result$details)) {
+    v <- c( trimws(sugVal[[colN]]), "NA", NA, "" )
+    for (rowN in 1:nrow(result$details)) {
+      al <- result$details[rowN, colN] %in% v
+      al <- ifelse(
+        al,
+        "OK",
+        paste0("'", result$details[rowN, colN], "' not in suggested Values!")
+      )
+      result$details[rowN, colN] <- al
     }
   }
   ##
-  result$error = ifelse( all(result$details == "OK",na.rm = TRUE), 0, 2)
+  result$error = ifelse( all(result$details == "OK",na.rm = TRUE), 0, 3)
   ##
   return( result )
+
 }
 
 
@@ -191,20 +192,18 @@ checkAllowedValues <- function(sraw) {
   ##
   result$details <- as_tibble(sraw)
   allVal <- strsplit(attr(sraw, "allowedValues"), ",")
+  result$details <- result$details[,!is.na(allVal)]
+  allVal <- allVal[!is.na(allVal)]
   ##
-  for (colN in 1:ncol(sraw)) {
-    v <- trimws(allVal[[colN]] )
-    for (rowN in 1:nrow(sraw)) {
-      if ( all(is.na(v)) | is.na(result$details[rowN, colN]) ) {
-        al <- NA
-      } else {
-        al <- result$details[rowN, colN] %in% v
-        al <- ifelse(
-          al,
-          "OK",
-          paste0("'", result$details[rowN, colN], "' not in allowed Values!")
-        )
-      }
+  for (colN in 1:ncol(result$details)) {
+    v <- c( trimws(allVal[[colN]]), "NA", NA, "" )
+    for (rowN in 1:nrow(result$details)) {
+      al <- result$details[rowN, colN] %in% v
+      al <- ifelse(
+        al,
+        "OK",
+        paste0("'", result$details[rowN, colN], "' not in allowed Values!")
+      )
       result$details[rowN, colN] <- al
     }
   }
@@ -451,11 +450,12 @@ validateDataFileMetaData <- function( x, xraw, xconv, path ){
   # validate data file exists -----------------------------------------------
   result$dataFilesExist <- new_emeScheme_validation()
   fns <- unique(xraw$DataFileMetaData$dataFileName)
-  fns <- file.path(path, fns)
-  result$dataFilesExist$details <- file.exists(fns)
-  names(result$dataFilesExist$details) <- fns
+  result$dataFilesExist$details <- tibble::tibble(
+    dataFileName = fns,
+    IsOK = fns %>% file.path(path, .) %>% file.exists()
+  )
   result$dataFilesExist$error <- ifelse(
-    all(result$dataFilesExist$details),
+    all(result$dataFilesExist$details$IsOK),
     0,
     3
   )
@@ -464,10 +464,13 @@ validateDataFileMetaData <- function( x, xraw, xconv, path ){
   # validate datetime format specified --------------------------------------
   result$datetimeFormatSpecified <- new_emeScheme_validation()
   result$datetimeFormatSpecified$details <- xraw$DataFileMetaData %>%
-    dplyr::select(.data$type, .data$description) %>%
-    filter( .data$type %in% c("date", "time", "datetime") )
+    dplyr::select(.data$dataFileName, .data$columnName, .data$type, .data$description) %>%
+    dplyr::filter(.data$type %in% c("date", "time", "datetime") )
+
+  result$datetimeFormatSpecified$details$IsOK <- !is.na(result$datetimeFormatSpecified$details$description)
+
   result$datetimeFormatSpecified$error <- ifelse(
-    any( !is.na(result$datetimeFormatSpecified$details$description) ),
+    all( result$datetimeFormatSpecified$details$IsOK ),
     0,
     3
   )
@@ -490,10 +493,12 @@ validateDataFileMetaData <- function( x, xraw, xconv, path ){
   i <- xraw$DataFileMetaData$columnData == "other"
   res$details[i] <- xraw$DataFileMetaData$mappingColumn[i] %in% c("NA", NA)
   #
-  res$details <- as.logical(res$details)
-  names(res$details) <- xraw$DataFileMetaData$mappingColumn
+  res$details <- tibble::tibble(
+    mappingColumn = xraw$DataFileMetaData$mappingColumn,
+    IsOK = as.logical(res$details)
+  )
   res$error <- ifelse(
-    all(res$details),
+    all(res$details$IsOK),
     0,
     3
   )
@@ -501,29 +506,70 @@ validateDataFileMetaData <- function( x, xraw, xconv, path ){
   result$mappingColumnInNameOrParameter <- res
   rm(res)
 
-  # column name in data file ------------------------------------------------
+  # read column names of data files -----------------------------------------
+  dfcol <- file.path(path, xraw$DataFileMetaData$dataFileName) %>%
+    unique() %>%
+    lapply(
+      function(x) {
+        if (file.exists(x)) {
+          colnames(read.csv(x, nrows = 1))
+        } else {
+          NA
+        }
+      }
+    )
+  names(dfcol) <- xraw$DataFileMetaData$dataFileName %>% unique()
+
+  # DataFileMetaData$columnName is column name in dataFile ------------------------------------------------
   res <- new_emeScheme_validation()
   #
   res$details <- xraw$DataFileMetaData$columnName
   for (i in 1:nrow(xraw$DataFileMetaData)) {
-    df <- file.path(path, xraw$DataFileMetaData$dataFileName[i])
-    cn <- xraw$DataFileMetaData$columnName[i]
-    if (file.exists(df)) {
-      res$details[i] <- cn %in% names(utils::read.csv(df))
-    } else {
-      res$details[i] <- FALSE
-    }
+    res$details[i] <- xraw$DataFileMetaData$columnName[[i]] %in% dfcol[[xraw$DataFileMetaData$dataFileName[i]]]
   }
-  res$details <- as.logical(res$details)
-  names(res$details) <- xraw$DataFileMetaData$columnName
+  res$details <-
+    tibble(
+      dataFileName = xraw$DataFileMetaData$dataFileName,
+      columnName = xraw$DataFileMetaData$columnName,
+      IsOK = as.logical(res$details)
+    )
   #
   res$error <- ifelse(
-    all(res$details),
+    all(res$details$IsOK),
     0,
     3
   )
-  res$header <- valErr_TextErrCol("columnName in dataFileName", res$error)
-  result$columnInDataFile <- res
+  res$header <- valErr_TextErrCol("columnName in column names in dataFileName", res$error)
+  result$columnNameInDataFileColumn <- res
+  rm(res)
+
+
+  # column names in dataFile are in DataFileMetaData$columnName ---------
+  res <- new_emeScheme_validation()
+  #
+  res$details <- lapply(
+    1:length(dfcol),
+    function(i){
+      cn <- dplyr::filter(xraw$DataFileMetaData, .data$dataFileName == names(dfcol[i])) %>%
+        dplyr::select(.data$columnName) %>%
+        magrittr::extract2(1)
+      x <- tibble(
+        dataFile = names(dfcol)[i],
+        columnNameInDataFileName = cn,
+        IsOK = cn %in% dfcol[[i]]
+      )
+      return(x)
+    }
+  )
+  names(res$details) <- names(dfcol)
+  #
+  res$error <- ifelse(
+    lapply(res$details, "[[", "IsOK") %>% unlist() %>% all(),
+    0,
+    3
+  )
+  res$header <- valErr_TextErrCol("column names in dataFileName in columnName", res$error)
+  result$dataFileColumnInColumnNamen <- res
   rm(res)
 
   # overall error -----------------------------------------------------------

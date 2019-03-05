@@ -30,7 +30,7 @@ if (is.null(x)) {
     devtools::load_all()
   }
   x <- emeScheme::emeScheme_raw
-  result <- validate(x = emeScheme_raw, validateData = TRUE, report = "none")
+  result <- validate(x = emeScheme_raw, validateData = TRUE, report = "none", path = system.file("example_data", "basic", "data", "archiving_data", package = "emeScheme"))
 }
 ## ##
 ## Define colours for results of evaluation
@@ -126,8 +126,8 @@ if (is.null(x)) {
 - `r result$DataFileMetaData$mappingColumnInNameOrParameter$header` [See details](#DataFileMetaDataMapping)
 
 ### <== data file
-- `r result$DataFileMetaData$columnInDataFile$header` [See details](#DataFileMetaDataColumnInDataFile)
-- [ ] `columnName` has to be in the data file `dataFileName`
+- `r result$DataFileMetaData$columnNameInDataFileColumn$header` [See details](#columnNameInDataFileColumn)
+- `r result$DataFileMetaData$dataFileColumnInColumnNamen$header` [See details](#dataFileColumnInColumnNamen)
 - [ ] the date, time and date time can be converted using the format specifications in `description`
 
 <!-- ################################### -->
@@ -319,9 +319,15 @@ result$DataFileMetaData$datetimeFormatSpecified$details %>%
   kable()
 ```
 
-### `columnName` in `dataFile` {#DataFileMetaDataColumnInDataFile}
+### `columnName` in `dataFileName` {#columnNameInDataFileColumn}
 ```{r}
-cbind(result$DataFileMetaData$columnInDataFile$details) %>%
+result$DataFileMetaData$columnNameInDataFileColumn$details %>%
+  kable()
+```
+
+### column names in `dataFileName` are in `columnName` {#dataFileColumnInColumnNamen}
+```{r}
+result$DataFileMetaData$dataFileColumnInColumnNamen$details %>%
   kable()
 ```
 
@@ -329,4 +335,39 @@ cbind(result$DataFileMetaData$columnInDataFile$details) %>%
 ### Validation out of attempt to parse date variables
 
 ## To do
+
+# Confirmation code
+
+The following code needs to be entered in the `emeSchemeToXml()` function to confirm that the validation has been done and read. **No export is possible without this code!**:
+ **<span style="color:red">TODO implement in emeSchemeToXML()</span>**
+```{r echo=FALSE, comment = ""}
+if (isTRUE(result$error < 2)) {
+  suppressWarnings( 
+    new_emeSchemeSet(
+      x = x, 
+      keepData = TRUE, 
+      convertTypes = TRUE,  
+      verbose = FALSE, 
+      warnToError = FALSE
+    ) 
+  ) %>%
+    digest::digest(algo = "sha1")
+} else {
+  cat_ln("Please fix all errors before continuing!")
+  cat_ln()
+  cat_ln("The following code will not be printed in the final version!!!!!")
+  cat_ln()
+  suppressWarnings( 
+    new_emeSchemeSet(
+      x = x, 
+      keepData = TRUE, 
+      convertTypes = TRUE,  
+      verbose = FALSE, 
+      warnToError = FALSE
+    ) 
+  ) %>%
+    digest::digest(algo = "sha1") %>%
+    cat_ln()
+}
+```
 

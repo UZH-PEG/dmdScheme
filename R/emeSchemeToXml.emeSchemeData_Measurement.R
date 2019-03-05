@@ -7,7 +7,8 @@ emeSchemeToXml.emeSchemeData_Measurement <- function(
   x,
   tag = "emeScheme",
   file,
-  output = "metadata"
+  output = "metadata",
+  confirmationCode
 ) {
   outputValues <- c("metadata", "complete")
   if (!(output %in% outputValues)) {
