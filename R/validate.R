@@ -180,7 +180,7 @@ checkSuggestedValues <- function(sraw) {
     }
   }
   ##
-  result$error = ifelse( all(result$details == "OK",na.rm = TRUE), 0, 3)
+  result$error = ifelse( all(result$details == "OK",na.rm = TRUE), 0, 2)
   ##
   return( result )
 
