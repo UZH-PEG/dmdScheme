@@ -1,26 +1,18 @@
 Package: emeScheme
 Title: Microcosm experiment metadata scheme
-Version: 0.8.1.2
+Version: 0.8.1.3
 Date: 2019-03-06
-Authors@R: c( 
-        person(
-                "Rainer M.", "Krug", role = c("aut", "cre"),
-                email = "Rainer.Krug@uzh.ch"
-        ), 
-        person(
-                "Owen L.", "Petchey", role = c("ctb"), 
-                email = "Owen.Petchey@uzh.ch"
-        ), 
-        person("Vanessa W.", "de Melo", role = c("ctb"),
-                email = "Vanessa Weber de Melo <vanessa.weberdemelo@uzh.ch>" 
-        ),
-        person("Frank", "Pennekamp", role = c("ctb"), 
-                email = "Frank Pennekamp <frank.pennekamp@uzh.ch>")
-        )
+Authors@R: c( person( "Rainer M.", "Krug", role = c("aut", "cre"),
+        email = "Rainer.Krug@uzh.ch" ), person( "Owen L.", "Petchey",
+        role = c("ctb"), email = "Owen.Petchey@uzh.ch" ),
+        person("Vanessa W.", "de Melo", role = c("ctb"), email =
+        "Vanessa Weber de Melo <vanessa.weberdemelo@uzh.ch>" ),
+        person("Frank", "Pennekamp", role = c("ctb"), email = "Frank
+        Pennekamp <frank.pennekamp@uzh.ch>") )
 Description: This package provides and describes the Authoratative
         definition of th emeScheme (Experimental Microcosm Ecology
         Metadata). ---- Data imported and version bumped at Wed Mar 6
-        09:58:31 2019 / Europe/Zurich.
+        13:32:36 2019 / Europe/Zurich.
 Depends: R (>= 3.3.0)
 Imports: tools, methods, utils, magrittr (>= 1.5), dplyr (>= 0.1.8),
         tibble (>= 2.0.0), readxl (>= 1.2.0), openxlsx (>= 4.1.1), XML
@@ -34,5 +26,5 @@ RoxygenNote: 6.1.1
 Suggests: covr (>= 3.2.1), testthat (>= 2.0.1), googlesheets (>=
         0.3.0), here (>= 0.1), kableExtra (>= 0.9.0), plantuml (>=
         0.2.3.2)
-GSUpdate: 2019-03-06 07:35:37
+GSUpdate: 2019-03-06 12:31:28
 VignetteBuilder: knitr

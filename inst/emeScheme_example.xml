@@ -18,7 +18,7 @@
    <comment></comment>
   </Experiment>
  </ExperimentList>
- <SpeciesList unit="NA, NA, NA, cells / ml, NA, NA" type="character, character, character, numeric, character, character" allowedValues="" names="name, strain, source, density, functionalGroup, comment" class="emeSchemeData_Species, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
+ <SpeciesList unit="NA, NA, NA, cells / ml, NA, NA" type="character, character, character, character, character, character" allowedValues="" names="name, strain, source, density, functionalGroup, comment" class="emeSchemeData_Species, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
   <Species name="Tetrahymena thermophila">
    <strain>WH-6 (WHI) [ATCC 16539]</strain>
    <source>ATCC</source>

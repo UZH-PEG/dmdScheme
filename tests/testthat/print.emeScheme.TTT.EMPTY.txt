@@ -20,7 +20,7 @@ D       1           <NA>       NA    <NA>
      Species - emeSchemeData
 A       Names : name | strain | source | density | functionalGroup | comment
 A       Units : NA | NA | NA | cells / ml | NA | NA
-A       Type  : character | character | character | numeric | character | character
+A       Type  : character | character | character | character | character | character
 
 XA      row.names: 1
 XA      propertyName: Species
@@ -29,7 +29,7 @@ XA      Description: Scientific name of the species. Should only occur once. Or 
 XA      class: emeSchemeData_Species | emeSchemeData | emeScheme | tbl_df | tbl | data.frame
 
           name strain source density functionalGroup comment
-D       1 <NA>   <NA>   <NA>      NA            <NA>    <NA>
+D       1 <NA>   <NA>   <NA>    <NA>            <NA>    <NA>
 
      Treatment - emeSchemeData
 A       Names : parameter | unit | treatmentLevel | comment

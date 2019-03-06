@@ -7,7 +7,7 @@ A       Type  : character | character | character | character | character | char
      Species - emeSchemeData
 A       Names : name | strain | source | density | functionalGroup | comment
 A       Units : NA | NA | NA | cells / ml | NA | NA
-A       Type  : character | character | character | numeric | character | character
+A       Type  : character | character | character | character | character | character
 
      Treatment - emeSchemeData
 A       Names : parameter | unit | treatmentLevel | comment

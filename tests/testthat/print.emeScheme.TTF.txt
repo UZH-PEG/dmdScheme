@@ -13,7 +13,7 @@ XA      class: emeSchemeData_Experiment | emeSchemeData | emeScheme | tbl_df | t
      Species - emeSchemeData
 A       Names : name | strain | source | density | functionalGroup | comment
 A       Units : NA | NA | NA | cells / ml | NA | NA
-A       Type  : character | character | character | numeric | character | character
+A       Type  : character | character | character | character | character | character
 
 XA      row.names: 1 | 2
 XA      propertyName: Species
