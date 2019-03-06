@@ -23,7 +23,7 @@ updateFromGoogleSheet <- function(
   on.exit(googlesheets::gs_deauth())
   ##
   googlesheets::gs_auth(token = token)
-  emes <- googlesheets::gs_title("emeScheme")
+  emes <- googlesheets::gs_title("emeScheme_dev")
   update <- emes$updated %>% format("%Y-%m-%d %H:%M:%S")
   lastUpdate <- read.dcf(here::here("DESCRIPTION"))[1, "GSUpdate"]
   if (force) {
@@ -92,7 +92,8 @@ updateFromGoogleSheet <- function(
     emeSchemeToXml(
       x = emeScheme_example,
       file = here::here("inst", "emeScheme_example.xml"),
-      output = "complete"
+      output = "complete",
+      confirmationCode = "secret code for testing"
     )
 
     # bump version and change description in DECRIPTION -----------------------
