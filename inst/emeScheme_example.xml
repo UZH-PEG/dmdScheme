@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <emeScheme class="emeSchemeSet, emeScheme, list" names="Experiment, Species, Treatment, Measurement, DataExtraction, DataFileMetaData">
- <ExperimentList unit="NA, NA, NA, NA, NA, NA, ml, NA, g/l, NA, NA, NA, NA" type="character, character, character, character, character, character, numeric, character, numeric, character, character, character, character" allowedValues="" names="name, temperature, light, humidity, incubator, container, microcosmVolume, mediaType, mediaConcentration, cultureConditions, comunityType, mediaAdditions, comment" class="emeSchemeData_Experiment, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
+ <ExperimentList unit="NA, NA, NA, NA, NA, NA, ml, NA, g/l, NA, NA, NA, days, NA" type="character, character, character, character, character, character, numeric, character, numeric, character, character, character, integer, character" allowedValues="" names="name, temperature, light, humidity, incubator, container, microcosmVolume, mediaType, mediaConcentration, cultureConditions, comunityType, mediaAdditions, duration, comment" class="emeSchemeData_Experiment, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
   <Experiment>
    <name>ASR-expt1</name>
    <temperature>20</temperature>
@@ -14,6 +14,7 @@
    <cultureConditions>dirty</cultureConditions>
    <comunityType>initially unknown</comunityType>
    <mediaAdditions>Wheat seeds added on specific dates, see file wheat_seed_additions.csv</mediaAdditions>
+   <duration>100</duration>
    <comment></comment>
   </Experiment>
  </ExperimentList>
@@ -45,54 +46,50 @@
    <comment></comment>
   </Treatment>
  </TreatmentList>
- <MeasurementList unit="NA, NA, NA, NA, NA, days, NA, ml, NA, NA, NA" type="character, character, character, character, character, integer, integer, numeric, character, character, character" allowedValues="" names="name, variable, method, unit, object, lengthOfTimeSeries, noOfSamplesInTimeSeries, samplingVolume, dataExtractionName, measuredFrom, comment" class="emeSchemeData_Measurement, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
+ <MeasurementList unit="NA, NA, NA, NA, NA, NA, ml, NA, NA, NA" type="character, character, character, character, character, integer, numeric, character, character, character" allowedValues="" names="name, variable, method, unit, object, noOfSamplesInTimeSeries, samplingVolume, dataExtractionName, measuredFrom, comment" class="emeSchemeData_Measurement, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
   <Measurement name="oxygen concentration">
    <variable>DO</variable>
    <method>presens Optode</method>
    <unit>%</unit>
    <object>community</object>
-   <lengthOfTimeSeries>50</lengthOfTimeSeries>
    <noOfSamplesInTimeSeries>50</noOfSamplesInTimeSeries>
    <samplingVolume>0</samplingVolume>
    <dataExtractionName>none</dataExtractionName>
    <measuredFrom>raw</measuredFrom>
-   <comment>data stil being collected</comment>
+   <comment></comment>
   </Measurement>
   <Measurement name="abundance">
    <variable>abundance</variable>
    <method>molecular</method>
    <unit>count</unit>
    <object>species</object>
-   <lengthOfTimeSeries>100</lengthOfTimeSeries>
    <noOfSamplesInTimeSeries>6</noOfSamplesInTimeSeries>
    <samplingVolume>0.5</samplingVolume>
    <dataExtractionName>Mol_Analy_pipeline1</dataExtractionName>
    <measuredFrom>sequenceData</measuredFrom>
-   <comment>May collect more</comment>
+   <comment></comment>
   </Measurement>
   <Measurement name="smell">
    <variable>smell</variable>
    <method>nose</method>
    <unit>rotten eggs or not</unit>
    <object>community</object>
-   <lengthOfTimeSeries>100</lengthOfTimeSeries>
    <noOfSamplesInTimeSeries>6</noOfSamplesInTimeSeries>
    <samplingVolume>0</samplingVolume>
    <dataExtractionName>none</dataExtractionName>
    <measuredFrom>raw</measuredFrom>
-   <comment>May collect more</comment>
+   <comment></comment>
   </Measurement>
   <Measurement name="sequenceData">
    <variable>DNA</variable>
    <method>NGS</method>
    <unit>Nucleotide</unit>
    <object>DNA fragment</object>
-   <lengthOfTimeSeries>100</lengthOfTimeSeries>
    <noOfSamplesInTimeSeries>6</noOfSamplesInTimeSeries>
    <samplingVolume>0</samplingVolume>
    <dataExtractionName>none</dataExtractionName>
    <measuredFrom>raw</measuredFrom>
-   <comment>May collect more</comment>
+   <comment></comment>
   </Measurement>
  </MeasurementList>
  <DataExtractionList unit="NA, NA, NA, NA, NA" type="character, character, character, character, character" allowedValues="" names="name, method, parameter, value, comment" class="emeSchemeData_DataExtraction, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
