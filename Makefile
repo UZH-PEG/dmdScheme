@@ -87,10 +87,10 @@ check:
 
 #############
 
-publish:
-	git add DESCRIPTION data/emeScheme.rda data/emeScheme_gd.rda inst/googlesheet/emeScheme.xlsx docs/index.html
-	git commit -m "Update From Googlesheets"
-	git push
+# publish:
+# 	git add DESCRIPTION data/emeScheme.rda data/emeScheme_gd.rda inst/googlesheet/emeScheme.xlsx docs/index.html
+# 	git commit -m "Update From Googlesheets"
+# 	git push
 
 #############
 
