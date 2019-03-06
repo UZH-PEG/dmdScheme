@@ -1,21 +1,21 @@
  emeScheme - emeSchemeSet
      Experiment - emeSchemeData
-A       Names : name | temperature | light | humidity | incubator | container | microcosmVolume | mediaType | mediaConcentration | cultureConditions | comunityType | mediaAdditions | comment
-A       Units : NA | NA | NA | NA | NA | NA | ml | NA | g/l | NA | NA | NA | NA
-A       Type  : character | character | character | character | character | character | numeric | character | numeric | character | character | character | character
+A       Names : name | temperature | light | humidity | incubator | container | microcosmVolume | mediaType | mediaConcentration | cultureConditions | comunityType | mediaAdditions | duration | comment
+A       Units : NA | NA | NA | NA | NA | NA | ml | NA | g/l | NA | NA | NA | days | NA
+A       Type  : character | character | character | character | character | character | numeric | character | numeric | character | character | character | integer | character
 
 XA      row.names: 1
 XA      propertyName: Experiment
-XA      suggestedValues: NA | treatment, ... | treatment, ... | treatment, ... | none, bench, ... | NA | NA | NA | NA | axenic, dirty, clean, … | treatment, single trophic level, multiple trophic level, … | NA | NA
-XA      Description: The name of the experiment. | Temperature used for all treatments. If different between treatments, use "treatment" and specify in the Treatment sheet. | Light used for all treatments. If different between treatments, use "treatment" and specify in the Treatment sheet. | Humidity used for all treatments. If different between treatments, use "treatment" and specify in the Treatment sheet. | What type of incubator is used. | What type of container is used. | Volume of the microcosm container. Not the volume of the culture medium! | NA | NA | Conditions of the cultures for all treatments. | Characterisation of the cmicrobe community. | NA | Additional features of the Experiment you want to provide
+XA      suggestedValues: NA | treatment, in degrees celsius, measurement, ... | treatment,light, dark, cycle , e.g. 16:8 LD, ... | treatment, relative humidity in %, ... | none, bench, ... | NA | NA | NA | NA | axenic, dirty, clean, … | treatment, single trophic level, multiple trophic level, … | NA | NA | NA
+XA      Description: The name of the experiment. | Temperature used for all treatments. If different between treatments, use "treatment" and specify in the Treatment sheet. | Light used for all treatments. If different between treatments, use "treatment" and specify in the Treatment sheet. | Humidity used for all treatments. If different between treatments, use "treatment" and specify in the Treatment sheet. | What type of incubator is used. | What type of container is used. | Volume of the microcosm container. Not the volume of the culture medium! | NA | NA | Conditions of the cultures for all treatments. | Characterisation of the microbe community. | NA | Length of the experiment in days. This should only include the time in which the measurements were taken! | Additional features of the Experiment you want to provide
 XA      class: emeSchemeData_Experiment | emeSchemeData | emeScheme | tbl_df | tbl | data.frame
 
           name temperature light humidity incubator container microcosmVolume
 D       1 <NA>        <NA>  <NA>     <NA>      <NA>      <NA>              NA
           mediaType mediaConcentration cultureConditions comunityType
 D       1      <NA>                 NA              <NA>         <NA>
-          mediaAdditions comment
-D       1           <NA>    <NA>
+          mediaAdditions duration comment
+D       1           <NA>       NA    <NA>
 
      Species - emeSchemeData
 A       Names : name | strain | source | density | functionalGroup | comment
@@ -46,22 +46,20 @@ XA      class: emeSchemeData_Treatment | emeSchemeData | emeScheme | tbl_df | tb
 D       1      <NA> <NA>           <NA>    <NA>
 
      Measurement - emeSchemeData
-A       Names : name | variable | method | unit | object | lengthOfTimeSeries | noOfSamplesInTimeSeries | samplingVolume | dataExtractionName | measuredFrom | comment
-A       Units : NA | NA | NA | NA | NA | days | NA | ml | NA | NA | NA
-A       Type  : character | character | character | character | character | integer | integer | numeric | character | character | character
+A       Names : name | variable | method | unit | object | noOfSamplesInTimeSeries | samplingVolume | dataExtractionName | measuredFrom | comment
+A       Units : NA | NA | NA | NA | NA | NA | ml | NA | NA | NA
+A       Type  : character | character | character | character | character | integer | numeric | character | character | character
 
 XA      row.names: 1
 XA      propertyName: Measurement
-XA      suggestedValues: NA | O2 concentration, video, manual count, abundance, DNA, … | presens Optode, microscopy, … | %, mmol, count, … | species, OUT, gene, community, particles, … | NA | NA | NA | NA | NA | NA
-XA      Description: Name of the Measurement process. This includes methodology, variables, ... . Each name specifies one Measurement process and can occur multiple times. | The variable measured. | Name of the method used. | Unit of the measured variable | The object measured. E.g. species in the case of manual count, gene for genetic analysis, particle for particle counters. | Total length of the time series in days. | Total number of all samples in the time series. | The sampling volumne. If e.g. atmosphere in container is sampled (oxygen measurements), than enter 0. | as used in the sheet DataExtraction, column name | if measured from the experiment, raw, else the name (first column) of the measurement it is based on. | NA
+XA      suggestedValues: NA | O2 concentration, video, manual count, abundance, DNA, … | presens Optode, microscopy, … | %, mmol, count, … | species, OUT, gene, community, particles, … | NA | NA | Mol_Analy_pipeline1, none | oxygen concentration, abundance, smell, sequenceData, raw | NA
+XA      Description: Name of the Measurement process. This includes methodology, variables, ... . Each name specifies one Measurement process and can occur multiple times. Should be in the mapping column in the DataFileMetaData tab. | The variable measured. | Name of the method used. | Unit of the measured variable | The object measured. E.g. species in the case of manual count, gene for genetic analysis, particle for particle counters. | Total number of all samples in the time series. | The sampling volumne. If e.g. atmosphere in container is sampled (oxygen measurements), than enter 0. | as used in the sheet DataExtraction, column name | if measured from the experiment, raw, else the name (first column) of the measurement it is based on. | NA
 XA      class: emeSchemeData_Measurement | emeSchemeData | emeScheme | tbl_df | tbl | data.frame
 
-          name variable method unit object lengthOfTimeSeries
-D       1 <NA>     <NA>   <NA> <NA>   <NA>                 NA
-          noOfSamplesInTimeSeries samplingVolume dataExtractionName
-D       1                      NA             NA               <NA>
-          measuredFrom comment
-D       1         <NA>    <NA>
+          name variable method unit object noOfSamplesInTimeSeries
+D       1 <NA>     <NA>   <NA> <NA>   <NA>                      NA
+          samplingVolume dataExtractionName measuredFrom comment
+D       1             NA               <NA>         <NA>    <NA>
 
      DataExtraction - emeSchemeData
 A       Names : name | method | parameter | value | comment
