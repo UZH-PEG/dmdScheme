@@ -9,11 +9,18 @@ author: "`r params$author`"
 date: "`r Sys.Date()`"
 output:
   html_document: 
+    number_sections: true
     toc_depth: 3
     toc: true
     toc_float: true
-  pdf_document: default
-  word_document: default
+  pdf_document: 
+    number_sections: true
+    toc_depth: 3
+    toc: true
+  word_document: 
+    number_sections: true
+    toc_depth: 3
+    toc: true
 ---
 
 
@@ -39,7 +46,7 @@ if (is.null(x)) {
 
 * **Author**: `r params$author`
 * **emeScheme metadata name**: `r attr(x, "fileName")`
-* **data package path**: `add this`
+* **data package path**: `add this` 
 
 <!-- ################################### -->
 <!-- ################################### -->
@@ -174,13 +181,13 @@ attributes(x)
 
 Use conditional text to explicitly say pass or fail, so that users don't have to read the R output (or at least get lovely green text for pass, and red for fail!)
 
-## Validate General Structure
+## Details `r result$structure$header`
 ```{r val_struct, options}
-result$structOK
+result$struct$details
 ```
 
 
-## Validate Experiment
+## Details `r result$Experiment$header`
 ### Types {#ExperimentTypes}
 ```{r}
 result$Experiment$types$details %>%
@@ -193,7 +200,7 @@ result$Experiment$suggestedValues$details %>%
   kable()
 ```
 
-## Validate Species 
+## Details `r result$Species$header`
 ### Types {#SpeciesTypes}
 ```{r}
 result$Species$types$details %>%
@@ -212,7 +219,7 @@ result$Species$speciesNames$details %>%
   kable()
 ```
 
-## Validate Treatment
+## Details `r result$Treatment$header`
 ### Types {#TreatmentTypes}
 ```{r}
 result$Treatment$types$details %>%
@@ -231,7 +238,7 @@ result$Treatment$parameterInMappinColumn$details %>%
   kable()
 ```
 
-## Validate Measurement
+## Details `r result$Measurement$header`
 ### Types {#MeasurementTypes}
 ```{r}
 result$Measurement$types$details %>%
@@ -259,7 +266,7 @@ result$Measurement$measuredFrom$details %>%
 
 
  
-## Validate DataExtraction
+## Details `r result$DataExtractio$header`
 
 ### Types {#DataExtractionTypes}
 ```{r}
@@ -287,7 +294,7 @@ cat_ln("CHECK - TODO")
 #   kable()
 ```
 
-## Validate DataFileMetaData
+## Details `r result$DataFileMetaData$header`
 ### Types {#DataFileMetadataFilesTypes}
 ```{r}
 result$DataFileMetaData$types$details %>%

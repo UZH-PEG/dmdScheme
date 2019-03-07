@@ -148,12 +148,16 @@ checkTypes <- function(sraw, sconv) {
   na <- is.na(t)
   t[na] <- TRUE
   result$details <- as.data.frame(sraw)
-  result$details[t] <- "OK"
+  result$details[t] <- TRUE
   result$details[!t] <- paste( result$details[!t], "!=", as.data.frame(sconv)[!t])
   result$details[na] <- NA
   result$details <- as_tibble(result$details)
   ##
-  result$error = ifelse( all(result$details == "OK",na.rm = TRUE), 0, 3)
+  result$error = ifelse(
+    all(result$details == TRUE, na.rm = TRUE),
+    0,
+    3
+  )
   ##
   return( result )
 }
@@ -173,14 +177,14 @@ checkSuggestedValues <- function(sraw) {
       al <- result$details[rowN, colN] %in% v
       al <- ifelse(
         al,
-        "OK",
+        TRUE,
         paste0("'", result$details[rowN, colN], "' not in suggested Values!")
       )
       result$details[rowN, colN] <- al
     }
   }
   ##
-  result$error = ifelse( all(result$details == "OK",na.rm = TRUE), 0, 2)
+  result$error = ifelse( all(result$details == TRUE,na.rm = TRUE), 0, 2)
   ##
   return( result )
 
@@ -201,14 +205,14 @@ checkAllowedValues <- function(sraw) {
       al <- result$details[rowN, colN] %in% v
       al <- ifelse(
         al,
-        "OK",
+        TRUE,
         paste0("'", result$details[rowN, colN], "' not in allowed Values!")
       )
       result$details[rowN, colN] <- al
     }
   }
   ##
-  result$error = ifelse( all(result$details == "OK",na.rm = TRUE), 0, 3)
+  result$error = ifelse( all(result$details == TRUE,na.rm = TRUE), 0, 3)
   ##
   return( result )
 }
