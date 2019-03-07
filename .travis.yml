@@ -7,6 +7,9 @@ cache: packages
 # Use R language
 language: r
 
+env:
+  - _R_CHECK_SYSTEM_CLOCK_=0
+
 #Define multiple R-versions, one from bioconductor
 matrix:
   include:
