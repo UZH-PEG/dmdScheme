@@ -4,7 +4,7 @@
 \alias{validate}
 \title{Validate Excel workbook or object of class \code{emeSchemeSet_raw} against \code{emeScheme}.}
 \usage{
-validate(x, path = "", validateData = TRUE, report = "none",
+validate(x, path = ".", validateData = TRUE, report = "none",
   report_author = "Tester",
   report_title = "Validation of data against emeScheme",
   errorIfStructFalse = TRUE)

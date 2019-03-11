@@ -38,7 +38,7 @@
 #'
 validate <- function(
   x,
-  path = "",
+  path = ".",
   validateData = TRUE,
   report = "none",
   report_author = "Tester",
