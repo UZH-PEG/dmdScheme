@@ -146,9 +146,6 @@ if (is.null(x)) {
 - [ ] values of text columns
 - [ ] ???
 
-### <== DataFileMetaData
-- [ ] column names have to be in `DataFileName$columnName`
-
 ### <== Treatment
 - [ ] the **values** in the column describing the treatment (i.e. treatment levels) have to be in the column `Treatment$treatmentLevel` of the corresponding `Treatment$parameter`
 
