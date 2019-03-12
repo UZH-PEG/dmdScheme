@@ -19,3 +19,4 @@
 ^\.Rproj\.user$
 ^\.httr-oauth$
 ^ONLYLOCAL
+^.*\.Rproj$
