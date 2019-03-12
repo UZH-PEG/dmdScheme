@@ -5,7 +5,7 @@ A       Units : NA | NA | NA | NA | NA | NA | ml | NA | g/l | NA | NA | NA | day
 A       Type  : character | character | character | character | character | character | numeric | character | numeric | character | character | character | integer | character
 
      Species - emeSchemeData
-A       Names : speciesId | name | strain | source | density | functionalGroup | comment
+A       Names : speciesID | name | strain | source | density | functionalGroup | comment
 A       Units : NA | NA | NA | NA | cells / ml | NA | NA
 A       Type  : character | character | character | character | character | character | character
 
@@ -15,7 +15,7 @@ A       Units : NA | NA | NA | NA
 A       Type  : character | character | character | character
 
      Measurement - emeSchemeData
-A       Names : measurementId | variable | method | unit | object | noOfSamplesInTimeSeries | samplingVolume | dataExtractionName | measuredFrom | comment
+A       Names : measurementID | variable | method | unit | object | noOfSamplesInTimeSeries | samplingVolume | dataExtractionName | measuredFrom | comment
 A       Units : NA | NA | NA | NA | NA | NA | ml | NA | NA | NA
 A       Type  : character | character | character | character | character | integer | numeric | character | character | character
 

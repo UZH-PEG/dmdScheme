@@ -8,6 +8,7 @@
 #'   pattern \code{DATAFILENAME_attr(x, "propertyName").saveAsType}. If missing,
 #'   do not save and return the result. Allowed values at the moment:
 #'   \itemize{
+#'   \item{none} {do not save the resulting list}
 #'   \item{rds} {save results in files using \code{saveRDS()}}
 #'   \item{xml} {save results in xml files using \code{emeSchemeToXml()}}
 #'   \item{multiple values of the above} {will be saved in all specified formats}
@@ -25,7 +26,7 @@
 #' @examples
 emeScheme_split <- function(
   x,
-  saveAsType = "rds"
+  saveAsType = "none"
 ) {
 
 # Check arguments ---------------------------------------------------------
@@ -34,8 +35,8 @@ emeScheme_split <- function(
     stop("x has to be an object of type emeScheme")
   }
 
-  saveAsTypeAllowed <- c("rds", "xml")
-  if (all(saveAsType %in% saveAsTypeAllowed)) {
+  saveAsTypeAllowed <- c("rds", "xml", "none")
+  if (!all(saveAsType %in% saveAsTypeAllowed)) {
     stop("'saveAsType' has to be one of the following values: ", saveAsTypeAllowed)
   }
 

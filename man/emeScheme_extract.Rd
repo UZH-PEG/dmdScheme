@@ -7,7 +7,7 @@
 emeScheme_extract(dataFile, x)
 }
 \arguments{
-\item{dataFile}{name of dataFileName whose metadata will be extracted from \code{x}}
+\item{dataFile}{name of dataFileName whose metadata will be extracted from \code{x}. Has to be an exact match, no wildcards are expanded.}
 
 \item{x}{\code{emeScheme} object from which data to extract}
 }

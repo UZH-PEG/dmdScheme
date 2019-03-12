@@ -38,7 +38,7 @@ emeScheme_extract <- function(
 
 # Get property name of x --------------------------------------------------
 
-name_x <- attr(x, "name")
+  propertyName <- attr(x, "propertyName")
 
 # DataFileMetaData: keep only rows in which dataFileName == dataFile ------
 
@@ -47,25 +47,25 @@ name_x <- attr(x, "name")
 
 # Treatment: Only keep parameter which are still in DataFileMetaData ------
 
-  selParameter <- x$DataFileMetaData %>%
+  selTreatmentID <- x$DataFileMetaData %>%
     dplyr::filter(.data$columnData == "Treatment") %>%
     dplyr::select(mappingColumn) %>%
     as.character
   x$Treatment %<>%
-    dplyr::filter(.data$parameter == selParameter)
+    dplyr::filter(.data$treatmentID == selTreatmentID)
 
 # Measurement: Only keep name which are still in DataFileMetaData ---------
 
-  selName <- x$DataFileMetaData %>%
+  selMeasurementID <- x$DataFileMetaData %>%
     dplyr::filter(.data$columnData == "Measurement") %>%
     dplyr::select(mappingColumn) %>%
     as.character
   x$Measurement %<>%
-    dplyr::filter(.data$name == selName)
+    dplyr::filter(.data$measurementID == selMeasurementID)
 
 # Set property name -------------------------------------------------------
 
-  attr(x, "name") <- paste(dataFile, name_x, sep = "_")
+  attr(x, "propertyName") <- paste(dataFile, propertyName, sep = "_")
 
 # Return ------------------------------------------------------------------
 

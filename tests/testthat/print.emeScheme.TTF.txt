@@ -11,7 +11,7 @@ XA      Description: The name of the experiment. | Temperature used for all trea
 XA      class: emeSchemeData_Experiment | emeSchemeData | emeScheme | tbl_df | tbl | data.frame
 
      Species - emeSchemeData
-A       Names : speciesId | name | strain | source | density | functionalGroup | comment
+A       Names : speciesID | name | strain | source | density | functionalGroup | comment
 A       Units : NA | NA | NA | NA | cells / ml | NA | NA
 A       Type  : character | character | character | character | character | character | character
 
@@ -33,7 +33,7 @@ XA      Description: ID of the the treatment decribed in this a row. Each treatm
 XA      class: emeSchemeData_Treatment | emeSchemeData | emeScheme | emeSchemeData_raw | tbl_df | tbl | data.frame
 
      Measurement - emeSchemeData
-A       Names : measurementId | variable | method | unit | object | noOfSamplesInTimeSeries | samplingVolume | dataExtractionName | measuredFrom | comment
+A       Names : measurementID | variable | method | unit | object | noOfSamplesInTimeSeries | samplingVolume | dataExtractionName | measuredFrom | comment
 A       Units : NA | NA | NA | NA | NA | NA | ml | NA | NA | NA
 A       Type  : character | character | character | character | character | integer | numeric | character | character | character
 
@@ -62,6 +62,6 @@ A       Type  : character | character | character | character | character | char
 XA      row.names: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18
 XA      propertyName: DataFileMetaData
 XA      allowedValues: NA | NA | ID, Treatment, Measurement, Species, other | Lid_treatment, Lid_treatment, -------, oxygen concentration, abundance, smell, sequenceData, -------, tt_1, unknown | integer, numeric, character, logical, datetime, date, time | NA | NA
-XA      Description: the name of the data set. | Name of column in the data file. Each column in the data file needs to be documented! | The type of the data in the column. ID: ID field (unique ID of unit of replication); Treatment: specifies treatment; Measurement: contains measurements; Species: contains species; other: other type of data | Treatment: treatmentId as in the Treatment tab; Measurement: measurementId as in the Measurement tab; Species: speciesId as in the Species tab. | Type of the column. | if column contains measurement: General description. If type is datatime, date, or time, give the order of year month day hour minute second as e.g. ymdhms, ymd, or hms. (Do not give any other information, e.g. give nothing about how months are entered (e.g. number or name), or how years, months, day, etc are separated. | NA
+XA      Description: the name of the data set. | Name of column in the data file. Each column in the data file needs to be documented! | The type of the data in the column. ID: ID field (unique ID of unit of replication); Treatment: specifies treatment; Measurement: contains measurements; Species: contains species; other: other type of data | Treatment: treatmentID as in the Treatment tab; Measurement: measurementID as in the Measurement tab; Species: speciesID as in the Species tab. | Type of the column. | if column contains measurement: General description. If type is datatime, date, or time, give the order of year month day hour minute second as e.g. ymdhms, ymd, or hms. (Do not give any other information, e.g. give nothing about how months are entered (e.g. number or name), or how years, months, day, etc are separated. | NA
 XA      class: emeSchemeData_DataFileMetaData | emeSchemeData | emeScheme | emeSchemeData_raw | tbl_df | tbl | data.frame
 

@@ -18,7 +18,7 @@
    <comment></comment>
   </Experiment>
  </ExperimentList>
- <SpeciesList unit="NA, NA, NA, NA, cells / ml, NA, NA" type="character, character, character, character, character, character, character" allowedValues="" names="speciesId, name, strain, source, density, functionalGroup, comment" class="emeSchemeData_Species, emeSchemeData, emeScheme, emeSchemeData_raw, tbl_df, tbl, data.frame">
+ <SpeciesList unit="NA, NA, NA, NA, cells / ml, NA, NA" type="character, character, character, character, character, character, character" allowedValues="" names="speciesID, name, strain, source, density, functionalGroup, comment" class="emeSchemeData_Species, emeSchemeData, emeScheme, emeSchemeData_raw, tbl_df, tbl, data.frame">
   <Species name="Tetrahymena thermophila">
    <name>Tetrahymena thermophila</name>
    <strain>WH-6 (WHI) [ATCC 16539]</strain>
@@ -48,7 +48,7 @@
    <comment></comment>
   </Treatment>
  </TreatmentList>
- <MeasurementList unit="NA, NA, NA, NA, NA, NA, ml, NA, NA, NA" type="character, character, character, character, character, integer, numeric, character, character, character" allowedValues="" names="measurementId, variable, method, unit, object, noOfSamplesInTimeSeries, samplingVolume, dataExtractionName, measuredFrom, comment" class="emeSchemeData_Measurement, emeSchemeData, emeScheme, emeSchemeData_raw, tbl_df, tbl, data.frame">
+ <MeasurementList unit="NA, NA, NA, NA, NA, NA, ml, NA, NA, NA" type="character, character, character, character, character, integer, numeric, character, character, character" allowedValues="" names="measurementID, variable, method, unit, object, noOfSamplesInTimeSeries, samplingVolume, dataExtractionName, measuredFrom, comment" class="emeSchemeData_Measurement, emeSchemeData, emeScheme, emeSchemeData_raw, tbl_df, tbl, data.frame">
   <Measurement>
    <variable>DO</variable>
    <method>presens Optode</method>

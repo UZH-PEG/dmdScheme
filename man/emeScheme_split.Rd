@@ -4,13 +4,27 @@
 \alias{emeScheme_split}
 \title{Split \code{emeScheme} object into multiple by using \code{DataFileNameMetaData$dataFileName}}
 \usage{
-emeScheme_split(x = emeScheme, fileName)
+emeScheme_split(x, saveAsType = "none")
 }
 \arguments{
 \item{x}{\code{emeScheme} object to be split}
+
+\item{saveAsType}{if given, save the result to files named following the
+pattern \code{DATAFILENAME_attr(x, "propertyName").saveAsType}. If missing,
+do not save and return the result. Allowed values at the moment:
+\itemize{
+\item{none} {do not save the resulting list}
+\item{rds} {save results in files using \code{saveRDS()}}
+\item{xml} {save results in xml files using \code{emeSchemeToXml()}}
+\item{multiple values of the above} {will be saved in all specified formats}
+}}
 }
 \value{
-\code{list} where each element is one \code{emeScheme} object for a data file as specified in \code{DataFileNameMetaData$dataFileName}
+if \code{saveAsType} specified, \character{character} vector
+  containing the file names where the splitted metadata has been saved to, if
+  \code{saveAsType} missing, \code{list} where each element is one
+  \code{emeScheme} object for a data file as specified in
+  \code{DataFileNameMetaData$dataFileName}.
 }
 \description{
 One \code{emeScheme} object can contain metadata for multiple datafiles. For
