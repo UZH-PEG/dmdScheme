@@ -1,3 +1,4 @@
+^updateFromGoogleSheet\.R$
 ^basic$
 ^Release_Checklist\.Rmd$
 ^appveyor\.yml$
