@@ -5,22 +5,22 @@ A       Units : NA | NA | NA | NA | NA | NA | ml | NA | g/l | NA | NA | NA | day
 A       Type  : character | character | character | character | character | character | numeric | character | numeric | character | character | character | integer | character
 
      Species - emeSchemeData
-A       Names : name | strain | source | density | functionalGroup | comment
-A       Units : NA | NA | NA | cells / ml | NA | NA
-A       Type  : character | character | character | character | character | character
+A       Names : speciesID | name | strain | source | density | functionalGroup | comment
+A       Units : NA | NA | NA | NA | cells / ml | NA | NA
+A       Type  : character | character | character | character | character | character | character
 
      Treatment - emeSchemeData
-A       Names : parameter | unit | treatmentLevel | comment
+A       Names : treatmentID | unit | treatmentLevel | comment
 A       Units : NA | NA | NA | NA
 A       Type  : character | character | character | character
 
      Measurement - emeSchemeData
-A       Names : name | variable | method | unit | object | noOfSamplesInTimeSeries | samplingVolume | dataExtractionName | measuredFrom | comment
+A       Names : measurementID | variable | method | unit | object | noOfSamplesInTimeSeries | samplingVolume | dataExtractionID | measuredFrom | comment
 A       Units : NA | NA | NA | NA | NA | NA | ml | NA | NA | NA
 A       Type  : character | character | character | character | character | integer | numeric | character | character | character
 
      DataExtraction - emeSchemeData
-A       Names : name | method | parameter | value | comment
+A       Names : dataExtractionID | method | parameter | value | comment
 A       Units : NA | NA | NA | NA | NA
 A       Type  : character | character | character | character | character
 
