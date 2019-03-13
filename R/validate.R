@@ -302,14 +302,14 @@ validateTreatment <- function( x, xraw, xconv ){
 
   # validate mapping --------------------------------------------------------
   res <- new_emeScheme_validation()
-  res$details <- unique(xraw$Treatment$parameter) %in% xraw$DataFileMetaData$mappingColumn
-  names(res$details) <- unique(xraw$Treatment$parameter)
+  res$details <- unique(xraw$Treatment$treatmentID) %in% xraw$DataFileMetaData$mappingColumn
+  names(res$details) <- unique(xraw$Treatment$treatmentID)
   res$error <- ifelse(
     all(res$details),
     0,
     2
   )
-  res$header <- valErr_TextErrCol("parameter is in mappingColumn", res$error)
+  res$header <- valErr_TextErrCol("treatmentID is in mappingColumn", res$error)
   result$parameterInMappinColumn <- res
   rm(res)
 
@@ -333,8 +333,8 @@ validateMeasurement <- function( x, xraw, xconv ){
   result$suggestedValues$header <- valErr_TextErrCol("values in suggestedValues", result$suggestedValues$error)
 
   # validate names unique ---------------------------------------------------
-  nu <- !duplicated(xraw$Measurement$name)
-  names(nu) <- xraw$Measurement$name
+  nu <- !duplicated(xraw$Measurement$measurementID)
+  names(nu) <- xraw$Measurement$measurementID
   result$nameUnique <- list(
     error = ifelse(
       all(nu),
@@ -347,8 +347,8 @@ validateMeasurement <- function( x, xraw, xconv ){
   result$nameUnique$header <- valErr_TextErrCol("names unique", result$nameUnique$error)
 
   # measuredFrom in name, raw, "NA" or NA -----------------------------------
-  mf <- xraw$Measurement$measuredFrom %in% c(xraw$Measurement$name, "raw", "NA", NA)
-  names(mf) <- xraw$Measurement$name
+  mf <- xraw$Measurement$measuredFrom %in% c(xraw$Measurement$measurementID, "raw", "NA", NA)
+  names(mf) <- xraw$Measurement$measurementID
   result$measuredFrom <- list(
     error = ifelse(
       all(mf),
@@ -373,17 +373,17 @@ validateMeasurement <- function( x, xraw, xconv ){
   result$variableInMappinColumn <- res
   rm(res)
 
-  # dataExtractionName is “none”, “NA”, or in DataExtraction$name -----------
+  # dataExtractionID is “none”, “NA”, or in DataExtraction$dataExtractionID -----------
   res <- new_emeScheme_validation()
-  res$details <- xraw$Measurement$dataExtractionName %in% c(xraw$DataExtraction$name, "none", "NA", NA)
-  names(res$details) <- xraw$Measurement$dataExtractionName
+  res$details <- xraw$Measurement$dataExtractionID %in% c(xraw$DataExtraction$dataExtractionID, "none", "NA", NA)
+  names(res$details) <- xraw$Measurement$dataExtractionID
   res$error <- ifelse(
     all(res$details),
     0,
     3
   )
-  res$header <- valErr_TextErrCol("dataExtractionName is 'none', 'NA', NA, or in DataExtraction$name", res$error)
-  result$dataExtractionNameInDataExtractionName <- res
+  res$header <- valErr_TextErrCol("dataExtractionID is 'none', 'NA', NA, or in DataExtraction$dataExtractionID", res$error)
+  result$dataExtractionIDInDataExtractionName <- res
   rm(res)
 
   # overall error -----------------------------------------------------------
@@ -406,8 +406,8 @@ validateDataExtraction <- function( x, xraw, xconv ){
   result$suggestedValues$header <- valErr_TextErrCol("values in suggestedValues", result$suggestedValues$error)
 
   # names unique ------------------------------------------------------------
-  nu <- !duplicated(xraw$DataExtraction$name)
-  names(nu) <- xraw$DataExtraction$name
+  nu <- !duplicated(xraw$DataExtraction$dataExtractionID)
+  names(nu) <- xraw$DataExtraction$dataExtractionID
   result$nameUnique <- list(
     error = ifelse(
       all(nu),
@@ -419,16 +419,16 @@ validateDataExtraction <- function( x, xraw, xconv ){
   rm(nu)
   result$nameUnique$header <- valErr_TextErrCol("names unique", result$nameUnique$error)
 
-  # `name` is in `Measurement$dataExtractionName` ---------------------------
+  # `name` is in `Measurement$dataExtractionID` ---------------------------
   res <- new_emeScheme_validation()
-  res$details <- xraw$DataExtraction$name %in% xraw$Measurement$dataExtractionName
-  names(res$details) <- xraw$DataExtraction$name
+  res$details <- xraw$DataExtraction$dataExtractionID %in% xraw$Measurement$dataExtractionID
+  names(res$details) <- xraw$DataExtraction$dataExtractionID
   res$error <- ifelse(
     all(res$details),
     0,
     2
   )
-  res$header <- valErr_TextErrCol("name is in Measurement$dataExtractionName", res$error)
+  res$header <- valErr_TextErrCol("name is in Measurement$dataExtractionID", res$error)
   result$nameInDataExtractionName <- res
   rm(res)
 
@@ -481,17 +481,17 @@ validateDataFileMetaData <- function( x, xraw, xconv, path ){
   result$datetimeFormatSpecified$header <- valErr_TextErrCol("if type == 'datetime', description has format information", result$datetimeFormatSpecified$error)
 
   # validate mapping --------------------------------------------------------
-  ## if columnData == “Measurement”, mappingColumn has to be in Measurement$name and
-  ## if columnData == “Treatment”, mappingColumn has to be in Treatment$parameter and
+  ## if columnData == “Measurement”, mappingColumn has to be in Measurement$measurementID and
+  ## if columnData == “Treatment”, mappingColumn has to be in Treatment$treatmentID and
   ## if columnData %in% c(ID, other), mapping column has to be "NA" or NA
   res <- new_emeScheme_validation()
   res$details <- xraw$DataFileMetaData$mappingColumn
   res$details[] <- NA
   #
   i <- xraw$DataFileMetaData$columnData == "Treatment"
-  res$details[i] <- xraw$DataFileMetaData$mappingColumn[i] %in% xraw$Treatment$parameter
+  res$details[i] <- xraw$DataFileMetaData$mappingColumn[i] %in% xraw$Treatment$treatmentID
   i <- xraw$DataFileMetaData$columnData == "Measurement"
-  res$details[i] <- xraw$DataFileMetaData$mappingColumn[i] %in% xraw$Measurement$name
+  res$details[i] <- xraw$DataFileMetaData$mappingColumn[i] %in% xraw$Measurement$measurementID
   i <- xraw$DataFileMetaData$columnData == "ID"
   res$details[i] <- xraw$DataFileMetaData$mappingColumn[i] %in% c("NA", NA)
   i <- xraw$DataFileMetaData$columnData == "other"

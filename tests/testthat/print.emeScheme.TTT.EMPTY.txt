@@ -82,7 +82,7 @@ A       Type  : character | character | character | character | character | char
 
 XA      row.names: 1
 XA      propertyName: DataFileMetaData
-XA      allowedValues: NA | NA | ID, Treatment, Measurement, Species, other | Lid_treatment, Lid_treatment, species_1, species_2, species_3, -------, oxygen concentration, abundance, smell, sequenceData | integer, numeric, character, logical, datetime, date, time | NA | NA
+XA      allowedValues: NA | NA | ID, Treatment, Measurement, Species, other | NA | integer, numeric, character, logical, datetime, date, time | NA | NA
 XA      Description: the name of the data set. | Name of column in the data file. 
 Each column in the data file needs to be documented!
 

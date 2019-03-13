@@ -125,7 +125,7 @@
    <comment></comment>
   </DataExtraction>
  </DataExtractionList>
- <DataFileMetaDataList unit="NA, NA, NA, NA, NA, NA, NA" type="character, character, character, character, character, character, character" allowedValues="NA, NA, ID, Treatment, Measurement, Species, other, Lid_treatment, Lid_treatment, species_1, species_2, species_3, -------, oxygen concentration, abundance, smell, sequenceData, integer, numeric, character, logical, datetime, date, time, NA, NA" names="dataFileName, columnName, columnData, mappingColumn, type, description, comment" class="emeSchemeData_DataFileMetaData, emeSchemeData, emeScheme, emeSchemeData_raw, tbl_df, tbl, data.frame">
+ <DataFileMetaDataList unit="NA, NA, NA, NA, NA, NA, NA" type="character, character, character, character, character, character, character" allowedValues="NA, NA, ID, Treatment, Measurement, Species, other, NA, integer, numeric, character, logical, datetime, date, time, NA, NA" names="dataFileName, columnName, columnData, mappingColumn, type, description, comment" class="emeSchemeData_DataFileMetaData, emeSchemeData, emeScheme, emeSchemeData_raw, tbl_df, tbl, data.frame">
   <DataFileMetaData>
    <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
    <columnName>Jar_ID</columnName>
