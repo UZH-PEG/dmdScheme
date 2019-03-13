@@ -164,7 +164,7 @@ If you believe that other features of your experiment are important to include, 
 
 ## Species worksheet
 
-This worksheet should also not need much explanation. Note that this is just a list of the species in the experiment. Its not a description of any treatments involving species composition.
+This worksheet should also not need much explanation. Note that this is just a list of the species in the experiment. Its not a description of any treatments involving species composition. These have to be specified in the `Treatment` worksheet.
 
 During validation of your metadata the species names will be automatically checked against an online database of species names, and you will get a report on matches or lack of matches. (This helps increase interoperability of the data.)
 
@@ -179,6 +179,8 @@ Here enter in each row each of the treatment levels in each treatment. In the "p
 You do not need to, and should not, attempt to include information about treatment combinations. So if your experiment involved a temperature treatment with three levels (15, 20, and 25) and a species composition treatment with four treatments (species A alone, species B alone, species C alone, and all three together) you would enter seven rows of information. You would not enter 12 rows if your experiment was a two-way fully factorial design with these two treatments.
 
 It would be very nice here (i.e. it will make your life easier) to make the names of your treatment and the descriptions of the levels exactly the same as those used in the related columns in your data files. You will be told about the presence or absence of such matches in the validation report.
+
+As species composition can be seen as a form of treatment, they have to be entered here. I this case, the `unit` should be **speciesID** and the `treatmentLevel` should contain a comma separated list of `speciesID`s. 
 
 ## Measurements worksheet
 
@@ -199,9 +201,13 @@ Here you can give details of any (and please all - this will be validated in the
 Here you give a row for each of the variables in each of the data files.
 
 * **dataFileName** Here enter the file name of the data file.
-* **columnName** Here enter the exact variable name used in the datasheet / database / tabular data.
-* **columnData** Here enter whether the variable/column in the datafile contains a *measurement*, a *treatment*, an *ID* variable, or something else (*other*).
-* **mappingColumn** Here enter the ID of the *measurement* (as entered in the *Measurement* sheet, *measurementID* column), treatment ID (as entered in the *Treatment* sheet, *treatmentID* column), the species ID (as enteredin the *Species* sheet, *speciesID* column) or *NA*.
+* **columnName** Here enter the exact variable name used in the datasheet / database / tabular data. If the *columnData* *mappingColumn* combination refers to a condition for the whole data file, e.g. when only one species combination is used in the experiment from this data set, than enter *NA*.
+* **columnData** Here enter whether the variable/column in the datafile contains a *Measurement*, a *Treatment*, an *ID* variable, *Species* or something else (*other*). 
+* **mappingColumn** If 
+  * **columnData = Measurement**: enter the *measurementID* as entered in the *Measurement* sheet, 
+  * **columnData = Treatment**: enter the *treatmentID* as entered in the *Treatment* sheet,
+  * **columnData = Species**: enter the *treatmentID* as entered in the *Treatment* sheet which refers to the species composition as `treatmentLevel`,
+  or *NA*.
 * **type** Enter the variable type (e.g. numeric, character, date).
 * **description** Anything you think relevant. Please enter the date/time format for variables that contain date/times.
 
@@ -231,14 +237,24 @@ The validation report will suggest improvement you can make to your metadata. It
 
 The Excel/googlesheet version of the metadata is most useful for us to enter the metadata easily. It is not so useful for standardised/automated metadata enquiry/search/submission... i.e. excel/googlesheet versions of metadata are not really FAIR compliable. The metadata gurus decided that it should be stored as xml files, as it is plain text, it is in principle readable by humans (though is not meant to be read by humans really), it is machine readable (and then easily converted into any other format, e.g. ones easy for humans to read).
 
-Therefore, you should submit the final xml version of your metadata. Only do this after you have a satisfactory validation. Use this function:
+Therefore, you should submit the final xml version of your metadata. Only do this after you have a satisfactory validation. 
+As the metadata as it is entered in the spreadsheet contains metadata for *many* different data files (as enterd in the column `DataFileMetaData / dataFileName`), the metadata needs to be split first into files containing only the metadata related to a specific data file. this is done by using the function:
+
 
 ```{r eval=FALSE}
 my_medata_spreadsheet <- read_from_excel("thenameofyourmetadataspreadsheet.xlsx")
-emeSchemeToXml(my_medata_spreadsheet, file="my_expt1_metadata.xml")
+emeScheme_split( x = my_medata_spreadsheet, saveAsType = "xml", path = ".")
 ```
 
+This will split your metadata into metadata sets for each data file and save it in the current working directory.
 
+If you want to save the metadata for later usage or analysis in R, you should use
+
+```{r eval=FALSE}
+emeScheme_split( x = my_medata_spreadsheet, saveAsType = c("xml", "rds"), path = ".")
+```
+
+which will also save the metadata in `rds` files, so that it can be lossless read into R again by using the function `readRDS()'.
 
 # Depositing in a repository {#depositing}
 

@@ -15,7 +15,7 @@ A       Units : NA | NA | NA | NA
 A       Type  : character | character | character | character
 
      Measurement - emeSchemeData
-A       Names : measurementID | variable | method | unit | object | noOfSamplesInTimeSeries | samplingVolume | dataExtractionName | measuredFrom | comment
+A       Names : measurementID | variable | method | unit | object | noOfSamplesInTimeSeries | samplingVolume | dataExtractionID | measuredFrom | comment
 A       Units : NA | NA | NA | NA | NA | NA | ml | NA | NA | NA
 A       Type  : character | character | character | character | character | integer | numeric | character | character | character
 
