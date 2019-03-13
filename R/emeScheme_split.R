@@ -3,18 +3,20 @@
 #' One \code{emeScheme} object can contain metadata for multiple datafiles. For
 #' archiving, these should be split into single \code{emeScheme} objects, one
 #' for each \code{DataFileNameMetaData$dataFileName}.
+#' \bold{ATTENTION: Files are overwritten without warning!!!!!}
 #' @param x \code{emeScheme} object to be split
 #' @param saveAsType if given, save the result to files named following the
 #'   pattern \code{DATAFILENAME_attr(x, "propertyName").saveAsType}. If missing,
 #'   do not save and return the result. Allowed values at the moment:
 #'   \itemize{
-#'   \item{none} {do not save the resulting list}
-#'   \item{rds} {save results in files using \code{saveRDS()}}
-#'   \item{xml} {save results in xml files using \code{emeSchemeToXml()}}
-#'   \item{multiple values of the above} {will be saved in all specified formats}
+#'    \item{none} {do not save the resulting list}
+#'    \item{rds} {save results in files using \code{saveRDS()}}
+#'    \item{xml} {save results in xml files using \code{emeSchemeToXml()}}
+#'    \item{multiple values of the above} {will be saved in all specified formats}
 #'   }
+#' @param path path where the files should be saved to
 #'
-#' @return if \code{saveAsType} specified, \character{character} vector
+#' @return if \code{saveAsType} valid and not equal to \code{none}, \code{character} vector
 #'   containing the file names where the splitted metadata has been saved to, if
 #'   \code{saveAsType} missing, \code{list} where each element is one
 #'   \code{emeScheme} object for a data file as specified in
@@ -24,9 +26,22 @@
 #' @export
 #'
 #' @examples
+#' emeScheme_split(emeScheme_example)
+#' ## x is a list containing all the emeSchemes for each data file
+#'
+#' emeScheme_split(emeScheme_example, saveAsType = "rds", path = tempdir())
+#' ## saves the resulting object as rds using saveRDS() into the tmpdir()
+#'
+#' emeScheme_split(emeScheme_example, saveAsType = "xml", path = tempdir())
+#' ## saves the resulting object as xml into the tmpdir()
+#'
+#' emeScheme_split(emeScheme_example, saveAsType = c("rds", "xml"), path = tempdir())
+#' ## saves the resulting object as rds and xml into the tmpdir()
+
 emeScheme_split <- function(
   x,
-  saveAsType = "none"
+  saveAsType = "none",
+  path = "."
 ) {
 
 # Check arguments ---------------------------------------------------------
@@ -37,7 +52,7 @@ emeScheme_split <- function(
 
   saveAsTypeAllowed <- c("rds", "xml", "none")
   if (!all(saveAsType %in% saveAsTypeAllowed)) {
-    stop("'saveAsType' has to be one of the following values: ", saveAsTypeAllowed)
+    stop("'saveAsType' has to be one of the following values: ", paste(saveAsTypeAllowed, collapse = ", "))
   }
 
 # Extract DataFileMetaData$dataFileNames ----------------------------------
@@ -54,14 +69,15 @@ emeScheme_split <- function(
   )
 
 # Save if asked for -------------------------------------------------------
-
+fns <- NULL
 if (!missing(saveAsType)) {
   if ("rds" %in% saveAsType) {
     lapply(
       result,
       function(x) {
-        fn <- paste(attr(x, "name"), saveAsType, sep = ".")
+        fn <- file.path( path, paste(attr(x, "propertyName"), "rds", sep = ".") )
         saveRDS(x, fn)
+        fns <<- c(fns, fn)
       }
     )
   }
@@ -69,8 +85,9 @@ if (!missing(saveAsType)) {
     lapply(
       result,
       function(x) {
-        fn <- paste(attr(x, "name"), saveAsType, sep = ".")
-        saveRDS(x, fn)
+        fn <- file.path( path, paste(attr(x, "propertyName"), "xml", sep = ".") )
+        emeSchemeToXml(x, tag = paste(attr(x, "propertyName")), file = fn)
+        fns <<- c(fns, fn)
       }
     )
   }
@@ -78,6 +95,10 @@ if (!missing(saveAsType)) {
 
 # Return ------------------------------------------------------------------
 
-return(result)
-
+  if (all(saveAsType %in% saveAsTypeAllowed)) {
+    result <- fns
+  }
+  return(result)
 }
+
+

@@ -15,5 +15,20 @@ emeScheme_extract(dataFile, x)
 \code{emeScheme} object containing metadata for the data file \code{dataFileName}
 }
 \description{
-Split \code{emeScheme} object into multiple by using \code{DataFileNameMetaData$dataFileName}
+One \code{emeScheme} object can contain metadata for multiple datafiles. For
+archiving, these should be split into single \code{emeScheme} objects, one
+for each \code{DataFileNameMetaData$dataFileName}.
+The filtering is done as followed:
+\describe{
+  \item{DataFileMetaDFata}{\code{DataFileMetaData$dataFileName == dataFile}}
+  \item{Treatment}{\code{Treatment$parameter \%in\% DataFileMetaData$mappingColumn} and \code{DataFileMetaData$columnData == "Treatment"} }
+  \item{Measurement}{\code{Measurement$name \%in\% DataFileMetaData$mappingColumn} and \code{DataFileMetaData$columnData == "Measurement"} }
+}
+}
+\examples{
+emeScheme_extract("smell.csv", emeScheme_example)
+## returns the emeScheme data for the data file 'smell.csv'
+
+emeScheme_extract("DoesNotExist", emeScheme_example)
+## returns an empty emeScheme
 }

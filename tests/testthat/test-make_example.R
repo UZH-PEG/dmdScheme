@@ -21,12 +21,12 @@ test_that(
   }
 )
 
-setwd(tempdir())
-test_that(
-  "Does the copying without errors",
-  {
-    expect_null(
-      object = make_example("basic")
-    )
-  }
-)
+# setwd(tempdir())
+# test_that(
+#   "Does the copying without errors",
+#   {
+#     expect_null(
+#       object = make_example("basic")
+#     )
+#   }
+# )

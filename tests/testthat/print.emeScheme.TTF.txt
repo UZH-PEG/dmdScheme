@@ -26,14 +26,14 @@ A       Names : treatmentID | unit | treatmentLevel | comment
 A       Units : NA | NA | NA | NA
 A       Type  : character | character | character | character
 
-XA      row.names: 1 | 2
+XA      row.names: 1 | 2 | 3 | 4 | 5
 XA      propertyName: Treatment
 XA      suggestedValues: species, temperatur, light, initial density, comunity composition, densities, dispersal, viscosity, disturbance, communityType, … | speciesId, C, lux, name, none, ... | value,  variable: freetext, ... | NA
 XA      Description: ID of the the treatment decribed in this a row. Each treatmentId can occur multiple times as it can contain multiple treatment levels. | The unit of the treatment. | The value of the parameter if the parameter is constant over time, or a description of the variability. If unit is speciesId, comma separated list of all species in the treatment. | NA
 XA      class: emeSchemeData_Treatment | emeSchemeData | emeScheme | emeSchemeData_raw | tbl_df | tbl | data.frame
 
      Measurement - emeSchemeData
-A       Names : measurementID | variable | method | unit | object | noOfSamplesInTimeSeries | samplingVolume | dataExtractionName | measuredFrom | comment
+A       Names : measurementID | variable | method | unit | object | noOfSamplesInTimeSeries | samplingVolume | dataExtractionID | measuredFrom | comment
 A       Units : NA | NA | NA | NA | NA | NA | ml | NA | NA | NA
 A       Type  : character | character | character | character | character | integer | numeric | character | character | character
 
@@ -59,9 +59,34 @@ A       Names : dataFileName | columnName | columnData | mappingColumn | type | 
 A       Units : NA | NA | NA | NA | NA | NA | NA
 A       Type  : character | character | character | character | character | character | character
 
-XA      row.names: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18
+XA      row.names: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20
 XA      propertyName: DataFileMetaData
-XA      allowedValues: NA | NA | ID, Treatment, Measurement, Species, other | Lid_treatment, Lid_treatment, -------, oxygen concentration, abundance, smell, sequenceData, -------, tt_1, unknown | integer, numeric, character, logical, datetime, date, time | NA | NA
-XA      Description: the name of the data set. | Name of column in the data file. Each column in the data file needs to be documented! | The type of the data in the column. ID: ID field (unique ID of unit of replication); Treatment: specifies treatment; Measurement: contains measurements; Species: contains species; other: other type of data | Treatment: treatmentID as in the Treatment tab; Measurement: measurementID as in the Measurement tab; Species: speciesID as in the Species tab. | Type of the column. | if column contains measurement: General description. If type is datatime, date, or time, give the order of year month day hour minute second as e.g. ymdhms, ymd, or hms. (Do not give any other information, e.g. give nothing about how months are entered (e.g. number or name), or how years, months, day, etc are separated. | NA
+XA      allowedValues: NA | NA | ID, Treatment, Measurement, Species, other | Lid_treatment, Lid_treatment, species_1, species_2, species_3, -------, oxygen concentration, abundance, smell, sequenceData | integer, numeric, character, logical, datetime, date, time | NA | NA
+XA      Description: the name of the data set. | Name of column in the data file. 
+Each column in the data file needs to be documented!
+
+or NA
+
+if it is for the whole data file and not specified in the dataFileName | The type of the data in the column.
+ 
+ID: ID field (unique ID of unit of replication);
+ 
+Treatment: specifies treatment; 
+
+Measurement: contains measurements; 
+
+Species: contains species; 
+
+other: other type of data | columnData = Treatment: 
+treatmentID as in the Treatment tab; 
+
+columnData = Species: 
+treatmentID refering to species composition as in the Treatment tab
+
+columnData = Measurement: 
+measurementID as in the Measurement tab; 
+
+otherwise:
+NA | Type of the column. | if column contains measurement: General description. If type is datatime, date, or time, give the order of year month day hour minute second as e.g. ymdhms, ymd, or hms. (Do not give any other information, e.g. give nothing about how months are entered (e.g. number or name), or how years, months, day, etc are separated. | NA
 XA      class: emeSchemeData_DataFileMetaData | emeSchemeData | emeScheme | emeSchemeData_raw | tbl_df | tbl | data.frame
 
