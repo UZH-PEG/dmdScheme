@@ -104,8 +104,8 @@ if (is.null(x)) {
 ### <== DataFileMetaData
 - `r result$Measurement$variableInMappinColumn$header`
 
-### <== DataExtractionName
-- `r result$Measurement$dataExtractionNameInDataExtractionName$header`
+### <== DataExtractionID
+- `r result$Measurement$dataExtractionIDInDataExtractionID$header`
 
 <!-- ################################### -->
 <!-- DataExtraction -->
@@ -236,6 +236,7 @@ result$Treatment$parameterInMappinColumn$details %>%
 ```
 
 ## Details `r result$Measurement$header`
+
 ### Types {#MeasurementTypes}
 ```{r}
 result$Measurement$types$details %>%
@@ -260,9 +261,6 @@ result$Measurement$measuredFrom$details %>%
   kable()
 ```
 
-
-
- 
 ## Details `r result$DataExtractio$header`
 
 ### Types {#DataExtractionTypes}

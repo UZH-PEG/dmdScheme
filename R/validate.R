@@ -35,6 +35,14 @@
 #'
 #' @examples
 #' validate( emeScheme_raw )
+#' \dontrun{
+#' validate(
+#'    x = emeScheme_raw,
+#'    report = "html",
+#'    report_author = "The Author I am",
+#'    report_title = "A Nice Report"
+#' )
+#' }
 #'
 validate <- function(
   x,
@@ -383,7 +391,7 @@ validateMeasurement <- function( x, xraw, xconv ){
     3
   )
   res$header <- valErr_TextErrCol("dataExtractionID is 'none', 'NA', NA, or in DataExtraction$dataExtractionID", res$error)
-  result$dataExtractionIDInDataExtractionName <- res
+  result$dataExtractionIDInDataExtractionID <- res
   rm(res)
 
   # overall error -----------------------------------------------------------
