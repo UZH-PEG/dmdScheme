@@ -15,7 +15,7 @@ Description: This package provides and describes the Authoratative
         15:32:23 2019 / Europe/Zurich.
 Depends: R (>= 3.3.0)
 Imports: tools, methods, utils, magrittr (>= 1.5), dplyr (>= 0.1.8),
-        tibble (>= 2.0.0), readxl (>= 1.2.0), openxlsx (>= 4.1.1), XML
+        tibble (>= 2.1.1), readxl (>= 1.2.0), openxlsx (>= 4.1.1), XML
         (>= 3.98-1.16), rlang (>= 0.3.1), taxize (>= 0.9.5), rmarkdown,
         knitr, digest (>= 0.6)
 Remotes: awalker89/openxlsx, rkrug/plantuml
