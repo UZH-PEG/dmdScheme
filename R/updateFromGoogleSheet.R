@@ -92,7 +92,8 @@ updateFromGoogleSheet <- function(
     emeSchemeToXml(
       x = emeScheme_example,
       file = here::here("inst", "emeScheme_example.xml"),
-      output = "complete"
+      output = "complete",
+      confirmationCode = "secret code for testing"
     )
 
     # bump version and change description in DECRIPTION -----------------------

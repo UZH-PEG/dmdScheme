@@ -77,6 +77,11 @@ update:
 
 #############
 
+updateForce:
+	@Rscript -e "devtools::load_all(here::here()); emeScheme:::updateFromGoogleSheet(token = './source/googlesheets_token.rds', force = TRUE)"
+
+#############
+
 test:
 	@Rscript -e "devtools::test()"
 
@@ -87,10 +92,10 @@ check:
 
 #############
 
-publish:
-	git add DESCRIPTION data/emeScheme.rda data/emeScheme_gd.rda inst/googlesheet/emeScheme.xlsx docs/index.html
-	git commit -m "Update From Googlesheets"
-	git push
+# publish:
+# 	git add DESCRIPTION data/emeScheme.rda data/emeScheme_gd.rda inst/googlesheet/emeScheme.xlsx docs/index.html
+# 	git commit -m "Update From Googlesheets"
+# 	git push
 
 #############
 

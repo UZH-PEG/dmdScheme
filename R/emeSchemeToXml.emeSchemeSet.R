@@ -7,7 +7,8 @@ emeSchemeToXml.emeSchemeSet <- function(
   x,
   tag,
   file,
-  output = "metadata"
+  output = "metadata",
+  confirmationCode
 ) {
   outputValues <- c("metadata", "complete")
   if (!(output %in% outputValues)) {
@@ -44,7 +45,7 @@ emeSchemeToXml.emeSchemeSet <- function(
 # Call emeSchemeToXml() on list objects -----------------------------------
 
   for(i in 1:length(x)) {
-    xml <- XML::append.xmlNode(xml, emeSchemeToXml(x[[i]], output = output))
+    xml <- XML::append.xmlNode(xml, emeSchemeToXml(x[[i]], output = output, confirmationCode = digest::digest(object = x[[i]], algo = "sha1")))
   }
 
 # If file  not missing, i.e. from root node as file not used in it --------

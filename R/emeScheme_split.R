@@ -86,7 +86,7 @@ if (!missing(saveAsType)) {
       result,
       function(x) {
         fn <- file.path( path, paste(attr(x, "propertyName"), "xml", sep = ".") )
-        emeSchemeToXml(x, tag = paste(attr(x, "propertyName")), file = fn)
+        emeSchemeToXml(x, tag = paste(attr(x, "propertyName")), file = fn, confirmationCode = "secret code for testing")
         fns <<- c(fns, fn)
       }
     )

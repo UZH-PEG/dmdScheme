@@ -10,9 +10,6 @@ language: r
 env:
   - _R_CHECK_SYSTEM_CLOCK_=0
 
-env:
-  - _R_CHECK_SYSTEM_CLOCK_=0
-
 #Define multiple R-versions, one from bioconductor
 matrix:
   include:
@@ -27,6 +24,7 @@ matrix:
     osx_image: xcode10.1
     before_install:
     - sudo tlmgr install inconsolata
+    - sw_vers
   - r: oldrel
   - r: 3.3
 #  - r: 3.2 # Because of openxlsx requires R >= 3.3

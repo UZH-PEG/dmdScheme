@@ -22,7 +22,7 @@
 #'   defined in \code{propSets} of Class \code{emeScheme_raw}, otgherwise an
 #'   object of class \code{emeSchemeSet}
 #'
-#' @importFrom magrittr %>% equals
+#' @importFrom magrittr %>% equals not
 #' @importFrom readxl read_excel
 #' @importFrom tools file_path_sans_ext file_ext
 #'

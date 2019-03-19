@@ -8,9 +8,19 @@ title: "`r params$title`"
 author: "`r params$author`"
 date: "`r Sys.Date()`"
 output:
-  html_document: default
-  pdf_document: default
-  word_document: default
+  html_document: 
+    number_sections: true
+    toc_depth: 3
+    toc: true
+    toc_float: true
+  pdf_document: 
+    number_sections: true
+    toc_depth: 3
+    toc: true
+  word_document: 
+    number_sections: true
+    toc_depth: 3
+    toc: true
 ---
 
 
@@ -27,16 +37,136 @@ if (is.null(x)) {
     devtools::load_all()
   }
   x <- emeScheme::emeScheme_raw
-  result <- validate(x = emeScheme_raw, validateData = TRUE, report = "none")
+  result <- validate(x = emeScheme_raw, validateData = TRUE, report = "none", path = system.file("example_data", "basic", "data", "archiving_data", package = "emeScheme"))
 }
 ## ##
+## Define colours for results of evaluation
+
 ```
 
 * **Author**: `r params$author`
 * **emeScheme metadata name**: `r attr(x, "fileName")`
-* **data package path**: `add this`
+* **data package path**: `add this` 
 
-# Overall validation outcome
+<!-- ################################### -->
+<!-- ################################### -->
+<!-- Overview -->
+<!-- ################################### -->
+<!-- ################################### -->
+
+# `r result$header`
+
+<!-- ################################### -->
+<!-- Structural -->
+<!-- ################################### -->
+
+## `r result$structure$header`
+
+<!-- ################################### -->
+<!-- Experiment -->
+<!-- ################################### -->
+
+## `r result$Experiment$header`
+- `r result$Experiment$types$header` [See Details](#ExperimentTypes)
+- `r result$Experiment$suggestedValues$header` [See Details](#ExperimentSuggested)
+
+<!-- ################################### -->
+<!-- Species -->
+<!-- ################################### -->
+
+## `r result$Species$header`
+
+- `r result$Species$types$header` [See Details](#SpeciesTypes)
+- `r result$Species$suggestedValues$header` [See Details](#SpeciesSuggested)
+- `r result$Species$speciesNames$header` [See Details](#SpeciesNames)
+
+<!-- ################################### -->
+<!-- Treatment -->
+<!-- ################################### -->
+
+## `r result$Treatment$header`
+- `r result$Treatment$types$header` [See Details](#TreatmentTypes)
+- `r result$Treatment$suggestedValues$header` [See Details](#TreatmentSuggested)
+
+### <== DataFileMetaData
+- `r result$Treatment$parameterInMappinColumn$header` [see Details](#TreatmentParameter)
+
+<!-- ################################### -->
+<!-- Measurement -->
+<!-- ################################### -->
+
+## `r result$Measurement$header`
+- `r result$Measurement$types$header` [See Details](#MeasurementTypes)
+- `r result$Measurement$suggestedValues$header` [See Details](#MeasurementSuggested)
+- `r result$Measurement$nameUnique$header` [details](#MeasurementNameUnique)
+- `r result$Measurement$measuredFrom$header` [details](#MeasurementFrom)
+
+### <== DataFileMetaData
+- `r result$Measurement$variableInMappinColumn$header`
+
+### <== DataExtractionID
+- `r result$Measurement$dataExtractionIDInDataExtractionID$header`
+
+<!-- ################################### -->
+<!-- DataExtraction -->
+<!-- ################################### -->
+
+## `r result$DataExtraction$header`
+- `r result$DataExtraction$types$header` [See Details](#DataExtractionTypes)
+- `r result$DataExtraction$suggestedValues$header` [See Details](#DataExtractionSuggested)
+- `r result$DataExtraction$nameUnique$header` [See Details](#DataExtractionNameUnique})
+
+### <== Measurement
+- `r result$DataExtraction$nameInDataExtractionName$header` [See Details](#DataExtractionNameName})
+
+<!-- ################################### -->
+<!-- DataFileMetaData -->
+<!-- ################################### -->
+
+## `r result$DataFileMetaData$header`
+- `r result$DataFileMetaData$types$header` [See Details](#DataFileMetadataFilesTypes)
+- `r result$DataFileMetaData$allowedValues$header` [See Details](#DataFileMetaDataAllowed)
+- `r result$DataFileMetaData$dataFilesExist$header` [See Details](#DataFileExists)
+- `r result$DataFileMetaData$datetimeFormatSpecified$header`  [See Details](#DataFileMetaDataDateTimeExists)
+
+## <== Measurement & Treatment
+- `r result$DataFileMetaData$mappingColumnInNameOrParameter$header` [See details](#DataFileMetaDataMapping)
+
+### <== data file
+- `r result$DataFileMetaData$columnNameInDataFileColumn$header` [See details](#columnNameInDataFileColumn)
+- `r result$DataFileMetaData$dataFileColumnInColumnNamen$header` [See details](#dataFileColumnInColumnNamen)
+- [ ] the date, time and date time can be converted using the format specifications in `description`
+
+<!-- ################################### -->
+<!-- Data Files -->
+<!-- ################################### -->
+
+## `r result$DataFiles$header`
+- [ ] ranges of numeric columns
+- [ ] values of text columns
+- [ ] ???
+
+### <== Treatment
+- [ ] the **values** in the column describing the treatment (i.e. treatment levels) have to be in the column `Treatment$treatmentLevel` of the corresponding `Treatment$parameter`
+
+### <== Measurement
+- [ ] type checks of `columnName` compared to `type`
+
+# Other Validity Checks
+- [ ] ???
+
+
+<!-- ################################### -->
+<!-- ################################### -->
+<!-- Details -->
+<!-- ################################### -->
+<!-- ################################### -->
+
+
+# Details
+
+
+## Overall validation outcome
 
 Here there will be a report on the overall validation outcome, e.g., your metadata-data combination passed x/y critical tests, and passed z/n desirable tests. Please see below for details of each test result.
 
@@ -48,99 +178,198 @@ attributes(x)
 
 Use conditional text to explicitly say pass or fail, so that users don't have to read the R output (or at least get lovely green text for pass, and red for fail!)
 
-# Validate General Structure
+## Details `r result$structure$header`
 ```{r val_struct, options}
-result$structOK
+result$struct$details
 ```
 
 
-# Validate Experiment
-## Types
+## Details `r result$Experiment$header`
+### Types {#ExperimentTypes}
 ```{r}
-result$Experiment$types %>%
+result$Experiment$types$details %>%
   kable()
 ```
 
-## Suggested Values
+### Suggested Values {#ExperimentSuggested}
 ```{r}
-result$Experiment$suggestedValues %>%
+result$Experiment$suggestedValues$details %>%
   kable()
 ```
 
-# Validate Species
-## Types
+## Details `r result$Species$header`
+### Types {#SpeciesTypes}
 ```{r}
-result$Species$types %>%
+result$Species$types$details %>%
   kable()
 ```
 
-## Suggested Values
+### Suggested Values {#SpeciesSuggested}
 ```{r}
-result$Species$suggestedValues %>%
+result$Species$suggestedValues$details %>%
   kable()
 ```
 
-## Species Names
+### Species Names {#SpeciesNames}
 ```{r}
-result$Species$speciesNames %>%
+result$Species$speciesNames$details %>%
   kable()
 ```
 
-# Validate Treatment
-## Types
+## Details `r result$Treatment$header`
+### Types {#TreatmentTypes}
 ```{r}
-result$Treatment$types %>%
+result$Treatment$types$details %>%
   kable()
 ```
 
-## Suggested Values
+### Suggested Values {#TreatmentSuggested}
 ```{r}
-result$Treatment$suggestedValues %>%
+result$Treatment$suggestedValues$details %>%
   kable()
 ```
 
-# Validate Measurement
-## Types
+### Suggested Values {#TreatmentParameter}
 ```{r}
-result$Measurement$types %>%
+result$Treatment$parameterInMappinColumn$details %>%
   kable()
 ```
 
-## Suggested Values
+## Details `r result$Measurement$header`
+
+### Types {#MeasurementTypes}
 ```{r}
-result$Measurement$suggestedValues %>%
+result$Measurement$types$details %>%
   kable()
 ```
 
-# Validate DataExtraction
-## Types
-```{r}
-result$DataExtraction$types %>%
+### suggested values {#MeasurementSuggested}
+ ```{r}
+result$Measurement$suggestedValue$detailss %>%
   kable()
 ```
 
-## Suggested Values
+### name unique {#MeasurementNameUnique}
 ```{r}
-result$DataExtraction$suggestedValues %>%
+ result$Measurement$nameUnique$details %>%
   kable()
 ```
 
-# Validate DataFileMetaData
-## Types
+### measuredFrom is 'raw', 'NA' or NA {#MeasurementFrom}
 ```{r}
-result$DataFileMetaData$types %>%
+result$Measurement$measuredFrom$details %>%
   kable()
 ```
 
-## Suggested Values
+## Details `r result$DataExtractio$header`
+
+### Types {#DataExtractionTypes}
 ```{r}
-result$DataFileMetaData$suggestedValues %>%
+result$DataExtraction$types$details %>%
   kable()
 ```
 
-## Validate mappingColumn
+### Suggested Values {#DataExtractionSuggested}
+```{r} 
+result$DataExtraction$suggestedValues$details %>%
+  kable()
+```
 
-## Validation out of attempt to parse date variables
+### name unique {#DataExtractionNameUnique}
+```{r} 
+cat_ln("CHECK - TODO")
+# result$DataExtraction$nameUnique$details %>%
+#  kable()
+```
 
-# To do
+### name in DataExtraction$name {#DataExtractionNameName}
+```{r} 
+cat_ln("CHECK - TODO")
+# result$DataExtraction$nameInDataExtractionName$details %>%
+#   kable()
+```
+
+## Details `r result$DataFileMetaData$header`
+### Types {#DataFileMetadataFilesTypes}
+```{r}
+result$DataFileMetaData$types$details %>%
+  kable()
+```
+
+### Allowed Values {#DataFileMetaDataAllowed}
+```{r}
+result$DataFileMetaData$allowedValues$details %>%
+  kable()
+```
+
+### Validate mappingColumn {#DataFileMetaDataMapping}
+```{r}
+cbind(result$DataFileMetaData$mappingColumnInNameOrParameter$details) %>%
+  kable()
+```
+
+
+### Data file exists in path {#DataFileExists}
+```{r}
+result$DataFileMetaData$dataFilesExist$details %>%
+  kable()
+```
+
+### If `type == 'datetime'`, description has format information {#DataFileMetaDataDateTimeExists}
+```{r}
+result$DataFileMetaData$datetimeFormatSpecified$details %>%
+  kable()
+```
+
+### `columnName` in `dataFileName` {#columnNameInDataFileColumn}
+```{r}
+result$DataFileMetaData$columnNameInDataFileColumn$details %>%
+  kable()
+```
+
+### column names in `dataFileName` are in `columnName` {#dataFileColumnInColumnNamen}
+```{r}
+result$DataFileMetaData$dataFileColumnInColumnNamen$details %>%
+  kable()
+```
+
+
+### Validation out of attempt to parse date variables
+
+## To do
+
+# Confirmation code
+
+The following code needs to be entered in the `emeSchemeToXml()` function to confirm that the validation has been done and read. **No export is possible without this code!**:
+ **<span style="color:red">TODO implement in emeSchemeToXML()</span>**
+```{r echo=FALSE, comment = ""}
+if (isTRUE(result$error < 2)) {
+  suppressWarnings( 
+    new_emeSchemeSet(
+      x = x, 
+      keepData = TRUE, 
+      convertTypes = TRUE,  
+      verbose = FALSE, 
+      warnToError = FALSE
+    ) 
+  ) %>%
+    digest::digest(algo = "sha1")
+} else {
+  cat_ln("Please fix all errors before continuing!")
+  cat_ln()
+  cat_ln("The following code will not be printed in the final version!!!!!")
+  cat_ln()
+  suppressWarnings( 
+    new_emeSchemeSet(
+      x = x, 
+      keepData = TRUE, 
+      convertTypes = TRUE,  
+      verbose = FALSE, 
+      warnToError = FALSE
+    ) 
+  ) %>%
+    digest::digest(algo = "sha1") %>%
+    cat_ln()
+}
+```
 

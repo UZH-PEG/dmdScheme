@@ -4,7 +4,7 @@
 \alias{validate}
 \title{Validate Excel workbook or object of class \code{emeSchemeSet_raw} against \code{emeScheme}.}
 \usage{
-validate(x, path = "", validateData = TRUE, report = "none",
+validate(x, path = ".", validateData = TRUE, report = "none",
   report_author = "Tester",
   report_title = "Validation of data against emeScheme",
   errorIfStructFalse = TRUE)
@@ -43,5 +43,13 @@ Based on this result, a report is created if asked fore (see below for details).
 }
 \examples{
 validate( emeScheme_raw )
+\dontrun{
+validate(
+   x = emeScheme_raw,
+   report = "html",
+   report_author = "The Author I am",
+   report_title = "A Nice Report"
+)
+}
 
 }
