@@ -133,7 +133,7 @@ format_emeScheme_xlsx <- function(
     borderColour = "black",
     borderStyle = "thin",
     bgFill = NULL,
-    fgFill = "greenyellow",
+    fgFill = "darkseagreen1",
     halign = NULL,
     valign = NULL,
     textDecoration = NULL,
