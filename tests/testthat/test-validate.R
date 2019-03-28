@@ -1,5 +1,6 @@
 context("validate()")
 
+x <- emeScheme_raw
 
 # returns TRUE -------------------------------------------------------------
 
@@ -7,7 +8,7 @@ test_that(
   "validata_raw() returns correct value when correct",
   {
     expect_known_value(
-      object = validate( x = emeScheme_raw, errorIfStructFalse = TRUE),
+      object = validate( x = x, errorIfStructFalse = TRUE),
       file = "validate.CORRECT.rda"
     )
   }
@@ -16,7 +17,6 @@ test_that(
 
 # returns differences when nt correct -------------------------------------
 
-x <- emeScheme_raw
 names(x)[1] <- "experiment"
 
 test_that(
