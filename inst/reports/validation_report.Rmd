@@ -13,6 +13,7 @@ output:
     toc_depth: 3
     toc: true
     toc_float: true
+    keep_md: true
   pdf_document: 
     number_sections: true
     toc_depth: 3
@@ -48,100 +49,51 @@ if (is.null(x)) {
 * **emeScheme metadata name**: `r attr(x, "fileName")`
 * **data package path**: `add this` 
 
-<!-- ################################### -->
-<!-- ################################### -->
-<!-- Overview -->
-<!-- ################################### -->
-<!-- ################################### -->
+# Introduction
+This validation report validates the most likely an excelsheet containing the data.
+The headers do represent sections of validations, while the bullets reperesent individual validations. Sections of the validation and are hierarchical, i.e. a higher level validation result depends on the lower level validation results. The headers and validations follow the structure of
 
-# `r result$header`
+**Error_Level** : **Name of the validation**
 
-<!-- ################################### -->
-<!-- Structural -->
-<!-- ################################### -->
+The error level can be:
+- **OK**: the validation passed
+- **note**: the validation contains an inconsistency which migh be an error or on purpose. Please check these!
+- **warning**: the validation contains an inconsistency which could be an error or on purpose. Please check these!
+- **error**: the validation failed and contains an error - needs to be fixewd before the data can be exported!
 
-## `r result$structure$header`
+An ideal validation will not contain any errors or warnings.
 
-<!-- ################################### -->
-<!-- Experiment -->
-<!-- ################################### -->
+Validation results are accumulated by forwarding the highest error to the validation of the next 
+level. If validation 1.3. contains an error, 1. will be classified as an error as well, 
+irrespective of 1.1, 1.2, ....
 
-## `r result$Experiment$header`
-- `r result$Experiment$types$header` [See Details](#ExperimentTypes)
-- `r result$Experiment$suggestedValues$header` [See Details](#ExperimentSuggested)
+The details do contain the individual tests and are explained in detail in the sections
 
-<!-- ################################### -->
-<!-- Species -->
-<!-- ################################### -->
+Details **Error_Level** : **Name of the validation**
 
-## `r result$Species$header`
-
-- `r result$Species$types$header` [See Details](#SpeciesTypes)
-- `r result$Species$suggestedValues$header` [See Details](#SpeciesSuggested)
-- `r result$Species$speciesNames$header` [See Details](#SpeciesNames)
 
 <!-- ################################### -->
-<!-- Treatment -->
+<!-- ################################### -->
+<!-- Overall MetaData -->
+<!-- ################################### -->
 <!-- ################################### -->
 
-## `r result$Treatment$header`
-- `r result$Treatment$types$header` [See Details](#TreatmentTypes)
-- `r result$Treatment$suggestedValues$header` [See Details](#TreatmentSuggested)
+# Overall
+```{r}
+valErr_extract(result) %>% 
+  table %>% 
+  set_names(valErr_info(names(.))$text)
+```
 
-### <== DataFileMetaData
-- `r result$Treatment$parameterInMappinColumn$header` [see Details](#TreatmentParameter)
+# Overview
+```{r, results = "asis"}
+print(result, level = 2, listLevel = 20, type = "summary")
+```
 
-<!-- ################################### -->
-<!-- Measurement -->
-<!-- ################################### -->
+## **<span style="color:red">TODO</span>** 
+### result$DataFiles$header
+result$DataFiles$description
 
-## `r result$Measurement$header`
-- `r result$Measurement$types$header` [See Details](#MeasurementTypes)
-- `r result$Measurement$suggestedValues$header` [See Details](#MeasurementSuggested)
-- `r result$Measurement$nameUnique$header` [details](#MeasurementNameUnique)
-- `r result$Measurement$measuredFrom$header` [details](#MeasurementFrom)
-
-### <== DataFileMetaData
-- `r result$Measurement$variableInMappinColumn$header`
-
-### <== DataExtractionID
-- `r result$Measurement$dataExtractionIDInDataExtractionID$header`
-
-<!-- ################################### -->
-<!-- DataExtraction -->
-<!-- ################################### -->
-
-## `r result$DataExtraction$header`
-- `r result$DataExtraction$types$header` [See Details](#DataExtractionTypes)
-- `r result$DataExtraction$suggestedValues$header` [See Details](#DataExtractionSuggested)
-- `r result$DataExtraction$nameUnique$header` [See Details](#DataExtractionNameUnique})
-
-### <== Measurement
-- `r result$DataExtraction$nameInDataExtractionName$header` [See Details](#DataExtractionNameName})
-
-<!-- ################################### -->
-<!-- DataFileMetaData -->
-<!-- ################################### -->
-
-## `r result$DataFileMetaData$header`
-- `r result$DataFileMetaData$types$header` [See Details](#DataFileMetadataFilesTypes)
-- `r result$DataFileMetaData$allowedValues$header` [See Details](#DataFileMetaDataAllowed)
-- `r result$DataFileMetaData$dataFilesExist$header` [See Details](#DataFileExists)
-- `r result$DataFileMetaData$datetimeFormatSpecified$header`  [See Details](#DataFileMetaDataDateTimeExists)
-
-## <== Measurement & Treatment
-- `r result$DataFileMetaData$mappingColumnInNameOrParameter$header` [See details](#DataFileMetaDataMapping)
-
-### <== data file
-- `r result$DataFileMetaData$columnNameInDataFileColumn$header` [See details](#columnNameInDataFileColumn)
-- `r result$DataFileMetaData$dataFileColumnInColumnNamen$header` [See details](#dataFileColumnInColumnNamen)
-- [ ] the date, time and date time can be converted using the format specifications in `description`
-
-<!-- ################################### -->
-<!-- Data Files -->
-<!-- ################################### -->
-
-## `r result$DataFiles$header`
 - [ ] ranges of numeric columns
 - [ ] values of text columns
 - [ ] ???
@@ -152,7 +104,7 @@ if (is.null(x)) {
 ### <== Measurement
 - [ ] type checks of `columnName` compared to `type`
 
-# Other Validity Checks
+## Other Validity Checks
 - [ ] ???
 
 
@@ -165,178 +117,16 @@ if (is.null(x)) {
 
 # Details
 
+```{r , results = "asis"}
+print(result, level = 2, listLevel = 20, type = "details", format = "markdown")
+```
 
-## Overall validation outcome
-
-Here there will be a report on the overall validation outcome, e.g., your metadata-data combination passed x/y critical tests, and passed z/n desirable tests. Please see below for details of each test result.
 
 
-Put this in an appendix.
+# Structure info
 ```{r info}
 attributes(x)
 ```
-
-Use conditional text to explicitly say pass or fail, so that users don't have to read the R output (or at least get lovely green text for pass, and red for fail!)
-
-## Details `r result$structure$header`
-```{r val_struct, options}
-result$struct$details
-```
-
-
-## Details `r result$Experiment$header`
-### Types {#ExperimentTypes}
-```{r}
-result$Experiment$types$details %>%
-  kable()
-```
-
-### Suggested Values {#ExperimentSuggested}
-```{r}
-result$Experiment$suggestedValues$details %>%
-  kable()
-```
-
-## Details `r result$Species$header`
-### Types {#SpeciesTypes}
-```{r}
-result$Species$types$details %>%
-  kable()
-```
-
-### Suggested Values {#SpeciesSuggested}
-```{r}
-result$Species$suggestedValues$details %>%
-  kable()
-```
-
-### Species Names {#SpeciesNames}
-```{r}
-result$Species$speciesNames$details %>%
-  kable()
-```
-
-## Details `r result$Treatment$header`
-### Types {#TreatmentTypes}
-```{r}
-result$Treatment$types$details %>%
-  kable()
-```
-
-### Suggested Values {#TreatmentSuggested}
-```{r}
-result$Treatment$suggestedValues$details %>%
-  kable()
-```
-
-### Suggested Values {#TreatmentParameter}
-```{r}
-result$Treatment$parameterInMappinColumn$details %>%
-  kable()
-```
-
-## Details `r result$Measurement$header`
-
-### Types {#MeasurementTypes}
-```{r}
-result$Measurement$types$details %>%
-  kable()
-```
-
-### suggested values {#MeasurementSuggested}
- ```{r}
-result$Measurement$suggestedValue$detailss %>%
-  kable()
-```
-
-### name unique {#MeasurementNameUnique}
-```{r}
- result$Measurement$nameUnique$details %>%
-  kable()
-```
-
-### measuredFrom is 'raw', 'NA' or NA {#MeasurementFrom}
-```{r}
-result$Measurement$measuredFrom$details %>%
-  kable()
-```
-
-## Details `r result$DataExtractio$header`
-
-### Types {#DataExtractionTypes}
-```{r}
-result$DataExtraction$types$details %>%
-  kable()
-```
-
-### Suggested Values {#DataExtractionSuggested}
-```{r} 
-result$DataExtraction$suggestedValues$details %>%
-  kable()
-```
-
-### name unique {#DataExtractionNameUnique}
-```{r} 
-cat_ln("CHECK - TODO")
-# result$DataExtraction$nameUnique$details %>%
-#  kable()
-```
-
-### name in DataExtraction$name {#DataExtractionNameName}
-```{r} 
-cat_ln("CHECK - TODO")
-# result$DataExtraction$nameInDataExtractionName$details %>%
-#   kable()
-```
-
-## Details `r result$DataFileMetaData$header`
-### Types {#DataFileMetadataFilesTypes}
-```{r}
-result$DataFileMetaData$types$details %>%
-  kable()
-```
-
-### Allowed Values {#DataFileMetaDataAllowed}
-```{r}
-result$DataFileMetaData$allowedValues$details %>%
-  kable()
-```
-
-### Validate mappingColumn {#DataFileMetaDataMapping}
-```{r}
-cbind(result$DataFileMetaData$mappingColumnInNameOrParameter$details) %>%
-  kable()
-```
-
-
-### Data file exists in path {#DataFileExists}
-```{r}
-result$DataFileMetaData$dataFilesExist$details %>%
-  kable()
-```
-
-### If `type == 'datetime'`, description has format information {#DataFileMetaDataDateTimeExists}
-```{r}
-result$DataFileMetaData$datetimeFormatSpecified$details %>%
-  kable()
-```
-
-### `columnName` in `dataFileName` {#columnNameInDataFileColumn}
-```{r}
-result$DataFileMetaData$columnNameInDataFileColumn$details %>%
-  kable()
-```
-
-### column names in `dataFileName` are in `columnName` {#dataFileColumnInColumnNamen}
-```{r}
-result$DataFileMetaData$dataFileColumnInColumnNamen$details %>%
-  kable()
-```
-
-
-### Validation out of attempt to parse date variables
-
-## To do
 
 # Confirmation code
 
@@ -373,3 +163,7 @@ if (isTRUE(result$error < 2)) {
 }
 ```
 
+
+# <span style="color:red">TODO</span>  
+- Use conditional text to explicitly say pass or fail, so that users don't have to read the R output (or at least get lovely green text for pass, and red for fail!)
+- Validation out of attempt to parse date variables

@@ -21,27 +21,38 @@ valErr_errorLevels <- data.frame(
 #' @export
 #'
 valErr_info <- function(error) {
-  level <- ifelse (
-    is.na(error),
-    5,
-    which(valErr_errorLevels$text == error)
-  )
-  if (is.na(level)) {
-    level <- which(valErr_errorLevels$colour == error)
-    if (length(level) == 0) {
-      level <- which(valErr_errorLevels$level == error)
+  if (length(error) > 1) {
+    result <- lapply(
+      error,
+      valErr_info
+    )
+    result <- do.call(rbind, result)
+  } else {
+    level <- ifelse (
+      is.na(error),
+      rep(5, length(error)),
+      which(valErr_errorLevels$text == error)
+    )
+    if (is.na(level)) {
+      level <- which(valErr_errorLevels$colour == error)
+      if (length(level) == 0) {
+        level <- which(valErr_errorLevels$level == error)
+      }
     }
+    if ((length(level) == 0) | is.na(level)) {
+      stop(error, " not a valid error identifier. See the variable 'valErr_errorLevels' for allowed values.")
+    }
+    result <- valErr_errorLevels[level,]
   }
-  if ((length(level) == 0) | is.na(level)) {
-    stop(error, " not a valid error identifier. See the variable 'valErr_errorLevels' for allowed values.")
-  }
-  return( valErr_errorLevels[level,] )
+  return( result )
 }
 
 
 #' Colour the \code{text} by using the error colour
 #'
-#' @param text to be coloured. if not supplied, the coloured error text will be returned
+#' @param text to be coloured. if not supplied, the coloured error text will be
+#'   returned. If \code{text} is of class \code{emeScheme_validation}, the
+#'   function will be called with \code{text = text$header, error = text$error}
 #' @param error either level, text or colour of error (see \code{valErr_errorLevels})
 #' @param addError if the error text should be added in the front of the \code{text}.
 #'
@@ -50,23 +61,27 @@ valErr_info <- function(error) {
 #' @export
 #'
 valErr_TextErrCol <- function(text, error, addError = TRUE) {
-  if (missing(text)) {
-    text <- valErr_info(error)$text
-  } else if (addError) {
-    text <- paste(
-      valErr_info(error)$text,
-      ":",
-      text
+  if (inherits(text, "emeScheme_validation") ) {
+    result <- valErr_TextErrCol(text$header, text$error, addError)
+  } else {
+    if (missing(text)) {
+      text <- valErr_info(error)$text
+    } else if (addError) {
+      text <- paste(
+        text,
+        "-",
+        valErr_info(error)$text
+      )
+    }
+    #
+    result <- paste0(
+      '**<span style="color:',
+      valErr_info(error)$colour,
+    '">',
+      text,
+      '</span>**'
     )
   }
-  #
-  result <- paste0(
-    '**<span style="color:',
-    valErr_info(error)$colour, '
-    ">',
-    text,
-    '</span>**'
-  )
   return( result )
 }
 
