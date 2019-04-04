@@ -1,4 +1,6 @@
+* added descriptions of validation results and details to validate() function
 
+# release 0.9
 * added suggestedValues to Measurement$dataExtractionMethod and Measurement$measuredFrom on spreadsheet
 * added suggestedValues to Measurement$dataExtractionMethod and Measurement$measuredFrom on spreadsheet
 * Measurement$dataExtractionMethod uses **none** as sugested on spreadsheet

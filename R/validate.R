@@ -898,6 +898,11 @@ validateExperiment <- function( x, xraw, xconv ){
   result <- new_emeScheme_validation()
   ##
   result$header <- "Experiment"
+  result$description <- paste(
+    "Test if the metadata concerning **Experiment** is correct. ",
+    "This includes column names, required info, ... "
+  )
+  result$descriptionDetails <- "No further details available."
   ##
   result$types <- validateTypes(xraw$Experiment, xconv$Experiment)
   result$suggestedValues <- validateSuggestedValues(xraw$Experiment)
@@ -913,6 +918,11 @@ validateSpecies <- function( x, xraw, xconv ){
   result <- new_emeScheme_validation()
   ##
   result$header <- "Species"
+  result$description <- paste(
+    "Test if the metadata concerning **Species** is correct. ",
+    "This includes column names, required info, ... "
+  )
+  result$descriptionDetails <- "No further details available."
   ##
   result$types <- validateTypes(xraw$Species, xconv$Species)
   result$suggestedValues <- validateSuggestedValues(xraw$Species)
@@ -930,6 +940,11 @@ validateTreatment <- function( x, xraw, xconv ){
   result <- new_emeScheme_validation()
   ##
   result$header <- "Treatment"
+  result$description <- paste(
+    "Test if the metadata concerning **Treatment** is correct. ",
+    "This includes column names, required info, ... "
+  )
+  result$descriptionDetails <- "No further details available."
   ##
   result$types <- validateTypes(xraw$Treatment, xconv$Treatment)
   result$suggestedValues <- validateSuggestedValues(xraw$Treatment)
@@ -946,6 +961,11 @@ validateMeasurement <- function( x, xraw, xconv ){
   result <- new_emeScheme_validation()
   ##
   result$header <- "Measurement"
+  result$description <- paste(
+    "Test if the metadata concerning **Measurement** is correct. ",
+    "This includes column names, required info, ... "
+  )
+  result$descriptionDetails <- "No further details available."
   ##
   result$types <- validateTypes(xraw$Measurement, xconv$Measurement)
   result$suggestedValues <- validateSuggestedValues(xraw$Measurement)
@@ -965,6 +985,11 @@ validateDataExtraction <- function( x, xraw, xconv ){
   result <- new_emeScheme_validation()
   ##
   result$header <- "DataExtraction"
+  result$description <- paste(
+    "Test if the metadata concerning **DataExtraction** is correct. ",
+    "This includes column names, required info, ... "
+  )
+  result$descriptionDetails <- "No further details available."
   ##
   result$types <- validateTypes(xraw$DataExtraction, xconv$DataExtraction)
   result$suggestedValues <- validateSuggestedValues(xraw$DataExtraction)
@@ -982,6 +1007,11 @@ validateDataFileMetaData <- function( x, xraw, xconv, path ){
   result <- new_emeScheme_validation()
   ##
   result$header <- "DataFileMetaData"
+  result$description <- paste(
+    "Test if the metadata concerning **DataExtraction** is correct. ",
+    "This includes column names, required info, ... "
+  )
+  result$descriptionDetails <- "No further details available."
   ##
   result$types <- validateTypes(xraw$DataFileMetaData, xconv$DataFileMetaData)
   result$allowedValues <- validateAllowedValues(xraw$DataFileMetaData)
@@ -1002,6 +1032,11 @@ validateDataFiles <- function( x, xraw, xconv, path ){
   result <- new_emeScheme_validation()
   ##
   result$header <- "Data Files"
+  result$description <- paste(
+    "Test if the data files as mentioned in `DataFileMetaData$dataFileName` is correct. ",
+    "This includes column names, required info, ... "
+  )
+  result$descriptionDetails <- "No further details available."
   ##
   result$error <- NA # max(valErr_extract(result), na.rm = FALSE)
   result$header <- valErr_TextErrCol(result)

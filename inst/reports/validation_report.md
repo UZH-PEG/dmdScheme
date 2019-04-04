@@ -6,7 +6,7 @@ params:
   result: NULL
 title: "Validation"
 author: "unknown"
-date: "2019-04-03"
+date: "2019-04-04"
 output:
   html_document: 
     number_sections: true
@@ -92,7 +92,7 @@ Test if the structure of the metadata is correct.  This includes column names, r
 
 ### **<span style="color:#AA5500">Experiment - warning</span>**
 
-To Be Added
+Test if the metadata concerning **Experiment** is correct.  This includes column names, required info, ... 
 
 
 #### **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**
@@ -107,7 +107,7 @@ Test if the metadata entered is ion the suggestedValues list. The value NA is al
 
 ### **<span style="color:#AA5500">Species - warning</span>**
 
-To Be Added
+Test if the metadata concerning **Species** is correct.  This includes column names, required info, ... 
 
 
 #### **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**
@@ -132,7 +132,7 @@ Test if the scientific name in the column `name` is correct. This uses the funct
 
 ### **<span style="color:#AA5500">Treatment - warning</span>**
 
-To Be Added
+Test if the metadata concerning **Treatment** is correct.  This includes column names, required info, ... 
 
 
 #### **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**
@@ -157,7 +157,7 @@ Test if the `treatmentID` is in the `DataFileMetaData$mappingColumn` column. The
 
 ### **<span style="color:#AA5500">Measurement - warning</span>**
 
-To Be Added
+Test if the metadata concerning **Measurement** is correct.  This includes column names, required info, ... 
 
 
 #### **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**
@@ -205,7 +205,7 @@ Test if the `dataExtractionID` is in the `DataExtraction$dataExtractionID` colum
 
 ### **<span style="color:#FF0000">DataExtraction - error</span>**
 
-To Be Added
+Test if the metadata concerning **DataExtraction** is correct.  This includes column names, required info, ... 
 
 
 #### **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**
@@ -234,7 +234,7 @@ Test if the `dataExtractionID` is in the `Measurement$dataExtractionID` column. 
 
 ### **<span style="color:#FF0000">DataFileMetaData - error</span>**
 
-To Be Added
+Test if the metadata concerning **DataExtraction** is correct.  This includes column names, required info, ... 
 
 
 #### **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**
@@ -294,7 +294,7 @@ Test if column names in `dataFileName` are found in `columnName`. The `error` ca
 
 ### **<span style="color:black">Data Files - NA</span>**
 
-To Be Added
+Test if the data files as mentioned in `DataFileMetaData$dataFileName` is correct.  This includes column names, required info, ... 
 
 ## **<span style="color:red">TODO</span>** 
 ### result$DataFiles$header
@@ -353,7 +353,7 @@ No further details available.
 
 ### **<span style="color:#AA5500">Experiment - warning</span>**
 
-To Be Added
+No further details available.
 
 
 
@@ -398,7 +398,7 @@ The details are a table of the same dimension as the input (green) area of the m
 
 ### **<span style="color:#AA5500">Species - warning</span>**
 
-To Be Added
+No further details available.
 
 
 
@@ -482,7 +482,7 @@ The details are a table as returned from the funcrtion `taxize::gnr_resolve()`. 
 
 ### **<span style="color:#AA5500">Treatment - warning</span>**
 
-To Be Added
+No further details available.
 
 
 
@@ -555,7 +555,7 @@ The details are a table with one row per unique `treatmentID`. The following val
 
 ### **<span style="color:#AA5500">Measurement - warning</span>**
 
-To Be Added
+No further details available.
 
 
 
@@ -685,7 +685,7 @@ The details are a table with one row per unique `result$details The following va
 
 ### **<span style="color:#FF0000">DataExtraction - error</span>**
 
-To Be Added
+No further details available.
 
 
 
@@ -767,7 +767,7 @@ The details are a table with one row per unique `variable` The following values 
 
 ### **<span style="color:#FF0000">DataFileMetaData - error</span>**
 
-To Be Added
+No further details available.
 
 
 
@@ -1000,7 +1000,7 @@ The details are a list of tables, one per `dataFileName`,  indicating if the col
 
 ### **<span style="color:black">Data Files - NA</span>**
 
-To Be Added
+No further details available.
 
 
 
