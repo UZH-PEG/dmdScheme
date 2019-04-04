@@ -179,7 +179,7 @@ DataExtraction "1" *-- "many" ExtractedData : contains
 
 
 # The emeScheme
-This document was than re-ordered and thinned which resulted in the initial verions of [the Google Doc Sheet](https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg).
+This document was than re-ordered and thinned which resulted in the initial verions of the emeSCheme.
 
 Here we describe the structure of the **emeScheme**
 
@@ -239,7 +239,7 @@ emeScheme_raw$DataFile %>%
 
 A **property set** which contains **data properties** must be seen as tables and must therefore have the same number of entries for each data property.
 
-The structure as at **`r read.dcf(here("DESCRIPTION"))[1, "GSUpdate"]` GMT** is as followed:
+The structure as at **`r read.dcf(here("DESCRIPTION"))[1, "emeSchemeUpdate"]` GMT** is as followed:
 
 
 # Example data

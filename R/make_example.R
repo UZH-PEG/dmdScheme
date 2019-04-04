@@ -38,7 +38,7 @@ make_example <- function(
     )
     if (name == "basic") {
       format_emeScheme_xlsx(
-        fn_org = system.file("googlesheet", "emeScheme.xlsx", package = "emeScheme"),
+        fn_org = system.file("emeScheme.xlsx", package = "emeScheme"),
         fn_new = file.path(".", name, "expt1_emeScheme.xlsx"),
         keepData = TRUE
       )

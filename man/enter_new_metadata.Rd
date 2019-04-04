@@ -15,7 +15,7 @@ enter_new_metadata(file = NULL, open = TRUE, keepData = FALSE,
 
 \item{keepData}{if \code{TRUE} the data entry areas will be emptied. If \code{FALSE}. the example data will be included.}
 
-\item{format}{if \code{FALSE} the sheet will be opened as the googledoc sheet formated is. if \code{TRUE}, it will be formated nicely.}
+\item{format}{if \code{FALSE} the sheet will be opened as the sheet is. if \code{TRUE}, it will be formated nicely.}
 
 \item{overwrite}{if \code{TRUE}, the file specified in \code{file} will be overwritten. if \code{FALSE}, an error will be raised ehen the file exists.}
 
@@ -27,10 +27,9 @@ enter_new_metadata(file = NULL, open = TRUE, keepData = FALSE,
 invisibly the fully qualified path to the file which \bold{would} have been opened, if \code{open == TRUE}.
 }
 \description{
-Open \code{emeScheme.xlsx} from system.file("googlesheet",
-"emeScheme.xlsx", package = "emeScheme") in excel. New data can be entered
-and the file has to be saved at a different location as it is a read-only
-file.
+Open \code{system.file("emeScheme.xlsx", package = "emeScheme")} in excel.
+New data can be entered and the file has to be saved at a different location
+as it is a read-only file.
 }
 \examples{
 \dontrun{

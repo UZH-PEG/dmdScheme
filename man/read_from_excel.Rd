@@ -37,6 +37,6 @@ Reads the data from an Excel file. TRhe structure of the Excel file has to be
 \bold{identical} to the one opened by \code{enter_new_metadata()}
 }
 \examples{
-read_from_excel(file = system.file("googlesheet", "emeScheme.xlsx", package = "emeScheme"))
+read_from_excel(file = system.file("emeScheme.xlsx", package = "emeScheme"))
 
 }

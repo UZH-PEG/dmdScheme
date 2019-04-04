@@ -1,60 +1,41 @@
-#' Update data from googlesheets
+#' Update data from emeScheme.xlsx --- ONLY FOR DEVLOPMENT NEEDED
 #'
-#' Update the data and increase the version in the DESCRIPTION if it has changed.
+#' Update the data from the file \code{here::here("inst", "emeScheme.xlsx")}
+#' and bump the version in the DESCRIPTION if it has changed.
+#' @param force force update even if \code{here::here("inst", "emeScheme.xlsx")}
+#'   has the same md5 suma s in the DESCRIPTION
 #'
-#' @param token token for google access. If \code{NULL} (default), user will be asked
-#' @param force force update even if no newer version on google docs
+#' @return invisibly NULL
 #'
-#' @return a googlesheet object
-#'
-#' importFrom googlesheets gs_auth gs_title gs_download gs_deauth
-#' importFrom here here
-#' @importFrom readxl read_excel
 #' @importFrom magrittr %>% %<>% equals not extract extract2
 #' @importFrom tools md5sum
 #'
-updateFromGoogleSheet <- function(
-  token = NULL,
-  force = FALSE
-) {
+updateFromNewSheet <- function( force = FALSE) {
 
-# Some preparations -------------------------------------------------------
+  cat_ln(
+    "This function is only to be used during development from withion the root directory of the package.\n",
+    "There is absolutely not reason, why you should call this function as a user of the package.\n",
+    "\n",
+    "If you are calling this function as a non developer, it will likely result in an error!"
+  )
 
-  on.exit(googlesheets::gs_deauth())
-  ##
-  googlesheets::gs_auth(token = token)
-  emes <- googlesheets::gs_title("emeScheme_dev")
-  update <- emes$updated %>% format("%Y-%m-%d %H:%M:%S")
-  lastUpdate <- read.dcf(here::here("DESCRIPTION"))[1, "GSUpdate"]
-  if (force) {
-    lastUpdate = -1
-  }
+  # prepare update ----------------------------------------------------------
 
-# Check if update needed --------------------------------------------------
-
-  if ( update == lastUpdate ) {      ##### no change in google sheet
-    googlesheets::gs_deauth()
+  sheet <- here::here("inst", "emeScheme.xlsx")
+  if ((md5sum(sheet) == read.dcf(here::here("DESCRIPTION"))[1, "emeSchemeMD5"]) & (!force)) {
+    cat_ln("The sheet has not changed since the last update!")
+    cat_ln("Nothing done.")
   } else {
-
-    # update inst/googlesheet/emeScheme.xlsx ----------------------------------
-    cat_ln("##### Downloading emeScheme.xls...")
-
-    googlesheets::gs_download(
-      from = emes,
-      to = here::here("inst", "googlesheet", "emeScheme.xlsx"),
-      overwrite = TRUE
-    )
-
 
     # update tests/testthat/emeScheme.xlsx ------------------------------------
 
-    file.copy(here::here("inst", "googlesheet", "emeScheme.xlsx"), here::here("tests", "testthat", "emeScheme.xlsx"), overwrite = TRUE)
+    file.copy(sheet, here::here("tests", "testthat", "emeScheme.xlsx"), overwrite = TRUE)
 
     # update data/emeScheme_raw.rda -----------------------------------------------
 
     cat_ln("##### Generating emeScheme_raw...")
 
-    path <- here::here("inst", "googlesheet", "emeScheme.xlsx")
+    path <- here::here("inst", "emeScheme.xlsx")
     emeScheme_raw <- read_from_excel(
       file = path,
       keepData = FALSE,
@@ -119,15 +100,16 @@ updateFromGoogleSheet <- function(
       strsplit(" ---- ") %>%
       extract2(1) %>%
       extract(1) %>%
-      paste0(" ---- ", "Data imported and version bumped at ", date(), " / ", Sys.timezone(), ".")
+      paste0(" ---- ", "Data updated and version bumped at ", date(), " / ", Sys.timezone(), ".")
     ## set GSUpdate
-    DESCRIPTION[1, "GSUpdate"] <- update
+    DESCRIPTION[1, "emeSchemeUpdate"] <- format(Sys.time(), "%Y-%m-%d %H:%M:%S")
+    DESCRIPTION[1, "emeSchemeMD5"] <- md5sum(sheet)
     ## write new DESCRIPTION
     write.dcf(DESCRIPTION, here::here("DESCRIPTION"))
     rm( emeScheme, emeScheme_raw )
+
   }
+  # Return invisibble NULL --------------------------------------------------------
 
-# Return emeScheme --------------------------------------------------------
-
-  return(emes)
+  invisible(NULL)
 }

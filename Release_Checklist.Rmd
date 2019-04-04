@@ -14,16 +14,7 @@ Thinks TODO before a release
   - [ ] bump version number to **X.Y**
   - [ ] check **Authors@R**
 
-- [ ] `emeScheme googlesheet`:
-  - create copy with version **emeScheme_vX.Y**
-  - make sure that all comments are deleted
-  - replace all links to emeScheme with the one to the versioned **emeScheme_vX.Y**
-
 - [ ] `NEWS.Rmd`:
   - make sure that the news file is op to date (if not - next time update it while working!!!!!)
 
-- [ ] `emeScheme googlesheet`:
-  - create copy with version **emeScheme_vX.Y**
-  - make sure that all comments are deleted
-  - replace all links to emeScheme with the one to the versioned **emeScheme_vX.Y**
 - [ ] 
