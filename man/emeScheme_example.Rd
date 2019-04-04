@@ -5,9 +5,6 @@
 \alias{emeScheme_example}
 \title{emeScheme_example as imported from the Google sheet.}
 \format{An object of class \code{emeSchemeSet} (inherits from \code{emeScheme}, \code{list}) of length 6.}
-\source{
-\url{https://docs.google.com/spreadsheets/d/1OAyRM1jGL5Vho-YfPffePhwGpQtaBUeTPJV6P98f0Bc}
-}
 \usage{
 emeScheme_example
 }

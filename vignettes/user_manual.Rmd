@@ -53,7 +53,7 @@ You will enter the metadata in a supplied spreadsheet (Googlesheets or Excel), b
 library(emeScheme)
 ```
 
-You can get either a googlesheet or Excel copy of the spreadsheet (they are identical) in which you enter the metadata. Here is [the googlesheet version](https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg). Make a copy (File -- Make a copy) and delete the example data in the **green cells**. If you prefer Excel, you can run this R command to get an Excel version of the same but already empty sheet: 
+To enter the metadata run this R command to get an Excel version of the emeScheme without metadata in it: 
 
 ```{r eval=FALSE}
 enter_new_metadata()
@@ -91,9 +91,10 @@ If your data does not fit these guidelines, e.g. is a collection of videos files
 
 It will be very useful if during data preparation you standardise (parse) any dates and times in the data. A good method for this is to use functions in the **lubridate** R package, such as `dmy`, `hms`, and `dmy_hms` to create the standardise dates, and then write these to the ready for research/archiving data version.
 
-## A note on allowed entries in the **google** version of the spreadsheet
+<!-- TODO Should be adapted to the Excel sheet! -->
+<!-- ## A note on allowed entries in the **google** version of the spreadsheet -->
 
-For some cells there are suggested entries listed in the row **suggestedValues** or available in a dropdown list. **Please use these suggestions if you can**. If the list contains an item that is three dots (...) you can enter an item not in the provided list: just type what you like in the cell. If you do this, you will get the message "Invalid: Input must be an item on specified list". You can ignore this message. 
+<!-- For some cells there are suggested entries listed in the row **suggestedValues** or available in a dropdown list. **Please use these suggestions if you can**. If the list contains an item that is three dots (...) you can enter an item not in the provided list: just type what you like in the cell. If you do this, you will get the message "Invalid: Input must be an item on specified list". You can ignore this message.  -->
 
 ## A worked example of preparation of data for archiving
 
@@ -123,7 +124,7 @@ The worked **basic** example shows appropriate preparation of data for archiving
 The `basic` folder contains:
 
 * An R-project file `expt1.Rproj`
-* A spreadsheet file `expt1_emeScheme.xlsx` (identical to this [googlesheet](https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg))
+* A spreadsheet file `expt1_emeScheme.xlsx`
 * A folder named `data` with two subfolders:
   * A `raw_data` folder containing files and folders of files that contain the data as it was entered by the researcher, or produced by the measurement machine.
   * A `archiving_data` folder containing data files that have been prepared for archiving.
@@ -143,7 +144,7 @@ Super. Now we have nicely prepared data. We are ready to fill in the metadata.
 
 There's no more putting it off... lets try filling in the metadata. First, find and open your copy of the metadata spreadsheet you made.
 
-If you're working through the worked example (`basic`), open the `expt1_emeScheme.xlsx` file, or open the [googlesheet](https://docs.google.com/spreadsheets/d/1sCImO4VadNwNKuqgtC3CPksS95Tl6SJVtY78aFo9gLg).
+If you're working through the worked example (`basic`), open the `expt1_emeScheme.xlsx` file.
 
 * Green cells are where you enter information.
 * Pink cells are places where you should not try to type anything (they should be locked anyway).
@@ -230,7 +231,7 @@ The validation report will suggest improvement you can make to your metadata. It
 
 # Making the final xml version
 
-The Excel/googlesheet version of the metadata is most useful for us to enter the metadata easily. It is not so useful for standardised/automated metadata enquiry/search/submission... i.e. excel/googlesheet versions of metadata are not really FAIR compliable. The metadata gurus decided that it should be stored as xml files, as it is plain text, it is in principle readable by humans (though is not meant to be read by humans really), it is machine readable (and then easily converted into any other format, e.g. ones easy for humans to read).
+The Excel version of the metadata is most useful for us to enter the metadata easily. It is not so useful for standardised/automated metadata enquiry/search/submission... i.e. Excel versions of metadata are not really FAIR compliable. The metadata gurus decided that it should be stored as xml files, as it is plain text, it is in principle readable by humans (though is not meant to be read by humans really), it is machine readable (and then easily converted into any other format, e.g. ones easy for humans to read).
 
 Therefore, you should submit the final xml version of your metadata. Only do this after you have a satisfactory validation. Use this function:
 

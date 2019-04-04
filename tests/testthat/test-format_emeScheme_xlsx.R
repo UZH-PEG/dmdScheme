@@ -64,7 +64,7 @@ test_that(
 # #   {
 # #     expect_known_output(
 # #       object = read_from_excel(
-# #         file = system.file("inst", "googlesheet", "emeScheme.xlsx", package = "emeScheme"),
+# #         file = system.file("emeScheme.xlsx", package = "emeScheme"),
 # #         keepData = TRUE,
 # #         raw = TRUE,
 # #         verbose = TRUE

@@ -1,14 +1,13 @@
 #' Enter new metadata to fill a new scheme
 #'
-#' Open \code{emeScheme.xlsx} from system.file("googlesheet",
-#' "emeScheme.xlsx", package = "emeScheme") in excel. New data can be entered
-#' and the file has to be saved at a different location as it is a read-only
-#' file.
+#' Open \code{system.file("emeScheme.xlsx", package = "emeScheme")} in excel.
+#' New data can be entered and the file has to be saved at a different location
+#' as it is a read-only file.
 #'
 #' @param file if not \code{NULL}, the te,plate will be saved to this file.
 #' @param open if \code{TRUE}, the file will be opened. This can produce different results depending on the OS, browsr and browser settings.
 #' @param keepData if \code{TRUE} the data entry areas will be emptied. If \code{FALSE}. the example data will be included.
-#' @param format if \code{FALSE} the sheet will be opened as the googledoc sheet formated is. if \code{TRUE}, it will be formated nicely.
+#' @param format if \code{FALSE} the sheet will be opened as the sheet is. if \code{TRUE}, it will be formated nicely.
 #' @param overwrite if \code{TRUE}, the file specified in \code{file} will be overwritten. if \code{FALSE}, an error will be raised ehen the file exists.
 #' @param verbose if \code{TRUE} print usefull information
 #' @param .skipBrowseURL internal use (testing only). if \code{TRUE} skip the call of \code{browseURL()}
@@ -55,13 +54,13 @@ enter_new_metadata <- function(
   fn <- file.path( tempdir(), "emeScheme.xlsx")
   if (format) {
     format_emeScheme_xlsx(
-      fn_org = system.file("googlesheet", "emeScheme.xlsx", package = "emeScheme"),
+      fn_org = system.file("emeScheme.xlsx", package = "emeScheme"),
       fn_new = fn,
       keepData = keepData
     )
   } else {
     file.copy(
-      from = system.file("googlesheet", "emeScheme.xlsx", package = "emeScheme"),
+      from = system.file("emeScheme.xlsx", package = "emeScheme"),
       to = fn
     )
   }

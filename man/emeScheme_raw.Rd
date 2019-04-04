@@ -5,9 +5,6 @@
 \alias{emeScheme_raw}
 \title{emeScheme_raw as imported from the Google sheet.}
 \format{An object of class \code{emeSchemeSet_raw} (inherits from \code{list}) of length 6.}
-\source{
-\url{https://docs.google.com/spreadsheets/d/1OAyRM1jGL5Vho-YfPffePhwGpQtaBUeTPJV6P98f0Bc}
-}
 \usage{
 emeScheme_raw
 }
@@ -17,7 +14,7 @@ The dataset contains raw data. It was created by using the code below.
 \examples{
 \dontrun{
 ## Created by using
-path <- system.fil;e( "googlesheet", "emeScheme.xlsx", package = "emeScheme")
+path <- system.fil;e( "emeScheme.xlsx", package = "emeScheme")
 emeScheme_raw <- read_from_excel(
   file = path,
   keepData = FALSE,

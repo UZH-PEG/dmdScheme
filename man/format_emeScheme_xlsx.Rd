@@ -2,7 +2,7 @@
 % Please edit documentation in R/format_emeScheme_xlsx.R
 \name{format_emeScheme_xlsx}
 \alias{format_emeScheme_xlsx}
-\title{Format the \code{googlesheet/emeScheme.xlsx}}
+\title{Format the file \code{system.file("emeScheme.xlsx", package = "emeScheme")}}
 \usage{
 format_emeScheme_xlsx(fn_org, fn_new, keepData = TRUE)
 }
@@ -17,5 +17,6 @@ format_emeScheme_xlsx(fn_org, fn_new, keepData = TRUE)
 invisibly the workbook as a workbook object as created by \code{xlsx.crerateWorkbook()}
 }
 \description{
-Takes no arguments. Loads  \code{system.file("googlesheet", "emeScheme.xlsx", package = "emeScheme")}, formats it and saves it under the same name.
+Takes no arguments. Loads  \code{system.file("emeScheme.xlsx", package =
+"emeScheme")}, formats it and saves it under the same name.
 }

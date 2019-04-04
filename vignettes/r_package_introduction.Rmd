@@ -84,7 +84,7 @@ For convenience, we use the exapmle data included in the package by using
 
 ```{r}
 x <- read_from_excel(
-      file = system.file("googlesheet", "emeScheme.xlsx", package = "emeScheme"),
+      file = system.file("emeScheme.xlsx", package = "emeScheme"),
       keepData = TRUE,
       verbose = TRUE,
       raw = FALSE 

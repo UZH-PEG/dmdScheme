@@ -29,7 +29,7 @@
 #' @export
 #'
 #' @examples
-#' read_from_excel(file = system.file("googlesheet", "emeScheme.xlsx", package = "emeScheme"))
+#' read_from_excel(file = system.file("emeScheme.xlsx", package = "emeScheme"))
 #'
 read_from_excel <- function(
   file,
