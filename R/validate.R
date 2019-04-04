@@ -143,8 +143,7 @@ validate <- function(
   return(result)
 }
 
-
-# Internal validation helper functions ------------------------------------
+# new emeScheme_validation object -----------------------------------------
 
 new_emeScheme_validation <- function() {
   result <- list(
@@ -159,25 +158,12 @@ new_emeScheme_validation <- function() {
   return(result)
 }
 
+# Internal validation helper functions ------------------------------------
 
 validateTypes <- function(sraw, sconv) {
   result <- new_emeScheme_validation()
   ##
-  t <- sraw == sconv
-  na <- is.na(t)
-  t[na] <- TRUE
-  result$details <- as.data.frame(sraw)
-  result$details[t] <- TRUE
-  result$details[!t] <- paste( result$details[!t], "!=", as.data.frame(sconv)[!t])
-  result$details[na] <- NA
-  result$details <- as_tibble(result$details)
-  ##
-  result$error = ifelse(
-    all(result$details == TRUE, na.rm = TRUE),
-    0,
-    3
-  )
-  ##
+  result$header <- "conversion of values into specified type lossless possible"
   result$description <- paste(
     "Test if the metadata entered follows the type for the column, i.e. integer, characterd, ....",
     "The validation is done by verifying if the column can be losslessly converted from character to the columnb type specified.",
@@ -194,16 +180,44 @@ validateTypes <- function(sraw, sconv) {
     "One or more FALSE values will result in an ERROR."
   )
   ##
-  result$header <- valErr_TextErrCol("conversion of values into specified type lossless possible", result$error)
+  t <- sraw == sconv
+  na <- is.na(t)
+  t[na] <- TRUE
+  result$details <- as.data.frame(sraw)
+  result$details[t] <- TRUE
+  result$details[!t] <- paste( result$details[!t], "!=", as.data.frame(sconv)[!t])
+  result$details[na] <- NA
+  result$details <- as_tibble(result$details)
+  ##
+  result$error = ifelse(
+    all(result$details == TRUE, na.rm = TRUE),
+    0,
+    3
+  )
+  ##
+  result$header <- valErr_TextErrCol(result)
   ##
   return( result )
 }
-
 
 validateSuggestedValues <- function(sraw) {
   result <- new_emeScheme_validation()
   ##
   result$header <- "values in suggestedValues"
+  result$description <- paste(
+    "Test if the metadata entered is ion the suggestedValues list.",
+    "The value NA is allowed in all column types, empty cells should be avoided."
+  )
+  result$descriptionDetails <- paste(
+    "The details are a table of the same dimension as the input (green) area of the meatadata sheet.",
+    "The following values are possible:\n",
+    "\n",
+    "   FALSE: If the cell value is not contained in the suggestedValues list.\n",
+    "   TRUE : If the cell value is contained in the suggestedValues list.\n",
+    "   NA   : empty cell\n",
+    "\n",
+    "One or more FALSE values will result in a WARNING."
+  )
   ##
   result$details <- as_tibble(sraw)
   sugVal <- strsplit(attr(sraw, "suggestedValues"), ",")
@@ -225,26 +239,10 @@ validateSuggestedValues <- function(sraw) {
   ##
   result$error = ifelse( all(result$details == TRUE,na.rm = TRUE), 0, 2)
   ##
-  result$description <- paste(
-    "Test if the metadata entered is ion the suggestedValues list.",
-    "The value NA is allowed in all column types, empty cells should be avoided."
-  )
-  result$descriptionDetails <- paste(
-    "The details are a table of the same dimension as the input (green) area of the meatadata sheet.",
-    "The following values are possible:\n",
-    "\n",
-    "   FALSE: If the cell value is not contained in the suggestedValues list.\n",
-    "   TRUE : If the cell value is contained in the suggestedValues list.\n",
-    "   NA   : empty cell\n",
-    "\n",
-    "One or more FALSE values will result in a WARNING."
-  )
-  ##
   result$header <- valErr_TextErrCol(result)
   ##
   return( result )
 }
-
 
 validateAllowedValues <- function(sraw) {
   result <- new_emeScheme_validation()
@@ -290,11 +288,63 @@ validateAllowedValues <- function(sraw) {
   return( result )
 }
 
+valitdateSpeciesIDUnique <- function(x){
+  result <- new_emeScheme_validation()
+  ##
+  result$header <- "Test if `speciesID` is unique"
+  result$description <- paste(
+    "Test if the speciesID is unique in this metadata set.",
+    "The functions returns `TRUE` if all speciesID are unique."
+  )
+  result$descriptionDetails <- paste(
+    "Returns a named vector, with the following possible values:\n",
+    "\n",
+    "   TRUE  : the value in `speciesID` is unique\n",
+    "   FALSE : the value in `speciesID` is not unique\n",
+    "\n",
+    "One or more FALSE or a missing value will result in an ERROR."
+  )
+  ##
+  result$details <- data.frame(
+    speciesID = x$Species$speciesID,
+    isOK =  !duplicated(x$Species$speciesID)
+  )
+  ##
+  result$error <-  ifelse(
+    all(result$details$isOK),
+    0,
+    3
+  )
+  if (any(is.na(x$Species$speciesID))) {
+    result$error <- 3
+  }
+  ##
+  result$header <- valErr_TextErrCol(result)
+  ##
+  return(result)
+}
 
 validateSpeciesNames <- function(x) {
   result <- new_emeScheme_validation()
   ##
-  result$header <- "name in species database and report score (using taxize::gnr_resolve())"
+  result$header <- "Test if the scientific name is correct"
+  result$description <- paste(
+    "Test if the scientific name in the column `name` is correct.",
+    "This uses the function `taxize::gnr_resolve()`",
+    "The functions returns `TRUE` if all species have a score of >= 0.7."
+  )
+  result$descriptionDetails <- paste(
+    "The details are a table as returned from the funcrtion `taxize::gnr_resolve()`.",
+    "The columns are:\n",
+    "\n",
+    "   user_supplied_name : the name as in column `name`\n",
+    "   submitted_name     : the actual name passed on to be resolved\n",
+    "   matched_name       : the matched named\n",
+    "   data_source_title  : the name of the data source which returned the best match\n",
+    "   score              : a score from the match\n",
+    "\n",
+    "**Not matched species are not listed here!**."
+  )
   ##
   result$details <- taxize::gnr_resolve(x$Species$name, best_match_only = TRUE)
   ##
@@ -313,22 +363,45 @@ validateSpeciesNames <- function(x) {
 
 validateTreatmentMapping <- function(x){
   result <- new_emeScheme_validation()
+  result$header <- "Test if treatmentID is in mappingColumn"
+  result$description <- paste(
+    "Test if the `treatmentID` is in the `DataFileMetaData$mappingColumn` column.",
+    "The `error` can have the following values apart from `OK`:\n",
+    "\n",
+    "   error   : If `treatmentID` contains missing values.\n",
+    "   warning : If not all `treatmentID` are in the `DataFileMetaData$mappingColumn`.\n",
+    "\n"
+  )
+  result$descriptionDetails <- paste(
+    "The details are a table with one row per unique `treatmentID`.",
+    "The following values are possible for the column `isTRUE`:\n",
+    "\n",
+    "   TRUE : If the value is in `DataFileMetaData$mappingColumn`.\n",
+    "   FALSE: If the value is not in `DataFileMetaData$mappingColumn`.\n",
+    "   NA   : empty cell\n",
+    "\n",
+    "One or more FALSE or missing values values will result in an ERROR."
+  )
   ##
-  result$header <- "treatmentID is in mappingColumn"
-  ##
-  result$details <- unique(x$Treatment$treatmentID) %in% x$DataFileMetaData$mappingColumn
-  names(result$details) <- unique(x$Treatment$treatmentID)
+  result$details <- data.frame(
+    treatmentID = unique(x$Treatment$treatmentID),
+    isOK =  unique(x$Treatment$treatmentID) %in% x$DataFileMetaData$mappingColumn
+  )
   ##
   result$error <- ifelse(
-    all(result$details),
+    all(result$details$isOK),
     0,
     2
   )
+  if (any(is.na(x$Treatment$treatmentID))) {
+    result$error <- 3
+  }
+  #
   result$header <- valErr_TextErrCol(result)
   return(result)
 }
 
-validateMeasurementNamesUnique <- function(x){
+validateMeasurementIDsUnique <- function(x){
   result <- new_emeScheme_validation()
   ##
   result$header <- "names unique"
@@ -336,68 +409,110 @@ validateMeasurementNamesUnique <- function(x){
     "Check if the names specified in `measurementID` are unique."
   )
   result$descriptionDetails <- paste(
-    "returns a named vector, with the following possible values:\n",
-    "     TRUE: the value is unique\n",
-    "     FALSE: the value is na duplicate\n",
-    "One or more FALSE will result in an ERROR."
+    "Returns a named vector, with the following possible values:\n",
+    "\n",
+    "   TRUE  : the value in `speciesID` is unique\n",
+    "   FALSE : the value in `speciesID` is not unique\n",
+    "\n",
+    "One or more FALSE or a missing value will result in an ERROR."
   )
   ##
-  nu <- !duplicated(x$Measurement$measurementID)
-  names(nu) <- x$Measurement$measurementID
-  result$details <-  nu
+  result$details <- data.frame(
+    measurementID = x$Measurement$measurementID,
+    isOK = !duplicated(x$Measurement$measurementID)
+  )
   ##
   result$error <-  ifelse(
-    all(nu),
+    all(result$details$isOK),
     0,
     3
   )
+  if (any(is.na(x$Measurement$measurementID))) {
+    result$error <- 3
+  }
   ##
   result$header <- valErr_TextErrCol(result)
   ##
   return(result)
 }
-
 
 validateMeasurementMeasuredFrom <- function(x) {
   result <- new_emeScheme_validation()
   ##
   result$header <- "measuredFrom is 'raw', 'NA', NA or in name"
   result$description <- paste(
-    "Check if the names specified in `measurementID` are unique."
+    "Test if the `measuredFrom` is in the `x$Measurement$measurementID` column, 'raw', 'NA', or `NA`.",
+    "The `error` is 'error' if can have the following values apart from `OK`:\n",
+    "\n",
+    "   error   : If the value is not in in the `x$Measurement$measurementID` column, 'raw', 'NA', or `NA`\n",
+    "\n"
   )
   result$descriptionDetails <- paste(
-    "returns a named vector, with the following possible values:\n",
-    "     TRUE: the value is unique\n",
-    "     FALSE: the value is na duplicate\n",
-    "One or more FALSE will result in an ERROR."
+    "The details are a table with one row per unique `result$details",
+    "The following values are possible for the column `isTRUE`:\n",
+    "\n",
+    "   TRUE : If the value is in `x$Measurement$measurementID` column, 'raw', 'NA', or `NA`.\n",
+    "   FALSE: If the value is not in `x$Measurement$measurementID` column, 'raw', 'NA', or `NA`.\n",
+    "   NA   : empty cell\n",
+    "\n",
+    "One or more FALSE or missing values values will result in an ERROR."
   )
   ##
-  mf <- x$Measurement$measuredFrom %in% c(x$Measurement$measurementID, "raw", "NA", NA)
-  names(mf) <- x$Measurement$measurementID
-  result$details = mf
+  result$details <- data.frame(
+    measurementID = x$Measurement$measurementID,
+    isOK = x$Measurement$measuredFrom %in% c(x$Measurement$measurementID, "raw", "NA", NA)
+  )
   ##
   result$error = ifelse(
-    all(mf),
+    all(result$details$isOK),
     0,
     3
   )
+  if (any(is.na(x$Measurement$measurementID))) {
+    result$error <- 3
+  }
+  ##
   result$header <- valErr_TextErrCol(result)
   ##
   return(result)
 }
 
-validateMeasurementInMappingColumn <- function(x){
+validateMeasurementMapping <- function(x){
   result <- new_emeScheme_validation()
   ##
-  result$header <- "variable is in mappingColumn"
+  result$header <- "Test if `variable` is in mappingColumn"
+  result$description <- paste(
+    "Test if the `variable` is in the `DataFileMetaData$mappingColumn` column.",
+    "The `error` can have the following values apart from `OK`:\n",
+    "\n",
+    "   error   : If `variable` contains missing values.\n",
+    "   warning : If not all `treatmentID` are in the `DataFileMetaData$mappingColumn`.\n",
+    "\n"
+  )
+  result$descriptionDetails <- paste(
+    "The details are a table with one row per unique `variable`",
+    "The following values are possible for the column `isTRUE`:\n",
+    "\n",
+    "   TRUE : If the value is in `DataFileMetaData$mappingColumn`.\n",
+    "   FALSE: If the value is not in `DataFileMetaData$mappingColumn.\n",
+    "   NA   : empty cell\n",
+    "\n",
+    "One or more FALSE or missing values values will result in an ERROR."
+  )
   ##
-  result$details <- unique(x$Measurement$variable) %in% x$DataFileMetaData$mappingColumn
-  names(result$details) <- unique(x$Measurement$variable)
+  result$details <- data.frame(
+    variable = unique(x$Measurement$variable),
+    isOK = unique(x$Measurement$variable) %in% x$DataFileMetaData$mappingColumn
+  )
+  ##
   result$error <- ifelse(
-    all(result$details),
+    all(result$details$isOK),
     0,
     2
   )
+  if (any(is.na(x$Measurement$variable))) {
+    result$error <- 3
+  }
   ##
   result$header <- valErr_TextErrCol(result)
   ##
@@ -408,12 +523,31 @@ validateMeasurementDataExtraction <- function(x) {
   result <- new_emeScheme_validation()
   ##
   result$header <- "dataExtractionID is 'none', 'NA', NA, or in DataExtraction$dataExtractionID"
+  result$description <- paste(
+    "Test if the `dataExtractionID` is in the `DataExtraction$dataExtractionID` column, 'none', 'NA', or `NA`.",
+    "The `error` is 'error' if can have the following values apart from `OK`:\n",
+    "\n",
+    "   error   : If the value is not in in the `DataExtraction$dataExtractionID` column, 'none', 'NA', or `NA`\n",
+    "\n"
+  )
+  result$descriptionDetails <- paste(
+    "The details are a table with one row per unique `result$details",
+    "The following values are possible for the column `isTRUE`:\n",
+    "\n",
+    "   TRUE : If the value is in `DataExtraction$dataExtractionID` column, 'none', 'NA', or `NA`\n",
+    "   FALSE: If the value is not in `DataExtraction$dataExtractionID` column, 'none', 'NA', or `NA`\n",
+    "   NA   : empty cell\n",
+    "\n",
+    "One or more FALSE will result in an ERROR."
+  )
   ##
-  result$details <- x$Measurement$dataExtractionID %in% c(x$DataExtraction$dataExtractionID, "none", "NA", NA)
-  names(result$details) <- x$Measurement$dataExtractionID
+  result$details <- data.frame(
+    dataExtractionID = x$Measurement$dataExtractionID,
+    isOK = x$Measurement$dataExtractionID %in% c(x$DataExtraction$dataExtractionID, "none", "NA", NA)
+  )
   #
   result$error <- ifelse(
-    all(result$details),
+    all(result$details$isOK),
     0,
     3
   )
@@ -431,11 +565,14 @@ validateDataExtractionIDUnique <- function(x) {
     "Check if the names specified in `dataExtractionID` are unique."
   )
   result$descriptionDetails <- paste(
-    "returns a named vector, with the following possible values:\n",
-    "     TRUE:  the value is unique\n",
-    "     FALSE: the value is na duplicate\n",
-    "One or more FALSE will result in an ERROR."
+    "Returns a named vector, with the following possible values:\n",
+    "\n",
+    "   TRUE  : the value in `speciesID` is unique\n",
+    "   FALSE : the value in `speciesID` is not unique\n",
+    "\n",
+    "One or more FALSE or a missing value will result in an ERROR."
   )
+
   ##
   result$details <- data.frame(
     dataExtractionID = x$DataExtraction$dataExtractionID,
@@ -447,6 +584,9 @@ validateDataExtractionIDUnique <- function(x) {
     0,
     3
   )
+  if (any(is.na(x$DataExtraction$dataExtractionID))) {
+    result$error <- 3
+  }
   ##
   result$header <- valErr_TextErrCol(result)
   ##
@@ -455,8 +595,24 @@ validateDataExtractionIDUnique <- function(x) {
 
 validateDataExtractionIDLinked <- function(x) {
   result <- new_emeScheme_validation()
-  ##
   result$header <- "name is in Measurement$dataExtractionID"
+  result$description <- paste(
+    "Test if the `dataExtractionID` is in the `Measurement$dataExtractionID` column.",
+    "The `error` can have the following values apart from `OK`:\n",
+    "\n",
+    "   error   : If not all `dataExtractionID` are in `Measurement$dataExtractionID`\n",
+    "\n"
+  )
+  result$descriptionDetails <- paste(
+    "The details are a table with one row per unique `variable`",
+    "The following values are possible for the column `isTRUE`:\n",
+    "\n",
+    "   TRUE : If the value is in `DataFileMetaData$mappingColumn`.\n",
+    "   FALSE: If the value is not in `DataFileMetaData$mappingColumn.\n",
+    "   NA   : empty cell\n",
+    "\n",
+    "One or more FALSE will result in an ERROR."
+  )
   ##
   result$details <- data.frame(
     dataExtractionID = x$DataExtraction$dataExtractionID,
@@ -477,10 +633,27 @@ validateDataExtractionIDLinked <- function(x) {
 validateDataFileMetaDataDataFileExists <- function(x, path) {
   result <- new_emeScheme_validation()
   ##
-  result$header <- "dataFile exists in path"
+  result$header <- "`dataFile` exists in path"
+  result$description <- paste(
+    "Test if all `dataFile` exist in the given `path`.",
+    "The `error` can have the following values apart from `OK`:\n",
+    "\n",
+    "   error   : If not all `dataFile` exist in the given `path`\n",
+    "\n"
+  )
+  result$descriptionDetails <- paste(
+    "The details are a table with one row per unique `variable`",
+    "The following values are possible for the column `isTRUE`:\n",
+    "\n",
+    "   TRUE : If `dataFile` exist in the given `path`\n",
+    "   FALSE: If `dataFile` does not exist in the given `path`\n",
+    "   NA   : empty cell\n",
+    "\n",
+    "One or more FALSE or missing values will result in an ERROR."
+  )
   ##
   fns <- unique(x$DataFileMetaData$dataFileName)
-  result$details <- tibble::tibble(
+  result$details <- data.frame(
     dataFileName = fns,
     IsOK = fns %>% file.path(path, .) %>% file.exists()
   )
@@ -490,6 +663,9 @@ validateDataFileMetaDataDataFileExists <- function(x, path) {
     0,
     3
   )
+  if (any(is.na(fns))) {
+    result$error <- 3
+  }
   ##
   result$header <- valErr_TextErrCol(result)
   ##
@@ -498,8 +674,25 @@ validateDataFileMetaDataDataFileExists <- function(x, path) {
 
 validateDataFileMetaDataDateTimeSpecified <- function(x){
   result <- new_emeScheme_validation()
-  ##
-  result$header <- "if type == 'datetime', description has format information"
+  result$header <- "Test if date time format has been specified if required"
+  result$description <- paste(
+    "Test if date time format has been specified in the `description` column when `type` is equal to 'datetime'.",
+    "The `error` can have the following values apart from `OK`:\n",
+    "\n",
+    "   error   : If not all `description` contain a date time format when `type` equals 'datetime'\n",
+    "\n",
+    "DOES NOT YET CHECK FOR THE VALIDITY OF THE FORMAT!!!!!"
+  )
+  result$descriptionDetails <- paste(
+    "The details are a table with one row per 'datetime' format row",
+    "The following values are possible for the column `isTRUE`:\n",
+    "\n",
+    "   TRUE : If `description` contains a value\n",
+    "   FALSE: If `description` does not contain a value\n",
+    "   NA   : empty cell\n",
+    "\n",
+    "One or more FALSE or missing values will result in an ERROR."
+  )
   ##
   result$details <- x$DataFileMetaData %>%
     dplyr::select(.data$dataFileName, .data$columnName, .data$type, .data$description) %>%
@@ -523,8 +716,23 @@ validateDataFileMetaDataMapping <- function(x) {
   ## if columnData == “Treatment”, mappingColumn has to be in Treatment$treatmentID and
   ## if columnData %in% c(ID, other), mapping column has to be "NA" or NA
   result <- new_emeScheme_validation()
-  ##
-  result$header <- "correct values in mappingColumn in dependence on columnData"
+  result$header <- "correct values in `mappingColumn`` in dependence on columnData"
+  result$description <- paste(
+    "Test if `mappingColumn` is found in the appropriate table.",
+    "The `error` can have the following values apart from `OK`:\n",
+    "\n",
+    "   error   : If not all `mappingColumn` are found in the appropriate columns\n",
+    "\n"
+  )
+  result$descriptionDetails <- paste(
+    "The details are a table with one row per `mappingColumn` value format row",
+    "The following values are possible for the column `isTRUE`:\n",
+    "\n",
+    "   TRUE : If `mappingColumn` is found in ppropriate table or NA\n",
+    "   FALSE: If `mappingColumn` is not found in ppropriate table\n",
+    "\n",
+    "One or more FALSE or missing values will result in an ERROR."
+  )
   ##
   result$details <- x$DataFileMetaData$mappingColumn
   result$details[] <- NA
@@ -536,9 +744,9 @@ validateDataFileMetaDataMapping <- function(x) {
   result$details[i] <- x$DataFileMetaData$mappingColumn[i] %in% c("NA", NA)
   i <- x$DataFileMetaData$columnData == "other"
   result$details[i] <- x$DataFileMetaData$mappingColumn[i] %in% c("NA", NA)
-  result$details <- tibble::tibble(
+  result$details <- data.frame(
     mappingColumn = x$DataFileMetaData$mappingColumn,
-    IsOK = as.logical(result$details)
+    IsOK = isTRUE(as.logical(result$details))
   )
   ##
   result$error <- ifelse(
@@ -570,19 +778,33 @@ readColumnNamesFromDataFiles <- function(x, path) {
 
 validateDataFileMetaDataColumnNameInDataFile <- function(x, path) {
   result <- new_emeScheme_validation()
-  ##
-  result$header <- "columnName in column names in dataFileName"
+  result$header <- "`columnName` in column names found in column names in `dataFileName`"
+  result$description <- paste(
+    "Test if `columnName` is found in the `dataFileName`.",
+    "The `error` can have the following values apart from `OK`:\n",
+    "\n",
+    "   error   : If not all `columnName` are found in column names in `dataFileName`\n",
+    "\n"
+  )
+  result$descriptionDetails <- paste(
+    "The details are a table with one row per `columnName` value.",
+    "The following values are possible for the column `isTRUE`:\n",
+    "\n",
+    "   TRUE : If `columnName` is found in column names in `dataFileName` or NA\n",
+    "   FALSE: If `columnName` is not found in column names in `dataFileName`\n",
+    "\n",
+    "One or more FALSE or missing values will result in an ERROR."
+  )
   ##
   dfcol <- readColumnNamesFromDataFiles(x, path)
   result$details <- x$DataFileMetaData$columnName
   for (i in 1:nrow(x$DataFileMetaData)) {
     result$details[i] <- x$DataFileMetaData$columnName[[i]] %in% dfcol[[x$DataFileMetaData$dataFileName[i]]]
   }
-  result$details <-
-    tibble(
+  result$details <- data.frame(
       dataFileName = x$DataFileMetaData$dataFileName,
       columnName = x$DataFileMetaData$columnName,
-      IsOK = as.logical(result$details)
+      IsOK = isTRUE(as.logical(result$details))
     )
   ##
   result$error <- ifelse(
@@ -598,8 +820,24 @@ validateDataFileMetaDataColumnNameInDataFile <- function(x, path) {
 
 validateDataFileMetaDataDataFileColumnDefined <- function(x, path) {
   result <- new_emeScheme_validation()
-  ##
-  result$header <- "column names in dataFileName in columnName"
+  result$header <- "column names in dataFileName in `columnName`"
+  result$description <- paste(
+    "Test if column names in `dataFileName` are found in `columnName`.",
+    "The `error` can have the following values apart from `OK`:\n",
+    "\n",
+    "   error   : If not all column names in `dataFileName` are found in `columnName`\n",
+    "\n"
+  )
+  result$descriptionDetails <- paste(
+    "The details are a list of tables, one per `dataFileName`, ",
+    "indicating if the column names in `dataFileName` are found in `columnName`.\n",
+    "The following values are possible for the column `isTRUE`:\n",
+    "\n",
+    "   TRUE : If column name in `dataFileName` is found in `columnName`\n",
+    "   FALSE: If column name in `dataFileName` is not found in `columnName`\n",
+    "\n",
+    "One or more FALSE will result in an ERROR."
+  )
   ##
   dfcol <- readColumnNamesFromDataFiles(x, path)
   result$details <- lapply(
@@ -608,7 +846,7 @@ validateDataFileMetaDataDataFileColumnDefined <- function(x, path) {
       cn <- dplyr::filter(x$DataFileMetaData, .data$dataFileName == names(dfcol[i])) %>%
         dplyr::select(.data$columnName) %>%
         magrittr::extract2(1)
-      x <- tibble(
+      x <- data.frame(
         dataFile = names(dfcol)[i],
         columnNameInDataFileName = cn,
         IsOK = cn %in% dfcol[[i]]
@@ -660,6 +898,11 @@ validateExperiment <- function( x, xraw, xconv ){
   result <- new_emeScheme_validation()
   ##
   result$header <- "Experiment"
+  result$description <- paste(
+    "Test if the metadata concerning **Experiment** is correct. ",
+    "This includes column names, required info, ... "
+  )
+  result$descriptionDetails <- "No further details available."
   ##
   result$types <- validateTypes(xraw$Experiment, xconv$Experiment)
   result$suggestedValues <- validateSuggestedValues(xraw$Experiment)
@@ -675,9 +918,15 @@ validateSpecies <- function( x, xraw, xconv ){
   result <- new_emeScheme_validation()
   ##
   result$header <- "Species"
+  result$description <- paste(
+    "Test if the metadata concerning **Species** is correct. ",
+    "This includes column names, required info, ... "
+  )
+  result$descriptionDetails <- "No further details available."
   ##
   result$types <- validateTypes(xraw$Species, xconv$Species)
   result$suggestedValues <- validateSuggestedValues(xraw$Species)
+  result$speciesIDUnique <- valitdateSpeciesIDUnique(xraw)
   result$speciesNames <- validateSpeciesNames(xraw)
   ##
   result$error <- max(valErr_extract(result), na.rm = FALSE)
@@ -691,6 +940,11 @@ validateTreatment <- function( x, xraw, xconv ){
   result <- new_emeScheme_validation()
   ##
   result$header <- "Treatment"
+  result$description <- paste(
+    "Test if the metadata concerning **Treatment** is correct. ",
+    "This includes column names, required info, ... "
+  )
+  result$descriptionDetails <- "No further details available."
   ##
   result$types <- validateTypes(xraw$Treatment, xconv$Treatment)
   result$suggestedValues <- validateSuggestedValues(xraw$Treatment)
@@ -707,12 +961,17 @@ validateMeasurement <- function( x, xraw, xconv ){
   result <- new_emeScheme_validation()
   ##
   result$header <- "Measurement"
+  result$description <- paste(
+    "Test if the metadata concerning **Measurement** is correct. ",
+    "This includes column names, required info, ... "
+  )
+  result$descriptionDetails <- "No further details available."
   ##
   result$types <- validateTypes(xraw$Measurement, xconv$Measurement)
   result$suggestedValues <- validateSuggestedValues(xraw$Measurement)
-  result$nameUnique <- validateMeasurementNamesUnique(xraw)
+  result$measurementIDUnique <- validateMeasurementIDsUnique(xraw)
   result$measuredFrom <- validateMeasurementMeasuredFrom(xraw)
-  result$variableInMappinColumn <- validateMeasurementInMappingColumn(xraw)
+  result$variableInMappinColumn <- validateMeasurementMapping(xraw)
   result$dataExtractionIDInDataExtractionID <- validateMeasurementDataExtraction(xraw)
   ##
   result$error <- max(valErr_extract(result), na.rm = FALSE)
@@ -726,6 +985,11 @@ validateDataExtraction <- function( x, xraw, xconv ){
   result <- new_emeScheme_validation()
   ##
   result$header <- "DataExtraction"
+  result$description <- paste(
+    "Test if the metadata concerning **DataExtraction** is correct. ",
+    "This includes column names, required info, ... "
+  )
+  result$descriptionDetails <- "No further details available."
   ##
   result$types <- validateTypes(xraw$DataExtraction, xconv$DataExtraction)
   result$suggestedValues <- validateSuggestedValues(xraw$DataExtraction)
@@ -743,6 +1007,11 @@ validateDataFileMetaData <- function( x, xraw, xconv, path ){
   result <- new_emeScheme_validation()
   ##
   result$header <- "DataFileMetaData"
+  result$description <- paste(
+    "Test if the metadata concerning **DataExtraction** is correct. ",
+    "This includes column names, required info, ... "
+  )
+  result$descriptionDetails <- "No further details available."
   ##
   result$types <- validateTypes(xraw$DataFileMetaData, xconv$DataFileMetaData)
   result$allowedValues <- validateAllowedValues(xraw$DataFileMetaData)
@@ -763,6 +1032,11 @@ validateDataFiles <- function( x, xraw, xconv, path ){
   result <- new_emeScheme_validation()
   ##
   result$header <- "Data Files"
+  result$description <- paste(
+    "Test if the data files as mentioned in `DataFileMetaData$dataFileName` is correct. ",
+    "This includes column names, required info, ... "
+  )
+  result$descriptionDetails <- "No further details available."
   ##
   result$error <- NA # max(valErr_extract(result), na.rm = FALSE)
   result$header <- valErr_TextErrCol(result)

@@ -94,7 +94,7 @@ print_emeScheme_validation_details <- function(x, level, listLevel, format, ...)
     cat_ln()
     cat_ln( paste(rep("#", level), collapse = ""), " ", x$header)
     cat_ln()
-    cat_ln("", x$description)
+    cat_ln("", x$descriptionDetails)
     cat_ln()
   } else {
     cat_ln("- ", " ", x$header, "   ")

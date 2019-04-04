@@ -6,7 +6,7 @@ params:
   result: NULL
 title: "Validation"
 author: "unknown"
-date: "2019-03-28"
+date: "2019-04-04"
 output:
   html_document: 
     number_sections: true
@@ -70,7 +70,7 @@ valErr_extract(result) %>%
 
 ```
 ##      OK warning   error 
-##      15      12       3
+##      15      11       7
 ```
 
 # Overview
@@ -92,7 +92,7 @@ Test if the structure of the metadata is correct.  This includes column names, r
 
 ### **<span style="color:#AA5500">Experiment - warning</span>**
 
-To Be Added
+Test if the metadata concerning **Experiment** is correct.  This includes column names, required info, ... 
 
 
 #### **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**
@@ -107,7 +107,7 @@ Test if the metadata entered is ion the suggestedValues list. The value NA is al
 
 ### **<span style="color:#AA5500">Species - warning</span>**
 
-To Be Added
+Test if the metadata concerning **Species** is correct.  This includes column names, required info, ... 
 
 
 #### **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**
@@ -120,14 +120,19 @@ Test if the metadata entered follows the type for the column, i.e. integer, char
 Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided.
 
 
-#### **<span style="color:#00FF00">name in species database and report score (using taxize::gnr_resolve()) - OK</span>**
+#### **<span style="color:#00FF00">Test if `speciesID` is unique - OK</span>**
 
-To Be Added
+Test if the speciesID is unique in this metadata set. The functions returns `TRUE` if all speciesID are unique.
+
+
+#### **<span style="color:#00FF00">Test if the scientific name is correct - OK</span>**
+
+Test if the scientific name in the column `name` is correct. This uses the function `taxize::gnr_resolve()` The functions returns `TRUE` if all species have a score of >= 0.7.
 
 
 ### **<span style="color:#AA5500">Treatment - warning</span>**
 
-To Be Added
+Test if the metadata concerning **Treatment** is correct.  This includes column names, required info, ... 
 
 
 #### **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**
@@ -140,14 +145,19 @@ Test if the metadata entered follows the type for the column, i.e. integer, char
 Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided.
 
 
-#### **<span style="color:#AA5500">treatmentID is in mappingColumn - warning</span>**
+#### **<span style="color:#AA5500">Test if treatmentID is in mappingColumn - warning</span>**
 
-To Be Added
+Test if the `treatmentID` is in the `DataFileMetaData$mappingColumn` column. The `error` can have the following values apart from `OK`:
+ 
+    error   : If `treatmentID` contains missing values.
+    warning : If not all `treatmentID` are in the `DataFileMetaData$mappingColumn`.
+ 
+
 
 
 ### **<span style="color:#AA5500">Measurement - warning</span>**
 
-To Be Added
+Test if the metadata concerning **Measurement** is correct.  This includes column names, required info, ... 
 
 
 #### **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**
@@ -167,22 +177,35 @@ Check if the names specified in `measurementID` are unique.
 
 #### **<span style="color:#00FF00">measuredFrom is 'raw', 'NA', NA or in name - OK</span>**
 
-Check if the names specified in `measurementID` are unique.
+Test if the `measuredFrom` is in the `x$Measurement$measurementID` column, 'raw', 'NA', or `NA`. The `error` is 'error' if can have the following values apart from `OK`:
+ 
+    error   : If the value is not in in the `x$Measurement$measurementID` column, 'raw', 'NA', or `NA`
+ 
 
 
-#### **<span style="color:#AA5500">variable is in mappingColumn - warning</span>**
 
-To Be Added
+#### **<span style="color:#AA5500">Test if `variable` is in mappingColumn - warning</span>**
+
+Test if the `variable` is in the `DataFileMetaData$mappingColumn` column. The `error` can have the following values apart from `OK`:
+ 
+    error   : If `variable` contains missing values.
+    warning : If not all `treatmentID` are in the `DataFileMetaData$mappingColumn`.
+ 
+
 
 
 #### **<span style="color:#00FF00">dataExtractionID is 'none', 'NA', NA, or in DataExtraction$dataExtractionID - OK</span>**
 
-To Be Added
+Test if the `dataExtractionID` is in the `DataExtraction$dataExtractionID` column, 'none', 'NA', or `NA`. The `error` is 'error' if can have the following values apart from `OK`:
+ 
+    error   : If the value is not in in the `DataExtraction$dataExtractionID` column, 'none', 'NA', or `NA`
+ 
 
 
-### **<span style="color:#AA5500">DataExtraction - warning</span>**
 
-To Be Added
+### **<span style="color:#FF0000">DataExtraction - error</span>**
+
+Test if the metadata concerning **DataExtraction** is correct.  This includes column names, required info, ... 
 
 
 #### **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**
@@ -195,19 +218,23 @@ Test if the metadata entered follows the type for the column, i.e. integer, char
 Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided.
 
 
-#### **<span style="color:#00FF00">names unique - OK</span>**
+#### **<span style="color:#FF0000">names unique - error</span>**
 
 Check if the names specified in `dataExtractionID` are unique.
 
 
 #### **<span style="color:#AA5500">name is in Measurement$dataExtractionID - warning</span>**
 
-To Be Added
+Test if the `dataExtractionID` is in the `Measurement$dataExtractionID` column. The `error` can have the following values apart from `OK`:
+ 
+    error   : If not all `dataExtractionID` are in `Measurement$dataExtractionID`
+ 
 
 
-### **<span style="color:black">DataFileMetaData - NA</span>**
 
-To Be Added
+### **<span style="color:#FF0000">DataFileMetaData - error</span>**
+
+Test if the metadata concerning **DataExtraction** is correct.  This includes column names, required info, ... 
 
 
 #### **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**
@@ -220,34 +247,54 @@ Test if the metadata entered follows the type for the column, i.e. integer, char
 Test if the metadata entered is ion the allowedValues list. The value NA is allowed in all column types, empty cells should be avoided.
 
 
-#### **<span style="color:#FF0000">dataFile exists in path - error</span>**
+#### **<span style="color:#FF0000">`dataFile` exists in path - error</span>**
 
-To Be Added
-
-
-#### **<span style="color:#00FF00">if type == 'datetime', description has format information - OK</span>**
-
-To Be Added
+Test if all `dataFile` exist in the given `path`. The `error` can have the following values apart from `OK`:
+ 
+    error   : If not all `dataFile` exist in the given `path`
+ 
 
 
-#### **<span style="color:black">correct values in mappingColumn in dependence on columnData - NA</span>**
 
-To Be Added
+#### **<span style="color:#00FF00">Test if date time format has been specified if required - OK</span>**
+
+Test if date time format has been specified in the `description` column when `type` is equal to 'datetime'. The `error` can have the following values apart from `OK`:
+ 
+    error   : If not all `description` contain a date time format when `type` equals 'datetime'
+ 
+ DOES NOT YET CHECK FOR THE VALIDITY OF THE FORMAT!!!!!
 
 
-#### **<span style="color:#FF0000">columnName in column names in dataFileName - error</span>**
+#### **<span style="color:#FF0000">correct values in `mappingColumn`` in dependence on columnData - error</span>**
 
-To Be Added
+Test if `mappingColumn` is found in the appropriate table. The `error` can have the following values apart from `OK`:
+ 
+    error   : If not all `mappingColumn` are found in the appropriate columns
+ 
 
 
-#### **<span style="color:#FF0000">column names in dataFileName in columnName - error</span>**
 
-To Be Added
+#### **<span style="color:#FF0000">`columnName` in column names found in column names in `dataFileName` - error</span>**
+
+Test if `columnName` is found in the `dataFileName`. The `error` can have the following values apart from `OK`:
+ 
+    error   : If not all `columnName` are found in column names in `dataFileName`
+ 
+
+
+
+#### **<span style="color:#FF0000">column names in dataFileName in `columnName` - error</span>**
+
+Test if column names in `dataFileName` are found in `columnName`. The `error` can have the following values apart from `OK`:
+ 
+    error   : If not all column names in `dataFileName` are found in `columnName`
+ 
+
 
 
 ### **<span style="color:black">Data Files - NA</span>**
 
-To Be Added
+Test if the data files as mentioned in `DataFileMetaData$dataFileName` is correct.  This includes column names, required info, ... 
 
 ## **<span style="color:red">TODO</span>** 
 ### result$DataFiles$header
@@ -284,7 +331,7 @@ print(result, level = 2, listLevel = 20, type = "details", format = "markdown")
 
 ## **<span style="color:black">Overall MetaData - NA</span>**
 
-The result of the overall validation of the data.
+The details contain the different validations of the metadata as a hierarchical list. errors propagate towards the root, i.e., if the 'worst' is a 'warning' in a validation in `details` the error here will be a 'warning' as well.
 
 
 
@@ -295,7 +342,7 @@ The result of the overall validation of the data.
 
 ### **<span style="color:#00FF00">Structural / Formal validity - OK</span>**
 
-Test if the structure of the metadata is correct.  This includes column names, required info, ...  Should normally be OK, if no modification has been done.
+No further details available.
 
 
 
@@ -306,7 +353,7 @@ Test if the structure of the metadata is correct.  This includes column names, r
 
 ### **<span style="color:#AA5500">Experiment - warning</span>**
 
-To Be Added
+No further details available.
 
 
 
@@ -317,7 +364,13 @@ To Be Added
 
 #### **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**
 
-Test if the metadata entered follows the type for the column, i.e. integer, characterd, .... The validation is done by verifying if the column can be losslessly converted from character to the columnb type specified. the value NA is allowed in all column types, empty cells should be avoided.
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell contains an error, i.e. can not be losslessly converted.
+    TRUE : If the cell can be losslessly converted and is OK.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in an ERROR.
 
 
 
@@ -328,7 +381,13 @@ Test if the metadata entered follows the type for the column, i.e. integer, char
 
 #### **<span style="color:#AA5500">values in suggestedValues - warning</span>**
 
-Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided.
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell value is not contained in the suggestedValues list.
+    TRUE : If the cell value is contained in the suggestedValues list.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in a WARNING.
 
 
 
@@ -339,7 +398,7 @@ Test if the metadata entered is ion the suggestedValues list. The value NA is al
 
 ### **<span style="color:#AA5500">Species - warning</span>**
 
-To Be Added
+No further details available.
 
 
 
@@ -350,7 +409,13 @@ To Be Added
 
 #### **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**
 
-Test if the metadata entered follows the type for the column, i.e. integer, characterd, .... The validation is done by verifying if the column can be losslessly converted from character to the columnb type specified. the value NA is allowed in all column types, empty cells should be avoided.
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell contains an error, i.e. can not be losslessly converted.
+    TRUE : If the cell can be losslessly converted and is OK.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in an ERROR.
 
 
 
@@ -362,7 +427,13 @@ Test if the metadata entered follows the type for the column, i.e. integer, char
 
 #### **<span style="color:#AA5500">values in suggestedValues - warning</span>**
 
-Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided.
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell value is not contained in the suggestedValues list.
+    TRUE : If the cell value is contained in the suggestedValues list.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in a WARNING.
 
 
 
@@ -372,9 +443,34 @@ Test if the metadata entered is ion the suggestedValues list. The value NA is al
 |TRUE    |FALSE           |
 
 
-#### **<span style="color:#00FF00">name in species database and report score (using taxize::gnr_resolve()) - OK</span>**
+#### **<span style="color:#00FF00">Test if `speciesID` is unique - OK</span>**
 
-To Be Added
+Returns a named vector, with the following possible values:
+ 
+    TRUE  : the value in `speciesID` is unique
+    FALSE : the value in `speciesID` is not unique
+ 
+ One or more FALSE or a missing value will result in an ERROR.
+
+
+
+|speciesID |isOK |
+|:---------|:----|
+|tt_1      |TRUE |
+|unknown   |TRUE |
+
+
+#### **<span style="color:#00FF00">Test if the scientific name is correct - OK</span>**
+
+The details are a table as returned from the funcrtion `taxize::gnr_resolve()`. The columns are:
+ 
+    user_supplied_name : the name as in column `name`
+    submitted_name     : the actual name passed on to be resolved
+    matched_name       : the matched named
+    data_source_title  : the name of the data source which returned the best match
+    score              : a score from the match
+ 
+ **Not matched species are not listed here!**.
 
 
 
@@ -386,7 +482,7 @@ To Be Added
 
 ### **<span style="color:#AA5500">Treatment - warning</span>**
 
-To Be Added
+No further details available.
 
 
 
@@ -397,7 +493,13 @@ To Be Added
 
 #### **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**
 
-Test if the metadata entered follows the type for the column, i.e. integer, characterd, .... The validation is done by verifying if the column can be losslessly converted from character to the columnb type specified. the value NA is allowed in all column types, empty cells should be avoided.
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell contains an error, i.e. can not be losslessly converted.
+    TRUE : If the cell can be losslessly converted and is OK.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in an ERROR.
 
 
 
@@ -412,7 +514,13 @@ Test if the metadata entered follows the type for the column, i.e. integer, char
 
 #### **<span style="color:#AA5500">values in suggestedValues - warning</span>**
 
-Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided.
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell value is not contained in the suggestedValues list.
+    TRUE : If the cell value is contained in the suggestedValues list.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in a WARNING.
 
 
 
@@ -425,13 +533,19 @@ Test if the metadata entered is ion the suggestedValues list. The value NA is al
 |FALSE       |FALSE |FALSE          |
 
 
-#### **<span style="color:#AA5500">treatmentID is in mappingColumn - warning</span>**
+#### **<span style="color:#AA5500">Test if treatmentID is in mappingColumn - warning</span>**
 
-To Be Added
+The details are a table with one row per unique `treatmentID`. The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If the value is in `DataFileMetaData$mappingColumn`.
+    FALSE: If the value is not in `DataFileMetaData$mappingColumn`.
+    NA   : empty cell
+ 
+ One or more FALSE or missing values values will result in an ERROR.
 
 
 
-|              |x     |
+|treatmentID   |isOK  |
 |:-------------|:-----|
 |Lid_treatment |TRUE  |
 |species_1     |TRUE  |
@@ -441,7 +555,7 @@ To Be Added
 
 ### **<span style="color:#AA5500">Measurement - warning</span>**
 
-To Be Added
+No further details available.
 
 
 
@@ -452,7 +566,13 @@ To Be Added
 
 #### **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**
 
-Test if the metadata entered follows the type for the column, i.e. integer, characterd, .... The validation is done by verifying if the column can be losslessly converted from character to the columnb type specified. the value NA is allowed in all column types, empty cells should be avoided.
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell contains an error, i.e. can not be losslessly converted.
+    TRUE : If the cell can be losslessly converted and is OK.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in an ERROR.
 
 
 
@@ -466,7 +586,13 @@ Test if the metadata entered follows the type for the column, i.e. integer, char
 
 #### **<span style="color:#AA5500">values in suggestedValues - warning</span>**
 
-Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided.
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell value is not contained in the suggestedValues list.
+    TRUE : If the cell value is contained in the suggestedValues list.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in a WARNING.
 
 
 
@@ -480,11 +606,16 @@ Test if the metadata entered is ion the suggestedValues list. The value NA is al
 
 #### **<span style="color:#00FF00">names unique - OK</span>**
 
-Check if the names specified in `measurementID` are unique.
+Returns a named vector, with the following possible values:
+ 
+    TRUE  : the value in `speciesID` is unique
+    FALSE : the value in `speciesID` is not unique
+ 
+ One or more FALSE or a missing value will result in an ERROR.
 
 
 
-|                     |x    |
+|measurementID        |isOK |
 |:--------------------|:----|
 |oxygen concentration |TRUE |
 |abundance            |TRUE |
@@ -494,11 +625,17 @@ Check if the names specified in `measurementID` are unique.
 
 #### **<span style="color:#00FF00">measuredFrom is 'raw', 'NA', NA or in name - OK</span>**
 
-Check if the names specified in `measurementID` are unique.
+The details are a table with one row per unique `result$details The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If the value is in `x$Measurement$measurementID` column, 'raw', 'NA', or `NA`.
+    FALSE: If the value is not in `x$Measurement$measurementID` column, 'raw', 'NA', or `NA`.
+    NA   : empty cell
+ 
+ One or more FALSE or missing values values will result in an ERROR.
 
 
 
-|                     |x    |
+|measurementID        |isOK |
 |:--------------------|:----|
 |oxygen concentration |TRUE |
 |abundance            |TRUE |
@@ -506,13 +643,19 @@ Check if the names specified in `measurementID` are unique.
 |sequenceData         |TRUE |
 
 
-#### **<span style="color:#AA5500">variable is in mappingColumn - warning</span>**
+#### **<span style="color:#AA5500">Test if `variable` is in mappingColumn - warning</span>**
 
-To Be Added
+The details are a table with one row per unique `variable` The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If the value is in `DataFileMetaData$mappingColumn`.
+    FALSE: If the value is not in `DataFileMetaData$mappingColumn.
+    NA   : empty cell
+ 
+ One or more FALSE or missing values values will result in an ERROR.
 
 
 
-|          |x     |
+|variable  |isOK  |
 |:---------|:-----|
 |DO        |FALSE |
 |abundance |TRUE  |
@@ -522,21 +665,27 @@ To Be Added
 
 #### **<span style="color:#00FF00">dataExtractionID is 'none', 'NA', NA, or in DataExtraction$dataExtractionID - OK</span>**
 
-To Be Added
+The details are a table with one row per unique `result$details The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If the value is in `DataExtraction$dataExtractionID` column, 'none', 'NA', or `NA`
+    FALSE: If the value is not in `DataExtraction$dataExtractionID` column, 'none', 'NA', or `NA`
+    NA   : empty cell
+ 
+ One or more FALSE will result in an ERROR.
 
 
 
-|x    |
-|:----|
-|TRUE |
-|TRUE |
-|TRUE |
-|TRUE |
+|dataExtractionID    |isOK |
+|:-------------------|:----|
+|none                |TRUE |
+|Mol_Analy_pipeline1 |TRUE |
+|none                |TRUE |
+|none                |TRUE |
 
 
-### **<span style="color:#AA5500">DataExtraction - warning</span>**
+### **<span style="color:#FF0000">DataExtraction - error</span>**
 
-To Be Added
+No further details available.
 
 
 
@@ -547,7 +696,13 @@ To Be Added
 
 #### **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**
 
-Test if the metadata entered follows the type for the column, i.e. integer, characterd, .... The validation is done by verifying if the column can be losslessly converted from character to the columnb type specified. the value NA is allowed in all column types, empty cells should be avoided.
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell contains an error, i.e. can not be losslessly converted.
+    TRUE : If the cell can be losslessly converted and is OK.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in an ERROR.
 
 
 
@@ -559,7 +714,13 @@ Test if the metadata entered follows the type for the column, i.e. integer, char
 
 #### **<span style="color:#00FF00">values in suggestedValues - OK</span>**
 
-Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided.
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell value is not contained in the suggestedValues list.
+    TRUE : If the cell value is contained in the suggestedValues list.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in a WARNING.
 
 
 
@@ -569,9 +730,14 @@ Test if the metadata entered is ion the suggestedValues list. The value NA is al
 |TRUE   |
 
 
-#### **<span style="color:#00FF00">names unique - OK</span>**
+#### **<span style="color:#FF0000">names unique - error</span>**
 
-Check if the names specified in `dataExtractionID` are unique.
+Returns a named vector, with the following possible values:
+ 
+    TRUE  : the value in `speciesID` is unique
+    FALSE : the value in `speciesID` is not unique
+ 
+ One or more FALSE or a missing value will result in an ERROR.
 
 
 
@@ -583,7 +749,13 @@ Check if the names specified in `dataExtractionID` are unique.
 
 #### **<span style="color:#AA5500">name is in Measurement$dataExtractionID - warning</span>**
 
-To Be Added
+The details are a table with one row per unique `variable` The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If the value is in `DataFileMetaData$mappingColumn`.
+    FALSE: If the value is not in `DataFileMetaData$mappingColumn.
+    NA   : empty cell
+ 
+ One or more FALSE will result in an ERROR.
 
 
 
@@ -593,9 +765,9 @@ To Be Added
 |NA                  |FALSE |
 
 
-### **<span style="color:black">DataFileMetaData - NA</span>**
+### **<span style="color:#FF0000">DataFileMetaData - error</span>**
 
-To Be Added
+No further details available.
 
 
 
@@ -606,7 +778,13 @@ To Be Added
 
 #### **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**
 
-Test if the metadata entered follows the type for the column, i.e. integer, characterd, .... The validation is done by verifying if the column can be losslessly converted from character to the columnb type specified. the value NA is allowed in all column types, empty cells should be avoided.
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell contains an error, i.e. can not be losslessly converted.
+    TRUE : If the cell can be losslessly converted and is OK.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in an ERROR.
 
 
 
@@ -636,7 +814,13 @@ Test if the metadata entered follows the type for the column, i.e. integer, char
 
 #### **<span style="color:#00FF00">values in allowedValues - OK</span>**
 
-Test if the metadata entered is ion the allowedValues list. The value NA is allowed in all column types, empty cells should be avoided.
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell value is not contained in the allowedValues list.
+    TRUE : If the cell value is contained in the allowedValues list.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in an ERROR.
 
 
 
@@ -664,9 +848,15 @@ Test if the metadata entered is ion the allowedValues list. The value NA is allo
 |TRUE       |TRUE |
 
 
-#### **<span style="color:#FF0000">dataFile exists in path - error</span>**
+#### **<span style="color:#FF0000">`dataFile` exists in path - error</span>**
 
-To Be Added
+The details are a table with one row per unique `variable` The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If `dataFile` exist in the given `path`
+    FALSE: If `dataFile` does not exist in the given `path`
+    NA   : empty cell
+ 
+ One or more FALSE or missing values will result in an ERROR.
 
 
 
@@ -677,9 +867,15 @@ To Be Added
 |abundances.csv                |FALSE |
 
 
-#### **<span style="color:#00FF00">if type == 'datetime', description has format information - OK</span>**
+#### **<span style="color:#00FF00">Test if date time format has been specified if required - OK</span>**
 
-To Be Added
+The details are a table with one row per 'datetime' format row The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If `description` contains a value
+    FALSE: If `description` does not contain a value
+    NA   : empty cell
+ 
+ One or more FALSE or missing values will result in an ERROR.
 
 
 
@@ -690,59 +886,69 @@ To Be Added
 |abundances.csv                |Date_time  |datetime |ymdhms      |TRUE |
 
 
-#### **<span style="color:black">correct values in mappingColumn in dependence on columnData - NA</span>**
+#### **<span style="color:#FF0000">correct values in `mappingColumn`` in dependence on columnData - error</span>**
 
-To Be Added
-
-
-
-|mappingColumn        |IsOK |
-|:--------------------|:----|
-|NA                   |TRUE |
-|oxygen concentration |TRUE |
-|NA                   |TRUE |
-|NA                   |TRUE |
-|NA                   |TRUE |
-|NA                   |TRUE |
-|Lid_treatment        |TRUE |
-|NA                   |TRUE |
-|NA                   |TRUE |
-|species_1            |NA   |
-|smell                |TRUE |
-|NA                   |TRUE |
-|Lid_treatment        |TRUE |
-|NA                   |TRUE |
-|species_3            |NA   |
-|NA                   |TRUE |
-|NA                   |TRUE |
-|Lid_treatment        |TRUE |
-|NA                   |TRUE |
-|abundance            |TRUE |
+The details are a table with one row per `mappingColumn` value format row The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If `mappingColumn` is found in ppropriate table or NA
+    FALSE: If `mappingColumn` is not found in ppropriate table
+ 
+ One or more FALSE or missing values will result in an ERROR.
 
 
-#### **<span style="color:#FF0000">columnName in column names in dataFileName - error</span>**
 
-To Be Added
+|mappingColumn        |IsOK  |
+|:--------------------|:-----|
+|NA                   |FALSE |
+|oxygen concentration |FALSE |
+|NA                   |FALSE |
+|NA                   |FALSE |
+|NA                   |FALSE |
+|NA                   |FALSE |
+|Lid_treatment        |FALSE |
+|NA                   |FALSE |
+|NA                   |FALSE |
+|species_1            |FALSE |
+|smell                |FALSE |
+|NA                   |FALSE |
+|Lid_treatment        |FALSE |
+|NA                   |FALSE |
+|species_3            |FALSE |
+|NA                   |FALSE |
+|NA                   |FALSE |
+|Lid_treatment        |FALSE |
+|NA                   |FALSE |
+|abundance            |FALSE |
+
+
+#### **<span style="color:#FF0000">`columnName` in column names found in column names in `dataFileName` - error</span>**
+
+The details are a table with one row per `columnName` value. The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If `columnName` is found in column names in `dataFileName` or NA
+    FALSE: If `columnName` is not found in column names in `dataFileName`
+ 
+ One or more FALSE or missing values will result in an ERROR.
 
 
 
 |dataFileName                  |columnName    |IsOK  |
 |:-----------------------------|:-------------|:-----|
-|dissolved_oxygen_measures.csv |Jar_ID        |TRUE  |
-|dissolved_oxygen_measures.csv |DO            |TRUE  |
-|dissolved_oxygen_measures.csv |Unit_1        |TRUE  |
+|dissolved_oxygen_measures.csv |Jar_ID        |FALSE |
+|dissolved_oxygen_measures.csv |DO            |FALSE |
+|dissolved_oxygen_measures.csv |Unit_1        |FALSE |
 |dissolved_oxygen_measures.csv |Mode          |FALSE |
-|dissolved_oxygen_measures.csv |Location      |TRUE  |
-|dissolved_oxygen_measures.csv |Date_time     |TRUE  |
+|dissolved_oxygen_measures.csv |Location      |FALSE |
+|dissolved_oxygen_measures.csv |Date_time     |FALSE |
 |dissolved_oxygen_measures.csv |Lid_treatment |FALSE |
-|dissolved_oxygen_measures.csv |Jar_type      |TRUE  |
-|dissolved_oxygen_measures.csv |Jar_ID        |TRUE  |
+|dissolved_oxygen_measures.csv |Jar_type      |FALSE |
+|dissolved_oxygen_measures.csv |Jar_ID        |FALSE |
 |smell.csv                     |NA            |FALSE |
 |smell.csv                     |smell         |FALSE |
-|smell.csv                     |Date          |TRUE  |
+|smell.csv                     |Date          |FALSE |
 |smell.csv                     |Lid_treatment |FALSE |
-|smell.csv                     |Jar_type      |TRUE  |
-|abundances.csv                |NA            |TRUE  |
+|smell.csv                     |Jar_type      |FALSE |
+|abundances.csv                |NA            |FALSE |
 |abundances.csv                |Jar_ID        |FALSE |
 |abundances.csv                |Date_time     |FALSE |
 |abundances.csv                |Lid_treatment |FALSE |
@@ -750,9 +956,15 @@ To Be Added
 |abundances.csv                |count_number  |FALSE |
 
 
-#### **<span style="color:#FF0000">column names in dataFileName in columnName - error</span>**
+#### **<span style="color:#FF0000">column names in dataFileName in `columnName` - error</span>**
 
-To Be Added
+The details are a list of tables, one per `dataFileName`,  indicating if the column names in `dataFileName` are found in `columnName`.
+ The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If column name in `dataFileName` is found in `columnName`
+    FALSE: If column name in `dataFileName` is not found in `columnName`
+ 
+ One or more FALSE will result in an ERROR.
 
 
 
@@ -788,7 +1000,7 @@ To Be Added
 
 ### **<span style="color:black">Data Files - NA</span>**
 
-To Be Added
+No further details available.
 
 
 
