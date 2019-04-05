@@ -21,7 +21,6 @@ library(magrittr)
 library(dplyr)
 library(knitr)
 library(kableExtra)
-library(plantuml)
 #
 v <- read.dcf(here::here('DESCRIPTION'), all = TRUE)[['Version']]
 ```
@@ -50,7 +49,8 @@ This scheme **does neither** aim at covering aspects of the actual analysis of t
     * **names:** the column names of the table
     * **units:** the units used each in the column
     * **type:** the type of each column. Can be **numeric** (== **double**), **integer**, **logical** or **character** (== empty)
-    * **allowedValues:** a string of comma separated allowed values. *...* indicates that additional velues are allowed
+    * **allowedValues:** a string of comma separated allowed values.
+    * **suggestedValues:** a string of comma separated suggested values.
     * **class:** a string defining the class (**emeSchemeData_PROPERTYNAME**, **emeSchemeData**, **emeScheme**, plus internal ones)
 
 ## Conventions
@@ -88,7 +88,7 @@ These five **data properties** are:
 It is important to note that
 
 1. All **data properties** can obtain multiple rows (i.e. are repeatable) of metadata with the exception of the **Experiment** which can contain only one row of metadata.
-2. Many **value properties** have an attribute `allowedValues`. If `...` is included in this attribute, any value can be entered, but, if possible, one should choose a value from the list. 
+2. Many **value properties** have an attribute `suggesteddValues`. Any value can be entered, but, if possible, one should choose a value from the list. 
 
 ```{r data_layout, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 15, fig.height = 15}
 if (!file.exists("figs/dataLayout.svg")) {
@@ -171,7 +171,7 @@ Treatment "1" *-- "many" ExtractedData : contains
 Measurement "1" *-- "many" ExtractedData : contains
 DataExtraction "1" *-- "many" ExtractedData : contains
 ' %>%
-  plantuml %>%
+  plantuml::plantum %>%
   plot( file = "figs/dataLayout.svg")
 }
 ```

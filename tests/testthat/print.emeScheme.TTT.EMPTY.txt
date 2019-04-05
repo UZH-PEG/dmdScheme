@@ -6,7 +6,7 @@ A       Type  : character | character | character | character | character | char
 
 XA      row.names: 1
 XA      propertyName: Experiment
-XA      suggestedValues: NA | treatment, in degrees celsius, measurement, ... | treatment,light, dark, cycle , e.g. 16:8 LD, ... | treatment, relative humidity in %, ... | none, bench, ... | NA | NA | NA | NA | axenic, dirty, clean, … | treatment, single trophic level, multiple trophic level, … | NA | NA | NA
+XA      suggestedValues: NA | treatment, in degrees celsius, measurement | treatment,light, dark, cycle , e.g. 16:8 LD | treatment, relative humidity in % | none, bench | NA | NA | NA | NA | axenic, dirty, clean | treatment, single trophic level, multiple trophic level | NA | NA | NA
 XA      Description: The name of the experiment. | Temperature used for all treatments. If different between treatments, use "treatment" and specify in the Treatment sheet. | Light used for all treatments. If different between treatments, use "treatment" and specify in the Treatment sheet. | Humidity used for all treatments. If different between treatments, use "treatment" and specify in the Treatment sheet. | What type of incubator is used. | What type of container is used. | Volume of the microcosm container. Not the volume of the culture medium! | NA | NA | Conditions of the cultures for all treatments. | Characterisation of the microbe community. | NA | Length of the experiment in days. This should only include the time in which the measurements were taken! | Additional features of the Experiment you want to provide
 XA      class: emeSchemeData_Experiment | emeSchemeData | emeScheme | tbl_df | tbl | data.frame
 
@@ -24,7 +24,7 @@ A       Type  : character | character | character | character | character | char
 
 XA      row.names: 1
 XA      propertyName: Species
-XA      suggestedValues: NA | NA | NA | NA | treatment, ... | bacteria, bacterivore, predator, phototroph, … | NA
+XA      suggestedValues: NA | NA | NA | NA | treatment | bacteria, bacterivore, predator, phototroph | NA
 XA      Description: Id of the species and strain. Each speciesId has to be unique. | Scientific name of the species or unknown. | NA | Where the species was obtained from. | Initial density used for all treatments. If different between treatments, use "treatment" and specify in the Treatment sheet. | Functional group of the species. | NA
 XA      class: emeSchemeData_Species | emeSchemeData | emeScheme | emeSchemeData_raw | tbl_df | tbl | data.frame
 
@@ -38,7 +38,7 @@ A       Type  : character | character | character | character
 
 XA      row.names: 1
 XA      propertyName: Treatment
-XA      suggestedValues: species, temperatur, light, initial density, comunity composition, densities, dispersal, viscosity, disturbance, communityType, … | speciesId, C, lux, name, none, ... | value,  variable: freetext, ... | NA
+XA      suggestedValues: species, temperatur, light, initial density, comunity composition, densities, dispersal, viscosity, disturbance, communityType | speciesId, C, lux, name, none | value,  variable: freetext | NA
 XA      Description: ID of the the treatment decribed in this a row. Each treatmentId can occur multiple times as it can contain multiple treatment levels. | The unit of the treatment. | The value of the parameter if the parameter is constant over time, or a description of the variability. If unit is speciesId, comma separated list of all species in the treatment. | NA
 XA      class: emeSchemeData_Treatment | emeSchemeData | emeScheme | emeSchemeData_raw | tbl_df | tbl | data.frame
 
@@ -52,8 +52,8 @@ A       Type  : character | character | character | character | character | inte
 
 XA      row.names: 1
 XA      propertyName: Measurement
-XA      suggestedValues: NA | O2 concentration, video, manual count, abundance, DNA, … | presens Optode, microscopy, … | %, mmol, count, … | species, OUT, gene, community, particles, … | NA | NA | Mol_Analy_pipeline1, none | oxygen concentration, abundance, smell, sequenceData, raw | NA
-XA      Description: Id of the Measurement process. This includes methodology, variables, ... . Each measurementId specifies one Measurement process and must be unique in this column. Should be in the mapping column in the DataFileMetaData tab. | The variable measured. | Name of the method used. | Unit of the measured variable | The object measured. E.g. species in the case of manual count, gene for genetic analysis, particle for particle counters. | Total number of all samples in the time series. | The sampling volumne. If e.g. atmosphere in container is sampled (oxygen measurements), than enter 0.
+XA      suggestedValues: NA | O2 concentration, video, manual count, abundance, DNA | presens Optode, microscopy | %, mmol, count | species, OUT, gene, community, particles | NA | NA | NA | NA | NA
+XA      Description: Id of the Measurement process. This includes methodology, variables . Each measurementId specifies one Measurement process and must be unique in this column. Should be in the mapping column in the DataFileMetaData tab. | The variable measured. | Name of the method used. | Unit of the measured variable | The object measured. E.g. species in the case of manual count, gene for genetic analysis, particle for particle counters. | Total number of all samples in the time series. | The sampling volumne. If e.g. atmosphere in container is sampled (oxygen measurements), than enter 0.
 
 Please use NA if sampling volumne is variable. | as used in the sheet DataExtraction, column dataExtractionID | if measured from the experiment, raw, else the measurementId (first column) of the Measurement it is based on. | NA
 XA      class: emeSchemeData_Measurement | emeSchemeData | emeScheme | emeSchemeData_raw | tbl_df | tbl | data.frame
@@ -70,8 +70,8 @@ A       Type  : character | character | character | character | character
 
 XA      row.names: 1
 XA      propertyName: DataExtraction
-XA      suggestedValues: NA | bemovi x.y.z, ... | NA | NA | NA
-XA      Description: Name of the DataExtraction process. This includes methodology, variables, ... . Each name specifies one extraction process and can occur multiple times in the case of multiple parameters in the analysis. | Method used for the DataExtraction process. If possible including version (in the case of R packages). | parameter in the analysis. Only needs to be specified if it varies from the default. | value of the parameter (you can enter a number or a word) | NA
+XA      suggestedValues: NA | bemovi x.y.z | NA | NA | NA
+XA      Description: Name of the DataExtraction process. This includes methodology, variables . Each name specifies one extraction process and can occur multiple times in the case of multiple parameters in the analysis. | Method used for the DataExtraction process. If possible including version (in the case of R packages). | parameter in the analysis. Only needs to be specified if it varies from the default. | value of the parameter (you can enter a number or a word) | NA
 XA      class: emeSchemeData_DataExtraction | emeSchemeData | emeScheme | emeSchemeData_raw | tbl_df | tbl | data.frame
 
           dataExtractionID method parameter value comment

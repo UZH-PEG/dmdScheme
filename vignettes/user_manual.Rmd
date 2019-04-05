@@ -94,7 +94,7 @@ It will be very useful if during data preparation you standardise (parse) any da
 <!-- TODO Should be adapted to the Excel sheet! -->
 <!-- ## A note on allowed entries in the **google** version of the spreadsheet -->
 
-<!-- For some cells there are suggested entries listed in the row **suggestedValues** or available in a dropdown list. **Please use these suggestions if you can**. If the list contains an item that is three dots (...) you can enter an item not in the provided list: just type what you like in the cell. If you do this, you will get the message "Invalid: Input must be an item on specified list". You can ignore this message.  -->
+<!-- For some cells there are suggested entries listed in the row **suggestedValues** or available in a dropdown list. **Please use these suggestions if you can**. You can enter an item not in the provided list: just type what you like in the cell. If you do this, you will get the message "Invalid: Input must be an item on specified list". You can ignore this message.  -->
 
 ## A worked example of preparation of data for archiving
 
