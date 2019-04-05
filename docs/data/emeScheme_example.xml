@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <emeScheme class="emeSchemeSet, emeScheme, list" names="Experiment, Species, Treatment, Measurement, DataExtraction, DataFileMetaData">
- <ExperimentList unit="NA, NA, NA, NA, NA, NA, ml, NA, g/l, NA, NA, NA, NA" type="character, character, character, character, character, character, numeric, character, numeric, character, character, character, character" allowedValues="" names="name, temperature, light, humidity, incubator, container, microcosmVolume, mediaType, mediaConcentration, cultureConditions, comunityType, mediaAdditions, comment" class="emeSchemeData_Experiment, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
+ <ExperimentList unit="NA, NA, NA, NA, NA, NA, ml, NA, g/l, NA, NA, NA, days, NA" type="character, character, character, character, character, character, numeric, character, numeric, character, character, character, integer, character" allowedValues="" names="name, temperature, light, humidity, incubator, container, microcosmVolume, mediaType, mediaConcentration, cultureConditions, comunityType, mediaAdditions, duration, comment" class="emeSchemeData_Experiment, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
   <Experiment>
    <name>ASR-expt1</name>
    <temperature>20</temperature>
@@ -14,11 +14,13 @@
    <cultureConditions>dirty</cultureConditions>
    <comunityType>initially unknown</comunityType>
    <mediaAdditions>Wheat seeds added on specific dates, see file wheat_seed_additions.csv</mediaAdditions>
+   <duration>100</duration>
    <comment></comment>
   </Experiment>
  </ExperimentList>
- <SpeciesList unit="NA, NA, NA, cells / ml, NA, NA" type="character, character, character, numeric, character, character" allowedValues="" names="name, strain, source, density, functionalGroup, comment" class="emeSchemeData_Species, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
+ <SpeciesList unit="NA, NA, NA, NA, cells / ml, NA, NA" type="character, character, character, character, character, character, character" allowedValues="" names="speciesID, name, strain, source, density, functionalGroup, comment" class="emeSchemeData_Species, emeSchemeData, emeScheme, emeSchemeData_raw, tbl_df, tbl, data.frame">
   <Species name="Tetrahymena thermophila">
+   <name>Tetrahymena thermophila</name>
    <strain>WH-6 (WHI) [ATCC 16539]</strain>
    <source>ATCC</source>
    <density>1</density>
@@ -26,6 +28,7 @@
    <comment>http://www.lgcstandards-atcc.org/products/all/30007.aspx</comment>
   </Species>
   <Species name="unknown">
+   <name>unknown</name>
    <strain>unknown</strain>
    <source>unknown</source>
    <density></density>
@@ -33,7 +36,7 @@
    <comment></comment>
   </Species>
  </SpeciesList>
- <TreatmentList unit="NA, NA, NA, NA" type="character, character, character, character" allowedValues="" names="parameter, unit, treatmentLevel, comment" class="emeSchemeData_Treatment, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
+ <TreatmentList unit="NA, NA, NA, NA" type="character, character, character, character" allowedValues="" names="treatmentID, unit, treatmentLevel, comment" class="emeSchemeData_Treatment, emeSchemeData, emeScheme, emeSchemeData_raw, tbl_df, tbl, data.frame">
   <Treatment>
    <unit>None</unit>
    <treatmentLevel>Loose</treatmentLevel>
@@ -44,74 +47,85 @@
    <treatmentLevel>Tight</treatmentLevel>
    <comment></comment>
   </Treatment>
+  <Treatment>
+   <unit>speciesID</unit>
+   <treatmentLevel>tt_1, unknown</treatmentLevel>
+   <comment></comment>
+  </Treatment>
+  <Treatment>
+   <unit>speciesID</unit>
+   <treatmentLevel>unknown</treatmentLevel>
+   <comment></comment>
+  </Treatment>
+  <Treatment>
+   <unit>speciesID</unit>
+   <treatmentLevel>tt_1</treatmentLevel>
+   <comment></comment>
+  </Treatment>
  </TreatmentList>
- <MeasurementList unit="NA, NA, NA, NA, NA, days, NA, ml, NA, NA, NA" type="character, character, character, character, character, integer, integer, numeric, character, character, character" allowedValues="" names="name, variable, method, unit, object, lengthOfTimeSeries, noOfSamplesInTimeSeries, samplingVolume, dataExtractionName, measuredFrom, comment" class="emeSchemeData_Measurement, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
-  <Measurement name="oxygen concentration">
+ <MeasurementList unit="NA, NA, NA, NA, NA, NA, ml, NA, NA, NA" type="character, character, character, character, character, integer, numeric, character, character, character" allowedValues="" names="measurementID, variable, method, unit, object, noOfSamplesInTimeSeries, samplingVolume, dataExtractionID, measuredFrom, comment" class="emeSchemeData_Measurement, emeSchemeData, emeScheme, emeSchemeData_raw, tbl_df, tbl, data.frame">
+  <Measurement>
    <variable>DO</variable>
    <method>presens Optode</method>
    <unit>%</unit>
    <object>community</object>
-   <lengthOfTimeSeries>50</lengthOfTimeSeries>
    <noOfSamplesInTimeSeries>50</noOfSamplesInTimeSeries>
    <samplingVolume>0</samplingVolume>
-   <dataExtractionName></dataExtractionName>
+   <dataExtractionID>none</dataExtractionID>
    <measuredFrom>raw</measuredFrom>
-   <comment>data stil being collected</comment>
+   <comment></comment>
   </Measurement>
-  <Measurement name="abundance">
+  <Measurement>
    <variable>abundance</variable>
    <method>molecular</method>
    <unit>count</unit>
    <object>species</object>
-   <lengthOfTimeSeries>100</lengthOfTimeSeries>
    <noOfSamplesInTimeSeries>6</noOfSamplesInTimeSeries>
    <samplingVolume>0.5</samplingVolume>
-   <dataExtractionName>Mol_Analy_pipeline1</dataExtractionName>
+   <dataExtractionID>Mol_Analy_pipeline1</dataExtractionID>
    <measuredFrom>sequenceData</measuredFrom>
-   <comment>May collect more</comment>
+   <comment></comment>
   </Measurement>
-  <Measurement name="smell">
+  <Measurement>
    <variable>smell</variable>
    <method>nose</method>
    <unit>rotten eggs or not</unit>
    <object>community</object>
-   <lengthOfTimeSeries>100</lengthOfTimeSeries>
    <noOfSamplesInTimeSeries>6</noOfSamplesInTimeSeries>
    <samplingVolume>0</samplingVolume>
-   <dataExtractionName></dataExtractionName>
+   <dataExtractionID>none</dataExtractionID>
    <measuredFrom>raw</measuredFrom>
-   <comment>May collect more</comment>
+   <comment></comment>
   </Measurement>
-  <Measurement name="sequenceData">
+  <Measurement>
    <variable>DNA</variable>
    <method>NGS</method>
    <unit>Nucleotide</unit>
    <object>DNA fragment</object>
-   <lengthOfTimeSeries>100</lengthOfTimeSeries>
    <noOfSamplesInTimeSeries>6</noOfSamplesInTimeSeries>
    <samplingVolume>0</samplingVolume>
-   <dataExtractionName></dataExtractionName>
+   <dataExtractionID>none</dataExtractionID>
    <measuredFrom>raw</measuredFrom>
-   <comment>May collect more</comment>
+   <comment></comment>
   </Measurement>
  </MeasurementList>
- <DataExtractionList unit="NA, NA, NA, NA, NA" type="character, character, character, character, character" allowedValues="" names="name, method, parameter, value, comment" class="emeSchemeData_DataExtraction, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
+ <DataExtractionList unit="NA, NA, NA, NA, NA" type="character, character, character, character, character" allowedValues="" names="dataExtractionID, method, parameter, value, comment" class="emeSchemeData_DataExtraction, emeSchemeData, emeScheme, emeSchemeData_raw, tbl_df, tbl, data.frame">
   <DataExtraction>
-   <name>Mol_Analy_pipeline1</name>
+   <dataExtractionID>Mol_Analy_pipeline1</dataExtractionID>
    <method></method>
    <parameter></parameter>
    <value></value>
    <comment>See description in file xxx.yyy</comment>
   </DataExtraction>
   <DataExtraction>
-   <name></name>
+   <dataExtractionID></dataExtractionID>
    <method></method>
    <parameter></parameter>
    <value></value>
    <comment></comment>
   </DataExtraction>
  </DataExtractionList>
- <DataFileMetaDataList unit="NA, NA, NA, NA, NA, NA, NA" type="character, character, character, character, character, character, character" allowedValues="NA, NA, ID, Treatment, Measurement, other, Lid_treatment, Lid_treatment, -------, oxygen concentration, abundance, smell, sequenceData, integer, numeric, character, logical, datetime, date, time, NA, NA" names="dataFileName, columnName, columnData, mappingColumn, type, description, comment" class="emeSchemeData_DataFileMetaData, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
+ <DataFileMetaDataList unit="NA, NA, NA, NA, NA, NA, NA" type="character, character, character, character, character, character, character" allowedValues="NA, NA, ID, Treatment, Measurement, Species, other, NA, integer, numeric, character, logical, datetime, date, time, NA, NA" names="dataFileName, columnName, columnData, mappingColumn, type, description, comment" class="emeSchemeData_DataFileMetaData, emeSchemeData, emeScheme, emeSchemeData_raw, tbl_df, tbl, data.frame">
   <DataFileMetaData>
    <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
    <columnName>Jar_ID</columnName>
@@ -195,6 +209,15 @@
   </DataFileMetaData>
   <DataFileMetaData>
    <dataFileName>smell.csv</dataFileName>
+   <columnName></columnName>
+   <columnData>Species</columnData>
+   <mappingColumn>species_1</mappingColumn>
+   <type>character</type>
+   <description></description>
+   <comment></comment>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>smell.csv</dataFileName>
    <columnName>smell</columnName>
    <columnData>Measurement</columnData>
    <mappingColumn>smell</mappingColumn>
@@ -215,7 +238,7 @@
    <dataFileName>smell.csv</dataFileName>
    <columnName>Lid_treatment</columnName>
    <columnData>Treatment</columnData>
-   <mappingColumn></mappingColumn>
+   <mappingColumn>Lid_treatment</mappingColumn>
    <type>character</type>
    <description></description>
    <comment></comment>
@@ -224,7 +247,16 @@
    <dataFileName>smell.csv</dataFileName>
    <columnName>Jar_type</columnName>
    <columnData>other</columnData>
-   <mappingColumn>Lid_treatment</mappingColumn>
+   <mappingColumn></mappingColumn>
+   <type>character</type>
+   <description></description>
+   <comment></comment>
+  </DataFileMetaData>
+  <DataFileMetaData>
+   <dataFileName>abundances.csv</dataFileName>
+   <columnName></columnName>
+   <columnData>Species</columnData>
+   <mappingColumn>species_3</mappingColumn>
    <type>character</type>
    <description></description>
    <comment></comment>
