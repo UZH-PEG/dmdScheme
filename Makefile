@@ -1,4 +1,9 @@
-## All Rmarkdown files in the working directory
+## R parts based on https://github.com/yihui/knitr/blob/master/Makefile
+
+PKGNAME := $(shell sed -n "s/Package: *\([^ ]*\)/\1/p" DESCRIPTION)
+PKGVERS := $(shell sed -n "s/Version: *\([^ ]*\)/\1/p" DESCRIPTION)
+PKGSRC  := $(shell basename `pwd`)
+
 
 SRCDIR = source
 OUTDIR = docs
@@ -27,9 +32,15 @@ READMEHTML = Readme.html
 
 #############
 
-all: clean update web
+all: check clean_web web clean_check
 
-#############
+####
+
+clean: clean_web
+
+########### Website ###########
+
+####
 
 readme: $(READMEMD)
 Readme.md: $(READMERMD)
@@ -39,7 +50,7 @@ Readme.md: $(READMERMD)
 clean_readme:
 	rm -f $(READMEMD)
 
-#############
+####
 
 vignettes: $(VIGHTML)
 
@@ -49,7 +60,7 @@ $(VIGHTML): $(VIGRMD)
 clean_vignettes:
 	@Rscript -e "devtools::clean_vignettes()"
 
-#############
+#####
 
 html:	$(HTML)
 # %.html: %.Rmd
@@ -59,7 +70,7 @@ $(OUTDIR)/%.html: $(SRCDIR)/%.Rmd
 clean_html:
 	rm -f $(HTML)
 
-#############
+####
 
 web: html vignettes readme
 	cp -f $(VIGHTML) $(OUTDIR)/
@@ -70,40 +81,64 @@ clean_web: clean_html clean_vignettes clean_readme
 	rm -f VIGHTMLOUT
 	rm -rf $(DATADIR)
 
-#############
+####
+
+########### Package  ###########
+
+####
 
 update:
-	@Rscript -e "devtools::load_all(here::here()); emeScheme:::updateFromGoogleSheet(token = './source/googlesheets_token.rds')"
+	Rscript -e "devtools::load_all(here::here()); emeScheme:::updateFromNewSheet()"
 
-#############
+####
 
 updateForce:
-	@Rscript -e "devtools::load_all(here::here()); emeScheme:::updateFromGoogleSheet(token = './source/googlesheets_token.rds', force = TRUE)"
+	@Rscript -e "devtools::load_all(here::here()); emeScheme:::updateFromNewSheet(force = TRUE)"
 
-#############
+####
+
+docs:
+	Rscript -e "devtools::document(roclets = c('rd', 'collate', 'namespace', 'vignette'))"
+
+build:
+	cd ..;\
+	R CMD build --no-manual $(PKGSRC)
+
+####
+
+build-cran:
+	cd ..;\
+	R CMD build $(PKGSRC)
+
+####
+
+install: build
+	cd ..;\
+	R CMD INSTALL $(PKGNAME)_$(PKGVERS).tar.gz
+
+####
+
+check: build-cran
+	cd ..;\
+	R CMD check $(PKGNAME)_$(PKGVERS).tar.gz --as-cran
+
+clean_check:
+	$(RM) -r ./../$(PKGNAME).Rcheck/
+
+####
 
 test:
 	@Rscript -e "devtools::test()"
 
-#############
+####
 
-check:
-	@Rscript -e "devtools::check(args = c('--as-cran'))"
-
-#############
-
-# publish:
-# 	git add DESCRIPTION data/emeScheme.rda data/emeScheme_gd.rda inst/googlesheet/emeScheme.xlsx docs/index.html
-# 	git commit -m "Update From Googlesheets"
-# 	git push
-
-#############
-
-clean: clean_web
-
-#############
+############# mHelp targets #############
 
 list_files:
+	@echo PKGNAME : $(PKGNAME)
+	@echo PKGVERS : $(PKGVERS)
+	@echo PKGSRC  : $(PKGSRC)
+	@echo
 	@echo SRCDIR  : $(SRCDIR)
 	@echo OUTDIR  : $(OUTDIR)
 	@echo DATADIR : $(DATADIR)
@@ -128,8 +163,8 @@ list_files:
 ## from https://stackoverflow.com/a/26339924/632423
 list: list_files
 	@echo
-	@$(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$' | xargs
+	@$(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$'
 
 #############
 
-.PHONY: list files update clean clean_vignettes clean_web clean_html publish
+.PHONY: list files update clean clean_vignettes clean_web clean_html publish docs
