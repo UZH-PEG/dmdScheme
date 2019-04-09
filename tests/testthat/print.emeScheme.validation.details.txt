@@ -1,0 +1,602 @@
+
+# **<span style="color:black">Overall MetaData - NA</span>**
+
+The details contain the different validations of the metadata as a hierarchical list. errors propagate towards the root, i.e., if the 'worst' is a 'warning' in a validation in `details` the error here will be a 'warning' as well.
+
+
+
+|x  |
+|:--|
+|NA |
+
+
+## **<span style="color:#00FF00">Structural / Formal validity - OK</span>**
+
+No further details available.
+
+
+
+|x    |
+|:----|
+|TRUE |
+
+
+## **<span style="color:#AA5500">Experiment - warning</span>**
+
+No further details available.
+
+
+
+|x  |
+|:--|
+|NA |
+
+-  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell contains an error, i.e. can not be losslessly converted.
+    TRUE : If the cell can be losslessly converted and is OK.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in an ERROR.  
+
+
+|name |temperature |light |humidity |incubator |container |microcosmVolume |mediaType |mediaConcentration |cultureConditions |comunityType |mediaAdditions |duration |comment |
+|:----|:-----------|:-----|:--------|:---------|:---------|:---------------|:---------|:------------------|:-----------------|:------------|:--------------|:--------|:-------|
+|TRUE |TRUE        |TRUE  |TRUE     |TRUE      |TRUE      |TRUE            |TRUE      |TRUE               |TRUE              |TRUE         |TRUE           |TRUE     |NA      |
+
+-  **<span style="color:#AA5500">values in suggestedValues - warning</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell value is not contained in the suggestedValues list.
+    TRUE : If the cell value is contained in the suggestedValues list.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in a WARNING.  
+
+
+|temperature |light |humidity |incubator |cultureConditions |comunityType |
+|:-----------|:-----|:--------|:---------|:-----------------|:------------|
+|FALSE       |FALSE |FALSE    |FALSE     |TRUE              |FALSE        |
+
+
+## **<span style="color:#AA5500">Species - warning</span>**
+
+No further details available.
+
+
+
+|x  |
+|:--|
+|NA |
+
+-  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell contains an error, i.e. can not be losslessly converted.
+    TRUE : If the cell can be losslessly converted and is OK.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in an ERROR.  
+
+
+|speciesID |name |strain |source |density |functionalGroup |comment |
+|:---------|:----|:------|:------|:-------|:---------------|:-------|
+|TRUE      |TRUE |TRUE   |TRUE   |TRUE    |TRUE            |TRUE    |
+|TRUE      |TRUE |TRUE   |TRUE   |NA      |TRUE            |NA      |
+
+-  **<span style="color:#AA5500">values in suggestedValues - warning</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell value is not contained in the suggestedValues list.
+    TRUE : If the cell value is contained in the suggestedValues list.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in a WARNING.  
+
+
+|density |functionalGroup |
+|:-------|:---------------|
+|FALSE   |TRUE            |
+|TRUE    |FALSE           |
+
+-  **<span style="color:#00FF00">Test if `speciesID` is unique - OK</span>**   
+Returns a named vector, with the following possible values:
+ 
+    TRUE  : the value in `speciesID` is unique
+    FALSE : the value in `speciesID` is not unique
+ 
+ One or more FALSE or a missing value will result in an ERROR.  
+
+
+|speciesID |isOK |
+|:---------|:----|
+|tt_1      |TRUE |
+|unknown   |TRUE |
+
+-  **<span style="color:#00FF00">Test if the scientific name is correct - OK</span>**   
+The details are a table as returned from the funcrtion `taxize::gnr_resolve()`. The columns are:
+ 
+    user_supplied_name : the name as in column `name`
+    submitted_name     : the actual name passed on to be resolved
+    matched_name       : the matched named
+    data_source_title  : the name of the data source which returned the best match
+    score              : a score from the match
+ 
+ **Not matched species are not listed here!**.  
+
+
+|user_supplied_name      |submitted_name          |matched_name            |data_source_title | score|
+|:-----------------------|:-----------------------|:-----------------------|:-----------------|-----:|
+|Tetrahymena thermophila |Tetrahymena thermophila |Tetrahymena thermophila |NCBI              | 0.988|
+|unknown                 |Unknown                 |Unknown                 |EOL               | 0.750|
+
+
+## **<span style="color:#AA5500">Treatment - warning</span>**
+
+No further details available.
+
+
+
+|x  |
+|:--|
+|NA |
+
+-  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell contains an error, i.e. can not be losslessly converted.
+    TRUE : If the cell can be losslessly converted and is OK.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in an ERROR.  
+
+
+|treatmentID |unit |treatmentLevel |comment |
+|:-----------|:----|:--------------|:-------|
+|TRUE        |TRUE |TRUE           |NA      |
+|TRUE        |NA   |TRUE           |NA      |
+|TRUE        |TRUE |TRUE           |NA      |
+|TRUE        |TRUE |TRUE           |NA      |
+|TRUE        |TRUE |TRUE           |NA      |
+
+-  **<span style="color:#AA5500">values in suggestedValues - warning</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell value is not contained in the suggestedValues list.
+    TRUE : If the cell value is contained in the suggestedValues list.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in a WARNING.  
+
+
+|treatmentID |unit  |treatmentLevel |
+|:-----------|:-----|:--------------|
+|FALSE       |FALSE |FALSE          |
+|FALSE       |TRUE  |FALSE          |
+|FALSE       |FALSE |FALSE          |
+|FALSE       |FALSE |FALSE          |
+|FALSE       |FALSE |FALSE          |
+
+-  **<span style="color:#AA5500">Test if treatmentID is in mappingColumn - warning</span>**   
+The details are a table with one row per unique `treatmentID`. The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If the value is in `DataFileMetaData$mappingColumn`.
+    FALSE: If the value is not in `DataFileMetaData$mappingColumn`.
+    NA   : empty cell
+ 
+ One or more FALSE or missing values values will result in an ERROR.  
+
+
+|treatmentID   |isOK  |
+|:-------------|:-----|
+|Lid_treatment |TRUE  |
+|species_1     |TRUE  |
+|species_2     |FALSE |
+|species_3     |TRUE  |
+
+
+## **<span style="color:#AA5500">Measurement - warning</span>**
+
+No further details available.
+
+
+
+|x  |
+|:--|
+|NA |
+
+-  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell contains an error, i.e. can not be losslessly converted.
+    TRUE : If the cell can be losslessly converted and is OK.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in an ERROR.  
+
+
+|measurementID |variable |method |unit |object |noOfSamplesInTimeSeries |samplingVolume |dataExtractionID |measuredFrom |comment |
+|:-------------|:--------|:------|:----|:------|:-----------------------|:--------------|:----------------|:------------|:-------|
+|TRUE          |TRUE     |TRUE   |TRUE |TRUE   |TRUE                    |TRUE           |TRUE             |TRUE         |NA      |
+|TRUE          |TRUE     |TRUE   |TRUE |TRUE   |TRUE                    |TRUE           |TRUE             |TRUE         |NA      |
+|TRUE          |TRUE     |TRUE   |TRUE |TRUE   |TRUE                    |TRUE           |TRUE             |TRUE         |NA      |
+|TRUE          |TRUE     |TRUE   |TRUE |TRUE   |TRUE                    |TRUE           |TRUE             |TRUE         |NA      |
+
+-  **<span style="color:#AA5500">values in suggestedValues - warning</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell value is not contained in the suggestedValues list.
+    TRUE : If the cell value is contained in the suggestedValues list.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in a WARNING.  
+
+
+|variable |method |unit  |object |
+|:--------|:------|:-----|:------|
+|FALSE    |TRUE   |TRUE  |TRUE   |
+|TRUE     |FALSE  |TRUE  |TRUE   |
+|FALSE    |FALSE  |FALSE |TRUE   |
+|TRUE     |FALSE  |FALSE |FALSE  |
+
+-  **<span style="color:#00FF00">names unique - OK</span>**   
+Returns a named vector, with the following possible values:
+ 
+    TRUE  : the value in `speciesID` is unique
+    FALSE : the value in `speciesID` is not unique
+ 
+ One or more FALSE or a missing value will result in an ERROR.  
+
+
+|measurementID        |isOK |
+|:--------------------|:----|
+|oxygen concentration |TRUE |
+|abundance            |TRUE |
+|smell                |TRUE |
+|sequenceData         |TRUE |
+
+-  **<span style="color:#00FF00">measuredFrom is 'raw', 'NA', NA or in name - OK</span>**   
+The details are a table with one row per unique `result$details The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If the value is in `x$Measurement$measurementID` column, 'raw', 'NA', or `NA`.
+    FALSE: If the value is not in `x$Measurement$measurementID` column, 'raw', 'NA', or `NA`.
+    NA   : empty cell
+ 
+ One or more FALSE or missing values values will result in an ERROR.  
+
+
+|measurementID        |isOK |
+|:--------------------|:----|
+|oxygen concentration |TRUE |
+|abundance            |TRUE |
+|smell                |TRUE |
+|sequenceData         |TRUE |
+
+-  **<span style="color:#AA5500">Test if `variable` is in mappingColumn - warning</span>**   
+The details are a table with one row per unique `variable` The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If the value is in `DataFileMetaData$mappingColumn`.
+    FALSE: If the value is not in `DataFileMetaData$mappingColumn.
+    NA   : empty cell
+ 
+ One or more FALSE or missing values values will result in an ERROR.  
+
+
+|variable  |isOK  |
+|:---------|:-----|
+|DO        |FALSE |
+|abundance |TRUE  |
+|smell     |TRUE  |
+|DNA       |FALSE |
+
+-  **<span style="color:#00FF00">dataExtractionID is 'none', 'NA', NA, or in DataExtraction$dataExtractionID - OK</span>**   
+The details are a table with one row per unique `result$details The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If the value is in `DataExtraction$dataExtractionID` column, 'none', 'NA', or `NA`
+    FALSE: If the value is not in `DataExtraction$dataExtractionID` column, 'none', 'NA', or `NA`
+    NA   : empty cell
+ 
+ One or more FALSE will result in an ERROR.  
+
+
+|dataExtractionID    |isOK |
+|:-------------------|:----|
+|none                |TRUE |
+|Mol_Analy_pipeline1 |TRUE |
+|none                |TRUE |
+|none                |TRUE |
+
+
+## **<span style="color:#FF0000">DataExtraction - error</span>**
+
+No further details available.
+
+
+
+|x  |
+|:--|
+|NA |
+
+-  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell contains an error, i.e. can not be losslessly converted.
+    TRUE : If the cell can be losslessly converted and is OK.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in an ERROR.  
+
+
+|dataExtractionID |method |parameter |value |comment |
+|:----------------|:------|:---------|:-----|:-------|
+|TRUE             |NA     |NA        |NA    |TRUE    |
+|NA               |NA     |NA        |NA    |NA      |
+
+-  **<span style="color:#00FF00">values in suggestedValues - OK</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell value is not contained in the suggestedValues list.
+    TRUE : If the cell value is contained in the suggestedValues list.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in a WARNING.  
+
+
+|method |
+|:------|
+|TRUE   |
+|TRUE   |
+
+-  **<span style="color:#FF0000">names unique - error</span>**   
+Returns a named vector, with the following possible values:
+ 
+    TRUE  : the value in `speciesID` is unique
+    FALSE : the value in `speciesID` is not unique
+ 
+ One or more FALSE or a missing value will result in an ERROR.  
+
+
+|dataExtractionID    |isOK |
+|:-------------------|:----|
+|Mol_Analy_pipeline1 |TRUE |
+|NA                  |TRUE |
+
+-  **<span style="color:#AA5500">name is in Measurement$dataExtractionID - warning</span>**   
+The details are a table with one row per unique `variable` The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If the value is in `DataFileMetaData$mappingColumn`.
+    FALSE: If the value is not in `DataFileMetaData$mappingColumn.
+    NA   : empty cell
+ 
+ One or more FALSE will result in an ERROR.  
+
+
+|dataExtractionID    |isOK  |
+|:-------------------|:-----|
+|Mol_Analy_pipeline1 |TRUE  |
+|NA                  |FALSE |
+
+
+## **<span style="color:#FF0000">DataFileMetaData - error</span>**
+
+No further details available.
+
+
+
+|x  |
+|:--|
+|NA |
+
+-  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell contains an error, i.e. can not be losslessly converted.
+    TRUE : If the cell can be losslessly converted and is OK.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in an ERROR.  
+
+
+|dataFileName |columnName |columnData |mappingColumn |type |description |comment |
+|:------------|:----------|:----------|:-------------|:----|:-----------|:-------|
+|TRUE         |TRUE       |TRUE       |NA            |TRUE |NA          |NA      |
+|TRUE         |TRUE       |TRUE       |TRUE          |TRUE |NA          |NA      |
+|TRUE         |TRUE       |TRUE       |NA            |TRUE |NA          |NA      |
+|TRUE         |TRUE       |TRUE       |NA            |TRUE |NA          |NA      |
+|TRUE         |TRUE       |TRUE       |NA            |TRUE |NA          |NA      |
+|TRUE         |TRUE       |TRUE       |NA            |TRUE |TRUE        |NA      |
+|TRUE         |TRUE       |TRUE       |TRUE          |TRUE |NA          |NA      |
+|TRUE         |TRUE       |TRUE       |NA            |TRUE |NA          |NA      |
+|TRUE         |TRUE       |TRUE       |NA            |TRUE |NA          |NA      |
+|TRUE         |NA         |TRUE       |TRUE          |TRUE |NA          |NA      |
+|TRUE         |TRUE       |TRUE       |TRUE          |TRUE |NA          |NA      |
+|TRUE         |TRUE       |TRUE       |NA            |TRUE |TRUE        |NA      |
+|TRUE         |TRUE       |TRUE       |TRUE          |TRUE |NA          |NA      |
+|TRUE         |TRUE       |TRUE       |NA            |TRUE |NA          |NA      |
+|TRUE         |NA         |TRUE       |TRUE          |TRUE |NA          |NA      |
+|TRUE         |TRUE       |TRUE       |NA            |TRUE |NA          |NA      |
+|TRUE         |TRUE       |TRUE       |NA            |TRUE |TRUE        |NA      |
+|TRUE         |TRUE       |TRUE       |TRUE          |TRUE |NA          |NA      |
+|TRUE         |TRUE       |TRUE       |NA            |TRUE |NA          |NA      |
+|TRUE         |TRUE       |TRUE       |TRUE          |TRUE |NA          |NA      |
+
+-  **<span style="color:#00FF00">values in allowedValues - OK</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell value is not contained in the allowedValues list.
+    TRUE : If the cell value is contained in the allowedValues list.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in an ERROR.  
+
+
+|columnData |type |
+|:----------|:----|
+|TRUE       |TRUE |
+|TRUE       |TRUE |
+|TRUE       |TRUE |
+|TRUE       |TRUE |
+|TRUE       |TRUE |
+|TRUE       |TRUE |
+|TRUE       |TRUE |
+|TRUE       |TRUE |
+|TRUE       |TRUE |
+|TRUE       |TRUE |
+|TRUE       |TRUE |
+|TRUE       |TRUE |
+|TRUE       |TRUE |
+|TRUE       |TRUE |
+|TRUE       |TRUE |
+|TRUE       |TRUE |
+|TRUE       |TRUE |
+|TRUE       |TRUE |
+|TRUE       |TRUE |
+|TRUE       |TRUE |
+
+-  **<span style="color:#FF0000">`dataFile` exists in path - error</span>**   
+The details are a table with one row per unique `variable` The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If `dataFile` exist in the given `path`
+    FALSE: If `dataFile` does not exist in the given `path`
+    NA   : empty cell
+ 
+ One or more FALSE or missing values will result in an ERROR.  
+
+
+|dataFileName                  |IsOK  |
+|:-----------------------------|:-----|
+|dissolved_oxygen_measures.csv |FALSE |
+|smell.csv                     |FALSE |
+|abundances.csv                |FALSE |
+
+-  **<span style="color:#00FF00">Test if date time format has been specified if required - OK</span>**   
+The details are a table with one row per 'datetime' format row The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If `description` contains a value
+    FALSE: If `description` does not contain a value
+    NA   : empty cell
+ 
+ One or more FALSE or missing values will result in an ERROR.  
+
+
+|dataFileName                  |columnName |type     |description |IsOK |
+|:-----------------------------|:----------|:--------|:-----------|:----|
+|dissolved_oxygen_measures.csv |Date_time  |datetime |ymdhms      |TRUE |
+|smell.csv                     |Date       |datetime |ymdhms      |TRUE |
+|abundances.csv                |Date_time  |datetime |ymdhms      |TRUE |
+
+-  **<span style="color:#FF0000">correct values in `mappingColumn`` in dependence on columnData - error</span>**   
+The details are a table with one row per `mappingColumn` value format row The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If `mappingColumn` is found in ppropriate table or NA
+    FALSE: If `mappingColumn` is not found in ppropriate table
+ 
+ One or more FALSE or missing values will result in an ERROR.  
+
+
+|mappingColumn        |IsOK  |
+|:--------------------|:-----|
+|NA                   |FALSE |
+|oxygen concentration |FALSE |
+|NA                   |FALSE |
+|NA                   |FALSE |
+|NA                   |FALSE |
+|NA                   |FALSE |
+|Lid_treatment        |FALSE |
+|NA                   |FALSE |
+|NA                   |FALSE |
+|species_1            |FALSE |
+|smell                |FALSE |
+|NA                   |FALSE |
+|Lid_treatment        |FALSE |
+|NA                   |FALSE |
+|species_3            |FALSE |
+|NA                   |FALSE |
+|NA                   |FALSE |
+|Lid_treatment        |FALSE |
+|NA                   |FALSE |
+|abundance            |FALSE |
+
+-  **<span style="color:#FF0000">`columnName` in column names found in column names in `dataFileName` - error</span>**   
+The details are a table with one row per `columnName` value. The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If `columnName` is found in column names in `dataFileName` or NA
+    FALSE: If `columnName` is not found in column names in `dataFileName`
+ 
+ One or more FALSE or missing values will result in an ERROR.  
+
+
+|dataFileName                  |columnName    |IsOK  |
+|:-----------------------------|:-------------|:-----|
+|dissolved_oxygen_measures.csv |Jar_ID        |FALSE |
+|dissolved_oxygen_measures.csv |DO            |FALSE |
+|dissolved_oxygen_measures.csv |Unit_1        |FALSE |
+|dissolved_oxygen_measures.csv |Mode          |FALSE |
+|dissolved_oxygen_measures.csv |Location      |FALSE |
+|dissolved_oxygen_measures.csv |Date_time     |FALSE |
+|dissolved_oxygen_measures.csv |Lid_treatment |FALSE |
+|dissolved_oxygen_measures.csv |Jar_type      |FALSE |
+|dissolved_oxygen_measures.csv |Jar_ID        |FALSE |
+|smell.csv                     |NA            |FALSE |
+|smell.csv                     |smell         |FALSE |
+|smell.csv                     |Date          |FALSE |
+|smell.csv                     |Lid_treatment |FALSE |
+|smell.csv                     |Jar_type      |FALSE |
+|abundances.csv                |NA            |FALSE |
+|abundances.csv                |Jar_ID        |FALSE |
+|abundances.csv                |Date_time     |FALSE |
+|abundances.csv                |Lid_treatment |FALSE |
+|abundances.csv                |Jar_type      |FALSE |
+|abundances.csv                |count_number  |FALSE |
+
+-  **<span style="color:#FF0000">column names in dataFileName in `columnName` - error</span>**   
+The details are a list of tables, one per `dataFileName`,  indicating if the column names in `dataFileName` are found in `columnName`.
+ The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If column name in `dataFileName` is found in `columnName`
+    FALSE: If column name in `dataFileName` is not found in `columnName`
+ 
+ One or more FALSE will result in an ERROR.  
+
+
+|dataFile                      |columnNameInDataFileName |IsOK  |
+|:-----------------------------|:------------------------|:-----|
+|dissolved_oxygen_measures.csv |Jar_ID                   |FALSE |
+|dissolved_oxygen_measures.csv |DO                       |FALSE |
+|dissolved_oxygen_measures.csv |Unit_1                   |FALSE |
+|dissolved_oxygen_measures.csv |Mode                     |FALSE |
+|dissolved_oxygen_measures.csv |Location                 |FALSE |
+|dissolved_oxygen_measures.csv |Date_time                |FALSE |
+|dissolved_oxygen_measures.csv |Lid_treatment            |FALSE |
+|dissolved_oxygen_measures.csv |Jar_type                 |FALSE |
+|dissolved_oxygen_measures.csv |Jar_ID                   |FALSE |
+
+|dataFile  |columnNameInDataFileName |IsOK  |
+|:---------|:------------------------|:-----|
+|smell.csv |NA                       |TRUE  |
+|smell.csv |smell                    |FALSE |
+|smell.csv |Date                     |FALSE |
+|smell.csv |Lid_treatment            |FALSE |
+|smell.csv |Jar_type                 |FALSE |
+
+|dataFile       |columnNameInDataFileName |IsOK  |
+|:--------------|:------------------------|:-----|
+|abundances.csv |NA                       |TRUE  |
+|abundances.csv |Jar_ID                   |FALSE |
+|abundances.csv |Date_time                |FALSE |
+|abundances.csv |Lid_treatment            |FALSE |
+|abundances.csv |Jar_type                 |FALSE |
+|abundances.csv |count_number             |FALSE |
+
+
+## **<span style="color:black">Data Files - NA</span>**
+
+No further details available.
+
+
+
+|x  |
+|:--|
+|NA |
+

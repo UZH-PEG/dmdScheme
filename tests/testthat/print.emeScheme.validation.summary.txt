@@ -1,0 +1,165 @@
+
+# **<span style="color:black">Overall MetaData - NA</span>**
+
+The result of the overall validation of the data.
+
+
+## **<span style="color:#00FF00">Structural / Formal validity - OK</span>**
+
+Test if the structure of the metadata is correct.  This includes column names, required info, ...  Should normally be OK, if no modification has been done.
+
+
+## **<span style="color:#AA5500">Experiment - warning</span>**
+
+Test if the metadata concerning **Experiment** is correct.  This includes column names, required info, ... 
+
+-  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
+    Test if the metadata entered follows the type for the column, i.e. integer, characterd, .... The validation is done by verifying if the column can be losslessly converted from character to the columnb type specified. the value NA is allowed in all column types, empty cells should be avoided.
+
+-  **<span style="color:#AA5500">values in suggestedValues - warning</span>**   
+    Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided.
+
+
+## **<span style="color:#AA5500">Species - warning</span>**
+
+Test if the metadata concerning **Species** is correct.  This includes column names, required info, ... 
+
+-  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
+    Test if the metadata entered follows the type for the column, i.e. integer, characterd, .... The validation is done by verifying if the column can be losslessly converted from character to the columnb type specified. the value NA is allowed in all column types, empty cells should be avoided.
+
+-  **<span style="color:#AA5500">values in suggestedValues - warning</span>**   
+    Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided.
+
+-  **<span style="color:#00FF00">Test if `speciesID` is unique - OK</span>**   
+    Test if the speciesID is unique in this metadata set. The functions returns `TRUE` if all speciesID are unique.
+
+-  **<span style="color:#00FF00">Test if the scientific name is correct - OK</span>**   
+    Test if the scientific name in the column `name` is correct. This uses the function `taxize::gnr_resolve()` The functions returns `TRUE` if all species have a score of >= 0.7.
+
+
+## **<span style="color:#AA5500">Treatment - warning</span>**
+
+Test if the metadata concerning **Treatment** is correct.  This includes column names, required info, ... 
+
+-  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
+    Test if the metadata entered follows the type for the column, i.e. integer, characterd, .... The validation is done by verifying if the column can be losslessly converted from character to the columnb type specified. the value NA is allowed in all column types, empty cells should be avoided.
+
+-  **<span style="color:#AA5500">values in suggestedValues - warning</span>**   
+    Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided.
+
+-  **<span style="color:#AA5500">Test if treatmentID is in mappingColumn - warning</span>**   
+    Test if the `treatmentID` is in the `DataFileMetaData$mappingColumn` column. The `error` can have the following values apart from `OK`:
+ 
+    error   : If `treatmentID` contains missing values.
+    warning : If not all `treatmentID` are in the `DataFileMetaData$mappingColumn`.
+ 
+
+
+
+## **<span style="color:#AA5500">Measurement - warning</span>**
+
+Test if the metadata concerning **Measurement** is correct.  This includes column names, required info, ... 
+
+-  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
+    Test if the metadata entered follows the type for the column, i.e. integer, characterd, .... The validation is done by verifying if the column can be losslessly converted from character to the columnb type specified. the value NA is allowed in all column types, empty cells should be avoided.
+
+-  **<span style="color:#AA5500">values in suggestedValues - warning</span>**   
+    Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided.
+
+-  **<span style="color:#00FF00">names unique - OK</span>**   
+    Check if the names specified in `measurementID` are unique.
+
+-  **<span style="color:#00FF00">measuredFrom is 'raw', 'NA', NA or in name - OK</span>**   
+    Test if the `measuredFrom` is in the `x$Measurement$measurementID` column, 'raw', 'NA', or `NA`. The `error` is 'error' if can have the following values apart from `OK`:
+ 
+    error   : If the value is not in in the `x$Measurement$measurementID` column, 'raw', 'NA', or `NA`
+ 
+
+
+-  **<span style="color:#AA5500">Test if `variable` is in mappingColumn - warning</span>**   
+    Test if the `variable` is in the `DataFileMetaData$mappingColumn` column. The `error` can have the following values apart from `OK`:
+ 
+    error   : If `variable` contains missing values.
+    warning : If not all `treatmentID` are in the `DataFileMetaData$mappingColumn`.
+ 
+
+
+-  **<span style="color:#00FF00">dataExtractionID is 'none', 'NA', NA, or in DataExtraction$dataExtractionID - OK</span>**   
+    Test if the `dataExtractionID` is in the `DataExtraction$dataExtractionID` column, 'none', 'NA', or `NA`. The `error` is 'error' if can have the following values apart from `OK`:
+ 
+    error   : If the value is not in in the `DataExtraction$dataExtractionID` column, 'none', 'NA', or `NA`
+ 
+
+
+
+## **<span style="color:#FF0000">DataExtraction - error</span>**
+
+Test if the metadata concerning **DataExtraction** is correct.  This includes column names, required info, ... 
+
+-  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
+    Test if the metadata entered follows the type for the column, i.e. integer, characterd, .... The validation is done by verifying if the column can be losslessly converted from character to the columnb type specified. the value NA is allowed in all column types, empty cells should be avoided.
+
+-  **<span style="color:#00FF00">values in suggestedValues - OK</span>**   
+    Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided.
+
+-  **<span style="color:#FF0000">names unique - error</span>**   
+    Check if the names specified in `dataExtractionID` are unique.
+
+-  **<span style="color:#AA5500">name is in Measurement$dataExtractionID - warning</span>**   
+    Test if the `dataExtractionID` is in the `Measurement$dataExtractionID` column. The `error` can have the following values apart from `OK`:
+ 
+    error   : If not all `dataExtractionID` are in `Measurement$dataExtractionID`
+ 
+
+
+
+## **<span style="color:#FF0000">DataFileMetaData - error</span>**
+
+Test if the metadata concerning **DataExtraction** is correct.  This includes column names, required info, ... 
+
+-  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
+    Test if the metadata entered follows the type for the column, i.e. integer, characterd, .... The validation is done by verifying if the column can be losslessly converted from character to the columnb type specified. the value NA is allowed in all column types, empty cells should be avoided.
+
+-  **<span style="color:#00FF00">values in allowedValues - OK</span>**   
+    Test if the metadata entered is ion the allowedValues list. The value NA is allowed in all column types, empty cells should be avoided.
+
+-  **<span style="color:#FF0000">`dataFile` exists in path - error</span>**   
+    Test if all `dataFile` exist in the given `path`. The `error` can have the following values apart from `OK`:
+ 
+    error   : If not all `dataFile` exist in the given `path`
+ 
+
+
+-  **<span style="color:#00FF00">Test if date time format has been specified if required - OK</span>**   
+    Test if date time format has been specified in the `description` column when `type` is equal to 'datetime'. The `error` can have the following values apart from `OK`:
+ 
+    error   : If not all `description` contain a date time format when `type` equals 'datetime'
+ 
+ DOES NOT YET CHECK FOR THE VALIDITY OF THE FORMAT!!!!!
+
+-  **<span style="color:#FF0000">correct values in `mappingColumn`` in dependence on columnData - error</span>**   
+    Test if `mappingColumn` is found in the appropriate table. The `error` can have the following values apart from `OK`:
+ 
+    error   : If not all `mappingColumn` are found in the appropriate columns
+ 
+
+
+-  **<span style="color:#FF0000">`columnName` in column names found in column names in `dataFileName` - error</span>**   
+    Test if `columnName` is found in the `dataFileName`. The `error` can have the following values apart from `OK`:
+ 
+    error   : If not all `columnName` are found in column names in `dataFileName`
+ 
+
+
+-  **<span style="color:#FF0000">column names in dataFileName in `columnName` - error</span>**   
+    Test if column names in `dataFileName` are found in `columnName`. The `error` can have the following values apart from `OK`:
+ 
+    error   : If not all column names in `dataFileName` are found in `columnName`
+ 
+
+
+
+## **<span style="color:black">Data Files - NA</span>**
+
+Test if the data files as mentioned in `DataFileMetaData$dataFileName` is correct.  This includes column names, required info, ... 
+

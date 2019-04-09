@@ -51,7 +51,27 @@ enter_new_metadata <- function(
     }
   )
   ##
-  fn <- file.path( tempdir(), "emeScheme.xlsx")
+
+# Warning if `format = TRUE` ----------------------------------------------
+  if (format) {
+    cat_ln("The argument `format` is set to TRUE (the default).")
+    cat_ln("Corruptions of the formated xlsx filer were recently observed!.")
+    cat_ln()
+    cat_ln("If the resulting xlsx file is corrupt, please use")
+    cat_ln()
+    cat_ln("`format = FALSE`")
+    cat_ln()
+    cat_ln("when calling `enter_new_metadata()`")
+    cat_ln()
+    cat_ln("This does NOT delete the example data.")
+  }
+
+# Temporary file name -----------------------------------------------------
+
+  fn <- tempfile(pattern = "emeScheme.", fileext = ".xlsx")
+
+# Format if asked for, otherwise copy to fn unchanged ---------------------
+
   if (format) {
     format_emeScheme_xlsx(
       fn_org = system.file("emeScheme.xlsx", package = "emeScheme"),
@@ -64,6 +84,8 @@ enter_new_metadata <- function(
       to = fn
     )
   }
+
+# If file specified, copy temporary file to final destination -------------
 
   if (!is.null(file)) {
     result <- file.copy(
@@ -85,7 +107,9 @@ enter_new_metadata <- function(
       cat_ln()
     }
   }
-  ##
+
+# If open == TRUE, open the file ------------------------------------------
+
   if (open) {
     if (verbose) {
       cat_ln("Trying to open the file by opening it in the browser'", fn, "'... ")
@@ -96,7 +120,9 @@ enter_new_metadata <- function(
       utils::browseURL(fn)
     }
   }
-  ##
+
+# Return invisibly the final file name ------------------------------------
+
   invisible(fn)
 }
 

@@ -1,0 +1,10 @@
+The argument `format` is set to TRUE (the default).
+Corruptions of the formated xlsx filer were recently observed!.
+
+If the resulting xlsx file is corrupt, please use
+
+`format = FALSE`
+
+when calling `enter_new_metadata()`
+
+This does NOT delete the example data.
