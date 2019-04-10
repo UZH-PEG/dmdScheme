@@ -55,6 +55,10 @@ attr(result, "propertyName") <- attr(x, "fileName")
     class(result),
   )
 
+  # Set emeSchemeVersion attribute-------------------------------------------
+
+  attr(result, "emeSchemeVersion") <- attr(x, "emeSchemeVersion")
+
 # Return ------------------------------------------------------------------
 
   return(result)

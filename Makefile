@@ -1,7 +1,7 @@
 ## R parts based on https://github.com/yihui/knitr/blob/master/Makefile
 
-PKGNAME := $(shell sed -n "s/Package: *\([^ ]*\)/\1/p" DESCRIPTION)
-PKGVERS := $(shell sed -n "s/Version: *\([^ ]*\)/\1/p" DESCRIPTION)
+PKGNAME := $(shell sed -n "s/^Package: *\([^ ]*\)/\1/p" DESCRIPTION)
+PKGVERS := $(shell sed -n "s/^Version: *\([^ ]*\)/\1/p" DESCRIPTION)
 PKGSRC  := $(shell basename `pwd`)
 
 
@@ -132,39 +132,31 @@ test:
 
 ####
 
-############# mHelp targets #############
+############# Help targets #############
 
-list_files:
-	@echo PKGNAME : $(PKGNAME)
-	@echo PKGVERS : $(PKGVERS)
-	@echo PKGSRC  : $(PKGSRC)
+list_variables:
 	@echo
-	@echo SRCDIR  : $(SRCDIR)
-	@echo OUTDIR  : $(OUTDIR)
-	@echo DATADIR : $(DATADIR)
-	@echo
-	@echo VIGDIR  : $(VIGDIR)
-	@echo VIGHTMLDIR  : $(VIGHTMLDIR)
-	@echo
-	@echo READMERMD : $(READMERMD)
-	@echo READMEMD : $(READMEMD)
-	@echo
-	@echo VIGRMD  : $(VIGRMD)
-	@echo TMP1    : $(TMP1)
-	@echo VIGHTML : $(VIGHTML)
-	@echo VIGHTMLOUT : $(VIGHTMLOUT)
-	@echo
-	@echo RMD     : $(RMD)
-	@echo TMP2    : $(TMP2)
-	@echo HTML    : $(HTML)
-	@echo
-	@echo EXAMPLEXML : $(EXAMPLEXML)
+	@echo "#############################################"
+	@echo "## Variables ################################"
+	make -pn | grep -A1 "^# makefile"| grep -v "^#\|^--" | sort | uniq
+	@echo "#############################################"
+	@echo ""
 
 ## from https://stackoverflow.com/a/26339924/632423
-list: list_files
+list_targets:
 	@echo
+	@echo "#############################################"
+	@echo "## Targets    ###############################"
 	@$(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$'
+	@echo "#############################################"
+	@echo
+
+list: list_variables list_targets
 
 #############
+
+ttt:
+	make -pn | grep -A1 "^# makefile"| grep -v "^#\|^--" | sort | uniq
+
 
 .PHONY: list files update clean clean_vignettes clean_web clean_html publish docs

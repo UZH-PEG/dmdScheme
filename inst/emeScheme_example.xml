@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<emeScheme class="emeSchemeSet, emeScheme, list" names="Experiment, Species, Treatment, Measurement, DataExtraction, DataFileMetaData">
+<emeSchemeVersion ="0.9.5" class="emeSchemeSet, emeScheme, list" names="Experiment, Species, Treatment, Measurement, DataExtraction, DataFileMetaData">
+ <emeScheme/>
  <ExperimentList unit="NA, NA, NA, NA, NA, NA, ml, NA, g/l, NA, NA, NA, days, NA" type="character, character, character, character, character, character, numeric, character, numeric, character, character, character, integer, character" allowedValues="" names="name, temperature, light, humidity, incubator, container, microcosmVolume, mediaType, mediaConcentration, cultureConditions, comunityType, mediaAdditions, duration, comment" class="emeSchemeData_Experiment, emeSchemeData, emeScheme, tbl_df, tbl, data.frame">
   <Experiment>
    <name>ASR-expt1</name>
@@ -307,4 +308,4 @@
    <comment></comment>
   </DataFileMetaData>
  </DataFileMetaDataList>
-</emeScheme>
+</emeSchemeVersion>

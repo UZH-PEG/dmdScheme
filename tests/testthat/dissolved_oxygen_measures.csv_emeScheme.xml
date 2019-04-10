@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<dissolved_oxygen_measures.csv_emeScheme>
+<emeSchemeVersion ="0.9.5">
+ <dissolved_oxygen_measures.csv_emeScheme/>
  <ExperimentList>
   <Experiment>
    <name>ASR-expt1</name>
@@ -160,4 +161,4 @@
    <comment></comment>
   </DataFileMetaData>
  </DataFileMetaDataList>
-</dissolved_oxygen_measures.csv_emeScheme>
+</emeSchemeVersion>

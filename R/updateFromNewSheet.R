@@ -31,6 +31,10 @@ updateFromNewSheet <- function( force = FALSE) {
 
     file.copy(sheet, here::here("tests", "testthat", "emeScheme.xlsx"), overwrite = TRUE)
 
+    # update exported xml in tests/testthat/*.xml -----------------------------
+
+    emeScheme_split( emeScheme_example, c("rds", "xml"), path = here::here("tests", "testthat"))
+
     # update data/emeScheme_raw.rda -----------------------------------------------
 
     cat_ln("##### Generating emeScheme_raw...")

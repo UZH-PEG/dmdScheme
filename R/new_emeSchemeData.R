@@ -79,7 +79,7 @@ new_emeSchemeData <- function(
 # extract attributes to set -----------------------------------------------
 
   attrToSet <- x$valueProperty
-  attrToSet <- attrToSet[1:(which(x$valueProperty == "DATA")-1)]
+  attrToSet <- attrToSet[1:(grep("DATA", x$valueProperty)-1)]
 
 # set attributes ----------------------------------------------------------
 

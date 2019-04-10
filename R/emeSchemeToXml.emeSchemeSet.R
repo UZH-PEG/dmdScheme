@@ -28,9 +28,16 @@ emeSchemeToXml.emeSchemeSet <- function(
 
   ## x is of type emeSchemeSet and contains therefore child nodes -------------------------
 
-  xml <- XML::xmlNode(tag)
+  xml <- XML::xmlNode("emeSchemeVersion", attrs = attr(x, "emeSchemeVersion"))
 
-# Add attributes if output == complete ------------------------------------
+# Add emeSchemeVersion ----------------------------------------------------
+
+  xml <- XML::append.xmlNode(
+    xml,
+    XML::xmlNode(tag)
+  )
+
+  # Add attributes if output == complete ------------------------------------
 
   if (output == "complete") {
     XML::xmlAttrs(

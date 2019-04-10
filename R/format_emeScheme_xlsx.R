@@ -161,7 +161,7 @@ format_emeScheme_xlsx <- function(
     rowNames <- unlist(data[,nameCol])
 
     dataRows <- 2:nrow(data)
-    dataCols <- which(colNames == "DATA"):ncol(data)
+    dataCols <- grep("DATA", colNames):ncol(data)
 
     # format data range -------------------------------------------------------
 
@@ -256,7 +256,7 @@ format_emeScheme_xlsx <- function(
     colNames <- unlist(data[nameRow,])
 
     dataCols <- 2:ncol(data)
-    dataRows <- which(rowNames == "DATA"):nrow(data)
+    dataRows <- grep("DATA", rowNames):nrow(data)
 
     # format data range -------------------------------------------------------
 

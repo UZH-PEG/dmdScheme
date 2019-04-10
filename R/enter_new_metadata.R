@@ -54,16 +54,18 @@ enter_new_metadata <- function(
 
 # Warning if `format = TRUE` ----------------------------------------------
   if (format) {
-    cat_ln("The argument `format` is set to TRUE (the default).")
-    cat_ln("Corruptions of the formated xlsx filer were recently observed!.")
-    cat_ln()
-    cat_ln("If the resulting xlsx file is corrupt, please use")
-    cat_ln()
-    cat_ln("`format = FALSE`")
-    cat_ln()
-    cat_ln("when calling `enter_new_metadata()`")
-    cat_ln()
-    cat_ln("This does NOT delete the example data.")
+    warning(
+    "The argument `format` is set to TRUE (the default).\n",
+    "Corruptions of the formated xlsx filer were recently observed!.\n",
+    "\n",
+    "If the resulting xlsx file is corrupt, please use\n",
+    "\n",
+    "`format = FALSE`",
+    "\n",
+    "when calling `enter_new_metadata()`\n",
+    "\n",
+    "This does NOT delete the example data.\n"
+    )
   }
 
 # Temporary file name -----------------------------------------------------

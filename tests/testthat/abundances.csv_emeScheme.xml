@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<abundances.csv_emeScheme>
+<emeSchemeVersion ="0.9.5">
+ <abundances.csv_emeScheme/>
  <ExperimentList>
   <Experiment>
    <name>ASR-expt1</name>
@@ -123,4 +124,4 @@
    <comment></comment>
   </DataFileMetaData>
  </DataFileMetaDataList>
-</abundances.csv_emeScheme>
+</emeSchemeVersion>
