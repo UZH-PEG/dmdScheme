@@ -84,6 +84,14 @@ read_from_excel <- function(
   )
   names(result) <- propSets
 
+# Check emeSchemeVersion --------------------------------------------------
+
+  v <- grep("DATA", names(result$Experiment), value = TRUE)
+  v <- gsub("DATA_v", "", v)
+  if (emeSchemeVersions()$emeScheme != v) {
+    stop("Version conflict - can not proceed:\n", file, " : version ", v, "\n", "installed emeScheme version : ", emeSchemeVersions()$emeScheme)
+  }
+
 # Set Attributes ----------------------------------------------------------
 
   attr(result, "fileName") <- file %>%
