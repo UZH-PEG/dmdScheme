@@ -19,7 +19,7 @@
   </Experiment>
  </ExperimentList>
  <SpeciesList>
-  <Species name="Tetrahymena thermophila">
+  <Species speciesID="tt_1">
    <name>Tetrahymena thermophila</name>
    <strain>WH-6 (WHI) [ATCC 16539]</strain>
    <source>ATCC</source>
@@ -27,7 +27,7 @@
    <functionalGroup>bacterivore</functionalGroup>
    <comment>http://www.lgcstandards-atcc.org/products/all/30007.aspx</comment>
   </Species>
-  <Species name="unknown">
+  <Species speciesID="unknown">
    <name>unknown</name>
    <strain>unknown</strain>
    <source>unknown</source>
@@ -37,24 +37,24 @@
   </Species>
  </SpeciesList>
  <TreatmentList>
-  <Treatment>
+  <Treatment treatmentID="Lid_treatment">
    <unit>None</unit>
    <treatmentLevel>Loose</treatmentLevel>
    <comment></comment>
   </Treatment>
-  <Treatment>
+  <Treatment treatmentID="Lid_treatment">
    <unit></unit>
    <treatmentLevel>Tight</treatmentLevel>
    <comment></comment>
   </Treatment>
-  <Treatment>
+  <Treatment treatmentID="species_1">
    <unit>speciesID</unit>
    <treatmentLevel>tt_1, unknown</treatmentLevel>
    <comment></comment>
   </Treatment>
  </TreatmentList>
  <MeasurementList>
-  <Measurement>
+  <Measurement name="smell">
    <variable>smell</variable>
    <method>nose</method>
    <unit>rotten eggs or not</unit>
@@ -67,15 +67,13 @@
   </Measurement>
  </MeasurementList>
  <DataExtractionList>
-  <DataExtraction>
-   <dataExtractionID></dataExtractionID>
+  <DataExtraction dataExtractionID="NA">
    <method></method>
    <parameter></parameter>
    <value></value>
    <comment></comment>
   </DataExtraction>
   <DataExtraction>
-   <dataExtractionID></dataExtractionID>
    <method></method>
    <parameter></parameter>
    <value></value>

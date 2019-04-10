@@ -3,7 +3,7 @@
 #' @importFrom XML xmlNode xmlAttrs append.xmlNode saveXML
 #' @importFrom tibble is_tibble
 #'
-emeSchemeToXml.emeSchemeData_Species <- function(
+emeSchemeToXml.emeSchemeData_DataExtraction <- function(
   x,
   tag = "emeScheme",
   file,
@@ -33,7 +33,7 @@ emeSchemeToXml.emeSchemeData_Species <- function(
   if (length(x) > 1) {
 
     for (i in 1:nrow(x)) {
-      xmlField <- XML::xmlNode(name = tag, attrs = c(speciesID = x[["speciesID"]][i]))
+      xmlField <- XML::xmlNode(name = tag, attrs = c(dataExtractionID = x[["dataExtractionID"]][i]))
       xmlFields <- lapply(
         names(x)[-1],
         function(nm){

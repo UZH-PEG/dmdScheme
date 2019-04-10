@@ -33,7 +33,7 @@ emeSchemeToXml.emeSchemeData_Treatment <- function(
   if (length(x) > 1) {
 
     for (i in 1:nrow(x)) {
-      xmlField <- XML::xmlNode(name = tag, attrs = c(name = x[["name"]][i]))
+      xmlField <- XML::xmlNode(name = tag, attrs = c(treatmentID = x[["treatmentID"]][i]))
       xmlFields <- lapply(
         names(x)[-1],
         function(nm){

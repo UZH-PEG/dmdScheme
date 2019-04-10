@@ -19,7 +19,7 @@
   </Experiment>
  </ExperimentList>
  <SpeciesList>
-  <Species name="Tetrahymena thermophila">
+  <Species speciesID="tt_1">
    <name>Tetrahymena thermophila</name>
    <strain>WH-6 (WHI) [ATCC 16539]</strain>
    <source>ATCC</source>
@@ -29,24 +29,24 @@
   </Species>
  </SpeciesList>
  <TreatmentList>
-  <Treatment>
+  <Treatment treatmentID="Lid_treatment">
    <unit>None</unit>
    <treatmentLevel>Loose</treatmentLevel>
    <comment></comment>
   </Treatment>
-  <Treatment>
+  <Treatment treatmentID="Lid_treatment">
    <unit></unit>
    <treatmentLevel>Tight</treatmentLevel>
    <comment></comment>
   </Treatment>
-  <Treatment>
+  <Treatment treatmentID="species_3">
    <unit>speciesID</unit>
    <treatmentLevel>tt_1</treatmentLevel>
    <comment></comment>
   </Treatment>
  </TreatmentList>
  <MeasurementList>
-  <Measurement>
+  <Measurement name="abundance">
    <variable>abundance</variable>
    <method>molecular</method>
    <unit>count</unit>
@@ -59,8 +59,7 @@
   </Measurement>
  </MeasurementList>
  <DataExtractionList>
-  <DataExtraction>
-   <dataExtractionID>Mol_Analy_pipeline1</dataExtractionID>
+  <DataExtraction dataExtractionID="Mol_Analy_pipeline1">
    <method></method>
    <parameter></parameter>
    <value></value>

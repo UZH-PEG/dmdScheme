@@ -19,7 +19,7 @@
   </Experiment>
  </ExperimentList>
  <SpeciesList unit="NA, NA, NA, NA, cells / ml, NA, NA" type="character, character, character, character, character, character, character" allowedValues="" names="speciesID, name, strain, source, density, functionalGroup, comment" class="emeSchemeData_Species, emeSchemeData, emeScheme, emeSchemeData_raw, tbl_df, tbl, data.frame">
-  <Species name="Tetrahymena thermophila">
+  <Species speciesID="tt_1">
    <name>Tetrahymena thermophila</name>
    <strain>WH-6 (WHI) [ATCC 16539]</strain>
    <source>ATCC</source>
@@ -27,7 +27,7 @@
    <functionalGroup>bacterivore</functionalGroup>
    <comment>http://www.lgcstandards-atcc.org/products/all/30007.aspx</comment>
   </Species>
-  <Species name="unknown">
+  <Species speciesID="unknown">
    <name>unknown</name>
    <strain>unknown</strain>
    <source>unknown</source>
@@ -37,34 +37,34 @@
   </Species>
  </SpeciesList>
  <TreatmentList unit="NA, NA, NA, NA" type="character, character, character, character" allowedValues="" names="treatmentID, unit, treatmentLevel, comment" class="emeSchemeData_Treatment, emeSchemeData, emeScheme, emeSchemeData_raw, tbl_df, tbl, data.frame">
-  <Treatment>
+  <Treatment treatmentID="Lid_treatment">
    <unit>None</unit>
    <treatmentLevel>Loose</treatmentLevel>
    <comment></comment>
   </Treatment>
-  <Treatment>
+  <Treatment treatmentID="Lid_treatment">
    <unit></unit>
    <treatmentLevel>Tight</treatmentLevel>
    <comment></comment>
   </Treatment>
-  <Treatment>
+  <Treatment treatmentID="species_1">
    <unit>speciesID</unit>
    <treatmentLevel>tt_1, unknown</treatmentLevel>
    <comment></comment>
   </Treatment>
-  <Treatment>
+  <Treatment treatmentID="species_2">
    <unit>speciesID</unit>
    <treatmentLevel>unknown</treatmentLevel>
    <comment></comment>
   </Treatment>
-  <Treatment>
+  <Treatment treatmentID="species_3">
    <unit>speciesID</unit>
    <treatmentLevel>tt_1</treatmentLevel>
    <comment></comment>
   </Treatment>
  </TreatmentList>
  <MeasurementList unit="NA, NA, NA, NA, NA, NA, ml, NA, NA, NA" type="character, character, character, character, character, integer, numeric, character, character, character" allowedValues="" names="measurementID, variable, method, unit, object, noOfSamplesInTimeSeries, samplingVolume, dataExtractionID, measuredFrom, comment" class="emeSchemeData_Measurement, emeSchemeData, emeScheme, emeSchemeData_raw, tbl_df, tbl, data.frame">
-  <Measurement>
+  <Measurement name="oxygen concentration">
    <variable>DO</variable>
    <method>presens Optode</method>
    <unit>%</unit>
@@ -75,7 +75,7 @@
    <measuredFrom>raw</measuredFrom>
    <comment></comment>
   </Measurement>
-  <Measurement>
+  <Measurement name="abundance">
    <variable>abundance</variable>
    <method>molecular</method>
    <unit>count</unit>
@@ -86,7 +86,7 @@
    <measuredFrom>sequenceData</measuredFrom>
    <comment></comment>
   </Measurement>
-  <Measurement>
+  <Measurement name="smell">
    <variable>smell</variable>
    <method>nose</method>
    <unit>rotten eggs or not</unit>
@@ -97,7 +97,7 @@
    <measuredFrom>raw</measuredFrom>
    <comment></comment>
   </Measurement>
-  <Measurement>
+  <Measurement name="sequenceData">
    <variable>DNA</variable>
    <method>NGS</method>
    <unit>Nucleotide</unit>
@@ -110,15 +110,13 @@
   </Measurement>
  </MeasurementList>
  <DataExtractionList unit="NA, NA, NA, NA, NA" type="character, character, character, character, character" allowedValues="" names="dataExtractionID, method, parameter, value, comment" class="emeSchemeData_DataExtraction, emeSchemeData, emeScheme, emeSchemeData_raw, tbl_df, tbl, data.frame">
-  <DataExtraction>
-   <dataExtractionID>Mol_Analy_pipeline1</dataExtractionID>
+  <DataExtraction dataExtractionID="Mol_Analy_pipeline1">
    <method></method>
    <parameter></parameter>
    <value></value>
    <comment>See description in file xxx.yyy</comment>
   </DataExtraction>
-  <DataExtraction>
-   <dataExtractionID></dataExtractionID>
+  <DataExtraction dataExtractionID="NA">
    <method></method>
    <parameter></parameter>
    <value></value>
