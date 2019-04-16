@@ -4,10 +4,12 @@
 \alias{xmlToEmeScheme}
 \title{Convert xml to \code{emeScheme}}
 \usage{
-xmlToEmeScheme(xml)
+xmlToEmeScheme(xml, convertTypes = TRUE, verbose = FALSE)
 }
 \arguments{
-\item{xml}{either xml object or text reresenatation from text object}
+\item{xml}{either xml object or text represenatation from text object}
+
+\item{verbose}{default: \code{FALSE}; give messages to make finding errors in data easier}
 }
 \value{
 \code{emeScheme} object
@@ -18,14 +20,5 @@ are specified in the xml file.
 }
 \examples{
 x <- emeScheme_example
-
-# y <- emeSchemeToXml( x, "GoogleData" )
-# xmlToEmeScheme( y )
-
-## returns an \\code{XML::XMLNode} object
-
-# y <- emeSchemeToXml( x, "GoogleData", file = NULL )
-# xmlToEmeScheme( y )
-## returns the string representation of an \\code{XML::XMLNode} object
 
 }

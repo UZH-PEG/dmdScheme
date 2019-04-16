@@ -480,17 +480,17 @@ validateMeasurementMeasuredFrom <- function(x) {
 validateMeasurementMapping <- function(x){
   result <- new_emeScheme_validation()
   ##
-  result$header <- "Test if `variable` is in mappingColumn"
+  result$header <- "Test if `measurementID` is in mappingColumn"
   result$description <- paste(
-    "Test if the `variable` is in the `DataFileMetaData$mappingColumn` column.",
+    "Test if the `measurementID` is in the `DataFileMetaData$mappingColumn` column.",
     "The `error` can have the following values apart from `OK`:\n",
     "\n",
-    "   error   : If `variable` contains missing values.\n",
-    "   warning : If not all `treatmentID` are in the `DataFileMetaData$mappingColumn`.\n",
+    "   error   : If `measurementID` contains missing values.\n",
+    "   warning : If not all `measurementID` are in the `DataFileMetaData$mappingColumn`.\n",
     "\n"
   )
   result$descriptionDetails <- paste(
-    "The details are a table with one row per unique `variable`",
+    "The details are a table with one row per unique `measurementID`",
     "The following values are possible for the column `isTRUE`:\n",
     "\n",
     "   TRUE : If the value is in `DataFileMetaData$mappingColumn`.\n",
@@ -501,8 +501,8 @@ validateMeasurementMapping <- function(x){
   )
   ##
   result$details <- data.frame(
-    variable = unique(x$Measurement$variable),
-    isOK = unique(x$Measurement$variable) %in% x$DataFileMetaData$mappingColumn
+    measurementID = unique(x$Measurement$measurementID),
+    isOK = unique(x$Measurement$measurementID) %in% x$DataFileMetaData$mappingColumn
   )
   ##
   result$error <- ifelse(
@@ -510,7 +510,7 @@ validateMeasurementMapping <- function(x){
     0,
     2
   )
-  if (any(is.na(x$Measurement$variable))) {
+  if (any(is.na(x$Measurement$measurementID))) {
     result$error <- 3
   }
   ##
@@ -551,42 +551,6 @@ validateMeasurementDataExtraction <- function(x) {
     0,
     3
   )
-  ##
-  result$header <- valErr_TextErrCol(result)
-  ##
-  return(result)
-}
-
-validateDataExtractionIDUnique <- function(x) {
-  result <- new_emeScheme_validation()
-  ##
-  result$header <- "names unique"
-  result$description <- paste(
-    "Check if the names specified in `dataExtractionID` are unique."
-  )
-  result$descriptionDetails <- paste(
-    "Returns a named vector, with the following possible values:\n",
-    "\n",
-    "   TRUE  : the value in `speciesID` is unique\n",
-    "   FALSE : the value in `speciesID` is not unique\n",
-    "\n",
-    "One or more FALSE or a missing value will result in an ERROR."
-  )
-
-  ##
-  result$details <- data.frame(
-    dataExtractionID = x$DataExtraction$dataExtractionID,
-    isOK = !duplicated(x$DataExtraction$dataExtractionID)
-  )
-  ##
-  result$error = ifelse(
-    all(result$details$isOK),
-    0,
-    3
-  )
-  if (any(is.na(x$DataExtraction$dataExtractionID))) {
-    result$error <- 3
-  }
   ##
   result$header <- valErr_TextErrCol(result)
   ##
@@ -728,8 +692,8 @@ validateDataFileMetaDataMapping <- function(x) {
     "The details are a table with one row per `mappingColumn` value format row",
     "The following values are possible for the column `isTRUE`:\n",
     "\n",
-    "   TRUE : If `mappingColumn` is found in ppropriate table or NA\n",
-    "   FALSE: If `mappingColumn` is not found in ppropriate table\n",
+    "   TRUE : If `mappingColumn` is found in apropriate table or NA\n",
+    "   FALSE: If `mappingColumn` is not found in apropriate table\n",
     "\n",
     "One or more FALSE or missing values will result in an ERROR."
   )
@@ -746,7 +710,7 @@ validateDataFileMetaDataMapping <- function(x) {
   result$details[i] <- x$DataFileMetaData$mappingColumn[i] %in% c("NA", NA)
   result$details <- data.frame(
     mappingColumn = x$DataFileMetaData$mappingColumn,
-    IsOK = isTRUE(as.logical(result$details))
+    IsOK = as.logical(result$details)
   )
   ##
   result$error <- ifelse(
@@ -804,7 +768,7 @@ validateDataFileMetaDataColumnNameInDataFile <- function(x, path) {
   result$details <- data.frame(
       dataFileName = x$DataFileMetaData$dataFileName,
       columnName = x$DataFileMetaData$columnName,
-      IsOK = isTRUE(as.logical(result$details))
+      IsOK = as.logical(result$details)
     )
   ##
   result$error <- ifelse(
@@ -993,7 +957,6 @@ validateDataExtraction <- function( x, xraw, xconv ){
   ##
   result$types <- validateTypes(xraw$DataExtraction, xconv$DataExtraction)
   result$suggestedValues <- validateSuggestedValues(xraw$DataExtraction)
-  result$nameUnique <- validateDataExtractionIDUnique(xraw)
   result$nameInDataExtractionName <- validateDataExtractionIDLinked(xraw)
   ##
   result$error <- max(valErr_extract(result), na.rm = FALSE)

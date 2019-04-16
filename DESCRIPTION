@@ -1,20 +1,23 @@
 Package: emeScheme
 Title: Microcosm Experiment Metadata Scheme
-Description: The Authoratative definition of the emeScheme (Experimental Microcosm Ecology Metadata) and tools to enter, validate and export the metadata.
-                 ---- Data updated and version bumped at Wed Apr 10 08:53:29 2019 / Europe/Zurich. ---- Data updated and version bumped at Wed Apr 10
-                 10:51:12 2019 / Europe/Zurich.
-Version: 0.9.0.6
+Description: The Authoratative definition of the emeScheme (Experimental Microcosm Ecology Metadata) and
+            tools to enter, validate and export the metadata. ---- Data updated and version bumped at Fri
+            Apr 12 14:04:13 2019 / Europe/Zurich.
+Version: 0.9.1.8
 emeSchemeVersion: 0.9.5
-Date: 2019-04-10
-Authors@R: c( person( "Rainer M.", "Krug", role = c("aut", "cre"), email = "Rainer.Krug@uzh.ch" ), person( "Owen L.", "Petchey", role = c("ctb"), email =
-                 "Owen.Petchey@uzh.ch" ), person("Vanessa W.", "de Melo", role = c("ctb"), email = "Vanessa Weber de Melo <vanessa.weberdemelo@uzh.ch>" ),
-                 person("Frank", "Pennekamp", role = c("ctb"), email = "Frank Pennekamp <frank.pennekamp@uzh.ch>") )
+Date: 2019-04-12
+Authors@R: c( person( "Rainer M.", "Krug", role = c("aut", "cre"), email = "Rainer.Krug@uzh.ch" ), person(
+            "Owen L.", "Petchey", role = c("ctb"), email = "Owen.Petchey@uzh.ch" ), person("Vanessa W.", "de
+            Melo", role = c("ctb"), email = "Vanessa Weber de Melo <vanessa.weberdemelo@uzh.ch>" ),
+            person("Frank", "Pennekamp", role = c("ctb"), email = "Frank Pennekamp
+            <frank.pennekamp@uzh.ch>") )
 URL: https://exp-micro-ecol-hub.github.io/emeScheme/, https://github.com/Exp-Micro-Ecol-Hub/emeScheme
 BugReports: https://github.com/Exp-Micro-Ecol-Hub/emeScheme/issues
 DOI: https://zenodo.org/record/2620097
 Depends: R (>= 3.3.0)
-Imports: tools, methods, utils, magrittr (>= 1.5), dplyr (>= 0.1.8), tibble (>= 2.1.1), readxl (>= 1.2.0), openxlsx (>= 4.1.1), XML (>= 3.98-1.16), rlang (>=
-                 0.3.1), taxize (>= 0.9.5), rmarkdown, knitr, digest (>= 0.6)
+Imports: tools, methods, utils, magrittr (>= 1.5), dplyr (>= 0.1.8), tibble (>= 2.1.1), readxl (>= 1.2.0),
+            openxlsx (>= 4.1.1), XML (>= 3.98-1.16), rlang (>= 0.3.1), taxize (>= 0.9.5), rmarkdown, knitr,
+            digest (>= 0.6)
 Remotes: awalker89/openxlsx, rkrug/plantuml
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -23,6 +26,6 @@ StagedInstall: true
 RoxygenNote: 6.1.1
 Suggests: covr (>= 3.2.1), testthat (>= 2.0.1), here (>= 0.1), kableExtra (>= 0.9.0)
 Enhances: plantuml (>= 0.2.3.2)
-emeSchemeUpdate: 2019-04-10 10:51:12
+emeSchemeUpdate: 2019-04-12 14:04:13
 emeSchemeMD5: 7115b9352958a51fcb60e484a8b9754d
 VignetteBuilder: knitr

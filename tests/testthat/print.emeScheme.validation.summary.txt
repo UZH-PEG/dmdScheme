@@ -76,11 +76,11 @@ Test if the metadata concerning **Measurement** is correct.  This includes colum
  
 
 
--  **<span style="color:#AA5500">Test if `variable` is in mappingColumn - warning</span>**   
-    Test if the `variable` is in the `DataFileMetaData$mappingColumn` column. The `error` can have the following values apart from `OK`:
+-  **<span style="color:#AA5500">Test if `measurementID` is in mappingColumn - warning</span>**   
+    Test if the `measurementID` is in the `DataFileMetaData$mappingColumn` column. The `error` can have the following values apart from `OK`:
  
-    error   : If `variable` contains missing values.
-    warning : If not all `treatmentID` are in the `DataFileMetaData$mappingColumn`.
+    error   : If `measurementID` contains missing values.
+    warning : If not all `measurementID` are in the `DataFileMetaData$mappingColumn`.
  
 
 
@@ -92,7 +92,7 @@ Test if the metadata concerning **Measurement** is correct.  This includes colum
 
 
 
-## **<span style="color:#FF0000">DataExtraction - error</span>**
+## **<span style="color:#AA5500">DataExtraction - warning</span>**
 
 Test if the metadata concerning **DataExtraction** is correct.  This includes column names, required info, ... 
 
@@ -102,9 +102,6 @@ Test if the metadata concerning **DataExtraction** is correct.  This includes co
 -  **<span style="color:#00FF00">values in suggestedValues - OK</span>**   
     Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided.
 
--  **<span style="color:#FF0000">names unique - error</span>**   
-    Check if the names specified in `dataExtractionID` are unique.
-
 -  **<span style="color:#AA5500">name is in Measurement$dataExtractionID - warning</span>**   
     Test if the `dataExtractionID` is in the `Measurement$dataExtractionID` column. The `error` can have the following values apart from `OK`:
  
@@ -113,7 +110,7 @@ Test if the metadata concerning **DataExtraction** is correct.  This includes co
 
 
 
-## **<span style="color:#FF0000">DataFileMetaData - error</span>**
+## **<span style="color:black">DataFileMetaData - NA</span>**
 
 Test if the metadata concerning **DataExtraction** is correct.  This includes column names, required info, ... 
 
@@ -137,7 +134,7 @@ Test if the metadata concerning **DataExtraction** is correct.  This includes co
  
  DOES NOT YET CHECK FOR THE VALIDITY OF THE FORMAT!!!!!
 
--  **<span style="color:#FF0000">correct values in `mappingColumn`` in dependence on columnData - error</span>**   
+-  **<span style="color:black">correct values in `mappingColumn`` in dependence on columnData - NA</span>**   
     Test if `mappingColumn` is found in the appropriate table. The `error` can have the following values apart from `OK`:
  
     error   : If not all `mappingColumn` are found in the appropriate columns

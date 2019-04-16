@@ -1,6 +1,14 @@
 
 
+## Fix
+* invalid xml export
+* fixed missing export of ...ID fields
+
+
+# release 0.9.1
+
 * added descriptions of validation results and details to validate() function
+TO BE ADDED FROM master
 
 # release 0.9
 * added suggestedValues to Measurement$dataExtractionMethod and Measurement$measuredFrom on spreadsheet

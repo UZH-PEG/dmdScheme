@@ -33,7 +33,7 @@ emeSchemeToXml.emeSchemeData_Measurement <- function(
   if (length(x) > 1) {
 
     for (i in 1:nrow(x)) {
-      xmlField <- XML::xmlNode(name = tag, attrs = c(name = x[["measurementID"]][i]))
+      xmlField <- XML::xmlNode(name = tag, attrs = c(measurementID = x[["measurementID"]][i]))
       xmlFields <- lapply(
         names(x)[-1],
         function(nm){

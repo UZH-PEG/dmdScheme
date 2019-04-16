@@ -273,8 +273,8 @@ The details are a table with one row per unique `result$details The following va
 |smell                |TRUE |
 |sequenceData         |TRUE |
 
--  **<span style="color:#AA5500">Test if `variable` is in mappingColumn - warning</span>**   
-The details are a table with one row per unique `variable` The following values are possible for the column `isTRUE`:
+-  **<span style="color:#AA5500">Test if `measurementID` is in mappingColumn - warning</span>**   
+The details are a table with one row per unique `measurementID` The following values are possible for the column `isTRUE`:
  
     TRUE : If the value is in `DataFileMetaData$mappingColumn`.
     FALSE: If the value is not in `DataFileMetaData$mappingColumn.
@@ -283,12 +283,12 @@ The details are a table with one row per unique `variable` The following values 
  One or more FALSE or missing values values will result in an ERROR.  
 
 
-|variable  |isOK  |
-|:---------|:-----|
-|DO        |FALSE |
-|abundance |TRUE  |
-|smell     |TRUE  |
-|DNA       |FALSE |
+|measurementID        |isOK  |
+|:--------------------|:-----|
+|oxygen concentration |TRUE  |
+|abundance            |TRUE  |
+|smell                |TRUE  |
+|sequenceData         |FALSE |
 
 -  **<span style="color:#00FF00">dataExtractionID is 'none', 'NA', NA, or in DataExtraction$dataExtractionID - OK</span>**   
 The details are a table with one row per unique `result$details The following values are possible for the column `isTRUE`:
@@ -308,7 +308,7 @@ The details are a table with one row per unique `result$details The following va
 |none                |TRUE |
 
 
-## **<span style="color:#FF0000">DataExtraction - error</span>**
+## **<span style="color:#AA5500">DataExtraction - warning</span>**
 
 No further details available.
 
@@ -348,20 +348,6 @@ The details are a table of the same dimension as the input (green) area of the m
 |TRUE   |
 |TRUE   |
 
--  **<span style="color:#FF0000">names unique - error</span>**   
-Returns a named vector, with the following possible values:
- 
-    TRUE  : the value in `speciesID` is unique
-    FALSE : the value in `speciesID` is not unique
- 
- One or more FALSE or a missing value will result in an ERROR.  
-
-
-|dataExtractionID    |isOK |
-|:-------------------|:----|
-|Mol_Analy_pipeline1 |TRUE |
-|NA                  |TRUE |
-
 -  **<span style="color:#AA5500">name is in Measurement$dataExtractionID - warning</span>**   
 The details are a table with one row per unique `variable` The following values are possible for the column `isTRUE`:
  
@@ -378,7 +364,7 @@ The details are a table with one row per unique `variable` The following values 
 |NA                  |FALSE |
 
 
-## **<span style="color:#FF0000">DataFileMetaData - error</span>**
+## **<span style="color:black">DataFileMetaData - NA</span>**
 
 No further details available.
 
@@ -486,37 +472,37 @@ The details are a table with one row per 'datetime' format row The following val
 |smell.csv                     |Date       |datetime |ymdhms      |TRUE |
 |abundances.csv                |Date_time  |datetime |ymdhms      |TRUE |
 
--  **<span style="color:#FF0000">correct values in `mappingColumn`` in dependence on columnData - error</span>**   
+-  **<span style="color:black">correct values in `mappingColumn`` in dependence on columnData - NA</span>**   
 The details are a table with one row per `mappingColumn` value format row The following values are possible for the column `isTRUE`:
  
-    TRUE : If `mappingColumn` is found in ppropriate table or NA
-    FALSE: If `mappingColumn` is not found in ppropriate table
+    TRUE : If `mappingColumn` is found in apropriate table or NA
+    FALSE: If `mappingColumn` is not found in apropriate table
  
  One or more FALSE or missing values will result in an ERROR.  
 
 
-|mappingColumn        |IsOK  |
-|:--------------------|:-----|
-|NA                   |FALSE |
-|oxygen concentration |FALSE |
-|NA                   |FALSE |
-|NA                   |FALSE |
-|NA                   |FALSE |
-|NA                   |FALSE |
-|Lid_treatment        |FALSE |
-|NA                   |FALSE |
-|NA                   |FALSE |
-|species_1            |FALSE |
-|smell                |FALSE |
-|NA                   |FALSE |
-|Lid_treatment        |FALSE |
-|NA                   |FALSE |
-|species_3            |FALSE |
-|NA                   |FALSE |
-|NA                   |FALSE |
-|Lid_treatment        |FALSE |
-|NA                   |FALSE |
-|abundance            |FALSE |
+|mappingColumn        |IsOK |
+|:--------------------|:----|
+|NA                   |TRUE |
+|oxygen concentration |TRUE |
+|NA                   |TRUE |
+|NA                   |TRUE |
+|NA                   |TRUE |
+|NA                   |TRUE |
+|Lid_treatment        |TRUE |
+|NA                   |TRUE |
+|NA                   |TRUE |
+|species_1            |NA   |
+|smell                |TRUE |
+|NA                   |TRUE |
+|Lid_treatment        |TRUE |
+|NA                   |TRUE |
+|species_3            |NA   |
+|NA                   |TRUE |
+|NA                   |TRUE |
+|Lid_treatment        |TRUE |
+|NA                   |TRUE |
+|abundance            |TRUE |
 
 -  **<span style="color:#FF0000">`columnName` in column names found in column names in `dataFileName` - error</span>**   
 The details are a table with one row per `columnName` value. The following values are possible for the column `isTRUE`:
@@ -538,12 +524,12 @@ The details are a table with one row per `columnName` value. The following value
 |dissolved_oxygen_measures.csv |Lid_treatment |FALSE |
 |dissolved_oxygen_measures.csv |Jar_type      |FALSE |
 |dissolved_oxygen_measures.csv |Jar_ID        |FALSE |
-|smell.csv                     |NA            |FALSE |
+|smell.csv                     |NA            |TRUE  |
 |smell.csv                     |smell         |FALSE |
 |smell.csv                     |Date          |FALSE |
 |smell.csv                     |Lid_treatment |FALSE |
 |smell.csv                     |Jar_type      |FALSE |
-|abundances.csv                |NA            |FALSE |
+|abundances.csv                |NA            |TRUE  |
 |abundances.csv                |Jar_ID        |FALSE |
 |abundances.csv                |Date_time     |FALSE |
 |abundances.csv                |Lid_treatment |FALSE |

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<smell.csv_emeScheme emeSchemeVersion="0.9.5">
+<emeScheme emeSchemeVersion="0.9.5" propertyName="smell.csv_emeScheme">
  <ExperimentList>
   <Experiment>
    <name>ASR-expt1</name>
@@ -54,7 +54,7 @@
   </Treatment>
  </TreatmentList>
  <MeasurementList>
-  <Measurement name="smell">
+  <Measurement measurementID="smell">
    <variable>smell</variable>
    <method>nose</method>
    <unit>rotten eggs or not</unit>
@@ -127,4 +127,4 @@
    <comment></comment>
   </DataFileMetaData>
  </DataFileMetaDataList>
-</smell.csv_emeScheme>
+</emeScheme>

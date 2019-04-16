@@ -28,7 +28,13 @@ emeSchemeToXml.emeSchemeSet <- function(
 
 # Add emeSchemeVersion ----------------------------------------------------
 
-  xml <- XML::xmlNode(tag, attrs = c(emeSchemeVersion = attr(x, "emeSchemeVersion")))
+  xml <- XML::xmlNode(
+    "emeScheme",
+    attrs = c(
+      emeSchemeVersion = attr(x, "emeSchemeVersion"),
+      propertyName     = attr(x, "propertyName")
+      )
+  )
 
 # Add attributes if output == complete ------------------------------------
 
