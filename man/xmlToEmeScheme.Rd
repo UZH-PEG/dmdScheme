@@ -4,7 +4,7 @@
 \alias{xmlToEmeScheme}
 \title{Convert xml to \code{emeScheme}}
 \usage{
-xmlToEmeScheme(xml, convertTypes = TRUE, verbose = FALSE)
+xmlToEmeScheme(xml, verbose = FALSE)
 }
 \arguments{
 \item{xml}{either xml object or text represenatation from text object}

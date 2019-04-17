@@ -155,8 +155,4 @@ list: list_variables list_targets
 
 #############
 
-ttt:
-	make -pn | grep -A1 "^# makefile"| grep -v "^#\|^--" | sort | uniq
-
-
 .PHONY: list files update clean clean_vignettes clean_web clean_html publish docs

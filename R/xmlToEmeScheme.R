@@ -17,7 +17,6 @@
 
 xmlToEmeScheme <- function(
   xml,
-  convertTypes = TRUE,
   verbose = FALSE
 ){
 
