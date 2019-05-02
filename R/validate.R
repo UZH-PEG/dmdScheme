@@ -187,7 +187,7 @@ validateTypes <- function(sraw, sconv) {
   result$details[t] <- TRUE
   result$details[!t] <- paste( result$details[!t], "!=", as.data.frame(sconv)[!t])
   result$details[na] <- NA
-  result$details <- as_tibble(result$details)
+  result$details <- as_tibble(result$details, .name_repair = "unique")
   ##
   result$error = ifelse(
     all(result$details == TRUE, na.rm = TRUE),
@@ -219,7 +219,7 @@ validateSuggestedValues <- function(sraw) {
     "One or more FALSE values will result in a WARNING."
   )
   ##
-  result$details <- as_tibble(sraw)
+  result$details <- as_tibble(sraw, .name_repair = "unique")
   sugVal <- strsplit(attr(sraw, "suggestedValues"), ",")
   result$details <- result$details[,!is.na(sugVal)]
   sugVal <- sugVal[!is.na(sugVal)]
@@ -263,7 +263,7 @@ validateAllowedValues <- function(sraw) {
     "One or more FALSE values will result in an ERROR."
   )
   ##
-  result$details <- as_tibble(sraw)
+  result$details <- as_tibble(sraw, .name_repair = "unique")
   allVal <- strsplit(attr(sraw, "allowedValues"), ",")
   result$details <- result$details[,!is.na(allVal)]
   allVal <- allVal[!is.na(allVal)]
