@@ -15,6 +15,7 @@
 #' @importFrom dplyr filter
 #' @importFrom magrittr %<>% %>%
 #' @importFrom rlang .data
+#' @importFrom tibble as_tibble
 #'
 #' @export
 #'
@@ -54,7 +55,7 @@ new_emeSchemeData <- function(
     #
     x %<>%
       t() %>%
-      tibble::as_tibble(rownames = NA) %>%
+      tibble::as_tibble(rownames = NA, .name_repair = "unique") %>%
       tibble::rownames_to_column("propertySet") %>%
       dplyr::rename(Experiment = 2) %>%
       dplyr::filter( .data$propertySet != "propertySet")
@@ -72,7 +73,7 @@ new_emeSchemeData <- function(
 
   if(verbose) cat_ln("Set names...")
   #
-  names(x) <- dplyr::filter(x, .data$propertySet == "valueProperty")
+  names(x) <- as.character(dplyr::filter(x, .data$propertySet == "valueProperty"))
 
   x %<>% dplyr::filter(.data$valueProperty != "valueProperty")
 
