@@ -10,3 +10,5 @@ Meta
 .httr-oauth-SUSPENDED
 /ONLYLOCAL
 /basic
+library
+.Rprofile
