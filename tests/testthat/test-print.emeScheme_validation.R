@@ -7,7 +7,7 @@ test_that(
   {
     expect_error(
       object = print(x, type = "doodle"),
-      regexp = "type has to be `summary` or `details`!"
+      regexp = "type has to be `default`, summary` or `details`!"
     )
   }
 )

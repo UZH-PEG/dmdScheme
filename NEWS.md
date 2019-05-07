@@ -1,4 +1,5 @@
 
+* Add error level to print of validation results
 * Add xml import to re-import xml data and validate certain features (types) during the import.
 
 ## Fix

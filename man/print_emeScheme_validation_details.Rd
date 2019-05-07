@@ -4,7 +4,8 @@
 \alias{print_emeScheme_validation_details}
 \title{Internal function to ptint emeScheme_validation of format \code{summary}}
 \usage{
-print_emeScheme_validation_details(x, level, listLevel, format, ...)
+print_emeScheme_validation_details(x, level, listLevel, format,
+  error = c(0, 1, 2, 3, NA), ...)
 }
 \arguments{
 \item{x}{as in print.emeScheme_validation}
@@ -14,6 +15,8 @@ print_emeScheme_validation_details(x, level, listLevel, format, ...)
 \item{listLevel}{as in print.emeScheme_validation}
 
 \item{format}{as in print.emeScheme_validation}
+
+\item{error}{numeric v ector, containing error levels to print. Default is all error levels.}
 
 \item{...}{as in print.emeScheme_validation}
 }

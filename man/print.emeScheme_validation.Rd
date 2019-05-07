@@ -5,7 +5,8 @@
 \title{print function for \code{emeScheme_validation}}
 \usage{
 \method{print}{emeScheme_validation}(x, level = 1, listLevel = 3,
-  type = "default", format = "markdown", ...)
+  type = "default", format = "markdown", error = c(0, 1, 2, 3, NA),
+  ...)
 }
 \arguments{
 \item{x}{object of class \code{emeScheme_validation}}
@@ -17,6 +18,8 @@
 \item{type}{type of output, can be either \code{"default"}, \code{"summary"} or \code{"details"}. Default is \code{"default"}}
 
 \item{format}{format in which the details tables should be printed. All values as used in \code{knitr::kable()} are allowed.}
+
+\item{error}{numeric v ector, containing error levels to print. Default is all error levels.}
 
 \item{...}{additional arguments for the function \code{knitr::kable()} function to format the table.}
 }

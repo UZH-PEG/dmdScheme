@@ -78,16 +78,26 @@ Details **Error_Level** : **Name of the validation**
 <!-- ################################### -->
 <!-- ################################### -->
 
-# Overall
+# Overview
 ```{r}
 valErr_extract(result) %>% 
   table %>% 
   set_names(valErr_info(names(.))$text)
 ```
 
-# Overview
+## Errors
 ```{r, results = "asis"}
-print(result, level = 2, listLevel = 20, type = "summary")
+print(result, level = 2, listLevel = 20, type = "summary", error = 3)
+```
+
+## Warnings
+```{r, results = "asis"}
+print(result, level = 2, listLevel = 20, type = "summary", error = 2)
+```
+
+## Notes
+```{r, results = "asis"}
+print(result, level = 2, listLevel = 20, type = "summary", error = 1)
 ```
 
 ## **<span style="color:red">TODO</span>** 
@@ -117,11 +127,25 @@ result$DataFiles$description
 
 # Details
 
-```{r , results = "asis"}
-print(result, level = 2, listLevel = 20, type = "details", format = "markdown")
+## Errors
+```{r, results = "asis"}
+print(result, level = 2, listLevel = 20, type = "details", error = 3)
 ```
 
+## Warnings
+```{r, results = "asis"}
+print(result, level = 2, listLevel = 20, type = "details", error = 2)
+```
 
+## Notes
+```{r, results = "asis"}
+print(result, level = 2, listLevel = 20, type = "details", error = 1)
+```
+
+## OK
+```{r, results = "asis"}
+print(result, level = 2, listLevel = 20, type = "details", error = 0)
+```
 
 # Structure info
 ```{r info}

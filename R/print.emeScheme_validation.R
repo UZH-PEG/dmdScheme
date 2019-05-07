@@ -11,6 +11,7 @@
 #' @param listLevel level at which the elements should be represented as lists and not headers anymore
 #' @param type type of output, can be either \code{"default"}, \code{"summary"} or \code{"details"}. Default is \code{"default"}
 #' @param format format in which the details tables should be printed. All values as used in \code{knitr::kable()} are allowed.
+#' @param error numeric v ector, containing error levels to print. Default is all error levels.
 #' @param ... additional arguments for the function \code{knitr::kable()} function to format the table.
 #'
 #' @return invisibly returns x
@@ -35,12 +36,13 @@
 #' # ```{r, results = "asis"}
 #' #    print(result, level = 2, listLevel = 20, type = "summary")
 #' # ```
-print.emeScheme_validation <- function(x, level = 1, listLevel = 3, type = "default", format = "markdown", ...) {
-  switch (type,
+print.emeScheme_validation <- function(x, level = 1, listLevel = 3, type = "default", format = "markdown", error = c(0, 1, 2, 3, NA), ...) {
+  switch (
+    type,
     default = NextMethod(),
-    summary = print_emeScheme_validation_summary(x, level = level, listLevel = listLevel),
-    details = print_emeScheme_validation_details(x, level = level, listLevel = listLevel, format = format),
-    stop("type has to be `summary` or `details`!")
+    summary = print_emeScheme_validation_summary(x, level = level, listLevel = listLevel, error = error),
+    details = print_emeScheme_validation_details(x, level = level, listLevel = listLevel, format = format, error = error),
+    stop("type has to be `default`, summary` or `details`!")
   )
 }
 
@@ -49,27 +51,30 @@ print.emeScheme_validation <- function(x, level = 1, listLevel = 3, type = "defa
 #' @param x as in print.emeScheme_validation
 #' @param level as in print.emeScheme_validation
 #' @param listLevel as in print.emeScheme_validation
+#' @param error numeric v ector, containing error levels to print. Default is all error levels.
 #'
 #' @return as in print.emeScheme_validation
 #'
-print_emeScheme_validation_summary <- function(x, level, listLevel) {
+print_emeScheme_validation_summary <- function(x, level, listLevel, error = c(0, 1, 2, 3, NA)) {
   if (!inherits(x, "emeScheme_validation")) {
     stop("'x' has to be of type 'emeScheme_validation'")
   }
-  if (level < listLevel) {
-    cat_ln()
-    cat_ln( paste(rep("#", level), collapse = ""), " ", x$header)
-    cat_ln()
-    cat_ln("", x$description)
-    cat_ln()
-  } else {
-    cat_ln("- ", " ", x$header, "   ")
-    cat_ln("    ", x$description)
-    cat_ln()
+  if (x$error %in% error) {
+    if (level < listLevel) {
+      cat_ln()
+      cat_ln( paste(rep("#", level), collapse = ""), " ", x$header)
+      cat_ln()
+      cat_ln("", x$description)
+      cat_ln()
+    } else {
+      cat_ln("- ", " ", x$header, "   ")
+      cat_ln("    ", x$description)
+      cat_ln()
+    }
   }
   for (i in 1:length(x)) {
     if (inherits(x[[i]], "emeScheme_validation")) {
-      print_emeScheme_validation_summary(x = x[[i]], level = level + 1, listLevel = listLevel)
+      print_emeScheme_validation_summary(x = x[[i]], level = level + 1, listLevel = listLevel, error = error)
     }
   }
   invisible(x)
@@ -81,30 +86,33 @@ print_emeScheme_validation_summary <- function(x, level, listLevel) {
 #' @param level as in print.emeScheme_validation
 #' @param listLevel as in print.emeScheme_validation
 #' @param format as in print.emeScheme_validation
+#' @param error numeric v ector, containing error levels to print. Default is all error levels.
 #' @param ... as in print.emeScheme_validation
 #'
 #' @return as in print.emeScheme_validation
 #' @importFrom knitr kable
 #'
-print_emeScheme_validation_details <- function(x, level, listLevel, format, ...) {
+print_emeScheme_validation_details <- function(x, level, listLevel, format, error = c(0, 1, 2, 3, NA), ...) {
   if (!inherits(x, "emeScheme_validation")) {
     stop("'x' has to be of type 'emeScheme_validation'")
   }
-  if (level < listLevel) {
-    cat_ln()
-    cat_ln( paste(rep("#", level), collapse = ""), " ", x$header)
-    cat_ln()
-    cat_ln("", x$descriptionDetails)
-    cat_ln()
-  } else {
-    cat_ln("- ", " ", x$header, "   ")
-    cat_ln(x$descriptionDetails, "  ")
+  if (x$error %in% error) {
+    if (level < listLevel) {
+      cat_ln()
+      cat_ln( paste(rep("#", level), collapse = ""), " ", x$header)
+      cat_ln()
+      cat_ln("", x$descriptionDetails)
+      cat_ln()
+    } else {
+      cat_ln("- ", " ", x$header, "   ")
+      cat_ln(x$descriptionDetails, "  ")
+    }
+    print(knitr::kable(x$details, format = format))
+    cat_ln("")
   }
-  print(knitr::kable(x$details, format = format))
-  cat_ln("")
   for (i in 1:length(x)) {
     if (inherits(x[[i]], "emeScheme_validation")) {
-      print_emeScheme_validation_details(x = x[[i]], level = level + 1, listLevel = listLevel, format = format, ...)
+      print_emeScheme_validation_details(x = x[[i]], level = level + 1, listLevel = listLevel, format = format, error = error, ...)
     }
   }
   invisible(x)
