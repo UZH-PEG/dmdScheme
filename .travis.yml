@@ -27,7 +27,8 @@ matrix:
     - sudo tlmgr install inconsolata
     - sw_vers
   - r: oldrel
-#  - r: 3.3
+  - r: 3.5
+#  - r: 3.3 # Because of changed serialization format in 3.6 which is only backeward compatible with 3.5
 #  - r: 3.2 # Because of openxlsx requires R >= 3.3
 #  - r: 3.1 # Because of openxlsx requires R >= 3.3
 
