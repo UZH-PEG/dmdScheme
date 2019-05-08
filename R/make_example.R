@@ -59,8 +59,11 @@ make_example <- function(
     }
 
     # Show user_manual --------------------------------------------------------
-
-    utils::RShowDoc("user_manual", package = "emeScheme")
+    switch(
+      name,
+      basic = utils::RShowDoc("user_manual", package = "emeScheme"),
+      cat_ln("No documentation specified to be opened!")
+    )
   }
 
   # Return ------------------------------------------------------------------
