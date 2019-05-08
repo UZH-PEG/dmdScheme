@@ -18,8 +18,8 @@
 make_example <- function(
   name
 ) {
-  source_dir <- system.file("example_data", package = "emeScheme")
-  examples <- list.dirs( source_dir, recursive = FALSE, full.names = FALSE)
+  example_dir <- system.file("example_data", package = "emeScheme")
+  examples <- list.dirs( example_dir, recursive = FALSE, full.names = FALSE)
   if (missing(name)) {
     cat_ln("Included examples are:")
     cat_ln(examples)
@@ -27,34 +27,43 @@ make_example <- function(
     if (!(name %in% examples)) {
       stop("Invalid example. 'name' has to be one of the following values: ", examples, ".")
     }
+
+    # Define example and to directory -----------------------------------------
+
+    example_dir <- system.file("example_data", name, package = "emeScheme")
+    to_dir <- file.path(".", name)
+
     # Copy Example into working directory -------------------------------------
-    if (file.exists( file.path(".", name) )) {
+
+    if (file.exists( to_dir )) {
       stop("directory '", name, "' exists. I will not overwrite it. I haven't done anything. Example creation aborted.")
     }
     file.copy(
-      from = file.path(source_dir, name),
+      from = example_dir,
       to = file.path("."),
       recursive = TRUE
     )
-    if (name == "basic") {
-      format_emeScheme_xlsx(
-        fn_org = system.file("emeScheme.xlsx", package = "emeScheme"),
-        fn_new = file.path(".", name, "expt1_emeScheme.xlsx"),
-        keepData = TRUE
-      )
-      rmd <- list.files( file.path(".", "basic", "code"), pattern = "Rmd")
-      for (f in rmd) {
-        suppressMessages(
-          knitr::purl(
-            input = file.path(".", "basic", "code", f),
-            output = file.path(".", "basic", "code", gsub("Rmd", "R", f)),
-            documentation = 2,
-            quiet = TRUE
-          )
+
+    # Extract R code from all .Rmd files --------------------------------------
+
+    rmd <- list.files( file.path(to_dir, "code"), pattern = "Rmd")
+    for (f in rmd) {
+      suppressMessages(
+        knitr::purl(
+          input = file.path(to_dir, "code", f),
+          output = file.path(to_dir, "code", gsub("Rmd", "R", f)),
+          documentation = 2,
+          quiet = TRUE
         )
-      }
-      utils::RShowDoc("user_manual", package = "emeScheme")
+      )
+    }
+
+    # Show user_manual --------------------------------------------------------
+
+    utils::RShowDoc("user_manual", package = "emeScheme")
   }
-  }
+
+  # Return ------------------------------------------------------------------
+
   return(invisible(NULL))
 }
