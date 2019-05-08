@@ -92,7 +92,7 @@ Test if the metadata concerning **Measurement** is correct.  This includes colum
 
 
 
-## **<span style="color:#AA5500">DataExtraction - warning</span>**
+## **<span style="color:#00FF00">DataExtraction - OK</span>**
 
 Test if the metadata concerning **DataExtraction** is correct.  This includes column names, required info, ... 
 
@@ -102,7 +102,7 @@ Test if the metadata concerning **DataExtraction** is correct.  This includes co
 -  **<span style="color:#00FF00">values in suggestedValues - OK</span>**   
     Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided.
 
--  **<span style="color:#AA5500">name is in Measurement$dataExtractionID - warning</span>**   
+-  **<span style="color:#00FF00">name is in Measurement$dataExtractionID - OK</span>**   
     Test if the `dataExtractionID` is in the `Measurement$dataExtractionID` column. The `error` can have the following values apart from `OK`:
  
     error   : If not all `dataExtractionID` are in `Measurement$dataExtractionID`

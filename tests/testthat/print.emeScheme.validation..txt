@@ -528,13 +528,13 @@ attr(,"class")
 
 $DataExtraction
 $error
-[1] 2
+[1] 0
 
 $details
 [1] NA
 
 $header
-[1] "**<span style=\"color:#AA5500\">DataExtraction - warning</span>**"
+[1] "**<span style=\"color:#00FF00\">DataExtraction - OK</span>**"
 
 $description
 [1] "Test if the metadata concerning **DataExtraction** is correct.  This includes column names, required info, ... "
@@ -550,11 +550,10 @@ $error
 [1] 0
 
 $details
-# A tibble: 2 x 5
+# A tibble: 1 x 5
   dataExtractionID method parameter value comment
   <chr>            <chr>  <chr>     <chr> <chr>  
 1 TRUE             <NA>   <NA>      <NA>  TRUE   
-2 <NA>             <NA>   <NA>      <NA>  <NA>   
 
 $header
 [1] "**<span style=\"color:#00FF00\">conversion of values into specified type lossless possible - OK</span>**"
@@ -576,11 +575,10 @@ $error
 [1] 0
 
 $details
-# A tibble: 2 x 1
+# A tibble: 1 x 1
   method
   <chr> 
 1 TRUE  
-2 TRUE  
 
 $header
 [1] "**<span style=\"color:#00FF00\">values in suggestedValues - OK</span>**"
@@ -599,15 +597,14 @@ attr(,"class")
 
 $nameInDataExtractionName
 $error
-[1] 2
+[1] 0
 
 $details
-     dataExtractionID  isOK
-1 Mol_Analy_pipeline1  TRUE
-2                <NA> FALSE
+     dataExtractionID isOK
+1 Mol_Analy_pipeline1 TRUE
 
 $header
-[1] "**<span style=\"color:#AA5500\">name is in Measurement$dataExtractionID - warning</span>**"
+[1] "**<span style=\"color:#00FF00\">name is in Measurement$dataExtractionID - OK</span>**"
 
 $description
 [1] "Test if the `dataExtractionID` is in the `Measurement$dataExtractionID` column. The `error` can have the following values apart from `OK`:\n \n    error   : If not all `dataExtractionID` are in `Measurement$dataExtractionID`\n \n"

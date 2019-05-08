@@ -96,13 +96,20 @@ new_emeSchemeData <- function(
 
   x %<>% dplyr::select(-.data$valueProperty)
 
-# if !keepData remove all but one data column ----------------------------
+# if !keepData remove all but one data column , is not, only remove the ones with only NAs ----------------------------
 
   if (!keepData) {
     if(verbose) cat_ln("Trimming to one row of NAs...")
     #
     x %<>% dplyr::filter(c(TRUE, rep(FALSE, nrow(x)-1)) )
     x[] <- NA
+  } else {
+    allNA <- apply(
+      is.na(x),
+      1,
+      all
+    )
+    x <- x[!allNA,]
   }
 
 # apply type --------------------------------------------------------------

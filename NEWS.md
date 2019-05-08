@@ -1,4 +1,4 @@
-
+* fix error where a minimum of two rows were imported, even if the second one contains only NAs. Introduced an exclusion of all NA rows (commit db53c83).
 * Add error level to print of validation results
 * Add xml import to re-import xml data and validate certain features (types) during the import.
 

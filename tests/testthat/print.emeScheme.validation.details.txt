@@ -308,7 +308,7 @@ The details are a table with one row per unique `result$details The following va
 |none                |TRUE |
 
 
-## **<span style="color:#AA5500">DataExtraction - warning</span>**
+## **<span style="color:#00FF00">DataExtraction - OK</span>**
 
 No further details available.
 
@@ -331,7 +331,6 @@ The details are a table of the same dimension as the input (green) area of the m
 |dataExtractionID |method |parameter |value |comment |
 |:----------------|:------|:---------|:-----|:-------|
 |TRUE             |NA     |NA        |NA    |TRUE    |
-|NA               |NA     |NA        |NA    |NA      |
 
 -  **<span style="color:#00FF00">values in suggestedValues - OK</span>**   
 The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
@@ -346,9 +345,8 @@ The details are a table of the same dimension as the input (green) area of the m
 |method |
 |:------|
 |TRUE   |
-|TRUE   |
 
--  **<span style="color:#AA5500">name is in Measurement$dataExtractionID - warning</span>**   
+-  **<span style="color:#00FF00">name is in Measurement$dataExtractionID - OK</span>**   
 The details are a table with one row per unique `variable` The following values are possible for the column `isTRUE`:
  
     TRUE : If the value is in `DataFileMetaData$mappingColumn`.
@@ -358,10 +356,9 @@ The details are a table with one row per unique `variable` The following values 
  One or more FALSE will result in an ERROR.  
 
 
-|dataExtractionID    |isOK  |
-|:-------------------|:-----|
-|Mol_Analy_pipeline1 |TRUE  |
-|NA                  |FALSE |
+|dataExtractionID    |isOK |
+|:-------------------|:----|
+|Mol_Analy_pipeline1 |TRUE |
 
 
 ## **<span style="color:black">DataFileMetaData - NA</span>**
