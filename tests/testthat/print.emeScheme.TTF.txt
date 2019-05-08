@@ -50,7 +50,7 @@ A       Names : dataExtractionID | method | parameter | value | comment
 A       Units : NA | NA | NA | NA | NA
 A       Type  : character | character | character | character | character
 
-XA      row.names: 1 | 2
+XA      row.names: 1
 XA      propertyName: DataExtraction
 XA      suggestedValues: NA | bemovi x.y.z | NA | NA | NA
 XA      Description: Name of the DataExtraction process. This includes methodology, variables . Each name specifies one extraction process and can occur multiple times in the case of multiple parameters in the analysis. | Method used for the DataExtraction process. If possible including version (in the case of R packages). | parameter in the analysis. Only needs to be specified if it varies from the default. | value of the parameter (you can enter a number or a word) | NA

@@ -116,12 +116,6 @@
    <value></value>
    <comment>See description in file xxx.yyy</comment>
   </DataExtraction>
-  <DataExtraction dataExtractionID="NA">
-   <method></method>
-   <parameter></parameter>
-   <value></value>
-   <comment></comment>
-  </DataExtraction>
  </DataExtractionList>
  <DataFileMetaDataList unit="NA, NA, NA, NA, NA, NA, NA" type="character, character, character, character, character, character, character" allowedValues="NA, NA, ID, Treatment, Measurement, Species, other, NA, integer, numeric, character, logical, datetime, date, time, NA, NA" names="dataFileName, columnName, columnData, mappingColumn, type, description, comment" class="emeSchemeData_DataFileMetaData, emeSchemeData, emeScheme, emeSchemeData_raw, tbl_df, tbl, data.frame">
   <DataFileMetaData>

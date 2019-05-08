@@ -103,7 +103,7 @@ read_from_excel <- function(
   v <- names(result$Experiment)[ncol(result$Experiment)]
   v <- gsub("DATA_v", "", v)
   if (v == "DATA") {
-    v <- "0.9.5"
+    v <- "unknown"
   }
   attr(result, "emeSchemeVersion") <- v
 
