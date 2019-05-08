@@ -19,7 +19,7 @@ matrix:
 #     os: osx
 #     osx_image: xcode10.1
   - r: release
-    after_success:
+     after_success:
   - r: release
     os: osx
     osx_image: xcode10.1
@@ -27,7 +27,7 @@ matrix:
     - sudo tlmgr install inconsolata
     - sw_vers
   - r: oldrel
-  - r: 3.3
+#  - r: 3.3
 #  - r: 3.2 # Because of openxlsx requires R >= 3.3
 #  - r: 3.1 # Because of openxlsx requires R >= 3.3
 
