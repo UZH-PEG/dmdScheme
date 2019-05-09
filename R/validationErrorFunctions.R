@@ -109,3 +109,29 @@ valErr_extract <- function(x, returnRootError = FALSE) {
   }
   return(err)
 }
+
+#' Creates \code{data.frame} from object of class \code{emeScheme_validation} for usage in \code{details} of validation
+#'
+#' @param x \code{data.frame} with the fields \code{Module}, \code{error} and \code{isOK}
+#' @param returnRootError if \code{TRUE}, return all errors \bold{including} the error in the object x.
+#'
+#' @return named numeric vector of the error levels of the different validations done
+#' @export
+#'
+valErr_isOK <- function(x, returnRootError = FALSE){
+  if (!inherits(x, "emeScheme_validation")) {
+    stop(" x has to be an object of type 'emeScheme_validation'.")
+  }
+
+  result <- valErr_extract(x, returnRootError)
+  result <- data.frame(
+    Module = names(result) %>% gsub("\\.error", "", .) %>% gsub("\\.", " - ", .),
+    error = valErr_info(result)$text,
+    isOK = !as.logical(result),
+    stringsAsFactors = FALSE
+  )
+  if (returnRootError) {
+    result[["Module"]][[1]] <- "Root Module"
+  }
+  return(result)
+}

@@ -1,11 +1,11 @@
 $error
-[1] NA
+[1] 3
 
 $details
 [1] NA
 
 $header
-[1] "**<span style=\"color:black\">Overall MetaData - NA</span>**"
+[1] "**<span style=\"color:#FF0000\">Overall MetaData - error</span>**"
 
 $description
 [1] "The result of the overall validation of the data."
@@ -30,7 +30,7 @@ $description
 [1] "Test if the structure of the metadata is correct.  This includes column names, required info, ...  Should normally be OK, if no modification has been done."
 
 $descriptionDetails
-[1] "No further details available."
+[1] ""
 
 $comment
 [1] ""
@@ -43,7 +43,9 @@ $error
 [1] 1
 
 $details
-[1] NA
+           Module error  isOK
+1           types    OK  TRUE
+2 suggestedValues  note FALSE
 
 $header
 [1] "**<span style=\"color:#55AA00\">Experiment - note</span>**"
@@ -52,7 +54,7 @@ $description
 [1] "Test if the metadata concerning **Experiment** is correct.  This includes column names, required info, ... "
 
 $descriptionDetails
-[1] "No further details available."
+[1] "The details are a table with one row per unique validation.\n The column `Module` contains the name of the validation,\n The column `error` contains the actual error of the validation.\n The following values are possible for the column `isTRUE`:\n \n    TRUE : If the validation was `OK`.\n    FALSE: If the validation was an `error`, `warning` or `note`.\n    NA   : If at least one v alidation resulted in `NA\n \n One or more FALSE or missing values values will result in an ERROR."
 
 $comment
 [1] ""
@@ -117,7 +119,11 @@ $error
 [1] 1
 
 $details
-[1] NA
+           Module error  isOK
+1           types    OK  TRUE
+2 suggestedValues  note FALSE
+3 speciesIDUnique    OK  TRUE
+4    speciesNames    OK  TRUE
 
 $header
 [1] "**<span style=\"color:#55AA00\">Species - note</span>**"
@@ -126,7 +132,7 @@ $description
 [1] "Test if the metadata concerning **Species** is correct.  This includes column names, required info, ... "
 
 $descriptionDetails
-[1] "No further details available."
+[1] "The details are a table with one row per unique validation.\n The column `Module` contains the name of the validation,\n The column `error` contains the actual error of the validation.\n The following values are possible for the column `isTRUE`:\n \n    TRUE : If the validation was `OK`.\n    FALSE: If the validation was an `error`, `warning` or `note`.\n    NA   : If at least one v alidation resulted in `NA\n \n One or more FALSE or missing values values will result in an ERROR."
 
 $comment
 [1] ""
@@ -241,7 +247,10 @@ $error
 [1] 2
 
 $details
-[1] NA
+                   Module   error  isOK
+1                   types      OK  TRUE
+2         suggestedValues    note FALSE
+3 parameterInMappinColumn warning FALSE
 
 $header
 [1] "**<span style=\"color:#AA5500\">Treatment - warning</span>**"
@@ -250,7 +259,7 @@ $description
 [1] "Test if the metadata concerning **Treatment** is correct.  This includes column names, required info, ... "
 
 $descriptionDetails
-[1] "No further details available."
+[1] "The details are a table with one row per unique validation.\n The column `Module` contains the name of the validation,\n The column `error` contains the actual error of the validation.\n The following values are possible for the column `isTRUE`:\n \n    TRUE : If the validation was `OK`.\n    FALSE: If the validation was an `error`, `warning` or `note`.\n    NA   : If at least one v alidation resulted in `NA\n \n One or more FALSE or missing values values will result in an ERROR."
 
 $comment
 [1] ""
@@ -347,7 +356,13 @@ $error
 [1] 2
 
 $details
-[1] NA
+                              Module   error  isOK
+1                              types      OK  TRUE
+2                    suggestedValues    note FALSE
+3                measurementIDUnique      OK  TRUE
+4                       measuredFrom      OK  TRUE
+5             variableInMappinColumn warning FALSE
+6 dataExtractionIDInDataExtractionID      OK  TRUE
 
 $header
 [1] "**<span style=\"color:#AA5500\">Measurement - warning</span>**"
@@ -356,7 +371,7 @@ $description
 [1] "Test if the metadata concerning **Measurement** is correct.  This includes column names, required info, ... "
 
 $descriptionDetails
-[1] "No further details available."
+[1] "The details are a table with one row per unique validation.\n The column `Module` contains the name of the validation,\n The column `error` contains the actual error of the validation.\n The following values are possible for the column `isTRUE`:\n \n    TRUE : If the validation was `OK`.\n    FALSE: If the validation was an `error`, `warning` or `note`.\n    NA   : If at least one v alidation resulted in `NA\n \n One or more FALSE or missing values values will result in an ERROR."
 
 $comment
 [1] ""
@@ -531,7 +546,10 @@ $error
 [1] 0
 
 $details
-[1] NA
+                    Module error isOK
+1                    types    OK TRUE
+2          suggestedValues    OK TRUE
+3 nameInDataExtractionName    OK TRUE
 
 $header
 [1] "**<span style=\"color:#00FF00\">DataExtraction - OK</span>**"
@@ -540,7 +558,7 @@ $description
 [1] "Test if the metadata concerning **DataExtraction** is correct.  This includes column names, required info, ... "
 
 $descriptionDetails
-[1] "No further details available."
+[1] "The details are a table with one row per unique validation.\n The column `Module` contains the name of the validation,\n The column `error` contains the actual error of the validation.\n The following values are possible for the column `isTRUE`:\n \n    TRUE : If the validation was `OK`.\n    FALSE: If the validation was an `error`, `warning` or `note`.\n    NA   : If at least one v alidation resulted in `NA\n \n One or more FALSE or missing values values will result in an ERROR."
 
 $comment
 [1] ""
@@ -623,19 +641,26 @@ attr(,"class")
 
 $DataFileMetaData
 $error
-[1] NA
+[1] 3
 
 $details
-[1] NA
+                          Module error  isOK
+1                          types    OK  TRUE
+2                  allowedValues    OK  TRUE
+3                 dataFilesExist error FALSE
+4        datetimeFormatSpecified    OK  TRUE
+5 mappingColumnInNameOrParameter error FALSE
+6     columnNameInDataFileColumn error FALSE
+7    dataFileColumnInColumnNamen    OK  TRUE
 
 $header
-[1] "**<span style=\"color:black\">DataFileMetaData - NA</span>**"
+[1] "**<span style=\"color:#FF0000\">DataFileMetaData - error</span>**"
 
 $description
 [1] "Test if the metadata concerning **DataExtraction** is correct.  This includes column names, required info, ... "
 
 $descriptionDetails
-[1] "No further details available."
+[1] "The details are a table with one row per unique validation.\n The column `Module` contains the name of the validation,\n The column `error` contains the actual error of the validation.\n The following values are possible for the column `isTRUE`:\n \n    TRUE : If the validation was `OK`.\n    FALSE: If the validation was an `error`, `warning` or `note`.\n    NA   : If at least one v alidation resulted in `NA\n \n One or more FALSE or missing values values will result in an ERROR."
 
 $comment
 [1] ""
@@ -786,7 +811,7 @@ attr(,"class")
 
 $mappingColumnInNameOrParameter
 $error
-[1] NA
+[1] 3
 
 $details
           mappingColumn IsOK
@@ -812,7 +837,7 @@ $details
 20            abundance TRUE
 
 $header
-[1] "**<span style=\"color:black\">correct values in `mappingColumn`` in dependence on columnData - NA</span>**"
+[1] "**<span style=\"color:#FF0000\">correct values in `mappingColumn`` in dependence on columnData - error</span>**"
 
 $description
 [1] "Test if `mappingColumn` is found in the appropriate table. The `error` can have the following values apart from `OK`:\n \n    error   : If not all `mappingColumn` are found in the appropriate columns\n \n"
@@ -900,28 +925,6 @@ $comment
 
 attr(,"class")
 [1] "emeScheme_validation" "list"                
-
-attr(,"class")
-[1] "emeScheme_validation" "list"                
-
-$DataFiles
-$error
-[1] NA
-
-$details
-[1] NA
-
-$header
-[1] "**<span style=\"color:black\">Data Files - NA</span>**"
-
-$description
-[1] "Test if the data files as mentioned in `DataFileMetaData$dataFileName` is correct.  This includes column names, required info, ... "
-
-$descriptionDetails
-[1] "No further details available."
-
-$comment
-[1] ""
 
 attr(,"class")
 [1] "emeScheme_validation" "list"                

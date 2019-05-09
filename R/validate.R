@@ -73,6 +73,7 @@ validate <- function(
   }
 
   # Define result structure of class emeScheme_validation ----------------------
+
   result <- new_emeScheme_validation()
   result$description <- paste(
     "The result of the overall validation of the data."
@@ -104,12 +105,15 @@ validate <- function(
     result$Measurement <- validateMeasurement(x, xraw, xconv)
     result$DataExtraction <- validateDataExtraction(x, xraw, xconv)
     result$DataFileMetaData <- validateDataFileMetaData(x, xraw, xconv, path)
-    result$DataFiles <- validateDataFiles(x, xraw, xconv, path)
+#    result$DataFiles <- validateDataFiles(x, xraw, xconv, path)
   }
 
   # Set overall error -------------------------------------------------------
 
   result$error <- max(valErr_extract(result), na.rm = FALSE)
+  if (is.na(result$error)) {
+    # result$error <- 3
+  }
   result$header <- valErr_TextErrCol("Overall MetaData", result$error)
 
   # Generate report ---------------------------------------------------------
@@ -140,7 +144,7 @@ validate <- function(
 
   # Return result -----------------------------------------------------------
 
-  return(result)
+  return(invisible(result))
 }
 
 # new emeScheme_validation object -----------------------------------------
@@ -722,6 +726,9 @@ validateDataFileMetaDataMapping <- function(x) {
     0,
     3
   )
+  if (is.na(result$error)) {
+    result$error <- 3
+  }
   ##
   result$header <- valErr_TextErrCol(result)
   ##
@@ -892,7 +899,7 @@ validateStructure <- function( x ){
     "This includes column names, required info, ... ",
     "Should normally be OK, if no modification has been done."
   )
-  result$descriptionDetails <- "No further details available."
+  result$descriptionDetails <- ""
   ##
   struct <- new_emeSchemeSet( x, keepData = FALSE, verbose = FALSE)
   attr(struct, "propertyName") <- "emeScheme"
@@ -917,12 +924,27 @@ validateExperiment <- function( x, xraw, xconv ){
     "Test if the metadata concerning **Experiment** is correct. ",
     "This includes column names, required info, ... "
   )
-  result$descriptionDetails <- "No further details available."
+  result$descriptionDetails <- paste(
+    "The details are a table with one row per unique validation.\n",
+    "The column `Module` contains the name of the validation,\n",
+    "The column `error` contains the actual error of the validation.\n",
+    "The following values are possible for the column `isTRUE`:\n",
+    "\n",
+    "   TRUE : If the validation was `OK`.\n",
+    "   FALSE: If the validation was an `error`, `warning` or `note`.\n",
+    "   NA   : If at least one v alidation resulted in `NA\n",
+    "\n",
+    "One or more FALSE or missing values values will result in an ERROR."
+  )
   ##
   result$types <- validateTypes(xraw$Experiment, xconv$Experiment)
   result$suggestedValues <- validateSuggestedValues(xraw$Experiment)
   ##
+  result$details <- valErr_isOK(result)
   result$error <- max(valErr_extract(result), na.rm = FALSE)
+  if (is.na(result$error)) {
+    result$error <- 3
+  }
   result$header <- valErr_TextErrCol(result)
   ##
   return(result)
@@ -937,14 +959,29 @@ validateSpecies <- function( x, xraw, xconv ){
     "Test if the metadata concerning **Species** is correct. ",
     "This includes column names, required info, ... "
   )
-  result$descriptionDetails <- "No further details available."
+  result$descriptionDetails <- paste(
+    "The details are a table with one row per unique validation.\n",
+    "The column `Module` contains the name of the validation,\n",
+    "The column `error` contains the actual error of the validation.\n",
+    "The following values are possible for the column `isTRUE`:\n",
+    "\n",
+    "   TRUE : If the validation was `OK`.\n",
+    "   FALSE: If the validation was an `error`, `warning` or `note`.\n",
+    "   NA   : If at least one v alidation resulted in `NA\n",
+    "\n",
+    "One or more FALSE or missing values values will result in an ERROR."
+  )
   ##
   result$types <- validateTypes(xraw$Species, xconv$Species)
   result$suggestedValues <- validateSuggestedValues(xraw$Species)
   result$speciesIDUnique <- valitdateSpeciesIDUnique(xraw)
   result$speciesNames <- validateSpeciesNames(xraw)
   ##
+  result$details <- valErr_isOK(result)
   result$error <- max(valErr_extract(result), na.rm = FALSE)
+  if (is.na(result$error)) {
+    result$error <- 3
+  }
   result$header <- valErr_TextErrCol(result)
   ##
   return(result)
@@ -959,13 +996,28 @@ validateTreatment <- function( x, xraw, xconv ){
     "Test if the metadata concerning **Treatment** is correct. ",
     "This includes column names, required info, ... "
   )
-  result$descriptionDetails <- "No further details available."
+  result$descriptionDetails <- paste(
+    "The details are a table with one row per unique validation.\n",
+    "The column `Module` contains the name of the validation,\n",
+    "The column `error` contains the actual error of the validation.\n",
+    "The following values are possible for the column `isTRUE`:\n",
+    "\n",
+    "   TRUE : If the validation was `OK`.\n",
+    "   FALSE: If the validation was an `error`, `warning` or `note`.\n",
+    "   NA   : If at least one v alidation resulted in `NA\n",
+    "\n",
+    "One or more FALSE or missing values values will result in an ERROR."
+  )
   ##
   result$types <- validateTypes(xraw$Treatment, xconv$Treatment)
   result$suggestedValues <- validateSuggestedValues(xraw$Treatment)
   result$parameterInMappinColumn <- validateTreatmentMapping(xraw)
   ##
+  result$details <- valErr_isOK(result)
   result$error <- max(valErr_extract(result), na.rm = FALSE)
+  if (is.na(result$error)) {
+    result$error <- 3
+  }
   result$header <- valErr_TextErrCol(result)
   ##
   return(result)
@@ -980,7 +1032,18 @@ validateMeasurement <- function( x, xraw, xconv ){
     "Test if the metadata concerning **Measurement** is correct. ",
     "This includes column names, required info, ... "
   )
-  result$descriptionDetails <- "No further details available."
+  result$descriptionDetails <- paste(
+    "The details are a table with one row per unique validation.\n",
+    "The column `Module` contains the name of the validation,\n",
+    "The column `error` contains the actual error of the validation.\n",
+    "The following values are possible for the column `isTRUE`:\n",
+    "\n",
+    "   TRUE : If the validation was `OK`.\n",
+    "   FALSE: If the validation was an `error`, `warning` or `note`.\n",
+    "   NA   : If at least one v alidation resulted in `NA\n",
+    "\n",
+    "One or more FALSE or missing values values will result in an ERROR."
+  )
   ##
   result$types <- validateTypes(xraw$Measurement, xconv$Measurement)
   result$suggestedValues <- validateSuggestedValues(xraw$Measurement)
@@ -989,7 +1052,11 @@ validateMeasurement <- function( x, xraw, xconv ){
   result$variableInMappinColumn <- validateMeasurementMapping(xraw)
   result$dataExtractionIDInDataExtractionID <- validateMeasurementDataExtraction(xraw)
   ##
+  result$details <- valErr_isOK(result)
   result$error <- max(valErr_extract(result), na.rm = FALSE)
+  if (is.na(result$error)) {
+    result$error <- 3
+  }
   result$header <- valErr_TextErrCol(result)
   ##
   return(result)
@@ -1004,13 +1071,28 @@ validateDataExtraction <- function( x, xraw, xconv ){
     "Test if the metadata concerning **DataExtraction** is correct. ",
     "This includes column names, required info, ... "
   )
-  result$descriptionDetails <- "No further details available."
+  result$descriptionDetails <- paste(
+    "The details are a table with one row per unique validation.\n",
+    "The column `Module` contains the name of the validation,\n",
+    "The column `error` contains the actual error of the validation.\n",
+    "The following values are possible for the column `isTRUE`:\n",
+    "\n",
+    "   TRUE : If the validation was `OK`.\n",
+    "   FALSE: If the validation was an `error`, `warning` or `note`.\n",
+    "   NA   : If at least one v alidation resulted in `NA\n",
+    "\n",
+    "One or more FALSE or missing values values will result in an ERROR."
+  )
   ##
   result$types <- validateTypes(xraw$DataExtraction, xconv$DataExtraction)
   result$suggestedValues <- validateSuggestedValues(xraw$DataExtraction)
   result$nameInDataExtractionName <- validateDataExtractionIDLinked(xraw)
   ##
+  result$details <- valErr_isOK(result)
   result$error <- max(valErr_extract(result), na.rm = FALSE)
+  if (is.na(result$error)) {
+    result$error <- 3
+  }
   result$header <- valErr_TextErrCol(result)
   ##
   return(result)
@@ -1025,7 +1107,18 @@ validateDataFileMetaData <- function( x, xraw, xconv, path ){
     "Test if the metadata concerning **DataExtraction** is correct. ",
     "This includes column names, required info, ... "
   )
-  result$descriptionDetails <- "No further details available."
+  result$descriptionDetails <- paste(
+    "The details are a table with one row per unique validation.\n",
+    "The column `Module` contains the name of the validation,\n",
+    "The column `error` contains the actual error of the validation.\n",
+    "The following values are possible for the column `isTRUE`:\n",
+    "\n",
+    "   TRUE : If the validation was `OK`.\n",
+    "   FALSE: If the validation was an `error`, `warning` or `note`.\n",
+    "   NA   : If at least one v alidation resulted in `NA\n",
+    "\n",
+    "One or more FALSE or missing values values will result in an ERROR."
+  )
   ##
   result$types <- validateTypes(xraw$DataFileMetaData, xconv$DataFileMetaData)
   result$allowedValues <- validateAllowedValues(xraw$DataFileMetaData)
@@ -1035,7 +1128,11 @@ validateDataFileMetaData <- function( x, xraw, xconv, path ){
   result$columnNameInDataFileColumn <- validateDataFileMetaDataColumnNameInDataFile(xraw, path)
   result$dataFileColumnInColumnNamen <- validateDataFileMetaDataDataFileColumnDefined(xraw, path)
   ##
+  result$details <- valErr_isOK(result)
   result$error <- max(valErr_extract(result), na.rm = FALSE)
+  if (is.na(result$error)) {
+    result$error <- 3
+  }
   result$header <- valErr_TextErrCol(result)
   ##
   return(result)

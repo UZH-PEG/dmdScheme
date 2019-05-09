@@ -1,5 +1,5 @@
 
-# **<span style="color:black">Overall MetaData - NA</span>**
+# **<span style="color:#FF0000">Overall MetaData - error</span>**
 
 The details contain the different validations of the metadata as a hierarchical list. errors propagate towards the root, i.e., if the 'worst' is a 'warning' in a validation in `details` the error here will be a 'warning' as well.
 
@@ -12,7 +12,7 @@ The details contain the different validations of the metadata as a hierarchical 
 
 ## **<span style="color:#00FF00">Structural / Formal validity - OK</span>**
 
-No further details available.
+
 
 
 
@@ -23,13 +23,23 @@ No further details available.
 
 ## **<span style="color:#55AA00">Experiment - note</span>**
 
-No further details available.
+The details are a table with one row per unique validation.
+ The column `Module` contains the name of the validation,
+ The column `error` contains the actual error of the validation.
+ The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If the validation was `OK`.
+    FALSE: If the validation was an `error`, `warning` or `note`.
+    NA   : If at least one v alidation resulted in `NA
+ 
+ One or more FALSE or missing values values will result in an ERROR.
 
 
 
-|x  |
-|:--|
-|NA |
+|Module          |error |isOK  |
+|:---------------|:-----|:-----|
+|types           |OK    |TRUE  |
+|suggestedValues |note  |FALSE |
 
 -  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
 The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
@@ -62,13 +72,25 @@ The details are a table of the same dimension as the input (green) area of the m
 
 ## **<span style="color:#55AA00">Species - note</span>**
 
-No further details available.
+The details are a table with one row per unique validation.
+ The column `Module` contains the name of the validation,
+ The column `error` contains the actual error of the validation.
+ The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If the validation was `OK`.
+    FALSE: If the validation was an `error`, `warning` or `note`.
+    NA   : If at least one v alidation resulted in `NA
+ 
+ One or more FALSE or missing values values will result in an ERROR.
 
 
 
-|x  |
-|:--|
-|NA |
+|Module          |error |isOK  |
+|:---------------|:-----|:-----|
+|types           |OK    |TRUE  |
+|suggestedValues |note  |FALSE |
+|speciesIDUnique |OK    |TRUE  |
+|speciesNames    |OK    |TRUE  |
 
 -  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
 The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
@@ -134,13 +156,24 @@ The details are a table as returned from the funcrtion `taxize::gnr_resolve()`. 
 
 ## **<span style="color:#AA5500">Treatment - warning</span>**
 
-No further details available.
+The details are a table with one row per unique validation.
+ The column `Module` contains the name of the validation,
+ The column `error` contains the actual error of the validation.
+ The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If the validation was `OK`.
+    FALSE: If the validation was an `error`, `warning` or `note`.
+    NA   : If at least one v alidation resulted in `NA
+ 
+ One or more FALSE or missing values values will result in an ERROR.
 
 
 
-|x  |
-|:--|
-|NA |
+|Module                  |error   |isOK  |
+|:-----------------------|:-------|:-----|
+|types                   |OK      |TRUE  |
+|suggestedValues         |note    |FALSE |
+|parameterInMappinColumn |warning |FALSE |
 
 -  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
 The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
@@ -198,13 +231,27 @@ The details are a table with one row per unique `treatmentID`. The following val
 
 ## **<span style="color:#AA5500">Measurement - warning</span>**
 
-No further details available.
+The details are a table with one row per unique validation.
+ The column `Module` contains the name of the validation,
+ The column `error` contains the actual error of the validation.
+ The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If the validation was `OK`.
+    FALSE: If the validation was an `error`, `warning` or `note`.
+    NA   : If at least one v alidation resulted in `NA
+ 
+ One or more FALSE or missing values values will result in an ERROR.
 
 
 
-|x  |
-|:--|
-|NA |
+|Module                             |error   |isOK  |
+|:----------------------------------|:-------|:-----|
+|types                              |OK      |TRUE  |
+|suggestedValues                    |note    |FALSE |
+|measurementIDUnique                |OK      |TRUE  |
+|measuredFrom                       |OK      |TRUE  |
+|variableInMappinColumn             |warning |FALSE |
+|dataExtractionIDInDataExtractionID |OK      |TRUE  |
 
 -  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
 The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
@@ -310,13 +357,24 @@ The details are a table with one row per unique `result$details The following va
 
 ## **<span style="color:#00FF00">DataExtraction - OK</span>**
 
-No further details available.
+The details are a table with one row per unique validation.
+ The column `Module` contains the name of the validation,
+ The column `error` contains the actual error of the validation.
+ The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If the validation was `OK`.
+    FALSE: If the validation was an `error`, `warning` or `note`.
+    NA   : If at least one v alidation resulted in `NA
+ 
+ One or more FALSE or missing values values will result in an ERROR.
 
 
 
-|x  |
-|:--|
-|NA |
+|Module                   |error |isOK |
+|:------------------------|:-----|:----|
+|types                    |OK    |TRUE |
+|suggestedValues          |OK    |TRUE |
+|nameInDataExtractionName |OK    |TRUE |
 
 -  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
 The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
@@ -361,15 +419,30 @@ The details are a table with one row per unique `variable` The following values 
 |Mol_Analy_pipeline1 |TRUE |
 
 
-## **<span style="color:black">DataFileMetaData - NA</span>**
+## **<span style="color:#FF0000">DataFileMetaData - error</span>**
 
-No further details available.
+The details are a table with one row per unique validation.
+ The column `Module` contains the name of the validation,
+ The column `error` contains the actual error of the validation.
+ The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If the validation was `OK`.
+    FALSE: If the validation was an `error`, `warning` or `note`.
+    NA   : If at least one v alidation resulted in `NA
+ 
+ One or more FALSE or missing values values will result in an ERROR.
 
 
 
-|x  |
-|:--|
-|NA |
+|Module                         |error |isOK  |
+|:------------------------------|:-----|:-----|
+|types                          |OK    |TRUE  |
+|allowedValues                  |OK    |TRUE  |
+|dataFilesExist                 |error |FALSE |
+|datetimeFormatSpecified        |OK    |TRUE  |
+|mappingColumnInNameOrParameter |error |FALSE |
+|columnNameInDataFileColumn     |error |FALSE |
+|dataFileColumnInColumnNamen    |OK    |TRUE  |
 
 -  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
 The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
@@ -469,7 +542,7 @@ The details are a table with one row per 'datetime' format row The following val
 |smell.csv                     |Date       |datetime |ymdhms      |TRUE |
 |abundances.csv                |Date_time  |datetime |ymdhms      |TRUE |
 
--  **<span style="color:black">correct values in `mappingColumn`` in dependence on columnData - NA</span>**   
+-  **<span style="color:#FF0000">correct values in `mappingColumn`` in dependence on columnData - error</span>**   
 The details are a table with one row per `mappingColumn` value format row The following values are possible for the column `isTRUE`:
  
     TRUE : If `mappingColumn` is found in apropriate table or NA
@@ -554,15 +627,4 @@ The details are a list of tables, one per `dataFileName`,  indicating if the col
 |dataFile       |columnNameInDataFileName |IsOK |
 |:--------------|:------------------------|:----|
 |abundances.csv |NA                       |TRUE |
-
-
-## **<span style="color:black">Data Files - NA</span>**
-
-No further details available.
-
-
-
-|x  |
-|:--|
-|NA |
 

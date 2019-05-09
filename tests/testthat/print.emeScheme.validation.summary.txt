@@ -1,5 +1,5 @@
 
-# **<span style="color:black">Overall MetaData - NA</span>**
+# **<span style="color:#FF0000">Overall MetaData - error</span>**
 
 The result of the overall validation of the data.
 
@@ -110,7 +110,7 @@ Test if the metadata concerning **DataExtraction** is correct.  This includes co
 
 
 
-## **<span style="color:black">DataFileMetaData - NA</span>**
+## **<span style="color:#FF0000">DataFileMetaData - error</span>**
 
 Test if the metadata concerning **DataExtraction** is correct.  This includes column names, required info, ... 
 
@@ -134,7 +134,7 @@ Test if the metadata concerning **DataExtraction** is correct.  This includes co
  
  DOES NOT YET CHECK FOR THE VALIDITY OF THE FORMAT!!!!!
 
--  **<span style="color:black">correct values in `mappingColumn`` in dependence on columnData - NA</span>**   
+-  **<span style="color:#FF0000">correct values in `mappingColumn`` in dependence on columnData - error</span>**   
     Test if `mappingColumn` is found in the appropriate table. The `error` can have the following values apart from `OK`:
  
     error   : If not all `mappingColumn` are found in the appropriate columns
@@ -154,9 +154,4 @@ Test if the metadata concerning **DataExtraction** is correct.  This includes co
     error   : If not all column names in `dataFileName` are found in `columnName`
  
 
-
-
-## **<span style="color:black">Data Files - NA</span>**
-
-Test if the data files as mentioned in `DataFileMetaData$dataFileName` is correct.  This includes column names, required info, ... 
 
