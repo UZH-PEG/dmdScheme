@@ -8,6 +8,7 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+# **<span style="color:red">TODO</span>**
 
 # Introduction
 
@@ -202,7 +203,7 @@ Here you can give details of any (and please all - this will be validated in the
 Here you give a row for each of the variables in each of the data files.
 
 * **dataFileName** Here enter the file name of the data file.
-* **columnName** Here enter the exact variable name used in the datasheet / database / tabular data. If the *columnData* *mappingColumn* combination refers to a condition for the whole data file, e.g. when only one species combination is used in the experiment from this data set, than enter *NA*.
+* **columnName** Here enter the name used in the datasheet / database / tabular data. This can be the exact name, a regular expression, or an expression with wildcards (`*` and `?`). If wildcards has used, they need to be enclosed in triple exclamation marks, i.e. `Species_!!!*!!!` would match `Species_1` as well as `Species_123`. If the *columnData* *mappingColumn* combination refers to a condition for the whole data file, e.g. when only one species combination is used in the experiment from this data set, than enter *NA*.
 * **columnData** Here enter whether the variable/column in the datafile contains a *Measurement*, a *Treatment*, an *ID* variable, *Species* or something else (*other*). 
 * **mappingColumn** If 
   * **columnData = Measurement**: enter the *measurementID* as entered in the *Measurement* sheet, 

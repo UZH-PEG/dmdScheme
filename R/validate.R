@@ -25,7 +25,7 @@
 #' @importFrom taxize gnr_resolve
 #' @importFrom magrittr %>% %<>%
 #' @importFrom dplyr filter select
-#' @importFrom utils browseURL
+#' @importFrom utils browseURL glob2rx
 #' @importFrom rmarkdown render
 #' @importFrom tibble tibble
 #' @importFrom utils read.csv
@@ -763,7 +763,25 @@ validateDataFileMetaDataColumnNameInDataFile <- function(x, path) {
   dfcol <- readColumnNamesFromDataFiles(x, path)
   result$details <- x$DataFileMetaData$columnName
   for (i in 1:nrow(x$DataFileMetaData)) {
-    result$details[i] <- x$DataFileMetaData$columnName[[i]] %in% dfcol[[x$DataFileMetaData$dataFileName[i]]]
+    # result$details[i] <- x$DataFileMetaData$columnName[[i]] %in% dfcol[[x$DataFileMetaData$dataFileName[i]]]
+    cn <- x$DataFileMetaData$columnName[[i]]
+    if (grepl("!!!", cn)) {
+      cn <- gsub("!!!", "", cn)
+      cn <- glob2rx(cn)
+    }
+    result$details[i] <- any(
+      grepl(
+        cn,
+        dfcol[[x$DataFileMetaData$dataFileName[i]]],
+      )
+    )
+    if (is.na(result$details[i])) {
+      result$details[i] <- FALSE
+    }
+    if (is.na(cn) ) {
+      result$details[i] <- TRUE
+    }
+
   }
   result$details <- data.frame(
       dataFileName = x$DataFileMetaData$dataFileName,
@@ -810,18 +828,47 @@ validateDataFileMetaDataDataFileColumnDefined <- function(x, path) {
       cn <- dplyr::filter(x$DataFileMetaData, .data$dataFileName == names(dfcol[i])) %>%
         dplyr::select(.data$columnName) %>%
         magrittr::extract2(1)
+      cn_exp <- as.vector(
+        sapply(
+          cn,
+          function (x) {
+            if (grepl("!!!", x)) {
+              x <- gsub("!!!", "", x)
+              x <- glob2rx(x)
+            }
+            return(x)
+          }
+        )
+      )
+
       x <- data.frame(
         dataFile = names(dfcol)[i],
-        columnNameInDataFileName = cn,
-        IsOK = cn %in% dfcol[[i]]
+        columnNameInDataFileName = dfcol[[i]],
+        IsOK = sapply(
+          dfcol[[i]],
+          function(x) {
+            # cn %in% dfcol[[i]]
+            grepl(
+              x,
+              cn_exp
+            ) %>% any()
+          }
+        ) %>% as.vector()
       )
+      if (is.na(x[["columnNameInDataFileName"]]) %>% any()) {
+        x[["IsOK"]][is.na(x[["columnNameInDataFileName"]])] <- TRUE
+      }
       return(x)
     }
   )
   names(result$details) <- names(dfcol)
   #
   result$error <- ifelse(
-    lapply(result$details, "[[", "IsOK") %>% unlist() %>% all(),
+    all(
+      unlist(
+        lapply(result$details, "[[", "IsOK")
+      )
+    ),
     0,
     3
   )

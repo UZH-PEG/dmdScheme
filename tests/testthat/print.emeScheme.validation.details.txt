@@ -533,7 +533,7 @@ The details are a table with one row per `columnName` value. The following value
 |abundances.csv                |Jar_type      |FALSE |
 |abundances.csv                |count_number  |FALSE |
 
--  **<span style="color:#FF0000">column names in dataFileName in `columnName` - error</span>**   
+-  **<span style="color:#00FF00">column names in dataFileName in `columnName` - OK</span>**   
 The details are a list of tables, one per `dataFileName`,  indicating if the column names in `dataFileName` are found in `columnName`.
  The following values are possible for the column `isTRUE`:
  
@@ -543,34 +543,17 @@ The details are a list of tables, one per `dataFileName`,  indicating if the col
  One or more FALSE will result in an ERROR.  
 
 
-|dataFile                      |columnNameInDataFileName |IsOK  |
-|:-----------------------------|:------------------------|:-----|
-|dissolved_oxygen_measures.csv |Jar_ID                   |FALSE |
-|dissolved_oxygen_measures.csv |DO                       |FALSE |
-|dissolved_oxygen_measures.csv |Unit_1                   |FALSE |
-|dissolved_oxygen_measures.csv |Mode                     |FALSE |
-|dissolved_oxygen_measures.csv |Location                 |FALSE |
-|dissolved_oxygen_measures.csv |Date_time                |FALSE |
-|dissolved_oxygen_measures.csv |Lid_treatment            |FALSE |
-|dissolved_oxygen_measures.csv |Jar_type                 |FALSE |
-|dissolved_oxygen_measures.csv |Jar_ID                   |FALSE |
+|dataFile                      |columnNameInDataFileName |IsOK |
+|:-----------------------------|:------------------------|:----|
+|dissolved_oxygen_measures.csv |NA                       |TRUE |
 
-|dataFile  |columnNameInDataFileName |IsOK  |
-|:---------|:------------------------|:-----|
-|smell.csv |NA                       |TRUE  |
-|smell.csv |smell                    |FALSE |
-|smell.csv |Date                     |FALSE |
-|smell.csv |Lid_treatment            |FALSE |
-|smell.csv |Jar_type                 |FALSE |
+|dataFile  |columnNameInDataFileName |IsOK |
+|:---------|:------------------------|:----|
+|smell.csv |NA                       |TRUE |
 
-|dataFile       |columnNameInDataFileName |IsOK  |
-|:--------------|:------------------------|:-----|
-|abundances.csv |NA                       |TRUE  |
-|abundances.csv |Jar_ID                   |FALSE |
-|abundances.csv |Date_time                |FALSE |
-|abundances.csv |Lid_treatment            |FALSE |
-|abundances.csv |Jar_type                 |FALSE |
-|abundances.csv |count_number             |FALSE |
+|dataFile       |columnNameInDataFileName |IsOK |
+|:--------------|:------------------------|:----|
+|abundances.csv |NA                       |TRUE |
 
 
 ## **<span style="color:black">Data Files - NA</span>**

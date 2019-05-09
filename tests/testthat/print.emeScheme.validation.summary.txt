@@ -148,7 +148,7 @@ Test if the metadata concerning **DataExtraction** is correct.  This includes co
  
 
 
--  **<span style="color:#FF0000">column names in dataFileName in `columnName` - error</span>**   
+-  **<span style="color:#00FF00">column names in dataFileName in `columnName` - OK</span>**   
     Test if column names in `dataFileName` are found in `columnName`. The `error` can have the following values apart from `OK`:
  
     error   : If not all column names in `dataFileName` are found in `columnName`

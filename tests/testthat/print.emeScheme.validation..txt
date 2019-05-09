@@ -870,41 +870,24 @@ attr(,"class")
 
 $dataFileColumnInColumnNamen
 $error
-[1] 3
+[1] 0
 
 $details
 $details$dissolved_oxygen_measures.csv
-                       dataFile columnNameInDataFileName  IsOK
-1 dissolved_oxygen_measures.csv                   Jar_ID FALSE
-2 dissolved_oxygen_measures.csv                       DO FALSE
-3 dissolved_oxygen_measures.csv                   Unit_1 FALSE
-4 dissolved_oxygen_measures.csv                     Mode FALSE
-5 dissolved_oxygen_measures.csv                 Location FALSE
-6 dissolved_oxygen_measures.csv                Date_time FALSE
-7 dissolved_oxygen_measures.csv            Lid_treatment FALSE
-8 dissolved_oxygen_measures.csv                 Jar_type FALSE
-9 dissolved_oxygen_measures.csv                   Jar_ID FALSE
+                       dataFile columnNameInDataFileName IsOK
+1 dissolved_oxygen_measures.csv                       NA TRUE
 
 $details$smell.csv
-   dataFile columnNameInDataFileName  IsOK
-1 smell.csv                     <NA>  TRUE
-2 smell.csv                    smell FALSE
-3 smell.csv                     Date FALSE
-4 smell.csv            Lid_treatment FALSE
-5 smell.csv                 Jar_type FALSE
+   dataFile columnNameInDataFileName IsOK
+1 smell.csv                       NA TRUE
 
 $details$abundances.csv
-        dataFile columnNameInDataFileName  IsOK
-1 abundances.csv                     <NA>  TRUE
-2 abundances.csv                   Jar_ID FALSE
-3 abundances.csv                Date_time FALSE
-4 abundances.csv            Lid_treatment FALSE
-5 abundances.csv                 Jar_type FALSE
-6 abundances.csv             count_number FALSE
+        dataFile columnNameInDataFileName IsOK
+1 abundances.csv                       NA TRUE
 
 
 $header
-[1] "**<span style=\"color:#FF0000\">column names in dataFileName in `columnName` - error</span>**"
+[1] "**<span style=\"color:#00FF00\">column names in dataFileName in `columnName` - OK</span>**"
 
 $description
 [1] "Test if column names in `dataFileName` are found in `columnName`. The `error` can have the following values apart from `OK`:\n \n    error   : If not all column names in `dataFileName` are found in `columnName`\n \n"
