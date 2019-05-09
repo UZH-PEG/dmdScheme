@@ -21,7 +21,7 @@ No further details available.
 |TRUE |
 
 
-## **<span style="color:#AA5500">Experiment - warning</span>**
+## **<span style="color:#55AA00">Experiment - note</span>**
 
 No further details available.
 
@@ -45,7 +45,7 @@ The details are a table of the same dimension as the input (green) area of the m
 |:----|:-----------|:-----|:--------|:---------|:---------|:---------------|:---------|:------------------|:-----------------|:------------|:--------------|:--------|:-------|
 |TRUE |TRUE        |TRUE  |TRUE     |TRUE      |TRUE      |TRUE            |TRUE      |TRUE               |TRUE              |TRUE         |TRUE           |TRUE     |NA      |
 
--  **<span style="color:#AA5500">values in suggestedValues - warning</span>**   
+-  **<span style="color:#55AA00">values in suggestedValues - note</span>**   
 The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
  
     FALSE: If the cell value is not contained in the suggestedValues list.
@@ -60,7 +60,7 @@ The details are a table of the same dimension as the input (green) area of the m
 |FALSE       |FALSE |FALSE    |FALSE     |TRUE              |FALSE        |
 
 
-## **<span style="color:#AA5500">Species - warning</span>**
+## **<span style="color:#55AA00">Species - note</span>**
 
 No further details available.
 
@@ -85,7 +85,7 @@ The details are a table of the same dimension as the input (green) area of the m
 |TRUE      |TRUE |TRUE   |TRUE   |TRUE    |TRUE            |TRUE    |
 |TRUE      |TRUE |TRUE   |TRUE   |NA      |TRUE            |NA      |
 
--  **<span style="color:#AA5500">values in suggestedValues - warning</span>**   
+-  **<span style="color:#55AA00">values in suggestedValues - note</span>**   
 The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
  
     FALSE: If the cell value is not contained in the suggestedValues list.
@@ -160,7 +160,7 @@ The details are a table of the same dimension as the input (green) area of the m
 |TRUE        |TRUE |TRUE           |NA      |
 |TRUE        |TRUE |TRUE           |NA      |
 
--  **<span style="color:#AA5500">values in suggestedValues - warning</span>**   
+-  **<span style="color:#55AA00">values in suggestedValues - note</span>**   
 The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
  
     FALSE: If the cell value is not contained in the suggestedValues list.
@@ -223,7 +223,7 @@ The details are a table of the same dimension as the input (green) area of the m
 |TRUE          |TRUE     |TRUE   |TRUE |TRUE   |TRUE                    |TRUE           |TRUE             |TRUE         |NA      |
 |TRUE          |TRUE     |TRUE   |TRUE |TRUE   |TRUE                    |TRUE           |TRUE             |TRUE         |NA      |
 
--  **<span style="color:#AA5500">values in suggestedValues - warning</span>**   
+-  **<span style="color:#55AA00">values in suggestedValues - note</span>**   
 The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
  
     FALSE: If the cell value is not contained in the suggestedValues list.

@@ -40,13 +40,13 @@ attr(,"class")
 
 $Experiment
 $error
-[1] 2
+[1] 1
 
 $details
 [1] NA
 
 $header
-[1] "**<span style=\"color:#AA5500\">Experiment - warning</span>**"
+[1] "**<span style=\"color:#55AA00\">Experiment - note</span>**"
 
 $description
 [1] "Test if the metadata concerning **Experiment** is correct.  This includes column names, required info, ... "
@@ -86,7 +86,7 @@ attr(,"class")
 
 $suggestedValues
 $error
-[1] 2
+[1] 1
 
 $details
 # A tibble: 1 x 6
@@ -95,7 +95,7 @@ $details
 1 FALSE       FALSE FALSE    FALSE     TRUE              FALSE       
 
 $header
-[1] "**<span style=\"color:#AA5500\">values in suggestedValues - warning</span>**"
+[1] "**<span style=\"color:#55AA00\">values in suggestedValues - note</span>**"
 
 $description
 [1] "Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided."
@@ -114,13 +114,13 @@ attr(,"class")
 
 $Species
 $error
-[1] 2
+[1] 1
 
 $details
 [1] NA
 
 $header
-[1] "**<span style=\"color:#AA5500\">Species - warning</span>**"
+[1] "**<span style=\"color:#55AA00\">Species - note</span>**"
 
 $description
 [1] "Test if the metadata concerning **Species** is correct.  This includes column names, required info, ... "
@@ -159,7 +159,7 @@ attr(,"class")
 
 $suggestedValues
 $error
-[1] 2
+[1] 1
 
 $details
 # A tibble: 2 x 2
@@ -169,7 +169,7 @@ $details
 2 TRUE    FALSE          
 
 $header
-[1] "**<span style=\"color:#AA5500\">values in suggestedValues - warning</span>**"
+[1] "**<span style=\"color:#55AA00\">values in suggestedValues - note</span>**"
 
 $description
 [1] "Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided."
@@ -286,7 +286,7 @@ attr(,"class")
 
 $suggestedValues
 $error
-[1] 2
+[1] 1
 
 $details
 # A tibble: 5 x 3
@@ -299,7 +299,7 @@ $details
 5 FALSE       FALSE FALSE         
 
 $header
-[1] "**<span style=\"color:#AA5500\">values in suggestedValues - warning</span>**"
+[1] "**<span style=\"color:#55AA00\">values in suggestedValues - note</span>**"
 
 $description
 [1] "Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided."
@@ -393,7 +393,7 @@ attr(,"class")
 
 $suggestedValues
 $error
-[1] 2
+[1] 1
 
 $details
 # A tibble: 4 x 4
@@ -405,7 +405,7 @@ $details
 4 TRUE     FALSE  FALSE FALSE 
 
 $header
-[1] "**<span style=\"color:#AA5500\">values in suggestedValues - warning</span>**"
+[1] "**<span style=\"color:#55AA00\">values in suggestedValues - note</span>**"
 
 $description
 [1] "Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided."

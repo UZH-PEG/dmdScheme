@@ -237,7 +237,11 @@ validateSuggestedValues <- function(sraw) {
     }
   }
   ##
-  result$error = ifelse( all(result$details == TRUE,na.rm = TRUE), 0, 2)
+  result$error = ifelse(
+    all(result$details == TRUE, na.rm = TRUE),
+    0,
+    1
+  )
   ##
   result$header <- valErr_TextErrCol(result)
   ##
