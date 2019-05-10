@@ -882,7 +882,7 @@ $header
 [1] "**<span style=\"color:#FF0000\">`columnName` in column names found in column names in `dataFileName` - error</span>**"
 
 $description
-[1] "Test if `columnName` is found in the `dataFileName`. The `error` can have the following values apart from `OK`:\n \n    error   : If not all `columnName` are found in column names in `dataFileName`\n \n"
+[1] "Test if `columnName` is found in the `dataFileName`. Only comma separated data files (extension `csv`) will be checked! The `error` can have the following values apart from `OK`:\n \n    error   : If not all `columnName` are found in column names in `dataFileName`\n \n"
 
 $descriptionDetails
 [1] "The details are a table with one row per `columnName` value. The following values are possible for the column `isTRUE`:\n \n    TRUE : If `columnName` is found in column names in `dataFileName` or NA\n    FALSE: If `columnName` is not found in column names in `dataFileName`\n \n One or more FALSE or missing values will result in an ERROR."
@@ -915,7 +915,7 @@ $header
 [1] "**<span style=\"color:#00FF00\">column names in dataFileName in `columnName` - OK</span>**"
 
 $description
-[1] "Test if column names in `dataFileName` are found in `columnName`. The `error` can have the following values apart from `OK`:\n \n    error   : If not all column names in `dataFileName` are found in `columnName`\n \n"
+[1] "Test if column names in `dataFileName` are found in `columnName`. Only comma separated data files (extension `csv`) will be checked! The `error` can have the following values apart from `OK`:\n \n    error   : If not all column names in `dataFileName` are found in `columnName`\n \n"
 
 $descriptionDetails
 [1] "The details are a list of tables, one per `dataFileName`,  indicating if the column names in `dataFileName` are found in `columnName`.\n The following values are possible for the column `isTRUE`:\n \n    TRUE : If column name in `dataFileName` is found in `columnName`\n    FALSE: If column name in `dataFileName` is not found in `columnName`\n \n One or more FALSE will result in an ERROR."

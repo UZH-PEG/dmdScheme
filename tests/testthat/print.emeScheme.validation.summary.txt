@@ -142,14 +142,14 @@ Test if the metadata concerning **DataExtraction** is correct.  This includes co
 
 
 -  **<span style="color:#FF0000">`columnName` in column names found in column names in `dataFileName` - error</span>**   
-    Test if `columnName` is found in the `dataFileName`. The `error` can have the following values apart from `OK`:
+    Test if `columnName` is found in the `dataFileName`. Only comma separated data files (extension `csv`) will be checked! The `error` can have the following values apart from `OK`:
  
     error   : If not all `columnName` are found in column names in `dataFileName`
  
 
 
 -  **<span style="color:#00FF00">column names in dataFileName in `columnName` - OK</span>**   
-    Test if column names in `dataFileName` are found in `columnName`. The `error` can have the following values apart from `OK`:
+    Test if column names in `dataFileName` are found in `columnName`. Only comma separated data files (extension `csv`) will be checked! The `error` can have the following values apart from `OK`:
  
     error   : If not all column names in `dataFileName` are found in `columnName`
  

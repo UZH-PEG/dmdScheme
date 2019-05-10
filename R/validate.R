@@ -740,7 +740,7 @@ readColumnNamesFromDataFiles <- function(x, path) {
     unique() %>%
     lapply(
       function(x) {
-        if (file.exists(x)) {
+        if (file.exists(x) & tools::file_ext(x) == "csv") {
           colnames(read.csv(x, nrows = 1))
         } else {
           NA
@@ -756,6 +756,7 @@ validateDataFileMetaDataColumnNameInDataFile <- function(x, path) {
   result$header <- "`columnName` in column names found in column names in `dataFileName`"
   result$description <- paste(
     "Test if `columnName` is found in the `dataFileName`.",
+    "Only comma separated data files (extension `csv`) will be checked!",
     "The `error` can have the following values apart from `OK`:\n",
     "\n",
     "   error   : If not all `columnName` are found in column names in `dataFileName`\n",
@@ -816,6 +817,7 @@ validateDataFileMetaDataDataFileColumnDefined <- function(x, path) {
   result$header <- "column names in dataFileName in `columnName`"
   result$description <- paste(
     "Test if column names in `dataFileName` are found in `columnName`.",
+    "Only comma separated data files (extension `csv`) will be checked!",
     "The `error` can have the following values apart from `OK`:\n",
     "\n",
     "   error   : If not all column names in `dataFileName` are found in `columnName`\n",
