@@ -187,7 +187,7 @@ validateTypes <- function(sraw, sconv) {
   t <- sraw == sconv
   na <- is.na(t)
   t[na] <- TRUE
-  result$details <- as.data.frame(sraw)
+  result$details <- as.data.frame(sraw, stringsAsFactors = FALSE)
   result$details[t] <- TRUE
   result$details[!t] <- paste( result$details[!t], "!=", as.data.frame(sconv)[!t])
   result$details[na] <- NA
@@ -315,7 +315,8 @@ valitdateSpeciesIDUnique <- function(x){
   ##
   result$details <- data.frame(
     speciesID = x$Species$speciesID,
-    isOK =  !duplicated(x$Species$speciesID)
+    isOK =  !duplicated(x$Species$speciesID),
+    stringsAsFactors = FALSE
   )
   ##
   result$error <-  ifelse(
@@ -393,7 +394,8 @@ validateTreatmentMapping <- function(x){
   ##
   result$details <- data.frame(
     treatmentID = unique(x$Treatment$treatmentID),
-    isOK =  unique(x$Treatment$treatmentID) %in% x$DataFileMetaData$mappingColumn
+    isOK =  unique(x$Treatment$treatmentID) %in% x$DataFileMetaData$mappingColumn,
+    stringsAsFactors = FALSE
   )
   ##
   result$error <- ifelse(
@@ -427,7 +429,8 @@ validateMeasurementIDsUnique <- function(x){
   ##
   result$details <- data.frame(
     measurementID = x$Measurement$measurementID,
-    isOK = !duplicated(x$Measurement$measurementID)
+    isOK = !duplicated(x$Measurement$measurementID),
+    stringsAsFactors = FALSE
   )
   ##
   result$error <-  ifelse(
@@ -468,7 +471,8 @@ validateMeasurementMeasuredFrom <- function(x) {
   ##
   result$details <- data.frame(
     measurementID = x$Measurement$measurementID,
-    isOK = x$Measurement$measuredFrom %in% c(x$Measurement$measurementID, "raw", "NA", NA)
+    isOK = x$Measurement$measuredFrom %in% c(x$Measurement$measurementID, "raw", "NA", NA),
+    stringsAsFactors = FALSE
   )
   ##
   result$error = ifelse(
@@ -510,7 +514,8 @@ validateMeasurementMapping <- function(x){
   ##
   result$details <- data.frame(
     measurementID = unique(x$Measurement$measurementID),
-    isOK = unique(x$Measurement$measurementID) %in% x$DataFileMetaData$mappingColumn
+    isOK = unique(x$Measurement$measurementID) %in% x$DataFileMetaData$mappingColumn,
+    stringsAsFactors = FALSE
   )
   ##
   result$error <- ifelse(
@@ -551,7 +556,8 @@ validateMeasurementDataExtraction <- function(x) {
   ##
   result$details <- data.frame(
     dataExtractionID = x$Measurement$dataExtractionID,
-    isOK = x$Measurement$dataExtractionID %in% c(x$DataExtraction$dataExtractionID, "none", "NA", NA)
+    isOK = x$Measurement$dataExtractionID %in% c(x$DataExtraction$dataExtractionID, "none", "NA", NA),
+    stringsAsFactors = FALSE
   )
   #
   result$error <- ifelse(
@@ -588,7 +594,8 @@ validateDataExtractionIDLinked <- function(x) {
   ##
   result$details <- data.frame(
     dataExtractionID = x$DataExtraction$dataExtractionID,
-    isOK = x$DataExtraction$dataExtractionID %in% x$Measurement$dataExtractionID
+    isOK = x$DataExtraction$dataExtractionID %in% x$Measurement$dataExtractionID,
+    stringsAsFactors = FALSE
   )
   ##
   result$error <- ifelse(
@@ -627,7 +634,8 @@ validateDataFileMetaDataDataFileExists <- function(x, path) {
   fns <- unique(x$DataFileMetaData$dataFileName)
   result$details <- data.frame(
     dataFileName = fns,
-    IsOK = fns %>% file.path(path, .) %>% file.exists()
+    IsOK = fns %>% file.path(path, .) %>% file.exists(),
+    stringsAsFactors = FALSE
   )
   ##
   result$error <- ifelse(
@@ -718,7 +726,8 @@ validateDataFileMetaDataMapping <- function(x) {
   result$details[i] <- x$DataFileMetaData$mappingColumn[i] %in% c("NA", NA)
   result$details <- data.frame(
     mappingColumn = x$DataFileMetaData$mappingColumn,
-    IsOK = as.logical(result$details)
+    IsOK = as.logical(result$details),
+    stringsAsFactors = FALSE
   )
   ##
   result$error <- ifelse(
@@ -798,7 +807,8 @@ validateDataFileMetaDataColumnNameInDataFile <- function(x, path) {
   result$details <- data.frame(
       dataFileName = x$DataFileMetaData$dataFileName,
       columnName = x$DataFileMetaData$columnName,
-      IsOK = as.logical(result$details)
+      IsOK = as.logical(result$details),
+      stringsAsFactors = FALSE
     )
   ##
   result$error <- ifelse(
@@ -861,12 +871,18 @@ validateDataFileMetaDataDataFileColumnDefined <- function(x, path) {
           dfcol[[i]],
           function(x) {
             # cn %in% dfcol[[i]]
-            grepl(
-              x,
-              cn_exp
+            sapply(
+              cn_exp,
+              function(n) {
+                grepl(
+                  n,
+                  x
+                )
+              }
             ) %>% any()
           }
-        ) %>% as.vector()
+        ) %>% as.vector(),
+        stringsAsFactors = FALSE
       )
       if (is.na(x[["columnNameInDataFileName"]]) %>% any()) {
         x[["IsOK"]][is.na(x[["columnNameInDataFileName"]])] <- TRUE
