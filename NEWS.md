@@ -1,3 +1,7 @@
+
+
+* Due to change in serialization format in R 3.6.0, only compatible with R >= 3.5.0 
+
 * suggestedValues validation has been, in case of a fail, be declassified as a Note (previous: Warning).
 * Include wildcards and regular expressions in columnName in DataFileMetaData. Wildcards (i.e. * and ?) have to be enclosed by three exclamation marks (`!!!`), e.g. `Species_!!!*!!!` which will match all `Species_1` as well as `Species_Not KnownSoFar`. Regular expressions do not need to be enclosed with any special characters.
 * fix error where a minimum of two rows were imported, even if the second one contains only NAs. Introduced an exclusion of all NA rows (commit db53c83).
