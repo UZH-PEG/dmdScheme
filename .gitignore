@@ -13,3 +13,4 @@ Meta
 library
 .Rprofile
 wildcard
+ONLY_LOCAL
