@@ -1,0 +1,31 @@
+ dmdScheme - dmdSchemeSet
+     Experiment - dmdSchemeData
+A       Names : name | temperature | light | humidity | incubator | container | microcosmVolume | mediaType | mediaConcentration | cultureConditions | comunityType | mediaAdditions | duration | comment
+A       Units : NA | NA | NA | NA | NA | NA | ml | NA | g/l | NA | NA | NA | days | NA
+A       Type  : character | character | character | character | character | character | numeric | character | numeric | character | character | character | integer | character
+
+     Species - dmdSchemeData
+A       Names : speciesID | name | strain | source | density | functionalGroup | comment
+A       Units : NA | NA | NA | NA | cells / ml | NA | NA
+A       Type  : character | character | character | character | character | character | character
+
+     Treatment - dmdSchemeData
+A       Names : treatmentID | unit | treatmentLevel | comment
+A       Units : NA | NA | NA | NA
+A       Type  : character | character | character | character
+
+     Measurement - dmdSchemeData
+A       Names : measurementID | variable | method | unit | object | noOfSamplesInTimeSeries | samplingVolume | dataExtractionID | measuredFrom | comment
+A       Units : NA | NA | NA | NA | NA | NA | ml | NA | NA | NA
+A       Type  : character | character | character | character | character | integer | numeric | character | character | character
+
+     DataExtraction - dmdSchemeData
+A       Names : dataExtractionID | method | parameter | value | comment
+A       Units : NA | NA | NA | NA | NA
+A       Type  : character | character | character | character | character
+
+     DataFileMetaData - dmdSchemeData
+A       Names : dataFileName | columnName | columnData | mappingColumn | type | description | comment
+A       Units : NA | NA | NA | NA | NA | NA | NA
+A       Type  : character | character | character | character | character | character | character
+

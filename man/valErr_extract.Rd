@@ -2,12 +2,12 @@
 % Please edit documentation in R/validationErrorFunctions.R
 \name{valErr_extract}
 \alias{valErr_extract}
-\title{Extract all fields named object of class \code{emeScheme_validation}}
+\title{Extract all fields named object of class \code{dmdScheme_validation}}
 \usage{
 valErr_extract(x, returnRootError = FALSE)
 }
 \arguments{
-\item{x}{object of class \code{emeScheme_validation}}
+\item{x}{object of class \code{dmdScheme_validation}}
 
 \item{returnRootError}{if \code{TRUE}, return all errors \bold{including} the error in the object x.}
 }
@@ -15,5 +15,5 @@ valErr_extract(x, returnRootError = FALSE)
 named numeric vector of the error levels of the different validations done
 }
 \description{
-Extract all fields named object of class \code{emeScheme_validation}
+Extract all fields named object of class \code{dmdScheme_validation}
 }

@@ -3,13 +3,13 @@
 \docType{data}
 \name{propSets}
 \alias{propSets}
-\title{The sheets in the excel workbook, i.e. the emeSchemeData property sets}
+\title{The sheets in the excel workbook, i.e. the dmdSchemeData property sets}
 \format{An object of class \code{character} of length 6.}
 \usage{
 propSets
 }
 \description{
-The sheets in the excel workbook, i.e. the emeSchemeData property sets
+The sheets in the excel workbook, i.e. the dmdSchemeData property sets
 }
 \examples{
 propSets

@@ -1,13 +1,13 @@
 # install the package
 # only run once
-# devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme", ref = "v0.8", build_opts = c("--no-resave-data"))
+# devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "v0.8", build_opts = c("--no-resave-data"))
 
 # load the library
-library(emeScheme)
+library(dmdScheme)
 
 # open the user manual
-vignette("user_manual", "emeScheme")
-#browseVignettes("emeScheme")
+vignette("user_manual", "dmdScheme")
+#browseVignettes("dmdScheme")
 
 # open a clean metadata spreadsheet in xl
 # only run once
@@ -22,4 +22,4 @@ vignette("user_manual", "emeScheme")
 #make_example("basic")
 
 # validate the basic example
-validate("emeScheme.xlsx", path="data/archiving_data", report = "html")
+validate("dmdScheme.xlsx", path="data/archiving_data", report = "html")

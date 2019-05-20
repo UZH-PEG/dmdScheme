@@ -7,10 +7,10 @@
 #'   read from.
 #' @param keepData if the data in \code{file} should be kept or replaced with
 #'   one row with NAs. \code{keepData = FALSE} is only importing the structure
-#'   of the \code{emeScheme} as in the variable \code{emeScheme}.
+#'   of the \code{dmdScheme} as in the variable \code{dmdScheme}.
 #' @param verbose give verbose progress info. Useful for debugging.
 #' @param raw if \code{TRUE} the excel file will be read as-is and not converted
-#'   to an \code{emeScheme} object.
+#'   to an \code{dmdScheme} object.
 #' @param validate Results are usually validated using \code{ validate(
 #'   errorIfFalse = TRUE )}. Consequently, an error is raised if the resulting
 #'   scheme can not be successfully validated against the one in the package.
@@ -19,8 +19,8 @@
 #'   can lead to invalid schemes!}.
 #'
 #' @return either if \code{raw = TRUE} a list of tibbles from the worksheets as
-#'   defined in \code{propSets} of Class \code{emeScheme_raw}, otgherwise an
-#'   object of class \code{emeSchemeSet}
+#'   defined in \code{propSets} of Class \code{dmdScheme_raw}, otgherwise an
+#'   object of class \code{dmdSchemeSet}
 #'
 #' @importFrom magrittr %>% equals not
 #' @importFrom readxl read_excel
@@ -29,7 +29,7 @@
 #' @export
 #'
 #' @examples
-#' read_from_excel(file = system.file("emeScheme.xlsx", package = "emeScheme"))
+#' read_from_excel(file = system.file("dmdScheme.xlsx", package = "dmdScheme"))
 #'
 read_from_excel <- function(
   file,
@@ -76,7 +76,7 @@ read_from_excel <- function(
         not()
       x <- x[notNARow, notNACol]
       class(x) <- append(
-        "emeSchemeData_raw",
+        "dmdSchemeData_raw",
         class(x)
       )
       return(x)
@@ -84,12 +84,12 @@ read_from_excel <- function(
   )
   names(result) <- propSets
 
-# Check emeSchemeVersion --------------------------------------------------
+# Check dmdSchemeVersion --------------------------------------------------
 
   v <- grep("DATA", names(result$Experiment), value = TRUE)
   v <- gsub("DATA_v", "", v)
-  if (emeSchemeVersions()$emeScheme != v) {
-    stop("Version conflict - can not proceed:\n", file, " : version ", v, "\n", "installed emeScheme version : ", emeSchemeVersions()$emeScheme)
+  if (dmdSchemeVersions()$dmdScheme != v) {
+    stop("Version conflict - can not proceed:\n", file, " : version ", v, "\n", "installed dmdScheme version : ", dmdSchemeVersions()$dmdScheme)
   }
 
 # Set Attributes ----------------------------------------------------------
@@ -105,16 +105,16 @@ read_from_excel <- function(
   if (v == "DATA") {
     v <- "unknown"
   }
-  attr(result, "emeSchemeVersion") <- v
+  attr(result, "dmdSchemeVersion") <- v
 
-# Set class to emeScheme_Raw ----------------------------------------------
+# Set class to dmdScheme_Raw ----------------------------------------------
 
   class(result) <- append(
-    "emeSchemeSet_raw",
+    "dmdSchemeSet_raw",
     class(result)
   )
 
-# Validate imported structure against emeScheme ---------------------------
+# Validate imported structure against dmdScheme ---------------------------
 
   if (validate) {
     validate(
@@ -124,10 +124,10 @@ read_from_excel <- function(
     )
   }
 
-# Convert to emeScheme if asked for ---------------------------------------
+# Convert to dmdScheme if asked for ---------------------------------------
 
   if (!raw) {
-    result <- new_emeSchemeSet(
+    result <- new_dmdSchemeSet(
       result,
       keepData = keepData,
       verbose = verbose

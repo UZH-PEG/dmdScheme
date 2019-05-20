@@ -1,28 +1,28 @@
-#' Convert xml to \code{emeScheme}
+#' Convert xml to \code{dmdScheme}
 #'
-#' The resulting \code{emeScheme} does only contain the non-missing values which
+#' The resulting \code{dmdScheme} does only contain the non-missing values which
 #' are specified in the xml file.
 #'
 #' @param xml either xml object or text represenatation from text object
 #' @param verbose default: \code{FALSE}; give messages to make finding errors in data easier
 #'
-#' @return \code{emeScheme} object
+#' @return \code{dmdScheme} object
 #'
 #' @importFrom XML xmlToList
 #' @export
 #'
 #' @examples
-#' x <- emeScheme_example
+#' x <- dmdScheme_example
 #'
 
-xmlToEmeScheme <- function(
+xmlTodmdScheme <- function(
   xml,
   verbose = FALSE
 ){
 
 # create result -----------------------------------------------------------
 
-  result <- emeScheme
+  result <- dmdScheme
 
 # Do the initial conversion -----------------------------------------------
 
@@ -30,9 +30,9 @@ xmlToEmeScheme <- function(
 
 # Check version -----------------------------------------------------------
 
-  if (xml$.attrs["emeSchemeVersion"] != emeSchemeVersions()$emeScheme)
+  if (xml$.attrs["dmdSchemeVersion"] != dmdSchemeVersions()$dmdScheme)
   {
-    stop("Version conflict - can not proceed:\n", "xml : version ", xml$.attrs["emeSchemeVersion"], "\n", "installed emeScheme version : ", emeSchemeVersions()$emeScheme)
+    stop("Version conflict - can not proceed:\n", "xml : version ", xml$.attrs["dmdSchemeVersion"], "\n", "installed dmdScheme version : ", dmdSchemeVersions()$dmdScheme)
   }
 
 
@@ -44,13 +44,13 @@ xmlToEmeScheme <- function(
     attr(xml, names(attrs)[a]) <- attrs[[a]]
   }
 
-# Check if all objects are also in emeScheme ------------------------------
+# Check if all objects are also in dmdScheme ------------------------------
 
-  if (!all(names(xml) %in% paste0(names(emeScheme), "List"))) {
+  if (!all(names(xml) %in% paste0(names(dmdScheme), "List"))) {
     stop(
-      "Nodes of xml file not in emeScheme.\n",
+      "Nodes of xml file not in dmdScheme.\n",
       "Nodes in xml file  : ", paste(names(xml), collapse = " "), "\n",
-      "Names in emeScheme : ", paste(names(emeScheme), collapse = " "), "\n"
+      "Names in dmdScheme : ", paste(names(dmdScheme), collapse = " "), "\n"
     )
   }
   names(xml) <- gsub("List", "", names(xml))
@@ -68,11 +68,11 @@ xmlToEmeScheme <- function(
         x <- x[!grepl(".attrs", names(x))]
       }
 
-      if (!all(names(x) %in% names(emeScheme[[sheet]]))) {
+      if (!all(names(x) %in% names(dmdScheme[[sheet]]))) {
         stop(
-          "Nodes of xml file not in emeScheme.\n",
+          "Nodes of xml file not in dmdScheme.\n",
           "Nodes in xml file  : ", paste(names(x), collapse = " "), "\n",
-          "Names in emeScheme : ", paste(names(emeScheme[[sheet]]), collapse = " "), "\n"
+          "Names in dmdScheme : ", paste(names(dmdScheme[[sheet]]), collapse = " "), "\n"
         )
       }
 

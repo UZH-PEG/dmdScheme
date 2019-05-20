@@ -8,7 +8,7 @@ valErr_TextErrCol(text, error, addError = TRUE)
 }
 \arguments{
 \item{text}{to be coloured. if not supplied, the coloured error text will be
-returned. If \code{text} is of class \code{emeScheme_validation}, the
+returned. If \code{text} is of class \code{dmdScheme_validation}, the
 function will be called with \code{text = text$header, error = text$error}}
 
 \item{error}{either level, text or colour of error (see \code{valErr_errorLevels})}

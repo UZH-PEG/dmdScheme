@@ -1,6 +1,6 @@
 ---
 title: "R Package Introduction"
-subtitle: "emeScheme Version v`r read.dcf(here::here('DESCRIPTION'), all = TRUE)[['Version']]`"
+subtitle: "dmdScheme Version v`r read.dcf(here::here('DESCRIPTION'), all = TRUE)[['Version']]`"
 author: "Rainer M Krug <Rainer@uzh.ch>"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-library(emeScheme)
+library(dmdScheme)
 # library(here)
 # library(magrittr)
 # library(dplyr)
@@ -29,32 +29,32 @@ v <- read.dcf(here::here('DESCRIPTION'), all = TRUE)[['Version']]
 
 # The R Package
 
-The Definition of the emeScheme is done in an R package, which gives all the tools to enter the meatada and to export it into xml.
+The Definition of the dmdScheme is done in an R package, which gives all the tools to enter the meatada and to export it into xml.
 
 ## Installation
 
 The package is not yet on CRAN. Therefore it needs to be installed from github. This will install the last verion on github. 
 
-For a list of releases see [here](https://github.com/Exp-Micro-Ecol-Hub/emeScheme/releases)
+For a list of releases see [here](https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/releases)
 
 ```{r echo=TRUE, eval = FALSE}
 ## install the devtools package if not installed yet
 # install.packages("devtools")
 
-## install the last version of emeScheme from github
-devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme", build_opts = c("--no-resave-data"))
+## install the last version of dmdScheme from github
+devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", build_opts = c("--no-resave-data"))
 
-## install a specific release, e.g. v0.8, of emeScheme from github
-devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme", ref = "v0.8", build_opts = c("--no-resave-data"))
+## install a specific release, e.g. v0.8, of dmdScheme from github
+devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "v0.8", build_opts = c("--no-resave-data"))
 ```
 
 
 ## Entering new Metadata
 
-To enter new data to the emeScheme, you have to
+To enter new data to the dmdScheme, you have to
 
 ```{r echo=TRUE, eval = FALSE}
-library("emeScheme")
+library("dmdScheme")
 enter_new_metadata()
 ```
 
@@ -84,16 +84,16 @@ For convenience, we use the exapmle data included in the package by using
 
 ```{r}
 x <- read_from_excel(
-      file = system.file("emeScheme.xlsx", package = "emeScheme"),
+      file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
       keepData = TRUE,
       verbose = TRUE,
       raw = FALSE 
 )
 ```
 
-## Print emeScheme Data
+## Print dmdScheme Data
 
-emeScheme Data can be printed by using the `print()` function. The function has three arguments which control the printout:
+dmdScheme Data can be printed by using the `print()` function. The function has three arguments which control the printout:
 
 * `printAttr`: if `TRUE` (default) print the **basic** attributes prefixed with `A   `
 * `printExAttr`: if `TRUE` print the **all** attributes prefixed with `X   `
@@ -139,13 +139,13 @@ print(
 You can export the data to an an xml file:
 
 ```{r example_export_xml, echo=TRUE, eval = FALSE}
-emeSchemeToXml( x, tag = "ExampleData" )
+dmdSchemeToXml( x, tag = "ExampleData" )
 ```
 
 When you specify the argument `file`, the xml will be saved:
 
 ```{r example_export_xml_file, echo=TRUE, eval = FALSE}
-emeSchemeToXml( x, tag = "ExampleData", file = "ExampleData.xml" )
+dmdSchemeToXml( x, tag = "ExampleData", file = "ExampleData.xml" )
 ```
 
 
@@ -154,16 +154,16 @@ emeSchemeToXml( x, tag = "ExampleData", file = "ExampleData.xml" )
 <!-- **<span style="color:red">TODO This needs some more work see issue #5 </span>**  -->
 
 <!-- ```{r example_import_xml, eval = FALSE} -->
-<!-- addDataToEmeScheme() %>% -->
-<!--   emeSchemeToXml( tag = "Example Data" ) %>% -->
-<!--   xmlToEmeScheme() %>% -->
+<!-- addDataTodmdScheme() %>% -->
+<!--   dmdSchemeToXml( tag = "Example Data" ) %>% -->
+<!--   xmlTodmdScheme() %>% -->
 <!--   str() -->
 <!-- ``` -->
 
 ## Validation
-### `emeSchemeSet_raw` against `emeScheme`
+### `dmdSchemeSet_raw` against `dmdScheme`
 
-When running `read_from_excel()`, the dafault is to validate the raw data before conversion to an `emeScheme` object to guarantee a valid `emeScheme` is returned. If the validation fails, an error is raised.
+When running `read_from_excel()`, the dafault is to validate the raw data before conversion to an `dmdScheme` object to guarantee a valid `dmdScheme` is returned. If the validation fails, an error is raised.
 
 ### xml against xsd
 
@@ -171,6 +171,6 @@ Not incorporated yet but planned.
 
 ## General things
 
-The emeScheme data in R can be also saved, loaded, and edited using the standard R commands.
+The dmdScheme data in R can be also saved, loaded, and edited using the standard R commands.
 
 

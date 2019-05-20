@@ -2,7 +2,7 @@
 % Please edit documentation in R/validationErrorFunctions.R
 \name{valErr_isOK}
 \alias{valErr_isOK}
-\title{Creates \code{data.frame} from object of class \code{emeScheme_validation} for usage in \code{details} of validation}
+\title{Creates \code{data.frame} from object of class \code{dmdScheme_validation} for usage in \code{details} of validation}
 \usage{
 valErr_isOK(x, returnRootError = FALSE)
 }
@@ -15,5 +15,5 @@ valErr_isOK(x, returnRootError = FALSE)
 named numeric vector of the error levels of the different validations done
 }
 \description{
-Creates \code{data.frame} from object of class \code{emeScheme_validation} for usage in \code{details} of validation
+Creates \code{data.frame} from object of class \code{dmdScheme_validation} for usage in \code{details} of validation
 }

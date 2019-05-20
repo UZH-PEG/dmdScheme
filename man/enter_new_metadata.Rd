@@ -27,7 +27,7 @@ enter_new_metadata(file = NULL, open = TRUE, keepData = FALSE,
 invisibly the fully qualified path to the file which \bold{would} have been opened, if \code{open == TRUE}.
 }
 \description{
-Open \code{system.file("emeScheme.xlsx", package = "emeScheme")} in excel.
+Open \code{system.file("dmdScheme.xlsx", package = "dmdScheme")} in excel.
 New data can be entered and the file has to be saved at a different location
 as it is a read-only file.
 }

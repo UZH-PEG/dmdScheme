@@ -1,6 +1,6 @@
 #' Enter new metadata to fill a new scheme
 #'
-#' Open \code{system.file("emeScheme.xlsx", package = "emeScheme")} in excel.
+#' Open \code{system.file("dmdScheme.xlsx", package = "dmdScheme")} in excel.
 #' New data can be entered and the file has to be saved at a different location
 #' as it is a read-only file.
 #'
@@ -40,7 +40,7 @@ enter_new_metadata <- function(
         cat_ln("          ", fn)
         cat_ln()
         cat_ln("In this case, please file a bug report at")
-        cat_ln("          https://github.com/Exp-Micro-Ecol-Hub/emeScheme/issues")
+        cat_ln("          https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/issues")
         cat_ln("and provide")
         cat_ln("     - Operating System and version")
         cat_ln("     - Default browser")
@@ -70,19 +70,19 @@ enter_new_metadata <- function(
 
 # Temporary file name -----------------------------------------------------
 
-  fn <- tempfile(pattern = "emeScheme.", fileext = ".xlsx")
+  fn <- tempfile(pattern = "dmdScheme.", fileext = ".xlsx")
 
 # Format if asked for, otherwise copy to fn unchanged ---------------------
 
   if (format) {
-    format_emeScheme_xlsx(
-      fn_org = system.file("emeScheme.xlsx", package = "emeScheme"),
+    format_dmdScheme_xlsx(
+      fn_org = system.file("dmdScheme.xlsx", package = "dmdScheme"),
       fn_new = fn,
       keepData = keepData
     )
   } else {
     file.copy(
-      from = system.file("emeScheme.xlsx", package = "emeScheme"),
+      from = system.file("dmdScheme.xlsx", package = "dmdScheme"),
       to = fn
     )
   }

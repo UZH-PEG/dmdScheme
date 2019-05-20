@@ -13,12 +13,12 @@ read from.}
 
 \item{keepData}{if the data in \code{file} should be kept or replaced with
 one row with NAs. \code{keepData = FALSE} is only importing the structure
-of the \code{emeScheme} as in the variable \code{emeScheme}.}
+of the \code{dmdScheme} as in the variable \code{dmdScheme}.}
 
 \item{verbose}{give verbose progress info. Useful for debugging.}
 
 \item{raw}{if \code{TRUE} the excel file will be read as-is and not converted
-to an \code{emeScheme} object.}
+to an \code{dmdScheme} object.}
 
 \item{validate}{Results are usually validated using \code{ validate(
 errorIfFalse = TRUE )}. Consequently, an error is raised if the resulting
@@ -29,14 +29,14 @@ can lead to invalid schemes!}.}
 }
 \value{
 either if \code{raw = TRUE} a list of tibbles from the worksheets as
-  defined in \code{propSets} of Class \code{emeScheme_raw}, otgherwise an
-  object of class \code{emeSchemeSet}
+  defined in \code{propSets} of Class \code{dmdScheme_raw}, otgherwise an
+  object of class \code{dmdSchemeSet}
 }
 \description{
 Reads the data from an Excel file. TRhe structure of the Excel file has to be
 \bold{identical} to the one opened by \code{enter_new_metadata()}
 }
 \examples{
-read_from_excel(file = system.file("emeScheme.xlsx", package = "emeScheme"))
+read_from_excel(file = system.file("dmdScheme.xlsx", package = "dmdScheme"))
 
 }

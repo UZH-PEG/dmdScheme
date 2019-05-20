@@ -18,7 +18,7 @@ test_that(
   "read_from_excel() fails when file does not have right extension",
   {
     expect_error(
-      object = read_from_excel(system.file("Dummy_for_tests", package = "emeScheme")),
+      object = read_from_excel(system.file("Dummy_for_tests", package = "dmdScheme")),
       regexp = "If x is a file name, it has to have the extension 'xls' or 'xlsx'"
     )
   }
@@ -32,12 +32,12 @@ test_that(
   {
     expect_known_value(
       object = read_from_excel(
-        file = "emeScheme.xlsx",
+        file = "dmdScheme.xlsx",
         keepData = TRUE,
         raw = TRUE,
         verbose = FALSE
       ),
-      file = "emeScheme_data_raw.rda"
+      file = "dmdScheme_data_raw.rda"
     )
   }
 )
@@ -47,12 +47,12 @@ test_that(
   {
     expect_known_value(
       object = read_from_excel(
-        file = "emeScheme.xlsx",
+        file = "dmdScheme.xlsx",
         keepData = FALSE,
         raw = FALSE,
         verbose = FALSE
       ),
-      file = "emeScheme.rda"
+      file = "dmdScheme.rda"
     )
   }
 )
@@ -65,12 +65,12 @@ test_that(
 #   {
 #     expect_known_output(
 #       object = read_from_excel(
-#         file = system.file("emeScheme.xlsx", package = "emeScheme"),
+#         file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
 #         keepData = TRUE,
 #         raw = TRUE,
 #         verbose = TRUE
 #       ),
-#       file = "emeScheme_data_raw.output"
+#       file = "dmdScheme_data_raw.output"
 #     )
 #   }
 # )

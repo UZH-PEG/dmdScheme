@@ -34,11 +34,11 @@ result <- params$result
 
 ## only for debugging ##
 if (is.null(x)) {
-  if (!require("emeScheme")) {
+  if (!require("dmdScheme")) {
     devtools::load_all()
   }
-  x <- emeScheme::emeScheme_raw
-  result <- validate(x = emeScheme_raw, validateData = TRUE, report = "none", path = system.file("example_data", "basic", "data", "archiving_data", package = "emeScheme"))
+  x <- dmdScheme::dmdScheme_raw
+  result <- validate(x = dmdScheme_raw, validateData = TRUE, report = "none", path = system.file("example_data", "basic", "data", "archiving_data", package = "dmdScheme"))
 }
 ## ##
 ## Define colours for results of evaluation
@@ -46,7 +46,7 @@ if (is.null(x)) {
 ```
 
 * **Author**: `r params$author`
-* **emeScheme metadata name**: `r attr(x, "fileName")`
+* **dmdScheme metadata name**: `r attr(x, "fileName")`
 * **data package path**: `add this` 
 
 # Introduction
@@ -107,12 +107,12 @@ attributes(x)
 
 # Confirmation code
 
-The following code needs to be entered in the `emeSchemeToXml()` function to confirm that the validation has been done and read. **No export is possible without this code!**:
- **<span style="color:red">TODO implement in emeSchemeToXML()</span>**
+The following code needs to be entered in the `dmdSchemeToXml()` function to confirm that the validation has been done and read. **No export is possible without this code!**:
+ **<span style="color:red">TODO implement in dmdSchemeToXML()</span>**
 ```{r echo=FALSE, comment = ""}
 if (isTRUE(result$error < 2)) {
   suppressWarnings( 
-    new_emeSchemeSet(
+    new_dmdSchemeSet(
       x = x, 
       keepData = TRUE, 
       convertTypes = TRUE,  
@@ -127,7 +127,7 @@ if (isTRUE(result$error < 2)) {
   cat_ln("The following code will not be printed in the final version!!!!!")
   cat_ln()
   suppressWarnings( 
-    new_emeSchemeSet(
+    new_dmdSchemeSet(
       x = x, 
       keepData = TRUE, 
       convertTypes = TRUE,  

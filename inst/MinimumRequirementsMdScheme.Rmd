@@ -1,0 +1,51 @@
+---
+title: "Minimum Requirements for metadata schemes based on mdScheme"
+output: github_document
+---
+## One tab named `Experiment`
+* horizontal layout
+* only one value per property allowed
+
+## One tab named `DataFileMetaData`
+* one column named `dataFileName`
+
+
+## ID field
+If the first column in tab contains a field named `...ID` it will be used as grouping for xml export
+Applies to all tabs except `Experiment`
+
+## Done
+- [X] as.plantuml.mdSchemeData.R --> as.plantuml.dmdSchemeData.R
+- [X] as.plantuml.dmdSchemeSet.R --> as.plantuml.mdSchemeSet.R
+- [X] cat_ln.R
+- [ ] data.dmdScheme.R
+- [ ] data.dmdScheme_example.R
+- [ ] data.dmdScheme_raw.R
+- [ ] data.propSets.R
+- [ ] dmdSchemeToXml.R
+- [ ] dmdSchemeToXml.dmdSchemeData.R
+- [ ] dmdSchemeToXml.dmdSchemeData_DataExtraction.R
+- [ ] dmdSchemeToXml.dmdSchemeData_Measurement.R
+- [ ] dmdSchemeToXml.dmdSchemeData_Species.R
+- [ ] dmdSchemeToXml.dmdSchemeData_Treatment.R
+- [ ] dmdSchemeToXml.dmdSchemeSet.R
+- [ ] dmdSchemeVersions.R
+- [X] dmdScheme_extract.R --> mdScheme_extract.R
+- [ ] dmdScheme_split.R
+- [ ] dmdScheme_upgrade.R
+- [ ] enter_new_metadata.R
+- [ ] format_dmdScheme_xlsx.R
+- [ ] make_example.R
+- [X] new_dmdSchemeData.R
+- [X] new_dmdSchemeSet.R
+- [ ] pkg.dmdScheme.R
+- [ ] print.dmdSchemeData.R
+- [ ] print.dmdSchemeSet.R
+- [ ] print.dmdScheme_validation.R
+- [ ] read_from_excel.R
+- [ ] spreadsheet_upgrade.R
+- [ ] updateFromNewSheet.R
+- [ ] validate.R
+- [ ] validationErrorFunctions.R
+- [ ] xmlTodmdScheme.R
+- [ ] xml_upgrade.R

@@ -18,7 +18,7 @@
 make_example <- function(
   name
 ) {
-  example_dir <- system.file("example_data", package = "emeScheme")
+  example_dir <- system.file("example_data", package = "dmdScheme")
   examples <- list.dirs( example_dir, recursive = FALSE, full.names = FALSE)
   if (missing(name)) {
     cat_ln("Included examples are:")
@@ -30,7 +30,7 @@ make_example <- function(
 
     # Define example and to directory -----------------------------------------
 
-    example_dir <- system.file("example_data", name, package = "emeScheme")
+    example_dir <- system.file("example_data", name, package = "dmdScheme")
     to_dir <- file.path(".", name)
 
     # Copy Example into working directory -------------------------------------
@@ -61,7 +61,7 @@ make_example <- function(
     # Show user_manual --------------------------------------------------------
     switch(
       name,
-      basic = utils::RShowDoc("user_manual", package = "emeScheme"),
+      basic = utils::RShowDoc("user_manual", package = "dmdScheme"),
       cat_ln("No documentation specified to be opened!")
     )
   }

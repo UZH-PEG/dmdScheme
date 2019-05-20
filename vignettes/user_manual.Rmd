@@ -14,7 +14,7 @@ vignette: >
 
 Researchers are increasingly required to make the data they produce findable, accessible, interoperable, and reusable ([wikipedia FAIR entry](https://en.wikipedia.org/wiki/FAIR_data)). Providing metadata that describes our studies, experiments, treatments, measurements, data, and so on is a key part of this endeavour.
 
-The aim of the experimental microbial ecology metadata tool and the associated experimental microbial ecologal experiments metadata scheme (emeScheme) is to help you describe your study and its data, i.e. to produce useful metadata. You will do this by 
+The aim of the experimental microbial ecology metadata tool and the associated experimental microbial ecologal experiments metadata scheme (dmdScheme) is to help you describe your study and its data, i.e. to produce useful metadata. You will do this by 
 
 1. Preparing your datasets for archiving (see [Prepare Data for Archiving](#PrepareDataForArchiving)), 
 2. Filling in your metadata the spreadsheet supplied (see [Fill in Metadata](#FillInMetadata)), 
@@ -26,9 +26,9 @@ The aim of the experimental microbial ecology metadata tool and the associated e
 
 Imagine we would like to use the metadata to find experiments (and potentially return the relevant data from them) that involve *Colpidium striatum* grown at **20ºC** in **0.55g per litre protist pellet medium**. To do this we need to ensure that the **species name**, the **temperature**, and the **growth media information** are contained in the metadata. We also need to make sure that when temperature is described it is described in a **standard fashion**, and that the growth media description is standardised. So there must be some standardisation. But its clear that most experiments have some unique features, such that we can't standardise everything in advance. The metadata scheme we use here is intended to be a good balance of standardised and flexible.
 
-# What metadata is covered in the emeScheme, and what is not
+# What metadata is covered in the dmdScheme, and what is not
 
-The emeScheme metadata only covers that necessary/helpful to describe an "experimental microbial ecology" study (though as an aside we think/wonder if it might be useful for many other settings of ecological experiments). Other important/essential metadata is not included, and will not be included, **in the emeScheme** because it is in other schemes such as the *DataCite* scheme and/or the *Ecological Metadata Language/Scheme*. We may, however, add tools that help researchers enter this important/essential metadata also.  
+The dmdScheme metadata only covers that necessary/helpful to describe an "experimental microbial ecology" study (though as an aside we think/wonder if it might be useful for many other settings of ecological experiments). Other important/essential metadata is not included, and will not be included, **in the dmdScheme** because it is in other schemes such as the *DataCite* scheme and/or the *Ecological Metadata Language/Scheme*. We may, however, add tools that help researchers enter this important/essential metadata also.  
 
 
 # At what point of my study should I enter metadata
@@ -37,24 +37,24 @@ You will benefit from starting metadata entry when you design your study. You'll
 
 # Getting started
 
-You will enter the metadata in a supplied spreadsheet (Googlesheets or Excel), but then use R to do some tasks, like validation and transormation of metadata into more machine readable form. So the first thing to do is get and load the **emeScheme** R package:
+You will enter the metadata in a supplied spreadsheet (Googlesheets or Excel), but then use R to do some tasks, like validation and transormation of metadata into more machine readable form. So the first thing to do is get and load the **dmdScheme** R package:
 
 ```{r}
 ## install the devtools package if not installed yet
 ## install.packages("devtools")
-## install the version of emeScheme corresponding to this user manual from github including the vignettes, run:
+## install the version of dmdScheme corresponding to this user manual from github including the vignettes, run:
 
-# devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme", ref = "v0.8", build_opts = c("--no-resave-data"))
+# devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "v0.8", build_opts = c("--no-resave-data"))
 
-## to install the newest version emeScheme from github including the vignettes, run:
+## to install the newest version dmdScheme from github including the vignettes, run:
 
-# devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme", build_opts = c("--no-resave-data"))
+# devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", build_opts = c("--no-resave-data"))
 
 ## than load the package
-library(emeScheme)
+library(dmdScheme)
 ```
 
-To enter the metadata run this R command to get an Excel version of the emeScheme without metadata in it: 
+To enter the metadata run this R command to get an Excel version of the dmdScheme without metadata in it: 
 
 ```{r eval=FALSE}
 enter_new_metadata()
@@ -99,7 +99,7 @@ It will be very useful if during data preparation you standardise (parse) any da
 
 ## A worked example of preparation of data for archiving
 
-The package `emeScheme` includes examples of raw data, processing scripts, processed data for archiving and the associated metadata.
+The package `dmdScheme` includes examples of raw data, processing scripts, processed data for archiving and the associated metadata.
 
 The examples (so far only one) are:
 - `basic`: a basic simple example
@@ -125,7 +125,7 @@ The worked **basic** example shows appropriate preparation of data for archiving
 The `basic` folder contains:
 
 * An R-project file `expt1.Rproj`
-* A spreadsheet file `expt1_emeScheme.xlsx`
+* A spreadsheet file `expt1_dmdScheme.xlsx`
 * A folder named `data` with two subfolders:
   * A `raw_data` folder containing files and folders of files that contain the data as it was entered by the researcher, or produced by the measurement machine.
   * A `archiving_data` folder containing data files that have been prepared for archiving.
@@ -145,7 +145,7 @@ Super. Now we have nicely prepared data. We are ready to fill in the metadata.
 
 There's no more putting it off... lets try filling in the metadata. First, find and open your copy of the metadata spreadsheet you made.
 
-If you're working through the worked example (`basic`), open the `expt1_emeScheme.xlsx` file.
+If you're working through the worked example (`basic`), open the `expt1_dmdScheme.xlsx` file.
 
 * Green cells are where you enter information.
 * Pink cells are places where you should not try to type anything (they should be locked anyway).
@@ -244,7 +244,7 @@ As the metadata as it is entered in the spreadsheet contains metadata for *many*
 
 ```{r eval=FALSE}
 my_medata_spreadsheet <- read_from_excel("thenameofyourmetadataspreadsheet.xlsx")
-emeScheme_split( x = my_medata_spreadsheet, saveAsType = "xml", path = ".")
+dmdScheme_split( x = my_medata_spreadsheet, saveAsType = "xml", path = ".")
 ```
 
 This will split your metadata into metadata sets for each data file and save it in the current working directory.
@@ -252,7 +252,7 @@ This will split your metadata into metadata sets for each data file and save it 
 If you want to save the metadata for later usage or analysis in R, you should use
 
 ```{r eval=FALSE}
-emeScheme_split( x = my_medata_spreadsheet, saveAsType = c("xml", "rds"), path = ".")
+dmdScheme_split( x = my_medata_spreadsheet, saveAsType = c("xml", "rds"), path = ".")
 ```
 
 which will also save the metadata in `rds` files, so that it can be lossless read into R again by using the function `readRDS()'.

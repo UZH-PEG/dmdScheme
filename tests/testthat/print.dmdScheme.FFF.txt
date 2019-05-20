@@ -1,0 +1,7 @@
+ dmdScheme - dmdSchemeSet
+     Experiment - dmdSchemeData
+     Species - dmdSchemeData
+     Treatment - dmdSchemeData
+     Measurement - dmdSchemeData
+     DataExtraction - dmdSchemeData
+     DataFileMetaData - dmdSchemeData

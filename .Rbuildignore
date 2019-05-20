@@ -6,7 +6,7 @@
 ^appveyor\.yml\.org$
 ^Meta$
 ^doc$
-^emeScheme\.xml$
+^dmdScheme\.xml$
 ^\.covrignore$
 ^codecov\.yml$
 ^\.travis\.yml$
@@ -16,8 +16,8 @@
 ^docs$
 ^source$
 ^Makefile$
-^emeScheme.Rproj$
+^dmdScheme.Rproj$
 ^\.Rproj\.user$
 ^\.httr-oauth$
 ^ONLYLOCAL
-^emeScheme\.Rproj$
+^dmdScheme\.Rproj$

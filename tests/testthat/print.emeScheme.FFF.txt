@@ -1,7 +1,0 @@
- emeScheme - emeSchemeSet
-     Experiment - emeSchemeData
-     Species - emeSchemeData
-     Treatment - emeSchemeData
-     Measurement - emeSchemeData
-     DataExtraction - emeSchemeData
-     DataFileMetaData - emeSchemeData

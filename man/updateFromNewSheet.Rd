@@ -2,18 +2,23 @@
 % Please edit documentation in R/updateFromNewSheet.R
 \name{updateFromNewSheet}
 \alias{updateFromNewSheet}
-\title{Update data from emeScheme.xlsx --- ONLY FOR DEVLOPMENT NEEDED}
+\title{Update data from dmdScheme.xlsx --- ONLY FOR DEVLOPMENT NEEDED}
 \usage{
-updateFromNewSheet(force = FALSE)
+updateFromNewSheet(newDmdScheme = "dmdScheme", name = "dmdScheme",
+  force = FALSE)
 }
 \arguments{
-\item{force}{force update even if \code{here::here("inst", "emeScheme.xlsx")}
+\item{newDmdScheme}{xlsx spreadsheet containing the new \code{dmdScheme} definition}
+
+\item{name}{name of the new dmdScheme. Default: \code{dmdScheme}}
+
+\item{force}{force update even if \code{here::here("inst", "dmdScheme.xlsx")}
 has the same md5 suma s in the DESCRIPTION}
 }
 \value{
 invisibly NULL
 }
 \description{
-Update the data from the file \code{here::here("inst", "emeScheme.xlsx")}
+Update the data from the file \code{here::here("inst", "dmdScheme.xlsx")}
 and bump the version in the DESCRIPTION if it has changed.
 }

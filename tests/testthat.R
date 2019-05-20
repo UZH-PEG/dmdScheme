@@ -1,4 +1,4 @@
 library(testthat)
-library(emeScheme)
+library(dmdScheme)
 
-test_check("emeScheme")
+test_check("dmdScheme")

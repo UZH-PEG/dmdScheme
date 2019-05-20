@@ -51,7 +51,7 @@ valErr_info <- function(error) {
 #' Colour the \code{text} by using the error colour
 #'
 #' @param text to be coloured. if not supplied, the coloured error text will be
-#'   returned. If \code{text} is of class \code{emeScheme_validation}, the
+#'   returned. If \code{text} is of class \code{dmdScheme_validation}, the
 #'   function will be called with \code{text = text$header, error = text$error}
 #' @param error either level, text or colour of error (see \code{valErr_errorLevels})
 #' @param addError if the error text should be added in the front of the \code{text}.
@@ -61,7 +61,7 @@ valErr_info <- function(error) {
 #' @export
 #'
 valErr_TextErrCol <- function(text, error, addError = TRUE) {
-  if (inherits(text, "emeScheme_validation") ) {
+  if (inherits(text, "dmdScheme_validation") ) {
     result <- valErr_TextErrCol(text$header, text$error, addError)
   } else {
     if (missing(text)) {
@@ -86,17 +86,17 @@ valErr_TextErrCol <- function(text, error, addError = TRUE) {
 }
 
 
-#' Extract all fields named object of class \code{emeScheme_validation}
+#' Extract all fields named object of class \code{dmdScheme_validation}
 #'
-#' @param x object of class \code{emeScheme_validation}
+#' @param x object of class \code{dmdScheme_validation}
 #' @param returnRootError if \code{TRUE}, return all errors \bold{including} the error in the object x.
 #'
 #' @return named numeric vector of the error levels of the different validations done
 #' @export
 #'
 valErr_extract <- function(x, returnRootError = FALSE) {
-  if (!inherits(x, "emeScheme_validation")) {
-    stop(" x has to be an object of type 'emeScheme_validation'.")
+  if (!inherits(x, "dmdScheme_validation")) {
+    stop(" x has to be an object of type 'dmdScheme_validation'.")
   }
   err <- unlist(x)
   # select all whose name ends with "error", i.e. all fields which contain the error of the validations
@@ -110,7 +110,7 @@ valErr_extract <- function(x, returnRootError = FALSE) {
   return(err)
 }
 
-#' Creates \code{data.frame} from object of class \code{emeScheme_validation} for usage in \code{details} of validation
+#' Creates \code{data.frame} from object of class \code{dmdScheme_validation} for usage in \code{details} of validation
 #'
 #' @param x \code{data.frame} with the fields \code{Module}, \code{error} and \code{isOK}
 #' @param returnRootError if \code{TRUE}, return all errors \bold{including} the error in the object x.
@@ -119,8 +119,8 @@ valErr_extract <- function(x, returnRootError = FALSE) {
 #' @export
 #'
 valErr_isOK <- function(x, returnRootError = FALSE){
-  if (!inherits(x, "emeScheme_validation")) {
-    stop(" x has to be an object of type 'emeScheme_validation'.")
+  if (!inherits(x, "dmdScheme_validation")) {
+    stop(" x has to be an object of type 'dmdScheme_validation'.")
   }
 
   result <- valErr_extract(x, returnRootError)

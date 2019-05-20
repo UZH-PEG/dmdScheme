@@ -20,7 +20,7 @@ TMP1  = $(VIGRMD:.Rmd=.html)
 VIGHTML = ${subst $(VIGDIR),$(VIGHTMLDIR),$(TMP1)}
 VIGHTMLOUT = ${subst $(VIGDIR),$(OUTDIR),$(TMP1)}
 
-EXAMPLEXML = $(wildcard $(INSTDIR)/emeScheme_example.xml)
+EXAMPLEXML = $(wildcard $(INSTDIR)/dmdScheme_example.xml)
 
 RMD = $(wildcard $(SRCDIR)/*.Rmd)
 TMP2  = $(RMD:.Rmd=.html)
@@ -88,12 +88,12 @@ clean_web: clean_html clean_vignettes clean_readme
 ####
 
 update:
-	Rscript -e "devtools::load_all(here::here()); emeScheme:::updateFromNewSheet()"
+	Rscript -e "devtools::load_all(here::here()); dmdScheme:::updateFromNewSheet()"
 
 ####
 
 updateForce:
-	@Rscript -e "devtools::load_all(here::here()); emeScheme:::updateFromNewSheet(force = TRUE)"
+	@Rscript -e "devtools::load_all(here::here()); dmdScheme:::updateFromNewSheet(force = TRUE)"
 
 ####
 

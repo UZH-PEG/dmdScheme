@@ -1,6 +1,6 @@
 ---
 title: "Experimental Microbial Ecology Metadata Scheme"
-subtitle: "emeScheme version v`r read.dcf(here::here('DESCRIPTION'), all = TRUE)[['Version']]`"
+subtitle: "dmdScheme version v`r read.dcf(here::here('DESCRIPTION'), all = TRUE)[['Version']]`"
 author: "Rainer M. Krug"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
@@ -16,7 +16,7 @@ output:
     toc: true
     toc_float: true
 nocite: '@*'
-bibliography: emeScheme_papers.bib
+bibliography: dmdScheme_papers.bib
 link-citations: TRUE
 ---
 
@@ -45,30 +45,30 @@ v <- read.dcf(here::here('DESCRIPTION'), all = TRUE)[['Version']]
 [![DOI](https://zenodo.org/badge/156543918.svg)](https://zenodo.org/badge/latestdoi/156543918)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-[![Build Status](https://travis-ci.com/Exp-Micro-Ecol-Hub/emeScheme.svg?branch=dev)](https://travis-ci.com/Exp-Micro-Ecol-Hub/emeScheme)
-<!-- [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/Exp-Micro-Ecol-Hub/emeScheme?branch=dev&svg=true)](https://ci.appveyor.com/project/Exp-Micro-Ecol-Hub/emeScheme) -->
+[![Build Status](https://travis-ci.com/Exp-Micro-Ecol-Hub/dmdScheme.svg?branch=dev)](https://travis-ci.com/Exp-Micro-Ecol-Hub/dmdScheme)
+<!-- [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/Exp-Micro-Ecol-Hub/dmdScheme?branch=dev&svg=true)](https://ci.appveyor.com/project/Exp-Micro-Ecol-Hub/dmdScheme) -->
 
-[![Coverage status](https://codecov.io/gh/Exp-Micro-Ecol-Hub/emeScheme/branch/master/graph/badge.svg)](https://codecov.io/github/Exp-Micro-Ecol-Hub/emeScheme?branch=dev)
+[![Coverage status](https://codecov.io/gh/Exp-Micro-Ecol-Hub/dmdScheme/branch/master/graph/badge.svg)](https://codecov.io/github/Exp-Micro-Ecol-Hub/dmdScheme?branch=dev)
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-orange.png)](https://www.tidyverse.org/lifecycle/#mturing)
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 
-Github site [https://github.com/Exp-Micro-Ecol-Hub/emeScheme](https://github.com/Exp-Micro-Ecol-Hub/emeScheme)
+Github site [https://github.com/Exp-Micro-Ecol-Hub/dmdScheme](https://github.com/Exp-Micro-Ecol-Hub/dmdScheme)
 
-# User Manual of the emeScheme
+# User Manual of the dmdScheme
 See the vignette "User Manual" at <a href="user_manual.html" target="_blank">vignette 'User manual'</a>.
 
-# Desription and Definition of the emeScheme
-See the vignette "Description" at <a href="description_emescheme.html" target="_blank">vignette 'Description'</a>.
+# Desription and Definition of the dmdScheme
+See the vignette "Description" at <a href="description_dmdScheme.html" target="_blank">vignette 'Description'</a>.
 
 # The R Package
-The Definition of the emeScheme is done in an R package, which gives all the tools to enter the metadata and to export it into xml.
+The Definition of the dmdScheme is done in an R package, which gives all the tools to enter the metadata and to export it into xml.
 
 ## Installation
 
 The package is not yet on CRAN. Therefore it needs to be installed from github. This will install the last verion on github. 
 
-For a list of releases see [here](https://github.com/Exp-Micro-Ecol-Hub/emeScheme/releases)
+For a list of releases see [here](https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/releases)
 
 ```{r echo = FALSE, eval = TRUE, options}
 
@@ -78,14 +78,14 @@ For a list of releases see [here](https://github.com/Exp-Micro-Ecol-Hub/emeSchem
 ## install the devtools package if not installed yet
 # install.packages("devtools")
 
-## install the last version of emeScheme from github incl vignettes
-devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme", build_opts = c("--no-resave-data"))
+## install the last version of dmdScheme from github incl vignettes
+devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", build_opts = c("--no-resave-data"))
 
-## install a specific release of emeScheme from github
-devtools::install_github("Exp-Micro-Ecol-Hub/emeScheme", ref = "v0.8", build_opts = c("--no-resave-data"))
+## install a specific release of dmdScheme from github
+devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "v0.8", build_opts = c("--no-resave-data"))
 ```
 
-for a list of releases see this [link on github](https://github.com/Exp-Micro-Ecol-Hub/emeScheme/tags).
+for a list of releases see this [link on github](https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/tags).
 
 ## Introduction
 
@@ -93,7 +93,7 @@ See the vignette "Introduction" at <a href="r_package_introduction.html" target=
 
 # Other Resources
 ## Outdated Presentations
-* [The emeScheme - an Introduction](https://rkrug.github.io/emeScheme_Introduction/The_emeScheme.html) by Rainer M Krug. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2247069.svg)](https://doi.org/10.5281/zenodo.2247069)
+* [The dmdScheme - an Introduction](https://rkrug.github.io/dmdScheme_Introduction/The_dmdScheme.html) by Rainer M Krug. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2247069.svg)](https://doi.org/10.5281/zenodo.2247069)
 
 
 # Appendix

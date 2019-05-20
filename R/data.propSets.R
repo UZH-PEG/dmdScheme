@@ -1,4 +1,4 @@
-#' The sheets in the excel workbook, i.e. the emeSchemeData property sets
+#' The sheets in the excel workbook, i.e. the dmdSchemeData property sets
 #'
 #' @examples
 #' propSets

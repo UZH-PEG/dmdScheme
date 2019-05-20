@@ -1,6 +1,6 @@
 context("validate()")
 
-x <- emeScheme_raw
+x <- dmdScheme_raw
 
 # returns TRUE -------------------------------------------------------------
 
