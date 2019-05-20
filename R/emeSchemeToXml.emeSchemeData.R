@@ -28,30 +28,43 @@ emeSchemeToXml.emeSchemeData <- function(
 
   # x is of type emeSchemeData and therefore a tibble ------------------
 
-  xml <- XML::xmlNode(paste0(tag, "List"))
+  xml <- XML::xmlNode(name = paste0(tag, "List"))
 
   if (length(x) > 1) {
-    for (i in 1:nrow(x)) {
-      xmlFields <- lapply(
-        names(x),
-        function(nm){
-          XML::xmlNode(
-            name = nm,
-            ifelse(is.na(x[[nm]][i]), "", x[[nm]][i])
-          )
+    if (nrow(x) > 0) {
+      for (i in 1:nrow(x)) {
+        xmlFields <- lapply(
+          names(x)[-1],
+          function(nm){
+            XML::xmlNode(
+              nm,
+              ifelse(is.na(x[[nm]][i]), "", x[[nm]][i])
+            )
+          }
+        )
+        id <- grep("ID", names(x))
+        if (length(id) > 0) {
+          if (id[[1]] == 1) {
+            id <- names(x)[1]
+            idi <- x[[1]][i]
+            names(idi) <- id
+            xmlField <- XML::xmlNode(name = tag, attrs = idi)
+          }
+        } else {
+          xmlField <- XML::xmlNode(tag)
         }
-      )
-      xmlField <- XML::append.xmlNode(
-        to = XML::xmlNode(tag),
-        xmlFields
-      )
-      xml <- XML::append.xmlNode(
-        to = xml,
-        xmlField
-      )
+        xmlField <- XML::append.xmlNode(
+          to = xmlField,
+          xmlFields
+        )
+        xml <- XML::append.xmlNode(
+          to = xml,
+          xmlField
+        )
+      }
     }
-  }
-  else {
+
+  } else {
     xml <- XML::xmlNode(tag, x)
   }
 

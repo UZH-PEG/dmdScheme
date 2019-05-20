@@ -2,7 +2,6 @@
 <emeScheme emeSchemeVersion="0.9.5" propertyName="abundances.csv_emeScheme">
  <ExperimentList>
   <Experiment>
-   <name>ASR-expt1</name>
    <temperature>20</temperature>
    <light>semi-ambient</light>
    <humidity>ambient</humidity>
@@ -68,7 +67,6 @@
  </DataExtractionList>
  <DataFileMetaDataList>
   <DataFileMetaData>
-   <dataFileName>abundances.csv</dataFileName>
    <columnName></columnName>
    <columnData>Species</columnData>
    <mappingColumn>species_3</mappingColumn>
@@ -77,7 +75,6 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
-   <dataFileName>abundances.csv</dataFileName>
    <columnName>Jar_ID</columnName>
    <columnData>ID</columnData>
    <mappingColumn></mappingColumn>
@@ -86,7 +83,6 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
-   <dataFileName>abundances.csv</dataFileName>
    <columnName>Date_time</columnName>
    <columnData>other</columnData>
    <mappingColumn></mappingColumn>
@@ -95,7 +91,6 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
-   <dataFileName>abundances.csv</dataFileName>
    <columnName>Lid_treatment</columnName>
    <columnData>Treatment</columnData>
    <mappingColumn>Lid_treatment</mappingColumn>
@@ -104,7 +99,6 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
-   <dataFileName>abundances.csv</dataFileName>
    <columnName>Jar_type</columnName>
    <columnData>other</columnData>
    <mappingColumn></mappingColumn>
@@ -113,7 +107,6 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
-   <dataFileName>abundances.csv</dataFileName>
    <columnName>count_number</columnName>
    <columnData>Measurement</columnData>
    <mappingColumn>abundance</mappingColumn>

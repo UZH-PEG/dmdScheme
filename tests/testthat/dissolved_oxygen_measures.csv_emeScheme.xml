@@ -2,7 +2,6 @@
 <emeScheme emeSchemeVersion="0.9.5" propertyName="dissolved_oxygen_measures.csv_emeScheme">
  <ExperimentList>
   <Experiment>
-   <name>ASR-expt1</name>
    <temperature>20</temperature>
    <light>semi-ambient</light>
    <humidity>ambient</humidity>
@@ -18,24 +17,7 @@
    <comment></comment>
   </Experiment>
  </ExperimentList>
- <SpeciesList>
-  <Species speciesID="NA">
-   <name></name>
-   <strain></strain>
-   <source></source>
-   <density></density>
-   <functionalGroup></functionalGroup>
-   <comment></comment>
-  </Species>
-  <Species>
-   <name></name>
-   <strain></strain>
-   <source></source>
-   <density></density>
-   <functionalGroup></functionalGroup>
-   <comment></comment>
-  </Species>
- </SpeciesList>
+ <SpeciesList/>
  <TreatmentList>
   <Treatment treatmentID="Lid_treatment">
    <unit>None</unit>
@@ -61,23 +43,9 @@
    <comment></comment>
   </Measurement>
  </MeasurementList>
- <DataExtractionList>
-  <DataExtraction dataExtractionID="NA">
-   <method></method>
-   <parameter></parameter>
-   <value></value>
-   <comment></comment>
-  </DataExtraction>
-  <DataExtraction>
-   <method></method>
-   <parameter></parameter>
-   <value></value>
-   <comment></comment>
-  </DataExtraction>
- </DataExtractionList>
+ <DataExtractionList/>
  <DataFileMetaDataList>
   <DataFileMetaData>
-   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
    <columnName>Jar_ID</columnName>
    <columnData>ID</columnData>
    <mappingColumn></mappingColumn>
@@ -86,7 +54,6 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
-   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
    <columnName>DO</columnName>
    <columnData>Measurement</columnData>
    <mappingColumn>oxygen concentration</mappingColumn>
@@ -95,7 +62,6 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
-   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
    <columnName>Unit_1</columnName>
    <columnData>other</columnData>
    <mappingColumn></mappingColumn>
@@ -104,7 +70,6 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
-   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
    <columnName>Mode</columnName>
    <columnData>other</columnData>
    <mappingColumn></mappingColumn>
@@ -113,7 +78,6 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
-   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
    <columnName>Location</columnName>
    <columnData>other</columnData>
    <mappingColumn></mappingColumn>
@@ -122,7 +86,6 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
-   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
    <columnName>Date_time</columnName>
    <columnData>other</columnData>
    <mappingColumn></mappingColumn>
@@ -131,7 +94,6 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
-   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
    <columnName>Lid_treatment</columnName>
    <columnData>Treatment</columnData>
    <mappingColumn>Lid_treatment</mappingColumn>
@@ -140,7 +102,6 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
-   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
    <columnName>Jar_type</columnName>
    <columnData>other</columnData>
    <mappingColumn></mappingColumn>
@@ -149,7 +110,6 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
-   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
    <columnName>Jar_ID</columnName>
    <columnData>ID</columnData>
    <mappingColumn></mappingColumn>

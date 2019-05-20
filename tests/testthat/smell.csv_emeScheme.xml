@@ -2,7 +2,6 @@
 <emeScheme emeSchemeVersion="0.9.5" propertyName="smell.csv_emeScheme">
  <ExperimentList>
   <Experiment>
-   <name>ASR-expt1</name>
    <temperature>20</temperature>
    <light>semi-ambient</light>
    <humidity>ambient</humidity>
@@ -66,23 +65,9 @@
    <comment></comment>
   </Measurement>
  </MeasurementList>
- <DataExtractionList>
-  <DataExtraction dataExtractionID="NA">
-   <method></method>
-   <parameter></parameter>
-   <value></value>
-   <comment></comment>
-  </DataExtraction>
-  <DataExtraction>
-   <method></method>
-   <parameter></parameter>
-   <value></value>
-   <comment></comment>
-  </DataExtraction>
- </DataExtractionList>
+ <DataExtractionList/>
  <DataFileMetaDataList>
   <DataFileMetaData>
-   <dataFileName>smell.csv</dataFileName>
    <columnName></columnName>
    <columnData>Species</columnData>
    <mappingColumn>species_1</mappingColumn>
@@ -91,7 +76,6 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
-   <dataFileName>smell.csv</dataFileName>
    <columnName>smell</columnName>
    <columnData>Measurement</columnData>
    <mappingColumn>smell</mappingColumn>
@@ -100,7 +84,6 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
-   <dataFileName>smell.csv</dataFileName>
    <columnName>Date</columnName>
    <columnData>other</columnData>
    <mappingColumn></mappingColumn>
@@ -109,7 +92,6 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
-   <dataFileName>smell.csv</dataFileName>
    <columnName>Lid_treatment</columnName>
    <columnData>Treatment</columnData>
    <mappingColumn>Lid_treatment</mappingColumn>
@@ -118,7 +100,6 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
-   <dataFileName>smell.csv</dataFileName>
    <columnName>Jar_type</columnName>
    <columnData>other</columnData>
    <mappingColumn></mappingColumn>
