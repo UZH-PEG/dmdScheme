@@ -86,7 +86,7 @@ valErr_TextErrCol <- function(text, error, addError = TRUE) {
 }
 
 
-#' Extract all fields named object of class \code{dmdScheme_validation}
+#' Extract all fields named error of class \code{dmdScheme_validation}
 #'
 #' @param x object of class \code{dmdScheme_validation}
 #' @param returnRootError if \code{TRUE}, return all errors \bold{including} the error in the object x.
@@ -126,7 +126,7 @@ valErr_isOK <- function(x, returnRootError = FALSE){
   result <- valErr_extract(x, returnRootError)
   result <- data.frame(
     Module = names(result) %>% gsub("\\.error", "", .) %>% gsub("\\.", " - ", .),
-    error = valErr_info(result)$text,
+    errorCode = valErr_info(result)$text,
     isOK = !as.logical(result),
     stringsAsFactors = FALSE
   )

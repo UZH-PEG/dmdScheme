@@ -7,8 +7,7 @@ dmdSchemeToXml.dmdSchemeSet <- function(
   x,
   tag,
   file,
-  output = "metadata",
-  confirmationCode
+  output = "metadata"
 ) {
   outputValues <- c("metadata", "complete")
   if (!(output %in% outputValues)) {
@@ -51,7 +50,7 @@ dmdSchemeToXml.dmdSchemeSet <- function(
 # Call dmdSchemeToXml() on list objects -----------------------------------
 
   for(i in 1:length(x)) {
-    xml <- XML::append.xmlNode(xml, dmdSchemeToXml(x[[i]], output = output, confirmationCode = digest::digest(object = x[[i]], algo = "sha1")))
+    xml <- XML::append.xmlNode(xml, dmdSchemeToXml(x[[i]], output = output))
   }
 
 # If file  not missing, i.e. from root node as file not used in it --------

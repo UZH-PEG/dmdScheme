@@ -40,15 +40,14 @@ attr(,"class")
 
 $Experiment
 $error
-[1] 1
+[1] 0
 
 $details
-           Module error  isOK
-1           types    OK  TRUE
-2 suggestedValues  note FALSE
+  Module errorCode isOK
+1  types        OK TRUE
 
 $header
-[1] "**<span style=\"color:#55AA00\">Experiment - note</span>**"
+[1] "**<span style=\"color:#00FF00\">Experiment - OK</span>**"
 
 $description
 [1] "Test if the metadata concerning **Experiment** is correct.  This includes column names, required info, ... "
@@ -86,50 +85,23 @@ $comment
 attr(,"class")
 [1] "dmdScheme_validation" "list"                
 
-$suggestedValues
-$error
-[1] 1
-
-$details
-# A tibble: 1 x 6
-  temperature light humidity incubator cultureConditions comunityType
-  <chr>       <chr> <chr>    <chr>     <chr>             <chr>       
-1 FALSE       FALSE FALSE    FALSE     TRUE              FALSE       
-
-$header
-[1] "**<span style=\"color:#55AA00\">values in suggestedValues - note</span>**"
-
-$description
-[1] "Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided."
-
-$descriptionDetails
-[1] "The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:\n \n    FALSE: If the cell value is not contained in the suggestedValues list.\n    TRUE : If the cell value is contained in the suggestedValues list.\n    NA   : empty cell\n \n One or more FALSE values will result in a WARNING."
-
-$comment
-[1] ""
-
 attr(,"class")
 [1] "dmdScheme_validation" "list"                
 
-attr(,"class")
-[1] "dmdScheme_validation" "list"                
-
-$Species
+$Genus
 $error
-[1] 1
+[1] 0
 
 $details
-           Module error  isOK
-1           types    OK  TRUE
-2 suggestedValues  note FALSE
-3 speciesIDUnique    OK  TRUE
-4    speciesNames    OK  TRUE
+   Module errorCode isOK
+1   types        OK TRUE
+2 IDField        OK TRUE
 
 $header
-[1] "**<span style=\"color:#55AA00\">Species - note</span>**"
+[1] "**<span style=\"color:#00FF00\">Genus - OK</span>**"
 
 $description
-[1] "Test if the metadata concerning **Species** is correct.  This includes column names, required info, ... "
+[1] "Test if the metadata concerning ** Genus ** is correct.  This includes column names, required info, ... "
 
 $descriptionDetails
 [1] "The details are a table with one row per unique validation.\n The column `Module` contains the name of the validation,\n The column `error` contains the actual error of the validation.\n The following values are possible for the column `isTRUE`:\n \n    TRUE : If the validation was `OK`.\n    FALSE: If the validation was an `error`, `warning` or `note`.\n    NA   : If at least one v alidation resulted in `NA\n \n One or more FALSE or missing values values will result in an ERROR."
@@ -138,145 +110,15 @@ $comment
 [1] ""
 
 $types
-$error
-[1] 0
-
-$details
-# A tibble: 2 x 7
-  speciesID name  strain source density functionalGroup comment
-  <chr>     <chr> <chr>  <chr>  <chr>   <chr>           <chr>  
-1 TRUE      TRUE  TRUE   TRUE   TRUE    TRUE            TRUE   
-2 TRUE      TRUE  TRUE   TRUE   <NA>    TRUE            <NA>   
-
-$header
-[1] "**<span style=\"color:#00FF00\">conversion of values into specified type lossless possible - OK</span>**"
-
-$description
-[1] "Test if the metadata entered follows the type for the column, i.e. integer, characterd, .... The validation is done by verifying if the column can be losslessly converted from character to the columnb type specified. the value NA is allowed in all column types, empty cells should be avoided."
-
-$descriptionDetails
-[1] "The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:\n \n    FALSE: If the cell contains an error, i.e. can not be losslessly converted.\n    TRUE : If the cell can be losslessly converted and is OK.\n    NA   : empty cell\n \n One or more FALSE values will result in an ERROR."
-
-$comment
-[1] ""
-
-attr(,"class")
-[1] "dmdScheme_validation" "list"                
-
-$suggestedValues
-$error
-[1] 1
-
-$details
-# A tibble: 2 x 2
-  density functionalGroup
-  <chr>   <chr>          
-1 FALSE   TRUE           
-2 TRUE    FALSE          
-
-$header
-[1] "**<span style=\"color:#55AA00\">values in suggestedValues - note</span>**"
-
-$description
-[1] "Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided."
-
-$descriptionDetails
-[1] "The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:\n \n    FALSE: If the cell value is not contained in the suggestedValues list.\n    TRUE : If the cell value is contained in the suggestedValues list.\n    NA   : empty cell\n \n One or more FALSE values will result in a WARNING."
-
-$comment
-[1] ""
-
-attr(,"class")
-[1] "dmdScheme_validation" "list"                
-
-$speciesIDUnique
-$error
-[1] 0
-
-$details
-  speciesID isOK
-1      tt_1 TRUE
-2   unknown TRUE
-
-$header
-[1] "**<span style=\"color:#00FF00\">Test if `speciesID` is unique - OK</span>**"
-
-$description
-[1] "Test if the speciesID is unique in this metadata set. The functions returns `TRUE` if all speciesID are unique."
-
-$descriptionDetails
-[1] "Returns a named vector, with the following possible values:\n \n    TRUE  : the value in `speciesID` is unique\n    FALSE : the value in `speciesID` is not unique\n \n One or more FALSE or a missing value will result in an ERROR."
-
-$comment
-[1] ""
-
-attr(,"class")
-[1] "dmdScheme_validation" "list"                
-
-$speciesNames
 $error
 [1] 0
 
 $details
 # A tibble: 2 x 5
-  user_supplied_name  submitted_name     matched_name     data_source_tit… score
-* <chr>               <chr>              <chr>            <chr>            <dbl>
-1 Tetrahymena thermo… Tetrahymena therm… Tetrahymena the… NCBI             0.988
-2 unknown             Unknown            Unknown          EOL              0.75 
-
-$header
-[1] "**<span style=\"color:#00FF00\">Test if the scientific name is correct - OK</span>**"
-
-$description
-[1] "Test if the scientific name in the column `name` is correct. This uses the function `taxize::gnr_resolve()` The functions returns `TRUE` if all species have a score of >= 0.7."
-
-$descriptionDetails
-[1] "The details are a table as returned from the funcrtion `taxize::gnr_resolve()`. The columns are:\n \n    user_supplied_name : the name as in column `name`\n    submitted_name     : the actual name passed on to be resolved\n    matched_name       : the matched named\n    data_source_title  : the name of the data source which returned the best match\n    score              : a score from the match\n \n **Not matched species are not listed here!**."
-
-$comment
-[1] ""
-
-attr(,"class")
-[1] "dmdScheme_validation" "list"                
-
-attr(,"class")
-[1] "dmdScheme_validation" "list"                
-
-$Treatment
-$error
-[1] 2
-
-$details
-                   Module   error  isOK
-1                   types      OK  TRUE
-2         suggestedValues    note FALSE
-3 parameterInMappinColumn warning FALSE
-
-$header
-[1] "**<span style=\"color:#AA5500\">Treatment - warning</span>**"
-
-$description
-[1] "Test if the metadata concerning **Treatment** is correct.  This includes column names, required info, ... "
-
-$descriptionDetails
-[1] "The details are a table with one row per unique validation.\n The column `Module` contains the name of the validation,\n The column `error` contains the actual error of the validation.\n The following values are possible for the column `isTRUE`:\n \n    TRUE : If the validation was `OK`.\n    FALSE: If the validation was an `error`, `warning` or `note`.\n    NA   : If at least one v alidation resulted in `NA\n \n One or more FALSE or missing values values will result in an ERROR."
-
-$comment
-[1] ""
-
-$types
-$error
-[1] 0
-
-$details
-# A tibble: 5 x 4
-  treatmentID unit  treatmentLevel comment
-  <chr>       <chr> <chr>          <chr>  
-1 TRUE        TRUE  TRUE           <NA>   
-2 TRUE        <NA>  TRUE           <NA>   
-3 TRUE        TRUE  TRUE           <NA>   
-4 TRUE        TRUE  TRUE           <NA>   
-5 TRUE        TRUE  TRUE           <NA>   
+  speciesID colour density functionalGroup comment
+  <chr>     <chr>  <chr>   <chr>           <chr>  
+1 TRUE      TRUE   TRUE    TRUE            TRUE   
+2 TRUE      TRUE   <NA>    TRUE            <NA>   
 
 $header
 [1] "**<span style=\"color:#00FF00\">conversion of values into specified type lossless possible - OK</span>**"
@@ -293,28 +135,22 @@ $comment
 attr(,"class")
 [1] "dmdScheme_validation" "list"                
 
-$suggestedValues
+$IDField
 $error
-[1] 1
+[1] 0
 
 $details
-# A tibble: 5 x 3
-  treatmentID unit  treatmentLevel
-  <chr>       <chr> <chr>         
-1 FALSE       FALSE FALSE         
-2 FALSE       TRUE  FALSE         
-3 FALSE       FALSE FALSE         
-4 FALSE       FALSE FALSE         
-5 FALSE       FALSE FALSE         
+                        hasIDField isOK
+1 tab has ID field in first column TRUE
 
 $header
-[1] "**<span style=\"color:#55AA00\">values in suggestedValues - note</span>**"
+[1] "**<span style=\"color:#00FF00\">ID Field presendt and in the first column - OK</span>**"
 
 $description
-[1] "Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided."
+[1] "Check if the tab's first column contains an ID field, named as `...ID`. This function does not check for uniqueness of this ID field!"
 
 $descriptionDetails
-[1] "The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:\n \n    FALSE: If the cell value is not contained in the suggestedValues list.\n    TRUE : If the cell value is contained in the suggestedValues list.\n    NA   : empty cell\n \n One or more FALSE values will result in a WARNING."
+[1] "Returns a boolean value, with the following possible values:\n \n    TRUE  : The tab's first column is an ID field\n    FALSE : The tab's first column is not an ID field\n \n FALSE will result in an ERROR."
 
 $comment
 [1] ""
@@ -322,25 +158,75 @@ $comment
 attr(,"class")
 [1] "dmdScheme_validation" "list"                
 
-$parameterInMappinColumn
+attr(,"class")
+[1] "dmdScheme_validation" "list"                
+
+$Treatments
 $error
-[1] 2
+[1] 0
 
 $details
-    treatmentID  isOK
-1 Lid_treatment  TRUE
-2     species_1  TRUE
-3     species_2 FALSE
-4     species_3  TRUE
+   Module errorCode isOK
+1   types        OK TRUE
+2 IDField        OK TRUE
 
 $header
-[1] "**<span style=\"color:#AA5500\">Test if treatmentID is in mappingColumn - warning</span>**"
+[1] "**<span style=\"color:#00FF00\">Treatments - OK</span>**"
 
 $description
-[1] "Test if the `treatmentID` is in the `DataFileMetaData$mappingColumn` column. The `error` can have the following values apart from `OK`:\n \n    error   : If `treatmentID` contains missing values.\n    warning : If not all `treatmentID` are in the `DataFileMetaData$mappingColumn`.\n \n"
+[1] "Test if the metadata concerning ** Treatments ** is correct.  This includes column names, required info, ... "
 
 $descriptionDetails
-[1] "The details are a table with one row per unique `treatmentID`. The following values are possible for the column `isTRUE`:\n \n    TRUE : If the value is in `DataFileMetaData$mappingColumn`.\n    FALSE: If the value is not in `DataFileMetaData$mappingColumn`.\n    NA   : empty cell\n \n One or more FALSE or missing values values will result in an ERROR."
+[1] "The details are a table with one row per unique validation.\n The column `Module` contains the name of the validation,\n The column `error` contains the actual error of the validation.\n The following values are possible for the column `isTRUE`:\n \n    TRUE : If the validation was `OK`.\n    FALSE: If the validation was an `error`, `warning` or `note`.\n    NA   : If at least one v alidation resulted in `NA\n \n One or more FALSE or missing values values will result in an ERROR."
+
+$comment
+[1] ""
+
+$types
+$error
+[1] 0
+
+$details
+# A tibble: 5 x 3
+  treatmentID treatmentLevelHeight comment
+  <chr>       <chr>                <chr>  
+1 TRUE        TRUE                 <NA>   
+2 TRUE        TRUE                 <NA>   
+3 TRUE        TRUE                 <NA>   
+4 TRUE        TRUE                 <NA>   
+5 TRUE        TRUE                 <NA>   
+
+$header
+[1] "**<span style=\"color:#00FF00\">conversion of values into specified type lossless possible - OK</span>**"
+
+$description
+[1] "Test if the metadata entered follows the type for the column, i.e. integer, characterd, .... The validation is done by verifying if the column can be losslessly converted from character to the columnb type specified. the value NA is allowed in all column types, empty cells should be avoided."
+
+$descriptionDetails
+[1] "The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:\n \n    FALSE: If the cell contains an error, i.e. can not be losslessly converted.\n    TRUE : If the cell can be losslessly converted and is OK.\n    NA   : empty cell\n \n One or more FALSE values will result in an ERROR."
+
+$comment
+[1] ""
+
+attr(,"class")
+[1] "dmdScheme_validation" "list"                
+
+$IDField
+$error
+[1] 0
+
+$details
+                        hasIDField isOK
+1 tab has ID field in first column TRUE
+
+$header
+[1] "**<span style=\"color:#00FF00\">ID Field presendt and in the first column - OK</span>**"
+
+$description
+[1] "Check if the tab's first column contains an ID field, named as `...ID`. This function does not check for uniqueness of this ID field!"
+
+$descriptionDetails
+[1] "Returns a boolean value, with the following possible values:\n \n    TRUE  : The tab's first column is an ID field\n    FALSE : The tab's first column is not an ID field\n \n FALSE will result in an ERROR."
 
 $comment
 [1] ""
@@ -353,22 +239,18 @@ attr(,"class")
 
 $Measurement
 $error
-[1] 2
+[1] 0
 
 $details
-                              Module   error  isOK
-1                              types      OK  TRUE
-2                    suggestedValues    note FALSE
-3                measurementIDUnique      OK  TRUE
-4                       measuredFrom      OK  TRUE
-5             variableInMappinColumn warning FALSE
-6 dataExtractionIDInDataExtractionID      OK  TRUE
+   Module errorCode isOK
+1   types        OK TRUE
+2 IDField        OK TRUE
 
 $header
-[1] "**<span style=\"color:#AA5500\">Measurement - warning</span>**"
+[1] "**<span style=\"color:#00FF00\">Measurement - OK</span>**"
 
 $description
-[1] "Test if the metadata concerning **Measurement** is correct.  This includes column names, required info, ... "
+[1] "Test if the metadata concerning ** Measurement ** is correct.  This includes column names, required info, ... "
 
 $descriptionDetails
 [1] "The details are a table with one row per unique validation.\n The column `Module` contains the name of the validation,\n The column `error` contains the actual error of the validation.\n The following values are possible for the column `isTRUE`:\n \n    TRUE : If the validation was `OK`.\n    FALSE: If the validation was an `error`, `warning` or `note`.\n    NA   : If at least one v alidation resulted in `NA\n \n One or more FALSE or missing values values will result in an ERROR."
@@ -406,131 +288,22 @@ $comment
 attr(,"class")
 [1] "dmdScheme_validation" "list"                
 
-$suggestedValues
-$error
-[1] 1
-
-$details
-# A tibble: 4 x 4
-  variable method unit  object
-  <chr>    <chr>  <chr> <chr> 
-1 FALSE    TRUE   TRUE  TRUE  
-2 TRUE     FALSE  TRUE  TRUE  
-3 FALSE    FALSE  FALSE TRUE  
-4 TRUE     FALSE  FALSE FALSE 
-
-$header
-[1] "**<span style=\"color:#55AA00\">values in suggestedValues - note</span>**"
-
-$description
-[1] "Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided."
-
-$descriptionDetails
-[1] "The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:\n \n    FALSE: If the cell value is not contained in the suggestedValues list.\n    TRUE : If the cell value is contained in the suggestedValues list.\n    NA   : empty cell\n \n One or more FALSE values will result in a WARNING."
-
-$comment
-[1] ""
-
-attr(,"class")
-[1] "dmdScheme_validation" "list"                
-
-$measurementIDUnique
+$IDField
 $error
 [1] 0
 
 $details
-         measurementID isOK
-1 oxygen concentration TRUE
-2            abundance TRUE
-3                smell TRUE
-4         sequenceData TRUE
+                        hasIDField isOK
+1 tab has ID field in first column TRUE
 
 $header
-[1] "**<span style=\"color:#00FF00\">names unique - OK</span>**"
+[1] "**<span style=\"color:#00FF00\">ID Field presendt and in the first column - OK</span>**"
 
 $description
-[1] "Check if the names specified in `measurementID` are unique."
+[1] "Check if the tab's first column contains an ID field, named as `...ID`. This function does not check for uniqueness of this ID field!"
 
 $descriptionDetails
-[1] "Returns a named vector, with the following possible values:\n \n    TRUE  : the value in `speciesID` is unique\n    FALSE : the value in `speciesID` is not unique\n \n One or more FALSE or a missing value will result in an ERROR."
-
-$comment
-[1] ""
-
-attr(,"class")
-[1] "dmdScheme_validation" "list"                
-
-$measuredFrom
-$error
-[1] 0
-
-$details
-         measurementID isOK
-1 oxygen concentration TRUE
-2            abundance TRUE
-3                smell TRUE
-4         sequenceData TRUE
-
-$header
-[1] "**<span style=\"color:#00FF00\">measuredFrom is 'raw', 'NA', NA or in name - OK</span>**"
-
-$description
-[1] "Test if the `measuredFrom` is in the `x$Measurement$measurementID` column, 'raw', 'NA', or `NA`. The `error` is 'error' if can have the following values apart from `OK`:\n \n    error   : If the value is not in in the `x$Measurement$measurementID` column, 'raw', 'NA', or `NA`\n \n"
-
-$descriptionDetails
-[1] "The details are a table with one row per unique `result$details The following values are possible for the column `isTRUE`:\n \n    TRUE : If the value is in `x$Measurement$measurementID` column, 'raw', 'NA', or `NA`.\n    FALSE: If the value is not in `x$Measurement$measurementID` column, 'raw', 'NA', or `NA`.\n    NA   : empty cell\n \n One or more FALSE or missing values values will result in an ERROR."
-
-$comment
-[1] ""
-
-attr(,"class")
-[1] "dmdScheme_validation" "list"                
-
-$variableInMappinColumn
-$error
-[1] 2
-
-$details
-         measurementID  isOK
-1 oxygen concentration  TRUE
-2            abundance  TRUE
-3                smell  TRUE
-4         sequenceData FALSE
-
-$header
-[1] "**<span style=\"color:#AA5500\">Test if `measurementID` is in mappingColumn - warning</span>**"
-
-$description
-[1] "Test if the `measurementID` is in the `DataFileMetaData$mappingColumn` column. The `error` can have the following values apart from `OK`:\n \n    error   : If `measurementID` contains missing values.\n    warning : If not all `measurementID` are in the `DataFileMetaData$mappingColumn`.\n \n"
-
-$descriptionDetails
-[1] "The details are a table with one row per unique `measurementID` The following values are possible for the column `isTRUE`:\n \n    TRUE : If the value is in `DataFileMetaData$mappingColumn`.\n    FALSE: If the value is not in `DataFileMetaData$mappingColumn.\n    NA   : empty cell\n \n One or more FALSE or missing values values will result in an ERROR."
-
-$comment
-[1] ""
-
-attr(,"class")
-[1] "dmdScheme_validation" "list"                
-
-$dataExtractionIDInDataExtractionID
-$error
-[1] 0
-
-$details
-     dataExtractionID isOK
-1                none TRUE
-2 Mol_Analy_pipeline1 TRUE
-3                none TRUE
-4                none TRUE
-
-$header
-[1] "**<span style=\"color:#00FF00\">dataExtractionID is 'none', 'NA', NA, or in DataExtraction$dataExtractionID - OK</span>**"
-
-$description
-[1] "Test if the `dataExtractionID` is in the `DataExtraction$dataExtractionID` column, 'none', 'NA', or `NA`. The `error` is 'error' if can have the following values apart from `OK`:\n \n    error   : If the value is not in in the `DataExtraction$dataExtractionID` column, 'none', 'NA', or `NA`\n \n"
-
-$descriptionDetails
-[1] "The details are a table with one row per unique `result$details The following values are possible for the column `isTRUE`:\n \n    TRUE : If the value is in `DataExtraction$dataExtractionID` column, 'none', 'NA', or `NA`\n    FALSE: If the value is not in `DataExtraction$dataExtractionID` column, 'none', 'NA', or `NA`\n    NA   : empty cell\n \n One or more FALSE will result in an ERROR."
+[1] "Returns a boolean value, with the following possible values:\n \n    TRUE  : The tab's first column is an ID field\n    FALSE : The tab's first column is not an ID field\n \n FALSE will result in an ERROR."
 
 $comment
 [1] ""
@@ -546,16 +319,15 @@ $error
 [1] 0
 
 $details
-                    Module error isOK
-1                    types    OK TRUE
-2          suggestedValues    OK TRUE
-3 nameInDataExtractionName    OK TRUE
+   Module errorCode isOK
+1   types        OK TRUE
+2 IDField        OK TRUE
 
 $header
 [1] "**<span style=\"color:#00FF00\">DataExtraction - OK</span>**"
 
 $description
-[1] "Test if the metadata concerning **DataExtraction** is correct.  This includes column names, required info, ... "
+[1] "Test if the metadata concerning ** DataExtraction ** is correct.  This includes column names, required info, ... "
 
 $descriptionDetails
 [1] "The details are a table with one row per unique validation.\n The column `Module` contains the name of the validation,\n The column `error` contains the actual error of the validation.\n The following values are possible for the column `isTRUE`:\n \n    TRUE : If the validation was `OK`.\n    FALSE: If the validation was an `error`, `warning` or `note`.\n    NA   : If at least one v alidation resulted in `NA\n \n One or more FALSE or missing values values will result in an ERROR."
@@ -588,47 +360,22 @@ $comment
 attr(,"class")
 [1] "dmdScheme_validation" "list"                
 
-$suggestedValues
+$IDField
 $error
 [1] 0
 
 $details
-# A tibble: 1 x 1
-  method
-  <chr> 
-1 TRUE  
+                        hasIDField isOK
+1 tab has ID field in first column TRUE
 
 $header
-[1] "**<span style=\"color:#00FF00\">values in suggestedValues - OK</span>**"
+[1] "**<span style=\"color:#00FF00\">ID Field presendt and in the first column - OK</span>**"
 
 $description
-[1] "Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided."
+[1] "Check if the tab's first column contains an ID field, named as `...ID`. This function does not check for uniqueness of this ID field!"
 
 $descriptionDetails
-[1] "The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:\n \n    FALSE: If the cell value is not contained in the suggestedValues list.\n    TRUE : If the cell value is contained in the suggestedValues list.\n    NA   : empty cell\n \n One or more FALSE values will result in a WARNING."
-
-$comment
-[1] ""
-
-attr(,"class")
-[1] "dmdScheme_validation" "list"                
-
-$nameInDataExtractionName
-$error
-[1] 0
-
-$details
-     dataExtractionID isOK
-1 Mol_Analy_pipeline1 TRUE
-
-$header
-[1] "**<span style=\"color:#00FF00\">name is in Measurement$dataExtractionID - OK</span>**"
-
-$description
-[1] "Test if the `dataExtractionID` is in the `Measurement$dataExtractionID` column. The `error` can have the following values apart from `OK`:\n \n    error   : If not all `dataExtractionID` are in `Measurement$dataExtractionID`\n \n"
-
-$descriptionDetails
-[1] "The details are a table with one row per unique `variable` The following values are possible for the column `isTRUE`:\n \n    TRUE : If the value is in `DataFileMetaData$mappingColumn`.\n    FALSE: If the value is not in `DataFileMetaData$mappingColumn.\n    NA   : empty cell\n \n One or more FALSE will result in an ERROR."
+[1] "Returns a boolean value, with the following possible values:\n \n    TRUE  : The tab's first column is an ID field\n    FALSE : The tab's first column is not an ID field\n \n FALSE will result in an ERROR."
 
 $comment
 [1] ""
@@ -644,14 +391,10 @@ $error
 [1] 3
 
 $details
-                          Module error  isOK
-1                          types    OK  TRUE
-2                  allowedValues    OK  TRUE
-3                 dataFilesExist error FALSE
-4        datetimeFormatSpecified    OK  TRUE
-5 mappingColumnInNameOrParameter error FALSE
-6     columnNameInDataFileColumn error FALSE
-7    dataFileColumnInColumnNamen    OK  TRUE
+          Module errorCode  isOK
+1          types        OK  TRUE
+2  allowedValues        OK  TRUE
+3 dataFilesExist     error FALSE
 
 $header
 [1] "**<span style=\"color:#FF0000\">DataFileMetaData - error</span>**"
@@ -771,154 +514,6 @@ $description
 
 $descriptionDetails
 [1] "The details are a table with one row per unique `variable` The following values are possible for the column `isTRUE`:\n \n    TRUE : If `dataFile` exist in the given `path`\n    FALSE: If `dataFile` does not exist in the given `path`\n    NA   : empty cell\n \n One or more FALSE or missing values will result in an ERROR."
-
-$comment
-[1] ""
-
-attr(,"class")
-[1] "dmdScheme_validation" "list"                
-
-$datetimeFormatSpecified
-$error
-[1] 0
-
-$details
- DataFileMetaData - dmdSchemeData
-A   Names : dataFileName | columnName | type | description | IsOK
-A   Units : NA | NA | NA | NA | NA | NA | NA
-A   Type  : character | character | character | character | character | character | character
-
-                       dataFileName columnName     type description IsOK
-D   1 dissolved_oxygen_measures.csv  Date_time datetime      ymdhms TRUE
-D   2                     smell.csv       Date datetime      ymdhms TRUE
-D   3                abundances.csv  Date_time datetime      ymdhms TRUE
-
-
-$header
-[1] "**<span style=\"color:#00FF00\">Test if date time format has been specified if required - OK</span>**"
-
-$description
-[1] "Test if date time format has been specified in the `description` column when `type` is equal to 'datetime'. The `error` can have the following values apart from `OK`:\n \n    error   : If not all `description` contain a date time format when `type` equals 'datetime'\n \n DOES NOT YET CHECK FOR THE VALIDITY OF THE FORMAT!!!!!"
-
-$descriptionDetails
-[1] "The details are a table with one row per 'datetime' format row The following values are possible for the column `isTRUE`:\n \n    TRUE : If `description` contains a value\n    FALSE: If `description` does not contain a value\n    NA   : empty cell\n \n One or more FALSE or missing values will result in an ERROR."
-
-$comment
-[1] ""
-
-attr(,"class")
-[1] "dmdScheme_validation" "list"                
-
-$mappingColumnInNameOrParameter
-$error
-[1] 3
-
-$details
-          mappingColumn IsOK
-1                  <NA> TRUE
-2  oxygen concentration TRUE
-3                  <NA> TRUE
-4                  <NA> TRUE
-5                  <NA> TRUE
-6                  <NA> TRUE
-7         Lid_treatment TRUE
-8                  <NA> TRUE
-9                  <NA> TRUE
-10            species_1   NA
-11                smell TRUE
-12                 <NA> TRUE
-13        Lid_treatment TRUE
-14                 <NA> TRUE
-15            species_3   NA
-16                 <NA> TRUE
-17                 <NA> TRUE
-18        Lid_treatment TRUE
-19                 <NA> TRUE
-20            abundance TRUE
-
-$header
-[1] "**<span style=\"color:#FF0000\">correct values in `mappingColumn`` in dependence on columnData - error</span>**"
-
-$description
-[1] "Test if `mappingColumn` is found in the appropriate table. The `error` can have the following values apart from `OK`:\n \n    error   : If not all `mappingColumn` are found in the appropriate columns\n \n"
-
-$descriptionDetails
-[1] "The details are a table with one row per `mappingColumn` value format row The following values are possible for the column `isTRUE`:\n \n    TRUE : If `mappingColumn` is found in apropriate table or NA\n    FALSE: If `mappingColumn` is not found in apropriate table\n \n One or more FALSE or missing values will result in an ERROR."
-
-$comment
-[1] ""
-
-attr(,"class")
-[1] "dmdScheme_validation" "list"                
-
-$columnNameInDataFileColumn
-$error
-[1] 3
-
-$details
-                    dataFileName    columnName  IsOK
-1  dissolved_oxygen_measures.csv        Jar_ID FALSE
-2  dissolved_oxygen_measures.csv            DO FALSE
-3  dissolved_oxygen_measures.csv        Unit_1 FALSE
-4  dissolved_oxygen_measures.csv          Mode FALSE
-5  dissolved_oxygen_measures.csv      Location FALSE
-6  dissolved_oxygen_measures.csv     Date_time FALSE
-7  dissolved_oxygen_measures.csv Lid_treatment FALSE
-8  dissolved_oxygen_measures.csv      Jar_type FALSE
-9  dissolved_oxygen_measures.csv        Jar_ID FALSE
-10                     smell.csv          <NA>  TRUE
-11                     smell.csv         smell FALSE
-12                     smell.csv          Date FALSE
-13                     smell.csv Lid_treatment FALSE
-14                     smell.csv      Jar_type FALSE
-15                abundances.csv          <NA>  TRUE
-16                abundances.csv        Jar_ID FALSE
-17                abundances.csv     Date_time FALSE
-18                abundances.csv Lid_treatment FALSE
-19                abundances.csv      Jar_type FALSE
-20                abundances.csv  count_number FALSE
-
-$header
-[1] "**<span style=\"color:#FF0000\">`columnName` in column names found in column names in `dataFileName` - error</span>**"
-
-$description
-[1] "Test if `columnName` is found in the `dataFileName`. Only comma separated data files (extension `csv`) will be checked! The `error` can have the following values apart from `OK`:\n \n    error   : If not all `columnName` are found in column names in `dataFileName`\n \n"
-
-$descriptionDetails
-[1] "The details are a table with one row per `columnName` value. The following values are possible for the column `isTRUE`:\n \n    TRUE : If `columnName` is found in column names in `dataFileName` or NA\n    FALSE: If `columnName` is not found in column names in `dataFileName`\n \n One or more FALSE or missing values will result in an ERROR."
-
-$comment
-[1] ""
-
-attr(,"class")
-[1] "dmdScheme_validation" "list"                
-
-$dataFileColumnInColumnNamen
-$error
-[1] 0
-
-$details
-$details$dissolved_oxygen_measures.csv
-                       dataFile columnNameInDataFileName IsOK
-1 dissolved_oxygen_measures.csv                       NA TRUE
-
-$details$smell.csv
-   dataFile columnNameInDataFileName IsOK
-1 smell.csv                       NA TRUE
-
-$details$abundances.csv
-        dataFile columnNameInDataFileName IsOK
-1 abundances.csv                       NA TRUE
-
-
-$header
-[1] "**<span style=\"color:#00FF00\">column names in dataFileName in `columnName` - OK</span>**"
-
-$description
-[1] "Test if column names in `dataFileName` are found in `columnName`. Only comma separated data files (extension `csv`) will be checked! The `error` can have the following values apart from `OK`:\n \n    error   : If not all column names in `dataFileName` are found in `columnName`\n \n"
-
-$descriptionDetails
-[1] "The details are a list of tables, one per `dataFileName`,  indicating if the column names in `dataFileName` are found in `columnName`.\n The following values are possible for the column `isTRUE`:\n \n    TRUE : If column name in `dataFileName` is found in `columnName`\n    FALSE: If column name in `dataFileName` is not found in `columnName`\n \n One or more FALSE will result in an ERROR."
 
 $comment
 [1] ""

@@ -4,9 +4,7 @@
 \alias{validate}
 \title{Validate Excel workbook or object of class \code{dmdSchemeSet_raw} against \code{dmdScheme}.}
 \usage{
-validate(x, path = ".", validateData = TRUE, report = "none",
-  report_author = "Tester",
-  report_title = "Validation of data against dmdScheme",
+validate(x, path = ".", validateData = TRUE,
   errorIfStructFalse = TRUE)
 }
 \arguments{
@@ -15,19 +13,6 @@ validate(x, path = ".", validateData = TRUE, report = "none",
 \item{path}{path to the data files}
 
 \item{validateData}{if \code{TRUE} data is validated as well; the structure is always validated}
-
-\item{report}{determines if and in which format a report of the validation should be generated. Allowed values are:
-\itemize{
-  \item{\bold{missing}  : } {no report is generated (the \code{default})}
-  \item{\bold{'html'}   : } {a html (.html) report is generated and opened}
-  \item{\bold{'pdf'}    : } {a pdf (.pdf) report is generated and opened}
-  \item{\bold{'word'}   : } {a word (.docx)report is generated and opened}
-  \item{\bold{'all'}    : } {all of the defined reports}
-}}
-
-\item{report_author}{name of the author for the report}
-
-\item{report_title}{title of the report for the report}
 
 \item{errorIfStructFalse}{if \code{TRUE} an error will be raised if the schemes are not identical, i.e. there are structural differences.}
 }
@@ -39,7 +24,6 @@ This function validates either an excel workbook or an object of class
 \code{dmdScheme_raw} against the definition of the \code{dmdScheme}. It
 validates the structure, the types, suggested values, ... and returns an object of class \code{dmdScheme_validation}.
 TODO: DESCRIBE THE CLASS!
-Based on this result, a report is created if asked fore (see below for details).
 }
 \examples{
 validate( dmdScheme_raw )

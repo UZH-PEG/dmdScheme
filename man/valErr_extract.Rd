@@ -2,7 +2,7 @@
 % Please edit documentation in R/validationErrorFunctions.R
 \name{valErr_extract}
 \alias{valErr_extract}
-\title{Extract all fields named object of class \code{dmdScheme_validation}}
+\title{Extract all fields named error of class \code{dmdScheme_validation}}
 \usage{
 valErr_extract(x, returnRootError = FALSE)
 }
@@ -15,5 +15,5 @@ valErr_extract(x, returnRootError = FALSE)
 named numeric vector of the error levels of the different validations done
 }
 \description{
-Extract all fields named object of class \code{dmdScheme_validation}
+Extract all fields named error of class \code{dmdScheme_validation}
 }

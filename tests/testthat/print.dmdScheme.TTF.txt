@@ -10,27 +10,27 @@ XA      suggestedValues: NA | treatment, in degrees celsius, measurement | treat
 XA      Description: The name of the experiment. | Temperature used for all treatments. If different between treatments, use "treatment" and specify in the Treatment sheet. | Light used for all treatments. If different between treatments, use "treatment" and specify in the Treatment sheet. | Humidity used for all treatments. If different between treatments, use "treatment" and specify in the Treatment sheet. | What type of incubator is used. | What type of container is used. | Volume of the microcosm container. Not the volume of the culture medium! | NA | NA | Conditions of the cultures for all treatments. | Characterisation of the microbe community. | NA | Length of the experiment in days. This should only include the time in which the measurements were taken! | Additional features of the Experiment you want to provide
 XA      class: dmdSchemeData_Experiment | dmdSchemeData | dmdScheme | tbl_df | tbl | data.frame
 
-     Species - dmdSchemeData
-A       Names : speciesID | name | strain | source | density | functionalGroup | comment
-A       Units : NA | NA | NA | NA | cells / ml | NA | NA
-A       Type  : character | character | character | character | character | character | character
+     Genus - dmdSchemeData
+A       Names : speciesID | colour | density | functionalGroup | comment
+A       Units : NA | NA | cells / ml | NA | NA
+A       Type  : character | character | character | character | character
 
 XA      row.names: 1 | 2
-XA      propertyName: Species
-XA      suggestedValues: NA | NA | NA | NA | treatment | bacteria, bacterivore, predator, phototroph | NA
-XA      Description: Id of the species and strain. Each speciesId has to be unique. | Scientific name of the species or unknown. | NA | Where the species was obtained from. | Initial density used for all treatments. If different between treatments, use "treatment" and specify in the Treatment sheet. | Functional group of the species. | NA
-XA      class: dmdSchemeData_Species | dmdSchemeData | dmdScheme | dmdSchemeData_raw | tbl_df | tbl | data.frame
+XA      propertyName: Genus
+XA      suggestedValues: NA | NA | treatment | bacteria, bacterivore, predator, phototroph | NA
+XA      Description: Id of the species and strain. Each speciesId has to be unique. | Where the species was obtained from. | Initial density used for all treatments. If different between treatments, use "treatment" and specify in the Treatment sheet. | Functional group of the species. | NA
+XA      class: dmdSchemeData_Genus | dmdSchemeData | dmdScheme | dmdSchemeData_raw | tbl_df | tbl | data.frame
 
-     Treatment - dmdSchemeData
-A       Names : treatmentID | unit | treatmentLevel | comment
-A       Units : NA | NA | NA | NA
-A       Type  : character | character | character | character
+     Treatments - dmdSchemeData
+A       Names : treatmentID | treatmentLevelHeight | comment
+A       Units : NA | NA | NA
+A       Type  : character | character | character
 
 XA      row.names: 1 | 2 | 3 | 4 | 5
-XA      propertyName: Treatment
-XA      suggestedValues: species, temperatur, light, initial density, comunity composition, densities, dispersal, viscosity, disturbance, communityType | speciesId, C, lux, name, none | value,  variable: freetext | NA
-XA      Description: ID of the the treatment decribed in this a row. Each treatmentId can occur multiple times as it can contain multiple treatment levels. | The unit of the treatment. | The value of the parameter if the parameter is constant over time, or a description of the variability. If unit is speciesId, comma separated list of all species in the treatment. | NA
-XA      class: dmdSchemeData_Treatment | dmdSchemeData | dmdScheme | dmdSchemeData_raw | tbl_df | tbl | data.frame
+XA      propertyName: Treatments
+XA      suggestedValues: species, temperatur, light, initial density, comunity composition, densities, dispersal, viscosity, disturbance, communityType | value,  variable: freetext | NA
+XA      Description: ID of the the treatment decribed in this a row. Each treatmentId can occur multiple times as it can contain multiple treatment levels. | The value of the parameter if the parameter is constant over time, or a description of the variability. If unit is speciesId, comma separated list of all species in the treatment. | NA
+XA      class: dmdSchemeData_Treatments | dmdSchemeData | dmdScheme | dmdSchemeData_raw | tbl_df | tbl | data.frame
 
      Measurement - dmdSchemeData
 A       Names : measurementID | variable | method | unit | object | noOfSamplesInTimeSeries | samplingVolume | dataExtractionID | measuredFrom | comment

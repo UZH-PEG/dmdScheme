@@ -1,0 +1,50 @@
+---
+title: "Minimum requirements for metadatascheme based on dmdScheme"
+subtitle: "dmdScheme Version v`r read.dcf(here::here('DESCRIPTION'), all = TRUE)[['Version']]`"
+author: "Rainer M Krug <Rainer@uzh.ch>"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{R Package Introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+  collapse = TRUE,
+  comment = "#>"
+)
+# library(dmdScheme)
+# library(here)
+# library(magrittr)
+# library(dplyr)
+# library(knitr)
+library(kableExtra)
+# library(plantuml)
+#
+v <- read.dcf(here::here('DESCRIPTION'), all = TRUE)[['Version']]
+```
+
+## Introduction
+
+This document outlines the minimum requirements for metadata schemes derived from `dmdScheme` so that all functions in the `dmdScheme` package will work.
+
+## Requirements
+
+1. Tab name has to be identical to `propertySet` value
+
+2. One tab named `Experiment`   
+    * horizontal layout
+    * only one value per property allowed
+
+3. One tab named `DataFileMetaData`  
+    * one column named `dataFileName`
+
+4. Each tab except `Experiment` and `DataFileMetaData` needs an ID field  
+Applies to all tabs except `Experiment` and `DataFileMetaData
+
+    * The first column in the tab must contain a field named `...ID`.
+
+

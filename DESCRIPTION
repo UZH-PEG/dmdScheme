@@ -1,20 +1,23 @@
 Package: dmdScheme
 Title: Microcosm Experiment Metadata Scheme
-Description: The Authoratative definition of the dmdScheme (Experimental Microcosm Ecology Metadata) and tools to enter, validate and
-               export the metadata. ---- Data updated and version bumped at Mon May 20 14:39:31 2019 / Europe/Zurich.
-Version: 0.9.1.14
+Description: The Authoratative definition of the dmdScheme (Domain Meta Data Scheme)
+           and tools to enter, validate and export the metadata.
+Version: 0.9.5
 dmdSchemeVersion: 0.9.5
-Date: 2019-05-20
-Authors@R: c( person( "Rainer M.", "Krug", role = c("aut", "cre"), email = "Rainer.Krug@uzh.ch" ), person( "Owen L.", "Petchey", role =
-               c("ctb"), email = "Owen.Petchey@uzh.ch" ), person("Vanessa W.", "de Melo", role = c("ctb"), email = "Vanessa Weber de Melo
-               <vanessa.weberdemelo@uzh.ch>" ), person("Frank", "Pennekamp", role = c("ctb"), email = "Frank Pennekamp
-               <frank.pennekamp@uzh.ch>") )
-URL: https://exp-micro-ecol-hub.github.io/dmdScheme/, https://github.com/Exp-Micro-Ecol-Hub/dmdScheme
+Date: 2019-05-21
+Authors@R: c( person( "Rainer M.", "Krug", role = c("aut", "cre"), email = "Rainer.Krug@uzh.ch" ),
+           person( "Owen L.", "Petchey", role = c("ctb"), email = "Owen.Petchey@uzh.ch" ),
+           person("Vanessa W.", "de Melo", role = c("ctb"), email = "Vanessa Weber de Melo
+           <vanessa.weberdemelo@uzh.ch>" ), person("Frank", "Pennekamp", role = c("ctb"), email =
+           "Frank Pennekamp <frank.pennekamp@uzh.ch>") )
+URL: https://exp-micro-ecol-hub.github.io/dmdScheme/,
+           https://github.com/Exp-Micro-Ecol-Hub/dmdScheme
 BugReports: https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/issues
 DOI: https://zenodo.org/record/2620097
 Depends: R (>= 3.5.0)
-Imports: tools, methods, utils, magrittr (>= 1.5), dplyr (>= 0.1.8), tibble (>= 2.1.1), readxl (>= 1.2.0), openxlsx (>= 4.1.1), XML (>=
-               3.98-1.16), rlang (>= 0.3.1), taxize (>= 0.9.5), rmarkdown, knitr, digest (>= 0.6)
+Imports: tools, methods, utils, magrittr (>= 1.5), dplyr (>= 0.1.8), tibble (>= 2.1.1), readxl (>=
+           1.2.0), openxlsx (>= 4.1.1), XML (>= 3.98-1.16), rlang (>= 0.3.1), taxize (>= 0.9.5),
+           rmarkdown, knitr, digest (>= 0.6)
 Remotes: awalker89/openxlsx, rkrug/plantuml
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -23,6 +26,6 @@ StagedInstall: true
 RoxygenNote: 6.1.1
 Suggests: covr (>= 3.2.1), testthat (>= 2.0.1), here (>= 0.1), kableExtra (>= 0.9.0)
 Enhances: plantuml (>= 0.2.3.2)
-dmdSchemeUpdate: 2019-05-20 14:39:31
-dmdSchemeMD5: 0d96517771206a18d3d298a89a3e1282
+dmdSchemeUpdate: 2019-05-21 14:31:56
+dmdSchemeMD5: 5b022906be190474b6c4e65b0f2ab544
 VignetteBuilder: knitr

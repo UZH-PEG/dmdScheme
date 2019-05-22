@@ -18,12 +18,12 @@
 #'   \code{FALSE}. But if you do, the result will not be validated. \bold{This
 #'   can lead to invalid schemes!}.
 #'
-#' @return either if \code{raw = TRUE} a list of tibbles from the worksheets as
-#'   defined in \code{propSets} of Class \code{dmdScheme_raw}, otgherwise an
-#'   object of class \code{dmdSchemeSet}
+#' @return either if \code{raw = TRUE} a list of tibbles from the worksheets of
+#'   Class \code{dmdScheme_raw}, otherwise an object of class
+#'   \code{dmdSchemeSet}
 #'
 #' @importFrom magrittr %>% equals not
-#' @importFrom readxl read_excel
+#' @importFrom readxl read_excel excel_sheets
 #' @importFrom tools file_path_sans_ext file_ext
 #'
 #' @export
@@ -52,10 +52,10 @@ read_from_excel <- function(
     stop("If x is a file name, it has to have the extension 'xls' or 'xlsx'")
   }
 
-# Load sheets from excel file corrsponding to propSets --------------------
+# Load sheets from excel file  --------------------
 
   result <- lapply(
-    propSets,
+    readxl::excel_sheets(path = file),
     function(sheet) {
       x <- suppressMessages(
         readxl::read_excel(
@@ -82,7 +82,7 @@ read_from_excel <- function(
       return(x)
     }
   )
-  names(result) <- propSets
+  names(result) <- excel_sheets(path = file)
 
 # Check dmdSchemeVersion --------------------------------------------------
 

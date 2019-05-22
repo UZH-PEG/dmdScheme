@@ -1,7 +1,7 @@
-<?xml version="1.0"?>
-<dmdScheme dmdSchemeVersion="0.9.5" propertyName="dmdScheme" class="dmdSchemeSet, dmdScheme, list" names="Experiment, Genus, Treatments, Measurement, DataExtraction, DataFileMetaData">
- <ExperimentList unit="NA, NA, NA, NA, NA, NA, ml, NA, g/l, NA, NA, NA, days, NA" type="character, character, character, character, character, character, numeric, character, numeric, character, character, character, integer, character" allowedValues="" names="name, temperature, light, humidity, incubator, container, microcosmVolume, mediaType, mediaConcentration, cultureConditions, comunityType, mediaAdditions, duration, comment" class="dmdSchemeData_Experiment, dmdSchemeData, dmdScheme, tbl_df, tbl, data.frame">
+<dmdScheme dmdSchemeVersion="0.9.5" propertyName="dmdScheme">
+ <ExperimentList>
   <Experiment>
+   <name>ASR-expt1</name>
    <temperature>20</temperature>
    <light>semi-ambient</light>
    <humidity>ambient</humidity>
@@ -17,44 +17,52 @@
    <comment></comment>
   </Experiment>
  </ExperimentList>
- <GenusList unit="NA, NA, cells / ml, NA, NA" type="character, character, character, character, character" allowedValues="" names="speciesID, colour, density, functionalGroup, comment" class="dmdSchemeData_Genus, dmdSchemeData, dmdScheme, dmdSchemeData_raw, tbl_df, tbl, data.frame">
+ <GenusList>
   <Genus speciesID="tt_1">
+   <speciesID>tt_1</speciesID>
    <colour>ATCC</colour>
    <density>1</density>
    <functionalGroup>bacterivore</functionalGroup>
    <comment>http://www.lgcstandards-atcc.org/products/all/30007.aspx</comment>
   </Genus>
   <Genus speciesID="unknown">
+   <speciesID>unknown</speciesID>
    <colour>unknown</colour>
    <density></density>
    <functionalGroup>unknown</functionalGroup>
    <comment></comment>
   </Genus>
  </GenusList>
- <TreatmentsList unit="NA, NA, NA" type="character, character, character" allowedValues="" names="treatmentID, treatmentLevelHeight, comment" class="dmdSchemeData_Treatments, dmdSchemeData, dmdScheme, dmdSchemeData_raw, tbl_df, tbl, data.frame">
+ <TreatmentsList>
   <Treatments treatmentID="Lid_treatment">
+   <treatmentID>Lid_treatment</treatmentID>
    <treatmentLevelHeight>Loose</treatmentLevelHeight>
    <comment></comment>
   </Treatments>
   <Treatments treatmentID="Lid_treatment">
+   <treatmentID>Lid_treatment</treatmentID>
    <treatmentLevelHeight>Tight</treatmentLevelHeight>
    <comment></comment>
   </Treatments>
   <Treatments treatmentID="species_1">
+   <treatmentID>species_1</treatmentID>
    <treatmentLevelHeight>tt_1, unknown</treatmentLevelHeight>
    <comment></comment>
   </Treatments>
   <Treatments treatmentID="species_2">
+   <treatmentID>species_2</treatmentID>
    <treatmentLevelHeight>unknown</treatmentLevelHeight>
    <comment></comment>
   </Treatments>
   <Treatments treatmentID="species_3">
+   <treatmentID>species_3</treatmentID>
    <treatmentLevelHeight>tt_1</treatmentLevelHeight>
    <comment></comment>
   </Treatments>
  </TreatmentsList>
- <MeasurementList unit="NA, NA, NA, NA, NA, NA, ml, NA, NA, NA" type="character, character, character, character, character, integer, numeric, character, character, character" allowedValues="" names="measurementID, variable, method, unit, object, noOfSamplesInTimeSeries, samplingVolume, dataExtractionID, measuredFrom, comment" class="dmdSchemeData_Measurement, dmdSchemeData, dmdScheme, dmdSchemeData_raw, tbl_df, tbl, data.frame">
+ <MeasurementList>
   <Measurement measurementID="oxygen concentration">
+   <measurementID>oxygen concentration</measurementID>
    <variable>DO</variable>
    <method>presens Optode</method>
    <unit>%</unit>
@@ -66,6 +74,7 @@
    <comment></comment>
   </Measurement>
   <Measurement measurementID="abundance">
+   <measurementID>abundance</measurementID>
    <variable>abundance</variable>
    <method>molecular</method>
    <unit>count</unit>
@@ -77,6 +86,7 @@
    <comment></comment>
   </Measurement>
   <Measurement measurementID="smell">
+   <measurementID>smell</measurementID>
    <variable>smell</variable>
    <method>nose</method>
    <unit>rotten eggs or not</unit>
@@ -88,6 +98,7 @@
    <comment></comment>
   </Measurement>
   <Measurement measurementID="sequenceData">
+   <measurementID>sequenceData</measurementID>
    <variable>DNA</variable>
    <method>NGS</method>
    <unit>Nucleotide</unit>
@@ -99,16 +110,18 @@
    <comment></comment>
   </Measurement>
  </MeasurementList>
- <DataExtractionList unit="NA, NA, NA, NA, NA" type="character, character, character, character, character" allowedValues="" names="dataExtractionID, method, parameter, value, comment" class="dmdSchemeData_DataExtraction, dmdSchemeData, dmdScheme, dmdSchemeData_raw, tbl_df, tbl, data.frame">
+ <DataExtractionList>
   <DataExtraction dataExtractionID="Mol_Analy_pipeline1">
+   <dataExtractionID>Mol_Analy_pipeline1</dataExtractionID>
    <method></method>
    <parameter></parameter>
    <value></value>
    <comment>See description in file xxx.yyy</comment>
   </DataExtraction>
  </DataExtractionList>
- <DataFileMetaDataList unit="NA, NA, NA, NA, NA, NA, NA" type="character, character, character, character, character, character, character" allowedValues="NA, NA, ID, Treatment, Measurement, Species, other, NA, integer, numeric, character, logical, datetime, date, time, NA, NA" names="dataFileName, columnName, columnData, mappingColumn, type, description, comment" class="dmdSchemeData_DataFileMetaData, dmdSchemeData, dmdScheme, dmdSchemeData_raw, tbl_df, tbl, data.frame">
+ <DataFileMetaDataList>
   <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
    <columnName>Jar_ID</columnName>
    <columnData>ID</columnData>
    <mappingColumn></mappingColumn>
@@ -117,6 +130,7 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
    <columnName>DO</columnName>
    <columnData>Measurement</columnData>
    <mappingColumn>oxygen concentration</mappingColumn>
@@ -125,6 +139,7 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
    <columnName>Unit_1</columnName>
    <columnData>other</columnData>
    <mappingColumn></mappingColumn>
@@ -133,6 +148,7 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
    <columnName>Mode</columnName>
    <columnData>other</columnData>
    <mappingColumn></mappingColumn>
@@ -141,6 +157,7 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
    <columnName>Location</columnName>
    <columnData>other</columnData>
    <mappingColumn></mappingColumn>
@@ -149,6 +166,7 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
    <columnName>Date_time</columnName>
    <columnData>other</columnData>
    <mappingColumn></mappingColumn>
@@ -157,6 +175,7 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
    <columnName>Lid_treatment</columnName>
    <columnData>Treatment</columnData>
    <mappingColumn>Lid_treatment</mappingColumn>
@@ -165,6 +184,7 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
    <columnName>Jar_type</columnName>
    <columnData>other</columnData>
    <mappingColumn></mappingColumn>
@@ -173,6 +193,7 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
+   <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
    <columnName>Jar_ID</columnName>
    <columnData>ID</columnData>
    <mappingColumn></mappingColumn>
@@ -181,6 +202,7 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
+   <dataFileName>smell.csv</dataFileName>
    <columnName></columnName>
    <columnData>Species</columnData>
    <mappingColumn>species_1</mappingColumn>
@@ -189,6 +211,7 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
+   <dataFileName>smell.csv</dataFileName>
    <columnName>smell</columnName>
    <columnData>Measurement</columnData>
    <mappingColumn>smell</mappingColumn>
@@ -197,6 +220,7 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
+   <dataFileName>smell.csv</dataFileName>
    <columnName>Date</columnName>
    <columnData>other</columnData>
    <mappingColumn></mappingColumn>
@@ -205,6 +229,7 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
+   <dataFileName>smell.csv</dataFileName>
    <columnName>Lid_treatment</columnName>
    <columnData>Treatment</columnData>
    <mappingColumn>Lid_treatment</mappingColumn>
@@ -213,6 +238,7 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
+   <dataFileName>smell.csv</dataFileName>
    <columnName>Jar_type</columnName>
    <columnData>other</columnData>
    <mappingColumn></mappingColumn>
@@ -221,6 +247,7 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
+   <dataFileName>abundances.csv</dataFileName>
    <columnName></columnName>
    <columnData>Species</columnData>
    <mappingColumn>species_3</mappingColumn>
@@ -229,6 +256,7 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
+   <dataFileName>abundances.csv</dataFileName>
    <columnName>Jar_ID</columnName>
    <columnData>ID</columnData>
    <mappingColumn></mappingColumn>
@@ -237,6 +265,7 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
+   <dataFileName>abundances.csv</dataFileName>
    <columnName>Date_time</columnName>
    <columnData>other</columnData>
    <mappingColumn></mappingColumn>
@@ -245,6 +274,7 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
+   <dataFileName>abundances.csv</dataFileName>
    <columnName>Lid_treatment</columnName>
    <columnData>Treatment</columnData>
    <mappingColumn>Lid_treatment</mappingColumn>
@@ -253,6 +283,7 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
+   <dataFileName>abundances.csv</dataFileName>
    <columnName>Jar_type</columnName>
    <columnData>other</columnData>
    <mappingColumn></mappingColumn>
@@ -261,6 +292,7 @@
    <comment></comment>
   </DataFileMetaData>
   <DataFileMetaData>
+   <dataFileName>abundances.csv</dataFileName>
    <columnName>count_number</columnName>
    <columnData>Measurement</columnData>
    <mappingColumn>abundance</mappingColumn>

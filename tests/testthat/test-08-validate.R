@@ -4,18 +4,27 @@ x <- dmdScheme_raw
 
 # returns TRUE -------------------------------------------------------------
 
+  test_that(
+    "validata_raw() returns correct value when correct",
+    {
+      expect_known_value(
+        object = validate( x = x, errorIfStructFalse = TRUE),
+        file = "validate.dmdScheme.CORRECT.rda"
+      )
+    }
+  )
+
 test_that(
   "validata_raw() returns correct value when correct",
   {
     expect_known_value(
-      object = validate( x = x, errorIfStructFalse = TRUE),
-      file = "validate.CORRECT.rda"
+      object = validate( x = "./dmdScheme.xlsx", errorIfStructFalse = TRUE),
+      file = "validate.character.CORRECT.rda"
     )
   }
 )
 
-
-# returns differences when nt correct -------------------------------------
+# returns differences when not correct -------------------------------------
 
 names(x)[1] <- "experiment"
 
@@ -41,3 +50,6 @@ test_that(
   }
 )
 
+# all reports are correctly created -----------------------------------------------
+
+# TODO

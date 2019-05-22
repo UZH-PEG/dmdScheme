@@ -12,7 +12,7 @@
 #' @importFrom tools md5sum
 #'
 updateFromNewSheet <- function(
-  newDmdScheme = "dmdScheme",
+  newDmdScheme,
   force = FALSE
 ) {
 
@@ -77,8 +77,7 @@ updateFromNewSheet <- function(
     dmdSchemeToXml(
       x = dmdScheme_example,
       file = here::here("inst", "dmdScheme_example.xml"),
-      output = "complete",
-      confirmationCode = "secret code for testing"
+      output = "complete"
     )
 
     # bump version and change description in DECRIPTION -----------------------
@@ -120,7 +119,10 @@ updateFromNewSheet <- function(
 
   # update exported xml in tests/testthat/*.xml -----------------------------
 
-  dmdScheme_split( dmdScheme_example, c("rds", "xml"), path = here::here("tests", "testthat"))
+  dmdSchemeToXml(
+    x = dmdScheme_example,
+    file = here::here("tests", "testthat", "dmdScheme_example.xml")
+  )
 
   # Return invisibble NULL --------------------------------------------------------
 

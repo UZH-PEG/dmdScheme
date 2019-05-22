@@ -7,8 +7,7 @@ dmdSchemeToXml.dmdSchemeData <- function(
   x,
   tag = "dmdScheme",
   file,
-  output = "metadata",
-  confirmationCode
+  output = "metadata"
 ) {
   outputValues <- c("metadata", "complete")
   if (!(output %in% outputValues)) {
@@ -34,7 +33,7 @@ dmdSchemeToXml.dmdSchemeData <- function(
     if (nrow(x) > 0) {
       for (i in 1:nrow(x)) {
         xmlFields <- lapply(
-          names(x)[-1],
+          names(x),
           function(nm){
             XML::xmlNode(
               nm,

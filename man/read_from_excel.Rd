@@ -28,9 +28,9 @@ There are not many cases where you want to change this value to
 can lead to invalid schemes!}.}
 }
 \value{
-either if \code{raw = TRUE} a list of tibbles from the worksheets as
-  defined in \code{propSets} of Class \code{dmdScheme_raw}, otgherwise an
-  object of class \code{dmdSchemeSet}
+either if \code{raw = TRUE} a list of tibbles from the worksheets of
+  Class \code{dmdScheme_raw}, otherwise an object of class
+  \code{dmdSchemeSet}
 }
 \description{
 Reads the data from an Excel file. TRhe structure of the Excel file has to be
