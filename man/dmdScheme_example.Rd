@@ -4,7 +4,7 @@
 \name{dmdScheme_example}
 \alias{dmdScheme_example}
 \title{dmdScheme_example as imported from the Google sheet.}
-\format{An object of class \code{dmdSchemeSet} (inherits from \code{dmdScheme}, \code{list}) of length 6.}
+\format{An object of class \code{dmdSchemeSet} (inherits from \code{list}) of length 6.}
 \usage{
 dmdScheme_example
 }

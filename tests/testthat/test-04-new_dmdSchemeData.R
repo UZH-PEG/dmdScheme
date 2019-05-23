@@ -8,7 +8,7 @@ test_that(
   {
     expect_error(
       object = new_dmdSchemeData(x = "character"),
-      regexp = "x has to be of class 'dmdSchemeData_raw'"
+      regexp = "x has to inherit from class 'dmdSchemeData_raw'"
     )
   }
 )

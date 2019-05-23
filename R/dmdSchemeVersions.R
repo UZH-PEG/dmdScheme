@@ -4,6 +4,7 @@
 #'   The default value of NULL corresponds to all libraries currently known. If
 #'   the default is used, the loaded packages and namespaces are searched before
 #'   the libraries.
+#' @param schemeName name of the scheme. Default: dmdScheme. Only for developing new schemes needed.
 #'
 #' @return a named \code{list()}, containing the following objects:
 #' \itemize{
@@ -17,20 +18,22 @@
 #' @examples
 #' dmdSchemeVersions()
 dmdSchemeVersions <-function (
+  schemeName = "dmdScheme",
   lib.loc = NULL
 )
 {
-  pkg = "dmdScheme"
+  pkg = schemeName
   res <- suppressWarnings(
     packageDescription(
       pkg,
       lib.loc = lib.loc,
-      fields = c( "Version", "dmdSchemeVersion")
+      fields = c( "Version", paste0(schemeName, "Version") )
     )
   )
   res <- list(
-    package = package_version(res$Version),
-    dmdScheme = numeric_version(res$dmdSchemeVersion)
+    name = schemeName,
+    package = package_version(res[["Version"]]),
+    scheme = numeric_version(res[[paste0(schemeName, "Version")]])
   )
   return(res)
 }

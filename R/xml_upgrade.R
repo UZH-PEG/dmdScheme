@@ -9,7 +9,7 @@
 #' @examples
 xml_upgrade <- function(
   x,
-  to = dmdSchemeVersions()$dmdScheme
+  to = dmdSchemeVersions()$scheme
 ) {
   stop("Not implemented yet")
 }

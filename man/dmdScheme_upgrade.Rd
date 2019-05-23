@@ -4,7 +4,7 @@
 \alias{dmdScheme_upgrade}
 \title{Convert older versions to newer versions}
 \usage{
-dmdScheme_upgrade(x, to = dmdSchemeVersions()$dmdScheme)
+dmdScheme_upgrade(x, to = dmdSchemeVersions()$scheme)
 }
 \arguments{
 \item{x}{\code{dmdScheme} object}

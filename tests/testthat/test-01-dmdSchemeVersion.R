@@ -7,7 +7,7 @@ test_that(
   "dmdSchemeVersion()$dmdScheme is equal to the version in the dmdScheme",
   {
     expect_equal(
-      object = dmdSchemeVersions()$dmdScheme,
+      object = dmdSchemeVersions()$scheme,
       expected = as.numeric_version(attr(dmdScheme, "dmdSchemeVersion"))
     )
   }

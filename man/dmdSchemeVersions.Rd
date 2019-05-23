@@ -4,7 +4,7 @@
 \alias{dmdSchemeVersions}
 \title{Returns versions of package and dmdScheme}
 \usage{
-dmdSchemeVersions(lib.loc = NULL)
+dmdSchemeVersions(schemeName = "dmdScheme", lib.loc = NULL)
 }
 \arguments{
 \item{lib.loc}{a character vector of directory names of R libraries, or NULL.

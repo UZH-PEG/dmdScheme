@@ -1,5 +1,5 @@
-<dmdScheme dmdSchemeVersion="0.9.5" propertyName="dmdScheme" class="dmdSchemeSet, dmdScheme, list" names="Experiment, Genus, Treatments, Measurement, DataExtraction, DataFileMetaData">
- <ExperimentList unit="NA, NA, NA, NA, NA, NA, ml, NA, g/l, NA, NA, NA, days, NA" type="character, character, character, character, character, character, numeric, character, numeric, character, character, character, integer, character" allowedValues="" names="name, temperature, light, humidity, incubator, container, microcosmVolume, mediaType, mediaConcentration, cultureConditions, comunityType, mediaAdditions, duration, comment" class="dmdSchemeData_Experiment, dmdSchemeData, dmdScheme, tbl_df, tbl, data.frame">
+<dmdScheme dmdSchemeVersion="0.9.5" propertyName="dmdScheme" class="dmdSchemeSet, list" names="Experiment, Genus, Treatments, Measurement, DataExtraction, DataFileMetaData">
+ <ExperimentList unit="NA, NA, NA, NA, NA, NA, ml, NA, g/l, NA, NA, NA, days, NA" type="character, character, character, character, character, character, numeric, character, numeric, character, character, character, integer, character" allowedValues="" names="name, temperature, light, humidity, incubator, container, microcosmVolume, mediaType, mediaConcentration, cultureConditions, comunityType, mediaAdditions, duration, comment" class="dmdSchemeData, tbl_df, tbl, data.frame">
   <Experiment>
    <name>ASR-expt1</name>
    <temperature>20</temperature>
@@ -17,7 +17,7 @@
    <comment></comment>
   </Experiment>
  </ExperimentList>
- <GenusList unit="NA, NA, cells / ml, NA, NA" type="character, character, character, character, character" allowedValues="" names="speciesID, colour, density, functionalGroup, comment" class="dmdSchemeData_Genus, dmdSchemeData, dmdScheme, dmdSchemeData_raw, tbl_df, tbl, data.frame">
+ <GenusList unit="NA, NA, cells / ml, NA, NA" type="character, character, character, character, character" allowedValues="" names="speciesID, colour, density, functionalGroup, comment" class="dmdSchemeData, dmdSchemeData_raw, tbl_df, tbl, data.frame">
   <Genus speciesID="tt_1">
    <speciesID>tt_1</speciesID>
    <colour>ATCC</colour>
@@ -33,7 +33,7 @@
    <comment></comment>
   </Genus>
  </GenusList>
- <TreatmentsList unit="NA, NA, NA" type="character, character, character" allowedValues="" names="treatmentID, treatmentLevelHeight, comment" class="dmdSchemeData_Treatments, dmdSchemeData, dmdScheme, dmdSchemeData_raw, tbl_df, tbl, data.frame">
+ <TreatmentsList unit="NA, NA, NA" type="character, character, character" allowedValues="" names="treatmentID, treatmentLevelHeight, comment" class="dmdSchemeData, dmdSchemeData_raw, tbl_df, tbl, data.frame">
   <Treatments treatmentID="Lid_treatment">
    <treatmentID>Lid_treatment</treatmentID>
    <treatmentLevelHeight>Loose</treatmentLevelHeight>
@@ -60,7 +60,7 @@
    <comment></comment>
   </Treatments>
  </TreatmentsList>
- <MeasurementList unit="NA, NA, NA, NA, NA, NA, ml, NA, NA, NA" type="character, character, character, character, character, integer, numeric, character, character, character" allowedValues="" names="measurementID, variable, method, unit, object, noOfSamplesInTimeSeries, samplingVolume, dataExtractionID, measuredFrom, comment" class="dmdSchemeData_Measurement, dmdSchemeData, dmdScheme, dmdSchemeData_raw, tbl_df, tbl, data.frame">
+ <MeasurementList unit="NA, NA, NA, NA, NA, NA, ml, NA, NA, NA" type="character, character, character, character, character, integer, numeric, character, character, character" allowedValues="" names="measurementID, variable, method, unit, object, noOfSamplesInTimeSeries, samplingVolume, dataExtractionID, measuredFrom, comment" class="dmdSchemeData, dmdSchemeData_raw, tbl_df, tbl, data.frame">
   <Measurement measurementID="oxygen concentration">
    <measurementID>oxygen concentration</measurementID>
    <variable>DO</variable>
@@ -110,7 +110,7 @@
    <comment></comment>
   </Measurement>
  </MeasurementList>
- <DataExtractionList unit="NA, NA, NA, NA, NA" type="character, character, character, character, character" allowedValues="" names="dataExtractionID, method, parameter, value, comment" class="dmdSchemeData_DataExtraction, dmdSchemeData, dmdScheme, dmdSchemeData_raw, tbl_df, tbl, data.frame">
+ <DataExtractionList unit="NA, NA, NA, NA, NA" type="character, character, character, character, character" allowedValues="" names="dataExtractionID, method, parameter, value, comment" class="dmdSchemeData, dmdSchemeData_raw, tbl_df, tbl, data.frame">
   <DataExtraction dataExtractionID="Mol_Analy_pipeline1">
    <dataExtractionID>Mol_Analy_pipeline1</dataExtractionID>
    <method></method>
@@ -119,7 +119,7 @@
    <comment>See description in file xxx.yyy</comment>
   </DataExtraction>
  </DataExtractionList>
- <DataFileMetaDataList unit="NA, NA, NA, NA, NA, NA, NA" type="character, character, character, character, character, character, character" allowedValues="NA, NA, ID, Treatment, Measurement, Species, other, NA, integer, numeric, character, logical, datetime, date, time, NA, NA" names="dataFileName, columnName, columnData, mappingColumn, type, description, comment" class="dmdSchemeData_DataFileMetaData, dmdSchemeData, dmdScheme, dmdSchemeData_raw, tbl_df, tbl, data.frame">
+ <DataFileMetaDataList unit="NA, NA, NA, NA, NA, NA, NA" type="character, character, character, character, character, character, character" allowedValues="NA, NA, ID, Treatment, Measurement, Species, other, NA, integer, numeric, character, logical, datetime, date, time, NA, NA" names="dataFileName, columnName, columnData, mappingColumn, type, description, comment" class="dmdSchemeData, dmdSchemeData_raw, tbl_df, tbl, data.frame">
   <DataFileMetaData>
    <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
    <columnName>Jar_ID</columnName>

@@ -17,6 +17,7 @@
 #'   There are not many cases where you want to change this value to
 #'   \code{FALSE}. But if you do, the result will not be validated. \bold{This
 #'   can lead to invalid schemes!}.
+#' @param schemeName name of the scheme. Default: dmdScheme. Only for developing new schemes needed.
 #'
 #' @return either if \code{raw = TRUE} a list of tibbles from the worksheets of
 #'   Class \code{dmdScheme_raw}, otherwise an object of class
@@ -36,83 +37,20 @@ read_from_excel <- function(
   keepData = TRUE,
   verbose = FALSE,
   raw = FALSE,
-  validate = TRUE
+  validate = TRUE,
+  schemeName = "dmdScheme"
 ) {
 
-# Check if file exists ----------------------------------------------------
 
+# Read raw without checks -------------------------------------------------
 
-  if (!file.exists(file)) {
-    stop("Can not open file '", file, "': No such file or directory")
-  }
-
-# Check if extension is xls or xlsx ---------------------------------------
-
-  if (!(tools::file_ext(file) %in% c("xls", "xlsx"))) {
-    stop("If x is a file name, it has to have the extension 'xls' or 'xlsx'")
-  }
-
-# Load sheets from excel file  --------------------
-
-  result <- lapply(
-    readxl::excel_sheets(path = file),
-    function(sheet) {
-      x <- suppressMessages(
-        readxl::read_excel(
-          path = file,
-          sheet = sheet,
-          na = c("", "NA", "na")
-        )
-      )
-      notNARow <- x %>%
-        is.na() %>%
-        rowSums() %>%
-        magrittr::equals(ncol(x)) %>%
-        not()
-      notNACol <- x %>%
-        is.na() %>%
-        colSums() %>%
-        magrittr::equals(nrow(x)) %>%
-        not()
-      x <- x[notNARow, notNACol]
-      class(x) <- append(
-        "dmdSchemeData_raw",
-        class(x)
-      )
-      return(x)
-    }
+  result <- read_from_excel_raw(
+    file = file,
+    keepData = keepData,
+    verbose = verbose,
+    schemeName = schemeName
   )
-  names(result) <- excel_sheets(path = file)
 
-# Check dmdSchemeVersion --------------------------------------------------
-
-  v <- grep("DATA", names(result$Experiment), value = TRUE)
-  v <- gsub("DATA_v", "", v)
-  if (dmdSchemeVersions()$dmdScheme != v) {
-    stop("Version conflict - can not proceed:\n", file, " : version ", v, "\n", "installed dmdScheme version : ", dmdSchemeVersions()$dmdScheme)
-  }
-
-# Set Attributes ----------------------------------------------------------
-
-  attr(result, "fileName") <- file %>%
-    tools::file_path_sans_ext() %>%
-    basename()
-
-# Set version -------------------------------------------------------------
-
-  v <- names(result$Experiment)[ncol(result$Experiment)]
-  v <- gsub("DATA_v", "", v)
-  if (v == "DATA") {
-    v <- "unknown"
-  }
-  attr(result, "dmdSchemeVersion") <- v
-
-# Set class to dmdScheme_Raw ----------------------------------------------
-
-  class(result) <- append(
-    "dmdSchemeSet_raw",
-    class(result)
-  )
 
 # Validate imported structure against dmdScheme ---------------------------
 

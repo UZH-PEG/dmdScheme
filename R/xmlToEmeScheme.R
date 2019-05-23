@@ -30,7 +30,7 @@ xmlTodmdScheme <- function(
 
 # Check version -----------------------------------------------------------
 
-  if (xml$.attrs["dmdSchemeVersion"] != dmdSchemeVersions()$dmdScheme)
+  if (xml$.attrs["dmdSchemeVersion"] != dmdSchemeVersions()$scheme)
   {
     stop("Version conflict - can not proceed:\n", "xml : version ", xml$.attrs["dmdSchemeVersion"], "\n", "installed dmdScheme version : ", dmdSchemeVersions()$dmdScheme)
   }

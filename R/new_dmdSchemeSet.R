@@ -29,12 +29,20 @@ new_dmdSchemeSet <- function(
 # Check for class dmdSchemeSet_raw ----------------------------------------
 
   if (!inherits(x, "dmdSchemeSet_raw")) {
-    stop("x has to be of class 'dmdSchemeSet_raw'")
+    stop("x has to be inherit from class 'dmdSchemeSet_raw'")
+  }
+
+# identify class ----------------------------------------------------------
+
+  newClass <- class(x)[[1]]
+  newClass <- gsub("_raw", "", newClass)
+  if (newClass != "dmdSchemeSet") {
+    newClass <- c(newClass, "dmdSchemeSet")
   }
 
 # Check version -----------------------------------------------------------
 
-  if (dmdSchemeVersions()$dmdScheme != attr(dmdScheme_raw, "dmdSchemeVersion")) {
+  if (dmdSchemeVersions()$scheme != attr(dmdScheme_raw, "dmdSchemeVersion")) {
     stop("Version conflict - can not proceed:\n", " x : version ", attr(dmdScheme_raw, "dmdSchemeVersion"), "\n", "installed dmdScheme version : ", dmdSchemeVersions()$dmdScheme)
   }
 
@@ -56,7 +64,7 @@ attr(result, "propertyName") <- attr(x, "fileName")
 # set class ---------------------------------------------------------------
 
   class(result) <- append(
-    c( "dmdSchemeSet", "dmdScheme" ),
+    newClass,
     class(result),
   )
 

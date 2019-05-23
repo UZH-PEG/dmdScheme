@@ -4,7 +4,7 @@
 \alias{xml_upgrade}
 \title{Convert older versions to newer versions}
 \usage{
-xml_upgrade(x, to = dmdSchemeVersions()$dmdScheme)
+xml_upgrade(x, to = dmdSchemeVersions()$scheme)
 }
 \arguments{
 \item{x}{file name of xml file}

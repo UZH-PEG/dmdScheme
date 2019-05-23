@@ -4,13 +4,16 @@
 \alias{updateFromNewSheet}
 \title{Update data from dmdScheme.xlsx --- ONLY FOR DEVLOPMENT NEEDED}
 \usage{
-updateFromNewSheet(newDmdScheme, force = FALSE)
+updateFromNewSheet(newDmdScheme, force = FALSE,
+  schemeName = "dmdScheme")
 }
 \arguments{
 \item{newDmdScheme}{xlsx spreadsheet containing the new \code{dmdScheme} definition}
 
 \item{force}{force update even if \code{here::here("inst", "dmdScheme.xlsx")}
 has the same md5 suma s in the DESCRIPTION}
+
+\item{schemeName}{name of the scheme. Default: dmdScheme. SHould be changed because of readability!}
 }
 \value{
 invisibly NULL

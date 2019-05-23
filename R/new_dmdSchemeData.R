@@ -36,8 +36,17 @@ new_dmdSchemeData <- function(
 # Check for class dmdSchemeSet_raw ----------------------------------------
 
   if (!inherits(x, "dmdSchemeData_raw")) {
-    stop("x has to be of class 'dmdSchemeData_raw'")
+    stop("x has to inherit from class 'dmdSchemeData_raw'")
   }
+
+# identify class ----------------------------------------------------------
+
+  newClass <- class(x)[[1]]
+  newClass <- gsub("_raw", "", newClass)
+  if (newClass != "dmdSchemeData") {
+    newClass <- c(newClass, "dmdSchemeData")
+  }
+
 
 # Set warn to 2 to convert warnings to errors -----------------------------
 
@@ -130,11 +139,7 @@ new_dmdSchemeData <- function(
   if(verbose) cat_ln("Set class...")
   #
   class(x) <- append(
-    c(
-      paste("dmdSchemeData", attr(x, "propertyName"), sep = "_"),
-      "dmdSchemeData",
-      "dmdScheme"
-    ),
+    newClass ,
     class(x),
   )
 

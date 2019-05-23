@@ -4,7 +4,7 @@
 \name{dmdScheme}
 \alias{dmdScheme}
 \title{Authorative definition of the dmdScheme.}
-\format{An object of class \code{dmdSchemeSet} (inherits from \code{dmdScheme}, \code{list}) of length 6.}
+\format{An object of class \code{dmdSchemeSet} (inherits from \code{list}) of length 6.}
 \usage{
 dmdScheme
 }

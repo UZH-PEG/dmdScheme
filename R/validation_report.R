@@ -42,6 +42,7 @@ validate_report <- function(
   x,
   path = ".",
   file,
+  open = TRUE,
   report = "html",
   report_author = "Tester",
   report_title = "Validation of data against dmdScheme"
@@ -96,9 +97,19 @@ validate_report <- function(
     result <- NULL
   }
 
+
+  # Open report -------------------------------------------------------------
+
+  if (open) {
+    utils::browseURL(
+      url = result,
+      encodeIfNeeded = TRUE
+    )
+  }
+
   # Return result -----------------------------------------------------------
 
-  invisible(result)
+  return(result)
 }
 
 
