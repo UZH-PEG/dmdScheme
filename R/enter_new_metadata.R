@@ -4,13 +4,13 @@
 #' New data can be entered and the file has to be saved at a different location
 #' as it is a read-only file.
 #'
-#' @param file if not \code{NULL}, the te,plate will be saved to this file.
+#' @param schemeName name of the package in which the template of the scheme sits. Default value: \code{dmdScheme}
+#' @param file if not \code{NULL}, the template will be saved to this file.
 #' @param open if \code{TRUE}, the file will be opened. This can produce different results depending on the OS, browsr and browser settings.
 #' @param keepData if \code{TRUE} the data entry areas will be emptied. If \code{FALSE}. the example data will be included.
 #' @param format if \code{FALSE} the sheet will be opened as the sheet is. if \code{TRUE}, it will be formated nicely.
 #' @param overwrite if \code{TRUE}, the file specified in \code{file} will be overwritten. if \code{FALSE}, an error will be raised ehen the file exists.
 #' @param verbose if \code{TRUE} print usefull information
-#' @param schemeName name of the package in which the template of the scheme sits. Default value: \code{dmdScheme}
 #' @param .skipBrowseURL internal use (testing only). if \code{TRUE} skip the call of \code{browseURL()}
 #'
 #' @return invisibly the fully qualified path to the file which \bold{would} have been opened, if \code{open == TRUE}.
@@ -22,15 +22,19 @@
 #' }
 #'
 enter_new_metadata <- function(
+  schemeName,
   file = NULL,
   open = TRUE,
   keepData = FALSE,
   format = TRUE,
   overwrite = FALSE,
   verbose = FALSE,
-  schemeName = environmentName(environment(enter_new_metadata)),
   .skipBrowseURL = FALSE
 ) {
+  if (missing(schemeName)) {
+    stop("Missing schemeName - please provide schemeName!")
+  }
+  ##
   fn <- ""
   on.exit(
     {

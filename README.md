@@ -3,7 +3,8 @@ Metadata scheme for Mirocosm Experiments
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-[![DOI](https://zenodo.org/badge/156543918.svg)](https://zenodo.org/badge/latestdoi/156543918)
+<!-- [![DOI](https://zenodo.org/badge/156543918.svg)](https://zenodo.org/badge/latestdoi/156543918) -->
+
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 

@@ -4,13 +4,14 @@
 \alias{enter_new_metadata}
 \title{Enter new metadata to fill a new scheme}
 \usage{
-enter_new_metadata(file = NULL, open = TRUE, keepData = FALSE,
-  format = TRUE, overwrite = FALSE, verbose = FALSE,
-  schemeName = environmentName(environment(enter_new_metadata)),
-  .skipBrowseURL = FALSE)
+enter_new_metadata(schemeName, file = NULL, open = TRUE,
+  keepData = FALSE, format = TRUE, overwrite = FALSE,
+  verbose = FALSE, .skipBrowseURL = FALSE)
 }
 \arguments{
-\item{file}{if not \code{NULL}, the te,plate will be saved to this file.}
+\item{schemeName}{name of the package in which the template of the scheme sits. Default value: \code{dmdScheme}}
+
+\item{file}{if not \code{NULL}, the template will be saved to this file.}
 
 \item{open}{if \code{TRUE}, the file will be opened. This can produce different results depending on the OS, browsr and browser settings.}
 
@@ -21,8 +22,6 @@ enter_new_metadata(file = NULL, open = TRUE, keepData = FALSE,
 \item{overwrite}{if \code{TRUE}, the file specified in \code{file} will be overwritten. if \code{FALSE}, an error will be raised ehen the file exists.}
 
 \item{verbose}{if \code{TRUE} print usefull information}
-
-\item{schemeName}{name of the package in which the template of the scheme sits. Default value: \code{dmdScheme}}
 
 \item{.skipBrowseURL}{internal use (testing only). if \code{TRUE} skip the call of \code{browseURL()}}
 }

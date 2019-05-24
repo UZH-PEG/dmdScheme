@@ -19,6 +19,8 @@ xlsx file containing the metadata.}
 extension. If missing, ot will be saved as a temporary file in the
 temporary folder.}
 
+\item{open}{if \code{TRUE}, open the report. Default: \code{TRUE}}
+
 \item{report}{determines if and in which format a report of the validation
   should be generated. Allowed values are:
 \itemize{

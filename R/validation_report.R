@@ -12,6 +12,7 @@
 #' @param file name of the file containing the generated report, including
 #'   extension. If missing, ot will be saved as a temporary file in the
 #'   temporary folder.
+#' @param open if \code{TRUE}, open the report. Default: \code{TRUE}
 #' @param report determines if and in which format a report of the validation
 #'   should be generated. Allowed values are:
 #' \itemize{
