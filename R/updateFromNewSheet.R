@@ -58,16 +58,9 @@ updateFromNewSheet <- function(
     checkVersion = FALSE
   )
   ##
-  rdsFile <- paste0(schemeName, "_raw.rds")
   varName <- paste0(schemeName, "_raw")
-  saveRDS(
-    dmdScheme_raw,
-    file = file.path( ".", "data", rdsFile )
-  )
-  cat(
-    paste0(varName, " <- readRDS(\"./", rdsFile, "\")"),
-    file = file.path( ".", "data", paste0(varName, ".R") )
-  )
+  fileName <- file.path(".", "data", paste0(varName, ".rda") )
+  eval( parse( text = sprintf("save(%s, file = %s)", varName, "fileName") ) )
 
   # update data/dmdScheme -----------------------------------------------
 
@@ -78,16 +71,9 @@ updateFromNewSheet <- function(
     verbose = TRUE
   )
   ##
-  rdsFile <- paste0(schemeName, ".rds")
   varName <- paste0(schemeName)
-  saveRDS(
-    dmdScheme,
-    file = file.path( ".", "data", rdsFile )
-  )
-  cat(
-    paste0(varName, " <- readRDS(\"./", rdsFile, "\")"),
-    file = file.path( ".", "data", paste0(varName, ".R") )
-  )
+  fileName <- file.path(".", "data", paste0(varName, ".rda") )
+  eval( parse( text = sprintf("save(%s, file = %s)", varName, "fileName") ) )
 
   # update data/dmdScheme_exmple ----------------------------------------
 
@@ -98,16 +84,9 @@ updateFromNewSheet <- function(
     verbose = TRUE
   )
   ##
-  rdsFile <- paste0(schemeName, "_example.rds")
   varName <- paste0(schemeName, "_example")
-  saveRDS(
-    dmdScheme_example,
-    file = file.path( ".", "data", rdsFile )
-  )
-  cat(
-    paste0(varName, " <- readRDS(\"./", rdsFile, "\")"),
-    file = file.path( ".", "data", paste0(varName, ".R") )
-  )
+  fileName <- file.path(".", "data", paste0(varName, ".rda") )
+  eval( parse( text = sprintf("save(%s, file = %s)", varName, "fileName") ) )
 
   # Update dmdScheme.xml files -----------------------------------------------
 

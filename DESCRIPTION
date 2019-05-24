@@ -22,6 +22,6 @@ StagedInstall: true
 RoxygenNote: 6.1.1
 Suggests: covr (>= 3.2.1), testthat (>= 2.0.1), here (>= 0.1), kableExtra (>= 0.9.0)
 Enhances: plantuml (>= 0.2.3.2)
-dmdSchemeUpdate: 2019-05-24 15:30:12
+dmdSchemeUpdate: 2019-05-24 16:34:28
 dmdSchemeMD5: 5b022906be190474b6c4e65b0f2ab544
 VignetteBuilder: knitr
