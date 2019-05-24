@@ -33,6 +33,8 @@ updateFromNewSheet <- function(
 
   # prepare update ----------------------------------------------------------
 
+  dir.create("./data", showWarnings = FALSE)
+  dir.create("./inst", showWarnings = FALSE)
   sheet <- here::here("inst",  paste0(schemeName, ".xlsx"))
 
   # Updata dmdScheme.xlsx ---------------------------------------------------
