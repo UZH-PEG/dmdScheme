@@ -4,7 +4,7 @@
 \alias{validate_report}
 \title{Validates \code{x} and creates report}
 \usage{
-validate_report(x, path = ".", file, report = "html",
+validate_report(x, path = ".", file, open = TRUE, report = "html",
   report_author = "Tester",
   report_title = "Validation of data against dmdScheme")
 }

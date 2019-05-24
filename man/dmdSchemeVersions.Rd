@@ -7,6 +7,8 @@
 dmdSchemeVersions(schemeName = "dmdScheme", lib.loc = NULL)
 }
 \arguments{
+\item{schemeName}{name of the scheme. Default: dmdScheme. Only for developing new schemes needed.}
+
 \item{lib.loc}{a character vector of directory names of R libraries, or NULL.
 The default value of NULL corresponds to all libraries currently known. If
 the default is used, the loaded packages and namespaces are searched before
