@@ -9,7 +9,10 @@
 #'   one row with NAs. \code{keepData = FALSE} is only importing the structure
 #'   of the \code{dmdScheme} as in the variable \code{dmdScheme}.
 #' @param verbose give verbose progress info. Useful for debugging.
-#' @param schemeName name of the scheme. Default: dmdScheme. Only for developing new schemes needed.
+#' @param schemeName name of the scheme. Default: dmdScheme. Only for developing
+#'   new schemes needed.
+#' @param checkVersion if \code{TRUE}, abort if version conflicts between the
+#'   package scheme version and the scheme version of the file.
 #'
 #' @return either if \code{raw = TRUE} a list of tibbles from the worksheets of
 #'   Class \code{dmdScheme_raw}, otherwise an object of class
@@ -28,7 +31,8 @@ read_from_excel_raw <- function(
   file,
   keepData = TRUE,
   verbose = FALSE,
-  schemeName = "dmdScheme"
+  schemeName = "dmdScheme",
+  checkVersion = TRUE
 ) {
 
 # Check if file exists ----------------------------------------------------
@@ -91,10 +95,12 @@ read_from_excel_raw <- function(
   if (v == "DATA") {
     v <- "unknown"
   }
-  if (dmdSchemeVersions(schemeName)$scheme != v) {
-    stop("Version conflict - can not proceed:\n",
-         file, " : version ", v, "\n",
-         "installed dmdScheme version : ", dmdSchemeVersions()$dmdScheme)
+  if (checkVersion) {
+    if (dmdSchemeVersions(schemeName)$scheme != v) {
+      stop("Version conflict - can not proceed:\n",
+           file, " : version ", v, "\n",
+           "installed dmdScheme version : ", dmdSchemeVersions()$dmdScheme)
+    }
   }
 
 # Set version -------------------------------------------------------------

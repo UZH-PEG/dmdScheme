@@ -2,7 +2,7 @@
 % Please edit documentation in R/format_dmdScheme_xlsx.R
 \name{format_dmdScheme_xlsx}
 \alias{format_dmdScheme_xlsx}
-\title{Format the file \code{system.file("dmdScheme.xlsx", package = "dmdScheme")}}
+\title{Format the metadata scjheme file}
 \usage{
 format_dmdScheme_xlsx(fn_org, fn_new, keepData = TRUE)
 }
@@ -17,6 +17,5 @@ format_dmdScheme_xlsx(fn_org, fn_new, keepData = TRUE)
 invisibly the workbook as a workbook object as created by \code{xlsx.crerateWorkbook()}
 }
 \description{
-Takes no arguments. Loads  \code{system.file("dmdScheme.xlsx", package =
-"dmdScheme")}, formats it and saves it under the same name.
+Loads  \code{fn_org)}, formats it and saves it as \code{fn_new}.
 }

@@ -10,7 +10,7 @@ updateFromNewSheet(newDmdScheme, force = FALSE,
 \arguments{
 \item{newDmdScheme}{xlsx spreadsheet containing the new \code{dmdScheme} definition}
 
-\item{force}{force update even if \code{here::here("inst", "dmdScheme.xlsx")}
+\item{force}{force update even if \code{file.path( ".", "inst", "dmdScheme.xlsx")}
 has the same md5 suma s in the DESCRIPTION}
 
 \item{schemeName}{name of the scheme. Default: dmdScheme. SHould be changed because of readability!}
@@ -19,6 +19,6 @@ has the same md5 suma s in the DESCRIPTION}
 invisibly NULL
 }
 \description{
-Update the data from the file \code{here::here("inst", "dmdScheme.xlsx")}
+Update the data from the file \code{file.path( ".", "inst", "dmdScheme.xlsx")}
 and bump the version in the DESCRIPTION if it has changed.
 }

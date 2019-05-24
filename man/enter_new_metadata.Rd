@@ -6,6 +6,7 @@
 \usage{
 enter_new_metadata(file = NULL, open = TRUE, keepData = FALSE,
   format = TRUE, overwrite = FALSE, verbose = FALSE,
+  schemeName = environmentName(environment(enter_new_metadata)),
   .skipBrowseURL = FALSE)
 }
 \arguments{
@@ -21,13 +22,15 @@ enter_new_metadata(file = NULL, open = TRUE, keepData = FALSE,
 
 \item{verbose}{if \code{TRUE} print usefull information}
 
+\item{schemeName}{name of the package in which the template of the scheme sits. Default value: \code{dmdScheme}}
+
 \item{.skipBrowseURL}{internal use (testing only). if \code{TRUE} skip the call of \code{browseURL()}}
 }
 \value{
 invisibly the fully qualified path to the file which \bold{would} have been opened, if \code{open == TRUE}.
 }
 \description{
-Open \code{system.file("dmdScheme.xlsx", package = "dmdScheme")} in excel.
+Open \code{system.file(paste0(schemeName, ".xlsx"), package = schemeName)} in excel.
 New data can be entered and the file has to be saved at a different location
 as it is a read-only file.
 }

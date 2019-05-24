@@ -1,6 +1,6 @@
 #' Enter new metadata to fill a new scheme
 #'
-#' Open \code{system.file("dmdScheme.xlsx", package = "dmdScheme")} in excel.
+#' Open \code{system.file(paste0(schemeName, ".xlsx"), package = schemeName)} in excel.
 #' New data can be entered and the file has to be saved at a different location
 #' as it is a read-only file.
 #'
@@ -10,6 +10,7 @@
 #' @param format if \code{FALSE} the sheet will be opened as the sheet is. if \code{TRUE}, it will be formated nicely.
 #' @param overwrite if \code{TRUE}, the file specified in \code{file} will be overwritten. if \code{FALSE}, an error will be raised ehen the file exists.
 #' @param verbose if \code{TRUE} print usefull information
+#' @param schemeName name of the package in which the template of the scheme sits. Default value: \code{dmdScheme}
 #' @param .skipBrowseURL internal use (testing only). if \code{TRUE} skip the call of \code{browseURL()}
 #'
 #' @return invisibly the fully qualified path to the file which \bold{would} have been opened, if \code{open == TRUE}.
@@ -27,26 +28,38 @@ enter_new_metadata <- function(
   format = TRUE,
   overwrite = FALSE,
   verbose = FALSE,
+  schemeName = environmentName(environment(enter_new_metadata)),
   .skipBrowseURL = FALSE
 ) {
   fn <- ""
   on.exit(
     {
       if (open & verbose) {
-        cat_ln("The template should have opened in Excel.")
-        cat_ln("If Excel is not in the foreground, it might have opened in the background.")
-        cat_ln("Depending on the browser, the file might have been downloaded to the efault download location.")
-        cat_ln("If nothing happened either, you can open the file directly in Excel from")
-        cat_ln("          ", fn)
-        cat_ln()
-        cat_ln("In this case, please file a bug report at")
-        cat_ln("          https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/issues")
-        cat_ln("and provide")
-        cat_ln("     - Operating System and version")
-        cat_ln("     - Default browser")
-        cat_ln("     - file location")
-        cat_ln()
-        cat_ln("Thanks.")
+        message(
+          "###############################################################",
+          "## The template should have opened in Excel.                 ##",
+          "##                                                           ##",
+          "## If Excel is not in the foreground, it might               ##",
+          "## have opened in the background.                            ##",
+          "##                                                           ##",
+          "## Depending on the browser, the file might                  ##",
+          "## have been downloaded to the default download location.    ##",
+          "##                                                           ##",
+          "## If nothing happened either,                               ##",
+          "## you can open the file directly in Excel from              ##",
+          "##                                                           ##",
+          "## In this case, please file a bug report at                 ##",
+          "##                                                           ##",
+          "##    https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/issues ##",
+          "##                                                           ##",
+          "## and provide                                               ##",
+          "##      - Operating System and version                       ##",
+          "##      - Default browser                                    ##",
+          "##      - file location                                      ##",
+          "##                                                           ##",
+          "## Thanks.                                                   ##",
+          "###############################################################"
+        )
       }
     }
   )
@@ -54,35 +67,35 @@ enter_new_metadata <- function(
 
 # Warning if `format = TRUE` ----------------------------------------------
   if (format) {
-    warning(
-    "The argument `format` is set to TRUE (the default).\n",
-    "Corruptions of the formated xlsx filer were recently observed!.\n",
-    "\n",
-    "If the resulting xlsx file is corrupt, please use\n",
-    "\n",
-    "`format = FALSE`",
-    "\n",
-    "when calling `enter_new_metadata()`\n",
-    "\n",
-    "This does NOT delete the example data.\n"
+    message(
+      "The argument `format` is set to TRUE (the default).\n",
+      "Corruptions of the formated xlsx filer were recently observed!.\n",
+      "\n",
+      "If the resulting xlsx file is corrupt, please use\n",
+      "\n",
+      "`format = FALSE`",
+      "\n",
+      "when calling `enter_new_metadata()`\n",
+      "\n",
+      "This does NOT delete the example data.\n"
     )
   }
 
 # Temporary file name -----------------------------------------------------
 
-  fn <- tempfile(pattern = "dmdScheme.", fileext = ".xlsx")
+  fn <- tempfile(pattern = paste0(schemeName, "."), fileext = ".xlsx")
 
 # Format if asked for, otherwise copy to fn unchanged ---------------------
 
   if (format) {
     format_dmdScheme_xlsx(
-      fn_org = system.file("dmdScheme.xlsx", package = "dmdScheme"),
+      fn_org = system.file(paste0(schemeName, ".xlsx"), package = schemeName),
       fn_new = fn,
       keepData = keepData
     )
   } else {
     file.copy(
-      from = system.file("dmdScheme.xlsx", package = "dmdScheme"),
+      from = system.file(paste0(schemeName, ".xlsx"), package = schemeName),
       to = fn
     )
   }

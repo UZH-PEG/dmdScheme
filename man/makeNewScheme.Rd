@@ -2,16 +2,34 @@
 % Please edit documentation in R/makeNewScheme.R
 \name{makeNewScheme}
 \alias{makeNewScheme}
-\title{Title}
+\title{Create new package containg the definitions for new domain metadata scheme.}
 \usage{
-makeNewScheme(schemeName, schemeDefinition)
+makeNewScheme(schemeName, schemeDefinition, path = ".")
 }
 \arguments{
-\item{schemeDefinition}{}
+\item{schemeName}{name of the scheme you want to use and name of the
+resulting package skelleton}
+
+\item{schemeDefinition}{\code{xlsx} Excel file containing the definition of
+the metadata scheme}
+
+\item{path}{path where the package should be created. Defeoult is the current working directory}
 }
 \value{
-
+invisibly \code{NULL}
 }
 \description{
-Title
+A new metadata scheme can be created as a package Depending on
+\code{dmdScheme}. This function uses the function \code{package.skelleton()}
+to create a new directory for the new metadata scheme, imports the scheme
+and adds some functions which make working easier.
+}
+\examples{
+\dontrun{
+makeNewScheme(
+  schemeName = "testScheme",
+  schemeDefinition = "./../emeScheme/emeScheme.xlsx",
+  path = tempdir()
+)
+}
 }

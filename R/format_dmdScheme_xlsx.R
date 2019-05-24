@@ -1,7 +1,6 @@
-#' Format the file \code{system.file("dmdScheme.xlsx", package = "dmdScheme")}
+#' Format the metadata scjheme file
 #'
-#' Takes no arguments. Loads  \code{system.file("dmdScheme.xlsx", package =
-#' "dmdScheme")}, formats it and saves it under the same name.
+#' Loads  \code{fn_org)}, formats it and saves it as \code{fn_new}.
 #' @param fn_org file name of the original excel file to be formated
 #' @param fn_new file name where the final xlsx should be saved to. If missing, it will not be saved.
 #' @param keepData if \code{TRUE}, data from data cells will be empty
@@ -254,6 +253,12 @@ format_dmdScheme_xlsx <- function(
     x = openxlsx::sheets(wb),
     value = TRUE,
     invert = TRUE
+  )
+  propSets <- grep(
+    "DOCUMENTATION",
+    propSets,
+    invert = TRUE,
+    value = TRUE
   )
 
   for (sheet in propSets) {

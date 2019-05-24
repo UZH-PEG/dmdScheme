@@ -2,6 +2,7 @@
 #'
 #' This function copies the installed example into the working directory so that it can be used.
 #' @param name name of the example
+#' @param .packageName name of the package in which the example sits. Default value: \code{dmdScheme}
 #'
 #' @return invisibly \code{NULL}
 #'
@@ -16,9 +17,10 @@
 #' make_example("basic")
 #' }
 make_example <- function(
-  name
+  name,
+  .packageName = "dmdScheme"
 ) {
-  example_dir <- system.file("example_data", package = "dmdScheme")
+  example_dir <- system.file("example_data", package = .packageName)
   examples <- list.dirs( example_dir, recursive = FALSE, full.names = FALSE)
   if (missing(name)) {
     cat_ln("Included examples are:")
@@ -30,7 +32,7 @@ make_example <- function(
 
     # Define example and to directory -----------------------------------------
 
-    example_dir <- system.file("example_data", name, package = "dmdScheme")
+    example_dir <- system.file("example_data", name, package = .packageName)
     to_dir <- file.path(".", name)
 
     # Copy Example into working directory -------------------------------------
