@@ -10,7 +10,7 @@ Authors@R: c( person( "Rainer M.", "Krug", role = c("aut", "cre"), email = "Rain
                  <vanessa.weberdemelo@uzh.ch>" ), person("Frank", "Pennekamp", role = c("ctb"), email = "Frank Pennekamp <frank.pennekamp@uzh.ch>") )
 URL: https://rkrug.github.io/dmdScheme/, https://github.com/rkrug/dmdScheme
 BugReports: https://github.com/rkrug/dmdScheme/issues
-DOI: NEEDED!!!
+DOI: https://zenodo.org/record/3229615
 Depends: R (>= 3.5.0)
 Imports: tools, methods, utils, magrittr (>= 1.5), dplyr (>= 0.1.8), tibble (>= 2.1.1), readxl (>= 1.2.0), openxlsx (>= 4.1.1), XML (>= 3.98-1.16),
                  rlang (>= 0.3.1), taxize (>= 0.9.5), rmarkdown, knitr, digest (>= 0.6)
