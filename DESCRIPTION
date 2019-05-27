@@ -2,7 +2,7 @@ Package: dmdScheme
 Title: Domain MetaData Scheme
 Description: A Package forming the core for developing own domain specific metadata schemes. It contains the basic functionality needed for all meatdata
                  schemes based on the \code{dmdScheme}.
-Version: 0.9.8
+Version: 0.9.8.1
 dmdSchemeVersion: 0.9.5
 Date: 2019-05-23
 Authors@R: c( person( "Rainer M.", "Krug", role = c("aut", "cre"), email = "Rainer.Krug@uzh.ch" ), person( "Owen L.", "Petchey", role = c("ctb"), email
