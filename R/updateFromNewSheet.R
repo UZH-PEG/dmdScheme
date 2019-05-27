@@ -18,6 +18,23 @@ updateFromNewSheet <- function(
   schemeName = "dmdScheme"
 ) {
 
+# Helper functions --------------------------------------------------------
+
+  # saveToData <- function(schemeName, data) {
+  #   rdataFile <- paste0(schemeName, ".rda")
+  #   ## Assign data to the name saved in schemeName
+  #   assign(x = schemeName, value = data)
+  #   ## Save as RData file
+  #   save(list = schemeName, file = file.path( ".", "data", rdataFile))
+  #   cat(
+  #     "load(\"./", rdataFile, "\")", sep = '',
+  #     file = file.path( ".", "data", paste0(schemeName, ".R"))
+  #   )
+  # }
+
+# Main --------------------------------------------------------------------
+
+
   message(
     "##########################################################\n",
     "## This function is only to be used during development  ##\n",
@@ -60,7 +77,18 @@ updateFromNewSheet <- function(
   ##
   varName <- paste0(schemeName, "_raw")
   fileName <- file.path(".", "data", paste0(varName, ".rda") )
-  eval( parse( text = sprintf("save(%s, file = %s)", varName, "fileName") ) )
+  # eval( parse( text = sprintf("save(%s, file = %s)", varName, "fileName") ) )
+  assign(
+    x = varName,
+    value = dmdScheme_raw
+  )
+  do.call(
+    what = save,
+    args = list(
+      varName,
+      file = fileName
+    )
+  )
 
   # update data/dmdScheme -----------------------------------------------
 
@@ -73,7 +101,18 @@ updateFromNewSheet <- function(
   ##
   varName <- paste0(schemeName)
   fileName <- file.path(".", "data", paste0(varName, ".rda") )
-  eval( parse( text = sprintf("save(%s, file = %s)", varName, "fileName") ) )
+  # eval( parse( text = sprintf("save(%s, file = %s)", varName, "fileName") ) )
+  assign(
+    x = varName,
+    value = dmdScheme
+  )
+  do.call(
+    what = save,
+    args = list(
+      varName,
+      file = fileName
+    )
+  )
 
   # update data/dmdScheme_exmple ----------------------------------------
 
@@ -86,7 +125,18 @@ updateFromNewSheet <- function(
   ##
   varName <- paste0(schemeName, "_example")
   fileName <- file.path(".", "data", paste0(varName, ".rda") )
-  eval( parse( text = sprintf("save(%s, file = %s)", varName, "fileName") ) )
+  # eval( parse( text = sprintf("save(%s, file = %s)", varName, "fileName") ) )
+  assign(
+    x = varName,
+    value = dmdScheme_example
+  )
+  do.call(
+    what = save,
+    args = list(
+      varName,
+      file = fileName
+    )
+  )
 
   # Update dmdScheme.xml files -----------------------------------------------
 
