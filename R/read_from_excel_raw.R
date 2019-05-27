@@ -9,9 +9,7 @@
 #'   one row with NAs. \code{keepData = FALSE} is only importing the structure
 #'   of the \code{dmdScheme} as in the variable \code{dmdScheme}.
 #' @param verbose give verbose progress info. Useful for debugging.
-#' @param schemeName name of the scheme. Default: dmdScheme. Only for developing
-#'   new schemes needed.
-#' @param checkVersion if \code{TRUE}, abort if version conflicts between the
+#' @param checkVersion if \code{TRUE}, abort if version or scheme conflicts between the
 #'   package scheme version and the scheme version of the file.
 #'
 #' @return either if \code{raw = TRUE} a list of tibbles from the worksheets of
@@ -31,30 +29,60 @@ read_from_excel_raw <- function(
   file,
   keepData = TRUE,
   verbose = FALSE,
-  schemeName = "dmdScheme",
   checkVersion = TRUE
 ) {
 
-# Check if file exists ----------------------------------------------------
-
+  # Check if file exists ----------------------------------------------------
 
   if (!file.exists(file)) {
     stop("Can not open file '", file, "': No such file or directory")
   }
 
-# Check if extension is xls or xlsx ---------------------------------------
+  # Check if extension is xls or xlsx ---------------------------------------
 
   if (!(tools::file_ext(file) %in% c("xls", "xlsx"))) {
     stop("If x is a file name, it has to have the extension 'xls' or 'xlsx'")
   }
 
-# Load sheets from excel file  --------------------
+  # Extract Scheme and version ----------------------------------------------
+
+  v <- readxl::read_excel(path = file, sheet = "Experiment") %>%
+    names() %>%
+    grep("DATA", ., value = TRUE) %>%
+    strsplit(" ")
+  schemeName <- v[[1]][2]
+  schemeVersion <- gsub("v", "", v[[1]][3])
+
+  # Check dmdSchemeVersion --------------------------------------------------
+
+  if (checkVersion) {
+    if (dmdSchemeVersions(schemeName)$scheme != schemeVersion) {
+      stop("Version conflict - can not proceed:\n",
+           file, " version : ", schemeVersion, "\n",
+           "installed dmdScheme version : ", dmdSchemeVersions(schemeName)$scheme)
+    }
+    if (dmdSchemeVersions(schemeName)$name != schemeName) {
+      stop("Scheme conflict different schemes used - can not proceed:\n",
+           file, " scheme name : ", schemeName, "\n",
+           "installed dmdScheme scheme : ", dmdSchemeVersions(schemeName)$name)
+    }
+  }
+
+  # Define class ------------------------------------------------------------
 
   if (schemeName == "dmdScheme") {
-    newClass <-  "dmdSchemeData_raw"
+    newSetClass <-  "dmdSchemeSet_raw"
   } else {
-    newClass <-c( paste0(schemeName, "Data_raw"), "dmdSchemeData_raw")
+    newSetClass <-c( paste0(schemeName, "Set_raw"), "dmdSchemeSet_raw")
   }
+
+  if (schemeName == "dmdScheme") {
+    newDataClass <-  "dmdSchemeData_raw"
+  } else {
+    newDataClass <-c( paste0(schemeName, "Data_raw"), "dmdSchemeData_raw")
+  }
+
+  # Load sheets from excel file  --------------------
 
   propSheets <- readxl::excel_sheets(path = file)
   propSheets <- grep("DOCUMENTATION", propSheets, invert = TRUE, value = TRUE)
@@ -80,7 +108,7 @@ read_from_excel_raw <- function(
         not()
       x <- x[notNARow, notNACol]
       class(x) <- append(
-        newClass,
+        newDataClass,
         class(x)
       )
       return(x)
@@ -88,46 +116,29 @@ read_from_excel_raw <- function(
   )
   names(result) <- propSheets
 
-# Check dmdSchemeVersion --------------------------------------------------
 
-  v <- grep("DATA", names(result$Experiment), value = TRUE)
-  v <- gsub("DATA_v", "", v)
-  if (v == "DATA") {
-    v <- "unknown"
-  }
-  if (checkVersion) {
-    if (dmdSchemeVersions(schemeName)$scheme != v) {
-      stop("Version conflict - can not proceed:\n",
-           file, " : version ", v, "\n",
-           "installed dmdScheme version : ", dmdSchemeVersions()$dmdScheme)
-    }
-  }
+  # Set class ---------------------------------------------------------------
 
-# Set version -------------------------------------------------------------
+  attr(result, "propertyName") <- schemeName
 
-  attr(result, "dmdSchemeVersion") <- v
+  # Set version -------------------------------------------------------------
 
-# Set Attributes ----------------------------------------------------------
+  attr(result, "dmdSchemeVersion") <- schemeVersion
+
+  # Set Attributes ----------------------------------------------------------
 
   attr(result, "fileName") <- file %>%
     tools::file_path_sans_ext() %>%
     basename()
 
-
-# Set class to dmdSchemeSet_Raw ----------------------------------------------
-
-  if (schemeName == "dmdScheme") {
-    newClass <-  "dmdSchemeSet_raw"
-  } else {
-    newClass <-c( paste0(schemeName, "Set_raw"), "dmdSchemeSet_raw")
-  }
+  # Set class to dmdSchemeSet_Raw ----------------------------------------------
 
   class(result) <- append(
-    newClass,
+    newSetClass,
     class(result)
   )
 
-# Return result -----------------------------------------------------------
+  # Return result -----------------------------------------------------------
 
   return(result)
 }

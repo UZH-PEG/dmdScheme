@@ -8,7 +8,7 @@ test_that(
   {
     expect_known_output(
       object = print(dmdScheme_example, printAttr = FALSE, printExtAttr = FALSE, printData = FALSE),
-      file = "print.dmdScheme.FFF.txt"
+      file = "ref-07-print.dmdScheme.FFF.txt"
     )
   }
 )
@@ -18,7 +18,7 @@ test_that(
   {
     expect_known_output(
       object = print(dmdScheme_example, printAttr = TRUE, printExtAttr = FALSE, printData = FALSE),
-      file = "print.dmdScheme.TFF.txt"
+      file = "ref-07-print.dmdScheme.TFF.txt"
     )
   }
 )
@@ -28,7 +28,7 @@ test_that(
   {
     expect_known_output(
       object = print(dmdScheme_example, printAttr = TRUE, printExtAttr = TRUE, printData = FALSE),
-      file = "print.dmdScheme.TTF.txt"
+      file = "ref-07-print.dmdScheme.TTF.txt"
     )
   }
 )
@@ -38,7 +38,7 @@ test_that(
   {
     expect_known_output(
       object = print(dmdScheme, printAttr = TRUE, printExtAttr = TRUE, printData = TRUE),
-      file = "print.dmdScheme.TTT.txt"
+      file = "ref-07-print.dmdScheme.TTT.txt"
     )
   }
 )
@@ -48,7 +48,7 @@ test_that(
   {
     expect_known_output(
       object = print(dmdScheme, printAttr = TRUE, printExtAttr = TRUE, printData = TRUE),
-      file = "print.dmdScheme.TTT.EMPTY.txt"
+      file = "ref-07-print.dmdScheme.TTT.EMPTY.txt"
     )
   }
 )

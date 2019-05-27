@@ -63,7 +63,7 @@ test_that(
   {
     expect_known_output(
       object = suppressWarnings((nfn <- enter_new_metadata(schemeName = "dmdScheme", file = fn, open = TRUE, overwrite = FALSE, verbose = FALSE, .skipBrowseURL = TRUE))),
-      file   = "enter_new_metadata_output.txt",
+      file   = "ref-06-enter_new_metadata_output.txt",
       update = TRUE
     )
     expect_true(

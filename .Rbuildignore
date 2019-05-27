@@ -21,3 +21,5 @@
 ^\.httr-oauth$
 ^ONLYLOCAL
 ^dmdScheme\.Rproj$
+^dmdScheme\.xlsx$
+

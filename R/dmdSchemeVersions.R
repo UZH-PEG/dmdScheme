@@ -27,13 +27,13 @@ dmdSchemeVersions <-function (
     packageDescription(
       pkg,
       lib.loc = lib.loc,
-      fields = c( "Version", paste0(schemeName, "Version") )
+      fields = c( "schemeName", "Version", "schemeVersion" )
     )
   )
   res <- list(
-    name = schemeName,
+    name = res[["schemeName"]],
     package = package_version(res[["Version"]]),
-    scheme = numeric_version(res[[paste0(schemeName, "Version")]])
+    scheme = numeric_version(res[["schemeVersion"]])
   )
   return(res)
 }

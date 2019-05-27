@@ -20,7 +20,7 @@ test_that(
   {
     expect_known_output(
       object = new_dmdSchemeSet( x = dmdScheme_raw, verbose = TRUE ),
-      file = "new_dmdSchemeSet.output"
+      file = "ref-03-new_dmdSchemeSet.output"
     )
   }
 )

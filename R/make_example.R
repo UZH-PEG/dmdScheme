@@ -2,7 +2,7 @@
 #'
 #' This function copies the installed example into the working directory so that it can be used.
 #' @param name name of the example
-#' @param .packageName name of the package in which the example sits. Default value: \code{dmdScheme}
+#' @param schemeName name of the package in which the example sits. Default value: \code{dmdScheme}
 #'
 #' @return invisibly \code{NULL}
 #'
@@ -18,13 +18,13 @@
 #' }
 make_example <- function(
   name,
-  .packageName = "dmdScheme"
+  schemeName = "dmdScheme"
 ) {
-  example_dir <- system.file("example_data", package = .packageName)
+  example_dir <- system.file("example_data", package = schemeName)
   examples <- list.dirs( example_dir, recursive = FALSE, full.names = FALSE)
   if (missing(name)) {
-    cat_ln("Included examples are:")
-    cat_ln(examples)
+    message("Included examples are:")
+    message(examples)
   } else {
     if (!(name %in% examples)) {
       stop("Invalid example. 'name' has to be one of the following values: ", examples, ".")
@@ -32,7 +32,7 @@ make_example <- function(
 
     # Define example and to directory -----------------------------------------
 
-    example_dir <- system.file("example_data", name, package = .packageName)
+    example_dir <- system.file("example_data", name, package = schemeName)
     to_dir <- file.path(".", name)
 
     # Copy Example into working directory -------------------------------------
@@ -64,7 +64,7 @@ make_example <- function(
     switch(
       name,
       basic = utils::RShowDoc("user_manual", package = "dmdScheme"),
-      cat_ln("No documentation specified to be opened!")
+      message("No documentation specified to be opened!")
     )
   }
 

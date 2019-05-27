@@ -30,7 +30,8 @@ new_dmdSchemeData <- function(
   warnToError = TRUE
   ) {
 
-  if(verbose) cat_ln("propertySet : ", names(x)[[2]])
+
+  if(verbose) message("propertySet : ", names(x)[[2]])
 
 
 # Check for class dmdSchemeSet_raw ----------------------------------------
@@ -48,6 +49,10 @@ new_dmdSchemeData <- function(
   }
 
 
+# Remove _raw classes -----------------------------------------------------
+
+  class(x) <- grep("_raw", class(x), invert = TRUE, value = TRUE)
+
 # Set warn to 2 to convert warnings to errors -----------------------------
 
   if (warnToError) {
@@ -60,7 +65,7 @@ new_dmdSchemeData <- function(
 # transpose when Experiment -----------------------------------------------
 
   if (x[[1,1]] == "Experiment") {
-    if(verbose) cat_ln("Transposing...")
+    if(verbose) message("Transposing...")
     #
     x %<>%
       t() %>%
@@ -80,7 +85,7 @@ new_dmdSchemeData <- function(
 
 # set names ---------------------------------------------------------------
 
-  if(verbose) cat_ln("Set names...")
+  if(verbose) message("Set names...")
   #
   names(x) <- as.character(dplyr::filter(x, .data$propertySet == "valueProperty"))
 
@@ -93,7 +98,7 @@ new_dmdSchemeData <- function(
 
 # set attributes ----------------------------------------------------------
 
-  if(verbose) cat_ln("Set attributes...")
+  if(verbose) message("Set attributes...")
   #
   for (a in attrToSet) {
     attr(x, which = a) <- dplyr::filter(x, .data$valueProperty == a)[,-1] %>%
@@ -108,7 +113,7 @@ new_dmdSchemeData <- function(
 # if !keepData remove all but one data column , is not, only remove the ones with only NAs ----------------------------
 
   if (!keepData) {
-    if(verbose) cat_ln("Trimming to one row of NAs...")
+    if(verbose) message("Trimming to one row of NAs...")
     #
     x %<>% dplyr::filter(c(TRUE, rep(FALSE, nrow(x)-1)) )
     x[] <- NA
@@ -124,11 +129,11 @@ new_dmdSchemeData <- function(
 # apply type --------------------------------------------------------------
 
   if (convertTypes) {
-    if(verbose) cat_ln("Apply types...")
+    if(verbose) message("Apply types...")
     #
     type <- attr(x, "type")
     for (i in 1:ncol(x)) {
-      if(verbose) cat_ln("   Apply type '", type[i], "' to '", names(x)[[i]], "'...")
+      if(verbose) message("   Apply type '", type[i], "' to '", names(x)[[i]], "'...")
       #
       x[[i]] <- as(x[[i]], Class = type[i])
     }
@@ -136,14 +141,14 @@ new_dmdSchemeData <- function(
 
 # set class ---------------------------------------------------------------
 
-  if(verbose) cat_ln("Set class...")
+  if(verbose) message("Set class...")
   #
   class(x) <- append(
     newClass ,
     class(x),
   )
 
-  if(verbose) cat_ln("Done")
+  if(verbose) message("Done")
   #
 # return object -----------------------------------------------------------
 

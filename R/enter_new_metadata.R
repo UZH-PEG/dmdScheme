@@ -119,11 +119,12 @@ enter_new_metadata <- function(
     fn <- file
     Sys.chmod(fn, "0755")
     if (verbose){
-      cat_ln("The template has been copied from")
-      cat_ln("          ", orgFn)
-      cat_ln("to")
-      cat_ln("          ", fn)
-      cat_ln()
+      message( "The template has been copied from",
+               "          ", orgFn,
+               "to",
+               "          ", fn,
+               ""
+      )
     }
   }
 
@@ -131,8 +132,7 @@ enter_new_metadata <- function(
 
   if (open) {
     if (verbose) {
-      cat_ln("Trying to open the file by opening it in the browser'", fn, "'... ")
-      cat_ln()
+      message("Trying to open the file by opening it in the browser'", fn, "'... ")
     }
     fn <- utils::URLencode(fn)
     if (!.skipBrowseURL) {

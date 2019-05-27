@@ -17,7 +17,6 @@
 #'   There are not many cases where you want to change this value to
 #'   \code{FALSE}. But if you do, the result will not be validated. \bold{This
 #'   can lead to invalid schemes!}.
-#' @param schemeName name of the scheme. Default: dmdScheme. Only for developing new schemes needed.
 #'
 #' @return either if \code{raw = TRUE} a list of tibbles from the worksheets of
 #'   Class \code{dmdScheme_raw}, otherwise an object of class
@@ -37,8 +36,7 @@ read_from_excel <- function(
   keepData = TRUE,
   verbose = FALSE,
   raw = FALSE,
-  validate = TRUE,
-  schemeName = "dmdScheme"
+  validate = TRUE
 ) {
 
 
@@ -47,8 +45,7 @@ read_from_excel <- function(
   result <- read_from_excel_raw(
     file = file,
     keepData = keepData,
-    verbose = verbose,
-    schemeName = schemeName
+    verbose = verbose
   )
 
 

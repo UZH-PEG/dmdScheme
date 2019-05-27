@@ -15,7 +15,7 @@ test_that(
   {
     expect_known_output(
       object = dmdSchemeToXml(x = dmdScheme_example, output = "metadata"),
-      file   = "dmdSchemeToXml_metadata.xml",
+      file   = "ref-11-dmdSchemeToXml_metadata.xml",
       print = TRUE,
       update = TRUE
     )
@@ -27,7 +27,7 @@ test_that(
   {
     expect_known_output(
       object = dmdSchemeToXml(x = dmdScheme_example, output = "complete" ),
-      file   = "dmdSchemeToXml_complete.xml",
+      file   = "ref-11-dmdSchemeToXml_complete.xml",
       print = TRUE,
       update = TRUE
     )

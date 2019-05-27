@@ -6,7 +6,7 @@ test_that(
   {
     expect_known_output(
       object = make_example(),
-      file = "make_example_.txt",
+      file = "ref-02-make_example_.txt",
     )
   }
 )

@@ -9,7 +9,7 @@ x <- dmdScheme_raw
     {
       expect_known_value(
         object = validate( x = x, errorIfStructFalse = TRUE),
-        file = "validate.dmdScheme.CORRECT.rda"
+        file = "ref-08-validate.dmdScheme.CORRECT.rda"
       )
     }
   )
@@ -19,7 +19,7 @@ test_that(
   {
     expect_known_value(
       object = validate( x = "./dmdScheme.xlsx", errorIfStructFalse = TRUE),
-      file = "validate.character.CORRECT.rda"
+      file = "ref-08-validate.character.CORRECT.rda"
     )
   }
 )
@@ -32,8 +32,8 @@ test_that(
   "validata_raw() fails",
   {
     expect_known_value(
-      object =  validate( x = x, errorIfStructFalse = FALSE),
-      file = "validate.DIFFERENCES.rda"
+      object =  suppressMessages(validate( x = x, errorIfStructFalse = FALSE)),
+      file = "ref-08-validate.DIFFERENCES.rda"
     )
   }
 )

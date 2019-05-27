@@ -4,12 +4,9 @@
 \alias{makeNewScheme}
 \title{Create new package containg the definitions for new domain metadata scheme.}
 \usage{
-makeNewScheme(schemeName, schemeDefinition, path = ".")
+makeNewScheme(schemeDefinition, path = ".")
 }
 \arguments{
-\item{schemeName}{name of the scheme you want to use and name of the
-resulting package skelleton}
-
 \item{schemeDefinition}{\code{xlsx} Excel file containing the definition of
 the metadata scheme}
 

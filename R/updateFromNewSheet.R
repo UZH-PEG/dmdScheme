@@ -3,9 +3,13 @@
 #' Update the data from the file \code{file.path( ".", "inst", "dmdScheme.xlsx")}
 #' and bump the version in the DESCRIPTION if it has changed.
 #' @param newDmdScheme xlsx spreadsheet containing the new \code{dmdScheme} definition
-#' @param schemeName name of the scheme. Default: dmdScheme. SHould be changed because of readability!
-#' @param force force update even if \code{file.path( ".", "inst", "dmdScheme.xlsx")}
 #'   has the same md5 suma s in the DESCRIPTION
+#' @param updateSchemeVersion if \code{TRUE}, the field \code{dmdSchemeVersion}
+#'   in the DESCRIPOTION file is updated. Default: \code{TRUE}
+#' @param updatePackageName if \code{TRUE}, the field \code{Package} in the
+#'   DESCRIPOTION file is updated. This should be used with caution, as it might
+#'   need other changes in the poackage. Only useful for the first import.
+#'   Default: \code{FALSE}
 #'
 #' @return invisibly NULL
 #'
@@ -14,8 +18,8 @@
 #'
 updateFromNewSheet <- function(
   newDmdScheme,
-  force = FALSE,
-  schemeName = "dmdScheme"
+  updateSchemeVersion = TRUE,
+  updatePackageName = FALSE
 ) {
 
 # Helper functions --------------------------------------------------------
@@ -48,6 +52,20 @@ updateFromNewSheet <- function(
     "\n"
   )
 
+  # read file and extract scheme and version --------------------------------
+
+  message("##### Loading ", newDmdScheme, "...")
+
+  dmdScheme_raw <- read_from_excel_raw(
+    file = newDmdScheme,
+    keepData = FALSE,
+    verbose = TRUE,
+    checkVersion = FALSE
+  )
+
+  schemeName <- attr(dmdScheme_raw, "propertyName")
+  schemeVersion <- attr(dmdScheme_raw, "dmdSchemeVersion")
+
   # prepare update ----------------------------------------------------------
 
   dir.create("data", showWarnings = FALSE)
@@ -57,27 +75,34 @@ updateFromNewSheet <- function(
 
   # Updata dmdScheme.xlsx ---------------------------------------------------
 
+  message("##### Updating ", sheet, "...")
+
   file.copy(
     from = newDmdScheme,
     to = sheet,
     overwrite = TRUE
   )
 
+  # Set info in DESCRIPTION file --------------------------------------------
+
+  ## read old DESCRIPION file
+  DESCRIPTION <- read.dcf("DESCRIPTION")
+  ## set dmdSchemeVersion
+  if (updatePackageName)   { DESCRIPTION[ 1, "Package"       ] <-  schemeName    }
+  if (updatePackageName)   { DESCRIPTION[ 1, "schemeName"    ] <-  schemeName    }
+  if (updateSchemeVersion) { DESCRIPTION[ 1, "schemeVersion" ] <-  schemeVersion }
+  ## set Update info
+  DESCRIPTION[ 1, paste0(schemeName, "Update") ] <- format(Sys.time(), "%Y-%m-%d %H:%M:%S")
+  DESCRIPTION[ 1, paste0(schemeName, "MD5")    ] <- md5sum(sheet)
+  ## write new DESCRIPTION
+  write.dcf(DESCRIPTION, "DESCRIPTION")
+
   # update data/dmdScheme_raw -----------------------------------------------
 
   message("##### Generating ", schemeName, "_raw...")
-
-  dmdScheme_raw <- read_from_excel_raw(
-    file = sheet,
-    keepData = FALSE,
-    verbose = TRUE,
-    schemeName = schemeName,
-    checkVersion = FALSE
-  )
   ##
   varName <- paste0(schemeName, "_raw")
   fileName <- file.path(".", "data", paste0(varName, ".rda") )
-  # eval( parse( text = sprintf("save(%s, file = %s)", varName, "fileName") ) )
   assign(
     x = varName,
     value = dmdScheme_raw
@@ -86,7 +111,8 @@ updateFromNewSheet <- function(
 
   # update data/dmdScheme -----------------------------------------------
 
-  message("##### Generating dmdScheme...")
+  message("##### Generating ", schemeName, "...")
+  ##
   dmdScheme <- new_dmdSchemeSet(
     x = dmdScheme_raw,
     keepData = FALSE,
@@ -95,7 +121,6 @@ updateFromNewSheet <- function(
   ##
   varName <- paste0(schemeName)
   fileName <- file.path(".", "data", paste0(varName, ".rda") )
-  # eval( parse( text = sprintf("save(%s, file = %s)", varName, "fileName") ) )
   assign(
     x = varName,
     value = dmdScheme
@@ -104,7 +129,8 @@ updateFromNewSheet <- function(
 
   # update data/dmdScheme_exmple ----------------------------------------
 
-  message("##### Generating dmdScheme_example...")
+  message("##### Generating ", schemeName, "_example...")
+  ##
   dmdScheme_example <- new_dmdSchemeSet(
     x = dmdScheme_raw,
     keepData = TRUE,
@@ -113,7 +139,6 @@ updateFromNewSheet <- function(
   ##
   varName <- paste0(schemeName, "_example")
   fileName <- file.path(".", "data", paste0(varName, ".rda") )
-  # eval( parse( text = sprintf("save(%s, file = %s)", varName, "fileName") ) )
   assign(
     x = varName,
     value = dmdScheme_example
@@ -122,39 +147,49 @@ updateFromNewSheet <- function(
 
   # Update dmdScheme.xml files -----------------------------------------------
 
-  message("##### Generating dmdScheme_example.xml...")
-
+  fp <- file.path( ".", "inst", paste0(schemeName, "_example.xml") )
+  message("##### Generating ", fp, ".xml...")
+  ##
   dmdSchemeToXml(
     x = dmdScheme_example,
-    file = file.path( ".", "inst", paste0(schemeName, "_example.xml") ),
+    file = fp,
     output = "metadata"
   )
 
-  # bump version and change description in DECRIPTION -----------------------
-
-  ## read old DESCRIPION file
-  DESCRIPTION <- read.dcf("DESCRIPTION")
-  ##
-  ## set Update info
-  DESCRIPTION[ 1, paste0(schemeName, "Update") ] <- format(Sys.time(), "%Y-%m-%d %H:%M:%S")
-  DESCRIPTION[ 1, paste0(schemeName, "MD5")    ] <- md5sum(sheet)
-  ## write new DESCRIPTION
-  write.dcf(DESCRIPTION, "DESCRIPTION")
-
   # update tests/testthat/dmdScheme.xlsx ------------------------------------
 
+  fp <- file.path( ".", "tests", "testthat", paste0(schemeName, ".xlsx") )
+  message("##### Generating ", fp, "...")
+  ##
   file.copy(
     sheet,
-    file.path( ".", "tests", "testthat", paste0(schemeName, ".xlsx")),
+    fp,
     overwrite = TRUE
   )
 
   # update exported xml in tests/testthat/*.xml -----------------------------
 
+  fp <- file.path( ".", "tests", "testthat", paste0(schemeName, "_example.xml") )
+  message("##### Generating ", fp, "...")
+  ##
   dmdSchemeToXml(
     x = dmdScheme_example,
-    file = file.path( ".", "tests", "testthat", paste0(schemeName, "_example.xml") )
+    file = fp
   )
+
+  # Set info in DESCRIPTION file --------------------------------------------
+
+  message("##### Updating DESCRIPTION file...")
+  ## read old DESCRIPION file
+  DESCRIPTION <- read.dcf("DESCRIPTION")
+  ## set dmdSchemeVersion
+  if (updateSchemeVersion) { DESCRIPTION[ 1, "schemeVersion"           ] <-  schemeVersion }
+  if (updatePackageName)   { DESCRIPTION[ 1, "Package"                    ] <-  schemeName    }
+  ## set Update info
+  DESCRIPTION[ 1, paste0(schemeName, "Update") ] <- format(Sys.time(), "%Y-%m-%d %H:%M:%S")
+  DESCRIPTION[ 1, paste0(schemeName, "MD5")    ] <- md5sum(sheet)
+  ## write new DESCRIPTION
+  write.dcf(DESCRIPTION, "DESCRIPTION")
 
   # Return invisibble NULL --------------------------------------------------------
 

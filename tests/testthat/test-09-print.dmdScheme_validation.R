@@ -19,7 +19,7 @@ test_that(
   {
     expect_output_file(
       object = print(x),
-      file = "print.dmdScheme.validation..txt"
+      file = "ref-09-print.dmdScheme.validation..txt"
     )
   }
 )
@@ -30,7 +30,7 @@ test_that(
   {
     expect_output_file(
       object = print(x, type = "summary"),
-      file = "print.dmdScheme.validation.summary.txt"
+      file = "ref-09-print.dmdScheme.validation.summary.txt"
     )
   }
 )
@@ -41,7 +41,7 @@ test_that(
   {
     expect_output_file(
       object = print(x, type = "details"),
-      file = "print.dmdScheme.validation.details.txt"
+      file = "ref-09-print.dmdScheme.validation.details.txt"
     )
   }
 )

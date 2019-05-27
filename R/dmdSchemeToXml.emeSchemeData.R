@@ -9,6 +9,7 @@ dmdSchemeToXml.dmdSchemeData <- function(
   file,
   output = "metadata"
 ) {
+
   outputValues <- c("metadata", "complete")
   if (!(output %in% outputValues)) {
     stop("Wrong value for 'output'. 'output' has to be one of the following values:", paste(outputValues, collapse = " "))

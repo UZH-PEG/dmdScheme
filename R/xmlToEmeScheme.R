@@ -85,11 +85,11 @@ xmlTodmdScheme <- function(
 
       # Apply types -------------------------------------------------------------
 
-      if(verbose) cat_ln("Apply types...")
+      if(verbose) message("Apply types...")
       #
       type <- attr(result[[sheet]], "type")
       for (i in 1:ncol(result[[sheet]])) {
-        if(verbose) cat_ln("   Apply type '", type[i], "' to '", names(result[[sheet]])[[i]], "'...")
+        if(verbose) message("   Apply type '", type[i], "' to '", names(result[[sheet]])[[i]], "'...")
         #
         result[[sheet]][[i]] <- as(result[[sheet]][[i]], Class = type[i])
       }

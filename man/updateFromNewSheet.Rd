@@ -4,16 +4,20 @@
 \alias{updateFromNewSheet}
 \title{Update data from dmdScheme.xlsx --- ONLY FOR DEVLOPMENT NEEDED}
 \usage{
-updateFromNewSheet(newDmdScheme, force = FALSE,
-  schemeName = "dmdScheme")
+updateFromNewSheet(newDmdScheme, updateSchemeVersion = TRUE,
+  updatePackageName = FALSE)
 }
 \arguments{
-\item{newDmdScheme}{xlsx spreadsheet containing the new \code{dmdScheme} definition}
-
-\item{force}{force update even if \code{file.path( ".", "inst", "dmdScheme.xlsx")}
+\item{newDmdScheme}{xlsx spreadsheet containing the new \code{dmdScheme} definition
 has the same md5 suma s in the DESCRIPTION}
 
-\item{schemeName}{name of the scheme. Default: dmdScheme. SHould be changed because of readability!}
+\item{updateSchemeVersion}{if \code{TRUE}, the field \code{dmdSchemeVersion}
+in the DESCRIPOTION file is updated. Default: \code{TRUE}}
+
+\item{updatePackageName}{if \code{TRUE}, the field \code{Package} in the
+DESCRIPOTION file is updated. This should be used with caution, as it might
+need other changes in the poackage. Only useful for the first import.
+Default: \code{FALSE}}
 }
 \value{
 invisibly NULL
