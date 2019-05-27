@@ -82,13 +82,7 @@ updateFromNewSheet <- function(
     x = varName,
     value = dmdScheme_raw
   )
-  do.call(
-    what = save,
-    args = list(
-      varName,
-      file = fileName
-    )
-  )
+  save( list = varName, file = fileName)
 
   # update data/dmdScheme -----------------------------------------------
 
@@ -106,13 +100,7 @@ updateFromNewSheet <- function(
     x = varName,
     value = dmdScheme
   )
-  do.call(
-    what = save,
-    args = list(
-      varName,
-      file = fileName
-    )
-  )
+  save( list = varName, file = fileName)
 
   # update data/dmdScheme_exmple ----------------------------------------
 
@@ -130,13 +118,7 @@ updateFromNewSheet <- function(
     x = varName,
     value = dmdScheme_example
   )
-  do.call(
-    what = save,
-    args = list(
-      varName,
-      file = fileName
-    )
-  )
+  save( list = varName, file = fileName)
 
   # Update dmdScheme.xml files -----------------------------------------------
 
