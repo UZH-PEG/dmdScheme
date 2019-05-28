@@ -239,7 +239,7 @@ dmdScheme_raw$DataFile %>%
 
 A **property set** which contains **data properties** must be seen as tables and must therefore have the same number of entries for each data property.
 
-The structure as at **`r read.dcf(here("DESCRIPTION"))[1, "dmdSchemeUpdate"]` GMT** is as followed:
+The structure as at **`r read.dcf(here("DESCRIPTION"))[1, "schemeUpdate"]` GMT** is as followed:
 
 
 # Example data

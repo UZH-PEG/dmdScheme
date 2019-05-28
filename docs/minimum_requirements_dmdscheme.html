@@ -12,7 +12,7 @@
 
 <meta name="author" content="Rainer M Krug Rainer@uzh.ch" />
 
-<meta name="date" content="2019-05-24" />
+<meta name="date" content="2019-05-28" />
 
 <title>Minimum requirements for metadatascheme based on dmdScheme</title>
 
@@ -216,9 +216,9 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 
 <h1 class="title toc-ignore">Minimum requirements for metadatascheme based on dmdScheme</h1>
-<h3 class="subtitle">dmdScheme Version v0.9.8</h3>
+<h3 class="subtitle">dmdScheme Version v0.9.8.1</h3>
 <h4 class="author">Rainer M Krug <a href="mailto:Rainer@uzh.ch" class="email">Rainer@uzh.ch</a></h4>
-<h4 class="date">2019-05-24</h4>
+<h4 class="date">2019-05-28</h4>
 
 
 
@@ -230,11 +230,13 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <h2>Requirements</h2>
 <ol style="list-style-type: decimal">
 <li><p>Tab name has to be identical to <code>propertySet</code> value</p></li>
-<li><p>One tab named <code>Experiment</code></p>
-<ul>
+<li><p>One tab named <code>Experiment</code><br />
+This tab is different to the others as it has</p>
+<ol style="list-style-type: decimal">
 <li>horizontal layout</li>
 <li>only one value per property allowed</li>
-</ul></li>
+<li>the top-right cell, i.e. the one above the values to be entered, contains the word <strong>DATA</strong>, <strong>name of the scheme</strong> and <strong>version of the scheme</strong>, e.g. <strong>DATA emeScheme v0.9.5</strong></li>
+</ol></li>
 <li><p>One tab named <code>DataFileMetaData</code></p>
 <ul>
 <li>one column named <code>dataFileName</code></li>

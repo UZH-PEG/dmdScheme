@@ -55,7 +55,7 @@ makeNewScheme <- function(
 
   cat(
     "Depends: dmdScheme",
-    paste0("schemeName: ",    schemeVNamen ),
+    paste0("schemeName: ",    schemeName ),
     paste0("schemeVersion: ", schemeVersion),
     paste0(schemeName, "Update: EMPTY"),
     paste0(schemeName, "MD5: EMPTY"),

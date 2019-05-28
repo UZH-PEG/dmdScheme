@@ -12,7 +12,7 @@
 
 <meta name="author" content="Rainer M Krug Rainer@uzh.ch" />
 
-<meta name="date" content="2019-05-24" />
+<meta name="date" content="2019-05-28" />
 
 <title>R Package Introduction</title>
 
@@ -302,9 +302,9 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 
 <h1 class="title toc-ignore">R Package Introduction</h1>
-<h3 class="subtitle">dmdScheme Version v0.9.8</h3>
+<h3 class="subtitle">dmdScheme Version v0.9.8.1</h3>
 <h4 class="author">Rainer M Krug <a href="mailto:Rainer@uzh.ch" class="email">Rainer@uzh.ch</a></h4>
-<h4 class="date">2019-05-24</h4>
+<h4 class="date">2019-05-28</h4>
 
 
 
@@ -527,7 +527,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb7-25" title="25"><span class="co">#&gt; XA      propertyName: Genus</span></a>
 <a class="sourceLine" id="cb7-26" title="26"><span class="co">#&gt; XA      suggestedValues: NA | NA | treatment | bacteria, bacterivore, predator, phototroph | NA</span></a>
 <a class="sourceLine" id="cb7-27" title="27"><span class="co">#&gt; XA      Description: Id of the species and strain. Each speciesId has to be unique. | Where the species was obtained from. | Initial density used for all treatments. If different between treatments, use &quot;treatment&quot; and specify in the Treatment sheet. | Functional group of the species. | NA</span></a>
-<a class="sourceLine" id="cb7-28" title="28"><span class="co">#&gt; XA      class: dmdSchemeData | dmdSchemeData_raw | tbl_df | tbl | data.frame</span></a>
+<a class="sourceLine" id="cb7-28" title="28"><span class="co">#&gt; XA      class: dmdSchemeData | tbl_df | tbl | data.frame</span></a>
 <a class="sourceLine" id="cb7-29" title="29"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb7-30" title="30"><span class="co">#&gt;      Treatments - dmdSchemeData</span></a>
 <a class="sourceLine" id="cb7-31" title="31"><span class="co">#&gt; A       Names : treatmentID | treatmentLevelHeight | comment</span></a>
@@ -538,7 +538,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb7-36" title="36"><span class="co">#&gt; XA      propertyName: Treatments</span></a>
 <a class="sourceLine" id="cb7-37" title="37"><span class="co">#&gt; XA      suggestedValues: species, temperatur, light, initial density, comunity composition, densities, dispersal, viscosity, disturbance, communityType | value,  variable: freetext | NA</span></a>
 <a class="sourceLine" id="cb7-38" title="38"><span class="co">#&gt; XA      Description: ID of the the treatment decribed in this a row. Each treatmentId can occur multiple times as it can contain multiple treatment levels. | The value of the parameter if the parameter is constant over time, or a description of the variability. If unit is speciesId, comma separated list of all species in the treatment. | NA</span></a>
-<a class="sourceLine" id="cb7-39" title="39"><span class="co">#&gt; XA      class: dmdSchemeData | dmdSchemeData_raw | tbl_df | tbl | data.frame</span></a>
+<a class="sourceLine" id="cb7-39" title="39"><span class="co">#&gt; XA      class: dmdSchemeData | tbl_df | tbl | data.frame</span></a>
 <a class="sourceLine" id="cb7-40" title="40"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb7-41" title="41"><span class="co">#&gt;      Measurement - dmdSchemeData</span></a>
 <a class="sourceLine" id="cb7-42" title="42"><span class="co">#&gt; A       Names : measurementID | variable | method | unit | object | noOfSamplesInTimeSeries | samplingVolume | dataExtractionID | measuredFrom | comment</span></a>
@@ -550,7 +550,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb7-48" title="48"><span class="co">#&gt; XA      suggestedValues: NA | O2 concentration, video, manual count, abundance, DNA | presens Optode, microscopy | %, mmol, count | species, OUT, gene, community, particles | NA | NA | NA | NA | NA</span></a>
 <a class="sourceLine" id="cb7-49" title="49"><span class="co">#&gt; XA      Description: Id of the Measurement process. This includes methodology, variables . Each measurementId specifies one Measurement process and must be unique in this column. Should be in the mapping column in the DataFileMetaData tab. | The variable measured. | Name of the method used. | Unit of the measured variable | The object measured. E.g. species in the case of manual count, gene for genetic analysis, particle for particle counters. | Total number of all samples in the time series. | The sampling volumne. If e.g. atmosphere in container is sampled (oxygen measurements), than enter 0.</span></a>
 <a class="sourceLine" id="cb7-50" title="50"><span class="co">#&gt; Please use NA if sampling volumne is variable. | as used in the sheet DataExtraction, column dataExtractionID | if measured from the experiment, raw, else the measurementId (first column) of the Measurement it is based on. | NA</span></a>
-<a class="sourceLine" id="cb7-51" title="51"><span class="co">#&gt; XA      class: dmdSchemeData | dmdSchemeData_raw | tbl_df | tbl | data.frame</span></a>
+<a class="sourceLine" id="cb7-51" title="51"><span class="co">#&gt; XA      class: dmdSchemeData | tbl_df | tbl | data.frame</span></a>
 <a class="sourceLine" id="cb7-52" title="52"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb7-53" title="53"><span class="co">#&gt;      DataExtraction - dmdSchemeData</span></a>
 <a class="sourceLine" id="cb7-54" title="54"><span class="co">#&gt; A       Names : dataExtractionID | method | parameter | value | comment</span></a>
@@ -561,7 +561,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb7-59" title="59"><span class="co">#&gt; XA      propertyName: DataExtraction</span></a>
 <a class="sourceLine" id="cb7-60" title="60"><span class="co">#&gt; XA      suggestedValues: NA | bemovi x.y.z | NA | NA | NA</span></a>
 <a class="sourceLine" id="cb7-61" title="61"><span class="co">#&gt; XA      Description: Name of the DataExtraction process. This includes methodology, variables . Each name specifies one extraction process and can occur multiple times in the case of multiple parameters in the analysis. | Method used for the DataExtraction process. If possible including version (in the case of R packages). | parameter in the analysis. Only needs to be specified if it varies from the default. | value of the parameter (you can enter a number or a word) | NA</span></a>
-<a class="sourceLine" id="cb7-62" title="62"><span class="co">#&gt; XA      class: dmdSchemeData | dmdSchemeData_raw | tbl_df | tbl | data.frame</span></a>
+<a class="sourceLine" id="cb7-62" title="62"><span class="co">#&gt; XA      class: dmdSchemeData | tbl_df | tbl | data.frame</span></a>
 <a class="sourceLine" id="cb7-63" title="63"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb7-64" title="64"><span class="co">#&gt;      DataFileMetaData - dmdSchemeData</span></a>
 <a class="sourceLine" id="cb7-65" title="65"><span class="co">#&gt; A       Names : dataFileName | columnName | columnData | mappingColumn | type | description | comment</span></a>
@@ -587,7 +587,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb7-85" title="85"><span class="co">#&gt; measurementID as in the Measurement tab; </span></a>
 <a class="sourceLine" id="cb7-86" title="86"><span class="co">#&gt; otherwise:</span></a>
 <a class="sourceLine" id="cb7-87" title="87"><span class="co">#&gt; NA | Type of the column. | if column contains measurement: General description. If type is datatime, date, or time, give the order of year month day hour minute second as e.g. ymdhms, ymd, or hms. (Do not give any other information, e.g. give nothing about how months are entered (e.g. number or name), or how years, months, day, etc are separated. | NA</span></a>
-<a class="sourceLine" id="cb7-88" title="88"><span class="co">#&gt; XA      class: dmdSchemeData | dmdSchemeData_raw | tbl_df | tbl | data.frame</span></a></code></pre></div>
+<a class="sourceLine" id="cb7-88" title="88"><span class="co">#&gt; XA      class: dmdSchemeData | tbl_df | tbl | data.frame</span></a></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">print</span>(</a>
 <a class="sourceLine" id="cb8-2" title="2">  x,</a>
 <a class="sourceLine" id="cb8-3" title="3">  <span class="dt">printAttr =</span> <span class="ot">TRUE</span>,</a>
@@ -626,7 +626,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb8-36" title="36"><span class="co">#&gt; XA      propertyName: Genus</span></a>
 <a class="sourceLine" id="cb8-37" title="37"><span class="co">#&gt; XA      suggestedValues: NA | NA | treatment | bacteria, bacterivore, predator, phototroph | NA</span></a>
 <a class="sourceLine" id="cb8-38" title="38"><span class="co">#&gt; XA      Description: Id of the species and strain. Each speciesId has to be unique. | Where the species was obtained from. | Initial density used for all treatments. If different between treatments, use &quot;treatment&quot; and specify in the Treatment sheet. | Functional group of the species. | NA</span></a>
-<a class="sourceLine" id="cb8-39" title="39"><span class="co">#&gt; XA      class: dmdSchemeData | dmdSchemeData_raw | tbl_df | tbl | data.frame</span></a>
+<a class="sourceLine" id="cb8-39" title="39"><span class="co">#&gt; XA      class: dmdSchemeData | tbl_df | tbl | data.frame</span></a>
 <a class="sourceLine" id="cb8-40" title="40"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb8-41" title="41"><span class="co">#&gt;           speciesID  colour density functionalGroup</span></a>
 <a class="sourceLine" id="cb8-42" title="42"><span class="co">#&gt; D       1      tt_1    ATCC       1     bacterivore</span></a>
@@ -644,7 +644,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb8-54" title="54"><span class="co">#&gt; XA      propertyName: Treatments</span></a>
 <a class="sourceLine" id="cb8-55" title="55"><span class="co">#&gt; XA      suggestedValues: species, temperatur, light, initial density, comunity composition, densities, dispersal, viscosity, disturbance, communityType | value,  variable: freetext | NA</span></a>
 <a class="sourceLine" id="cb8-56" title="56"><span class="co">#&gt; XA      Description: ID of the the treatment decribed in this a row. Each treatmentId can occur multiple times as it can contain multiple treatment levels. | The value of the parameter if the parameter is constant over time, or a description of the variability. If unit is speciesId, comma separated list of all species in the treatment. | NA</span></a>
-<a class="sourceLine" id="cb8-57" title="57"><span class="co">#&gt; XA      class: dmdSchemeData | dmdSchemeData_raw | tbl_df | tbl | data.frame</span></a>
+<a class="sourceLine" id="cb8-57" title="57"><span class="co">#&gt; XA      class: dmdSchemeData | tbl_df | tbl | data.frame</span></a>
 <a class="sourceLine" id="cb8-58" title="58"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb8-59" title="59"><span class="co">#&gt;             treatmentID treatmentLevelHeight comment</span></a>
 <a class="sourceLine" id="cb8-60" title="60"><span class="co">#&gt; D       1 Lid_treatment                Loose    &lt;NA&gt;</span></a>
@@ -663,7 +663,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb8-73" title="73"><span class="co">#&gt; XA      suggestedValues: NA | O2 concentration, video, manual count, abundance, DNA | presens Optode, microscopy | %, mmol, count | species, OUT, gene, community, particles | NA | NA | NA | NA | NA</span></a>
 <a class="sourceLine" id="cb8-74" title="74"><span class="co">#&gt; XA      Description: Id of the Measurement process. This includes methodology, variables . Each measurementId specifies one Measurement process and must be unique in this column. Should be in the mapping column in the DataFileMetaData tab. | The variable measured. | Name of the method used. | Unit of the measured variable | The object measured. E.g. species in the case of manual count, gene for genetic analysis, particle for particle counters. | Total number of all samples in the time series. | The sampling volumne. If e.g. atmosphere in container is sampled (oxygen measurements), than enter 0.</span></a>
 <a class="sourceLine" id="cb8-75" title="75"><span class="co">#&gt; Please use NA if sampling volumne is variable. | as used in the sheet DataExtraction, column dataExtractionID | if measured from the experiment, raw, else the measurementId (first column) of the Measurement it is based on. | NA</span></a>
-<a class="sourceLine" id="cb8-76" title="76"><span class="co">#&gt; XA      class: dmdSchemeData | dmdSchemeData_raw | tbl_df | tbl | data.frame</span></a>
+<a class="sourceLine" id="cb8-76" title="76"><span class="co">#&gt; XA      class: dmdSchemeData | tbl_df | tbl | data.frame</span></a>
 <a class="sourceLine" id="cb8-77" title="77"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb8-78" title="78"><span class="co">#&gt;                  measurementID  variable         method               unit</span></a>
 <a class="sourceLine" id="cb8-79" title="79"><span class="co">#&gt; D       1 oxygen concentration        DO presens Optode                  %</span></a>
@@ -690,7 +690,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb8-100" title="100"><span class="co">#&gt; XA      propertyName: DataExtraction</span></a>
 <a class="sourceLine" id="cb8-101" title="101"><span class="co">#&gt; XA      suggestedValues: NA | bemovi x.y.z | NA | NA | NA</span></a>
 <a class="sourceLine" id="cb8-102" title="102"><span class="co">#&gt; XA      Description: Name of the DataExtraction process. This includes methodology, variables . Each name specifies one extraction process and can occur multiple times in the case of multiple parameters in the analysis. | Method used for the DataExtraction process. If possible including version (in the case of R packages). | parameter in the analysis. Only needs to be specified if it varies from the default. | value of the parameter (you can enter a number or a word) | NA</span></a>
-<a class="sourceLine" id="cb8-103" title="103"><span class="co">#&gt; XA      class: dmdSchemeData | dmdSchemeData_raw | tbl_df | tbl | data.frame</span></a>
+<a class="sourceLine" id="cb8-103" title="103"><span class="co">#&gt; XA      class: dmdSchemeData | tbl_df | tbl | data.frame</span></a>
 <a class="sourceLine" id="cb8-104" title="104"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb8-105" title="105"><span class="co">#&gt;              dataExtractionID method parameter value</span></a>
 <a class="sourceLine" id="cb8-106" title="106"><span class="co">#&gt; D       1 Mol_Analy_pipeline1   &lt;NA&gt;      &lt;NA&gt;  &lt;NA&gt;</span></a>
@@ -721,7 +721,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb8-131" title="131"><span class="co">#&gt; measurementID as in the Measurement tab; </span></a>
 <a class="sourceLine" id="cb8-132" title="132"><span class="co">#&gt; otherwise:</span></a>
 <a class="sourceLine" id="cb8-133" title="133"><span class="co">#&gt; NA | Type of the column. | if column contains measurement: General description. If type is datatime, date, or time, give the order of year month day hour minute second as e.g. ymdhms, ymd, or hms. (Do not give any other information, e.g. give nothing about how months are entered (e.g. number or name), or how years, months, day, etc are separated. | NA</span></a>
-<a class="sourceLine" id="cb8-134" title="134"><span class="co">#&gt; XA      class: dmdSchemeData | dmdSchemeData_raw | tbl_df | tbl | data.frame</span></a>
+<a class="sourceLine" id="cb8-134" title="134"><span class="co">#&gt; XA      class: dmdSchemeData | tbl_df | tbl | data.frame</span></a>
 <a class="sourceLine" id="cb8-135" title="135"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb8-136" title="136"><span class="co">#&gt;                             dataFileName    columnName  columnData</span></a>
 <a class="sourceLine" id="cb8-137" title="137"><span class="co">#&gt; D       1  dissolved_oxygen_measures.csv        Jar_ID          ID</span></a>

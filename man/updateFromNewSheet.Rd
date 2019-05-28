@@ -8,8 +8,8 @@ updateFromNewSheet(newDmdScheme, updateSchemeVersion = TRUE,
   updatePackageName = FALSE)
 }
 \arguments{
-\item{newDmdScheme}{xlsx spreadsheet containing the new \code{dmdScheme} definition
-has the same md5 suma s in the DESCRIPTION}
+\item{newDmdScheme}{xlsx spreadsheet containing the new \code{dmdScheme}
+definition has the same md5 suma s in the DESCRIPTION}
 
 \item{updateSchemeVersion}{if \code{TRUE}, the field \code{dmdSchemeVersion}
 in the DESCRIPOTION file is updated. Default: \code{TRUE}}
@@ -23,6 +23,6 @@ Default: \code{FALSE}}
 invisibly NULL
 }
 \description{
-Update the data from the file \code{file.path( ".", "inst", "dmdScheme.xlsx")}
-and bump the version in the DESCRIPTION if it has changed.
+Update the data from the file \code{file.path( ".", "inst",
+"dmdScheme.xlsx")} and bump the version in the DESCRIPTION if it has changed.
 }
