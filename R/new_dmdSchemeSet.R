@@ -42,8 +42,8 @@ new_dmdSchemeSet <- function(
 
 # Check version -----------------------------------------------------------
 
-  if (dmdSchemeVersions()$scheme != attr(x, "dmdSchemeVersion")) {
-    stop("Version conflict - can not proceed:\n", " x : version ", attr(x, "dmdSchemeVersion"), "\n", "installed dmdScheme version : ", dmdSchemeVersions()$dmdScheme)
+  if (dmdScheme_versions()$scheme != attr(x, "dmdSchemeVersion")) {
+    stop("Version conflict - can not proceed:\n", " x : version ", attr(x, "dmdSchemeVersion"), "\n", "installed dmdScheme version : ", dmdScheme_versions()$dmdScheme)
   }
 
 # Iterate through dmdScheme_raw and create dmdSchemeData objects -----------

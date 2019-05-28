@@ -23,8 +23,7 @@ and adds some functions which make working easier.
 }
 \examples{
 \dontrun{
-makeNewScheme(
-  schemeName = "testScheme",
+make_new_scheme(
   schemeDefinition = "./../emeScheme/emeScheme.xlsx",
   path = tempdir()
 )

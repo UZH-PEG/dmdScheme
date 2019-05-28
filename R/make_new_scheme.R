@@ -15,8 +15,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' makeNewScheme(
-#'   schemeName = "testScheme",
+#' make_new_scheme(
 #'   schemeDefinition = "./../emeScheme/emeScheme.xlsx",
 #'   path = tempdir()
 #' )
@@ -68,7 +67,7 @@ make_new_scheme <- function(
 
   setwd(file.path(path, schemeName))
   ##
-  updateFromNewSheet(
+  update_from_new_sheet(
     newDmdScheme = schemeDefinition,
     updateSchemeVersion = TRUE,
     updatePackageName = TRUE

@@ -9,7 +9,7 @@
 #' @examples
 spreadsheet_upgrade <- function(
   x,
-  to = dmdSchemeVersions()$scheme
+  to = dmdScheme_versions()$scheme
 ) {
   stop("Not implemented yet")
 }

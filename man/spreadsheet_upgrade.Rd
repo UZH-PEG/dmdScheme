@@ -4,7 +4,7 @@
 \alias{spreadsheet_upgrade}
 \title{Convert older versions to newer versions}
 \usage{
-spreadsheet_upgrade(x, to = dmdSchemeVersions()$scheme)
+spreadsheet_upgrade(x, to = dmdScheme_versions()$scheme)
 }
 \arguments{
 \item{x}{file name of spreadsheet}

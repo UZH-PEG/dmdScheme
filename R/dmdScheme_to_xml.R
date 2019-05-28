@@ -21,14 +21,14 @@
 #'
 #' @examples
 #'
-#' ## dmdSchemeToXml( dmdScheme_example, "GoogleData" )
+#' ## dmdScheme_to_xml( dmdScheme_example, "GoogleData" )
 #' ## returns \code{XMLNode} object
 #'
-#' ## dmdSchemeToXml( dmdScheme_example, "GoogleData", file = NULL )
+#' ## dmdScheme_to_xml( dmdScheme_example, "GoogleData", file = NULL )
 #' ## returns string representation of the \code{XMLNode} object
 #'
-dmdSchemeToXml <- function (x, tag, file, output = "metadata" ) {
+dmdScheme_to_xml <- function (x, tag, file, output = "metadata" ) {
 
-  UseMethod("dmdSchemeToXml", x)
+  UseMethod("dmdScheme_to_xml", x)
 
 }

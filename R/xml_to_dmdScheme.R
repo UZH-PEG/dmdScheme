@@ -15,7 +15,7 @@
 #' x <- dmdScheme_example
 #'
 
-xmlTodmdScheme <- function(
+xml_to_dmdScheme <- function(
   xml,
   verbose = FALSE
 ){
@@ -30,9 +30,9 @@ xmlTodmdScheme <- function(
 
 # Check version -----------------------------------------------------------
 
-  if (xml$.attrs["dmdSchemeVersion"] != dmdSchemeVersions()$scheme)
+  if (xml$.attrs["dmdSchemeVersion"] != dmdScheme_versions()$scheme)
   {
-    stop("Version conflict - can not proceed:\n", "xml : version ", xml$.attrs["dmdSchemeVersion"], "\n", "installed dmdScheme version : ", dmdSchemeVersions()$dmdScheme)
+    stop("Version conflict - can not proceed:\n", "xml : version ", xml$.attrs["dmdSchemeVersion"], "\n", "installed dmdScheme version : ", dmdScheme_versions()$dmdScheme)
   }
 
 

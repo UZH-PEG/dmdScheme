@@ -90,15 +90,17 @@ attr(,"class")
 
 $Genus
 $error
-[1] 0
+[1] 1
 
 $details
-   Module errorCode isOK
-1   types        OK TRUE
-2 IDField        OK TRUE
+           Module errorCode  isOK
+1           types        OK  TRUE
+2 suggestedValues      note FALSE
+3   allowedValues      note FALSE
+4         IDField        OK  TRUE
 
 $header
-[1] "**<span style=\"color:#00FF00\">Genus - OK</span>**"
+[1] "**<span style=\"color:#55AA00\">Genus - note</span>**"
 
 $description
 [1] "Test if the metadata concerning ** Genus ** is correct.  This includes column names, required info, ... "
@@ -135,6 +137,54 @@ $comment
 attr(,"class")
 [1] "dmdScheme_validation" "list"                
 
+$suggestedValues
+$error
+[1] 1
+
+$details
+# A tibble: 2 x 2
+  density functionalGroup
+  <chr>   <chr>          
+1 FALSE   TRUE           
+2 TRUE    FALSE          
+
+$header
+[1] "**<span style=\"color:#55AA00\">values in suggestedValues - note</span>**"
+
+$description
+[1] "Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided."
+
+$descriptionDetails
+[1] "The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:\n \n    FALSE: If the cell value is not contained in the suggestedValues list.\n    TRUE : If the cell value is contained in the suggestedValues list.\n    NA   : empty cell\n \n One or more FALSE values will result in a WARNING."
+
+$comment
+[1] ""
+
+attr(,"class")
+[1] "dmdScheme_validation" "list"                
+
+$allowedValues
+$error
+[1] 1
+
+$details
+[1] NA
+
+$header
+[1] "**<span style=\"color:#55AA00\">values in allowedValues - note</span>**"
+
+$description
+[1] "Test if the metadata entered is ion the allowedValues list. The value NA is allowed in all column types, empty cells should be avoided."
+
+$descriptionDetails
+[1] "The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:\n \n    FALSE: If the cell value is not contained in the allowedValues list.\n    TRUE : If the cell value is contained in the allowedValues list.\n    NA   : empty cell\n \n One or more FALSE values will result in an ERROR."
+
+$comment
+[1] ""
+
+attr(,"class")
+[1] "dmdScheme_validation" "list"                
+
 $IDField
 $error
 [1] 0
@@ -163,15 +213,17 @@ attr(,"class")
 
 $Treatments
 $error
-[1] 0
+[1] 1
 
 $details
-   Module errorCode isOK
-1   types        OK TRUE
-2 IDField        OK TRUE
+           Module errorCode  isOK
+1           types        OK  TRUE
+2 suggestedValues      note FALSE
+3   allowedValues      note FALSE
+4         IDField        OK  TRUE
 
 $header
-[1] "**<span style=\"color:#00FF00\">Treatments - OK</span>**"
+[1] "**<span style=\"color:#55AA00\">Treatments - note</span>**"
 
 $description
 [1] "Test if the metadata concerning ** Treatments ** is correct.  This includes column names, required info, ... "
@@ -211,6 +263,57 @@ $comment
 attr(,"class")
 [1] "dmdScheme_validation" "list"                
 
+$suggestedValues
+$error
+[1] 1
+
+$details
+# A tibble: 5 x 2
+  treatmentID treatmentLevelHeight
+  <chr>       <chr>               
+1 FALSE       FALSE               
+2 FALSE       FALSE               
+3 FALSE       FALSE               
+4 FALSE       FALSE               
+5 FALSE       FALSE               
+
+$header
+[1] "**<span style=\"color:#55AA00\">values in suggestedValues - note</span>**"
+
+$description
+[1] "Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided."
+
+$descriptionDetails
+[1] "The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:\n \n    FALSE: If the cell value is not contained in the suggestedValues list.\n    TRUE : If the cell value is contained in the suggestedValues list.\n    NA   : empty cell\n \n One or more FALSE values will result in a WARNING."
+
+$comment
+[1] ""
+
+attr(,"class")
+[1] "dmdScheme_validation" "list"                
+
+$allowedValues
+$error
+[1] 1
+
+$details
+[1] NA
+
+$header
+[1] "**<span style=\"color:#55AA00\">values in allowedValues - note</span>**"
+
+$description
+[1] "Test if the metadata entered is ion the allowedValues list. The value NA is allowed in all column types, empty cells should be avoided."
+
+$descriptionDetails
+[1] "The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:\n \n    FALSE: If the cell value is not contained in the allowedValues list.\n    TRUE : If the cell value is contained in the allowedValues list.\n    NA   : empty cell\n \n One or more FALSE values will result in an ERROR."
+
+$comment
+[1] ""
+
+attr(,"class")
+[1] "dmdScheme_validation" "list"                
+
 $IDField
 $error
 [1] 0
@@ -239,15 +342,17 @@ attr(,"class")
 
 $Measurement
 $error
-[1] 0
+[1] 1
 
 $details
-   Module errorCode isOK
-1   types        OK TRUE
-2 IDField        OK TRUE
+           Module errorCode  isOK
+1           types        OK  TRUE
+2 suggestedValues      note FALSE
+3   allowedValues      note FALSE
+4         IDField        OK  TRUE
 
 $header
-[1] "**<span style=\"color:#00FF00\">Measurement - OK</span>**"
+[1] "**<span style=\"color:#55AA00\">Measurement - note</span>**"
 
 $description
 [1] "Test if the metadata concerning ** Measurement ** is correct.  This includes column names, required info, ... "
@@ -288,6 +393,56 @@ $comment
 attr(,"class")
 [1] "dmdScheme_validation" "list"                
 
+$suggestedValues
+$error
+[1] 1
+
+$details
+# A tibble: 4 x 4
+  variable method unit  object
+  <chr>    <chr>  <chr> <chr> 
+1 FALSE    TRUE   TRUE  TRUE  
+2 TRUE     FALSE  TRUE  TRUE  
+3 FALSE    FALSE  FALSE TRUE  
+4 TRUE     FALSE  FALSE FALSE 
+
+$header
+[1] "**<span style=\"color:#55AA00\">values in suggestedValues - note</span>**"
+
+$description
+[1] "Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided."
+
+$descriptionDetails
+[1] "The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:\n \n    FALSE: If the cell value is not contained in the suggestedValues list.\n    TRUE : If the cell value is contained in the suggestedValues list.\n    NA   : empty cell\n \n One or more FALSE values will result in a WARNING."
+
+$comment
+[1] ""
+
+attr(,"class")
+[1] "dmdScheme_validation" "list"                
+
+$allowedValues
+$error
+[1] 1
+
+$details
+[1] NA
+
+$header
+[1] "**<span style=\"color:#55AA00\">values in allowedValues - note</span>**"
+
+$description
+[1] "Test if the metadata entered is ion the allowedValues list. The value NA is allowed in all column types, empty cells should be avoided."
+
+$descriptionDetails
+[1] "The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:\n \n    FALSE: If the cell value is not contained in the allowedValues list.\n    TRUE : If the cell value is contained in the allowedValues list.\n    NA   : empty cell\n \n One or more FALSE values will result in an ERROR."
+
+$comment
+[1] ""
+
+attr(,"class")
+[1] "dmdScheme_validation" "list"                
+
 $IDField
 $error
 [1] 0
@@ -316,15 +471,17 @@ attr(,"class")
 
 $DataExtraction
 $error
-[1] 0
+[1] 1
 
 $details
-   Module errorCode isOK
-1   types        OK TRUE
-2 IDField        OK TRUE
+           Module errorCode  isOK
+1           types        OK  TRUE
+2 suggestedValues        OK  TRUE
+3   allowedValues      note FALSE
+4         IDField        OK  TRUE
 
 $header
-[1] "**<span style=\"color:#00FF00\">DataExtraction - OK</span>**"
+[1] "**<span style=\"color:#55AA00\">DataExtraction - note</span>**"
 
 $description
 [1] "Test if the metadata concerning ** DataExtraction ** is correct.  This includes column names, required info, ... "
@@ -353,6 +510,53 @@ $description
 
 $descriptionDetails
 [1] "The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:\n \n    FALSE: If the cell contains an error, i.e. can not be losslessly converted.\n    TRUE : If the cell can be losslessly converted and is OK.\n    NA   : empty cell\n \n One or more FALSE values will result in an ERROR."
+
+$comment
+[1] ""
+
+attr(,"class")
+[1] "dmdScheme_validation" "list"                
+
+$suggestedValues
+$error
+[1] 0
+
+$details
+# A tibble: 1 x 1
+  method
+  <chr> 
+1 TRUE  
+
+$header
+[1] "**<span style=\"color:#00FF00\">values in suggestedValues - OK</span>**"
+
+$description
+[1] "Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided."
+
+$descriptionDetails
+[1] "The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:\n \n    FALSE: If the cell value is not contained in the suggestedValues list.\n    TRUE : If the cell value is contained in the suggestedValues list.\n    NA   : empty cell\n \n One or more FALSE values will result in a WARNING."
+
+$comment
+[1] ""
+
+attr(,"class")
+[1] "dmdScheme_validation" "list"                
+
+$allowedValues
+$error
+[1] 1
+
+$details
+[1] NA
+
+$header
+[1] "**<span style=\"color:#55AA00\">values in allowedValues - note</span>**"
+
+$description
+[1] "Test if the metadata entered is ion the allowedValues list. The value NA is allowed in all column types, empty cells should be avoided."
+
+$descriptionDetails
+[1] "The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:\n \n    FALSE: If the cell value is not contained in the allowedValues list.\n    TRUE : If the cell value is contained in the allowedValues list.\n    NA   : empty cell\n \n One or more FALSE values will result in an ERROR."
 
 $comment
 [1] ""

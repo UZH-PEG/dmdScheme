@@ -3,7 +3,7 @@
 #' @importFrom XML xmlNode xmlAttrs append.xmlNode saveXML
 #' @importFrom tibble is_tibble
 #'
-dmdSchemeToXml.dmdSchemeData <- function(
+dmdScheme_to_xml.dmdSchemeData <- function(
   x,
   tag = "dmdScheme",
   file,

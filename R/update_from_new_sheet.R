@@ -16,7 +16,7 @@
 #' @importFrom magrittr %>% %<>% equals not extract extract2
 #' @importFrom tools md5sum
 #'
-updateFromNewSheet <- function(
+update_from_new_sheet <- function(
   newDmdScheme,
   updateSchemeVersion = TRUE,
   updatePackageName = FALSE
@@ -138,7 +138,7 @@ updateFromNewSheet <- function(
   fp <- file.path( ".", "inst", paste0(schemeName, "_example.xml") )
   message("##### Generating ", fp, ".xml...")
   ##
-  dmdSchemeToXml(
+  dmdScheme_to_xml(
     x = dmdScheme_example,
     file = fp,
     output = "metadata"
@@ -160,7 +160,7 @@ updateFromNewSheet <- function(
   fp <- file.path( ".", "tests", "testthat", paste0(schemeName, "_example.xml") )
   message("##### Generating ", fp, "...")
   ##
-  dmdSchemeToXml(
+  dmdScheme_to_xml(
     x = dmdScheme_example,
     file = fp
   )

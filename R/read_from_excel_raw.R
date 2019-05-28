@@ -56,15 +56,15 @@ read_from_excel_raw <- function(
   # Check dmdSchemeVersion --------------------------------------------------
 
   if (checkVersion) {
-    if (dmdSchemeVersions(schemeName)$scheme != schemeVersion) {
+    if (dmdScheme_versions(schemeName)$scheme != schemeVersion) {
       stop("Version conflict - can not proceed:\n",
            file, " version : ", schemeVersion, "\n",
-           "installed dmdScheme version : ", dmdSchemeVersions(schemeName)$scheme)
+           "installed dmdScheme version : ", dmdScheme_versions(schemeName)$scheme)
     }
-    if (dmdSchemeVersions(schemeName)$name != schemeName) {
+    if (dmdScheme_versions(schemeName)$name != schemeName) {
       stop("Scheme conflict different schemes used - can not proceed:\n",
            file, " scheme name : ", schemeName, "\n",
-           "installed dmdScheme scheme : ", dmdSchemeVersions(schemeName)$name)
+           "installed dmdScheme scheme : ", dmdScheme_versions(schemeName)$name)
     }
   }
 

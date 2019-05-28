@@ -16,8 +16,8 @@
 #' @export
 #'
 #' @examples
-#' dmdSchemeVersions()
-dmdSchemeVersions <-function (
+#' dmdScheme_versions()
+dmdScheme_versions <-function (
   schemeName = "dmdScheme",
   lib.loc = NULL
 )
