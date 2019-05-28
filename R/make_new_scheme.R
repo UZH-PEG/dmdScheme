@@ -44,6 +44,7 @@ make_new_scheme <- function(
 
   # Create package skeleton -------------------------------------------------
 
+  dir.create(path, recursive = TRUE, showWarnings = FALSE)
   utils::package.skeleton(
     name = schemeName,
     force = FALSE,
@@ -53,11 +54,12 @@ make_new_scheme <- function(
   # Add info to DECRIPTION file ---------------------------------------------
 
   cat(
+    "LazyData: true",
     "Depends: dmdScheme",
     paste0("schemeName: ",    schemeName ),
     paste0("schemeVersion: ", schemeVersion),
-    paste0(schemeName, "Update: EMPTY"),
-    paste0(schemeName, "MD5: EMPTY"),
+    paste0("schemeUpdate: EMPTY"),
+    paste0("schemeMD5: EMPTY"),
     "\n",
     sep = "\n",
     file = file.path(path, schemeName, "DESCRIPTION"),

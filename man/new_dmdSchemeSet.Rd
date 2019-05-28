@@ -5,19 +5,26 @@
 \title{Convert the data stored in \code{dmdScheme_raw} into a list of tibbles}
 \usage{
 new_dmdSchemeSet(x, keepData = FALSE, convertTypes = TRUE,
-  verbose = FALSE, warnToError = TRUE)
+  verbose = FALSE, warnToError = TRUE, checkVersion = TRUE)
 }
 \arguments{
-\item{x}{object of class \code{dmdSchemeSet_raw} as e.g. returned by \code{read_from_excel(raw = TRUE)}}
+\item{x}{object of class \code{dmdSchemeSet_raw} as e.g. returned by
+\code{read_from_excel(raw = TRUE)}}
 
 \item{keepData}{if the data should be kept or replaced with one row with NAs}
 
 \item{convertTypes}{if \code{TRUE}, the types specified in the types column
-are used for the data type. Otherwise, they are left at type \code{character}}
+are used for the data type. Otherwise, they are left at type
+\code{character}}
 
 \item{verbose}{give messages to make finding errors in data easier}
 
-\item{warnToError}{if \code{TRUE}, warnings generated during the conversion will raise an error}
+\item{warnToError}{if \code{TRUE}, warnings generated during the conversion
+will raise an error}
+
+\item{checkVersion}{if \code{TRUE}, a version mismatch between the package
+and the data \code{x} will result in a =n error. If \code{FALSE}, the check
+will be skipped.}
 }
 \value{
 \code{list} of \code{list} of ... \code{tibbles}

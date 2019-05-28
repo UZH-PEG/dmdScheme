@@ -104,7 +104,8 @@ update_from_new_sheet <- function(
   dmdScheme <- new_dmdSchemeSet(
     x = dmdScheme_raw,
     keepData = FALSE,
-    verbose = TRUE
+    verbose = TRUE,
+    checkVersion = FALSE
   )
   ##
   varName <- paste0(schemeName)
@@ -122,7 +123,8 @@ update_from_new_sheet <- function(
   dmdScheme_example <- new_dmdSchemeSet(
     x = dmdScheme_raw,
     keepData = TRUE,
-    verbose = TRUE
+    verbose = TRUE,
+    checkVersion = FALSE
   )
   ##
   varName <- paste0(schemeName, "_example")
