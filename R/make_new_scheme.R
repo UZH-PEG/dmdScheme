@@ -21,7 +21,7 @@
 #'   path = tempdir()
 #' )
 #' }
-makeNewScheme <- function(
+make_new_scheme <- function(
   schemeDefinition,
   path = "."
 ){
