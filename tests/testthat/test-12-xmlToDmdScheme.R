@@ -1,11 +1,11 @@
-context("xmlTodmdScheme()")
+context("xml_to_dmdScheme()")
 
 
 test_that(
-  "xmlTodmdScheme() produces correct dmdScheme object",
+  "xml_to_dmdScheme() produces correct dmdScheme object",
   {
     expect_equal(
-      object = xmlTodmdScheme("./dmdSchemeToXml_metadata.xml", verbose = FALSE),
+      object = xml_to_dmdScheme("./ref-11-dmdScheme_to_xml_metadata.xml", verbose = FALSE),
       expected = dmdScheme_example
     )
   }

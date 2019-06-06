@@ -62,7 +62,11 @@ valErr_info <- function(error) {
 #'
 valErr_TextErrCol <- function(text, error, addError = TRUE) {
   if (inherits(text, "dmdScheme_validation") ) {
-    result <- valErr_TextErrCol(text$header, text$error, addError)
+    result <- valErr_TextErrCol(
+      text = text$header,
+      error = text$error,
+      addError = addError
+    )
   } else {
     if (missing(text)) {
       text <- valErr_info(error)$text

@@ -5,7 +5,7 @@
 \title{Read scheme data from Excel file}
 \usage{
 read_from_excel(file, keepData = TRUE, verbose = FALSE, raw = FALSE,
-  validate = TRUE, schemeName = "dmdScheme")
+  validate = TRUE)
 }
 \arguments{
 \item{file}{the name of the Excel file (.xls or .xlsx) containing the data to be
@@ -26,8 +26,6 @@ scheme can not be successfully validated against the one in the package.
 There are not many cases where you want to change this value to
 \code{FALSE}. But if you do, the result will not be validated. \bold{This
 can lead to invalid schemes!}.}
-
-\item{schemeName}{name of the scheme. Default: dmdScheme. Only for developing new schemes needed.}
 }
 \value{
 either if \code{raw = TRUE} a list of tibbles from the worksheets of

@@ -55,7 +55,7 @@ The details are a table of the same dimension as the input (green) area of the m
 |TRUE |TRUE        |TRUE  |TRUE     |TRUE      |TRUE      |TRUE            |TRUE      |TRUE               |TRUE              |TRUE         |TRUE           |TRUE     |NA      |
 
 
-## **<span style="color:#00FF00">Genus - OK</span>**
+## **<span style="color:#55AA00">Genus - note</span>**
 
 The details are a table with one row per unique validation.
  The column `Module` contains the name of the validation,
@@ -70,10 +70,12 @@ The details are a table with one row per unique validation.
 
 
 
-|Module  |errorCode |isOK |
-|:-------|:---------|:----|
-|types   |OK        |TRUE |
-|IDField |OK        |TRUE |
+|Module          |errorCode |isOK  |
+|:---------------|:---------|:-----|
+|types           |OK        |TRUE  |
+|suggestedValues |note      |FALSE |
+|allowedValues   |note      |FALSE |
+|IDField         |OK        |TRUE  |
 
 -  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
 The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
@@ -90,6 +92,35 @@ The details are a table of the same dimension as the input (green) area of the m
 |TRUE      |TRUE   |TRUE    |TRUE            |TRUE    |
 |TRUE      |TRUE   |NA      |TRUE            |NA      |
 
+-  **<span style="color:#55AA00">values in suggestedValues - note</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell value is not contained in the suggestedValues list.
+    TRUE : If the cell value is contained in the suggestedValues list.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in a WARNING.  
+
+
+|density |functionalGroup |
+|:-------|:---------------|
+|FALSE   |TRUE            |
+|TRUE    |FALSE           |
+
+-  **<span style="color:#55AA00">values in allowedValues - note</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell value is not contained in the allowedValues list.
+    TRUE : If the cell value is contained in the allowedValues list.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in an ERROR.  
+
+
+|x  |
+|:--|
+|NA |
+
 -  **<span style="color:#00FF00">ID Field presendt and in the first column - OK</span>**   
 Returns a boolean value, with the following possible values:
  
@@ -104,7 +135,7 @@ Returns a boolean value, with the following possible values:
 |tab has ID field in first column |TRUE |
 
 
-## **<span style="color:#00FF00">Treatments - OK</span>**
+## **<span style="color:#55AA00">Treatments - note</span>**
 
 The details are a table with one row per unique validation.
  The column `Module` contains the name of the validation,
@@ -119,10 +150,12 @@ The details are a table with one row per unique validation.
 
 
 
-|Module  |errorCode |isOK |
-|:-------|:---------|:----|
-|types   |OK        |TRUE |
-|IDField |OK        |TRUE |
+|Module          |errorCode |isOK  |
+|:---------------|:---------|:-----|
+|types           |OK        |TRUE  |
+|suggestedValues |note      |FALSE |
+|allowedValues   |note      |FALSE |
+|IDField         |OK        |TRUE  |
 
 -  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
 The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
@@ -142,6 +175,38 @@ The details are a table of the same dimension as the input (green) area of the m
 |TRUE        |TRUE                 |NA      |
 |TRUE        |TRUE                 |NA      |
 
+-  **<span style="color:#55AA00">values in suggestedValues - note</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell value is not contained in the suggestedValues list.
+    TRUE : If the cell value is contained in the suggestedValues list.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in a WARNING.  
+
+
+|treatmentID |treatmentLevelHeight |
+|:-----------|:--------------------|
+|FALSE       |FALSE                |
+|FALSE       |FALSE                |
+|FALSE       |FALSE                |
+|FALSE       |FALSE                |
+|FALSE       |FALSE                |
+
+-  **<span style="color:#55AA00">values in allowedValues - note</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell value is not contained in the allowedValues list.
+    TRUE : If the cell value is contained in the allowedValues list.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in an ERROR.  
+
+
+|x  |
+|:--|
+|NA |
+
 -  **<span style="color:#00FF00">ID Field presendt and in the first column - OK</span>**   
 Returns a boolean value, with the following possible values:
  
@@ -156,7 +221,7 @@ Returns a boolean value, with the following possible values:
 |tab has ID field in first column |TRUE |
 
 
-## **<span style="color:#00FF00">Measurement - OK</span>**
+## **<span style="color:#55AA00">Measurement - note</span>**
 
 The details are a table with one row per unique validation.
  The column `Module` contains the name of the validation,
@@ -171,10 +236,12 @@ The details are a table with one row per unique validation.
 
 
 
-|Module  |errorCode |isOK |
-|:-------|:---------|:----|
-|types   |OK        |TRUE |
-|IDField |OK        |TRUE |
+|Module          |errorCode |isOK  |
+|:---------------|:---------|:-----|
+|types           |OK        |TRUE  |
+|suggestedValues |note      |FALSE |
+|allowedValues   |note      |FALSE |
+|IDField         |OK        |TRUE  |
 
 -  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
 The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
@@ -193,6 +260,37 @@ The details are a table of the same dimension as the input (green) area of the m
 |TRUE          |TRUE     |TRUE   |TRUE |TRUE   |TRUE                    |TRUE           |TRUE             |TRUE         |NA      |
 |TRUE          |TRUE     |TRUE   |TRUE |TRUE   |TRUE                    |TRUE           |TRUE             |TRUE         |NA      |
 
+-  **<span style="color:#55AA00">values in suggestedValues - note</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell value is not contained in the suggestedValues list.
+    TRUE : If the cell value is contained in the suggestedValues list.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in a WARNING.  
+
+
+|variable |method |unit  |object |
+|:--------|:------|:-----|:------|
+|FALSE    |TRUE   |TRUE  |TRUE   |
+|TRUE     |FALSE  |TRUE  |TRUE   |
+|FALSE    |FALSE  |FALSE |TRUE   |
+|TRUE     |FALSE  |FALSE |FALSE  |
+
+-  **<span style="color:#55AA00">values in allowedValues - note</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell value is not contained in the allowedValues list.
+    TRUE : If the cell value is contained in the allowedValues list.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in an ERROR.  
+
+
+|x  |
+|:--|
+|NA |
+
 -  **<span style="color:#00FF00">ID Field presendt and in the first column - OK</span>**   
 Returns a boolean value, with the following possible values:
  
@@ -207,7 +305,7 @@ Returns a boolean value, with the following possible values:
 |tab has ID field in first column |TRUE |
 
 
-## **<span style="color:#00FF00">DataExtraction - OK</span>**
+## **<span style="color:#55AA00">DataExtraction - note</span>**
 
 The details are a table with one row per unique validation.
  The column `Module` contains the name of the validation,
@@ -222,10 +320,12 @@ The details are a table with one row per unique validation.
 
 
 
-|Module  |errorCode |isOK |
-|:-------|:---------|:----|
-|types   |OK        |TRUE |
-|IDField |OK        |TRUE |
+|Module          |errorCode |isOK  |
+|:---------------|:---------|:-----|
+|types           |OK        |TRUE  |
+|suggestedValues |OK        |TRUE  |
+|allowedValues   |note      |FALSE |
+|IDField         |OK        |TRUE  |
 
 -  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
 The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
@@ -240,6 +340,34 @@ The details are a table of the same dimension as the input (green) area of the m
 |dataExtractionID |method |parameter |value |comment |
 |:----------------|:------|:---------|:-----|:-------|
 |TRUE             |NA     |NA        |NA    |TRUE    |
+
+-  **<span style="color:#00FF00">values in suggestedValues - OK</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell value is not contained in the suggestedValues list.
+    TRUE : If the cell value is contained in the suggestedValues list.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in a WARNING.  
+
+
+|method |
+|:------|
+|TRUE   |
+
+-  **<span style="color:#55AA00">values in allowedValues - note</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell value is not contained in the allowedValues list.
+    TRUE : If the cell value is contained in the allowedValues list.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in an ERROR.  
+
+
+|x  |
+|:--|
+|NA |
 
 -  **<span style="color:#00FF00">ID Field presendt and in the first column - OK</span>**   
 Returns a boolean value, with the following possible values:

@@ -5,7 +5,7 @@
 \title{Read scheme data from Excel file}
 \usage{
 read_from_excel_raw(file, keepData = TRUE, verbose = FALSE,
-  schemeName = "dmdScheme", checkVersion = TRUE)
+  checkVersion = TRUE)
 }
 \arguments{
 \item{file}{the name of the Excel file (.xls or .xlsx) containing the data to be
@@ -17,10 +17,7 @@ of the \code{dmdScheme} as in the variable \code{dmdScheme}.}
 
 \item{verbose}{give verbose progress info. Useful for debugging.}
 
-\item{schemeName}{name of the scheme. Default: dmdScheme. Only for developing
-new schemes needed.}
-
-\item{checkVersion}{if \code{TRUE}, abort if version conflicts between the
+\item{checkVersion}{if \code{TRUE}, abort if version or scheme conflicts between the
 package scheme version and the scheme version of the file.}
 }
 \value{

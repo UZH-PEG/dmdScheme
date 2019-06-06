@@ -3,12 +3,13 @@
 #' @importFrom XML xmlNode xmlAttrs append.xmlNode saveXML
 #' @importFrom tibble is_tibble
 #'
-dmdSchemeToXml.dmdSchemeData <- function(
+dmdScheme_to_xml.dmdSchemeData <- function(
   x,
   tag = "dmdScheme",
   file,
   output = "metadata"
 ) {
+
   outputValues <- c("metadata", "complete")
   if (!(output %in% outputValues)) {
     stop("Wrong value for 'output'. 'output' has to be one of the following values:", paste(outputValues, collapse = " "))

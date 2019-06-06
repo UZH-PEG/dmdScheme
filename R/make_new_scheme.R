@@ -4,8 +4,6 @@
 #' \code{dmdScheme}. This function uses the function \code{package.skelleton()}
 #' to create a new directory for the new metadata scheme, imports the scheme
 #' and adds some functions which make working easier.
-#' @param schemeName name of the scheme you want to use and name of the
-#'   resulting package skelleton
 #' @param schemeDefinition \code{xlsx} Excel file containing the definition of
 #'   the metadata scheme
 #' @param path path where the package should be created. Defeoult is the current working directory
@@ -17,14 +15,12 @@
 #'
 #' @examples
 #' \dontrun{
-#' makeNewScheme(
-#'   schemeName = "testScheme",
+#' make_new_scheme(
 #'   schemeDefinition = "./../emeScheme/emeScheme.xlsx",
 #'   path = tempdir()
 #' )
 #' }
-makeNewScheme <- function(
-  schemeName,
+make_new_scheme <- function(
   schemeDefinition,
   path = "."
 ){
@@ -36,29 +32,47 @@ makeNewScheme <- function(
   )
   ##
   schemeDefinition <- normalizePath(schemeDefinition)
-  ##
+
+  # Extract name and version of scheme --------------------------------------
+
+  v <- readxl::read_excel(path = schemeDefinition, sheet = "Experiment") %>%
+    names() %>%
+    grep("DATA", ., value = TRUE) %>%
+    strsplit(" ")
+  schemeName <- v[[1]][2]
+  schemeVersion <- gsub("v", "", v[[1]][3])
+
+  # Create package skeleton -------------------------------------------------
+
+  dir.create(path, recursive = TRUE, showWarnings = FALSE)
   utils::package.skeleton(
     name = schemeName,
     force = FALSE,
     path = path
   )
-  ##
+
+  # Add info to DECRIPTION file ---------------------------------------------
+
   cat(
+    "LazyData: true",
     "Depends: dmdScheme",
-    paste0(schemeName, "Version: 0.1"),
-    paste0(schemeName, "Update: EMPTY"),
-    paste0(schemeName, "MD5: EMPTY"),
+    paste0("schemeName: ",    schemeName ),
+    paste0("schemeVersion: ", schemeVersion),
+    paste0("schemeUpdate: EMPTY"),
+    paste0("schemeMD5: EMPTY"),
     "\n",
     sep = "\n",
     file = file.path(path, schemeName, "DESCRIPTION"),
     append = TRUE
   )
   ##
+
   setwd(file.path(path, schemeName))
   ##
-  updateFromNewSheet(
+  update_from_new_sheet(
     newDmdScheme = schemeDefinition,
-    schemeName = schemeName
+    updateSchemeVersion = TRUE,
+    updatePackageName = TRUE
   )
   ##
   invisible(NULL)

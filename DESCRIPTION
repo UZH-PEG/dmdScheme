@@ -2,8 +2,9 @@ Package: dmdScheme
 Title: Domain MetaData Scheme
 Description: A Package forming the core for developing own domain specific metadata schemes. It contains the basic functionality needed for all meatdata
                  schemes based on the \code{dmdScheme}.
-Version: 0.9.8.1
-dmdSchemeVersion: 0.9.5
+Version: 0.9.8.3
+schemeVersion: 0.9.5
+schemeName: dmdScheme
 Date: 2019-05-23
 Authors@R: c( person( "Rainer M.", "Krug", role = c("aut", "cre"), email = "Rainer.Krug@uzh.ch" ), person( "Owen L.", "Petchey", role = c("ctb"), email
                  = "Owen.Petchey@uzh.ch" ), person("Vanessa W.", "de Melo", role = c("ctb"), email = "Vanessa Weber de Melo
@@ -22,6 +23,6 @@ StagedInstall: true
 RoxygenNote: 6.1.1
 Suggests: covr (>= 3.2.1), testthat (>= 2.0.1), here (>= 0.1), kableExtra (>= 0.9.0)
 Enhances: plantuml (>= 0.2.3.2)
-dmdSchemeUpdate: 2019-05-27 09:37:52
-dmdSchemeMD5: 5b022906be190474b6c4e65b0f2ab544
+schemeUpdate: 2019-05-28 11:31:14
+schemeMD5: 486c5e0ee06591d541b441774bc4d19f
 VignetteBuilder: knitr

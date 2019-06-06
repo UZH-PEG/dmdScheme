@@ -1,11 +1,17 @@
 #' Convert the data stored in \code{dmdScheme_raw} into a list of tibbles
 #'
-#' @param x object of class \code{dmdSchemeSet_raw} as e.g. returned by \code{read_from_excel(raw = TRUE)}
+#' @param x object of class \code{dmdSchemeSet_raw} as e.g. returned by
+#'   \code{read_from_excel(raw = TRUE)}
 #' @param keepData if the data should be kept or replaced with one row with NAs
 #' @param convertTypes if \code{TRUE}, the types specified in the types column
-#'   are used for the data type. Otherwise, they are left at type \code{character}
+#'   are used for the data type. Otherwise, they are left at type
+#'   \code{character}
 #' @param verbose give messages to make finding errors in data easier
-#' @param warnToError if \code{TRUE}, warnings generated during the conversion will raise an error
+#' @param warnToError if \code{TRUE}, warnings generated during the conversion
+#'   will raise an error
+#' @param checkVersion if \code{TRUE}, a version mismatch between the package
+#'   and the data \code{x} will result in a =n error. If \code{FALSE}, the check
+#'   will be skipped.
 #'
 #' @return \code{list} of \code{list} of ... \code{tibbles}
 #' @export
@@ -22,7 +28,8 @@ new_dmdSchemeSet <- function(
   keepData = FALSE,
   convertTypes = TRUE,
   verbose = FALSE,
-  warnToError = TRUE
+  warnToError = TRUE,
+  checkVersion = TRUE
 ) {
 
 
@@ -42,8 +49,10 @@ new_dmdSchemeSet <- function(
 
 # Check version -----------------------------------------------------------
 
-  if (dmdSchemeVersions()$scheme != attr(x, "dmdSchemeVersion")) {
-    stop("Version conflict - can not proceed:\n", " x : version ", attr(x, "dmdSchemeVersion"), "\n", "installed dmdScheme version : ", dmdSchemeVersions()$dmdScheme)
+  if (checkVersion) {
+    if (dmdScheme_versions()$scheme != attr(x, "dmdSchemeVersion")) {
+      stop("Version conflict - can not proceed:\n", " x : version ", attr(x, "dmdSchemeVersion"), "\n", "installed dmdScheme version : ", dmdScheme_versions()$dmdScheme)
+    }
   }
 
 # Iterate through dmdScheme_raw and create dmdSchemeData objects -----------

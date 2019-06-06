@@ -98,24 +98,30 @@ validate.dmdSchemeSet_raw <- function(
       result$details <- result$details[,!is.na(sugVal)]
       sugVal <- sugVal[!is.na(sugVal)]
       ##
-      for (colN in 1:ncol(result$details)) {
-        v <- c( trimws(sugVal[[colN]]), "NA", NA, "" )
-        for (rowN in 1:nrow(result$details)) {
-          al <- result$details[rowN, colN] %in% v
-          # al <- ifelse(
-          #   al,
-          #   TRUE,
-          #   paste0("'", result$details[rowN, colN], "' not in suggested Values!")
-          # )
-          result$details[rowN, colN] <- al
+      if (length(sugVal) > 0) {
+        for (colN in 1:ncol(result$details)) {
+          v <- c( trimws(sugVal[[colN]]), "NA", NA, "" )
+          for (rowN in 1:nrow(result$details)) {
+            al <- result$details[rowN, colN] %in% v
+            # al <- ifelse(
+            #   al,
+            #   TRUE,
+            #   paste0("'", result$details[rowN, colN], "' not in suggested Values!")
+            # )
+            result$details[rowN, colN] <- al
+          }
         }
+        ##
+        result$error = ifelse(
+          all(result$details == TRUE, na.rm = TRUE),
+          0,
+          1
+        )
+      } else {
+        result$details <- NA
+        result$error = 1
       }
-      ##
-      result$error = ifelse(
-        all(result$details == TRUE, na.rm = TRUE),
-        0,
-        1
-      )
+
       ##
       result$header <- valErr_TextErrCol(result)
     }
@@ -150,20 +156,25 @@ validate.dmdSchemeSet_raw <- function(
       result$details <- result$details[,!is.na(allVal)]
       allVal <- allVal[!is.na(allVal)]
       ##
-      for (colN in 1:ncol(result$details)) {
-        v <- c( trimws(allVal[[colN]]), "NA", NA, "" )
-        for (rowN in 1:nrow(result$details)) {
-          al <- result$details[rowN, colN] %in% v
-          # al <- ifelse(
-          #   al,
-          #   TRUE,
-          #   paste0("'", result$details[rowN, colN], "' not in allowed Values!")
-          # )
-          result$details[rowN, colN] <- al
+      if (length(allVal) > 0) {
+        for (colN in 1:ncol(result$details)) {
+          v <- c( trimws(allVal[[colN]]), "NA", NA, "" )
+          for (rowN in 1:nrow(result$details)) {
+            al <- result$details[rowN, colN] %in% v
+            # al <- ifelse(
+            #   al,
+            #   TRUE,
+            #   paste0("'", result$details[rowN, colN], "' not in allowed Values!")
+            # )
+            result$details[rowN, colN] <- al
+          }
         }
+        ##
+        result$error = ifelse( all(result$details == TRUE,na.rm = TRUE), 0, 3)
+      } else {
+        result$details <- NA
+        result$error = 1
       }
-      ##
-      result$error = ifelse( all(result$details == TRUE,na.rm = TRUE), 0, 3)
       ##
       result$header <- valErr_TextErrCol(result)
     }
@@ -396,7 +407,7 @@ validate.dmdSchemeSet_raw <- function(
 
   result$structure <- validateStructure( x )
   if (result$structure$error != 0 & errorIfStructFalse) {
-    cat_ln(result$structure$details)
+    message(result$structure$details)
     stop("Structure of the object to be evaluated is wrong. See the info above for details.")
   }
 

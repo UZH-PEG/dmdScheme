@@ -37,7 +37,7 @@ test_that(
         raw = TRUE,
         verbose = FALSE
       ),
-      file = "dmdScheme_data_raw.rda"
+      file = "ref-10-dmdScheme_data_raw.rda"
     )
   }
 )
@@ -52,7 +52,7 @@ test_that(
         raw = FALSE,
         verbose = FALSE
       ),
-      file = "dmdScheme.rda"
+      file = "ref-10-dmdScheme.rda"
     )
   }
 )

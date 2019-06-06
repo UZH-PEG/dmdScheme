@@ -3,7 +3,7 @@
 #' @importFrom XML xmlNode xmlAttrs append.xmlNode saveXML
 #' @importFrom tibble is_tibble
 #'
-dmdSchemeToXml.dmdSchemeSet <- function(
+dmdScheme_to_xml.dmdSchemeSet <- function(
   x,
   tag,
   file,
@@ -47,10 +47,10 @@ dmdSchemeToXml.dmdSchemeSet <- function(
     )
   }
 
-# Call dmdSchemeToXml() on list objects -----------------------------------
+# Call dmdScheme_to_xml() on list objects -----------------------------------
 
   for(i in 1:length(x)) {
-    xml <- XML::append.xmlNode(xml, dmdSchemeToXml(x[[i]], output = output))
+    xml <- XML::append.xmlNode(xml, dmdScheme_to_xml(x[[i]], output = output))
   }
 
 # If file  not missing, i.e. from root node as file not used in it --------
@@ -61,6 +61,7 @@ dmdSchemeToXml.dmdSchemeSet <- function(
       file = file
     )
   }
+
 # Return xml --------------------------------------------------------------
 
   return(xml)
