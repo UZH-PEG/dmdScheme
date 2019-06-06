@@ -9,16 +9,21 @@ xml_to_dmdScheme(xml, verbose = FALSE)
 \arguments{
 \item{xml}{either xml object or text represenatation from text object}
 
-\item{verbose}{default: \code{FALSE}; give messages to make finding errors in data easier}
+\item{verbose}{default: \code{FALSE}; give messages to make finding errors in
+data easier}
 }
 \value{
-\code{dmdScheme} object
+\code{dmdScheme} or descendant object
 }
 \description{
+TRhe scheme is automatically chosen from the propety \code{propertyName} in
+the xml file. An error is raised if it does not exist.
+}
+\details{
 The resulting \code{dmdScheme} does only contain the non-missing values which
 are specified in the xml file.
 }
 \examples{
-x <- dmdScheme_example
+## x <- dmdScheme_example
 
 }
