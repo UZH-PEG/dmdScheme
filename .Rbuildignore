@@ -9,6 +9,7 @@
 ^dmdScheme\.xml$
 ^\.covrignore$
 ^codecov\.yml$
+^deploy.sh$
 ^\.travis\.yml$
 ^README\..*$
 ^NEWS\..*$

@@ -1,6 +1,5 @@
 #' @export
 #'
-#' @importFrom taxize gnr_resolve
 #' @importFrom magrittr %>% %<>%
 #' @importFrom dplyr filter select
 #' @importFrom utils browseURL glob2rx
