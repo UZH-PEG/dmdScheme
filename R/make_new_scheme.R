@@ -28,10 +28,19 @@ make_new_scheme <- function(
   on.exit(
     {
       setwd(oldwd)
+      if (!success) {
+        unlink(
+          x = file.path(path, schemeName),
+          recursive = TRUE,
+          force = TRUE
+        )
+      }
     }
   )
   ##
   schemeDefinition <- normalizePath(schemeDefinition)
+
+  success <- FALSE
 
   # Extract name and version of scheme --------------------------------------
 
@@ -75,5 +84,6 @@ make_new_scheme <- function(
     updatePackageName = TRUE
   )
   ##
+  success <- TRUE
   invisible(NULL)
 }
