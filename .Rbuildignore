@@ -23,4 +23,5 @@
 ^ONLYLOCAL
 ^dmdScheme\.Rproj$
 ^dmdScheme\.xlsx$
+^ONLY_LOCAL$
 

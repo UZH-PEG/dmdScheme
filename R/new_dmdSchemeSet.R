@@ -6,7 +6,7 @@
 #' @param convertTypes if \code{TRUE}, the types specified in the types column
 #'   are used for the data type. Otherwise, they are left at type
 #'   \code{character}
-#' @param verbose give messages to make finding errors in data easier
+#' @param verbose give verbose progress info. Useful for debugging.
 #' @param warnToError if \code{TRUE}, warnings generated during the conversion
 #'   will raise an error
 #' @param checkVersion if \code{TRUE}, a version mismatch between the package

@@ -1,6 +1,7 @@
-#' Create examples in workingdirectoryt
+#' Create examples in working directory
 #'
-#' This function copies the installed example into the working directory so that it can be used.
+#' This package contains examples. By using \code{make_examples}, they are
+#' copied in the current working directory so that they can be used.
 #' @param name name of the example
 #' @param schemeName name of the package in which the example sits. Default value: \code{dmdScheme}
 #'

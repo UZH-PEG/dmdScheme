@@ -10,7 +10,7 @@
 #' @param keepData if \code{TRUE} the data entry areas will be emptied. If \code{FALSE}. the example data will be included.
 #' @param format if \code{FALSE} the sheet will be opened as the sheet is. if \code{TRUE}, it will be formated nicely.
 #' @param overwrite if \code{TRUE}, the file specified in \code{file} will be overwritten. if \code{FALSE}, an error will be raised ehen the file exists.
-#' @param verbose if \code{TRUE} print usefull information
+#' @param verbose give verbose progress info. Useful for debugging.
 #' @param .skipBrowseURL internal use (testing only). if \code{TRUE} skip the call of \code{browseURL()}
 #'
 #' @return invisibly the fully qualified path to the file which \bold{would} have been opened, if \code{open == TRUE}.

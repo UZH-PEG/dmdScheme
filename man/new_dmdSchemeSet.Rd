@@ -17,7 +17,7 @@ new_dmdSchemeSet(x, keepData = FALSE, convertTypes = TRUE,
 are used for the data type. Otherwise, they are left at type
 \code{character}}
 
-\item{verbose}{give messages to make finding errors in data easier}
+\item{verbose}{give verbose progress info. Useful for debugging.}
 
 \item{warnToError}{if \code{TRUE}, warnings generated during the conversion
 will raise an error}

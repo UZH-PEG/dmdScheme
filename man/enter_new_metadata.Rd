@@ -21,7 +21,7 @@ enter_new_metadata(schemeName, file = NULL, open = TRUE,
 
 \item{overwrite}{if \code{TRUE}, the file specified in \code{file} will be overwritten. if \code{FALSE}, an error will be raised ehen the file exists.}
 
-\item{verbose}{if \code{TRUE} print usefull information}
+\item{verbose}{give verbose progress info. Useful for debugging.}
 
 \item{.skipBrowseURL}{internal use (testing only). if \code{TRUE} skip the call of \code{browseURL()}}
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/make_example.R
 \name{make_example}
 \alias{make_example}
-\title{Create examples in workingdirectoryt}
+\title{Create examples in working directory}
 \usage{
 make_example(name, schemeName = "dmdScheme")
 }
@@ -15,7 +15,8 @@ make_example(name, schemeName = "dmdScheme")
 invisibly \code{NULL}
 }
 \description{
-This function copies the installed example into the working directory so that it can be used.
+This package contains examples. By using \code{make_examples}, they are
+copied in the current working directory so that they can be used.
 }
 \examples{
 make_example()
