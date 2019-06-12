@@ -2,26 +2,22 @@
 % Please edit documentation in R/xml_to_dmdScheme.R
 \name{xml_to_dmdScheme}
 \alias{xml_to_dmdScheme}
-\title{Convert xml to \code{dmdScheme}}
+\title{Convert a exported xml file to a \code{dmdScheme_Set} object}
 \usage{
-xml_to_dmdScheme(xml, verbose = FALSE)
+xml_to_dmdScheme(file, verbose = FALSE)
 }
 \arguments{
-\item{xml}{either xml object or text represenatation from text object}
+\item{file}{efile containing the xml}
 
-\item{verbose}{default: \code{FALSE}; give messages to make finding errors in
-data easier}
+\item{verbose}{give verbose progress info. Useful for debugging.}
 }
 \value{
 \code{dmdScheme} or descendant object
 }
 \description{
-TRhe scheme is automatically chosen from the propety \code{propertyName} in
-the xml file. An error is raised if it does not exist.
-}
-\details{
-The resulting \code{dmdScheme} does only contain the non-missing values which
-are specified in the xml file.
+The scheme is automatically chosen from the propety \code{propertyName} in
+the xml file. Nevertheless, the scheme has to be installed, but it does not
+hav to be loaded. An error is raised if it does not exist.
 }
 \examples{
 ## x <- dmdScheme_example

@@ -1,20 +1,16 @@
-#' Read scheme data from Excel file
+#' Read scheme data from Excel file into \code{\link{dmdScheme_raw object}}
 #'
-#' Reads the data from an Excel file. TRhe structure of the Excel file has to be
-#' \bold{identical} to the one opened by \code{enter_new_metadata()}
+#' Reads the data from an Excel file as is and no validation. Only validation of
+#' the scheme version and scheme name is done (when \code{checkVersion = TRUE}).
 #'
 #' @param file the name of the Excel file (.xls or .xlsx) containing the data to be
-#'   read from.
-#' @param keepData if the data in \code{file} should be kept or replaced with
-#'   one row with NAs. \code{keepData = FALSE} is only importing the structure
-#'   of the \code{dmdScheme} as in the variable \code{dmdScheme}.
+#'   read.
 #' @param verbose give verbose progress info. Useful for debugging.
-#' @param checkVersion if \code{TRUE}, abort if version or scheme conflicts between the
-#'   package scheme version and the scheme version of the file.
+#' @param checkVersion if \code{TRUE}, check for version or scheme conflicts
+#'   between the package scheme version and the scheme version of the file.
+#'   Aborts with an error if there is a conflict.
 #'
-#' @return either if \code{raw = TRUE} a list of tibbles from the worksheets of
-#'   Class \code{dmdScheme_raw}, otherwise an object of class
-#'   \code{dmdSchemeSet}
+#' @return object of class \code{dmdScheme_raw}
 #'
 #' @importFrom magrittr %>% equals not
 #' @importFrom readxl read_excel excel_sheets
@@ -27,7 +23,6 @@
 #'
 read_from_excel_raw <- function(
   file,
-  keepData = TRUE,
   verbose = FALSE,
   checkVersion = TRUE
 ) {
@@ -73,13 +68,13 @@ read_from_excel_raw <- function(
   if (schemeName == "dmdScheme") {
     newSetClass <-  "dmdSchemeSet_raw"
   } else {
-    newSetClass <-c( paste0(schemeName, "Set_raw"), "dmdSchemeSet_raw")
+    newSetClass <- c( paste0(schemeName, "Set_raw"), "dmdSchemeSet_raw")
   }
 
   if (schemeName == "dmdScheme") {
     newDataClass <-  "dmdSchemeData_raw"
   } else {
-    newDataClass <-c( paste0(schemeName, "Data_raw"), "dmdSchemeData_raw")
+    newDataClass <- c( paste0(schemeName, "Data_raw"), "dmdSchemeData_raw")
   }
 
   # Load sheets from excel file  --------------------

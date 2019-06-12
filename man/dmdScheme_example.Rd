@@ -3,7 +3,7 @@
 \docType{data}
 \name{dmdScheme_example}
 \alias{dmdScheme_example}
-\title{dmdScheme_example as imported from the Google sheet.}
+\title{Object of class \code{\link{dmdScheme_Set}} containing example data.}
 \format{An object of class \code{dmdSchemeSet} (inherits from \code{list}) of length 6.}
 \usage{
 dmdScheme_example
@@ -17,7 +17,8 @@ The dataset contains example data. It was created by using the code below.
 dmdScheme_example <- new_dmdSchemeSet(
    x = dmdScheme_raw,
    keepData = TRUE,
-   verbose = TRUE
+   verbose = TRUE,
+   checkVersion = FALSE
 )
 }
 }

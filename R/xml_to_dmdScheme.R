@@ -1,14 +1,12 @@
-#' Convert xml to \code{dmdScheme}
+#' Convert a exported xml file to a \code{dmdScheme_Set} object
 #'
-#' TRhe scheme is automatically chosen from the propety \code{propertyName} in
-#' the xml file. An error is raised if it does not exist.
+#' The scheme is automatically chosen from the propety \code{propertyName} in
+#' the xml file. Nevertheless, the scheme has to be installed, but it does not
+#' hav to be loaded. An error is raised if it does not exist.
 #'
-#' The resulting \code{dmdScheme} does only contain the non-missing values which
-#' are specified in the xml file.
 #'
-#' @param xml either xml object or text represenatation from text object
-#' @param verbose default: \code{FALSE}; give messages to make finding errors in
-#'   data easier
+#' @param file efile containing the xml
+#' @param verbose give verbose progress info. Useful for debugging.
 #'
 #' @return \code{dmdScheme} or descendant object
 #'
@@ -20,13 +18,13 @@
 #'
 
 xml_to_dmdScheme <- function(
-  xml,
+  file,
   verbose = FALSE
 ){
 
 # Do the initial conversion -----------------------------------------------
 
-  xml <- XML::xmlToList(xml)
+  xml <- XML::xmlToList(file)
 
 # create result -----------------------------------------------------------
 

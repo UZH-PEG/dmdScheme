@@ -2,32 +2,26 @@
 % Please edit documentation in R/read_from_excel_raw.R
 \name{read_from_excel_raw}
 \alias{read_from_excel_raw}
-\title{Read scheme data from Excel file}
+\title{Read scheme data from Excel file into \code{\link{dmdScheme_raw object}}}
 \usage{
-read_from_excel_raw(file, keepData = TRUE, verbose = FALSE,
-  checkVersion = TRUE)
+read_from_excel_raw(file, verbose = FALSE, checkVersion = TRUE)
 }
 \arguments{
 \item{file}{the name of the Excel file (.xls or .xlsx) containing the data to be
-read from.}
-
-\item{keepData}{if the data in \code{file} should be kept or replaced with
-one row with NAs. \code{keepData = FALSE} is only importing the structure
-of the \code{dmdScheme} as in the variable \code{dmdScheme}.}
+read.}
 
 \item{verbose}{give verbose progress info. Useful for debugging.}
 
-\item{checkVersion}{if \code{TRUE}, abort if version or scheme conflicts between the
-package scheme version and the scheme version of the file.}
+\item{checkVersion}{if \code{TRUE}, check for version or scheme conflicts
+between the package scheme version and the scheme version of the file.
+Aborts with an error if there is a conflict.}
 }
 \value{
-either if \code{raw = TRUE} a list of tibbles from the worksheets of
-  Class \code{dmdScheme_raw}, otherwise an object of class
-  \code{dmdSchemeSet}
+object of class \code{dmdScheme_raw}
 }
 \description{
-Reads the data from an Excel file. TRhe structure of the Excel file has to be
-\bold{identical} to the one opened by \code{enter_new_metadata()}
+Reads the data from an Excel file as is and no validation. Only validation of
+the scheme version and scheme name is done (when \code{checkVersion = TRUE}).
 }
 \examples{
 read_from_excel(file = system.file("dmdScheme.xlsx", package = "dmdScheme"))

@@ -2,30 +2,32 @@
 % Please edit documentation in R/read_from_excel.R
 \name{read_from_excel}
 \alias{read_from_excel}
-\title{Read scheme data from Excel file}
+\title{Read scheme data from Excel file into \code{\link{dmdScheme}} object}
 \usage{
 read_from_excel(file, keepData = TRUE, verbose = FALSE, raw = FALSE,
   validate = TRUE)
 }
 \arguments{
-\item{file}{the name of the Excel file (.xls or .xlsx) containing the data to be
-read from.}
+\item{file}{the name of the Excel file (.xls or .xlsx) containing the data to
+be read.}
 
-\item{keepData}{if the data in \code{file} should be kept or replaced with
-one row with NAs. \code{keepData = FALSE} is only importing the structure
-of the \code{dmdScheme} as in the variable \code{dmdScheme}.}
+\item{keepData}{if \code{TRUE}, the data in the spreadsheet \code{file} will
+be kept (as in \code{\link{dmdScheme_example}}. If \code{FALSE}, it will be
+replaced with one row with NAs as in \code{dmdScheme}. Only used when
+\code{raw == FALSE}.}
 
 \item{verbose}{give verbose progress info. Useful for debugging.}
 
-\item{raw}{if \code{TRUE} the excel file will be read as-is and not converted
-to an \code{dmdScheme} object.}
+\item{raw}{if \code{TRUE} the imported spreadsheet \code{file} will be
+returned as an object of class \code{\link{dmdScheme_raw}}. If
+\code{FALSE}, it will be converted to an \code{dmdScheme} object.}
 
-\item{validate}{Results are usually validated using \code{ validate(
-errorIfFalse = TRUE )}. Consequently, an error is raised if the resulting
-scheme can not be successfully validated against the one in the package.
-There are not many cases where you want to change this value to
-\code{FALSE}. But if you do, the result will not be validated. \bold{This
-can lead to invalid schemes!}.}
+\item{validate}{if \code{TRUE} results are validated using
+\code{validate(validateData = FALSE, errorIfStructFalse = TRUE
+)}.Consequently, an error is raised if the resulting scheme can not be
+successfully validated against the one in the package. There are not many
+cases where you want to change this value to \code{FALSE}. But if you do,
+the result will not be validated. \bold{This can lead to invalid schemes!}.}
 }
 \value{
 either if \code{raw = TRUE} a list of tibbles from the worksheets of
@@ -33,10 +35,18 @@ either if \code{raw = TRUE} a list of tibbles from the worksheets of
   \code{dmdSchemeSet}
 }
 \description{
-Reads the data from an Excel file. TRhe structure of the Excel file has to be
-\bold{identical} to the one opened by \code{enter_new_metadata()}
+Reads the data from an Excel file. Validation of the scheme version and
+scheme name is always done. Additional validations are done depending on the
+arguments \code{validate}. See detals below.
 }
 \examples{
-read_from_excel(file = system.file("dmdScheme.xlsx", package = "dmdScheme"))
+read_from_excel(
+  file = system.file("dmdScheme.xlsx", package = "dmdScheme")
+)
+
+read_from_excel(
+  file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
+  raw = TRUE
+)
 
 }

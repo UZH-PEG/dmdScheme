@@ -10,5 +10,5 @@ cat_ln(...)
 \item{...}{will be handed over to \code{cat(..., "\n")}}
 }
 \description{
-Copied from tibble::cat_line()
+Copied from tibble:::cat_line()
 }

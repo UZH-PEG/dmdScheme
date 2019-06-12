@@ -13,7 +13,7 @@ as.plantuml.dmdSchemeSet(x, complete, nm, ...)
 
 \item{nm}{internal}
 
-\item{...}{other arguments passed to other functions}
+\item{...}{further arguments passed to other functions}
 }
 \value{
 object of class \code{plantuml} which can be plotted
