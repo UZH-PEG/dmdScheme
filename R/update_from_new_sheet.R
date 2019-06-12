@@ -58,7 +58,6 @@ update_from_new_sheet <- function(
 
   dmdScheme_raw <- read_from_excel_raw(
     file = newDmdScheme,
-    keepData = FALSE,
     verbose = TRUE,
     checkVersion = FALSE
   )

@@ -11,6 +11,8 @@
 #'
 #' @return return the \code{dmdScheme_validation} object
 #'
+#' @aliases validate
+#'
 #' @export
 #'
 #' @examples

@@ -1,5 +1,5 @@
 Package: dmdScheme
-Title: Domain specific MetaData Scheme
+Title: Domain Specific MetaData Scheme
 Description: A Package forming the core for developing own domain specific metadata schemes. It contains the basic functionality needed for all meatdata
                  schemes based on the \code{dmdScheme}.
 Version: 0.9.9.1

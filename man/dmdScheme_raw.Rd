@@ -3,6 +3,7 @@
 \docType{data}
 \name{dmdScheme_raw}
 \alias{dmdScheme_raw}
+\alias{dmdSchemeSet_raw}
 \title{Object of class \code{dmdScheme_raw } containing the raw data as read in.}
 \format{An object of class \code{dmdSchemeSet_raw} (inherits from \code{list}) of length 6.}
 \usage{
@@ -10,15 +11,15 @@ dmdScheme_raw
 }
 \description{
 The dataset contains raw data.. An object of class \code{dmdScheme_raw} is
-returned by the function \code{\link{read_from_excel_raw}} with the argument
-\code{raw = TRUE} and \code{\link{read_from_excel_raw}}. It is usually an
+returned by the function \code{\link[dmdScheme]{read_from_excel_raw}} with the argument
+\code{raw = TRUE} and \code{\link[dmdScheme]{read_from_excel_raw}}. It is usually an
 intermediate object, as in the normal workflow, this object is automatically
-converted to an object of class \code{\link{dmdSchemeSet}}.
+converted to an object of class \code{\link[dmdScheme]{dmdSchemeSet}}.
 }
 \details{
 \describe{
   \item{\code{dmdSchemeData_raw}: }{a \code{\link[tibble]{tibble}} as returned by the function \code{\link[readxl]{read_excel}} with the class \code{dmdSchemeData_raw}}
-  \item{\code{dmdSchemeSet_raw: }}{a \code{list} with where each element is a \code{\link{dmdSchemeData_raw}} object with additional attributes:
+  \item{\code{dmdSchemeSet_raw: }}{a \code{list} with where each element is a \code{dmdSchemeData_raw} object with additional attributes:
     \describe{
       \item{propertyName: }{name of the dmdScheme for which this object contains the raw data. In the spreadsheet, it is in the cell H1 in ther in the Experiment tab (DATA dmeScheme v0.9.5.)}
       \item{dmdSchemeVersion: }{version of the dmdScheme used. In the spreadsheet, it is in the cell H1 in ther in the Experiment tab (DATA dmeScheme v0.9.5.)}

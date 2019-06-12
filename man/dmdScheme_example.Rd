@@ -3,7 +3,7 @@
 \docType{data}
 \name{dmdScheme_example}
 \alias{dmdScheme_example}
-\title{Object of class \code{\link{dmdScheme_Set}} containing example data.}
+\title{Object of class \code{\link[dmdScheme]{dmdSchemeSet}} containing example data.}
 \format{An object of class \code{dmdSchemeSet} (inherits from \code{list}) of length 6.}
 \usage{
 dmdScheme_example

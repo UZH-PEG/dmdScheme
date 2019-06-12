@@ -1,4 +1,4 @@
-#' Read scheme data from Excel file into \code{\link{dmdScheme}} object
+#' Read scheme data from Excel file into \code{\link[dmdScheme]{dmdSchemeSet}} object
 #'
 #' Reads the data from an Excel file. Validation of the scheme version and
 #' scheme name is always done. Additional validations are done depending on the
@@ -7,12 +7,12 @@
 #' @param file the name of the Excel file (.xls or .xlsx) containing the data to
 #'   be read.
 #' @param keepData if \code{TRUE}, the data in the spreadsheet \code{file} will
-#'   be kept (as in \code{\link{dmdScheme_example}}. If \code{FALSE}, it will be
+#'   be kept (as in \code{\link[dmdScheme]{dmdScheme_example}}. If \code{FALSE}, it will be
 #'   replaced with one row with NAs as in \code{dmdScheme}. Only used when
 #'   \code{raw == FALSE}.
 #' @param verbose give verbose progress info. Useful for debugging.
 #' @param raw if \code{TRUE} the imported spreadsheet \code{file} will be
-#'   returned as an object of class \code{\link{dmdScheme_raw}}. If
+#'   returned as an object of class \code{\link[dmdScheme]{dmdScheme_raw}}. If
 #'   \code{FALSE}, it will be converted to an \code{dmdScheme} object.
 #' @param validate if \code{TRUE} results are validated using
 #'   \code{validate(validateData = FALSE, errorIfStructFalse = TRUE

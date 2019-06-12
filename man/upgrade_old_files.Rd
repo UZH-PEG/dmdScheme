@@ -7,9 +7,9 @@
 upgrade_old_files(file, to = dmdScheme_versions()$scheme)
 }
 \arguments{
-\item{to}{version to upgrade to. Any version supported is possible, converting to older versions is not supported.}
+\item{file}{file name of spreadsheet or of exported xml file}
 
-\item{x}{file name of spreadsheet or of exported xml file}
+\item{to}{version to upgrade to. Any version supported is possible, converting to older versions is not supported.}
 }
 \value{
 file name of upgraded spreadsheet (\code{BASENAME(x).to.EXTENSION(x)} where \code{x} is the original file name and \code{to} is the new version)

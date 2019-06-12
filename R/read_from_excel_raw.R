@@ -1,4 +1,4 @@
-#' Read scheme data from Excel file into \code{\link{dmdScheme_raw object}}
+#' Read scheme data from Excel file into \code{\link[dmdScheme]{dmdScheme_raw}} object
 #'
 #' Reads the data from an Excel file as is and no validation. Only validation of
 #' the scheme version and scheme name is done (when \code{checkVersion = TRUE}).

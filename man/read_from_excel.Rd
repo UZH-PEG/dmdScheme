@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_from_excel.R
 \name{read_from_excel}
 \alias{read_from_excel}
-\title{Read scheme data from Excel file into \code{\link{dmdScheme}} object}
+\title{Read scheme data from Excel file into \code{\link[dmdScheme]{dmdSchemeSet}} object}
 \usage{
 read_from_excel(file, keepData = TRUE, verbose = FALSE, raw = FALSE,
   validate = TRUE)
@@ -12,14 +12,14 @@ read_from_excel(file, keepData = TRUE, verbose = FALSE, raw = FALSE,
 be read.}
 
 \item{keepData}{if \code{TRUE}, the data in the spreadsheet \code{file} will
-be kept (as in \code{\link{dmdScheme_example}}. If \code{FALSE}, it will be
+be kept (as in \code{\link[dmdScheme]{dmdScheme_example}}. If \code{FALSE}, it will be
 replaced with one row with NAs as in \code{dmdScheme}. Only used when
 \code{raw == FALSE}.}
 
 \item{verbose}{give verbose progress info. Useful for debugging.}
 
 \item{raw}{if \code{TRUE} the imported spreadsheet \code{file} will be
-returned as an object of class \code{\link{dmdScheme_raw}}. If
+returned as an object of class \code{\link[dmdScheme]{dmdScheme_raw}}. If
 \code{FALSE}, it will be converted to an \code{dmdScheme} object.}
 
 \item{validate}{if \code{TRUE} results are validated using

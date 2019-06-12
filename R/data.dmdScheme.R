@@ -8,14 +8,14 @@
 #'     \describe{
 #'       \item{propertyName: }{name of the data. In the spreadsheet, it is in the cell below (in the Experiment tab) or to the right (other tabs).}
 #'       \item{unit: }{the unit of the data in each column.}
-#'       \item{type: }{the type of the data in the column. These will be validated in the \code{\link{vaildate}} function. See there for details.}
-#'       \item{suggestedValues: }{suggested values for the data of each column. These will be validated in the \code{\link{vaildate}} function. See there for details.}
-#'       \item{allowedValues: }{allowed values for the data of each column. These will be validated in the \code{\link{vaildate}} function. See there for details.}
+#'       \item{type: }{the type of the data in the column. These will be validated in the \code{\link[dmdScheme]{validate}} function. See there for details.}
+#'       \item{suggestedValues: }{suggested values for the data of each column. These will be validated in the \code{\link[dmdScheme]{validate}} function. See there for details.}
+#'       \item{allowedValues: }{allowed values for the data of each column. These will be validated in the \code{\link[dmdScheme]{validate}} function. See there for details.}
 #'       \item{Description: }{general description of the columns.}
 #'       \item{names: }{the names of the columns.}
 #'     }
 #'   }
-#'   \item{\code{dmdSchemeSet: }}{a \code{list} with where each element is a \code{\link{dmdSchemeData}} object with additional attributes:
+#'   \item{\code{dmdSchemeSet: }}{a \code{list} with where each element is a \code{dmdSchemeData} object with additional attributes:
 #'     \describe{
 #'       \item{propertyName: }{name of the dmdScheme used. In the spreadsheet, it is in the cell H1 in ther in the Experiment tab (DATA dmeScheme v0.9.5.)}
 #'       \item{dmdSchemeVersion: }{version of the dmdScheme used. In the spreadsheet, it is in the cell H1 in ther in the Experiment tab (DATA dmeScheme v0.9.5.)}
@@ -24,7 +24,8 @@
 #'   }
 #' }
 #'
-#'
+#' @aliases dmdSchemeSet
+#' @aliases dmdSchemeData
 #' @examples
 #' \dontrun{
 #' ## Created by using

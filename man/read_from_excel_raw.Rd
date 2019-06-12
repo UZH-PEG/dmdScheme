@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_from_excel_raw.R
 \name{read_from_excel_raw}
 \alias{read_from_excel_raw}
-\title{Read scheme data from Excel file into \code{\link{dmdScheme_raw object}}}
+\title{Read scheme data from Excel file into \code{\link[dmdScheme]{dmdScheme_raw}} object}
 \usage{
 read_from_excel_raw(file, verbose = FALSE, checkVersion = TRUE)
 }
