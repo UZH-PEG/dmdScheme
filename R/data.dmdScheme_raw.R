@@ -17,8 +17,7 @@
 #'   }
 #' }
 #'
-#' @aliases dmdSchemeSet_raw
-#' @aliases dmdSchemeData_raw
+#' @aliases dmdSchemeSet_raw dmdSchemeData_raw
 #' @examples
 #' \dontrun{
 #' ## Created by using

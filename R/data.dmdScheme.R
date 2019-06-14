@@ -24,8 +24,7 @@
 #'   }
 #' }
 #'
-#' @aliases dmdSchemeSet
-#' @aliases dmdSchemeData
+#' @aliases dmdSchemeSet dmdSchemeData
 #' @examples
 #' \dontrun{
 #' ## Created by using
