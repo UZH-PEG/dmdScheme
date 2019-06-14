@@ -5,24 +5,12 @@
 #'
 dmdScheme_to_xml.dmdSchemeSet <- function(
   x,
-  tag,
   file,
   output = "metadata"
 ) {
   outputValues <- c("metadata", "complete")
   if (!(output %in% outputValues)) {
     stop("Wrong value for 'output'. 'output' has to be one of the following values:", paste(outputValues, collapse = " "))
-  }
-
-  if (missing(tag)) {
-    tag <- attr(x, "propertyName")
-    if (is.null(tag)) {
-      tag <- "dmdScheme"
-    }
-  }
-  if (grepl(" ", tag)) {
-    warning("Spaces are not allowed in tag names!\n  Offending tag = '", tag, "'\n  Replaced spaces with '_'")
-    tag <- gsub(" ", "_", tag)
   }
 
 # Add dmdSchemeVersion ----------------------------------------------------

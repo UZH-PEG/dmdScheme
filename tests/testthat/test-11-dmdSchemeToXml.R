@@ -34,13 +34,4 @@ test_that(
   }
 )
 
-test_that(
-  "dmdScheme_to_xml() raises warning with space in tag name",
-  {
-    expect_warning(
-      object = dmdScheme_to_xml( x = dmdScheme_example, tag = "a test" ),
-      regexp = "Spaces are not allowed in tag names!"
-    )
-  }
-)
 

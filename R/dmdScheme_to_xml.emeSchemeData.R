@@ -5,7 +5,6 @@
 #'
 dmdScheme_to_xml.dmdSchemeData <- function(
   x,
-  tag = "dmdScheme",
   file,
   output = "metadata"
 ) {
@@ -15,20 +14,9 @@ dmdScheme_to_xml.dmdSchemeData <- function(
     stop("Wrong value for 'output'. 'output' has to be one of the following values:", paste(outputValues, collapse = " "))
   }
 
-  if (missing(tag)) {
-    tag <- attr(x, "propertyName")
-    if (is.null(tag)) {
-      tag <- "dmdScheme"
-    }
-  }
-  if (grepl(" ", tag)) {
-    warning("Spaces are not allowed in tag names!\n  Offending tag = '", tag, "'\n  Replaced spaces with '_'")
-    tag <- gsub(" ", "_", tag)
-  }
-
   # x is of type dmdSchemeData and therefore a tibble ------------------
 
-  xml <- XML::xmlNode(name = paste0(tag, "List"))
+  xml <- XML::xmlNode(name = paste0(attr(x, "propertyName"), "List"))
 
   if (length(x) > 1) {
     if (nrow(x) > 0) {
@@ -48,10 +36,10 @@ dmdScheme_to_xml.dmdSchemeData <- function(
             id <- names(x)[1]
             idi <- x[[1]][i]
             names(idi) <- id
-            xmlField <- XML::xmlNode(name = tag, attrs = idi)
+            xmlField <- XML::xmlNode(name = attr(x, "propertyName"), attrs = idi)
           }
         } else {
-          xmlField <- XML::xmlNode(tag)
+          xmlField <- XML::xmlNode(attr(x, "propertyName"))
         }
         xmlField <- XML::append.xmlNode(
           to = xmlField,
@@ -65,7 +53,7 @@ dmdScheme_to_xml.dmdSchemeData <- function(
     }
 
   } else {
-    xml <- XML::xmlNode(tag, x)
+    xml <- XML::xmlNode(attr(x, "propertyName"), x)
   }
 
 # Add attributes if output == complete ------------------------------------

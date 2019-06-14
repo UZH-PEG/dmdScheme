@@ -1,6 +1,6 @@
-#' Convert \code{dmdScheme} object to XML
+#' Convert object to XML
 #'
-#' Converts an \code{dmdScheme} object into an xml object.
+#' Converts an object into xml and optionally saves it to a file.
 #'
 #' Depending on the value of \code{file}, the function returns different results:
 #' \itemize{
@@ -8,9 +8,13 @@
 #'   \item{\code{file = NULL}: }{a string characterisation of the \code{XMLNode} object}
 #'   \item{\code{file = fileName}: }{saves the string characterisation of the \code{XMLNode} object to an xml file}
 #' }
-#' Based on David LeBauer, Carl Davidson, Rob Kooper. See \url{https://stackoverflow.com/a/27865512/632423}
-#' @param x \code{dmdScheme} object to be converted
-#' @param tag xml tag of the root level. \bold{Has to be "dmdScheme for the initial call!}
+#' The actual implementation is inspired by David LeBauer, Carl Davidson, Rob Kooper. See \url{https://stackoverflow.com/a/27865512/632423}
+#' @param x object to be converted. At the moment the following objecyts are supported:
+#' \describe{
+#'   \item{\code{character}}{File name of a spreadsheet containing the data}
+#'   \item{\code{\link{dmdSchemeSet}}}{}
+#'   \item{\code{\link{dmdSchemeData}}}{}
+#' }
 #' @param file empty, \code{NULL} or file name. See details below
 #' @param output either \code{"metadata"} for export of metadata only or
 #'   \code{"complete"} for export including classes et al.
@@ -21,13 +25,13 @@
 #'
 #' @examples
 #'
-#' ## dmdScheme_to_xml( dmdScheme_example, "GoogleData" )
+#' dmdScheme_to_xml( dmdScheme_example )
 #' ## returns \code{XMLNode} object
 #'
-#' ## dmdScheme_to_xml( dmdScheme_example, "GoogleData", file = NULL )
+#' dmdScheme_to_xml( dmdScheme_example, file = NULL )
 #' ## returns string representation of the \code{XMLNode} object
 #'
-dmdScheme_to_xml <- function (x, tag, file, output = "metadata" ) {
+dmdScheme_to_xml <- function(x, file, output = "metadata") {
 
   UseMethod("dmdScheme_to_xml", x)
 
