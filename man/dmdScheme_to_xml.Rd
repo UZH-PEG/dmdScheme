@@ -10,8 +10,8 @@ dmdScheme_to_xml(x, file, output = "metadata")
 \item{x}{object to be converted. At the moment the following objecyts are supported:
 \describe{
   \item{\code{character}}{File name of a spreadsheet containing the data}
-  \item{\code{\link{dmdScheme_Set}}}{}
-  \item{\code{\link{dmdScheme_Data}}}{}
+  \item{\code{\link{dmdSchemeSet}}}{}
+  \item{\code{\link{dmdSchemeData}}}{}
 }}
 
 \item{file}{empty, \code{NULL} or file name. See details below}

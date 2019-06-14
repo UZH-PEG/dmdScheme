@@ -1,12 +1,12 @@
 #' Returns versions of package and dmdScheme
 #'
-#' @param lib.loc a character vector of directory names of R libraries, or NULL.
-#'   The default value of NULL corresponds to all libraries currently known. If
-#'   the default is used, the loaded packages and namespaces are searched before
-#'   the libraries.
-#' @param schemeName name of the scheme. Default: dmdScheme. Only for developing new schemes needed.
+#' The versions of the \code{scheme} and version of the \code{package} are
+#' retrieved from the installed scheme as specified by the argument
+#' \code{schemeName}.
+#' @param schemeName name of the scheme. This can be used when more than one
+#'   scheme is installed, to query the versions of a specific scheme.
 #'
-#' @return a named \code{list()}, containing the following objects:
+#' @return a named \code{list}, containing the following objects:
 #' \itemize{
 #'   \item{package}{ containing an object of length on of type \code{package_version} with the version of the package}
 #'   \item{dmdScheme}{ containing an object of length on of type \code{numeric_version} with the version of the metadata scheme dmdScheme}
@@ -17,16 +17,15 @@
 #'
 #' @examples
 #' dmdScheme_versions()
-dmdScheme_versions <-function (
-  schemeName = "dmdScheme",
-  lib.loc = NULL
+#' dmdScheme_versions(schemeName = "dmdScheme")
+dmdScheme_versions <- function (
+  schemeName = "dmdScheme"
 )
 {
   pkg = schemeName
   res <- suppressWarnings(
-    packageDescription(
+    utils::packageDescription(
       pkg,
-      lib.loc = lib.loc,
       fields = c( "schemeName", "Version", "schemeVersion" )
     )
   )
