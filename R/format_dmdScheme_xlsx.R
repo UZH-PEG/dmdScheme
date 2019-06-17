@@ -1,9 +1,14 @@
-#' Format the metadata scjheme file
+#' Internal function - Format the metadata scheme file
 #'
-#' Loads  \code{fn_org)}, formats it and saves it as \code{fn_new}.
+#' Loads  \code{fn_org)}, formats it and saves it as \code{fn_new}. The
+#' formating includes colours, borders, and locking of the cells which must not
+#' be edited by the user. The default password used is "test".
+#' It is only used in the function \code{enter_new_metadata()} and there is no real use outside of this.
 #' @param fn_org file name of the original excel file to be formated
 #' @param fn_new file name where the final xlsx should be saved to. If missing, it will not be saved.
 #' @param keepData if \code{TRUE}, data from data cells will be empty
+#' @param password the password used to lock the workbook and worksheets
+#'
 #' @return invisibly the workbook as a workbook object as created by \code{xlsx.crerateWorkbook()}
 #'
 #' @importFrom magrittr %>%
@@ -11,12 +16,12 @@
 #'   removeRowHeights deleteData protectWorksheet createStyle writeFormula
 #'   protectWorkbook saveWorkbook
 #'
-#' @export
 #'
 format_dmdScheme_xlsx <- function(
   fn_org,
   fn_new,
-  keepData = TRUE
+  keepData = TRUE,
+  password = "test"
 ) {
 
 
@@ -243,7 +248,7 @@ format_dmdScheme_xlsx <- function(
   openxlsx::protectWorksheet(
     wb = wb,
     sheet = sheet,
-    password = "test"
+    password = password
   )
 
   # Set formating and validation on all worksheets except of Experiment  -----------------
@@ -351,7 +356,7 @@ format_dmdScheme_xlsx <- function(
     openxlsx::protectWorksheet(
       wb = wb,
       sheet = sheet,
-      password = "test"
+      password = password
     )
 
   }
@@ -382,7 +387,7 @@ format_dmdScheme_xlsx <- function(
 
   # Protect workbook --------------------------------------------------------
 
-  openxlsx::protectWorkbook(wb, password = "test")
+  openxlsx::protectWorkbook(wb, password = password)
 
   # Save workbook when fn_new is specified ----------------------------------
 
