@@ -2,20 +2,26 @@
 % Please edit documentation in R/upgrade_old_files.R
 \name{upgrade_old_files}
 \alias{upgrade_old_files}
-\title{Convert older versions of to newer versions}
+\title{Convert older scheme versions of files to newer newer versions}
 \usage{
 upgrade_old_files(file, to = dmdScheme_versions()$scheme)
 }
 \arguments{
-\item{file}{file name of spreadsheet or of exported xml file}
+\item{file}{file name of \code{xlsx} or of \code{xml} file containing scheme
+metadata or structure}
 
-\item{to}{version to upgrade to. Any version supported is possible, converting to older versions is not supported.}
+\item{to}{version to upgrade to. Any version supported is possible, downgrade
+is not supported.}
 }
 \value{
-file name of upgraded spreadsheet (\code{BASENAME(x).to.EXTENSION(x)} where \code{x} is the original file name and \code{to} is the new version)
+if a conversion has been done, file name of upgraded spreadsheet
+  (\code{BASENAME(x).to.EXTENSION(x)} where \code{x} is the original file
+  name and \code{to} is the new version), otherwise \code{NULL}.
 }
 \description{
-The new file will have new version as a suffix.
+Only the newest versions of \code{xlsx} and \code{xml} files can be processed
+by this package. To gurantee, this function provides a mechanism to convert
+older versions of \code{xlsx} and \code{xml} files to newer versions.
 }
 \examples{
 \dontrun{

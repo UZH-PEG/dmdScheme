@@ -1,10 +1,20 @@
-#' Convert older versions of to newer versions
+#' Convert older scheme versions of files to newer newer versions
 #'
-#' The new file will have new version as a suffix.
-#' @param file file name of spreadsheet or of exported xml file
-#' @param to version to upgrade to. Any version supported is possible, converting to older versions is not supported.
+#' Only the newest versions of \code{xlsx} and \code{xml} files can be processed
+#' by this package. To gurantee, this function provides a mechanism to convert
+#' older versions of \code{xlsx} and \code{xml} files to newer versions.
+#' @param file file name of \code{xlsx} or of \code{xml} file containing scheme
+#'   metadata or structure
+#' @param to version to upgrade to. Any version supported is possible, downgrade
+#'   is not supported.
 #'
-#' @return file name of upgraded spreadsheet (\code{BASENAME(x).to.EXTENSION(x)} where \code{x} is the original file name and \code{to} is the new version)
+#' @return if a conversion has been done, file name of upgraded spreadsheet
+#'   (\code{BASENAME(x).to.EXTENSION(x)} where \code{x} is the original file
+#'   name and \code{to} is the new version), otherwise \code{NULL}.
+#'
+#' @importFrom magrittr %>%
+#' @importFrom readxl read_excel excel_sheets
+#' @importFrom tools file_path_sans_ext file_ext
 #' @export
 #'
 #' @examples
@@ -16,5 +26,68 @@ upgrade_old_files <- function(
   file,
   to = dmdScheme_versions()$scheme
 ) {
-  stop("Upgrade of character (i.e. spreadsheet) not implemented yet!")
+  # Check if file exists ----------------------------------------------------
+
+  if (!file.exists(file)) {
+    stop("Can not open file '", file, "': No such file or directory")
+  }
+
+  # Check if extension is xls, xlsx or xml ----------------------------------
+
+  if (!(tools::file_ext(file) %in% c("xls", "xlsx", "xml"))) {
+    stop("x has to have the extension 'xls' 'xlsx' or 'xml'")
+  }
+
+  # Extract Scheme and version and check name -------------------------------
+
+  if (tools::file_ext(file) %in% c("xls", "xlsx")) {
+    v <- readxl::read_excel(path = file, sheet = "Experiment") %>%
+      names() %>%
+      grep("DATA", ., value = TRUE) %>%
+      strsplit(" ")
+    schemeName <- v[[1]][2]
+    schemeVersion <- gsub("v", "", v[[1]][3])
+  }
+
+  if (tools::file_ext(file) %in% c("xml")) {
+    xml <- XML::xmlToList(file)
+    schemeName <- xml$.attrs[["propertyName"]]
+    schemeVersion <- as.numeric_version(xml$.attrs[["dmdSchemeVersion"]])
+    rm(xml)
+  }
+
+# Check scheme name --------------------------------------------------------
+
+  scheme <- NULL
+  try(
+    {
+      scheme <- get(eval(schemeName))
+    },
+    silent = TRUE
+  )
+
+  if (is.null(scheme)) {
+    stop("The scheme is in a not in a loaded scheme definition.\n",
+         "  Load the R package containing the scheme before trying again."
+    )
+  }
+
+  rm(scheme)
+
+# Check version number and do conversion -----------------------------------
+
+  converted <- NULL
+
+  if (as.numeric_version(schemeVersion) > dmdScheme_versions(schemeName)[["scheme"]]) {
+    stop("Downgrade not supported!")
+  } else if (schemeVersion == dmdScheme_versions(schemeName)[["scheme"]]) {
+    message("File has same version as the installed package. No conversion necessary!")
+    converted <- NULL
+  } else if (schemeVersion < dmdScheme_versions(schemeName)[["scheme"]]) {
+    stop("Upgrade from version ", schemeVersion, "to version ", dmdScheme_versions(schemeName)[["scheme"]], " not implemented yet!")
+  }
+
+# Return `converted` ------------------------------------------------------
+
+  invisible(converted)
 }
