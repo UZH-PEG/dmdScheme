@@ -2,7 +2,7 @@
 % Please edit documentation in R/print.dmdScheme_validation.R
 \name{print.dmdScheme_validation}
 \alias{print.dmdScheme_validation}
-\title{print function for \code{dmdScheme_validation}}
+\title{Generic print function for \code{dmdScheme_validation}}
 \usage{
 \method{print}{dmdScheme_validation}(x, level = 1, listLevel = 3,
   type = "default", format = "markdown", error = c(0, 1, 2, 3, NA),
