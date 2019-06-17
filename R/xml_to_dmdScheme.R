@@ -37,7 +37,7 @@ xml_to_dmdScheme <- function(
   )
 
   if (is.null(result)) {
-    stop("xml is in a not loaded scheme definition.\n",
+    stop("xml is in a not in a loaded scheme definition.\n",
          "  Load the R package containing the scheme before trying again."# ,
          # "or define a variable named ", xml$.attrs[["propertyName"]], "which contains your template scheme."
     )
