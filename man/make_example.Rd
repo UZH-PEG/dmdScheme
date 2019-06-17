@@ -9,14 +9,33 @@ make_example(name, schemeName = "dmdScheme")
 \arguments{
 \item{name}{name of the example}
 
-\item{schemeName}{name of the package in which the example sits. Default value: \code{dmdScheme}}
+\item{schemeName}{name of the package in which the example sits.}
 }
 \value{
 invisibly \code{NULL}
 }
 \description{
-This package contains examples. By using \code{make_examples}, they are
-copied in the current working directory so that they can be used.
+Each package based on a \code{dmdScheme} can contain examples. This function is the interface to these examples.
+In the package \code{dmdScheme}, no examples are included.
+The function has two basic usages:
+\enumerate{
+\item by using \code{make_example(schemeName = "NameOfTheScheme")} all included
+examples are listed
+\item by using \code{make_example(name = "basic", schemeName = "NameOfTheScheme")} it will create the example named \code{basic} in a
+subdirectory in the current working directory. An existing directory with
+the same name, will nod be overwritten!
+}
+}
+\details{
+The examples have to be lo cated in a directory called \code{example_data}.
+The function is doing two things:
+\enumerate{
+\item Copying the \strong{complete} directory from the \code{example_data} directory
+to the current working directory
+\item running \code{knitr::purl} on \strong{all} \code{./code/*.Rmd} to extract the code into \code{.R}
+script files. If you want to include an RMarkdown files in the \code{./code}
+directory from thisa, use the \code{.rmd} extension (small letters).
+}
 }
 \examples{
 make_example()
