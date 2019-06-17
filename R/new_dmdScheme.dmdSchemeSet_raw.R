@@ -1,29 +1,11 @@
-#' Convert the data stored in \code{dmdScheme_raw} into a list of tibbles
-#'
-#' @param x object of class \code{dmdSchemeSet_raw} as e.g. returned by
-#'   \code{read_from_excel(raw = TRUE)}
-#' @param keepData if the data should be kept or replaced with one row with NAs
-#' @param convertTypes if \code{TRUE}, the types specified in the types column
-#'   are used for the data type. Otherwise, they are left at type
-#'   \code{character}
-#' @param verbose give verbose progress info. Useful for debugging.
-#' @param warnToError if \code{TRUE}, warnings generated during the conversion
-#'   will raise an error
-#' @param checkVersion if \code{TRUE}, a version mismatch between the package
-#'   and the data \code{x} will result in a =n error. If \code{FALSE}, the check
-#'   will be skipped.
-#'
-#' @return \code{list} of \code{list} of ... \code{tibbles}
-#' @export
 #' @importFrom dplyr select starts_with
 #' @importFrom methods is as
 #' @importFrom magrittr set_names %<>%
 #' @importFrom tools file_ext
 #'
-#' @examples
-#' new_dmdSchemeSet(dmdScheme_raw, keepData = TRUE)
+#' @export
 #'
-new_dmdSchemeSet <- function(
+new_dmdScheme.dmdSchemeSet_raw <- function(
   x,
   keepData = FALSE,
   convertTypes = TRUE,
@@ -59,7 +41,7 @@ new_dmdSchemeSet <- function(
 
   result <- lapply(
     x,
-    new_dmdSchemeData,
+    new_dmdScheme,
     keepData = keepData,
     convertTypes = convertTypes,
     verbose = verbose,

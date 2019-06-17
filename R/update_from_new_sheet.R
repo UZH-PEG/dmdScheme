@@ -122,7 +122,7 @@ update_from_new_sheet <- function(
 
   message("##### Generating ", schemeName, "...")
   ##
-  dmdScheme <- new_dmdSchemeSet(
+  dmdScheme <- new_dmdScheme(
     x = dmdScheme_raw,
     keepData = FALSE,
     verbose = TRUE,
@@ -141,7 +141,7 @@ update_from_new_sheet <- function(
 
   message("##### Generating ", schemeName, "_example...")
   ##
-  dmdScheme_example <- new_dmdSchemeSet(
+  dmdScheme_example <- new_dmdScheme(
     x = dmdScheme_raw,
     keepData = TRUE,
     verbose = TRUE,

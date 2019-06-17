@@ -1,17 +1,3 @@
-#' Create new \code{dmdSchemeData} class object from specifications
-#'
-#' Usually only called from within the function \code{new_dmdSchemeSet()}.
-#' @param x a sheet of the spreadsheet displayed by calling
-#'   \code{enter_new_metadata()} converted to a \code{data.frame} or
-#'   \code{tibble} by calling \code{readxl::read_excel()}. Class has to be \code{dmdSchemeData_raw}.
-#' @param keepData if the data should be trimmed to one row with NAs
-#' @param convertTypes if \code{TRUE}, the types specified in the types column
-#'   are used for the data type. Otherwise, they are left at type \code{character}
-#' @param verbose give verbose progress info. Useful for debugging.
-#' @param warnToError if \code{TRUE}, warnings generated during the conversion will raise an error
-#'
-#' @return \code{dmdSchemeData} Data object
-#'
 #' @importFrom dplyr filter
 #' @importFrom magrittr %<>% %>%
 #' @importFrom rlang .data
@@ -19,15 +5,13 @@
 #'
 #' @export
 #'
-#' @examples
-#' new_dmdSchemeData(dmdScheme_raw$Experiment)
-#'
-new_dmdSchemeData <- function(
+new_dmdScheme.dmdSchemeData_raw <- function(
   x,
   keepData = TRUE,
   convertTypes = TRUE,
   verbose = FALSE,
-  warnToError = TRUE
+  warnToError = TRUE,
+  checkVersion = TRUE
   ) {
 
 

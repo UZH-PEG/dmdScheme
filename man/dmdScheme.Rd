@@ -38,7 +38,7 @@ There are two S3 classes defined and used:
 \examples{
 \dontrun{
 ## Created by using
-dmdScheme <- new_dmdSchemeSet(
+dmdScheme <- new_dmdScheme(
   x = dmdScheme_raw,
   keepData = FALSE,
   verbose = TRUE,

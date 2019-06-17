@@ -227,7 +227,7 @@ validate.dmdSchemeSet_raw <- function(
     )
     result$descriptionDetails <- ""
     ##
-    struct <- new_dmdSchemeSet( x, keepData = FALSE, verbose = FALSE)
+    struct <- new_dmdScheme( x, keepData = FALSE, verbose = FALSE)
     attr(struct, "propertyName") <- "dmdScheme"
     result$details <- all.equal(struct, dmdScheme)
     if (isTRUE(result$details)){
@@ -414,8 +414,8 @@ validate.dmdSchemeSet_raw <- function(
   # Validata data -----------------------------------------------------------
 
   if ((result$structure$error == 0) & validateData){
-    xconv <- suppressWarnings( new_dmdSchemeSet(x, keepData = TRUE, convertTypes = TRUE,  verbose = FALSE, warnToError = FALSE) )
-    xraw  <-                   new_dmdSchemeSet(x, keepData = TRUE, convertTypes = FALSE, verbose = FALSE, warnToError = FALSE)
+    xconv <- suppressWarnings( new_dmdScheme(x, keepData = TRUE, convertTypes = TRUE,  verbose = FALSE, warnToError = FALSE) )
+    xraw  <-                   new_dmdScheme(x, keepData = TRUE, convertTypes = FALSE, verbose = FALSE, warnToError = FALSE)
 
     result$Experiment <- validateExperiment(x["Experiment"], xraw["Experiment"], xconv["Experiment"])
 
