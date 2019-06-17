@@ -2,6 +2,7 @@
 #'
 #' Update the data from the file \code{file.path( ".", "inst",
 #' "dmdScheme.xlsx")} and bump the version in the DESCRIPTION if it has changed.
+#' Creates versioned copy
 #' @param newDmdScheme xlsx spreadsheet containing the new \code{dmdScheme}
 #'   definition has the same md5 suma s in the DESCRIPTION
 #' @param updateSchemeVersion if \code{TRUE}, the field \code{dmdSchemeVersion}
@@ -15,6 +16,7 @@
 #'
 #' @importFrom magrittr %>% %<>% equals not extract extract2
 #' @importFrom tools md5sum
+#' @importFrom readxl read_excel
 #'
 update_from_new_sheet <- function(
   newDmdScheme,
@@ -40,6 +42,7 @@ update_from_new_sheet <- function(
 
 
   message(
+    "\n",
     "##########################################################\n",
     "## This function is only to be used during development  ##\n",
     "## from within the root directory of the package.       ##\n",
@@ -73,6 +76,25 @@ update_from_new_sheet <- function(
   dir.create("inst", showWarnings = FALSE)
   dir.create(file.path("tests", "testthat"), showWarnings = FALSE, recursive = TRUE)
   sheet <- file.path(".", "inst", paste0(schemeName, ".xlsx"))
+  if (!file.exists(sheet)) {
+    stop("So,ething is wrong here - the file ", sheet, " does not exist although it should!!!")
+  }
+  sheet_versioned <- file.path(".", "inst", paste0(schemeName, ".", as.character(dmdScheme_versions()[["scheme"]]), ".xlsx"))
+
+  # Create scheme version numbered backup -----------------------------------
+
+  message("##### Creating versioned copy ", sheet_versioned, "...")
+  ##
+  if (file.exists(sheet_versioned)) {
+    message("## versioned copy ", sheet_versioned, " exists. Keeping old versioned copy. ##")
+  } else {
+    message("## creating versioned copy ", sheet_versioned, " ##")
+    file.copy(
+      from = sheet,
+      to = sheet_versioned,
+      overwrite = FALSE
+    )
+  }
 
   # Updata dmdScheme.xlsx ---------------------------------------------------
 
@@ -188,6 +210,8 @@ update_from_new_sheet <- function(
   write.dcf(DESCRIPTION, "DESCRIPTION")
 
   # Return invisibble NULL --------------------------------------------------------
+
+  message("IMPORTANT:\n\n", "Reload the package with `devtools::load_all() to finalise the import!\n\n")
 
   invisible(NULL)
 }
