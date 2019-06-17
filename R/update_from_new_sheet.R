@@ -84,7 +84,7 @@ update_from_new_sheet <- function(
 
   # Create backup of scheme -------------------------------------------------
 
-  message("##### Creating backup of ", sheetd, "...")
+  message("##### Creating backup of ", sheet, "...")
   file.copy(
     from = sheet,
     to = paste(sheet, "bak"),

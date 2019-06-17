@@ -3,7 +3,7 @@
 #' Loads  \code{fn_org)}, formats it and saves it as \code{fn_new}. The
 #' formating includes colours, borders, and locking of the cells which must not
 #' be edited by the user. The default password used is "test".
-#' It is only used in the function \code{enter_new_metadata()} and there is no real use outside of this.
+#' It is only used in the function \code{open_new_spreadsheet()} and there is no real use outside of this.
 #' @param fn_org file name of the original excel file to be formated
 #' @param fn_new file name where the final xlsx should be saved to. If missing, it will not be saved.
 #' @param keepData if \code{TRUE}, data from data cells will be empty

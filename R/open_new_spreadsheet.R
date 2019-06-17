@@ -1,4 +1,4 @@
-#' Enter new metadata to fill a new scheme
+#' Open the metadata scheme as a spreadsheet in a spreadsheet editor
 #'
 #' Open \code{system.file(paste0(schemeName, ".xlsx"), package = schemeName)} in excel.
 #' New data can be entered and the file has to be saved at a different location
@@ -18,10 +18,10 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' enter_new_metadata()
+#' open_new_spreadsheet(schemeName = "dmdScheme", format = FALSE, verbose = TRUE)
 #' }
 #'
-enter_new_metadata <- function(
+open_new_spreadsheet <- function(
   schemeName,
   file = NULL,
   open = TRUE,
@@ -40,29 +40,29 @@ enter_new_metadata <- function(
     {
       if (open & verbose) {
         message(
-          "###############################################################",
-          "## The template should have opened in Excel.                 ##",
-          "##                                                           ##",
-          "## If Excel is not in the foreground, it might               ##",
-          "## have opened in the background.                            ##",
-          "##                                                           ##",
-          "## Depending on the browser, the file might                  ##",
-          "## have been downloaded to the default download location.    ##",
-          "##                                                           ##",
-          "## If nothing happened either,                               ##",
-          "## you can open the file directly in Excel from              ##",
-          "##                                                           ##",
-          "## In this case, please file a bug report at                 ##",
-          "##                                                           ##",
-          "##    https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/issues ##",
-          "##                                                           ##",
-          "## and provide                                               ##",
-          "##      - Operating System and version                       ##",
-          "##      - Default browser                                    ##",
-          "##      - file location                                      ##",
-          "##                                                           ##",
-          "## Thanks.                                                   ##",
-          "###############################################################"
+          "###############################################################\n",
+          "## The template should have opened in Excel.                 ##\n",
+          "##                                                           ##\n",
+          "## If Excel is not in the foreground, it might               ##\n",
+          "## have opened in the background.                            ##\n",
+          "##                                                           ##\n",
+          "## Depending on the browser, the file might                  ##\n",
+          "## have been downloaded to the default download location.    ##\n",
+          "##                                                           ##\n",
+          "## If nothing happened either,                               ##\n",
+          "## you can open the file directly in Excel from              ##\n",
+          "##                                                           ##\n",
+          "## In this case, please file a bug report at                 ##\n",
+          "##                                                           ##\n",
+          "##    https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/issues ##\n",
+          "##                                                           ##\n",
+          "## and provide                                               ##\n",
+          "##      - Operating System and version                       ##\n",
+          "##      - Default browser                                    ##\n",
+          "##      - file location                                      ##\n",
+          "##                                                           ##\n",
+          "## Thanks.                                                   ##\n",
+          "###############################################################\n"
         )
       }
     }
@@ -72,16 +72,19 @@ enter_new_metadata <- function(
 # Warning if `format = TRUE` ----------------------------------------------
   if (format) {
     message(
-      "The argument `format` is set to TRUE (the default).\n",
-      "Corruptions of the formated xlsx filer were recently observed!.\n",
-      "\n",
-      "If the resulting xlsx file is corrupt, please use\n",
-      "\n",
-      "`format = FALSE`",
-      "\n",
-      "when calling `enter_new_metadata()`\n",
-      "\n",
-      "This does NOT delete the example data.\n"
+      "###############################################################\n",
+      "## The argument `format` is set to TRUE (the default).       ##\n",
+      "## Corruptions of the formated xlsx file are sometimes       ##\n",
+      "## observed!.                                                ##\n",
+      "##                                                           ##\n",
+      "## If the resulting xlsx file is corrupt, please use         ##\n",
+      "##                                                           ##\n",
+      "## `format = FALSE`                                          ##\n",
+      "##                                                           ##\n",
+      "## when calling `open_new_spreadsheet()`                     ##\n",
+      "##                                                           ##\n",
+      "## However, this does NOT delete the example data.           ##\n",
+      "###############################################################\n"
     )
   }
 
@@ -132,7 +135,10 @@ enter_new_metadata <- function(
 
   if (open) {
     if (verbose) {
-      message("Trying to open the file by opening it in the browser'", fn, "'... ")
+      message(
+        "## Trying to open the file '", fn, "'\n",
+        "## by opening it in the browser\n"
+      )
     }
     fn <- utils::URLencode(fn)
     if (!.skipBrowseURL) {
