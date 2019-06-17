@@ -3,6 +3,7 @@
 #' Update the data from the file \code{file.path( ".", "inst",
 #' "dmdScheme.xlsx")} and bump the version in the DESCRIPTION if it has changed.
 #' Creates versioned copy
+#' Backup - should be deleted when packaging.
 #' @param newDmdScheme xlsx spreadsheet containing the new \code{dmdScheme}
 #'   definition has the same md5 suma s in the DESCRIPTION
 #' @param updateSchemeVersion if \code{TRUE}, the field \code{dmdSchemeVersion}
@@ -80,6 +81,15 @@ update_from_new_sheet <- function(
     stop("So,ething is wrong here - the file ", sheet, " does not exist although it should!!!")
   }
   sheet_versioned <- file.path(".", "inst", paste0(schemeName, ".", as.character(dmdScheme_versions()[["scheme"]]), ".xlsx"))
+
+  # Create backup of scheme -------------------------------------------------
+
+  message("##### Creating backup of ", sheetd, "...")
+  file.copy(
+    from = sheet,
+    to = paste(sheet, "bak"),
+    overwrite = TRUE
+  )
 
   # Create scheme version numbered backup -----------------------------------
 

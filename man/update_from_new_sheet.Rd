@@ -26,4 +26,5 @@ invisibly NULL
 Update the data from the file \code{file.path( ".", "inst",
 "dmdScheme.xlsx")} and bump the version in the DESCRIPTION if it has changed.
 Creates versioned copy
+Backup - should be deleted when packaging.
 }
