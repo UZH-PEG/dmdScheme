@@ -2,7 +2,7 @@
 % Please edit documentation in R/print.dmdSchemeSet.R
 \name{print.dmdSchemeSet}
 \alias{print.dmdSchemeSet}
-\title{Generic print function for \code{dmdSchemeSet}}
+\title{Print method for \code{dmdSchemeSet} object}
 \usage{
 \method{print}{dmdSchemeSet}(x, ..., printAttr = TRUE,
   printExtAttr = FALSE, printData = TRUE, .prefix = "")
@@ -24,5 +24,5 @@
 invisibly x
 }
 \description{
-Generic print function for \code{dmdSchemeSet}
+Print method for \code{dmdSchemeSet} object
 }

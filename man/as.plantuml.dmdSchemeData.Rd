@@ -2,7 +2,7 @@
 % Please edit documentation in R/as.plantuml.dmdSchemeData.R
 \name{as.plantuml.dmdSchemeData}
 \alias{as.plantuml.dmdSchemeData}
-\title{Generic function to convert \code{dmdSchemeData} to a \code{plantuml} object}
+\title{Method to convert \code{dmdSchemeData} to a \code{plantuml} object}
 \usage{
 as.plantuml.dmdSchemeData(x, complete, nm, ...)
 }
@@ -19,5 +19,5 @@ as.plantuml.dmdSchemeData(x, complete, nm, ...)
 object of class \code{plantuml} which can be plotted
 }
 \description{
-Generic function to convert \code{dmdSchemeData} to a \code{plantuml} object
+Method to convert \code{dmdSchemeData} to a \code{plantuml} object
 }

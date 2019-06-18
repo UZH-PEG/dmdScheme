@@ -1,4 +1,4 @@
-#' Generic function to convert \code{dmdSchemeSet} to a \code{plantuml} object
+#' Method to convert \code{dmdSchemeSet} to a \code{plantuml} object
 #'
 #' @param x object to be converted
 #' @param complete internal

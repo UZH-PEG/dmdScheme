@@ -1,4 +1,4 @@
-#' Generic print function for \code{dmdScheme_validation}
+#' Print method for \code{dmdScheme_validation} object
 #'
 #' When using different values for \code{format}, different outputs are generated:
 #' \itemize{

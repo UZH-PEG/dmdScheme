@@ -1,4 +1,4 @@
-#' Convert the data stored in the object x into a new object of class \code{dmdScheme...}
+#' Generic method to convert the data stored in the object \code{x} into a new object of class \code{dmdScheme...}
 #'
 #' Generit methond.
 #' @param x object of

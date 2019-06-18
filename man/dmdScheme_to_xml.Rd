@@ -2,12 +2,14 @@
 % Please edit documentation in R/dmdScheme_to_xml.R
 \name{dmdScheme_to_xml}
 \alias{dmdScheme_to_xml}
-\title{Convert object to XML}
+\title{Generic function to convert an object to XML}
 \usage{
 dmdScheme_to_xml(x, file, output = "metadata")
 }
 \arguments{
-\item{x}{object to be converted. At the moment the following objecyts are supported:
+\item{x}{object to be converted.
+
+At the moment the following objecyts are supported:
 \describe{
   \item{\code{character}}{File name of a spreadsheet containing the data}
   \item{\code{\link{dmdSchemeSet}}}{}
@@ -20,7 +22,7 @@ dmdScheme_to_xml(x, file, output = "metadata")
 \code{"complete"} for export including classes et al.}
 }
 \value{
-dependant on the value of \code{file}. See Details
+dependent on the value of \code{file}. See Details
 }
 \description{
 Converts an object into xml and optionally saves it to a file.
