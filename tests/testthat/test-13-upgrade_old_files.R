@@ -29,7 +29,7 @@ test_that(
       regexp = "File has same version as the installed package. No conversion necessary!"
     )
     expect_null(
-      object = suppressMessages(upgrade_old_files(file = system.file("dmdScheme.xlsx", package = "dmdScheme")))
+      object = suppressWarnings(upgrade_old_files(file = system.file("dmdScheme.xlsx", package = "dmdScheme")))
     )
   }
 )
