@@ -55,12 +55,12 @@ To enter new data to the dmdScheme, you have to
 
 ```{r echo=TRUE, eval = FALSE}
 library("dmdScheme")
-enter_new_metadata()
+open_new_spreadsheet()
 ```
 
 This should open Excel and the file should look similar to this:
 
-![](./figs/enter_new_data.png)
+<!-- ![](./figs/enter_new_data.png) -->
 
 1) The file is saved in a temporary directory. It needs to be saved at a different location, if you want to keep the changes. 
 2) Data can only be entered in the green cells with. All other cells are write protected.
@@ -134,40 +134,40 @@ print(
   printData = TRUE
 )
 ```
+
 ## Converting Metadata to xml
 
 You can export the data to an an xml file:
 
 ```{r example_export_xml, echo=TRUE, eval = FALSE}
-dmdSchemeToXml( x, tag = "ExampleData" )
+dmdScheme_to_xml( x )
 ```
 
 When you specify the argument `file`, the xml will be saved:
 
 ```{r example_export_xml_file, echo=TRUE, eval = FALSE}
-dmdSchemeToXml( x, tag = "ExampleData", file = "ExampleData.xml" )
+dmdScheme_to_xml( x, file = "ExampleData.xml" )
 ```
 
 
-<!-- ## Re-import from xml into R -->
+## Re-import from xml into R
 
-<!-- **<span style="color:red">TODO This needs some more work see issue #5 </span>**  -->
-
-<!-- ```{r example_import_xml, eval = FALSE} -->
-<!-- addDataTodmdScheme() %>% -->
-<!--   dmdSchemeToXml( tag = "Example Data" ) %>% -->
-<!--   xmlTodmdScheme() %>% -->
-<!--   str() -->
-<!-- ``` -->
+```{r example_import_xml, eval = FALSE}
+xml_to_dmdScheme( file = "ExampleData.xml" )
+```
 
 ## Validation
 ### `dmdSchemeSet_raw` against `dmdScheme`
 
-When running `read_from_excel()`, the dafault is to validate the raw data before conversion to an `dmdScheme` object to guarantee a valid `dmdScheme` is returned. If the validation fails, an error is raised.
+When running `read_from_excel()`, the default is to validate the raw data before conversion to an `dmdScheme` object to guarantee a valid `dmdScheme` is returned. If the validation fails, an error is raised.
 
-### xml against xsd
+### manual validation and report creation
 
-Not incorporated yet but planned.
+You can manually validate a spreadsheet containing `dmdScheme` metadata by running
+
+```{r eval = FALSE}
+validate( system.file("dmdScheme.xlsx", package = "dmdScheme") )
+```
 
 ## General things
 
