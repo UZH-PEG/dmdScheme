@@ -102,7 +102,7 @@ docs:
 
 build:
 	cd ..;\
-	R CMD build --no-manual $(PKGSRC)
+	R CMD build $(PKGSRC)
 
 ####
 
