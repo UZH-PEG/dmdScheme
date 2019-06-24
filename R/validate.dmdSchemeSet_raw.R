@@ -9,6 +9,19 @@
 #' @importFrom magrittr extract2
 #' @importFrom digest digest
 #'
+#' @describeIn validate validate a `dmdSchemeSet_raw` object
+#'
+#' @md
+#' @examples
+#' ## validate a `dmdScheme_raw object`
+#' validate(
+#'    x = dmdScheme_raw
+#' )
+#'
+#' ## use `read_raw()` to read an Excel spreadsheet into a `dmdScheme_raw` object
+#' x <- read_from_excel_raw( system.file("dmdScheme.xlsx", package = "dmdScheme") )
+#' validate( x = x )
+#'
 validate.dmdSchemeSet_raw <- function(
   x,
   path = ".",

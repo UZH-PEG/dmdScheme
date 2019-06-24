@@ -2,7 +2,7 @@
 % Please edit documentation in R/new_dmdScheme.R
 \name{new_dmdScheme}
 \alias{new_dmdScheme}
-\title{Convert the data stored in the object x into a new object of class \code{dmdScheme...}}
+\title{Generic method to convert the data stored in the object \code{x} into a new object of class \code{dmdScheme...}}
 \usage{
 new_dmdScheme(x, keepData = FALSE, convertTypes = TRUE,
   verbose = FALSE, warnToError = TRUE, checkVersion = TRUE)

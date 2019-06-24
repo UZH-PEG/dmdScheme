@@ -1,30 +1,41 @@
-#' Create new package containg the definitions for new domain metadata scheme.
+#' Create anew package skelleton containg the definitions for new domain metadata scheme.
 #'
-#' A new metadata scheme can be created as a package Depending on
-#' \code{dmdScheme}. This function uses the function \code{package.skelleton()}
-#' to create a new directory for the new metadata scheme, imports the scheme
-#' and adds some functions which make working easier.
+#' **This function is not for the user of a scheme, but for the development process of a new scheme.**
+#'
+#' A new metadata scheme can be created as a package which will depend on
+#' \code{dmdScheme}. This function uses the function `package.skeleton()` from
+#' the `utils` package to create a new directory for the new metadata scheme,
+#' imports the scheme as defined in `schemeDefinition` and adds some functions
+#' which make working easier with the new scheme easier. For a documentation of
+#' the workflow to create a new scheme, see the
+#' vignette **Howto Create a new scheme**.
 #' @param schemeDefinition \code{xlsx} Excel file containing the definition of
-#'   the metadata scheme
-#' @param path path where the package should be created. Defeoult is the current working directory
+#'   the metadata scheme. The version and the scheme name should be edited
+#'   before the spreadsheet is used here.
+#' @param path path where the package should be created. Default is the current
+#'   working directory.
 #'
 #' @return invisibly \code{NULL}
 #'
 #' @importFrom utils package.skeleton
 #' @export
 #'
+#' @md
+#'
 #' @examples
 #' \dontrun{
-#' make_new_scheme(
+#' dev_make_new_scheme(
 #'   schemeDefinition = "./../emeScheme/emeScheme.xlsx",
 #'   path = tempdir()
 #' )
 #' }
-make_new_scheme <- function(
+dev_make_new_scheme <- function(
   schemeDefinition,
   path = "."
 ){
   oldwd <- getwd()
+  schemeName <- NULL
+  success <- FALSE
   on.exit(
     {
       setwd(oldwd)
@@ -39,8 +50,6 @@ make_new_scheme <- function(
   )
   ##
   schemeDefinition <- normalizePath(schemeDefinition)
-
-  success <- FALSE
 
   # Extract name and version of scheme --------------------------------------
 
@@ -78,7 +87,7 @@ make_new_scheme <- function(
 
   setwd(file.path(path, schemeName))
   ##
-  update_from_new_sheet(
+  dev_update_from_new_sheet(
     newDmdScheme = schemeDefinition,
     updateSchemeVersion = TRUE,
     updatePackageName = TRUE

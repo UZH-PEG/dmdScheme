@@ -11,7 +11,7 @@ vignette: >
 
 This package in itself is of not much use, as it only contains an example scheme. But it contains all the functionality to easily create a new scheme in an R package, which includes all the folowing functionality automatically:
 
-1. enter metadata into an included spreadsheet based on the initial definition (`enter_new_metadata()`);
+1. enter metadata into an included spreadsheet based on the initial definition (`open_new_spreadsheet()`);
 1. import metadata entered in a spreadsheet into R and having it in an interoperable format available (`read_fron_excel()`);
 2. validate the entered metadata against the defined scheme, including rules concerning type of data (e.g. character, numeric, integer, ...), suggested values and allowed values and general structure (`validate()`);
 2. create a report in `.html`, `.pdf` or `.docx` formnat containing the results of the validation (`validate_report()`);
@@ -87,6 +87,7 @@ This file can be edited following the limitations as specified in the **Minimum 
 update_§
 ```
 
+Now you have the source code for a functional R package, which you can use to enter metadata into the new scheme (`open_new_spreadsheet(schemeName = "exampleScheme")`) and do all the other things as explained in the howto manual [TODO](TODO).
 
 # Extending the functionality of the dmdScheme package
 As the functionality of the `dmdScheme` package is irrespective of the structure of the metadata scheme (see the vignette **Minimum requirements for metadatascheme based on dmdScheme** for the minimum requirements), it's functionality is limited. But it is easy to extend this functionality.

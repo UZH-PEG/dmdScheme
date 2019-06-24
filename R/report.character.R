@@ -1,4 +1,4 @@
-#' Geberic function creating a report from an `character` object representing a file name of a metadata spreadsheet
+#' Method creating a report from an `character` object representing a file name of a metadata spreadsheet
 #'
 #' @details
 #' **`report.character`** creates a report of the object returnes from a `validate()`.

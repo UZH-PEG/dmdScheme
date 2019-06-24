@@ -60,7 +60,7 @@ open_new_spreadsheet("dmdScheme")
 
 This will open Excel and the file should look similar to this, when looking at the second tab:
 
-![](./figs/enter_new_data.png)
+<!-- ![](./figs/enter_new_data.png) -->
 
 The following points are important to remember:
 
@@ -165,9 +165,6 @@ print(
   printData = TRUE
 )
 ```
-
-
-
 
 
 ## General things

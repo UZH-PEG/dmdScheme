@@ -9,6 +9,15 @@
 #' @importFrom magrittr extract2
 #' @importFrom digest digest
 #'
+#' @describeIn validate validate a `character` object referring to a spreadsheet file which contains the metadata.
+#' @md
+#'
+#' @examples
+#' ## validata an Excel file containing the metadata
+#' validate(
+#'     x = system.file("dmdScheme.xlsx", package = "dmdScheme")
+#' )
+#'
 validate.character <- function(
   x,
   path = ".",

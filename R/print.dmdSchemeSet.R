@@ -1,4 +1,4 @@
-#' Generic print function for \code{dmdSchemeSet}
+#' Print method for \code{dmdSchemeSet} object
 #'
 #' @param x object of type \code{dmdSchemeSet}
 #' @param ... additional arguments - not used here

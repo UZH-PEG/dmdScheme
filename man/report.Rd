@@ -14,7 +14,7 @@ report(x, file, open = TRUE, report = "html",
 
 \method{report}{dmdScheme_validation}(x, file, open = TRUE,
   report = "html", report_author = "Tester",
-  report_title = "Validation of data against dmdScheme")
+  report_title = "Validation of data against dmdScheme", ...)
 }
 \arguments{
 \item{x}{object of which the report should be creted used to select a method}

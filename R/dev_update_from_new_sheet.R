@@ -1,46 +1,44 @@
-#' Update data from dmdScheme.xlsx --- ONLY FOR DEVLOPMENT NEEDED
+#' Update scheme definitiuon in the scheme definition package in the working directory
 #'
-#' Update the data from the file \code{file.path( ".", "inst",
-#' "dmdScheme.xlsx")} and bump the version in the DESCRIPTION if it has changed.
-#' Creates versioned copy
-#' Backup - should be deleted when packaging.
-#' @param newDmdScheme xlsx spreadsheet containing the new \code{dmdScheme}
-#'   definition has the same md5 suma s in the DESCRIPTION
-#' @param updateSchemeVersion if \code{TRUE}, the field \code{dmdSchemeVersion}
-#'   in the DESCRIPOTION file is updated. Default: \code{TRUE}
-#' @param updatePackageName if \code{TRUE}, the field \code{Package} in the
-#'   DESCRIPOTION file is updated. This should be used with caution, as it might
-#'   need other changes in the poackage. Only useful for the first import.
-#'   Default: \code{FALSE}
+#' **This function is not for the user of a scheme, but for the development process of a new scheme.**
+#'
+#' Update the data in the source package in the current working directory with the new scheme definition as specified in the `newDmdScheme` spreadsheet.
+#' It will
+#'   * save a new scheme definition, scheme example and scheme raw data files and the xlsx file
+#'   * create a versioned copy of the old `.xlsx` file if the version has changed
+#'   * create a backup of the old `.xlsx` file with the extension `.xlsx.bak` (should be deleted before final packaging)
+#'   * update the example `.xml` file
+#'   * update the corresponding files for tests
+#'   * in the `DESCRIPTION` file
+#'       * set `schemeUpdate` to the current date and time
+#'       * set `schemeMD5` to the MD% checksum of the `newDmdScheme` file
+#'       * if `updateSchemeVersion == TRUE`
+#'           * set `schemeVersion` as defined in `newDmdScheme`
+#'       * if `updatePackageName == TRUE`
+#'           * set `schemeName` as defined in `newDmdScheme`
+#'           * set `Package` as defined in `newDmdScheme`
+#'
+#' @param newDmdScheme xlsx spreadsheet containing the new `dmdScheme`
+#'   definition
+#' @param updateSchemeVersion if `TRUE`, the field `dmdSchemeVersion`
+#'   in the `DESCRIPTION` file is updated.
+#' @param updatePackageName if `TRUE`, the field `Package` as well as `schemeName` in the
+#'   DESCRIPOTIN file is updated. This should be used with caution, as it might
+#'   need other changes in the poackage.
 #'
 #' @return invisibly NULL
+#'
+#' @md
 #'
 #' @importFrom magrittr %>% %<>% equals not extract extract2
 #' @importFrom tools md5sum
 #' @importFrom readxl read_excel
 #'
-update_from_new_sheet <- function(
+dev_update_from_new_sheet <- function(
   newDmdScheme,
   updateSchemeVersion = TRUE,
   updatePackageName = FALSE
 ) {
-
-# Helper functions --------------------------------------------------------
-
-  # saveToData <- function(schemeName, data) {
-  #   rdataFile <- paste0(schemeName, ".rda")
-  #   ## Assign data to the name saved in schemeName
-  #   assign(x = schemeName, value = data)
-  #   ## Save as RData file
-  #   save(list = schemeName, file = file.path( ".", "data", rdataFile))
-  #   cat(
-  #     "load(\"./", rdataFile, "\")", sep = '',
-  #     file = file.path( ".", "data", paste0(schemeName, ".R"))
-  #   )
-  # }
-
-# Main --------------------------------------------------------------------
-
 
   message(
     "\n",
@@ -206,8 +204,6 @@ update_from_new_sheet <- function(
   ## set dmdSchemeVersion
   if (updatePackageName)   {
     DESCRIPTION[ 1, "Package"       ] <-  schemeName
-  }
-  if (updatePackageName)   {
     DESCRIPTION[ 1, "schemeName"    ] <-  schemeName
   }
   if (updateSchemeVersion) {

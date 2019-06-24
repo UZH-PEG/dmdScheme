@@ -1,4 +1,4 @@
-#' Geberic function creating a report from an `dmdScheme_validation` object
+#' Method for creating a report from an `dmdScheme_validation` object
 #'
 #' @details
 #' **`report.dmdScheme_validation`** creates a report of the object returnes from a `validate()`.
@@ -23,7 +23,8 @@ report.dmdScheme_validation <- function(
   open = TRUE,
   report = "html",
   report_author = "Tester",
-  report_title = "Validation of data against dmdScheme"
+  report_title = "Validation of data against dmdScheme",
+  ...
 ) {
 
   if (length(report) != 1) {
