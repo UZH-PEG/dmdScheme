@@ -1,4 +1,4 @@
-#' Geberic function creating areport from an `dmdScheme_validation` object
+#' Geberic function creating a report from an `dmdScheme_validation` object
 #'
 #' @details
 #' **`report.dmdScheme_validation`** creates a report of the object returnes from a `validate()`.
@@ -9,7 +9,7 @@
 #' ## Report of `dmdScheme_validation`
 #' report( validate(dmdScheme_raw) )
 #' \dontrun{
-#' report( dmdScheme_raw )(
+#' report(
 #'    x = dmdScheme_raw,
 #'    report = "html",
 #'    report_author = "The Author I am",

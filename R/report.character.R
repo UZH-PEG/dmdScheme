@@ -1,9 +1,20 @@
+#' Geberic function creating a report from an `character` object representing a file name of a metadata spreadsheet
+#'
+#' @details
+#' **`report.character`** creates a report of the object returnes from a `validate()`.
+#'
 #' @export
+#' @md
+#' @examples
+#' ## Report of `dmdScheme_validation`
+#' report( system.file("dmdScheme.xlsx", package = "dmdScheme") )
+#'
+#' @describeIn report report of a `dmdScheme_validation` object.
 #'
 #' @importFrom XML xmlNode xmlAttrs append.xmlNode saveXML
 #' @importFrom tibble is_tibble
 #'
-dmdScheme_to_xml.character <- function(
+report.character <- function(
   x,
   file,
   output = "metadata"
@@ -16,9 +27,9 @@ dmdScheme_to_xml.character <- function(
 
 # Read and convert x ------------------------------------------------------
 
-  xml <- dmdScheme_to_xml( x = read_from_excel(x) )
+  result <- report( validate(x) )
 
 # Return xml --------------------------------------------------------------
 
-  return(xml)
+  return(result)
 }

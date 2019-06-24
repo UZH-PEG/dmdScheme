@@ -35,7 +35,7 @@ install.packages("dmdScheme")
 ```
 
 2. via `drat`
-This will iknstall the last released development version.
+This will install the last released development version.
 `drat` is a too to run an own CRAN like repository. This drat repository contains the dev versions of the package. These are likely stable, but are not as tested as the ones on CRAN. see [the drat vignette](http://dirk.eddelbuettel.com/code/drat.html) for further info.
 You need to install `drat` to use this:
 
@@ -54,24 +54,42 @@ install.packages("remotes")
 remotes::install.packages("rkrug/dmdScheme")
 ```
 
-For general uasage, we recommend to use these CRAN for production usage. If you want to try the newst features, use the drat version, and only if you want to live at the bleeding edge, and can live with crashes and untested exciting new features, use the github version. 
+For general uasage, we recommend to use these CRAN for production usage. If you want to try (or need) the newst features, use the drat version, and only if you want to live at the bleeding edge, and can live with crashes and untested exciting new features, use the github version. 
 
 ## Create a template for the new scheme
 Creating a template is as easy as running the following two commands. For simlicity, we use a scheme definition as inclusded in the package as an example:
 
 ```{r eval = FALSE}
 library(dmdScheme)
-make_new_scheme(schemeDefinition = system.file("newSchemeDefinition.xlsx", package = "dmdScheme") , path = "our_new_scheme")
+dev_make_new_scheme(schemeDefinition = system.file("newSchemeDefinition.xlsx", package = "dmdScheme") , path = "our_new_scheme")
 ```
 
-This will create a directory named `our_new_scheme` in the current directory and use the `schemeDefinition` excel file to create a new package containing the scheme definition.
+This will create a directory named `our_new_scheme` in the current working directory and use the `newSchemeDefinition.xlsx` excel file to create a new package containing the scheme definition.
 
-If you open the scheme definition, you will see in the `Experiment` tab one cell containing the value **DATA exampleScheme v1.2.3**. **exampleScheme** will become the `schemeName` and the name of the new package, and **1.2.3** the `schemeVersion`. The `Version` of the new package will be set to 1.0.
+If you open the scheme definition (i.e. the excel file), you will see in the `Experiment` tab one cell containing the value **DATA exampleScheme v1.2.3**. **exampleScheme**.
 
-Now you have the source code for a functional R package, which you can use to enter metadata into the new scheme (`enter_new_metadata(schemeName = "exampleScheme")`) and do all the other things as explained in the howto manual [TODO](TODO).
+![](./figs/name_version.png)
+
+**exampleScheme** will become the `schemeName` and the name of the new package, and **1.2.3** the `schemeVersion`. The `Version` of the new **package** will be set to 1.0.
+
+Now you have the source code for a functional R package, which you can use to enter metadata into the new scheme (`enter_new_metadata(schemeName = "exampleScheme")`) and do all the other things as explained in the `R Package Introduction` vignette and the **User Manual** vignette in the  `emeScheme` package.
+
+## Developing new versions
+The definition of the scheme is contained in the spreadsheet which opens when using
+
+```{r eval = FALSE}
+open_new_spreadsheet( keepData = TRUE, format = TRUE)
+```
+
+This file can be edited following the limitations as specified in the **Minimum requirements for metadatascheme based on dmdScheme**. After modifications have been done, the spreadsheet can be re-imported in the source of the package by using
+
+```{r eval = FALSE}
+update_§
+```
+
 
 # Extending the functionality of the dmdScheme package
-s the functionality of the `dmdScheme` package is irrespective of the structure of the metadata scheme (see the vignette **Minimum requirements for metadatascheme based on dmdScheme** for the minimum requirements), it's functionality is limited. But it is easy to extend this functionality.
+As the functionality of the `dmdScheme` package is irrespective of the structure of the metadata scheme (see the vignette **Minimum requirements for metadatascheme based on dmdScheme** for the minimum requirements), it's functionality is limited. But it is easy to extend this functionality.
 
 ## Validation
 A detailed validations in respect to the scheme itself are not implemented. This means, that the validation only verifies

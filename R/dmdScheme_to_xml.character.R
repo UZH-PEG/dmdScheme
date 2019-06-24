@@ -16,7 +16,7 @@ dmdScheme_to_xml.character <- function(
 
 # Read and convert x ------------------------------------------------------
 
-  xml <- dmdScheme_to_xml( x = read_from_excel(x) )
+  xml <- dmdScheme_to_xml( x = read_from_excel(x), file = file, output = output )
 
 # Return xml --------------------------------------------------------------
 
