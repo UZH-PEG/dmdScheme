@@ -1,7 +1,7 @@
-#' Method for creating a report from an `character` object
+#' Method creating a report from an `character` object representing a file name of a metadata spreadsheet
 #'
 #' @details
-#' **`report.character(x)`** creates a report of the object returned from a `validate(x)`.
+#' **`report.character`** creates a report of the object returnes from a `validate()`.
 #'
 #' @export
 #' @md
@@ -12,7 +12,7 @@
 #' report( system.file("dmdScheme.xlsx", package = "dmdScheme") )
 #' }
 #' @describeIn report report of a `character` object.
-dmdScheme_to_xml.character <- function(
+report.character <- function(
   x,
   file,
   output = "metadata"
@@ -25,9 +25,9 @@ dmdScheme_to_xml.character <- function(
 
 # Read and convert x ------------------------------------------------------
 
-  xml <- report( x = validate(x) )
+  result <- report( validate(x) )
 
 # Return xml --------------------------------------------------------------
 
-  return(xml)
+  return(result)
 }

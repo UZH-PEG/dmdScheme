@@ -3,14 +3,14 @@
 %   R/report.dmdScheme_validation.R
 \name{report}
 \alias{report}
-\alias{dmdScheme_to_xml.character}
+\alias{report.character}
 \alias{report.dmdScheme_validation}
 \title{Generic function for creating a report from an object \code{x}}
 \usage{
 report(x, file, open = TRUE, report = "html",
   report_author = "Myself", report_title = "Report of something", ...)
 
-\method{dmdScheme_to_xml}{character}(x, file, output = "metadata")
+\method{report}{character}(x, file, output = "metadata")
 
 \method{report}{dmdScheme_validation}(x, file, open = TRUE,
   report = "html", report_author = "Tester",
@@ -49,7 +49,7 @@ return the path and filename of the report
 This generic function creates a report based on the object.
 }
 \details{
-\strong{\code{report.character(x)}} creates a report of the object returned from a \code{validate(x)}.
+\strong{\code{report.character}} creates a report of the object returnes from a \code{validate()}.
 
 \strong{\code{report.dmdScheme_validation}} creates a report of the object returnes from a \code{validate()}.
 }
