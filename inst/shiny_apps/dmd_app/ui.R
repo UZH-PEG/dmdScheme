@@ -14,24 +14,28 @@ shinyUI(
   fluidPage(
 
     # Application title
-    titlePanel("Old Faithful Geyser Data"),
+    titlePanel("dmdScheme"),
 
-    # Sidebar with a slider input for number of bins
+    # Sidebar
     sidebarLayout(
 
       sidebarPanel(
         selectInput(
           inputId = "scheme",
-          label = "Select scheme",
+          label = "Select scheme to be used",
           choices = dmdScheme_installed()
         ),
-        textOutput("scheme"),
+        textOutput( outputId = "scheme" ),
+
+        hr(),
 
         actionButton(
           inputId = "open",
-          label = "Open in Excel",
+          label = "Open empty scheme in Spreadsheet",
           icon = NULL
         ),
+
+        hr(),
 
         fileInput(
           inputId = "spreadsheet",
@@ -40,24 +44,30 @@ shinyUI(
           accept = c(".xlsx", "xls")
         ),
 
+        hr(),
+
         actionButton(
           inputId = "validate",
           label = "Validate metadata from spreadsheet",
           icon = NULL
         ),
 
+        hr(),
+
         actionButton(
           inputId = "export",
           label = "Export metadata from spreadsheet to xml",
           icon = NULL
-        )
+        ),
 
+        width = 5
       ),
 
 
       # Show a plot of the generated distribution
       mainPanel(
-        plotOutput("distPlot")
+        verbatimTextOutput( outputId = "text" ),
+        width = 7
       )
 
     )

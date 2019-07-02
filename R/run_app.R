@@ -2,7 +2,7 @@
 #'
 #' The shiny app allows the entering, validating, and exporting of the metadata
 #' without using R.
-#' SEE https://deanattali.com/2015/04/21/r-package-shiny-app/
+#' See https://deanattali.com/2015/04/21/r-package-shiny-app/
 #' @return
 #' @importFrom shiny runApp
 #' @export

@@ -36,10 +36,17 @@ shinyServer(
     observeEvent(
       eventExpr = input$validate,
       handlerExpr = {
-        class(input$spreadsheet)
-        cat(input$spreadsheet[[1]])
-        report( x = input$spreadsheet[[1]] )
+        report( x = input$spreadsheet$datapath )
       }
     )
+
+    observeEvent(
+      eventExpr = input$export,
+      handlerExpr = {
+        x <- dmdScheme_to_xml( x = input$spreadsheet$datapath )
+        output$text <- renderPrint(x)
+      }
+    )
+
   }
 )
