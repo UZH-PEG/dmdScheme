@@ -8,7 +8,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' run_app()
+#' }
 #'
 run_app <- function() {
   app_dir <- system.file("shiny_apps", "dmd_app", package = "dmdScheme")

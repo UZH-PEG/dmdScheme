@@ -12,6 +12,8 @@ without using R.
 See https://deanattali.com/2015/04/21/r-package-shiny-app/
 }
 \examples{
+\dontrun{
 run_app()
+}
 
 }
