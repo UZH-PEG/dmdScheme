@@ -7,15 +7,19 @@
 #' @md
 #' @examples
 #' ## Report of `dmdScheme_validation`
-#' report( validate(dmdScheme_raw) )
-#' \dontrun{
 #' report( system.file("dmdScheme.xlsx", package = "dmdScheme") )
-#' }
-#' @describeIn report report of a `character` object.
+#'
+#' @describeIn report report of a `dmdScheme_validation` object.
+#'
+#'
 report.character <- function(
   x,
   file,
-  output = "metadata"
+  open = TRUE,
+  report = "html",
+  report_author = "Tester",
+  report_title = "Validation of data against dmdScheme",
+  ...
 ) {
 
   if (!file.exists(x)) {

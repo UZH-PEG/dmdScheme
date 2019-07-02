@@ -10,7 +10,9 @@
 report(x, file, open = TRUE, report = "html",
   report_author = "Myself", report_title = "Report of something", ...)
 
-\method{report}{character}(x, file, output = "metadata")
+\method{report}{character}(x, file, open = TRUE, report = "html",
+  report_author = "Tester",
+  report_title = "Validation of data against dmdScheme", ...)
 
 \method{report}{dmdScheme_validation}(x, file, open = TRUE,
   report = "html", report_author = "Tester",
@@ -55,17 +57,15 @@ This generic function creates a report based on the object.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{character}: report of a \code{character} object.
+\item \code{character}: report of a \code{dmdScheme_validation} object.
 
 \item \code{dmdScheme_validation}: report of a \code{dmdScheme_validation} object.
 }}
 
 \examples{
 ## Report of `dmdScheme_validation`
-report( validate(dmdScheme_raw) )
-\dontrun{
 report( system.file("dmdScheme.xlsx", package = "dmdScheme") )
-}
+
 ## Report of `dmdScheme_validation`
 report( validate(dmdScheme_raw) )
 \dontrun{
