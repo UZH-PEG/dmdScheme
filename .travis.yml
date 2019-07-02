@@ -19,6 +19,7 @@ matrix:
     before_install:
     - sudo tlmgr install inconsolata
     - sw_vers
+  - r: release
   - r: oldrel
   - r: 3.5
 
