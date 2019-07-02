@@ -1,8 +1,17 @@
+#' Method for creating a report from an `character` object
+#'
+#' @details
+#' **`report.character(x)`** creates a report of the object returned from a `validate(x)`.
+#'
 #' @export
-#'
-#' @importFrom XML xmlNode xmlAttrs append.xmlNode saveXML
-#' @importFrom tibble is_tibble
-#'
+#' @md
+#' @examples
+#' ## Report of `dmdScheme_validation`
+#' report( validate(dmdScheme_raw) )
+#' \dontrun{
+#' report( system.file("dmdScheme.xlsx", package = "dmdScheme") )
+#' }
+#' @describeIn report report of a `character` object.
 dmdScheme_to_xml.character <- function(
   x,
   file,
@@ -16,7 +25,7 @@ dmdScheme_to_xml.character <- function(
 
 # Read and convert x ------------------------------------------------------
 
-  xml <- dmdScheme_to_xml( x = read_from_excel(x) )
+  xml <- report( x = validate(x) )
 
 # Return xml --------------------------------------------------------------
 
