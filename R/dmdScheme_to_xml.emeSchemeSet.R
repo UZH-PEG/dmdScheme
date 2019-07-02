@@ -43,7 +43,7 @@ dmdScheme_to_xml.dmdSchemeSet <- function(
 
 # If file  not missing, i.e. from root node as file not used in it --------
 
-  if (!missing(file)){
+  if (!missing(file)) {
     xml <- XML::saveXML(
       doc = xml,
       file = file

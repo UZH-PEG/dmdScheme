@@ -69,7 +69,7 @@ report( system.file("dmdScheme.xlsx", package = "dmdScheme") )
 ## Report of `dmdScheme_validation`
 report( validate(dmdScheme_raw) )
 \dontrun{
-report( dmdScheme_raw )(
+report(
    x = dmdScheme_raw,
    report = "html",
    report_author = "The Author I am",
