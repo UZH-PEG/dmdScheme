@@ -11,13 +11,15 @@
 #'
 #' @describeIn report report of a `dmdScheme_validation` object.
 #'
-#' @importFrom XML xmlNode xmlAttrs append.xmlNode saveXML
-#' @importFrom tibble is_tibble
 #'
 report.character <- function(
   x,
   file,
-  output = "metadata"
+  open = TRUE,
+  report = "html",
+  report_author = "Tester",
+  report_title = "Validation of data against dmdScheme",
+  ...
 ) {
 
   if (!file.exists(x)) {

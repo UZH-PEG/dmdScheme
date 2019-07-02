@@ -10,7 +10,9 @@
 report(x, file, open = TRUE, report = "html",
   report_author = "Myself", report_title = "Report of something", ...)
 
-\method{report}{character}(x, file, output = "metadata")
+\method{report}{character}(x, file, open = TRUE, report = "html",
+  report_author = "Tester",
+  report_title = "Validation of data against dmdScheme", ...)
 
 \method{report}{dmdScheme_validation}(x, file, open = TRUE,
   report = "html", report_author = "Tester",
