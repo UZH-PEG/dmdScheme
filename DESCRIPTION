@@ -13,7 +13,7 @@ BugReports: https://github.com/rkrug/dmdScheme/issues
 DOI: https://zenodo.org/record/3229615
 Depends: R (>= 3.5.0)
 Imports: tools, methods, utils, magrittr (>= 1.5), dplyr (>= 0.1.8), tibble (>= 2.1.1), readxl (>= 1.2.0), openxlsx (>= 4.1.1), XML (>= 3.98-1.16),
-                 rlang (>= 0.3.1), rmarkdown, knitr, digest (>= 0.6)
+                 rlang (>= 0.3.1), rmarkdown, knitr, digest (>= 0.6), shiny
 Remotes: awalker89/openxlsx, rkrug/plantuml
 License: MIT + file LICENSE
 Encoding: UTF-8
