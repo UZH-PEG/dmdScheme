@@ -10,7 +10,7 @@
 #'      subdirectory in the current working directory. An existing directory with
 #'      the same name, will nod be overwritten!
 #'
-#' The examples have to be lo cated in a directory called `example_data`.
+#' The examples have to be located in a directory called `example_data`.
 #' The function is doing two things:
 #'   1. Copying the **complete** directory from the `example_data` directory
 #'      to the current working directory

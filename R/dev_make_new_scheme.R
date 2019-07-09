@@ -6,7 +6,7 @@
 #' \code{dmdScheme}. This function uses the function `package.skeleton()` from
 #' the `utils` package to create a new directory for the new metadata scheme,
 #' imports the scheme as defined in `schemeDefinition` and adds some functions
-#' which make working easier with the new scheme easier. For a documentation of
+#' which make working with the new scheme easier. For a documentation of
 #' the workflow to create a new scheme, see the
 #' vignette **Howto Create a new scheme**.
 #' @param schemeDefinition \code{xlsx} Excel file containing the definition of

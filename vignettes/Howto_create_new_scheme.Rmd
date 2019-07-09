@@ -9,19 +9,18 @@ vignette: >
 
 # Introduction
 
-This package in itself is of not much use, as it only contains an example scheme. But it contains all the functionality to easily create a new scheme in an R package, which includes all the folowing functionality automatically:
+This package contains all the functionality to easily create a new metadata scheme in the form of a new R package, which includes all the folowing functionality automatically:
 
 1. enter metadata into an included spreadsheet based on the initial definition (`open_new_spreadsheet()`);
-1. import metadata entered in a spreadsheet into R and having it in an interoperable format available (`read_fron_excel()`);
-2. validate the entered metadata against the defined scheme, including rules concerning type of data (e.g. character, numeric, integer, ...), suggested values and allowed values and general structure (`validate()`);
-2. create a report in `.html`, `.pdf` or `.docx` formnat containing the results of the validation (`validate_report()`);
-3. export the metadata to xml format to make it accessible to data repositories (`dmdSchemeToXml()`);
-5. import an exported xml again for reuse (`xmlToDmdScheme()`)
+2. import metadata entered in a spreadsheet into R and having it in an interoperable format available (`read_fron_excel()`);
+3. validate the entered metadata against the defined scheme, including rules concerning type of data (e.g. character, numeric, integer, ...), suggested values and allowed values and general structure (`validate()`);
+4. create a report in `.html`, `.pdf` or `.docx` formnat containing the results of the validation (`validate_report()`);
+5. export the metadata to xml format to make it accessible to data repositories (`dmdSchemeToXml()`);
+6. import an exported xml again for reuse (`xmlToDmdScheme()`)
 
-This functionality is contained in an R package, which can be distributed for usage and metadata entering.
+This functionality is contained in the new R package created by this one. The new package can be distributed for usage and metadata entering.
 
-# How to create a package with an own scheme
-The steps do create such a package are discussed below in detail
+# How to create a package with an your own scheme
 
 ## Install the package `dmdScheme`
 In most cases, when you read this, you already have installed the package `dmdScheme`. If not there are three ways to install it:
@@ -36,7 +35,7 @@ install.packages("dmdScheme")
 
 2. via `drat`
 This will install the last released development version.
-`drat` is a too to run an own CRAN like repository. This drat repository contains the dev versions of the package. These are likely stable, but are not as tested as the ones on CRAN. see [the drat vignette](http://dirk.eddelbuettel.com/code/drat.html) for further info.
+`drat` is a tool to run an own CRAN like repository. This drat repository contains the dev versions of the package. These are likely stable, but are not as tested as the ones on CRAN. See [the drat vignette](http://dirk.eddelbuettel.com/code/drat.html) for further info.
 You need to install `drat` to use this:
 
 ```{r, eval = FALSE}
@@ -54,10 +53,10 @@ install.packages("remotes")
 remotes::install.packages("rkrug/dmdScheme")
 ```
 
-For general uasage, we recommend to use these CRAN for production usage. If you want to try (or need) the newst features, use the drat version, and only if you want to live at the bleeding edge, and can live with crashes and untested exciting new features, use the github version. 
+For general uasage, we recommend to use the CRAN package distribution for production usage. If you want to try (or need) the newest features, use the drat version, and only if you want to live at the bleeding edge, and can live with crashes and untested exciting new features, use the github version. 
 
 ## Create a template for the new scheme
-Creating a template is as easy as running the following two commands. For simlicity, we use a scheme definition as inclusded in the package as an example:
+Creating a template is as easy as running the following two commands. For simlicity, we use a scheme definition as included in the package as an example:
 
 ```{r eval = FALSE}
 library(dmdScheme)
@@ -66,7 +65,7 @@ dev_make_new_scheme(schemeDefinition = system.file("newSchemeDefinition.xlsx", p
 
 This will create a directory named `our_new_scheme` in the current working directory and use the `newSchemeDefinition.xlsx` excel file to create a new package containing the scheme definition.
 
-If you open the scheme definition (i.e. the excel file), you will see in the `Experiment` tab one cell containing the value **DATA exampleScheme v1.2.3**. **exampleScheme**.
+If you open the scheme definition (i.e. the excel file), you will see in the `Experiment` tab one cell containing the value **DATA exampleScheme v1.2.3**.
 
 ![](./figs/name_version.png)
 
@@ -74,7 +73,7 @@ If you open the scheme definition (i.e. the excel file), you will see in the `Ex
 
 Now you have the source code for a functional R package, which you can use to enter metadata into the new scheme (`enter_new_metadata(schemeName = "exampleScheme")`) and do all the other things as explained in the `R Package Introduction` vignette and the **User Manual** vignette in the  `emeScheme` package.
 
-Now you have the source code for a functional R package, which you can use to enter metadata into the new scheme (`open_new_spreadsheet(schemeName = "exampleScheme")`) and do all the other things as explained in the howto manual [TODO](TODO).
+**??? Some repetition of the previous line???** Now you have the source code for a functional R package, which you can use to enter metadata into the new scheme (`open_new_spreadsheet(schemeName = "exampleScheme")`) and do all the other things as explained in the howto manual [TODO](TODO).
 
 ## Developing new versions
 The definition of the scheme is contained in the spreadsheet which opens when using
@@ -98,7 +97,7 @@ Important points to keep in mind:
 As the functionality of the `dmdScheme` package is irrespective of the structure of the metadata scheme (see the vignette **Minimum requirements for metadatascheme based on dmdScheme** for the minimum requirements), it's functionality is limited. But it is easy to extend this functionality.
 
 ## Validation
-A detailed validations in respect to the scheme itself are not implemented. This means, that the validation only verifies
+A detailed validations in respect to the scheme itself is not implemented. This means that the validation only verifies
 
 1. that the values are of the required types (if not ==> error)
 2. are in the allowedValues (if not ==> error)

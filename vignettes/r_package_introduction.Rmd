@@ -33,6 +33,8 @@ The package `dmdScheme` is a base package to define domain specific metadata sch
 
 ## Installation
 
+**OP: Make sure this section is consistent with the corresponding on in  howto_create_new_scheme.rmd
+
 The package is not yet on CRAN. Therefore it needs to be installed from github. This will install the last verion on github.
 
 For a list of releases see [here](https://github.com/rkrug/dmdScheme/releases)
@@ -111,7 +113,7 @@ xml_to_dmdScheme( xmlFile ) # system.file("dmdScheme_example.xml", package = "dm
 
 ## Importing Data from Excel Sheet
 
-Next, you have to import the data entered in the Excel sheet into R. For simplicity, we use here a file includ in the package. If you want to load your own file, replace `system.file("dmdScheme.xlsx", package = "dmdScheme")` with the file name and path to that file.
+Next, you have to import the data entered in the Excel sheet into R. For simplicity, we use here a file included in the package. If you want to load your own file, replace `system.file("dmdScheme.xlsx", package = "dmdScheme")` with the file name and path to that file.
 
 ```{r echo = TRUE, eval = TRUE}
 x <- read_from_excel(
@@ -124,7 +126,7 @@ The `verbose = TRUE` argument will produce messages which will show you what is 
 
 ## Print dmdScheme Data
 
-dmdScheme Data can be printed by using the `print()` function. The function has three arguments which control the printout:
+`dmdScheme` Data can be printed by using the `print()` function. The function has three arguments which control the printout:
 
 * `printAttr`: if `TRUE` (default) print the **basic** attributes prefixed with `A   `
 * `printExAttr`: if `TRUE` print the **all** attributes prefixed with `X   `
