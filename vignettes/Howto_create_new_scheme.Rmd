@@ -41,7 +41,7 @@ You need to install `drat` to use this:
 
 ```{r, eval = FALSE}
 install.packages("drat")
-drat::addRepo("rkrug")
+drat::addRepo("Exp-Micro-Ecol-Hub")
 install.packages("dmdScheme")
 ```
 
@@ -51,7 +51,7 @@ The development of this package is hosted on [github](https://github.com/rkrug/d
 
 ```{r eval = FALSE}
 install.packages("remotes")
-remotes::install.packages("rkrug/dmdScheme")
+remotes::install.packages("emeScheme/dmdScheme")
 ```
 
 For general uasage, we recommend to use these CRAN for production usage. If you want to try the newst features, use the drat version, and only if you want to live at the bleeding edge, and can live with crashes and untested exciting new features, use the github version. 
