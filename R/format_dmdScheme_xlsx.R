@@ -7,6 +7,7 @@
 #' @return invisibly the workbook as a workbook object as created by \code{xlsx.crerateWorkbook()}
 #'
 #' @importFrom magrittr %>%
+#' @importFrom utils packageVersion
 #' @importFrom openxlsx addStyle loadWorkbook readWorkbook
 #'   removeRowHeights deleteData createStyle writeFormula
 #'   saveWorkbook
@@ -19,7 +20,7 @@ format_dmdScheme_xlsx <- function(
   keepData = TRUE
 ) {
 
-  protect_possible <- packageVersion("openxlsx") >= numeric_version("4.1.1")
+  protect_possible <- utils::packageVersion("openxlsx") >= numeric_version("4.1.1")
 
   # HELPER: set borders thick around range and thin inside ------------------
 
@@ -101,25 +102,44 @@ format_dmdScheme_xlsx <- function(
 
   # Define rowNameStyle cell style ----------------------------------------------
 
-  rowNameStyle <- openxlsx::createStyle(
-    fontName = NULL,
-    fontSize = 14,
-    fontColour = "blue",
-    numFmt = "GENERAL",
-    border = c("top", "bottom", "left", "right") ,
-    borderColour = "black",
-    borderStyle = "thin",
-    bgFill = NULL,
-    fgFill = "lightpink",
-    halign = "left",
-    valign = "center",
-    textDecoration = "bold",
-    wrapText = TRUE,
-    textRotation = NULL,
-    indent = NULL,
-    locked = TRUE
-  )
-
+  if (protect_possible) {
+    rowNameStyle <- openxlsx::createStyle(
+      fontName = NULL,
+      fontSize = 14,
+      fontColour = "blue",
+      numFmt = "GENERAL",
+      border = c("top", "bottom", "left", "right") ,
+      borderColour = "black",
+      borderStyle = "thin",
+      bgFill = NULL,
+      fgFill = "lightpink",
+      halign = "left",
+      valign = "center",
+      textDecoration = "bold",
+      wrapText = TRUE,
+      textRotation = NULL,
+      indent = NULL,
+      locked = TRUE
+    )
+  } else {
+    rowNameStyle <- openxlsx::createStyle(
+      fontName = NULL,
+      fontSize = 14,
+      fontColour = "blue",
+      numFmt = "GENERAL",
+      border = c("top", "bottom", "left", "right") ,
+      borderColour = "black",
+      borderStyle = "thin",
+      bgFill = NULL,
+      fgFill = "lightpink",
+      halign = "left",
+      valign = "center",
+      textDecoration = "bold",
+      wrapText = TRUE,
+      textRotation = NULL,
+      indent = NULL
+    )
+  }
   # Define colInfoStyle column name and top row style ------------------------------------
 
   colInfoStyle <- rowNameStyle
@@ -128,25 +148,44 @@ format_dmdScheme_xlsx <- function(
 
   # Define dataStyle cell style -------------------------------------------------
 
-  dataStyle <- openxlsx::createStyle(
-    fontName = NULL,
-    fontSize = 11,
-    fontColour = "black",
-    numFmt = "GENERAL",
-    border = c("top", "bottom", "left", "right") ,
-    borderColour = "black",
-    borderStyle = "thin",
-    bgFill = NULL,
-    fgFill = "darkseagreen1",
-    halign = NULL,
-    valign = NULL,
-    textDecoration = NULL,
-    wrapText = TRUE,
-    textRotation = NULL,
-    indent = NULL,
-    locked = FALSE
-  )
-
+  if (protect_possible) {
+    dataStyle <- openxlsx::createStyle(
+      fontName = NULL,
+      fontSize = 11,
+      fontColour = "black",
+      numFmt = "GENERAL",
+      border = c("top", "bottom", "left", "right") ,
+      borderColour = "black",
+      borderStyle = "thin",
+      bgFill = NULL,
+      fgFill = "darkseagreen1",
+      halign = NULL,
+      valign = NULL,
+      textDecoration = NULL,
+      wrapText = TRUE,
+      textRotation = NULL,
+      indent = NULL,
+      locked = FALSE
+    )
+  } else {
+    dataStyle <- openxlsx::createStyle(
+      fontName = NULL,
+      fontSize = 11,
+      fontColour = "black",
+      numFmt = "GENERAL",
+      border = c("top", "bottom", "left", "right") ,
+      borderColour = "black",
+      borderStyle = "thin",
+      bgFill = NULL,
+      fgFill = "darkseagreen1",
+      halign = NULL,
+      valign = NULL,
+      textDecoration = NULL,
+      wrapText = TRUE,
+      textRotation = NULL,
+      indent = NULL
+    )
+  }
 
   # load workbook -----------------------------------------------------------
 
