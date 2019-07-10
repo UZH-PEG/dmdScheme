@@ -27,7 +27,7 @@ the same name, will nod be overwritten!
 }
 }
 \details{
-The examples have to be lo cated in a directory called \code{example_data}.
+The examples have to be located in a directory called \code{example_data}.
 The function is doing two things:
 \enumerate{
 \item Copying the \strong{complete} directory from the \code{example_data} directory

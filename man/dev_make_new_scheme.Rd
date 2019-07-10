@@ -25,7 +25,7 @@ A new metadata scheme can be created as a package which will depend on
 \code{dmdScheme}. This function uses the function \code{package.skeleton()} from
 the \code{utils} package to create a new directory for the new metadata scheme,
 imports the scheme as defined in \code{schemeDefinition} and adds some functions
-which make working easier with the new scheme easier. For a documentation of
+which make working with the new scheme easier. For a documentation of
 the workflow to create a new scheme, see the
 vignette \strong{Howto Create a new scheme}.
 }

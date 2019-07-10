@@ -11,7 +11,7 @@
 dmdScheme_raw
 }
 \description{
-The dataset contains raw data.. An object of class \code{dmdScheme_raw} is
+The dataset contains raw data. An object of class \code{dmdScheme_raw} is
 returned by the function \code{\link[dmdScheme]{read_from_excel_raw}} with the argument
 \code{raw = TRUE} and \code{\link[dmdScheme]{read_from_excel_raw}}. It is usually an
 intermediate object, as in the normal workflow, this object is automatically
