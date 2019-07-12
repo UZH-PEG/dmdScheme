@@ -12,7 +12,7 @@
 dmdScheme_installed <- function() {
   x <- installed.packages()
   pkgs <- c(
-    "dmdScheme",
+    dmdScheme = "dmdScheme",
     x[grep("dmdScheme", x[,"Depends"]),"Package"]
   )
   return( pkgs )
