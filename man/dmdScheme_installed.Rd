@@ -7,7 +7,7 @@
 dmdScheme_installed()
 }
 \value{
-\code{character} vector containing the names of the intalled dmdScheme descendant packages.
+\code{character} matrix in the same format as returned from \code{installed.packages()}
 }
 \description{
 To find all dmdSchemes, this functions looks at all installed packages and
