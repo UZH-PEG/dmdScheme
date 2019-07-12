@@ -6,6 +6,9 @@
 \usage{
 run_app()
 }
+\value{
+return value from \code{runApp()}
+}
 \description{
 The shiny app allows the entering, validating, and exporting of the metadata
 without using R.
