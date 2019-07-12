@@ -2,10 +2,9 @@
 % Please edit documentation in R/format_dmdScheme_xlsx.R
 \name{format_dmdScheme_xlsx}
 \alias{format_dmdScheme_xlsx}
-\title{Internal function - Format the metadata scheme file}
+\title{Format the metadata scjheme file}
 \usage{
-format_dmdScheme_xlsx(fn_org, fn_new, keepData = TRUE,
-  password = "test")
+format_dmdScheme_xlsx(fn_org, fn_new, keepData = TRUE)
 }
 \arguments{
 \item{fn_org}{file name of the original excel file to be formated}
@@ -13,15 +12,10 @@ format_dmdScheme_xlsx(fn_org, fn_new, keepData = TRUE,
 \item{fn_new}{file name where the final xlsx should be saved to. If missing, it will not be saved.}
 
 \item{keepData}{if \code{TRUE}, data from data cells will be empty}
-
-\item{password}{the password used to lock the workbook and worksheets}
 }
 \value{
 invisibly the workbook as a workbook object as created by \code{xlsx.crerateWorkbook()}
 }
 \description{
-Loads  \code{fn_org)}, formats it and saves it as \code{fn_new}. The
-formating includes colours, borders, and locking of the cells which must not
-be edited by the user. The default password used is "test".
-It is only used in the function \code{open_new_spreadsheet()} and there is no real use outside of this.
+Loads  \code{fn_org)}, formats it and saves it as \code{fn_new}.
 }

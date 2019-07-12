@@ -26,14 +26,14 @@ are used for the data type. Otherwise, they are left at type
 will raise an error}
 
 \item{checkVersion}{if \code{TRUE}, a version mismatch between the package
-and the data \code{x} will result in a =n error. If \code{FALSE}, the check
+and the data \code{x} will result in an error. If \code{FALSE}, the check
 will be skipped.}
 }
 \value{
 \code{list} of \code{list} of ... \code{tibbles}
 }
 \description{
-Generit methond.
+Generic method.
 }
 \examples{
 new_dmdScheme(dmdScheme_raw, keepData = TRUE)

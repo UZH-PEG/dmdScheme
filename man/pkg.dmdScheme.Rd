@@ -6,17 +6,17 @@
 \alias{pkg.dmdScheme-package}
 \title{dmdScheme: A package containing the framework for Domain specific MetaData Schemes}
 \description{
-Metadata is essential for the managing and archiving of data. Consequentally, metadata
-schemes9, which standardise the property names used in specifying the metadata, play an essential role in this. Nevertheless (or because of this),
-metadata schemes are usuallu big, complex, difficult to read and understant,
+Metadata is essential for the managing and archiving of data. Consequentially, metadata
+schemes, which standardise the property names used in specifying the metadata, play an essential role in this. Nevertheless (or because of this),
+metadata schemes are usually big, complex, difficult to read and understand,
 and, in consequence, are not used as often as they should be.
 }
 \details{
 This package provides a framework called \code{dmdScheme}, which
 \itemize{
-\item \strong{makes it easier develop a domain pecific metadata scheme}: by using a spreadsheet as the base for defining the mnew scheme
+\item \strong{makes it easier to develop a domain specific metadata scheme}: by using a spreadsheet as the base for defining the new scheme
 \itemize{
-\item \strong{provides basic functionality for the new metadata scheme}: including entering, validationg, exporting and saving of the new metadata
+\item \strong{provides basic functionality for the new metadata scheme}: including entering, validating, exporting and saving of the new metadata
 \item \strong{makies it easier to enter new metadata}: by uising a spreadsheet to enter the new metadata which can than be imported and exported as xml
 }
 }
@@ -30,7 +30,7 @@ new domain specific metadata scheme which is based on a spreadsheet
 containing the definition and inherits all the functionality of this
 package (validation, printing, export, import, ...)
 \item easy update of the new scheme based by re-importing the new
-version of the scheme from the spreadsheet by si mply calling one function
+version of the scheme from the spreadsheet by simply calling one function
 \item easy extension of the functionality as the whole architecture is based
 on S3 methods and the new scheme inherits from the \code{dmdScheme} objects.
 }

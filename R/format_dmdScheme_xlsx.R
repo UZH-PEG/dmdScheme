@@ -1,29 +1,26 @@
-#' Internal function - Format the metadata scheme file
+#' Format the metadata scjheme file
 #'
-#' Loads  \code{fn_org)}, formats it and saves it as \code{fn_new}. The
-#' formating includes colours, borders, and locking of the cells which must not
-#' be edited by the user. The default password used is "test".
-#' It is only used in the function \code{open_new_spreadsheet()} and there is no real use outside of this.
+#' Loads  \code{fn_org)}, formats it and saves it as \code{fn_new}.
 #' @param fn_org file name of the original excel file to be formated
 #' @param fn_new file name where the final xlsx should be saved to. If missing, it will not be saved.
 #' @param keepData if \code{TRUE}, data from data cells will be empty
-#' @param password the password used to lock the workbook and worksheets
-#'
 #' @return invisibly the workbook as a workbook object as created by \code{xlsx.crerateWorkbook()}
 #'
 #' @importFrom magrittr %>%
+#' @importFrom utils packageVersion
 #' @importFrom openxlsx addStyle loadWorkbook readWorkbook
-#'   removeRowHeights deleteData protectWorksheet createStyle writeFormula
-#'   protectWorkbook saveWorkbook
+#'   removeRowHeights deleteData createStyle writeFormula
+#'   saveWorkbook
 #'
+#' @export
 #'
 format_dmdScheme_xlsx <- function(
   fn_org,
   fn_new,
-  keepData = TRUE,
-  password = "test"
+  keepData = TRUE
 ) {
 
+  protect_possible <- utils::packageVersion("openxlsx") >= numeric_version("4.1.1")
 
   # HELPER: set borders thick around range and thin inside ------------------
 
@@ -105,25 +102,44 @@ format_dmdScheme_xlsx <- function(
 
   # Define rowNameStyle cell style ----------------------------------------------
 
-  rowNameStyle <- openxlsx::createStyle(
-    fontName = NULL,
-    fontSize = 14,
-    fontColour = "blue",
-    numFmt = "GENERAL",
-    border = c("top", "bottom", "left", "right") ,
-    borderColour = "black",
-    borderStyle = "thin",
-    bgFill = NULL,
-    fgFill = "lightpink",
-    halign = "left",
-    valign = "center",
-    textDecoration = "bold",
-    wrapText = TRUE,
-    textRotation = NULL,
-    indent = NULL,
-    locked = TRUE
-  )
-
+  if (protect_possible) {
+    rowNameStyle <- openxlsx::createStyle(
+      fontName = NULL,
+      fontSize = 14,
+      fontColour = "blue",
+      numFmt = "GENERAL",
+      border = c("top", "bottom", "left", "right") ,
+      borderColour = "black",
+      borderStyle = "thin",
+      bgFill = NULL,
+      fgFill = "lightpink",
+      halign = "left",
+      valign = "center",
+      textDecoration = "bold",
+      wrapText = TRUE,
+      textRotation = NULL,
+      indent = NULL,
+      locked = TRUE
+    )
+  } else {
+    rowNameStyle <- openxlsx::createStyle(
+      fontName = NULL,
+      fontSize = 14,
+      fontColour = "blue",
+      numFmt = "GENERAL",
+      border = c("top", "bottom", "left", "right") ,
+      borderColour = "black",
+      borderStyle = "thin",
+      bgFill = NULL,
+      fgFill = "lightpink",
+      halign = "left",
+      valign = "center",
+      textDecoration = "bold",
+      wrapText = TRUE,
+      textRotation = NULL,
+      indent = NULL
+    )
+  }
   # Define colInfoStyle column name and top row style ------------------------------------
 
   colInfoStyle <- rowNameStyle
@@ -132,25 +148,44 @@ format_dmdScheme_xlsx <- function(
 
   # Define dataStyle cell style -------------------------------------------------
 
-  dataStyle <- openxlsx::createStyle(
-    fontName = NULL,
-    fontSize = 11,
-    fontColour = "black",
-    numFmt = "GENERAL",
-    border = c("top", "bottom", "left", "right") ,
-    borderColour = "black",
-    borderStyle = "thin",
-    bgFill = NULL,
-    fgFill = "darkseagreen1",
-    halign = NULL,
-    valign = NULL,
-    textDecoration = NULL,
-    wrapText = TRUE,
-    textRotation = NULL,
-    indent = NULL,
-    locked = FALSE
-  )
-
+  if (protect_possible) {
+    dataStyle <- openxlsx::createStyle(
+      fontName = NULL,
+      fontSize = 11,
+      fontColour = "black",
+      numFmt = "GENERAL",
+      border = c("top", "bottom", "left", "right") ,
+      borderColour = "black",
+      borderStyle = "thin",
+      bgFill = NULL,
+      fgFill = "darkseagreen1",
+      halign = NULL,
+      valign = NULL,
+      textDecoration = NULL,
+      wrapText = TRUE,
+      textRotation = NULL,
+      indent = NULL,
+      locked = FALSE
+    )
+  } else {
+    dataStyle <- openxlsx::createStyle(
+      fontName = NULL,
+      fontSize = 11,
+      fontColour = "black",
+      numFmt = "GENERAL",
+      border = c("top", "bottom", "left", "right") ,
+      borderColour = "black",
+      borderStyle = "thin",
+      bgFill = NULL,
+      fgFill = "darkseagreen1",
+      halign = NULL,
+      valign = NULL,
+      textDecoration = NULL,
+      wrapText = TRUE,
+      textRotation = NULL,
+      indent = NULL
+    )
+  }
 
   # load workbook -----------------------------------------------------------
 
@@ -244,13 +279,13 @@ format_dmdScheme_xlsx <- function(
   }
 
   # protect sheet -----------------------------------------------------------
-
-  openxlsx::protectWorksheet(
-    wb = wb,
-    sheet = sheet,
-    password = password
-  )
-
+  if (protect_possible) {
+    openxlsx::protectWorksheet(
+      wb = wb,
+      sheet = sheet,
+      password = "test"
+    )
+  }
   # Set formating and validation on all worksheets except of Experiment  -----------------
 
   propSets <- grep(
@@ -352,12 +387,13 @@ format_dmdScheme_xlsx <- function(
     }
 
     # protect sheet -----------------------------------------------------------
-
-    openxlsx::protectWorksheet(
-      wb = wb,
-      sheet = sheet,
-      password = password
-    )
+    if (protect_possible) {
+      openxlsx::protectWorksheet(
+        wb = wb,
+        sheet = sheet,
+        password = "test"
+      )
+    }
 
   }
 
@@ -387,7 +423,9 @@ format_dmdScheme_xlsx <- function(
 
   # Protect workbook --------------------------------------------------------
 
-  openxlsx::protectWorkbook(wb, password = password)
+  if (protect_possible) {
+    openxlsx::protectWorkbook(wb, password = "test")
+  }
 
   # Save workbook when fn_new is specified ----------------------------------
 

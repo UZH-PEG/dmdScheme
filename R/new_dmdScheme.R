@@ -1,6 +1,6 @@
 #' Generic method to convert the data stored in the object \code{x} into a new object of class \code{dmdScheme...}
 #'
-#' Generit methond.
+#' Generic method.
 #' @param x object of
 #'  * class `dmdSchemeSet_raw` as e.g. returned by \code{read_from_excel(raw = TRUE)}
 #'  * class `dmdSchemeData_raw`
@@ -12,7 +12,7 @@
 #' @param warnToError if \code{TRUE}, warnings generated during the conversion
 #'   will raise an error
 #' @param checkVersion if \code{TRUE}, a version mismatch between the package
-#'   and the data \code{x} will result in a =n error. If \code{FALSE}, the check
+#'   and the data \code{x} will result in an error. If \code{FALSE}, the check
 #'   will be skipped.
 #'
 #' @return \code{list} of \code{list} of ... \code{tibbles}
