@@ -1,37 +1,58 @@
-#
-# This is the server logic of a Shiny web application. You can run the
-# application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
-
 library(shiny)
 library(dmdScheme)
 
-# Define server logic required to draw a histogram
+
 shinyServer(
   function(input, output) {
 
-    #
-    output$scheme <- renderText(
-      {
-        if (require(input$scheme, character.only = TRUE)) {
-          succ <- "loaded successful"
+    # Load Packages -----------------------------------------------------------
+
+    observeEvent(
+      eventExpr = input$loadPackage,
+      ignoreNULL = FALSE,
+      handlerExpr = {
+        pkgs_inst <- dmdScheme_installed()[,"Package"]
+        if (is.null(input$loadPackage)) {
+          toLoad <- character(0)
         } else {
-          succ <- "loading failed"
+          toLoad <- sapply(
+            strsplit(input$loadPackage, " "),
+            "[[",
+            1
+          )
         }
-        paste("Scheme ", input$scheme, succ)
+        toUnLoad <- pkgs_inst[ !(pkgs_inst %in% toLoad) ]
+        # unload unchecked schemes
+        for (x in toUnLoad) {
+          if ( isNamespaceLoaded(x) ) {
+            detach(paste0("package:", x), unload = TRUE, character.only = TRUE)
+          }
+        }
+        # load checked schemes
+        for (x in toLoad) {
+          require(x, character.only = TRUE)
+        }
+        ##
+        loaded <- "Packages Loaded:"
+        for (x in pkgs_inst) {
+          if ( isNamespaceLoaded(x) ) {
+            loaded <- paste(loaded, x)
+          }
+        }
+        output$loaded <- renderPrint(loaded)
       }
     )
+
+    # Open new Spreadsheet ----------------------------------------------------
 
     observeEvent(
       eventExpr = input$open,
       handlerExpr = {
-        open_new_spreadsheet( schemeName = input$scheme )
+        open_new_spreadsheet( schemeName = strsplit(input$loadPackage, " ")[[1]][[1]] )
       }
     )
+
+    # Validate ----------------------------------------------------------------
 
     observeEvent(
       eventExpr = input$validate,
@@ -40,6 +61,8 @@ shinyServer(
       }
     )
 
+    # Export to xml -----------------------------------------------------------
+
     observeEvent(
       eventExpr = input$export,
       handlerExpr = {
@@ -47,6 +70,9 @@ shinyServer(
         output$text <- renderPrint(x)
       }
     )
+
+# End ---------------------------------------------------------------------
+
 
   }
 )

@@ -12,22 +12,41 @@ library(shiny)
 # Define UI for application that draws a histogram
 shinyUI(
   fluidPage(
-
+    tags$head(
+      tags$style(HTML("hr {border-top: 1px solid #000000;}"))
+    ),
     # Application title
-    titlePanel("dmdScheme"),
+    titlePanel("Scheme App"),
 
     # Sidebar
     sidebarLayout(
 
+      # Sidebar -----------------------------------------------------------------
+
       sidebarPanel(
-        selectInput(
-          inputId = "scheme",
-          label = "Select scheme to be used",
-          choices = dmdScheme_installed()
+        width = 7,
+
+        # Schemes to be loaded ----------------------------------------------------
+
+        h1("Schemes to be loaded"),
+
+        radioButtons(
+          inputId = "loadPackage",
+          label = h3("Instaled dmdSchemes"),
+          choices = as.list(paste(
+            dmdScheme_installed()[,"Package"],
+            dmdScheme_installed()[,"Version"]
+          )),
+          selected = "dmdScheme"
         ),
-        textOutput( outputId = "scheme" ),
+        textOutput(
+          outputId = "loaded"
+        ),
+
+        # New Empty Scheme --------------------------------------------------------
 
         hr(),
+        h1("New Empty Scheme"),
 
         actionButton(
           inputId = "open",
@@ -35,16 +54,22 @@ shinyUI(
           icon = NULL
         ),
 
+        # Upload Spreadsheet containing Metadata ----------------------------------
+
         hr(),
+        h1("Upload Spreadsheet containing Metadata"),
 
         fileInput(
           inputId = "spreadsheet",
-          label = "Select spreadsheet containing metadata",
+          label = "Select Spreadsheet",
           multiple = FALSE,
           accept = c(".xlsx", "xls")
         ),
 
+        # Validate Uploaded Metadata ----------------------------------------------
+
         hr(),
+        h1("Validate Uploaded Metadata"),
 
         actionButton(
           inputId = "validate",
@@ -52,22 +77,28 @@ shinyUI(
           icon = NULL
         ),
 
+        # Export Uploded Spreadsheet to xml ---------------------------------------
+
         hr(),
+        h1("Export Uploded Spreadsheet to xml"),
 
         actionButton(
           inputId = "export",
           label = "Export metadata from spreadsheet to xml",
           icon = NULL
-        ),
+        )
 
-        width = 5
       ),
 
 
-      # Show a plot of the generated distribution
+      # Main Panel --------------------------------------------------------------
+
       mainPanel(
-        verbatimTextOutput( outputId = "text" ),
-        width = 7
+        width = 7,
+
+        # output xml --------------------------------------------------------------
+
+        verbatimTextOutput( outputId = "text" )
       )
 
     )
