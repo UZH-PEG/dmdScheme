@@ -11,6 +11,12 @@
 #'
 dmdScheme_installed <- function() {
   x <- installed.packages()
-  pkgs <- x[grep("dmdScheme", x[,"Depends"]),]
+  pkgs_ids <- grep("dmdScheme", x[,"Depends"])
+  pkgs <- x[pkgs_ids,]
+  if (is.null(dim(pkgs))) {
+    dim(pkgs) <- c(1, ncol(x))
+  }
+  colnames(pkgs) <- colnames(x)
+  rownames(pkgs) <- rownames(x)[pkgs_ids]
   return( pkgs )
 }
