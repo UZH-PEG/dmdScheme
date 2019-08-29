@@ -50,7 +50,7 @@ The development of this package is hosted on [github](https://github.com/rkrug/d
 
 ```{r eval = FALSE}
 install.packages("remotes")
-remotes::install.packages("emeScheme/dmdScheme")
+remotes::install_github("Exp-Micro-Ecol-Hub/dmdScheme"build_opts = "build_vignettes = TRUE")
 ```
 
 For general uasage, we recommend to use the CRAN package distribution for production usage. If you want to try (or need) the newest features, use the drat version, and only if you want to live at the bleeding edge, and can live with crashes and untested exciting new features, use the github version. 
