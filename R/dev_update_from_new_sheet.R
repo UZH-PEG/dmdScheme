@@ -78,7 +78,7 @@ dev_update_from_new_sheet <- function(
   dir.create(file.path("tests", "testthat"), showWarnings = FALSE, recursive = TRUE)
   sheet <- file.path(".", "inst", paste0(schemeName, ".xlsx"))
   if (!file.exists(sheet)) {
-    stop("So,ething is wrong here - the file ", sheet, " does not exist although it should!!!")
+    stop("Something is wrong here - the file ", sheet, " does not exist although it should!!!")
   }
   sheet_versioned <- file.path(".", "inst", paste0(schemeName, ".", as.character(dmdScheme_versions()[["scheme"]]), ".xlsx"))
 
