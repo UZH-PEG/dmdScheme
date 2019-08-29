@@ -69,6 +69,14 @@ dev_make_new_scheme <- function(
     path = path
   )
 
+  # Copy new scheme to the inst directory -----------------------------------
+
+  dir.create( file.path(path, schemeName, "inst"), showWarnings = FALSE)
+  file.copy(
+    from = schemeDefinition,
+    to = file.path(path, schemeName, "inst", paste0(schemeName, ".xlsx"))
+  )
+
   # Add info to DECRIPTION file ---------------------------------------------
 
   cat(
@@ -87,6 +95,9 @@ dev_make_new_scheme <- function(
 
   setwd(file.path(path, schemeName))
   ##
+
+# Update from new sheet ---------------------------------------------------
+
   dev_update_from_new_sheet(
     newDmdScheme = schemeDefinition,
     updateSchemeVersion = TRUE,
