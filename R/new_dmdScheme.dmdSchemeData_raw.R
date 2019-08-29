@@ -78,7 +78,7 @@ new_dmdScheme.dmdSchemeData_raw <- function(
 # extract attributes to set -----------------------------------------------
 
   attrToSet <- x$valueProperty
-  attrToSet <- attrToSet[1:(grep("DATA", x$valueProperty)-1)]
+  attrToSet <- attrToSet[(grep("DATA", x$valueProperty, invert = TRUE))]
 
 # set attributes ----------------------------------------------------------
 
