@@ -34,6 +34,8 @@
 #' @importFrom tools md5sum
 #' @importFrom readxl read_excel
 #'
+#' @export
+#'
 dev_update_from_new_sheet <- function(
   newDmdScheme,
   updateSchemeVersion = TRUE,
@@ -45,7 +47,7 @@ dev_update_from_new_sheet <- function(
     "##########################################################\n",
     "## This function is only to be used during development  ##\n",
     "## from within the root directory of the package.       ##\n",
-    "## There is absolutely not reason, why you should call  ##\n",
+    "## There is absolutely no reason, why you should call   ##\n",
     "## this function as a user of the package.              ##\n",
     "##                                                      ##\n",
     "## If you are calling this function as a non developer, ##\n",
