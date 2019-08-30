@@ -80,7 +80,7 @@ make_example <- function(
     # Show user_manual --------------------------------------------------------
     switch(
       name,
-      basic = utils::RShowDoc("user_manual", package = "dmdScheme"),
+      basic = utils::RShowDoc("user_manual", package = schemeName),
       message("No documentation specified to be opened!")
     )
   }
