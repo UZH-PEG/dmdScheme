@@ -29,7 +29,7 @@ report.character <- function(
 
 # Read and convert x ------------------------------------------------------
 
-  result <- report( validate(x) )
+  result <- report( validate(x, ...) )
 
 # Return xml --------------------------------------------------------------
 
