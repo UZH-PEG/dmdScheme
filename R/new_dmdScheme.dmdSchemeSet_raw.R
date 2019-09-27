@@ -50,7 +50,9 @@ new_dmdScheme.dmdSchemeSet_raw <- function(
 
 # Set attributes ----------------------------------------------------------
 
-attr(result, "propertyName") <- attr(x, "fileName")
+  attr(result, "fileName") <- attr(x, "fileName")
+  attr(result, "propertyName") <- attr(x, "propertyName")
+  attr(result, "dmdSchemeName") <- attr(x, "dmdSchemeName")
 
 # set class ---------------------------------------------------------------
 

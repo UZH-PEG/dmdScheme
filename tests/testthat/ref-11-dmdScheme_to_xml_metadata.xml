@@ -1,4 +1,4 @@
-<dmdScheme dmdSchemeVersion="0.9.5" propertyName="dmdScheme">
+<dmdScheme fileName="dmdScheme.xlsx" dmdSchemeName="dmdScheme" dmdSchemeVersion="0.9.5" propertyName="dmdScheme">
  <ExperimentList>
   <Experiment>
    <name>ASR-expt1</name>

@@ -18,9 +18,11 @@ dmdScheme_to_xml.dmdSchemeSet <- function(
   xml <- XML::xmlNode(
     "dmdScheme",
     attrs = c(
+      fileName = attr(x, "fileName"),
+      dmdSchemeName = attr(x, "dmdSchemeName"),
       dmdSchemeVersion = attr(x, "dmdSchemeVersion"),
       propertyName     = attr(x, "propertyName")
-      )
+    )
   )
 
 # Add attributes if output == complete ------------------------------------

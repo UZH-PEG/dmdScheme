@@ -111,20 +111,12 @@ read_from_excel_raw <- function(
   )
   names(result) <- propSheets
 
-
-  # Set class ---------------------------------------------------------------
-
-  attr(result, "propertyName") <- schemeName
-
-  # Set version -------------------------------------------------------------
-
-  attr(result, "dmdSchemeVersion") <- schemeVersion
-
   # Set Attributes ----------------------------------------------------------
 
-  attr(result, "fileName") <- file %>%
-    tools::file_path_sans_ext() %>%
-    basename()
+  attr(result, "dmdSchemeName") <- schemeName
+  attr(result, "dmdSchemeVersion") <- schemeVersion
+  attr(result, "propertyName") <- schemeName
+  attr(result, "fileName") <- basename(file)
 
   # Set class to dmdSchemeSet_Raw ----------------------------------------------
 
