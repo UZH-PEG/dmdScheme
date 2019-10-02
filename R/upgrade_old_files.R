@@ -15,6 +15,7 @@
 #' @importFrom magrittr %>%
 #' @importFrom readxl read_excel excel_sheets
 #' @importFrom tools file_path_sans_ext file_ext
+#' @importFrom xml2 read_xml xml_attr
 #' @export
 #'
 #' @examples
@@ -50,9 +51,9 @@ upgrade_old_files <- function(
   }
 
   if (tools::file_ext(file) %in% c("xml")) {
-    xml <- XML::xmlToList(file)
-    schemeName <- xml$.attrs[["propertyName"]]
-    schemeVersion <- as.numeric_version(xml$.attrs[["dmdSchemeVersion"]])
+    xml <- xml2::read_xml(file)
+    schemeName <- xml2::xml_attr(xml, "dmdSchemeName")
+    schemeVersion <- as.numeric_version(xml2::xml_attr(xml, "dmdSchemeVersion"))
     rm(xml)
   }
 

@@ -16,7 +16,8 @@ dmdScheme_to_xml.dmdSchemeData <- function(
 
   # x is of type dmdSchemeData and therefore a tibble ------------------
 
-  xml <- XML::xmlNode(name = paste0(attr(x, "propertyName"), "List"))
+  xml <- xml2::xml_new_root("dmdSchemeData") %>%
+    xml2::xml_add_child(xml, paste0(attr(x, "propertyName"), "List"))
 
   if (length(x) > 1) {
     if (nrow(x) > 0) {
@@ -56,22 +57,26 @@ dmdScheme_to_xml.dmdSchemeData <- function(
     xml <- XML::xmlNode(attr(x, "propertyName"), x)
   }
 
-# Add attributes if output == complete ------------------------------------
+  # Add attributes if output == complete ------------------------------------
 
   if (output == "complete") {
     XML::xmlAttrs(
       node = xml,
       append = TRUE
-    ) <- c(
-      unit = paste(attr(x, "unit"), collapse = ", "),
-      type = paste(attr(x, "type"), collapse = ", "),
-      allowedValues = paste(attr(x, "allowedValues"), collapse = ", "),
-      names = paste(attr(x, "names"), collapse = ", "),
-      class = paste(class(x), collapse = ", ")
+    ) <- sapply(
+      attributes(x),
+      paste,
+      collapse = " #&# "
     )
   }
 
-# Return xml --------------------------------------------------------------
+  # If file not NULL, i.e. from root node as file not used in it --------
 
-  return(xml)
+  if (!is.null(file)) {
+    xml2::write_xml( xml, file )
+  }
+
+  # Return xml --------------------------------------------------------------
+
+  return(invisible(xml))
 }

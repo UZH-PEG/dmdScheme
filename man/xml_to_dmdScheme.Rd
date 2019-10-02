@@ -4,10 +4,10 @@
 \alias{xml_to_dmdScheme}
 \title{Convert a exported xml file to a \code{dmdScheme_Set} object}
 \usage{
-xml_to_dmdScheme(file, verbose = FALSE)
+xml_to_dmdScheme(file, onlyScheme = FALSE, verbose = FALSE)
 }
 \arguments{
-\item{file}{efile containing the xml}
+\item{file}{a file containing the xml or an xml object}
 
 \item{verbose}{give verbose progress info. Useful for debugging.}
 }
