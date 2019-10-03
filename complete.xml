@@ -1,5 +1,6 @@
-<dmdScheme fileName="dmdScheme.xlsx" dmdSchemeName="dmdScheme" dmdSchemeVersion="0.9.5" propertyName="dmdScheme" class="dmdSchemeSet, list" names="Experiment, Genus, Treatments, Measurement, DataExtraction, DataFileMetaData">
- <ExperimentList unit="NA, NA, NA, NA, NA, NA, ml, NA, g/l, NA, NA, NA, days, NA" type="character, character, character, character, character, character, numeric, character, numeric, character, character, character, integer, character" allowedValues="" names="name, temperature, light, humidity, incubator, container, microcosmVolume, mediaType, mediaConcentration, cultureConditions, comunityType, mediaAdditions, duration, comment" class="dmdSchemeData, tbl_df, tbl, data.frame">
+<?xml version="1.0"?>
+<dmdScheme fileName="dmdScheme.xlsx" dmdSchemeName="dmdScheme" dmdSchemeVersion="0.9.5" propertyName="dmdScheme" output="complete" class="dmdSchemeSet #&amp;# list" names="Experiment #&amp;# Genus #&amp;# Treatments #&amp;# Measurement #&amp;# DataExtraction #&amp;# DataFileMetaData">
+ <ExperimentList row.names="1" propertyName="Experiment" unit="NA #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# ml #&amp;# NA #&amp;# g/l #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# days #&amp;# NA" type="character #&amp;# character #&amp;# character #&amp;# character #&amp;# character #&amp;# character #&amp;# numeric #&amp;# character #&amp;# numeric #&amp;# character #&amp;# character #&amp;# character #&amp;# integer #&amp;# character" suggestedValues="NA #&amp;# treatment, in degrees celsius, measurement #&amp;# treatment,light, dark, cycle , e.g. 16:8 LD #&amp;# treatment, relative humidity in % #&amp;# none, bench #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# axenic, dirty, clean #&amp;# treatment, single trophic level, multiple trophic level #&amp;# NA #&amp;# NA #&amp;# NA" Description="The name of the experiment. #&amp;# Temperature used for all treatments. If different between treatments, use &quot;treatment&quot; and specify in the Treatment sheet. #&amp;# Light used for all treatments. If different between treatments, use &quot;treatment&quot; and specify in the Treatment sheet. #&amp;# Humidity used for all treatments. If different between treatments, use &quot;treatment&quot; and specify in the Treatment sheet. #&amp;# What type of incubator is used. #&amp;# What type of container is used. #&amp;# Volume of the microcosm container. Not the volume of the culture medium! #&amp;# NA #&amp;# NA #&amp;# Conditions of the cultures for all treatments. #&amp;# Characterisation of the microbe community. #&amp;# NA #&amp;# Length of the experiment in days. This should only include the time in which the measurements were taken! #&amp;# Additional features of the Experiment you want to provide" names="name #&amp;# temperature #&amp;# light #&amp;# humidity #&amp;# incubator #&amp;# container #&amp;# microcosmVolume #&amp;# mediaType #&amp;# mediaConcentration #&amp;# cultureConditions #&amp;# comunityType #&amp;# mediaAdditions #&amp;# duration #&amp;# comment" class="dmdSchemeData #&amp;# tbl_df #&amp;# tbl #&amp;# data.frame">
   <Experiment>
    <name>ASR-expt1</name>
    <temperature>20</temperature>
@@ -17,7 +18,7 @@
    <comment></comment>
   </Experiment>
  </ExperimentList>
- <GenusList unit="NA, NA, cells / ml, NA, NA" type="character, character, character, character, character" allowedValues="NA, NA, NA, NA, NA" names="speciesID, colour, density, functionalGroup, comment" class="dmdSchemeData, tbl_df, tbl, data.frame">
+ <GenusList row.names="1 #&amp;# 2" propertyName="Genus" unit="NA #&amp;# NA #&amp;# cells / ml #&amp;# NA #&amp;# NA" type="character #&amp;# character #&amp;# character #&amp;# character #&amp;# character" suggestedValues="NA #&amp;# NA #&amp;# treatment #&amp;# bacteria, bacterivore, predator, phototroph #&amp;# NA" allowedValues="NA #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# NA" Description="Id of the species and strain. Each speciesId has to be unique. #&amp;# Where the species was obtained from. #&amp;# Initial density used for all treatments. If different between treatments, use &quot;treatment&quot; and specify in the Treatment sheet. #&amp;# Functional group of the species. #&amp;# NA" names="speciesID #&amp;# colour #&amp;# density #&amp;# functionalGroup #&amp;# comment" class="dmdSchemeData #&amp;# tbl_df #&amp;# tbl #&amp;# data.frame">
   <Genus speciesID="tt_1">
    <speciesID>tt_1</speciesID>
    <colour>ATCC</colour>
@@ -33,7 +34,7 @@
    <comment></comment>
   </Genus>
  </GenusList>
- <TreatmentsList unit="NA, NA, NA" type="character, character, character" allowedValues="NA, NA, NA" names="treatmentID, treatmentLevelHeight, comment" class="dmdSchemeData, tbl_df, tbl, data.frame">
+ <TreatmentsList row.names="1 #&amp;# 2 #&amp;# 3 #&amp;# 4 #&amp;# 5" propertyName="Treatments" unit="NA #&amp;# NA #&amp;# NA" type="character #&amp;# character #&amp;# character" suggestedValues="species, temperatur, light, initial density, comunity composition, densities, dispersal, viscosity, disturbance, communityType #&amp;# value,  variable: freetext #&amp;# NA" allowedValues="NA #&amp;# NA #&amp;# NA" Description="ID of the the treatment decribed in this a row. Each treatmentId can occur multiple times as it can contain multiple treatment levels. #&amp;# The value of the parameter if the parameter is constant over time, or a description of the variability. If unit is speciesId, comma separated list of all species in the treatment. #&amp;# NA" names="treatmentID #&amp;# treatmentLevelHeight #&amp;# comment" class="dmdSchemeData #&amp;# tbl_df #&amp;# tbl #&amp;# data.frame">
   <Treatments treatmentID="Lid_treatment">
    <treatmentID>Lid_treatment</treatmentID>
    <treatmentLevelHeight>Loose</treatmentLevelHeight>
@@ -60,7 +61,8 @@
    <comment></comment>
   </Treatments>
  </TreatmentsList>
- <MeasurementList unit="NA, NA, NA, NA, NA, NA, ml, NA, NA, NA" type="character, character, character, character, character, integer, numeric, character, character, character" allowedValues="NA, NA, NA, NA, NA, NA, NA, NA, NA, NA" names="measurementID, variable, method, unit, object, noOfSamplesInTimeSeries, samplingVolume, dataExtractionID, measuredFrom, comment" class="dmdSchemeData, tbl_df, tbl, data.frame">
+ <MeasurementList row.names="1 #&amp;# 2 #&amp;# 3 #&amp;# 4" propertyName="Measurement" unit="NA #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# ml #&amp;# NA #&amp;# NA #&amp;# NA" type="character #&amp;# character #&amp;# character #&amp;# character #&amp;# character #&amp;# integer #&amp;# numeric #&amp;# character #&amp;# character #&amp;# character" suggestedValues="NA #&amp;# O2 concentration, video, manual count, abundance, DNA #&amp;# presens Optode, microscopy #&amp;# %, mmol, count #&amp;# species, OUT, gene, community, particles #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# NA" allowedValues="NA #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# NA" Description="Id of the Measurement process. This includes methodology, variables . Each measurementId specifies one Measurement process and must be unique in this column. Should be in the mapping column in the DataFileMetaData tab. #&amp;# The variable measured. #&amp;# Name of the method used. #&amp;# Unit of the measured variable #&amp;# The object measured. E.g. species in the case of manual count, gene for genetic analysis, particle for particle counters. #&amp;# Total number of all samples in the time series. #&amp;# The sampling volumne. If e.g. atmosphere in container is sampled (oxygen measurements), than enter 0.
+Please use NA if sampling volumne is variable. #&amp;# as used in the sheet DataExtraction, column dataExtractionID #&amp;# if measured from the experiment, raw, else the measurementId (first column) of the Measurement it is based on. #&amp;# NA" names="measurementID #&amp;# variable #&amp;# method #&amp;# unit #&amp;# object #&amp;# noOfSamplesInTimeSeries #&amp;# samplingVolume #&amp;# dataExtractionID #&amp;# measuredFrom #&amp;# comment" class="dmdSchemeData #&amp;# tbl_df #&amp;# tbl #&amp;# data.frame">
   <Measurement measurementID="oxygen concentration">
    <measurementID>oxygen concentration</measurementID>
    <variable>DO</variable>
@@ -110,7 +112,7 @@
    <comment></comment>
   </Measurement>
  </MeasurementList>
- <DataExtractionList unit="NA, NA, NA, NA, NA" type="character, character, character, character, character" allowedValues="NA, NA, NA, NA, NA" names="dataExtractionID, method, parameter, value, comment" class="dmdSchemeData, tbl_df, tbl, data.frame">
+ <DataExtractionList row.names="1" propertyName="DataExtraction" unit="NA #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# NA" type="character #&amp;# character #&amp;# character #&amp;# character #&amp;# character" suggestedValues="NA #&amp;# bemovi x.y.z #&amp;# NA #&amp;# NA #&amp;# NA" allowedValues="NA #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# NA" Description="Name of the DataExtraction process. This includes methodology, variables . Each name specifies one extraction process and can occur multiple times in the case of multiple parameters in the analysis. #&amp;# Method used for the DataExtraction process. If possible including version (in the case of R packages). #&amp;# parameter in the analysis. Only needs to be specified if it varies from the default. #&amp;# value of the parameter (you can enter a number or a word) #&amp;# NA" names="dataExtractionID #&amp;# method #&amp;# parameter #&amp;# value #&amp;# comment" class="dmdSchemeData #&amp;# tbl_df #&amp;# tbl #&amp;# data.frame">
   <DataExtraction dataExtractionID="Mol_Analy_pipeline1">
    <dataExtractionID>Mol_Analy_pipeline1</dataExtractionID>
    <method></method>
@@ -119,7 +121,22 @@
    <comment>See description in file xxx.yyy</comment>
   </DataExtraction>
  </DataExtractionList>
- <DataFileMetaDataList unit="NA, NA, NA, NA, NA, NA, NA" type="character, character, character, character, character, character, character" allowedValues="NA, NA, ID, Treatment, Measurement, Species, other, NA, integer, numeric, character, logical, datetime, date, time, NA, NA" names="dataFileName, columnName, columnData, mappingColumn, type, description, comment" class="dmdSchemeData, tbl_df, tbl, data.frame">
+ <DataFileMetaDataList row.names="1 #&amp;# 2 #&amp;# 3 #&amp;# 4 #&amp;# 5 #&amp;# 6 #&amp;# 7 #&amp;# 8 #&amp;# 9 #&amp;# 10 #&amp;# 11 #&amp;# 12 #&amp;# 13 #&amp;# 14 #&amp;# 15 #&amp;# 16 #&amp;# 17 #&amp;# 18 #&amp;# 19 #&amp;# 20" propertyName="DataFileMetaData" unit="NA #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# NA" type="character #&amp;# character #&amp;# character #&amp;# character #&amp;# character #&amp;# character #&amp;# character" suggestedValues="NA #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# NA #&amp;# NA" allowedValues="NA #&amp;# NA #&amp;# ID, Treatment, Measurement, Species, other #&amp;# NA #&amp;# integer, numeric, character, logical, datetime, date, time #&amp;# NA #&amp;# NA" Description="the name of the data set. #&amp;# Name of column in the data file. 
+Each column in the data file needs to be documented!
+or NA
+if it is for the whole data file and not specified in the dataFileName #&amp;# The type of the data in the column.
+ID: ID field (unique ID of unit of replication);
+Treatment: specifies treatment; 
+Measurement: contains measurements; 
+Species: contains species; 
+other: other type of data #&amp;# columnData = Treatment: 
+treatmentID as in the Treatment tab; 
+columnData = Species: 
+treatmentID refering to species composition as in the Treatment tab
+columnData = Measurement: 
+measurementID as in the Measurement tab; 
+otherwise:
+NA #&amp;# Type of the column. #&amp;# if column contains measurement: General description. If type is datatime, date, or time, give the order of year month day hour minute second as e.g. ymdhms, ymd, or hms. (Do not give any other information, e.g. give nothing about how months are entered (e.g. number or name), or how years, months, day, etc are separated. #&amp;# NA" names="dataFileName #&amp;# columnName #&amp;# columnData #&amp;# mappingColumn #&amp;# type #&amp;# description #&amp;# comment" class="dmdSchemeData #&amp;# tbl_df #&amp;# tbl #&amp;# data.frame">
   <DataFileMetaData>
    <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
    <columnName>Jar_ID</columnName>

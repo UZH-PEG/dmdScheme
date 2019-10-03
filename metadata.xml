@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<dmdScheme dmdSchemeVersion="0.9.5" propertyName="dmdScheme">
+<dmdScheme fileName="dmdScheme.xlsx" dmdSchemeName="dmdScheme" dmdSchemeVersion="0.9.5" propertyName="dmdScheme" output="metadata">
  <ExperimentList>
   <Experiment>
    <name>ASR-expt1</name>

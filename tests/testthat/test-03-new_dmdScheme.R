@@ -1,4 +1,4 @@
-context("new_dmdScheme()")
+context("03-new_dmdScheme()")
 
 
 # fail because of erong type -------------------------------------------------------------
@@ -13,14 +13,37 @@ test_that(
   }
 )
 
-# new_dmdScheme --- verbose -----------------------------------------------
+
+# creates correctly the dmdScheme_example object --------------------------
 
 test_that(
-  "new_dmdScheme() verbose",
+  "new_dmdScheme() `keepData = TRUE`",
   {
-    expect_known_output(
-      object = new_dmdScheme( x = dmdScheme_raw, verbose = TRUE ),
-      file = "ref-03-new_dmdScheme.output"
+    expect_equal(
+      object = new_dmdScheme( x = dmdScheme_raw, keepData = TRUE ),
+      expect = dmdScheme_example
     )
   }
 )
+
+test_that(
+  "new_dmdScheme() `keepData = FALSE`",
+  {
+    expect_equal(
+      object = new_dmdScheme( x = dmdScheme_raw, keepData = FALSE ),
+      expect = dmdScheme
+    )
+  }
+)
+
+# # new_dmdScheme --- verbose -----------------------------------------------
+#
+# test_that(
+#   "new_dmdScheme() verbose",
+#   {
+#     expect_known_output(
+#       object = new_dmdScheme( x = dmdScheme_raw, verbose = TRUE ),
+#       file = "ref-03-new_dmdScheme.output"
+#     )
+#   }
+# )

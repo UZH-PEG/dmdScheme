@@ -1,11 +1,10 @@
-#' @export
+#' @importFrom xml2 write_xml
 #'
-#' @importFrom XML xmlNode xmlAttrs append.xmlNode saveXML
-#' @importFrom tibble is_tibble
+#' @export
 #'
 dmdScheme_to_xml.character <- function(
   x,
-  file,
+  file = NULL,
   output = "metadata"
 ) {
 
@@ -13,12 +12,20 @@ dmdScheme_to_xml.character <- function(
     stop("If x is a character, it has to be the file name of a spreadsheet containing the scheme data!")
   }
 
+  # Read and convert x ------------------------------------------------------
 
-# Read and convert x ------------------------------------------------------
+  xml <- dmdScheme_to_xml( x = read_from_excel(x), file = NULL, output = output )
 
-  xml <- dmdScheme_to_xml( x = read_from_excel(x), file = file, output = output )
+  # If file not NULL save to file ------------------------------------------
 
-# Return xml --------------------------------------------------------------
+  if (!is.null(file)) {
+    xml2::write_xml(
+      x = xml,
+      file = file
+    )
+  }
 
-  return(xml)
+  # Return xml --------------------------------------------------------------
+
+  return(invisible(xml))
 }

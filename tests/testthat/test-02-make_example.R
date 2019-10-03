@@ -1,12 +1,12 @@
-context("make_example()")
+context("02-make_example()")
 
 
 test_that(
-  "make_example returns list of examples when called without argument",
+  "make_example returns list of examples when called without argument, i,.e. here empty",
   {
-    expect_known_output(
+    expect_message(
       object = make_example(),
-      file = "ref-02-make_example_.txt",
+      file = "Included examples are:",
     )
   }
 )

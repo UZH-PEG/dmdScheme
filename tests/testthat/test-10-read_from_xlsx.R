@@ -1,4 +1,4 @@
-context("read_from_excel()")
+context("10-read_from_excel()")
 
 
 # fail because of file -------------------------------------------------------------
@@ -28,50 +28,46 @@ test_that(
 # read from xlsx --- value ----------------------------------------------------------
 
 test_that(
-  "read_from_excel() keepData and raw",
+  "read_from_excel() `keepData = TRUE` and `raw = TRUE`",
   {
-    expect_known_value(
+    expect_equal(
       object = read_from_excel(
-        file = "dmdScheme.xlsx",
+        file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
         keepData = TRUE,
         raw = TRUE,
         verbose = FALSE
       ),
-      file = "ref-10-dmdScheme_data_raw.rda"
+      expected = dmdScheme_raw
     )
   }
 )
 
 test_that(
-  "read_from_excel() keepData and raw",
+  "read_from_excel() `keepData = TRUE` and `raw = FALSE`",
   {
-    expect_known_value(
+    expect_equal(
       object = read_from_excel(
-        file = "dmdScheme.xlsx",
+        file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
+        keepData = TRUE,
+        raw = FALSE,
+        verbose = FALSE
+      ),
+      expected = dmdScheme_example
+    )
+  }
+)
+
+test_that(
+  "read_from_excel() `keepData = FALSE` and `raw = FALSE`",
+  {
+    expect_equal(
+      object = read_from_excel(
+        file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
         keepData = FALSE,
         raw = FALSE,
         verbose = FALSE
       ),
-      file = "ref-10-dmdScheme.rda"
+      expected = dmdScheme
     )
   }
 )
-#
-
-# # read from xlsx --- output -----------------------------------------------
-#
-# test_that(
-#   "read_from_excel() keepData and raw",
-#   {
-#     expect_known_output(
-#       object = read_from_excel(
-#         file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
-#         keepData = TRUE,
-#         raw = TRUE,
-#         verbose = TRUE
-#       ),
-#       file = "dmdScheme_data_raw.output"
-#     )
-#   }
-# )
-

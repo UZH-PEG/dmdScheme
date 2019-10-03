@@ -1,11 +1,10 @@
 #' @export
 #'
-#' @importFrom XML xmlNode xmlAttrs append.xmlNode saveXML
-#' @importFrom tibble is_tibble
+#' @importFrom xml2 xml_new_root xml_attrs xml_attr xml_add_child
 #'
 dmdScheme_to_xml.dmdSchemeSet <- function(
   x,
-  file,
+  file = NULL,
   output = "metadata"
 ) {
   outputValues <- c("metadata", "complete")
@@ -15,44 +14,35 @@ dmdScheme_to_xml.dmdSchemeSet <- function(
 
 # Add dmdSchemeVersion ----------------------------------------------------
 
-  xml <- XML::xmlNode(
-    "dmdScheme",
-    attrs = c(
-      fileName = attr(x, "fileName"),
-      dmdSchemeName = attr(x, "dmdSchemeName"),
-      dmdSchemeVersion = attr(x, "dmdSchemeVersion"),
-      propertyName     = attr(x, "propertyName")
-    )
+  xml <- xml2::xml_new_root( "dmdScheme" )
+  xml2::xml_attrs(xml) <-  c(
+    fileName = attr(x, "fileName"),
+    dmdSchemeName = attr(x, "dmdSchemeName"),
+    dmdSchemeVersion = attr(x, "dmdSchemeVersion"),
+    propertyName     = attr(x, "propertyName"),
+    output = output
   )
 
 # Add attributes if output == complete ------------------------------------
 
   if (output == "complete") {
-    XML::xmlAttrs(
-      node = xml,
-      append = TRUE
-    ) <- c(
-      class = paste(class(x), collapse = ", "),
-      names = paste(attr(x, "names"), collapse = ", ")
-    )
+    xml2::xml_attr(xml, "class") <- paste(class(x), collapse = " #%# ")
+    xml2::xml_attr(xml, "names") <- paste(attr(x, "names"), collapse = " #%# ")
   }
 
-# Call dmdScheme_to_xml() on list objects -----------------------------------
+# Call dmdScheme_to_xml() on list objects --------------------------------
 
-  for(i in 1:length(x)) {
-    xml <- XML::append.xmlNode(xml, dmdScheme_to_xml(x[[i]], output = output))
+  for (i in 1:length(x)) {
+    xml2::xml_add_child(xml, dmdScheme_to_xml(x[[i]], file = NULL, output = output))
   }
 
-# If file  not missing, i.e. from root node as file not used in it --------
+# If file not NULL, i.e. from root node as file not used in it --------
 
-  if (!missing(file)) {
-    xml <- XML::saveXML(
-      doc = xml,
-      file = file
-    )
+  if (!is.null(file)) {
+    xml2::write_xml( xml, file )
   }
 
 # Return xml --------------------------------------------------------------
 
-  return(xml)
+  return(invisible(xml))
 }

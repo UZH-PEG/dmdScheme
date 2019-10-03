@@ -2,7 +2,7 @@ Package: dmdScheme
 Title: Domain Specific MetaData Scheme
 Description: A Package forming the core for developing own domain specific metadata schemes. It contains the basic functionality needed for all meatdata schemes based on the
                    \code{dmdScheme}.
-Version: 0.9.9.3
+Version: 0.9.9.4
 schemeVersion: 0.9.5
 schemeName: dmdScheme
 Date: 2019-07-12
@@ -12,8 +12,8 @@ URL: https://exp-micro-ecol-hub.github.io/dmdScheme/, https://github.com/Exp-Mic
 BugReports: https://github.com/rkrug/dmdScheme/issues
 DOI: https://zenodo.org/record/3229615
 Depends: R (>= 3.5.0)
-Imports: tools, methods, utils, magrittr (>= 1.5), dplyr (>= 0.1.8), tibble (>= 2.1.1), readxl (>= 1.2.0), XML (>= 3.98-1.16), rlang (>= 0.3.1), rmarkdown, knitr, digest (>=
-                   0.6), openxlsx
+Imports: tools, methods, utils, magrittr (>= 1.5), dplyr (>= 0.1.8), tibble (>= 2.1.1), readxl (>= 1.2.0), xml2, 
+      rlang (>= 0.3.1), rmarkdown, knitr, digest (>= 0.6), openxlsx
 Remotes: rkrug/plantuml
 License: MIT + file LICENSE
 Encoding: UTF-8

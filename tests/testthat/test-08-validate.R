@@ -1,4 +1,4 @@
-context("validate()")
+context("08-validate()")
 
 x <- dmdScheme_raw
 
@@ -18,7 +18,7 @@ test_that(
   "validata_raw() returns correct value when correct",
   {
     expect_known_value(
-      object = validate( x = "./dmdScheme.xlsx", errorIfStructFalse = TRUE),
+      object = validate( x = system.file("dmdScheme.xlsx", package = "dmdScheme"), errorIfStructFalse = TRUE),
       file = "ref-08-validate.character.CORRECT.rda"
     )
   }

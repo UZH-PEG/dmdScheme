@@ -2,46 +2,37 @@
 % Please edit documentation in R/dmdScheme_to_xml.R
 \name{dmdScheme_to_xml}
 \alias{dmdScheme_to_xml}
-\title{Generic function to convert an object to XML}
+\title{Generic function to convert an object to xml}
 \usage{
-dmdScheme_to_xml(x, file, output = "metadata")
+dmdScheme_to_xml(x, file = NULL, output = "metadata")
 }
 \arguments{
 \item{x}{object to be converted.
 
-At the moment the following objecyts are supported:
+At the moment the following objects are supported:
 \describe{
   \item{\code{character}}{File name of a spreadsheet containing the data}
   \item{\code{\link{dmdSchemeSet}}}{}
   \item{\code{\link{dmdSchemeData}}}{}
 }}
 
-\item{file}{empty, \code{NULL} or file name. See details below}
+\item{file}{\code{NULL} or file name. See details below}
 
 \item{output}{either \code{"metadata"} for export of metadata only or
 \code{"complete"} for export including classes et al.}
 }
 \value{
-dependent on the value of \code{file}. See Details
+an \code{xml_document} object
 }
 \description{
 Converts an object into xml and optionally saves it to a file.
 }
-\details{
-Depending on the value of \code{file}, the function returns different results:
-\itemize{
-  \item{\code{file} not given: }{an \code{XMLNode} object}
-  \item{\code{file = NULL}: }{a string characterisation of the \code{XMLNode} object}
-  \item{\code{file = fileName}: }{saves the string characterisation of the \code{XMLNode} object to an xml file}
-}
-The actual implementation is inspired by David LeBauer, Carl Davidson, Rob Kooper. See \url{https://stackoverflow.com/a/27865512/632423}
-}
 \examples{
 
-dmdScheme_to_xml( dmdScheme_example )
-## returns \\code{XMLNode} object
+x <- dmdScheme_to_xml( dmdScheme_example )
+x
 
-dmdScheme_to_xml( dmdScheme_example, file = NULL )
-## returns string representation of the \\code{XMLNode} object
+## returns \\code{xml_document} object
+
 
 }

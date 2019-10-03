@@ -32,7 +32,6 @@ It will
 \item create a versioned copy of the old \code{.xlsx} file if the version has changed
 \item create a backup of the old \code{.xlsx} file with the extension \code{.xlsx.bak} (should be deleted before final packaging)
 \item update the example \code{.xml} file
-\item update the corresponding files for tests
 \item in the \code{DESCRIPTION} file
 \itemize{
 \item set \code{schemeUpdate} to the current date and time

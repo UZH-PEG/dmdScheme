@@ -8,7 +8,6 @@
 #'   * create a versioned copy of the old `.xlsx` file if the version has changed
 #'   * create a backup of the old `.xlsx` file with the extension `.xlsx.bak` (should be deleted before final packaging)
 #'   * update the example `.xml` file
-#'   * update the corresponding files for tests
 #'   * in the `DESCRIPTION` file
 #'       * set `schemeUpdate` to the current date and time
 #'       * set `schemeMD5` to the MD% checksum of the `newDmdScheme` file
@@ -75,7 +74,6 @@ dev_update_from_new_sheet <- function(
   ##
   dir.create("data", showWarnings = FALSE)
   dir.create("inst", showWarnings = FALSE)
-  dir.create(file.path("tests", "testthat"), showWarnings = FALSE, recursive = TRUE)
   sheet <- file.path(".", "inst", paste0(schemeName, ".xlsx"))
   if (!file.exists(sheet)) {
     stop("Something is wrong here - the file ", sheet, " does not exist although it should!!!")
@@ -175,27 +173,6 @@ dev_update_from_new_sheet <- function(
     x = dmdScheme_example,
     file = fp,
     output = "metadata"
-  )
-
-  # update tests/testthat/dmdScheme.xlsx ------------------------------------
-
-  fp <- file.path( ".", "tests", "testthat", paste0(schemeName, ".xlsx") )
-  message("##### Generating ", fp, "...")
-  ##
-  file.copy(
-    sheet,
-    fp,
-    overwrite = TRUE
-  )
-
-  # update exported xml in tests/testthat/*.xml -----------------------------
-
-  fp <- file.path( ".", "tests", "testthat", paste0(schemeName, "_example.xml") )
-  message("##### Generating ", fp, "...")
-  ##
-  dmdScheme_to_xml(
-    x = dmdScheme_example,
-    file = fp
   )
 
   # Set info in DESCRIPTION file --------------------------------------------
