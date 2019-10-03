@@ -4,7 +4,7 @@
 \alias{xml_to_dmdScheme}
 \title{Convert a exported xml file to a \code{dmdScheme_Set} object}
 \usage{
-xml_to_dmdScheme(x, onlyScheme = FALSE, useSchemeInXml = NULL,
+xml_to_dmdScheme(x, useSchemeInXml = NULL, keepData = TRUE,
   verbose = FALSE)
 }
 \arguments{
@@ -16,6 +16,9 @@ scheme definition from the corresponding installed package, even if the xml
 contains a scheme definition. if \code{NULL} (the default), use the
 definition in the xml if it contains a definition, if not use the
 corresponding definition from the installed package.}
+
+\item{keepData}{if \code{FALSE}, only the scheme definition wi=ll be loaded,
+i.e. the data discarded}
 
 \item{verbose}{give verbose progress info. Useful for debugging.}
 }

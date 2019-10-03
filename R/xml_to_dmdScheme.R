@@ -13,6 +13,8 @@
 #'   contains a scheme definition. if \code{NULL} (the default), use the
 #'   definition in the xml if it contains a definition, if not use the
 #'   corresponding definition from the installed package.
+#' @param keepData if \code{FALSE}, only the scheme definition wi=ll be loaded,
+#'   i.e. the data discarded
 #' @param verbose give verbose progress info. Useful for debugging.
 #'
 #' @return \code{dmdScheme} or descendant object
@@ -27,8 +29,8 @@
 #'
 xml_to_dmdScheme <- function(
   x,
-  onlyScheme = FALSE,
   useSchemeInXml = NULL,
+  keepData = TRUE,
   verbose = FALSE
 ){
 
@@ -125,63 +127,66 @@ xml_to_dmdScheme <- function(
     }
   }
 
-  # Do the initial conversion to list ---------------------------------------
+  if (keepData) {
 
-  xmlList <- xml2::as_list(xml)[[1]]
+    # Do the initial conversion to list ---------------------------------------
 
-  # Do the conversion iteratively -------------------------------------------
+    xmlList <- xml2::as_list(xml)[[1]]
+
+    # Do the conversion iteratively -------------------------------------------
 
 
-  for (sheetList in names(xmlList)) {
-    sheet <- gsub("List", "", sheetList)
+    for (sheetList in names(xmlList)) {
+      sheet <- gsub("List", "", sheetList)
 
-    # Check names -----------------------------------------------------------
+      # Check names -----------------------------------------------------------
 
-    if (!all(names(xmlList[[sheetList]][[sheet]]) %in% names(result[[sheet]]))) {
-      stop(
-        "Nodes of xml file not in dmdScheme.\n",
-        "Nodes in xml file  : ", paste(names(x), collapse = " "), "\n",
-        "Names in dmdScheme : ", paste(names(result[[sheet]]), collapse = " "), "\n"
-      )
-    }
-
-    for (i in 1:length(xmlList[[sheetList]])) {
-
-      # add data to result ------------------------------------------------------
-
-      result[[sheet]] <- tibble::add_row(
-        result[[sheet]],
-        !!!unlist(
-          xmlList[[sheetList]][[i]]
+      if (!all(names(xmlList[[sheetList]][[sheet]]) %in% names(result[[sheet]]))) {
+        stop(
+          "Nodes of xml file not in dmdScheme.\n",
+          "Nodes in xml file  : ", paste(names(x), collapse = " "), "\n",
+          "Names in dmdScheme : ", paste(names(result[[sheet]]), collapse = " "), "\n"
         )
-      )
-
-      # As the scheme contains a row with NAs already, this needs to be deleted ----
-
-      if (i == 1) {
-        result[[sheet]] <- result[[sheet]][-1,]
       }
 
-      # Apply types -------------------------------------------------------------
+      for (i in 1:length(xmlList[[sheetList]])) {
 
-      if (verbose) message("Apply types...")
-      #
-      type <- attr(result[[sheet]], "type")
+        # add data to result ------------------------------------------------------
 
-      for (i in 1:ncol(result[[sheet]])) {
-        if (verbose) message("   Apply type '", type[i], "' to '", names(result[[sheet]])[[i]], "'...")
+        result[[sheet]] <- tibble::add_row(
+          result[[sheet]],
+          !!!unlist(
+            xmlList[[sheetList]][[i]]
+          )
+        )
+
+        # As the scheme contains a row with NAs already, this needs to be deleted ----
+
+        if (i == 1) {
+          result[[sheet]] <- result[[sheet]][-1,]
+        }
+
+        # Apply types -------------------------------------------------------------
+
+        if (verbose) message("Apply types...")
         #
-        result[[sheet]][[i]] <- as(result[[sheet]][[i]], Class = type[i])
+        type <- attr(result[[sheet]], "type")
+
+        for (i in 1:ncol(result[[sheet]])) {
+          if (verbose) message("   Apply type '", type[i], "' to '", names(result[[sheet]])[[i]], "'...")
+          #
+          result[[sheet]][[i]] <- as(result[[sheet]][[i]], Class = type[i])
+        }
       }
     }
-  }
 
-  # Copy remaining attributes -----------------------------------------------
+    # Copy remaining attributes -----------------------------------------------
 
-  atr <- xmlAttrList(xml)
-  atr <- atr[ !(names(atr) %in% c("row.names", "output", "dmdSchemeName", "dmdSchemeVersion" )) ]
-  for (i in names(atr)) {
-    attr(result, i) <- atr[[i]]
+    atr <- xmlAttrList(xml)
+    atr <- atr[ !(names(atr) %in% c("row.names", "output", "dmdSchemeName", "dmdSchemeVersion" )) ]
+    for (i in names(atr)) {
+      attr(result, i) <- atr[[i]]
+    }
   }
 
   # Return ------------------------------------------------------------------

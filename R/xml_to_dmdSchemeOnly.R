@@ -6,19 +6,10 @@
 #'
 #' @return \code{dmdScheme} or descendant object
 #'
-#' @importFrom xml2 xml_attrs as_list xml_name xml_children
-#' @export
-#'
-#' @examples
-#' xml <- dmdScheme_to_xml(dmdScheme_example, output = "complete")
-#' x <- xml_to_dmdSchemeOnly(xml)
-#' all.equal(dmdScheme, x)
-#'
-
-#' @param x a file containing the xml or an \code{xml_document} object
-#'
-#' @importFrom xml2 xml_attr xml_attrs xml_length xml_child
+#' @importFrom xml2 xml_attr xml_attrs as_list xml_name xml_children xml_length xml_child
+#' @importFrom data.table :=
 #' @importFrom tibble add_column
+#'
 #'
 xml_to_dmdSchemeOnly <- function(
   x

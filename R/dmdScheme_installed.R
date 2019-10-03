@@ -4,6 +4,9 @@
 #' checks if they depend on \code{dmdScheme}. These are identified as
 #' dmdSchemes.
 #' @return \code{character} matrix in the same format as returned from \code{installed.packages()}
+#'
+#' @importFrom utils installed.packages
+#'
 #' @export
 #'
 #' @examples
