@@ -8,13 +8,14 @@ xml_to_dmdScheme(x, onlyScheme = FALSE, useSchemeInXml = NULL,
   verbose = FALSE)
 }
 \arguments{
-\item{x}{a file containing the xml or an \code{xml_document} object}
+\item{x}{a file containing the xml or an \code{xml_document} object (from the \code{xml2} package)}
 
-\item{useSchemeInXml}{if \code{TRUE} use scheme definition in xml and raise
-an error if the xml does not contain a scheme definition. If False, use the scheme definition from the corresponding
-installed package, even if the xml contains a scheme definition. if
-\code{NULL} (the default), use the definition in the xml if it is contains a definition,
-if not use the corresponding definition from the installed package.}
+\item{useSchemeInXml}{if \code{TRUE}, use scheme definition in xml and raise
+an error if the xml does not contain a scheme definition. If False, use the
+scheme definition from the corresponding installed package, even if the xml
+contains a scheme definition. if \code{NULL} (the default), use the
+definition in the xml if it contains a definition, if not use the
+corresponding definition from the installed package.}
 
 \item{verbose}{give verbose progress info. Useful for debugging.}
 }
@@ -22,11 +23,15 @@ if not use the corresponding definition from the installed package.}
 \code{dmdScheme} or descendant object
 }
 \description{
-The scheme is automatically chosen from the propety \code{propertyName} in
-the xml file. Nevertheless, the scheme has to be installed, but it does not
-hav to be loaded. An error is raised if it does not exist.
+Depending on the value of \code{useSchemeInXml}, the scheme is automatically
+chosen from either in the one in the xml file or chosen based on the property
+\code{dmdSchemeName} in the xml file (see below for details). The package
+with the scheme definition has to be installed, but it does not has to be
+loaded. An error is raised if it does not exist.
 }
 \examples{
-## x <- dmdScheme_example
+xml <- dmdScheme_to_xml(dmdScheme_example)
+x <- xml_to_dmdScheme(xml)
+all.equal(dmdScheme_example, x)
 
 }

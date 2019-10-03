@@ -1,3 +1,20 @@
+#' Convert a exported xml file to a \code{dmdScheme} scheme, ignoring the included data
+#'
+#'
+#' @param x a file containing the xml (exported with \code{output = "complete"}
+#'   or an \code{xml_document} object (from the \code{xml2} package)
+#'
+#' @return \code{dmdScheme} or descendant object
+#'
+#' @importFrom xml2 xml_attrs as_list xml_name xml_children
+#' @export
+#'
+#' @examples
+#' xml <- dmdScheme_to_xml(dmdScheme_example, output = "complete")
+#' x <- xml_to_dmdSchemeOnly(xml)
+#' all.equal(dmdScheme, x)
+#'
+
 #' @param x a file containing the xml or an \code{xml_document} object
 #'
 #' @importFrom xml2 xml_attr xml_attrs xml_length xml_child
@@ -49,7 +66,7 @@ xml_to_dmdSchemeOnly <- function(
     }
     dmdD[1,] <- NA
 
-    atr <- atr[ !(names(atr) %in% c("names", "type")) ]
+    atr <- atr[ !(names(atr) %in% c("names")) ]
 
     # Set class ---------------------------------------------------------------
 
