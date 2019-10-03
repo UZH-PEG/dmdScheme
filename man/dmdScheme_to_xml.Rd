@@ -2,7 +2,7 @@
 % Please edit documentation in R/dmdScheme_to_xml.R
 \name{dmdScheme_to_xml}
 \alias{dmdScheme_to_xml}
-\title{Generic function to convert an object to XML}
+\title{Generic function to convert an object to xml}
 \usage{
 dmdScheme_to_xml(x, file = NULL, output = "metadata")
 }
@@ -22,17 +22,17 @@ At the moment the following objects are supported:
 \code{"complete"} for export including classes et al.}
 }
 \value{
-dependent on the value of \code{file}. See Details
+an \code{xml_document} object
 }
 \description{
 Converts an object into xml and optionally saves it to a file.
 }
 \examples{
 
-dmdScheme_to_xml( dmdScheme_example )
-## returns \\code{XMLNode} object
+x <- dmdScheme_to_xml( dmdScheme_example )
+x
 
-dmdScheme_to_xml( dmdScheme_example, file = NULL )
-## returns string representation of the \\code{XMLNode} object
+## returns \\code{xml_document} object
+
 
 }

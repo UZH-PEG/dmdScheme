@@ -26,8 +26,8 @@ dmdScheme_to_xml.dmdSchemeSet <- function(
 # Add attributes if output == complete ------------------------------------
 
   if (output == "complete") {
-    xml2::xml_attr(xml, "class") <- paste(class(x), collapse = " #&# ")
-    xml2::xml_attr(xml, "names") <- paste(attr(x, "names"), collapse = " #&# ")
+    xml2::xml_attr(xml, "class") <- paste(class(x), collapse = " #%# ")
+    xml2::xml_attr(xml, "names") <- paste(attr(x, "names"), collapse = " #%# ")
   }
 
 # Call dmdScheme_to_xml() on list objects --------------------------------

@@ -1,12 +1,7 @@
-#' Generic function to convert an object to XML
+#' Generic function to convert an object to xml
 #'
 #' Converts an object into xml and optionally saves it to a file.
 #'
-#' Depending on the value of \code{file}, the function returns different results:
-#' \itemize{
-#'   \item{\code{file = NULL: }{an \code{xml_document} object}
-#'   \item{\code{file = fileName}: }{saves the string characterisation of the \code{XMLNode} object to a file}
-#' }
 #' @param x object to be converted.
 #'
 #' At the moment the following objects are supported:
@@ -20,17 +15,17 @@
 #' @param output either \code{"metadata"} for export of metadata only or
 #'   \code{"complete"} for export including classes et al.
 #'
-#' @return dependent on the value of \code{file}. See Details
+#' @return an \code{xml_document} object
 #'
 #' @export
 #'
 #' @examples
 #'
-#' dmdScheme_to_xml( dmdScheme_example )
-#' ## returns \code{XMLNode} object
+#' x <- dmdScheme_to_xml( dmdScheme_example )
+#' x
 #'
-#' dmdScheme_to_xml( dmdScheme_example, file = NULL )
-#' ## returns string representation of the \code{XMLNode} object
+#' ## returns \code{xml_document} object
+#'
 #'
 dmdScheme_to_xml <- function(x, file = NULL, output = "metadata") {
 

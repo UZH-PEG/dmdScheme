@@ -1,55 +1,75 @@
-#' @param xml \code{XMLNode} object
+#' @param x a file containing the xml or an \code{xml_document} object
 #'
-#' @importFrom XML xmlToList xmlAttrs xmlApply
+#' @importFrom xml2 xml_attr xml_attrs xml_length xml_child
 #' @importFrom tibble add_column
 #'
-xml_to_dmdSchemeOnly <- function(xml) {
+xml_to_dmdSchemeOnly <- function(
+  x
+) {
 
   # Helper functions --------------------------------------------------------
 
   xmlAttrList <- function(xml) {
-    x <- as.list(xmlAttrs(xml))
-    for (i in grep(" #&# ", x)) {
-      x[[i]] <- strsplit(x[[i]], " #&# ")[[1]]
+    x <- as.list(xml2::xml_attrs(xml))
+    for (i in grep(" #%# ", x)) {
+      x[[i]] <- strsplit(x[[i]], " #%# ")[[1]]
     }
     return(x)
   }
 
-  # Do conversion iteratively -----------------------------------------------
 
-  dmdS <- XML::xmlApply(
-    xml,
-    function(x) {
-      atr <- xmlAttrList(x)
-      atr <- atr[ !(names(atr) %in% c("row.names", "output")) ]
+  # If x is character, load xml from file --------------------------------
 
-      # Create tibble with names and type ---------------------------------------
+  if (is.character(x)) {
+    xml <- xml2::read_xml(x)
+  } else {
+    xml <- x
+  }
 
-      dmdD <- tibble()
-      for (i in 1:length(x[[1]])) {
-        dmdD <- tibble::add_column(dmdD, !!(atr$names[i]) := get(atr$type[i])(1))
-      }
-      dmdD[1,] <- NA
+  # Check if outup = "complete" ---------------------------------------------
+  if (!(xml2::xml_attr(xml, "output") %in% c("complete", "scheme"))) {
+    stop("Can not create scheme from this xml!")
+  }
 
-      atr <- atr[ !(names(atr) %in% c("names", "type")) ]
 
-      # Set class ---------------------------------------------------------------
+  # Do conversion iteratively by ...List ------------------------------------
 
-      class(dmdD) <- atr$class
+  dmdS <- list()
+  for (i in 1:xml2::xml_length(xml)) {
+    List <- xml2::xml_child(xml, i)
 
-      atr <- atr[ !(names(atr) %in% c("class")) ]
+    atr <- xmlAttrList(List)
+    atr <- atr[ !(names(atr) %in% c("row.names", "output")) ]
 
-      # Add remaining attributes ------------------------------------------------
+    # Create tibble with names and type ---------------------------------------
 
-      for (a in names(atr)) {
-        attr(dmdD, a) <-  atr[[a]]
-      }
-
-      # Return dmdSchemeData ----------------------------------------------------
-
-      return(dmdD)
+    dmdD <- tibble()
+    for (j in 1:length(atr$names)) {
+      dmdD <- tibble::add_column(dmdD, !!(atr$names[j]) := get(atr$type[j])(1))
     }
-  )
+    dmdD[1,] <- NA
+
+    atr <- atr[ !(names(atr) %in% c("names", "type")) ]
+
+    # Set class ---------------------------------------------------------------
+
+    class(dmdD) <- atr$class
+
+    atr <- atr[ !(names(atr) %in% c("class")) ]
+
+    # Add remaining attributes ------------------------------------------------
+
+    for (a in names(atr)) {
+      attr(dmdD, a) <-  atr[[a]]
+    }
+
+    # Return dmdSchemeData ----------------------------------------------------
+
+    dmdS[[i]] <- dmdD
+  }
+
+
+# Get Attributes ----------------------------------------------------------
 
   atr <- xmlAttrList(xml)
   atr <- atr[ !(names(atr) %in% c("row.names", "output")) ]
