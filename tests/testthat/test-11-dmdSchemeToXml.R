@@ -1,4 +1,4 @@
-context("dmdScheme_to_xml()")
+context("11-dmdScheme_to_xml()")
 
 test_that(
   "dmdScheme_to_xml() raises error with wrong input value",

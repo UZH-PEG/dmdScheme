@@ -1,4 +1,4 @@
-context("print.dmdScheme()")
+context("07-print.dmdScheme()")
 
 
 # fail because of erong type -------------------------------------------------------------

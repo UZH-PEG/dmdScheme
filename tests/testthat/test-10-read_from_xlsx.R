@@ -1,4 +1,4 @@
-context("read_from_excel()")
+context("10-read_from_excel()")
 
 
 # fail because of file -------------------------------------------------------------
@@ -32,7 +32,7 @@ test_that(
   {
     expect_known_value(
       object = read_from_excel(
-        file = "dmdScheme.xlsx",
+        file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
         keepData = TRUE,
         raw = TRUE,
         verbose = FALSE
@@ -47,7 +47,7 @@ test_that(
   {
     expect_known_value(
       object = read_from_excel(
-        file = "dmdScheme.xlsx",
+        file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
         keepData = FALSE,
         raw = FALSE,
         verbose = FALSE

@@ -1,4 +1,4 @@
-context("xml_to_dmdScheme()")
+context("12-xml_to_dmdScheme()")
 
 
 test_that(
