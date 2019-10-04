@@ -169,7 +169,7 @@ dev_update_from_new_sheet <- function(
   fp <- file.path( ".", "inst", paste0(schemeName, "_example.xml") )
   message("##### Generating ", fp, ".xml...")
   ##
-  dmdScheme_to_xml(
+  as_xml(
     x = dmdScheme_example,
     file = fp,
     output = "metadata"

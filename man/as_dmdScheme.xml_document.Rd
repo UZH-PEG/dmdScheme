@@ -33,7 +33,7 @@ with the scheme definition has to be installed, but it does not has to be
 loaded. An error is raised if it does not exist.
 }
 \examples{
-xml <- dmdScheme_to_xml(dmdScheme_example)
+xml <- as_xml(dmdScheme_example)
 x <- as_dmdScheme(xml)
 all.equal(dmdScheme_example, x)
 

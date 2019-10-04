@@ -3,9 +3,8 @@
 #' @importFrom xml2 xml_new_root xml_add_child xml_attrs write_xml
 #' @importFrom tibble is_tibble
 #'
-dmdScheme_to_xml.dmdSchemeData <- function(
+as_xml.dmdSchemeData <- function(
   x,
-  file = NULL,
   output = "metadata"
 ) {
 
@@ -52,13 +51,7 @@ dmdScheme_to_xml.dmdSchemeData <- function(
     xml2::xml_attrs( xml ) <- atrs
   }
 
-  # If file not NULL, i.e. from root node as file not used in it --------
-
-  if (!is.null(file)) {
-    xml2::write_xml( xml, file )
-  }
-
   # Return xml --------------------------------------------------------------
 
-  return(invisible(xml))
+  return(xml)
 }

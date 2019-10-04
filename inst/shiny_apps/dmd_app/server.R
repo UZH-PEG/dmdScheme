@@ -66,7 +66,7 @@ shinyServer(
     observeEvent(
       eventExpr = input$export,
       handlerExpr = {
-        x <- dmdScheme_to_xml( x = input$spreadsheet$datapath )
+        x <- as_xml( x = input$spreadsheet$datapath )
         output$text <- renderPrint(x)
       }
     )

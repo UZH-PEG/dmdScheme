@@ -2,9 +2,8 @@
 #'
 #' @importFrom xml2 xml_new_root xml_attrs xml_attr xml_add_child
 #'
-dmdScheme_to_xml.dmdSchemeSet <- function(
+as_xml.dmdSchemeSet <- function(
   x,
-  file = NULL,
   output = "metadata"
 ) {
   outputValues <- c("metadata", "complete")
@@ -30,19 +29,14 @@ dmdScheme_to_xml.dmdSchemeSet <- function(
     xml2::xml_attr(xml, "names") <- paste(attr(x, "names"), collapse = " #%# ")
   }
 
-# Call dmdScheme_to_xml() on list objects --------------------------------
+# Call as_xml() on list objects --------------------------------
 
   for (i in 1:length(x)) {
-    xml2::xml_add_child(xml, dmdScheme_to_xml(x[[i]], file = NULL, output = output))
+    xml2::xml_add_child(xml, as_xml(x[[i]], output = output))
   }
 
-# If file not NULL, i.e. from root node as file not used in it --------
-
-  if (!is.null(file)) {
-    xml2::write_xml( xml, file )
-  }
 
 # Return xml --------------------------------------------------------------
 
-  return(invisible(xml))
+  return(xml)
 }

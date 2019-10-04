@@ -21,14 +21,14 @@
 #'
 #' @examples
 #'
-#' x <- dmdScheme_to_xml( dmdScheme_example )
+#' x <- as_xml( dmdScheme_example )
 #' x
 #'
 #' ## returns \code{xml_document} object
 #'
 #'
-dmdScheme_to_xml <- function(x, file = NULL, output = "metadata") {
+as_xml <- function(x, file = NULL, output = "metadata") {
 
-  UseMethod("dmdScheme_to_xml", x)
+  UseMethod("as_xml")
 
 }

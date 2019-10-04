@@ -23,7 +23,7 @@
 #' @export
 #'
 #' @examples
-#' xml <- dmdScheme_to_xml(dmdScheme_example)
+#' xml <- as_xml(dmdScheme_example)
 #' x <- as_dmdScheme(xml)
 #' all.equal(dmdScheme_example, x)
 #'
@@ -65,13 +65,7 @@ as_dmdScheme.xml_document <- function(
 
   xml_to_dmdSchemeOnly <- function(x) {
 
-    # If x is character, load xml from file --------------------------------
-
-    if (is.character(x)) {
-      xml <- xml2::read_xml(x)
-    } else {
-      xml <- x
-    }
+    xml <- x
 
     # Check if outup = "complete" ---------------------------------------------
     if (!(xml2::xml_attr(xml, "output") %in% c("complete", "scheme"))) {
@@ -141,8 +135,8 @@ as_dmdScheme.xml_document <- function(
   # create scheme -----------------------------------------------------------
 
   complete <- ifelse(
-    "output" %in% names(xml2::xml_attrs(xml)),
-    xml2::xml_attrs(xml)[["output"]] == "complete",
+    "output" %in% names(xml2::xml_attrs(x)),
+    xml2::xml_attrs(x)[["output"]] == "complete",
     FALSE
   )
 
@@ -154,12 +148,12 @@ as_dmdScheme.xml_document <- function(
     if (!complete) {
       stop("The xml is not exported with the option 'output = complete' and containds no scheme definition!")
     }
-    result <- xml_to_dmdSchemeOnly(xml)
+    result <- xml_to_dmdSchemeOnly(x)
   } else {
     result <- NULL
     try(
       {
-        result <- get(eval(xml2::xml_attrs(xml)[["dmdSchemeName"]]))
+        result <- get(eval(xml2::xml_attrs(x)[["dmdSchemeName"]]))
       }
     )
     # Check if result scheme exists -------------------------------------------
@@ -172,22 +166,22 @@ as_dmdScheme.xml_document <- function(
 
     # Check version -----------------------------------------------------------
 
-    if (xml2::xml_attrs(xml)[["dmdSchemeVersion"]] != attr(result, "dmdSchemeVersion")) {
+    if (xml2::xml_attrs(x)[["dmdSchemeVersion"]] != attr(result, "dmdSchemeVersion")) {
       stop("Version conflict - can not proceed:\n",
-           xml, " version : ", xml2::xml_attrs(xml)[["dmdSchemeVersion"]], "\n",
+           x, " version : ", xml2::xml_attrs(x)[["dmdSchemeVersion"]], "\n",
            "dmdScheme version : ", attr(result, "version"))
     }
 
     # Check remaining attributes ----------------------------------------------
 
-    checkAttr(xml, result)
+    checkAttr(x, result)
 
     # Check if all objects are also in dmdScheme ------------------------------
 
-    if (!all(xml_name(xml_children(xml)) %in% paste0(names(result), "List"))) {
+    if (!all(xml_name(xml_children(x)) %in% paste0(names(result), "List"))) {
       stop(
         "Nodes of xml file not in dmdScheme.\n",
-        "Nodes in xml file  : ", paste(names(xml), collapse = " "), "\n",
+        "Nodes in xml file  : ", paste(names(x), collapse = " "), "\n",
         "Names in dmdScheme : ", paste(names(result), collapse = " "), "\n"
       )
     }
@@ -197,7 +191,7 @@ as_dmdScheme.xml_document <- function(
 
     # Do the initial conversion to list ---------------------------------------
 
-    xmlList <- xml2::as_list(xml)[[1]]
+    xmlList <- xml2::as_list(x)[[1]]
 
     # Do the conversion iteratively -------------------------------------------
 
@@ -248,7 +242,7 @@ as_dmdScheme.xml_document <- function(
 
     # Copy remaining attributes -----------------------------------------------
 
-    atr <- xmlAttrList(xml)
+    atr <- xmlAttrList(x)
     atr <- atr[ !(names(atr) %in% c("row.names", "output", "dmdSchemeName", "dmdSchemeVersion" )) ]
     for (i in names(atr)) {
       attr(result, i) <- atr[[i]]
