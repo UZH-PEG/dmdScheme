@@ -25,18 +25,15 @@
 #' @importFrom tools file_ext
 #'
 #' @examples
-#' new_dmdScheme(dmdScheme_raw, keepData = TRUE)
-#' new_dmdScheme(dmdScheme_raw$Experiment)
+#' as_dmdScheme(dmdScheme_raw, keepData = TRUE)
+#' as_dmdScheme(dmdScheme_raw$Experiment)
 #'
-new_dmdScheme <- function(
+as_dmdScheme <- function(
   x,
   keepData = FALSE,
-  convertTypes = TRUE,
-  verbose = FALSE,
-  warnToError = TRUE,
-  checkVersion = TRUE
+  ...
 ) {
 
-  UseMethod("new_dmdScheme", x)
+  UseMethod("as_dmdScheme")
 
 }

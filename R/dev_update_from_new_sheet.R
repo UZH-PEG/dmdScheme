@@ -130,7 +130,7 @@ dev_update_from_new_sheet <- function(
 
   message("##### Generating ", schemeName, "...")
   ##
-  dmdScheme <- new_dmdScheme(
+  dmdScheme <- as_dmdScheme(
     x = dmdScheme_raw,
     keepData = FALSE,
     verbose = TRUE,
@@ -149,7 +149,7 @@ dev_update_from_new_sheet <- function(
 
   message("##### Generating ", schemeName, "_example...")
   ##
-  dmdScheme_example <- new_dmdScheme(
+  dmdScheme_example <- as_dmdScheme(
     x = dmdScheme_raw,
     keepData = TRUE,
     verbose = TRUE,

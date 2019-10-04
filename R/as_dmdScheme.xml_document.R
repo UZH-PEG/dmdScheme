@@ -6,7 +6,7 @@
 #' with the scheme definition has to be installed, but it does not has to be
 #' loaded. An error is raised if it does not exist.
 #'
-#' @param x a file containing the xml or an \code{xml_document} object (from the \code{xml2} package)
+#' @param x an \code{xml_document} object (from the \code{xml2} package)
 #' @param useSchemeInXml if \code{TRUE}, use scheme definition in xml and raise
 #'   an error if the xml does not contain a scheme definition. If False, use the
 #'   scheme definition from the corresponding installed package, even if the xml
@@ -24,10 +24,10 @@
 #'
 #' @examples
 #' xml <- dmdScheme_to_xml(dmdScheme_example)
-#' x <- xml_to_dmdScheme(xml)
+#' x <- as_dmdScheme(xml)
 #' all.equal(dmdScheme_example, x)
 #'
-xml_to_dmdScheme <- function(
+as_dmdScheme.xml_document <- function(
   x,
   useSchemeInXml = NULL,
   keepData = TRUE,
@@ -35,7 +35,6 @@ xml_to_dmdScheme <- function(
 ){
 
   # Helper functions --------------------------------------------------------
-
   xmlAttrList <- function(xml) {
     x <- as.list(xml2::xml_attrs(xml))
     for (i in grep(" #%# ", x)) {
@@ -64,12 +63,79 @@ xml_to_dmdScheme <- function(
     return(TRUE)
   }
 
-  # If x is character, load xml from file --------------------------------
+  xml_to_dmdSchemeOnly <- function(x) {
 
-  if (is.character(x)) {
-    xml <- xml2::read_xml(x)
-  } else {
-    xml <- x
+    # If x is character, load xml from file --------------------------------
+
+    if (is.character(x)) {
+      xml <- xml2::read_xml(x)
+    } else {
+      xml <- x
+    }
+
+    # Check if outup = "complete" ---------------------------------------------
+    if (!(xml2::xml_attr(xml, "output") %in% c("complete", "scheme"))) {
+      stop("Can not create scheme from this xml!")
+    }
+
+
+    # Do conversion iteratively by ...List ------------------------------------
+
+    dmdS <- list()
+    for (i in 1:xml2::xml_length(xml)) {
+      List <- xml2::xml_child(xml, i)
+
+      atr <- xmlAttrList(List)
+      atr <- atr[ !(names(atr) %in% c("row.names", "output")) ]
+
+      # Create tibble with names and type ---------------------------------------
+
+      dmdD <- tibble()
+      for (j in 1:length(atr$names)) {
+        dmdD <- tibble::add_column(dmdD, !!(atr$names[j]) := get(atr$type[j])(1))
+      }
+      dmdD[1,] <- NA
+
+      atr <- atr[ !(names(atr) %in% c("names")) ]
+
+      # Set class ---------------------------------------------------------------
+
+      class(dmdD) <- atr$class
+
+      atr <- atr[ !(names(atr) %in% c("class")) ]
+
+      # Add remaining attributes ------------------------------------------------
+
+      for (a in names(atr)) {
+        attr(dmdD, a) <-  atr[[a]]
+      }
+
+      # Return dmdSchemeData ----------------------------------------------------
+
+      dmdS[[i]] <- dmdD
+    }
+
+
+    # Get Attributes ----------------------------------------------------------
+
+    atr <- xmlAttrList(xml)
+    atr <- atr[ !(names(atr) %in% c("row.names", "output")) ]
+
+    # Set class ---------------------------------------------------------------
+
+    class(dmdS) <- atr$class
+    atr <- atr[ !(names(atr) %in% c("class")) ]
+
+    # Add remaining attributes ------------------------------------------------
+
+    for (a in names(atr)) {
+      attr(dmdS, a) <-  atr[[a]]
+    }
+
+    # Return dmdSchemeData ----------------------------------------------------
+
+    return(dmdS)
+
   }
 
   # create scheme -----------------------------------------------------------

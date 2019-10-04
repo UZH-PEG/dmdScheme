@@ -5,7 +5,7 @@
 #'
 #' @export
 #'
-new_dmdScheme.dmdSchemeData_raw <- function(
+as_dmdScheme.dmdSchemeData_raw <- function(
   x,
   keepData = TRUE,
   convertTypes = TRUE,

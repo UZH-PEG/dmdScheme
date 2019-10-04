@@ -5,7 +5,7 @@
 #'
 #' @export
 #'
-new_dmdScheme.dmdSchemeSet_raw <- function(
+as_dmdScheme.dmdSchemeSet_raw <- function(
   x,
   keepData = FALSE,
   convertTypes = TRUE,
@@ -41,7 +41,7 @@ new_dmdScheme.dmdSchemeSet_raw <- function(
 
   result <- lapply(
     x,
-    new_dmdScheme,
+    as_dmdScheme,
     keepData = keepData,
     convertTypes = convertTypes,
     verbose = verbose,

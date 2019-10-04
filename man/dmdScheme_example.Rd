@@ -14,7 +14,7 @@ The dataset contains example data. It was created by using the code below.
 \examples{
 \dontrun{
 ## Created by using
-dmdScheme_example <- new_dmdScheme(
+dmdScheme_example <- as_dmdScheme(
    x = dmdScheme_raw,
    keepData = TRUE,
    verbose = TRUE,

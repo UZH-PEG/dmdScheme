@@ -28,7 +28,7 @@
 #' @examples
 #' \dontrun{
 #' ## Created by using
-#' dmdScheme <- new_dmdScheme(
+#' dmdScheme <- as_dmdScheme(
 #'   x = dmdScheme_raw,
 #'   keepData = FALSE,
 #'   verbose = TRUE,

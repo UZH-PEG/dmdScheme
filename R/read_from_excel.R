@@ -71,7 +71,7 @@ read_from_excel <- function(
 # Convert to dmdScheme if asked for ---------------------------------------
 
   if (!raw) {
-    result <- new_dmdScheme(
+    result <- as_dmdScheme(
       result,
       keepData = keepData,
       verbose = verbose
