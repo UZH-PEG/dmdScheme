@@ -14,12 +14,12 @@
 #' @examples
 #' write_xml(dmdScheme_raw, file = tempfile())
 #'
-write_xml <- function(
+write_xml.dmdSchemeSet <- function(
   x,
   file
 ) {
 
-  xml <- as_xml( x = x, ... )
+  xml <- as_xml( x = x )
 
   xml2::write_xml(
     x = xml,

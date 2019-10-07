@@ -95,14 +95,16 @@ which will open a html report in your browser.
 You can export the data to an an xml file:
 
 ```{r example_export_xml, echo=TRUE, eval = TRUE}
-dmdScheme_to_xml( system.file("dmdScheme.xlsx", package = "dmdScheme") )
+x <- read_from_excel( system.file("dmdScheme.xlsx", package = "dmdScheme"))
+as_xml( x )
 ```
 
 When you specify the argument `file`, the xml will be saved:
 
 ```{r example_export_xml_file, echo=TRUE, eval = TRUE}
 xmlFile = tempfile(fileext = ".xml")
-dmdScheme_to_xml( system.file("dmdScheme.xlsx", package = "dmdScheme"), file = xmlFile )
+x <- read_from_excel( system.file("dmdScheme.xlsx", package = "dmdScheme"))
+write_xml( x = x, file = xmlFile )
 ```
 
 ## Re-import from xml into R
