@@ -3,15 +3,26 @@
 #' @importFrom magrittr set_names %<>%
 #' @importFrom tools file_ext
 #'
+#' @param convertTypes if \code{TRUE}, the types specified in the types column
+#'   are used for the data type. Otherwise, they are left at type
+#'   \code{character}
+#' @param warnToError if \code{TRUE}, warnings generated during the conversion
+#'   will raise an error
+#' @param checkVersion if \code{TRUE}, a version mismatch between the package
+#'   and the data \code{x} will result in an error. If \code{FALSE}, the check
+#'   will be skipped.
+#'
+#' @rdname as_dmdScheme
 #' @export
 #'
 as_dmdScheme.dmdSchemeSet_raw <- function(
   x,
   keepData = FALSE,
-  convertTypes = TRUE,
-  verbose = FALSE,
   warnToError = TRUE,
-  checkVersion = TRUE
+  convertTypes = TRUE,
+  checkVersion = TRUE,
+  ...,
+  verbose = FALSE
 ) {
 
 

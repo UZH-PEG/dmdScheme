@@ -1,25 +1,15 @@
-#' Convert a exported xml file to a \code{dmdScheme_Set} object
-#'
-#' Depending on the value of \code{useSchemeInXml}, the scheme is automatically
-#' chosen from either in the one in the xml file or chosen based on the property
-#' \code{dmdSchemeName} in the xml file (see below for details). The package
-#' with the scheme definition has to be installed, but it does not has to be
-#' loaded. An error is raised if it does not exist.
-#'
-#' @param x an \code{xml_document} object (from the \code{xml2} package)
 #' @param useSchemeInXml if \code{TRUE}, use scheme definition in xml and raise
 #'   an error if the xml does not contain a scheme definition. If False, use the
 #'   scheme definition from the corresponding installed package, even if the xml
 #'   contains a scheme definition. if \code{NULL} (the default), use the
 #'   definition in the xml if it contains a definition, if not use the
 #'   corresponding definition from the installed package.
-#' @param keepData if \code{FALSE}, only the scheme definition wi=ll be loaded,
-#'   i.e. the data discarded
-#' @param verbose give verbose progress info. Useful for debugging.
 #'
-#' @return \code{dmdScheme} or descendant object
 #'
 #' @importFrom xml2 xml_attrs as_list xml_name xml_children
+#' @importFrom rlang :=
+#'
+#' @rdname as_dmdScheme
 #' @export
 #'
 #' @examples
@@ -29,8 +19,9 @@
 #'
 as_dmdScheme.xml_document <- function(
   x,
-  useSchemeInXml = NULL,
   keepData = TRUE,
+  useSchemeInXml = NULL,
+  ...,
   verbose = FALSE
 ){
 

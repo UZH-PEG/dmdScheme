@@ -1,11 +1,13 @@
-#' @export
-#'
 #' @importFrom xml2 xml_new_root xml_add_child xml_attrs write_xml
 #' @importFrom tibble is_tibble
 #'
+#' @rdname as_xml
+#' @export
+#'
 as_xml.dmdSchemeData <- function(
   x,
-  output = "metadata"
+  output = "metadata",
+  ...
 ) {
 
   outputValues <- c("metadata", "complete")

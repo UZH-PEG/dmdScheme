@@ -1,10 +1,12 @@
-#' @export
-#'
 #' @importFrom xml2 xml_new_root xml_attrs xml_attr xml_add_child
+#'
+#' @rdname as_xml
+#' @export
 #'
 as_xml.dmdSchemeSet <- function(
   x,
-  output = "metadata"
+  output = "metadata",
+  ...
 ) {
   outputValues <- c("metadata", "complete")
   if (!(output %in% outputValues)) {

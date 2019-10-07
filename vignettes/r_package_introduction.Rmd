@@ -110,7 +110,8 @@ write_xml( x = x, file = xmlFile )
 ## Re-import from xml into R
 
 ```{r example_import_xml, eval = TRUE}
-xml_to_dmdScheme( xmlFile ) # system.file("dmdScheme_example.xml", package = "dmdScheme") )
+x <- read_xml( xmlFile )
+x
 ```
 
 ## Importing Data from Excel Sheet

@@ -4,7 +4,7 @@
 \alias{read_xml}
 \title{Function to read x from an XML file}
 \usage{
-read_xml(file)
+read_xml(file, ...)
 }
 \arguments{
 \item{file}{Path to file or connection to write to.}

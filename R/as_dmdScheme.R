@@ -1,23 +1,15 @@
-#' Generic method to convert the data stored in the object \code{x} into a new object of class \code{dmdScheme...}
+#' Generic function to convert the data stored in the object \code{x} into a new object of class \code{dmdScheme...}
 #'
-#' Generic method.
-#' @param x object of
-#'  * class `dmdSchemeSet_raw` as e.g. returned by \code{read_from_excel(raw = TRUE)}
-#'  * class `dmdSchemeData_raw`
+#' @param x object to be converted
 #' @param keepData if the data should be kept or replaced with one row with NAs
-#' @param convertTypes if \code{TRUE}, the types specified in the types column
-#'   are used for the data type. Otherwise, they are left at type
-#'   \code{character}
+#' @param ... additional arguments for methods
 #' @param verbose give verbose progress info. Useful for debugging.
-#' @param warnToError if \code{TRUE}, warnings generated during the conversion
-#'   will raise an error
-#' @param checkVersion if \code{TRUE}, a version mismatch between the package
-#'   and the data \code{x} will result in an error. If \code{FALSE}, the check
-#'   will be skipped.
 #'
-#' @return \code{list} of \code{list} of ... \code{tibbles}
+#' @return dmdScheme as object of class \code{dmdSchemeList}
 #'
 #' @md
+#'
+#' @rdname as_dmdScheme
 #' @export
 #' @importFrom dplyr select starts_with
 #' @importFrom methods is as
@@ -31,7 +23,8 @@
 as_dmdScheme <- function(
   x,
   keepData = FALSE,
-  ...
+  ...,
+  verbose = FALSE
 ) {
 
   UseMethod("as_dmdScheme")

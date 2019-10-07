@@ -14,7 +14,8 @@
 #' # write_xml(dmdScheme_raw, file = tempfile())
 #'
 read_xml <- function(
-  file
+  file,
+  ...
 ) {
   xml <- xml2::read_xml( file )
 

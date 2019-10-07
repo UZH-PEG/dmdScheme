@@ -3,19 +3,21 @@
 #' @importFrom rlang .data
 #' @importFrom tibble as_tibble
 #'
+#' @rdname as_dmdScheme
 #' @export
 #'
 as_dmdScheme.dmdSchemeData_raw <- function(
   x,
   keepData = TRUE,
   convertTypes = TRUE,
-  verbose = FALSE,
   warnToError = TRUE,
-  checkVersion = TRUE
+  checkVersion = TRUE,
+  ...,
+  verbose = FALSE
   ) {
 
 
-  if(verbose) message("propertySet : ", names(x)[[2]])
+  if (verbose) message("propertySet : ", names(x)[[2]])
 
 
 # Check for class dmdSchemeSet_raw ----------------------------------------
@@ -49,7 +51,7 @@ as_dmdScheme.dmdSchemeData_raw <- function(
 # transpose when Experiment -----------------------------------------------
 
   if (x[[1,1]] == "Experiment") {
-    if(verbose) message("Transposing...")
+    if (verbose) message("Transposing...")
     #
     x %<>%
       t() %>%
@@ -69,7 +71,7 @@ as_dmdScheme.dmdSchemeData_raw <- function(
 
 # set names ---------------------------------------------------------------
 
-  if(verbose) message("Set names...")
+  if (verbose) message("Set names...")
   #
   names(x) <- as.character(dplyr::filter(x, .data$propertySet == "valueProperty"))
 
@@ -78,11 +80,11 @@ as_dmdScheme.dmdSchemeData_raw <- function(
 # extract attributes to set -----------------------------------------------
 
   attrToSet <- x$valueProperty
-  attrToSet <- attrToSet[ 1:(grep("DATA", x$valueProperty)-1) ]
+  attrToSet <- attrToSet[ 1:(grep("DATA", x$valueProperty) - 1) ]
 
 # set attributes ----------------------------------------------------------
 
-  if(verbose) message("Set attributes...")
+  if (verbose) message("Set attributes...")
   #
   for (a in attrToSet) {
     attr(x, which = a) <- dplyr::filter(x, .data$valueProperty == a)[,-1] %>%
@@ -97,9 +99,9 @@ as_dmdScheme.dmdSchemeData_raw <- function(
 # if !keepData remove all but one data column , is not, only remove the ones with only NAs ----------------------------
 
   if (!keepData) {
-    if(verbose) message("Trimming to one row of NAs...")
+    if (verbose) message("Trimming to one row of NAs...")
     #
-    x %<>% dplyr::filter(c(TRUE, rep(FALSE, nrow(x)-1)) )
+    x %<>% dplyr::filter(c(TRUE, rep(FALSE, nrow(x) - 1)) )
     x[] <- NA
   } else {
     allNA <- apply(
@@ -113,11 +115,11 @@ as_dmdScheme.dmdSchemeData_raw <- function(
 # apply type --------------------------------------------------------------
 
   if (convertTypes) {
-    if(verbose) message("Apply types...")
+    if (verbose) message("Apply types...")
     #
     type <- attr(x, "type")
     for (i in 1:ncol(x)) {
-      if(verbose) message("   Apply type '", type[i], "' to '", names(x)[[i]], "'...")
+      if (verbose) message("   Apply type '", type[i], "' to '", names(x)[[i]], "'...")
       #
       x[[i]] <- as(x[[i]], Class = type[i])
     }
@@ -125,14 +127,14 @@ as_dmdScheme.dmdSchemeData_raw <- function(
 
 # set class ---------------------------------------------------------------
 
-  if(verbose) message("Set class...")
+  if (verbose) message("Set class...")
   #
   class(x) <- append(
     newClass ,
     class(x),
   )
 
-  if(verbose) message("Done")
+  if (verbose) message("Done")
   #
 # return object -----------------------------------------------------------
 
