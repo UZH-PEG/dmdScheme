@@ -14,10 +14,10 @@ test_that(
 
 #
 # test_that(
-#   "read_from_excel() fails when file does not have right extension",
+#   "read_excel() fails when file does not have right extension",
 #   {
 #     expect_error(
-#       object = read_from_excel(system.file("Dummy_for_tests", package = "dmdScheme")),
+#       object = read_excel(system.file("Dummy_for_tests", package = "dmdScheme")),
 #       regexp = "If x is a file name, it has to have the extension 'xls' or 'xlsx'"
 #     )
 #   }
@@ -27,10 +27,10 @@ test_that(
 # # read from xlsx --- value ----------------------------------------------------------
 #
 # test_that(
-#   "read_from_excel() keepData and raw",
+#   "read_excel() keepData and raw",
 #   {
 #     expect_known_value(
-#       object = read_from_excel(
+#       object = read_excel(
 #         file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
 #         keepData = TRUE,
 #         raw = TRUE,
@@ -42,10 +42,10 @@ test_that(
 # )
 #
 # test_that(
-#   "read_from_excel() keepData and raw",
+#   "read_excel() keepData and raw",
 #   {
 #     expect_known_value(
-#       object = read_from_excel(
+#       object = read_excel(
 #         file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
 #         keepData = FALSE,
 #         raw = FALSE,
@@ -60,10 +60,10 @@ test_that(
 # # # read from xlsx --- output -----------------------------------------------
 # #
 # # test_that(
-# #   "read_from_excel() keepData and raw",
+# #   "read_excel() keepData and raw",
 # #   {
 # #     expect_known_output(
-# #       object = read_from_excel(
+# #       object = read_excel(
 # #         file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
 # #         keepData = TRUE,
 # #         raw = TRUE,

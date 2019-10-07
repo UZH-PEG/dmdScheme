@@ -19,9 +19,9 @@
 #' @export
 #'
 #' @examples
-#' read_from_excel(file = system.file("dmdScheme.xlsx", package = "dmdScheme"))
+#' read_excel(file = system.file("dmdScheme.xlsx", package = "dmdScheme"))
 #'
-read_from_excel_raw <- function(
+read_excel_raw <- function(
   file,
   verbose = FALSE,
   checkVersion = TRUE

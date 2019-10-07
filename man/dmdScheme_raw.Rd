@@ -12,8 +12,8 @@ dmdScheme_raw
 }
 \description{
 The dataset contains raw data. An object of class \code{dmdScheme_raw} is
-returned by the function \code{\link[dmdScheme]{read_from_excel_raw}} with the argument
-\code{raw = TRUE} and \code{\link[dmdScheme]{read_from_excel_raw}}. It is usually an
+returned by the function \code{\link[dmdScheme]{read_excel_raw}} with the argument
+\code{raw = TRUE} and \code{\link[dmdScheme]{read_excel_raw}}. It is usually an
 intermediate object, as in the normal workflow, this object is automatically
 converted to an object of class \code{\link[dmdScheme]{dmdSchemeSet}}.
 }
@@ -33,7 +33,7 @@ converted to an object of class \code{\link[dmdScheme]{dmdSchemeSet}}.
 \dontrun{
 ## Created by using
 path <- system.fil;e( "dmdScheme.xlsx", package = "dmdScheme")
-dmdScheme_raw <- read_from_excel(
+dmdScheme_raw <- read_excel(
   file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
   verbose = TRUE,
   raw = TRUE

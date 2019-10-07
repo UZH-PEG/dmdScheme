@@ -17,7 +17,7 @@ validate(x, path = ".", validateData = TRUE,
   errorIfStructFalse = TRUE)
 }
 \arguments{
-\item{x}{object referring to a \code{dmdScheme} to be validatedof class \code{dmdSchemeSet_raw} as returned from \code{read_from_excel( keepData = FALSE, raw = TRUE)} or file name of an xlsx file containing the metadata.}
+\item{x}{object referring to a \code{dmdScheme} to be validatedof class \code{dmdSchemeSet_raw} as returned from \code{read_excel( keepData = FALSE, raw = TRUE)} or file name of an xlsx file containing the metadata.}
 
 \item{path}{path to the data files}
 
@@ -52,7 +52,7 @@ validate(
 )
 
 ## use `read_raw()` to read an Excel spreadsheet into a `dmdScheme_raw` object
-x <- read_from_excel_raw( system.file("dmdScheme.xlsx", package = "dmdScheme") )
+x <- read_excel_raw( system.file("dmdScheme.xlsx", package = "dmdScheme") )
 validate( x = x )
 
 }

@@ -28,7 +28,7 @@ validate.character <- function(
 
   # Load from excel sheet  ---------------------------------
 
-    raw <- read_from_excel(
+    raw <- read_excel(
       file = x,
       keepData = TRUE,
       validate = FALSE,

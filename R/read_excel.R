@@ -32,16 +32,16 @@
 #' @export
 #'
 #' @examples
-#' read_from_excel(
+#' read_excel(
 #'   file = system.file("dmdScheme.xlsx", package = "dmdScheme")
 #' )
 #'
-#' read_from_excel(
+#' read_excel(
 #'   file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
 #'   raw = TRUE
 #' )
 #'
-read_from_excel <- function(
+read_excel <- function(
   file,
   keepData = TRUE,
   verbose = FALSE,
@@ -52,7 +52,7 @@ read_from_excel <- function(
 
 # Read raw checks -------------------------------------------------
 
-  result <- read_from_excel_raw(
+  result <- read_excel_raw(
     file = file,
     verbose = verbose,
     checkVersion = TRUE

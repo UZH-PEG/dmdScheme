@@ -59,7 +59,7 @@ dev_update_from_new_sheet <- function(
 
   message("##### Loading ", newDmdScheme, "...")
 
-  dmdScheme_raw <- read_from_excel_raw(
+  dmdScheme_raw <- read_excel_raw(
     file = newDmdScheme,
     verbose = TRUE,
     checkVersion = FALSE
