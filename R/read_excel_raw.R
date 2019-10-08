@@ -41,7 +41,7 @@ read_excel_raw <- function(
 
   # Extract Scheme and version ----------------------------------------------
 
-  v <- readxl::read_excel(path = file, sheet = "Experiment") %>%
+  v <- readxl::read_excel(path = file, sheet = "Experiment",  .name_repair = "unique") %>%
     names() %>%
     grep("DATA", ., value = TRUE) %>%
     strsplit(" ")
