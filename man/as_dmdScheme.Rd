@@ -50,7 +50,7 @@ definition in the xml if it contains a definition, if not use the
 corresponding definition from the installed package.}
 }
 \value{
-dmdScheme as object of class \code{dmdSchemeList}
+dmdScheme as object of class \code{dmdScheme_set}
 }
 \description{
 Generic function to convert the data stored in the object \code{x} into a new object of class \code{dmdScheme...}

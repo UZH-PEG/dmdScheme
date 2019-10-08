@@ -5,7 +5,7 @@
 #' @param ... additional arguments for methods
 #' @param verbose give verbose progress info. Useful for debugging.
 #'
-#' @return dmdScheme as object of class \code{dmdSchemeList}
+#' @return dmdScheme as object of class \code{dmdScheme_set}
 #'
 #' @md
 #'
