@@ -19,8 +19,8 @@ as_dmdScheme(x, keepData = FALSE, ..., verbose = FALSE)
   warnToError = TRUE, convertTypes = TRUE, checkVersion = TRUE, ...,
   verbose = FALSE)
 
-\method{as_dmdScheme}{xml_document}(x, keepData = TRUE,
-  useSchemeInXml = NULL, ..., verbose = FALSE)
+\method{as_dmdScheme}{xml_document}(x, useSchemeInXml = NULL,
+  keepData = TRUE, ..., verbose = FALSE)
 }
 \arguments{
 \item{x}{object to be converted}

@@ -71,3 +71,17 @@ test_that(
     )
   }
 )
+
+
+# Round trip --------------------------------------------------------------
+
+test_that(
+  "read_excel() --> write_excel() roundtrip",
+  {
+    expect_equal(
+      object = read_excel( file = write_excel(dmdScheme_example, file = tempfile(fileext = ".xlsx")) ),
+      expected = dmdScheme_example
+    )
+  }
+)
+

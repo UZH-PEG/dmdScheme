@@ -8,31 +8,36 @@ test_that(
   {
     expect_error(
       object = as_dmdScheme_raw(x = "character"),
-      regexp = "no applicable method for 'as_dmdScheme' applied to an object of class \"character\""
+      regexp = "no applicable method for 'as_dmdScheme_raw' applied to an object of class \"character\""
     )
   }
 )
 
-skip("To be implemented")
 
-# creates correctly the dmdScheme_example object --------------------------
+# From dmdScheme ----------------------------------------------------------
 
 test_that(
-  "as_dmdScheme_raw() `keepData = TRUE`",
+  "as_dmdScheme_raw.dmdScheme()",
   {
     expect_equal(
-      object = as_dmdScheme_raw( x = dmdScheme_example, keepData = TRUE ),
+      object = as_dmdScheme_raw( x = dmdScheme_example ),
       expect = dmdScheme_raw
     )
   }
 )
 
+
+# From xml_document -------------------------------------------------------
+
 test_that(
-  "as_dmdScheme_raw() `keepData = FALSE`",
+  "as_dmdScheme_raw.xml_document()",
   {
     expect_equal(
-      object = as_dmdScheme( as_dmdScheme_raw( x = dmdScheme_example, keepData = FALSE ) ),
-      expect = dmdScheme
+      object = as_dmdScheme_raw( x = as_xml(dmdScheme_example) ),
+      expect = dmdScheme_raw
     )
   }
 )
+
+
+
