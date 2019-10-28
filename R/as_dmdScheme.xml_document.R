@@ -19,8 +19,8 @@
 #'
 as_dmdScheme.xml_document <- function(
   x,
-  useSchemeInXml = NULL,
   keepData = TRUE,
+  useSchemeInXml = NULL,
   ...,
   verbose = FALSE
 ){

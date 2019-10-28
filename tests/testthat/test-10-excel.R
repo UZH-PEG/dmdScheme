@@ -1,4 +1,4 @@
-context("10-read_excel()")
+context("10-excel()")
 
 
 # fail because of file -------------------------------------------------------------
@@ -79,8 +79,8 @@ test_that(
   "read_excel() --> write_excel() roundtrip",
   {
     expect_equal(
-      object = read_excel( file = write_excel(dmdScheme_example, file = tempfile(fileext = ".xlsx")) ),
-      expected = dmdScheme_example
+      object = dmdScheme_example %>% write_excel(file = tempfile(fileext = ".xlsx")) %>% read_excel() %>% `attr<-`("fileName", "none"),
+      expected = dmdScheme_example %>% `attr<-`("fileName", "none")
     )
   }
 )
