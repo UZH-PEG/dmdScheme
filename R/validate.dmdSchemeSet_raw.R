@@ -241,9 +241,12 @@ validate.dmdSchemeSet_raw <- function(
     result$descriptionDetails <- ""
     ##
     struct <- as_dmdScheme( x, keepData = FALSE, verbose = FALSE)
+    dmdScheme_test <- dmdScheme
     attr(struct, "propertyName") <- "dmdScheme"
-    result$details <- all.equal(struct, dmdScheme)
-    if (isTRUE(result$details)){
+    attr(struct, "fileName") <- "none"
+    attr(dmdScheme_test, "fileName") <- "none"
+    result$details <- all.equal(struct, dmdScheme_test)
+    if (isTRUE(result$details)) {
       result$error <- 0
     } else {
       result$error <- 3
