@@ -18,11 +18,33 @@ write_xml <- function(
   ...
 ) {
 
-  xml <- as_xml( x = x, ... )
+  xml_list <- as_xml_list( x = x, ... )
 
-  xml2::write_xml(
-    x = xml,
-    file = file
-  )
+  if (length(xml_list) == 1) {
+    xml2::write_xml(
+      x = xml_list[[1]],
+      file = file
+    )
+    result <- file
+  } else {
+    path <- dirname(file)
+    fn <- basename(file)
 
+    result <- lapply(
+      names(xml_list),
+      function(nm) {
+        xml <- xml_list[[nm]]
+        fn <- file.path(
+          path,
+          paste(nm, "xml", sep = ".")
+        )
+        xml2::write_xml(
+          x = xml,
+          file = fn
+        )
+        fn
+      }
+    )
+  }
+  return(result)
 }
