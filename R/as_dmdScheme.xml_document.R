@@ -76,9 +76,11 @@ as_dmdScheme.xml_document <- function(
       # Create tibble with names and type ---------------------------------------
 
       dmdD <- tibble()
-      for (j in 1:length(atr$names)) {
-        dmdD <- tibble::add_column(dmdD, !!(atr$names[j]) := get(atr$type[j])(1))
-      }
+      suppressMessages(
+        for (j in 1:length(atr$names)) {
+          dmdD <- tibble::add_column(dmdD, !!(atr$names[j]) := get(atr$type[j])(1))
+        }
+      )
       dmdD[1,] <- NA
 
       atr <- atr[ !(names(atr) %in% c("names")) ]
