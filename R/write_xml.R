@@ -4,6 +4,7 @@
 #' If no method \code{as_xml()} exists for the object |class{x}, an error will be raised.
 #' @param x object which will be converted to and saved as an xml file.
 #' @param file Path to file or connection to write to.
+#' @param output specifies the content and format of the exported xml. see \link{as_xml} for details
 #' @param ... additional parameter for the conversion function \code{as_xml()}
 #'
 #' @importFrom xml2 write_xml
@@ -15,10 +16,11 @@
 write_xml <- function(
   x,
   file,
+  output = "metadata",
   ...
 ) {
 
-  xml_list <- as_xml_list( x = x, ... )
+  xml_list <- as_xml_list( x = x, output = output, ... )
 
   if (length(xml_list) == 1) {
     xml2::write_xml(

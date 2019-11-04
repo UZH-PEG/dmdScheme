@@ -2,8 +2,8 @@
 #'
 #' Read the XML file \code{file} and convert it to a \code{dmdScheme} object using the function \code{as_dmdScheme()}.
 #' @param file Path to file or connection to write to.
-#' @param ... additional parameter for the conversion function \code{as_xml()}
-#'
+#' @param keepData if the data should be kept or replaced with one row with NAs
+#' @param verbose give verbose progress info. Useful for debugging.
 #'
 #'
 #' @importFrom xml2 read_xml
@@ -15,9 +15,18 @@
 #'
 read_xml <- function(
   file,
-  ...
+  keepData = TRUE,
+  useSchemeInXml = NULL,
+  verbose = FALSE
 ) {
   xml <- xml2::read_xml( file )
 
-  return( as_dmdScheme( x = xml, ... ) )
+  return(
+    as_dmdScheme(
+      x = xml,
+      keepData = keepData,
+      useSchemeInXml = useSchemeInXml,
+      verbose = verbose
+    )
+  )
 }

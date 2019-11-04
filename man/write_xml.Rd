@@ -4,12 +4,14 @@
 \alias{write_xml}
 \title{Write write x as an XML file to disk}
 \usage{
-write_xml(x, file, ...)
+write_xml(x, file, output = "metadata", ...)
 }
 \arguments{
 \item{x}{object which will be converted to and saved as an xml file.}
 
 \item{file}{Path to file or connection to write to.}
+
+\item{output}{specifies the content and format of the exported xml. see \link{as_xml} for details}
 
 \item{...}{additional parameter for the conversion function \code{as_xml()}}
 }

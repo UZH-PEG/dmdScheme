@@ -4,12 +4,15 @@
 \alias{read_xml}
 \title{Function to read x from an XML file}
 \usage{
-read_xml(file, ...)
+read_xml(file, keepData = TRUE, useSchemeInXml = NULL,
+  verbose = FALSE)
 }
 \arguments{
 \item{file}{Path to file or connection to write to.}
 
-\item{...}{additional parameter for the conversion function \code{as_xml()}}
+\item{keepData}{if the data should be kept or replaced with one row with NAs}
+
+\item{verbose}{give verbose progress info. Useful for debugging.}
 }
 \description{
 Read the XML file \code{file} and convert it to a \code{dmdScheme} object using the function \code{as_dmdScheme()}.
