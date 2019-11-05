@@ -86,6 +86,11 @@ as_dmdScheme_raw.dmdSchemeData <- function(
   }
 
 
+
+  # Make sure that all "NA" are set to NA -----------------------------------
+
+  result[result == "NA"]  <- NA
+
   # set class ---------------------------------------------------------------
 
   class(result) <- append(

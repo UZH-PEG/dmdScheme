@@ -58,7 +58,7 @@ as_dmdScheme.xml_document <- function(
 
     xml <- x
 
-    # Check if outup = "complete" ---------------------------------------------
+    # Check if output = "complete" --------------------------------------------
     if (!(xml2::xml_attr(xml, "output") %in% c("complete", "scheme"))) {
       stop("Can not create scheme from this xml!")
     }
