@@ -16,8 +16,8 @@
 #' use_scheme("dmdScheme.xml)
 #' use_scheme("dmdScheme.xlsx)
 #' \dontrun{
-#' scheme_add("path/to/definition.xml)
-#' scheme_add("path/to/definition.xlsx)
+#' scheme_install("path/to/definition.xml)
+#' scheme_install("path/to/definition.xlsx)
 #' }
 scheme_use <- function(
   schemeDefinition = "dmdScheme.xml"

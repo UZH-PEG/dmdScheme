@@ -8,11 +8,11 @@
 #'
 #' @return result of \link{file.copy()}
 #'
-#' #' @rdname scheme
+#' @rdname scheme
 #'
 #' @export
 #'
-scheme_add <- function(
+scheme_install <- function(
   schemeDefinition,
   overwrite = FALSE
 ){
