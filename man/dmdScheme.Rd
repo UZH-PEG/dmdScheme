@@ -6,7 +6,7 @@
 \alias{dmdSchemeSet}
 \alias{dmdSchemeData}
 \title{Object of class \code{dmdSchemeSet} containing the authorative definition of the dmdScheme.}
-\format{An object of class \code{dmdSchemeSet} (inherits from \code{list}) of length 6.}
+\format{An object of class \code{NULL} of length 0.}
 \usage{
 dmdScheme
 }

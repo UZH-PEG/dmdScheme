@@ -6,7 +6,7 @@
 \alias{dmdSchemeSet_raw}
 \alias{dmdSchemeData_raw}
 \title{Object of class \code{dmdScheme_raw } containing the raw data as read in.}
-\format{An object of class \code{dmdSchemeSet_raw} (inherits from \code{list}) of length 6.}
+\format{An object of class \code{NULL} of length 0.}
 \usage{
 dmdScheme_raw
 }

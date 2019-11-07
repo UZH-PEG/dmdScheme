@@ -36,6 +36,6 @@ scheme_use <- function(
   assign("dmdScheme_example", scheme_example, "package:dmdScheme")
   scheme_raw <- as_dmdScheme_raw(scheme_example)
   assign("dmdScheme_raw", scheme_raw, "package:dmdScheme")
-  scheme <- as_dmdScheme(scheme_raw, keepData = FALSE)
+  scheme <- as_dmdScheme(scheme_raw, keepData = FALSE, checkVersion = FALSE)
   assign("dmdScheme", scheme, "package:dmdScheme")
 }
