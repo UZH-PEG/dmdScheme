@@ -2,13 +2,9 @@
 % Please edit documentation in R/dmdScheme_versions.R
 \name{dmdScheme_versions}
 \alias{dmdScheme_versions}
-\title{Returns versions of package and dmdScheme}
+\title{Returns versions of package and loaded dmdScheme}
 \usage{
-dmdScheme_versions(schemeName = "dmdScheme")
-}
-\arguments{
-\item{schemeName}{name of the scheme. This can be used when more than one
-scheme is installed, to query the versions of a specific scheme.}
+dmdScheme_versions()
 }
 \value{
 a named \code{list}, containing the following objects:
@@ -18,9 +14,9 @@ a named \code{list}, containing the following objects:
 }
 }
 \description{
-The versions of the \code{scheme} and version of the \code{package} are
-retrieved from the installed scheme as specified by the argument
-\code{schemeName}.
+The \code{name} and \code{version} of the \code{scheme}are retrieved from the
+loadeed scheme (\code{scheme_use()}), therefore can change when a different
+scheme is used. The version of the \code{package} is specific to the package.
 }
 \examples{
 dmdScheme_versions()

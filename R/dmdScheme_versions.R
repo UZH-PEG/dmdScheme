@@ -1,10 +1,8 @@
-#' Returns versions of package and dmdScheme
+#' Returns versions of package and loaded dmdScheme
 #'
-#' The versions of the \code{scheme} and version of the \code{package} are
-#' retrieved from the installed scheme as specified by the argument
-#' \code{schemeName}.
-#' @param schemeName name of the scheme. This can be used when more than one
-#'   scheme is installed, to query the versions of a specific scheme.
+#' The \code{name} and \code{version} of the \code{scheme}are retrieved from the
+#' loadeed scheme (\code{scheme_use()}), therefore can change when a different
+#' scheme is used. The version of the \code{package} is specific to the package.
 #'
 #' @return a named \code{list}, containing the following objects:
 #' \itemize{
@@ -18,21 +16,16 @@
 #' @examples
 #' dmdScheme_versions()
 #' dmdScheme_versions(schemeName = "dmdScheme")
-dmdScheme_versions <- function (
-  schemeName = "dmdScheme"
-)
-{
-  pkg = schemeName
-  res <- suppressWarnings(
-    utils::packageDescription(
-      pkg,
-      fields = c( "schemeName", "Version", "schemeVersion" )
+dmdScheme_versions <- function(){
+  result <- list(
+    name = attr(dmdScheme, "dmdSchemeName"),
+    scheme = numeric_version(attr(dmdScheme, "dmdSchemeVersion")),
+    package = package_version(
+      utils::packageDescription(
+        pkg = "dmdScheme",
+        fields = "Version"
+      )
     )
   )
-  res <- list(
-    name = res[["schemeName"]],
-    package = package_version(res[["Version"]]),
-    scheme = numeric_version(res[["schemeVersion"]])
-  )
-  return(res)
+  return(result)
 }
