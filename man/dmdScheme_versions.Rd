@@ -20,5 +20,4 @@ scheme is used. The version of the \code{package} is specific to the package.
 }
 \examples{
 dmdScheme_versions()
-dmdScheme_versions(schemeName = "dmdScheme")
 }

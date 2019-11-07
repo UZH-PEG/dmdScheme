@@ -4,12 +4,13 @@
 \alias{open_new_spreadsheet}
 \title{Open the metadata scheme as a spreadsheet in a spreadsheet editor}
 \usage{
-open_new_spreadsheet(schemeName, file = NULL, open = TRUE,
+open_new_spreadsheet(schemeName = paste0(dmdScheme_versions()$name, "_",
+  dmdScheme_versions()$scheme), file = NULL, open = TRUE,
   keepData = FALSE, format = TRUE, overwrite = FALSE,
   verbose = FALSE, .skipBrowseURL = FALSE)
 }
 \arguments{
-\item{schemeName}{name of the package in which the template of the scheme sits. Default value: \code{dmdScheme}}
+\item{schemeName}{name of the scheme. Default: the default one of the package.}
 
 \item{file}{if not \code{NULL}, the template will be saved to this file.}
 

@@ -15,7 +15,6 @@
 #'
 #' @examples
 #' dmdScheme_versions()
-#' dmdScheme_versions(schemeName = "dmdScheme")
 dmdScheme_versions <- function(){
   result <- list(
     name = attr(dmdScheme, "dmdSchemeName"),

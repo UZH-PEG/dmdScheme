@@ -3,14 +3,14 @@
 %   R/scheme_uninstall.R, R/scheme_use.R
 \name{scheme_install}
 \alias{scheme_install}
-\alias{scheme_list}
+\alias{scheme_default}
 \alias{scheme_uninstall}
 \alias{scheme_use}
 \title{Add \code{schemeDefinition} file to installed schemes}
 \usage{
 scheme_install(schemeDefinition, overwrite = FALSE)
 
-scheme_list()
+scheme_default()
 
 scheme_uninstall(schemeName, delete = FALSE)
 
@@ -31,20 +31,20 @@ scheme_use(schemeDefinition = "dmdScheme.xml")
 \value{
 result of \link{file.copy()}
 
-list of schemes installed in the folder \code{system.file("schemeDefinitions", package = "dmdScheme")}
+name of the default scheme
 
 if \code{delete = TRUE}, the result from the function
   \link{unlink()}, otherwise the fully qualified paths of the files which
   would be deleted.
 }
 \description{
-Installed schemes are copied to \code{system.file("schemeDefinitions",
+Installed schemes are copied to \code{system.file("installedSchemes",
 package = "dmdScheme")} and , if necessary, an \code{.xlsx} definition is
 saved in addition. These can be listed by using \link{scheme_list()}.
 
-Schemes can be installed by using the \link{scheme_install()} function.
+Shows the name of the default scheme which comes with the package and can not be deleted.
 
-Installed schemes are deleted from \code{system.file("schemeDefinitions",
+Installed schemes are deleted from \code{system.file("installedSchemes",
 package = "dmdScheme")}.
 
 Switch from the current scheme to a new scheme as defined in the file

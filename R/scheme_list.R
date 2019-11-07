@@ -1,12 +1,17 @@
-#' List installed schemes for this package
+#' Return name of default schemefor this package
 #'
-#' Schemes can be installed by using the \link{scheme_install()} function.
-#' @return list of schemes installed in the folder \code{system.file("schemeDefinitions", package = "dmdScheme")}
+#' Shows the name of the default scheme which comes with the package and can not be deleted.
+#' @return name of the default scheme
 #'
 #' @rdname scheme
 #'
 #' @export
 #'
-scheme_list <- function() {
-  list.files( system.file("schemeDefinitions", package = "dmdScheme") )
+scheme_default <- function() {
+  ver <- utils::packageDescription(
+    "dmdScheme",
+    fields = c( "schemeName", "schemeVersion" )
+  )
+  schemeDefinition <- paste0(ver$schemeName, "_", ver$schemeVersion)
+  return(schemeDefinition)
 }

@@ -24,7 +24,7 @@ scheme_use <- function(
 ) {
   type <- tools::file_ext(schemeDefinition)
 
-  schemeDefinition <- system.file("schemeDefinitions", schemeDefinition, package = "dmdScheme")
+  schemeDefinition <- system.file("installedSchemes", schemeDefinition, package = "dmdScheme")
 
   scheme_example <- switch(
     type,

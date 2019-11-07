@@ -4,7 +4,17 @@ context("01-dmdSchemeVersion()")
 # Test Arguments -------------------------------------------------------------
 
 test_that(
-  "dmdSchemeVersion()$dmdScheme is equal to the version in the dmdScheme",
+  "dmdSchemeVersion()$name is equal to the loaded version in the dmdScheme",
+  {
+    expect_equal(
+      object = dmdScheme_versions()$name,
+      expected = attr(dmdScheme, "dmdSchemeName")
+    )
+  }
+)
+
+test_that(
+  "dmdSchemeVersion()$dmdScheme is equal to the loaded version in the dmdScheme",
   {
     expect_equal(
       object = dmdScheme_versions()$scheme,
@@ -14,7 +24,7 @@ test_that(
 )
 
 test_that(
-  "dmdSchemeVersion()$package is equal to packageVersion('dmdScheme')",
+  "dmdSchemeVersion()$package is equal to the packageVersion('dmdScheme')",
   {
     expect_equal(
       object = dmdScheme_versions()$package,
