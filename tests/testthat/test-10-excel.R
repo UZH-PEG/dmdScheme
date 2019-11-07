@@ -32,12 +32,12 @@ test_that(
   {
     expect_equal(
       object = read_excel(
-        file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
+        file = system.file("installedSchemes", paste0(scheme_default(), ".xlsx"), package = "dmdScheme"),
         keepData = TRUE,
         raw = TRUE,
         verbose = FALSE
-      ),
-      expected = dmdScheme_raw
+      ) %>% `attr<-`("fileName", "none"),
+      expected = dmdScheme_raw %>% `attr<-`("fileName", "none")
     )
   }
 )
@@ -47,12 +47,12 @@ test_that(
   {
     expect_equal(
       object = read_excel(
-        file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
+        file = system.file("installedSchemes", paste0(scheme_default(), ".xlsx"), package = "dmdScheme"),
         keepData = TRUE,
         raw = FALSE,
         verbose = FALSE
-      ),
-      expected = dmdScheme_example
+      ) %>% `attr<-`("fileName", "none"),
+      expected = dmdScheme_example %>% `attr<-`("fileName", "none")
     )
   }
 )
@@ -62,12 +62,12 @@ test_that(
   {
     expect_equal(
       object = read_excel(
-        file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
+        file = system.file("installedSchemes", paste0(scheme_default(), ".xlsx"), package = "dmdScheme"),
         keepData = FALSE,
         raw = FALSE,
         verbose = FALSE
-      ),
-      expected = dmdScheme
+      ) %>% `attr<-`("fileName", "none"),
+      expected = dmdScheme %>% `attr<-`("fileName", "none")
     )
   }
 )
