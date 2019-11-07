@@ -23,7 +23,7 @@
 #' ## Created by using
 #' path <- system.fil;e( "dmdScheme.xlsx", package = "dmdScheme")
 #' dmdScheme_raw <- read_excel(
-#'   file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
+#'   file = system.file("installedSchemes", paste0(scheme_default(), ".xlsx"), package = "dmdScheme"),
 #'   verbose = TRUE,
 #'   raw = TRUE
 #' )

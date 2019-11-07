@@ -64,7 +64,7 @@ This generic function creates a report based on the object.
 
 \examples{
 ## Report of `dmdScheme_validation`
-report( system.file("dmdScheme.xlsx", package = "dmdScheme") )
+report( system.file("installedSchemes", paste0(scheme_default(), ".xlsx"), package = "dmdScheme") )
 
 ## Report of `dmdScheme_validation`
 report( validate(dmdScheme_raw) )

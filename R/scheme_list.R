@@ -1,17 +1,19 @@
-#' Return name of default schemefor this package
+#' List all sinstalled schemes
 #'
-#' Shows the name of the default scheme which comes with the package and can not be deleted.
+#' Lists all definitions for schemes which are installed. Each follows the
+#' pattern \code{SCHEMENAME_SCHEMEVERSION.EXT}. All files with the same basename
+#' but different extensions represent different representations of the same
+#' scheme definition and are effectively equivalent, only that the tab
+#' Documentation can only be found in the \code{.xls} files.
 #' @return name of the default scheme
 #'
 #' @rdname scheme
 #'
 #' @export
 #'
-scheme_default <- function() {
-  ver <- utils::packageDescription(
-    "dmdScheme",
-    fields = c( "schemeName", "schemeVersion" )
-  )
-  schemeDefinition <- paste0(ver$schemeName, "_", ver$schemeVersion)
-  return(schemeDefinition)
+scheme_list <- function() {
+
+  result <- list.files( system.file("installedSchemes", package = "dmdScheme") )
+
+  return(result)
 }

@@ -41,11 +41,11 @@ arguments \code{validate}. See detals below.
 }
 \examples{
 read_excel(
-  file = system.file("dmdScheme.xlsx", package = "dmdScheme")
+  file = system.file("installedSchemes", paste0(scheme_default(), ".xlsx"), package = "dmdScheme")
 )
 
 read_excel(
-  file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
+  file = system.file("installedSchemes", paste0(scheme_default(), ".xlsx"), package = "dmdScheme"),
   raw = TRUE
 )
 
