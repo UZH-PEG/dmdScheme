@@ -32,7 +32,7 @@ test_that(
   {
     expect_equal(
       object = read_xml(
-        file = system.file("dmdScheme_example.xml", package = "dmdScheme")
+        file = system.file("installedSchemes", paste0(scheme_default(), ".xml"), package = "dmdScheme")
       ),
       expected = dmdScheme_example
     )
