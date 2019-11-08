@@ -19,7 +19,7 @@
 #' @export
 #'
 #' @examples
-#' read_excel(system.file("installedSchemes", paste0(scheme_default(), ".xlsx"), package = "dmdScheme"))
+#' read_excel_raw( scheme_file() )
 #'
 read_excel_raw <- function(
   file,

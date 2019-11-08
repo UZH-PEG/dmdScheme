@@ -13,7 +13,7 @@ write_xml(x, file, output = "metadata", ...)
 
 \item{output}{specifies the content and format of the exported xml. see \link{as_xml} for details}
 
-\item{...}{additional parameter for the conversion function \code{as_xml()}}
+\item{...}{additional parameter for the conversion function \code{as_xml}}
 }
 \description{
 Convert the object \code{x} to an \code{xml_document} object using the function \code{as_xml()} and write it to a file.

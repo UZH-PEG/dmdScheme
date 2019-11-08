@@ -18,7 +18,7 @@ test_that(
   "read_xml() fails when file does not have right extension",
   {
     expect_error(
-      object = read_xml(system.file("installedSchemes", paste0(scheme_default(), ".xlsx"), package = "dmdScheme")),
+      object = read_xml( scheme_file() ),
       regexp = "Start tag expected"
     )
   }
@@ -32,7 +32,7 @@ test_that(
   {
     expect_equal(
       object = read_xml(
-        file = system.file("installedSchemes", paste0(scheme_default(), ".xml"), package = "dmdScheme")
+        file = scheme_file(type = "xml")
       ),
       expected = dmdScheme_example
     )

@@ -1,10 +1,11 @@
-#' Use a scheme in the package
+#' Functions to manage schemes
 #'
-#' Switch from the current scheme to a new scheme as defined in the scheme
+#' \bold{\code{scheme_use()}:} Switch from the current scheme to a new scheme as defined in the scheme
 #' \code{schemeDefinition}. Installed schemes can be listed by using \code{scheme_list()}.
 #' New schemes can be added to the library via a call to \code{scheme_add()}.
 #' The name of the active scheme is saved in \code{dmdScheme_active}
-#' @param schemeDefinition
+#' @param name name of the scheme
+#' @param version version of the scheme
 #'
 #' @rdname scheme
 #'
@@ -14,38 +15,43 @@
 #'
 #' @examples
 #' scheme_list()
-#' use_scheme("dmdScheme_0.9.5.xml)
-#' use_scheme("dmdScheme_0.9.5.xlsx)
-#' \dontrun{
-#' scheme_install("path/to/definition.xml)
-#' scheme_install("path/to/definition.xlsx)
-#' }
+#' scheme_use(name = "dmdScheme", version = "0.9.5")
+#'
 scheme_use <- function(
-  schemeDefinition = NULL
+  name = NULL,
+  version = NULL
 ) {
-  type <- tools::file_ext(schemeDefinition)
 
-  schemeName <- schemeDefinition
-
-  schemeDefinition <- system.file("installedSchemes", schemeDefinition, package = "dmdScheme")
-
-  if (!file.exists(schemeDefinition)) {
-    "Scheme is not installed. Use `scheme_list()` to see all installed themes!"
+  if (!name %in% scheme_list()[["name"]]) {
+    stop("Scheme with the name '", name, "' is not instaled!")
   }
 
-  scheme_example <- switch(
-    type,
-    xlsx = as_dmdScheme( read_excel_raw( schemeDefinition, checkVersion = FALSE ), checkVersion = FALSE),
-    xml  = read_xml(  schemeDefinition, useSchemeInXml = TRUE ),
-    stop("Unsupported file type!")
-  )
+  if (!version %in% scheme_list()[["version"]]) {
+    stop("Version '", version, "' of scheme '", name, "' is not instaled!")
+  }
 
+  schemeName <- paste0( name, "_", version)
+  schemeDefinition <- system.file("installedSchemes", paste0( schemeName, ".xml" ), package = "dmdScheme")
+
+  scheme_example <- read_xml(  schemeDefinition, useSchemeInXml = TRUE )
+
+  unlockBinding("dmdScheme_example", as.environment("package:dmdScheme"))
   assign("dmdScheme_example", scheme_example, "package:dmdScheme")
+  lockBinding("dmdScheme_example", as.environment("package:dmdScheme"))
+
   scheme_raw <- as_dmdScheme_raw(scheme_example)
+  unlockBinding("dmdScheme_raw", as.environment("package:dmdScheme"))
   assign("dmdScheme_raw", scheme_raw, "package:dmdScheme")
+  lockBinding("dmdScheme_raw", as.environment("package:dmdScheme"))
+
   scheme <- as_dmdScheme(scheme_raw, keepData = FALSE, checkVersion = FALSE)
+  unlockBinding("dmdScheme", as.environment("package:dmdScheme"))
   assign("dmdScheme", scheme, "package:dmdScheme")
+  lockBinding("dmdScheme", as.environment("package:dmdScheme"))
 
   message("Theme switched to ", schemeName)
-  assign("dmdScheme_active", schemeName, "package:dmdScheme")
+
+  unlockBinding("scheme_active", as.environment("package:dmdScheme"))
+  assign("scheme_active", data.frame(name = name, version = version, stringsAsFactors = FALSE), "package:dmdScheme")
+  lockBinding("scheme_active", as.environment("package:dmdScheme"))
 }

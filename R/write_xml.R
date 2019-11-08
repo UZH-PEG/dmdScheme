@@ -5,7 +5,7 @@
 #' @param x object which will be converted to and saved as an xml file.
 #' @param file Path to file or connection to write to.
 #' @param output specifies the content and format of the exported xml. see \link{as_xml} for details
-#' @param ... additional parameter for the conversion function \code{as_xml()}
+#' @param ... additional parameter for the conversion function \code{as_xml}
 #'
 #' @importFrom xml2 write_xml
 #' @export

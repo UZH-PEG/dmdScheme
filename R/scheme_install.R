@@ -1,21 +1,28 @@
-#' Add \code{schemeDefinition} file to installed schemes
+#' Functions to manage schemes
 #'
-#' Installed schemes are copied to \code{system.file("installedSchemes",
+#' \bold{\code{scheme_install()}:} Installed schemes are copied to \code{system.file("installedSchemes",
 #' package = "dmdScheme")} and , if necessary, an \code{.xlsx} definition is
-#' saved in addition. These can be listed by using \link{scheme_list()}.
-#' @param schemeDefinition file containing the scheme definition in a recognized format
+#' saved in addition. These can be listed by using \link{scheme_list}.
+#' @param schemeDefinition file containing the definition of the dmdScheme in a format readable by this package
 #' @param overwrite if \code{TRUE}, the scheme will be overwritten if it exists
 #'
-#' @return result of \link{file.copy()}
+#' @return result of \link{file.copy}
 #'
 #' @rdname scheme
 #'
 #' @export
 #'
+#' @examples
+#' \dontrun{
+#' scheme_install("path/to/definition.xml")
+#' scheme_install("path/to/definition.xlsx")
+#' }
+#'
 scheme_install <- function(
   schemeDefinition,
   overwrite = FALSE
 ){
+
   if (!file.exists(schemeDefinition)) {
     stop("schemeDefinition does not exist!")
   }
@@ -23,12 +30,15 @@ scheme_install <- function(
   type <- tools::file_ext(schemeDefinition)
   scheme <- switch(
     type,
-    xlsx = as_dmdScheme( read_excel_raw( schemeDefinition, checkVersion = FALSE ), checkVersion = FALSE),
-    xml  = read_xml(  schemeDefinition, useSchemeInXml = TRUE ),
+    xlsx = as_dmdScheme( read_excel_raw( schemeDefinition, checkVersion = FALSE ), checkVersion = FALSE, keepData = TRUE),
+    xml  = read_xml(  schemeDefinition, keepData = TRUE, useSchemeInXml = TRUE ),
     stop("Unsupported file type!")
   )
 
-  schemeName <- paste0(attr(scheme, "dmdSchemeName"), "_", attr(scheme, "dmdSchemeVersion"), ".", type)
+
+  name <- attr(scheme, "dmdSchemeName")
+  version <- attr(scheme, "dmdSchemeVersion")
+  schemeName <- paste0(name, "_", version, ".", type)
   schemeFile <- file.path( system.file("installedSchemes", package = "dmdScheme"), schemeName  )
   excelFile  <- file.path( system.file("installedSchemes", package = "dmdScheme"), gsub(type, "xlsx", schemeName) )
   xmlFile    <- file.path( system.file("installedSchemes", package = "dmdScheme"), gsub(type, "xml",  schemeName) )
@@ -53,8 +63,13 @@ scheme_install <- function(
   }
 
   if (type != "xml") {
-    write_xml(scheme, xmlFile, output = "complete")
+    write_xml(scheme, xmlFile, output = "complete", keepData = TRUE)
   }
 
+  message(
+    "Scheme definition ", schemeDefinition, "installed with\n",
+    "name:    ", name, "\n",
+    "version: ", version
+  )
   invisible( file.copy(schemeDefinition, schemeFile, overwrite = overwrite) )
 }

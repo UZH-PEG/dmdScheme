@@ -12,6 +12,13 @@ read_xml(file, keepData = TRUE, useSchemeInXml = NULL,
 
 \item{keepData}{if the data should be kept or replaced with one row with NAs}
 
+\item{useSchemeInXml}{if \code{TRUE}, use scheme definition in xml and raise
+an error if the xml does not contain a scheme definition. If False, use the
+scheme definition from the corresponding installed package, even if the xml
+contains a scheme definition. if \code{NULL} (the default), use the
+definition in the xml if it contains a definition, if not use the
+corresponding definition from the installed package.}
+
 \item{verbose}{give verbose progress info. Useful for debugging.}
 }
 \description{

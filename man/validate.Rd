@@ -43,7 +43,7 @@ object of class \code{dmdScheme_validation}.
 \examples{
 ## validata an Excel file containing the metadata
 validate(
-    x = system.file("installedSchemes", paste0(scheme_default(), ".xlsx"), package = "dmdScheme")
+    x = scheme_file()
 )
 
 ## validate a `dmdScheme_raw object`
@@ -52,7 +52,7 @@ validate(
 )
 
 ## use `read_raw()` to read an Excel spreadsheet into a `dmdScheme_raw` object
-x <- read_excel_raw( system.file("installedSchemes", paste0(scheme_default(), ".xlsx"), package = "dmdScheme") )
+x <- read_excel_raw( scheme_file() )
 validate( x = x )
 
 }

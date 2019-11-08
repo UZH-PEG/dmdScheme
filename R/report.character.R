@@ -7,7 +7,7 @@
 #' @md
 #' @examples
 #' ## Report of `dmdScheme_validation`
-#' report( system.file("installedSchemes", paste0(scheme_default(), ".xlsx"), package = "dmdScheme") )
+#' report( scheme_file() )
 #'
 #' @describeIn report report of a `dmdScheme_validation` object.
 #'

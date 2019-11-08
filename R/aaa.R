@@ -6,7 +6,6 @@
     "dmdScheme",
     fields = c( "schemeName", "schemeVersion" )
   )
-  schemeDefinition <- paste0(ver$schemeName, "_", ver$schemeVersion, ".xml")
   ##
-  scheme_use(schemeDefinition)
+  scheme_use( name = ver$schemeName, version = ver$schemeVersion)
 }

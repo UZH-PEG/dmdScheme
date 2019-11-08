@@ -40,12 +40,13 @@ scheme name is always done. Additional validations are done depending on the
 arguments \code{validate}. See detals below.
 }
 \examples{
+fn <- scheme_file()
 read_excel(
-  file = system.file("installedSchemes", paste0(scheme_default(), ".xlsx"), package = "dmdScheme")
+  file = fn
 )
 
 read_excel(
-  file = system.file("installedSchemes", paste0(scheme_default(), ".xlsx"), package = "dmdScheme"),
+  file = fn,
   raw = TRUE
 )
 
