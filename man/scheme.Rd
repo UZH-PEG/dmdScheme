@@ -61,6 +61,7 @@ package = "dmdScheme")}.
 Switch from the current scheme to a new scheme as defined in the scheme
 \code{schemeDefinition}. Installed schemes can be listed by using \code{scheme_list()}.
 New schemes can be added to the library via a call to \code{scheme_add()}.
+The name of the active scheme is saved in \code{dmdScheme_active}
 }
 \examples{
 scheme_list()

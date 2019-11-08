@@ -18,7 +18,7 @@ test_that(
   "read_excel() fails when file does not have right extension",
   {
     expect_error(
-      object = read_excel(system.file("Dummy_for_tests", package = "dmdScheme")),
+      object = read_excel(system.file("installedSchemes", paste0(scheme_default(), ".xml"), package = "dmdScheme")),
       regexp = "If x is a file name, it has to have the extension 'xls' or 'xlsx'"
     )
   }
