@@ -4,8 +4,10 @@
 #' \code{schemeDefinition}. Installed schemes can be listed by using \code{scheme_list()}.
 #' New schemes can be added to the library via a call to \code{scheme_add()}.
 #' The name of the active scheme is saved in \code{dmdScheme_active}
-#' @param name name of the scheme
-#' @param version version of the scheme
+#' @param name a \code{character} string containing the name of the scheme
+#'   definition
+#' @param version a \code{character} string containing the version of the scheme
+#'   definition
 #'
 #' @rdname scheme
 #'
