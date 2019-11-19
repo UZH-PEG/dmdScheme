@@ -24,8 +24,8 @@ scheme_uninstall <- function(
   delete = FALSE
 ){
 
-  if (!name %in% scheme_list()[["name"]]) {
-    stop("Scheme with the name '", name, "' is not instaled!")
+  if (!scheme_installed(name, version)) {
+    stop("Scheme with the name '", name, "' and version `", version, "` is not instaled!")
   }
 
   if (!version %in% scheme_list()[["version"]]) {

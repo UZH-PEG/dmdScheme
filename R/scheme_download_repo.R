@@ -1,4 +1,4 @@
-#' Download scheme definition from repo
+#' Download scheme definition from url
 #'
 #'
 #' Scheme definitions can be stored in an online repo. The default is a github
@@ -6,13 +6,12 @@
 #' function dowloads a scheme definition, specified by \code{name} and
 #' \code{version}, and saves it locally under the name \code{destfile}
 #' @param destfile a \code{character} string containing the name of the
-#'   downloaded scheme definition
- #' @param baseurl a \code{character} string containing the base url of the
-#'   directory where the scheme definitions are located.
+#'   downloaded scheme definition. If \code{NULL}, a temporary file will be used.
+#' @param baseurl a \code{character} string containing the base url of the
+#'   repository in which the scheme definitions are located.
 #' @param ... additional parameter for the function \code{download.file}.
 #'
-#' @return return An invisibleinteger value, \code{0} indicating success,
-#'   noon-zero indicates an error. See \link{download.file} for details.
+#' @return invisibly the value of \code{destfile}
 #'
 #' @rdname scheme
 #'
@@ -20,21 +19,26 @@
 #' @export
 #'
 #' @examples
-#' scheme_download_repo(
+#' scheme_download_(
 #'   name = "dmdScheme",
-#'   version = "0.9.5",
-#'   type = "xml",
-#'   destfile = tempfile()
+#'   version = "0.9.5"
 #' )
-scheme_download_repo <- function(
+scheme_download_ <- function(
   name,
   version,
-  type = "xlsx",
-  destfile = paste0(name, "_", version, ".", type),
+  destfile = NULL,
   overwrite = FALSE,
-  baseurl = "https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/raw/master/schemes/",
+  baseurl = "https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/raw/master/",
   ...
 ) {
+
+  if (is.null(destfile)) {
+    path <- tempfile()
+    dir.create(path)
+    destfile <- file.path(path, paste0(name, "_", version, ".tar.gz"))
+  } else {
+    destfile <- normalizePath(destfile)
+  }
 
   if ( file.exists(destfile) & (!overwrite) ) {
     stop("destfile does exist!\n", "  Use `overwrite = TRUE` to overwrite destfile.")
@@ -42,8 +46,16 @@ scheme_download_repo <- function(
 
   url <- paste0(
     baseurl,
-    name, "_", version, ".", type
+    "schemes/",
+    name, "_", version, ".tar.gz"
   )
-  utils::download.file( url = url, destfile = destfile, ...)
+
+  result <- utils::download.file( url = url, destfile = destfile, ...)
+
+  if (result != 0) {
+    stop("Download not successfull. Return value from `download.file() = `", result)
+  }
+
+  return(invisible(destfile))
 ##
 }

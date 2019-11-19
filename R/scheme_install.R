@@ -3,7 +3,7 @@
 #' \bold{\code{scheme_install()}:} Installed schemes are copied to \code{system.file("installedSchemes",
 #' package = "dmdScheme")} and , if necessary, an \code{.xlsx} definition is
 #' saved in addition. These can be listed by using \link{scheme_list}.
-#' @param schemeDefinition file containing the definition of the dmdScheme in a format readable by this package
+#' @param repo if \code{NULL}, the
 #' @param overwrite if \code{TRUE}, the scheme will be overwritten if it exists
 #'
 #' @return result of \link{file.copy}
@@ -19,13 +19,68 @@
 #' }
 #'
 scheme_install <- function(
-  schemeDefinition,
+  name,
+  version,
+  repo = NULL,
   overwrite = FALSE
 ){
+
+  if (!overwrite) {
+    if ( scheme_installed(name, version) ) {
+      stop("Scheme is already installed! Use `overwrite = TRUE` if you want to overwrite it!")
+    }
+  }
+
+  # Download when rep == NULL -----------------------------------------------
+
+  if (!is.null(repo)) {
+    schemeDefinition <- scheme_download_(
+      name = name,
+      version = version,
+      baseurl = repo
+    )
+  }
+
+
+  # untar and return list of scheme definitions which can be install --------
 
   if (!file.exists(schemeDefinition)) {
     stop("schemeDefinition does not exist!")
   }
+
+  path <- dirname(schemeDefinition)
+
+  files <- untar(
+    tarfile = schemeDefinition,
+    exdir = path
+  )
+
+  files <- list.files(
+    path = file.path(path, paste0(name, "_", version)),
+    full.names = TRUE
+  )
+
+  scheme <- grep(
+    pattern = paste0(name, "_", version, ".xlsx"),
+    x = files,
+    value = TRUE
+  )
+
+  if (length(scheme) == 1) {
+    schemeDefinition <- scheme
+  } else {
+    scheme <- grep(
+      pattern = paste0(name, "_", version, ".xml"),
+      x = files,
+      value = TRUE
+    )
+  }
+
+  if (length(scheme) != 1) {
+    stop("Invalid scheme definition.")
+  }
+
+  # Install scheme definition -----------------------------------------------
 
   type <- tools::file_ext(schemeDefinition)
   scheme <- switch(
@@ -42,12 +97,6 @@ scheme_install <- function(
   schemeFile <- file.path( system.file("installedSchemes", package = "dmdScheme"), schemeName  )
   excelFile  <- file.path( system.file("installedSchemes", package = "dmdScheme"), gsub(type, "xlsx", schemeName) )
   xmlFile    <- file.path( system.file("installedSchemes", package = "dmdScheme"), gsub(type, "xml",  schemeName) )
-
-  if (!overwrite) {
-    if ( any(file.exists( c(schemeFile, excelFile, xmlFile ))) ) {
-      stop("schemeDefinition exists! Use `overwrite = TRUE` if you want to overwrite it!")
-    }
-  }
 
   if (type != "xlsx") {
     write_excel(scheme, excelFile)
