@@ -31,7 +31,7 @@ test_that(
 #   {
 #     expect_known_value(
 #       object = read_excel(
-#         file = scheme_file(),
+#         file = scheme_path_xlsx(),
 #         keepData = TRUE,
 #         raw = TRUE,
 #         verbose = FALSE
@@ -46,7 +46,7 @@ test_that(
 #   {
 #     expect_known_value(
 #       object = read_excel(
-#         file = scheme_file(),
+#         file = scheme_path_xlsx(),
 #         keepData = FALSE,
 #         raw = FALSE,
 #         verbose = FALSE
@@ -64,7 +64,7 @@ test_that(
 # #   {
 # #     expect_known_output(
 # #       object = read_excel(
-# #         file = scheme_file(),
+# #         file = scheme_path_xlsx(),
 # #         keepData = TRUE,
 # #         raw = TRUE,
 # #         verbose = TRUE

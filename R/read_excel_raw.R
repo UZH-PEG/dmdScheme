@@ -19,7 +19,7 @@
 #' @export
 #'
 #' @examples
-#' read_excel_raw( scheme_file() )
+#' read_excel_raw( scheme_path_xlsx() )
 #'
 read_excel_raw <- function(
   file,

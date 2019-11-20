@@ -20,11 +20,11 @@ test_that(
   "upgrade_old_files() gives warning and returns `NULL` if same version as current",
   {
     expect_warning(
-      object = upgrade_old_files(file = scheme_file()),
+      object = upgrade_old_files(file = scheme_path_xlsx()),
       regexp = "File has same version as the installed package. No conversion necessary!"
     )
     expect_null(
-      object = suppressWarnings(upgrade_old_files(file = scheme_file()))
+      object = suppressWarnings(upgrade_old_files(file = scheme_path_xlsx()))
     )
   }
 )

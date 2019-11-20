@@ -20,7 +20,7 @@ test_that(
   "validata_raw() returns correct value when correct",
   {
     expect_known_value(
-      object = validate( x = scheme_file(), errorIfStructFalse = TRUE),
+      object = validate( x = scheme_path_xlsx(), errorIfStructFalse = TRUE),
       file = "ref-08-validate.character.CORRECT.rda"
     )
   }

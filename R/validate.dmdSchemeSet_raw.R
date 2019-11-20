@@ -19,7 +19,7 @@
 #' )
 #'
 #' ## use `read_raw()` to read an Excel spreadsheet into a `dmdScheme_raw` object
-#' x <- read_excel_raw( scheme_file() )
+#' x <- read_excel_raw( scheme_path_xlsx() )
 #' validate( x = x )
 #'
 validate.dmdSchemeSet_raw <- function(

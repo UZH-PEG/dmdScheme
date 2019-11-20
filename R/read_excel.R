@@ -32,7 +32,7 @@
 #' @export
 #'
 #' @examples
-#' fn <- scheme_file()
+#' fn <- scheme_path_xlsx()
 #' read_excel(
 #'   file = fn
 #' )

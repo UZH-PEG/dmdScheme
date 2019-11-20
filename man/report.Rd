@@ -64,7 +64,7 @@ This generic function creates a report based on the object.
 
 \examples{
 ## Report of `dmdScheme_validation`
-report( scheme_file() )
+report( scheme_path_xlsx() )
 
 ## Report of `dmdScheme_validation`
 report( validate(dmdScheme_raw) )

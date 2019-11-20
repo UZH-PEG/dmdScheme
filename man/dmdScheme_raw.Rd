@@ -34,7 +34,7 @@ converted to an object of class \code{\link[dmdScheme]{dmdSchemeSet}}.
 ## Created by using
 path <- system.fil;e( "dmdScheme.xlsx", package = "dmdScheme")
 dmdScheme_raw <- read_excel(
-  file = scheme_file(),
+  file = scheme_path_xlsx(),
   verbose = TRUE,
   raw = TRUE
 )

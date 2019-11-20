@@ -7,7 +7,7 @@
 #' @md
 #' @examples
 #' ## Report of `dmdScheme_validation`
-#' report( scheme_file() )
+#' report( scheme_path_xlsx() )
 #'
 #' @describeIn report report of a `dmdScheme_validation` object.
 #'

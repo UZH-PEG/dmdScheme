@@ -90,7 +90,7 @@ open_new_spreadsheet <- function(
 
 # Format if asked for, otherwise copy to fn unchanged ---------------------
 
-  schemeName <- system.file(file.path("installedSchemes", paste0(schemeName, ".xlsx")), package = utils::packageName())
+  schemeName <- scheme_path_xlsx()
 
   if (!file.exists(schemeName)) {
     stop("Scheme definition is not installed! Please use `scheme_list() to see all installed schemes!")

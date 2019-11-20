@@ -40,7 +40,7 @@ scheme name is always done. Additional validations are done depending on the
 arguments \code{validate}. See detals below.
 }
 \examples{
-fn <- scheme_file()
+fn <- scheme_path_xlsx()
 read_excel(
   file = fn
 )
