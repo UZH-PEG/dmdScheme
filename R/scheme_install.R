@@ -10,6 +10,7 @@
 #'
 #' @rdname scheme
 #'
+#' @importFrom utils untar
 #' @export
 #'
 #' @examples
@@ -50,7 +51,7 @@ scheme_install <- function(
 
   path <- dirname(schemeDefinition)
 
-  files <- untar(
+  files <- utils::untar(
     tarfile = schemeDefinition,
     exdir = path
   )
