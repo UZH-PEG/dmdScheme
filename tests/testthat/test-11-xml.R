@@ -32,7 +32,7 @@ test_that(
   {
     expect_equal(
       object = read_xml(
-        file = sscheme_path_xml()
+        file = scheme_path_xml()
       ),
       expected = dmdScheme_example
     )

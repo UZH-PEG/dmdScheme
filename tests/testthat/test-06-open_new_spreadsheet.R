@@ -5,26 +5,6 @@ context("06-open_new_spreadsheet()")
 fn <- tempfile()
 
 test_that(
-  "open_new_spreadsheet() raises error when scheme is not installed",
-  {
-    expect_error(
-      object = suppressWarnings(open_new_spreadsheet(schemeName = "doesnotexist", file = fn, .skipBrowseURL = TRUE)),
-      regexp = "Scheme definition is not installed! Please use "
-    )
-  }
-)
-
-test_that(
-  "open_new_spreadsheet() raises error when schemeName is not specified",
-  {
-    expect_true(
-      object = suppressWarnings( file.exists( open_new_spreadsheet(.skipBrowseURL = TRUE) ) )
-    )
-  }
-)
-
-
-test_that(
   "open_new_spreadsheet() returns path after saving to file and opening - `format = TRUE`",
   {
     expect_equal(

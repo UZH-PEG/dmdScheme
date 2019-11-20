@@ -19,7 +19,7 @@
 #' @export
 #'
 #' @examples
-#' scheme_download_(
+#' scheme_download(
 #'   name = "dmdScheme",
 #'   version = "0.9.5"
 #' )

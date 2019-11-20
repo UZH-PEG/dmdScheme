@@ -4,14 +4,11 @@
 \alias{open_new_spreadsheet}
 \title{Open the metadata scheme as a spreadsheet in a spreadsheet editor}
 \usage{
-open_new_spreadsheet(schemeName = paste0(dmdScheme_versions()$name, "_",
-  dmdScheme_versions()$scheme), file = NULL, open = TRUE,
-  keepData = FALSE, format = TRUE, overwrite = FALSE,
-  verbose = FALSE, .skipBrowseURL = FALSE)
+open_new_spreadsheet(file = NULL, open = TRUE, keepData = FALSE,
+  format = TRUE, overwrite = FALSE, verbose = FALSE,
+  .skipBrowseURL = FALSE)
 }
 \arguments{
-\item{schemeName}{name of the scheme. Default: the default one of the package.}
-
 \item{file}{if not \code{NULL}, the template will be saved to this file.}
 
 \item{open}{if \code{TRUE}, the file will be opened. This can produce different results depending on the OS, browsr and browser settings.}

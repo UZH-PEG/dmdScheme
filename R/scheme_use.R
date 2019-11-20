@@ -49,8 +49,4 @@ scheme_use <- function(
   lockBinding("dmdScheme", as.environment("package:dmdScheme"))
 
   message("Theme switched to ", schemeName)
-
-  unlockBinding("scheme_active", as.environment("package:dmdScheme"))
-  assign("scheme_active", data.frame(name = name, version = version, stringsAsFactors = FALSE), "package:dmdScheme")
-  lockBinding("scheme_active", as.environment("package:dmdScheme"))
 }

@@ -13,6 +13,6 @@ fully qualified path to the \code{xlsx} file containing the scheme definitipn an
 Functions to manage schemes
 }
 \examples{
-scheme_xlsx()
+scheme_path_xlsx()
 
 }

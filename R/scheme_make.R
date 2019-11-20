@@ -4,6 +4,8 @@
 #' @param path where the final scheme definition should be created.
 #' @param overwrite if \code{TRUE}, the scheme definition in \code{path} will be overwritten.
 #'
+#' @importFrom utils write.table
+#'
 #' @return fully qualified path to the created scheme
 #' @export
 #'
@@ -51,7 +53,7 @@ scheme_make <- function(
   md5 <- md5sum(list.files(tmppath, full.names = TRUE))
   names(md5) <- basename(names(md5))
 
-  write.table(md5, file.path(tmppath, "md5sum.txt"))
+  utils::write.table(md5, file.path(tmppath, "md5sum.txt"))
 
   oldwd <- setwd(rootpath)
   try(
