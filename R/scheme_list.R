@@ -17,9 +17,7 @@
 scheme_list <- function() {
 
   result <- system.file("installedSchemes", package = "dmdScheme") %>%
-    list.files() %>%
-    tools::file_path_sans_ext() %>%
-    unique() %>%
+    list.dirs(full.names = FALSE, recursive = FALSE) %>%
     strsplit("_")
 
   result <- data.frame(

@@ -24,16 +24,13 @@ scheme_use <- function(
   version = NULL
 ) {
 
-  if (!name %in% scheme_list()[["name"]]) {
-    stop("Scheme with the name '", name, "' is not instaled!")
+  if (!scheme_installed(name, version)) {
+    stop("`", name, "_", version, "`is not instaled!")
   }
 
-  if (!version %in% scheme_list()[["version"]]) {
-    stop("Version '", version, "' of scheme '", name, "' is not instaled!")
-  }
 
   schemeName <- paste0( name, "_", version)
-  schemeDefinition <- system.file("installedSchemes", paste0( schemeName, ".xml" ), package = "dmdScheme")
+  schemeDefinition <- system.file("installedSchemes", schemeName, paste0( schemeName, ".xml" ), package = "dmdScheme")
 
   scheme_example <- read_xml(  schemeDefinition, useSchemeInXml = TRUE )
 

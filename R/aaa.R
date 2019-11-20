@@ -8,7 +8,7 @@
   )
   ##
   if ( !scheme_installed( ver$schemeName, ver$schemeVersion) ) {
-    dmdScheme::scheme_install("emeScheme", "0.9.5", repo = "https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/raw/master/")
+    dmdScheme::scheme_install(ver$schemeName, ver$schemeVersion, repo = "https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/raw/master/")
   }
   scheme_use( name = ver$schemeName, version = ver$schemeVersion)
 }

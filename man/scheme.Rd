@@ -4,7 +4,7 @@
 %   R/scheme_uninstall.R, R/scheme_use.R
 \name{scheme_default}
 \alias{scheme_default}
-\alias{scheme_download_}
+\alias{scheme_download}
 \alias{scheme_file}
 \alias{scheme_install}
 \alias{scheme_installed}
@@ -15,13 +15,15 @@
 \usage{
 scheme_default()
 
-scheme_download_(name, version, destfile = NULL, overwrite = FALSE,
+scheme_download(name, version, destfile = NULL, overwrite = FALSE,
   baseurl = "https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/raw/master/",
   ...)
 
 scheme_file(type = "xlsx")
 
-scheme_install(name, version, repo = NULL, overwrite = FALSE)
+scheme_install(name, version,
+  repo = "https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/raw/master/",
+  file = NULL, overwrite = FALSE)
 
 scheme_installed(name, version)
 
@@ -50,7 +52,9 @@ repository in which the scheme definitions are located.}
 
 \item{type}{extension of the file to be returned}
 
-\item{repo}{if \code{NULL}, the}
+\item{repo}{repo of the schemes.}
+
+\item{file}{if give, this file will be used as the local scheme definition, and \code{repo} will be ignored}
 
 \item{delete}{if \code{TRUE}, the scheme definitions will be deleted, if
 \code{FALSE}, the paths will be returned}
@@ -62,7 +66,7 @@ invisibly the value of \code{destfile}
 
 fully qualified path to the file of type of the currently active scheme, if it does not exist, an error is raised.
 
-result of \link{file.copy}
+invisibly \code{NULL}
 
 \code{TRUE} if the theme is installed, \code{FALSE} if not
 

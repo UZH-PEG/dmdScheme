@@ -23,7 +23,7 @@
 #'   name = "dmdScheme",
 #'   version = "0.9.5"
 #' )
-scheme_download_ <- function(
+scheme_download <- function(
   name,
   version,
   destfile = NULL,
