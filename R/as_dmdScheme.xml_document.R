@@ -143,12 +143,7 @@ as_dmdScheme.xml_document <- function(
     }
     result <- xml_to_dmdSchemeOnly(x)
   } else {
-    result <- NULL
-    try(
-      {
-        result <- get(eval(xml2::xml_attrs(x)[["dmdSchemeName"]]))
-      }
-    )
+    result <- dmdScheme
     # Check if result scheme exists -------------------------------------------
 
     if (is.null(result)) {
