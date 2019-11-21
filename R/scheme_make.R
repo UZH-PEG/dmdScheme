@@ -50,6 +50,12 @@ scheme_make <- function(
 
 # build package -----------------------------------------------------------
 
+  schemePackageVersion <- utils::packageDescription(
+    "dmdScheme",
+    fields = c( "schemePackageVersion" )
+  )
+  writeLines(schemePackageVersion, file.path(tmppath, "schemePackageVersion"))
+
   md5 <- md5sum(list.files(tmppath, full.names = TRUE))
   names(md5) <- basename(names(md5))
 
