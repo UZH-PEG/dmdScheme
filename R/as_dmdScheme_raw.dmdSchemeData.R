@@ -98,6 +98,14 @@ as_dmdScheme_raw.dmdSchemeData <- function(
     class(result)
   )
 
+  rawClass <- paste0(attr(result, "dmdSchemeName"), "Data_raw")
+  if (rawClass != "dmdSchemeData_raw") {
+    class(result) <- append(
+      rawClass,
+      class(result)
+    )
+  }
+
   # Return ------------------------------------------------------------------
 
   return(result)
