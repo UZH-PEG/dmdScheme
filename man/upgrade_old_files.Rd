@@ -4,7 +4,7 @@
 \alias{upgrade_old_files}
 \title{Convert older scheme versions of files to newer newer versions}
 \usage{
-upgrade_old_files(file, to = dmdScheme_versions()$scheme)
+upgrade_old_files(file, to = scheme_active()$version)
 }
 \arguments{
 \item{file}{file name of \code{xlsx} or of \code{xml} file containing scheme

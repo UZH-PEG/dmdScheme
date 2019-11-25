@@ -5,6 +5,7 @@
 #' @param overwrite if \code{TRUE}, the scheme definition in \code{path} will be overwritten.
 #'
 #' @importFrom utils write.table
+#' @importFrom tools md5sum
 #'
 #' @return fully qualified path to the created scheme
 #' @export
@@ -56,10 +57,11 @@ scheme_make <- function(
   )
   writeLines(schemePackageVersion, file.path(tmppath, "schemePackageVersion"))
 
-  md5 <- md5sum(list.files(tmppath, full.names = TRUE))
+  md5 <- tools::md5sum(list.files(tmppath, full.names = TRUE))
   names(md5) <- basename(names(md5))
 
   utils::write.table(md5, file.path(tmppath, "md5sum.txt"))
+
 
   oldwd <- setwd(rootpath)
   try(

@@ -3,10 +3,9 @@ Title: Domain Specific MetaData Scheme
 Description: A Package forming the core for developing own domain specific metadata schemes. It contains the basic functionality needed for all meatdata schemes based on the
                    \code{dmdScheme}.
 Version: 0.9.11.1
-schemePackageVersion: 1.0.0
 schemeVersion: 0.9.5
 schemeName: dmdScheme
-Date: 2019-07-12
+Date: 2019-25-11
 Authors@R: c( person( "Rainer M.", "Krug", role = c("aut", "cre"), email = "Rainer.Krug@uzh.ch" ), person( "Owen L.", "Petchey", role = c("ctb"), email = "Owen.Petchey@uzh.ch" )
                    )
 URL: https://exp-micro-ecol-hub.github.io/dmdScheme/, https://github.com/Exp-Micro-Ecol-Hub/dmdScheme
@@ -23,6 +22,4 @@ StagedInstall: true
 RoxygenNote: 6.1.1
 Suggests: covr (>= 3.2.1), testthat (>= 2.0.1), here (>= 0.1), kableExtra (>= 0.9.0), shiny
 Enhances: plantuml (>= 0.2.3.2)
-schemeUpdate: 2019-09-27 09:46:43
-schemeMD5: 486c5e0ee06591d541b441774bc4d19f
 VignetteBuilder: knitr
