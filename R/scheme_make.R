@@ -41,7 +41,7 @@ scheme_make <- function(
   tmppath <- file.path(rootpath, schemeName)
   dir.create(tmppath, recursive = TRUE)
 
-  file.copy(schemeDefinition, tmppath)
+  file.copy(schemeDefinition, file.path(tmppath, paste0(schemeName, ".xlsx")))
 
   write_xml(
     x = scheme,
@@ -51,11 +51,7 @@ scheme_make <- function(
 
 # build package -----------------------------------------------------------
 
-  schemePackageVersion <- utils::packageDescription(
-    "dmdScheme",
-    fields = c( "schemePackageVersion" )
-  )
-  writeLines(schemePackageVersion, file.path(tmppath, "schemePackageVersion"))
+  writeLines(version, file.path(tmppath, "schemePackageVersion"))
 
   md5 <- tools::md5sum(list.files(tmppath, full.names = TRUE))
   names(md5) <- basename(names(md5))
@@ -73,12 +69,12 @@ scheme_make <- function(
   )
   setwd(oldwd)
 
-
   # move definition and return ----------------------------------------------
 
   file.copy(
     from = file.path(rootpath, paste0(schemeName, ".tar.gz")),
-    to = file.path(path, paste0(schemeName, ".tar.gz"))
+    to = file.path(path, paste0(schemeName, ".tar.gz")),
+    overwrite = overwrite
   )
 
   return(file.path(path, paste0(schemeName, ".tar.gz")))
