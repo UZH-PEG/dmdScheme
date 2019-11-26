@@ -29,7 +29,7 @@ scheme_installed(name, version)
 
 scheme_list()
 
-scheme_uninstall(name = NULL, version = NULL, delete = FALSE)
+scheme_uninstall(name = NULL, version = NULL)
 
 scheme_use(name = NULL, version = NULL)
 }
@@ -53,9 +53,6 @@ repository in which the scheme definitions are located.}
 \item{repo}{repo of the schemes.}
 
 \item{file}{if give, this file will be used as the local scheme definition, and \code{repo} will be ignored}
-
-\item{delete}{if \code{TRUE}, the scheme definitions will be deleted, if
-\code{FALSE}, the paths will be returned}
 }
 \value{
 \code{data.frame} with two columns containing name and version of the default scheme
@@ -70,9 +67,7 @@ invisibly \code{NULL}
 
 \code{data.frame} with two columns containing name and version of the intalled schemes
 
-if \code{delete = TRUE}, the result from the function
-  \link{unlink}, otherwise the fully qualified paths of the files which
-  would be deleted.
+invisibly returns the temporary location where the scheme definition is moved to.
 }
 \description{
 \bold{\code{scheme_active()}:} Shows the name and version of the active scheme.
@@ -97,7 +92,7 @@ scheme definition and are effectively equivalent, only that the tab
 Documentation can only be found in the \code{.xls} files.
 
 \bold{\code{scheme_uninstall()}:} Installed schemes are deleted from \code{system.file("installedSchemes",
-package = "dmdScheme")}.
+package = "dmdScheme")} and moved to a temporary folder which is rteturned invisibly.
 
 \bold{\code{scheme_use()}:} Switch from the current scheme to a new scheme as defined in the scheme
 \code{schemeDefinition}. Installed schemes can be listed by using \code{scheme_list()}.

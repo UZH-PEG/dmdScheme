@@ -1,13 +1,9 @@
 #' Functions to manage schemes
 #'
 #' \bold{\code{scheme_uninstall()}:} Installed schemes are deleted from \code{system.file("installedSchemes",
-#' package = "dmdScheme")}.
-#' @param delete if \code{TRUE}, the scheme definitions will be deleted, if
-#'   \code{FALSE}, the paths will be returned
+#' package = "dmdScheme")} and moved to a temporary folder which is rteturned invisibly.
 #'
-#' @return if \code{delete = TRUE}, the result from the function
-#'   \link{unlink}, otherwise the fully qualified paths of the files which
-#'   would be deleted.
+#' @return invisibly returns the temporary location where the scheme definition is moved to.
 #'
 #' @rdname scheme
 #'
@@ -20,8 +16,7 @@
 #'
 scheme_uninstall <- function(
   name = NULL,
-  version = NULL,
-  delete = FALSE
+  version = NULL
 ){
 
   if (!scheme_installed(name, version)) {
@@ -36,18 +31,21 @@ scheme_uninstall <- function(
     stop("You can not uninstall the default scheme definition which comes with the package!")
   }
 
+  if ( all(c(name, version) == scheme_active()) ) {
+    stop("You can not uninstall the currently active scheme definition!")
+  }
+
   schemeName <- paste0( name, "_", version)
-  result <- list.files(
-    path = system.file("installedSchemes", package = "dmdScheme"),
-    pattern = paste0("^", schemeName, "\\."),
-    full.names = TRUE
+  sourcedir <- system.file("installedSchemes", schemeName, package = "dmdScheme")
+  tmpdir <- tempfile()
+  dir.create(tmpdir, recursive = TRUE)
+  file.copy(
+    from = sourcedir,
+    to = tmpdir,
+    recursive = TRUE
   )
 
-  if (delete) {
-    result <- unlink(result)
-    message("Theme ", schemeName, "deleted")
-    invisible( result )
-  } else {
-    return(result)
-  }
+  unlink(sourcedir, recursive = TRUE)
+  message("Scheme ", schemeName, " deleted and moved to")
+  return( tmpdir )
 }
