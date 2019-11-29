@@ -1,6 +1,6 @@
 #' Functions to manage schemes
 #'
-#' @param schemeDefinition path to the \code{.xlsx} fle containing the \bold{definition} of the scheme as well as the \bold{example}
+#' @param schemeDefinition path to the \code{.xlsx} file containing the \bold{definition} of the scheme as well as the \bold{example}
 #' @param path where the final scheme definition should be created.
 #' @param overwrite if \code{TRUE}, the scheme definition in \code{path} will be overwritten.
 #'
