@@ -8,6 +8,7 @@
 #
 
 library(shiny)
+library(magrittr)
 
 # Define UI for application that draws a histogram
 shinyUI(
@@ -28,16 +29,13 @@ shinyUI(
 
         # Schemes to be loaded ----------------------------------------------------
 
-        h1("Schemes to be loaded"),
+        h1("Activate available scheme definitions"),
 
         radioButtons(
           inputId = "loadPackage",
-          label = h3("Instaled dmdSchemes"),
-          choices = as.list(paste(
-            dmdScheme_installed()[,"Package"],
-            dmdScheme_installed()[,"Version"]
-          )),
-          selected = "dmdScheme"
+          label = h3("Available dmdSchemes"),
+          choices = names(scheme_list_in_repo()),
+          selected = scheme_active() %>% paste0(collapse = "_")
         ),
         textOutput(
           outputId = "loaded"
@@ -46,11 +44,17 @@ shinyUI(
         # New Empty Scheme --------------------------------------------------------
 
         hr(),
-        h1("New Empty Scheme"),
+        h1("New Scheme"),
 
         actionButton(
           inputId = "open",
           label = "Open empty scheme in Spreadsheet",
+          icon = NULL
+        ),
+
+        actionButton(
+          inputId = "openExample",
+          label = "Open scheme with example data in Spreadsheet",
           icon = NULL
         ),
 
@@ -80,12 +84,11 @@ shinyUI(
         # Export Uploded Spreadsheet to xml ---------------------------------------
 
         hr(),
-        h1("Export Uploded Spreadsheet to xml"),
+        h1("Export Uploaded Spreadsheet to xml"),
 
-        actionButton(
-          inputId = "export",
-          label = "Export metadata from spreadsheet to xml",
-          icon = NULL
+        downloadButton(
+          outputId = "downloadData",
+          label = "Export to xml"
         )
 
       ),

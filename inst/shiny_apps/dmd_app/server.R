@@ -11,35 +11,14 @@ shinyServer(
       eventExpr = input$loadPackage,
       ignoreNULL = FALSE,
       handlerExpr = {
-        pkgs_inst <- dmdScheme_installed()[,"Package"]
-        if (is.null(input$loadPackage)) {
-          toLoad <- character(0)
-        } else {
-          toLoad <- sapply(
-            strsplit(input$loadPackage, " "),
-            "[[",
-            1
-          )
+        name <-  strsplit(input$loadPackage, "_")[[1]][[1]]
+        version <-  strsplit(input$loadPackage, "_")[[1]][[2]]
+        if (!scheme_installed(name, version)) {
+          scheme_install( name = name, version = version )
         }
-        toUnLoad <- pkgs_inst[ !(pkgs_inst %in% toLoad) ]
-        # unload unchecked schemes
-        for (x in toUnLoad) {
-          if ( isNamespaceLoaded(x) ) {
-            detach(paste0("package:", x), unload = TRUE, character.only = TRUE)
-          }
-        }
-        # load checked schemes
-        for (x in toLoad) {
-          require(x, character.only = TRUE)
-        }
-        ##
-        loaded <- "Packages Loaded:"
-        for (x in pkgs_inst) {
-          if ( isNamespaceLoaded(x) ) {
-            loaded <- paste(loaded, x)
-          }
-        }
-        output$loaded <- renderPrint(loaded)
+        scheme_use( name = name, version = version )
+
+        output$loaded <- renderPrint(paste("Active scheme is ", scheme_active()$name, " version ", scheme_active()$version))
       }
     )
 
@@ -48,7 +27,14 @@ shinyServer(
     observeEvent(
       eventExpr = input$open,
       handlerExpr = {
-        open_new_spreadsheet( schemeName = strsplit(input$loadPackage, " ")[[1]][[1]] )
+        open_new_spreadsheet( keepData = TRUE )
+      }
+    )
+
+    observeEvent(
+      eventExpr = input$openExample,
+      handlerExpr = {
+        open_new_spreadsheet( keepData = TRUE )
       }
     )
 
@@ -63,11 +49,14 @@ shinyServer(
 
     # Export to xml -----------------------------------------------------------
 
-    observeEvent(
-      eventExpr = input$export,
-      handlerExpr = {
-        x <- as_xml( x = input$spreadsheet$datapath )
-        output$text <- renderPrint(x)
+    output$downloadData <- downloadHandler(
+      filename = ifelse(
+        is.null(input$spreadsheet$datapath),
+        "export.xml",
+        gsub(".xlsx", ".xml", basename(input$spreadsheet$datapath))
+      ),
+      content = function(file) {
+        x <- write_xml( x = read_excel(input$spreadsheet$datapath), file = file, output = "complete" )
       }
     )
 
