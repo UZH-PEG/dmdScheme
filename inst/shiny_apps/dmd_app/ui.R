@@ -54,7 +54,7 @@ shinyUI(
 
         actionButton(
           inputId = "openExample",
-          label = "Open scheme with example data in Spreadsheet",
+          label = "Open scheme with example MetaData in Spreadsheet",
           icon = NULL
         ),
 
