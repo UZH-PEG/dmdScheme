@@ -1,10 +1,14 @@
 library(shiny)
 
-if (!available) {
+
+# Install dmdScheme from github -------------------------------------------
+
   library(remotes)
   remotes::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "separateDefinition")
   library(dmdScheme)
-}
+
+
+# Server definition\ ------------------------------------------------------
 
 
 shinyServer(
