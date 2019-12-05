@@ -1,14 +1,9 @@
 library(shiny)
+library(dmdScheme)
 
 
-# Install dmdScheme from github -------------------------------------------
 
-  library(remotes)
-  remotes::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "separateDefinition")
-  library(dmdScheme)
-
-
-# Server definition\ ------------------------------------------------------
+# Server definition -----------------------------------------------------------
 
 
 shinyServer(
@@ -33,26 +28,26 @@ shinyServer(
 
     # Open new Spreadsheet ----------------------------------------------------
 
-    observeEvent(
-      eventExpr = input$open,
-      handlerExpr = {
-        open_new_spreadsheet( keepData = TRUE )
+    output$newEmptySpreadsheet <- downloadHandler(
+      filename = paste0(scheme_active()$name, "_", scheme_active()$version, ".xlsx"),
+      content = function(file) {
+        open_new_spreadsheet(file = file, keepData = FALSE)
       }
     )
 
-    observeEvent(
-      eventExpr = input$openExample,
-      handlerExpr = {
-        open_new_spreadsheet( keepData = TRUE )
+    output$newExamleSpreadsheet <- downloadHandler(
+      filename = paste0(scheme_active()$name, "_", scheme_active()$version, ".xlsx"),
+      content = function(file) {
+        open_new_spreadsheet(file = file, keepData = TRUE)
       }
     )
 
     # Validate ----------------------------------------------------------------
 
-    observeEvent(
-      eventExpr = input$validate,
-      handlerExpr = {
-        report( x = input$spreadsheet$datapath )
+    output$downloadValidationReport <- downloadHandler(
+      filename = paste0(basename(input$spreadsheet$datapath), "_ValidationReport.html"),
+      content = function(file) {
+        x <- report( x = input$spreadsheet$datapath, open = FALSE, report = "html", file = file )
       }
     )
 

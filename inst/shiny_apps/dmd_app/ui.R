@@ -1,3 +1,6 @@
+library(devtools)
+library(dmdScheme)
+
 #
 # This is the user-interface definition of a Shiny web application. You can
 # run the application by clicking 'Run App' above.
@@ -9,6 +12,8 @@
 
 library(shiny)
 library(magrittr)
+
+
 
 # Define UI for application that draws a histogram
 shinyUI(
@@ -41,21 +46,19 @@ shinyUI(
           outputId = "loaded"
         ),
 
-        # New Empty Scheme --------------------------------------------------------
+        # Download New Scheme --------------------------------------------------------
 
         hr(),
-        h1("New Scheme"),
+        h1("Download New Scheme"),
 
-        actionButton(
-          inputId = "open",
-          label = "Open empty scheme in Spreadsheet",
-          icon = NULL
+        downloadButton(
+          outputId = "newEmptySpreadsheet",
+          label = "Empty scheme Spreadsheet"
         ),
 
-        actionButton(
-          inputId = "openExample",
-          label = "Open scheme with example MetaData in Spreadsheet",
-          icon = NULL
+        downloadButton(
+          outputId = "newExampleSpreadsheet",
+          label = "Example scheme Spreadsheet"
         ),
 
         # Upload Spreadsheet containing Metadata ----------------------------------
@@ -73,12 +76,12 @@ shinyUI(
         # Validate Uploaded Metadata ----------------------------------------------
 
         hr(),
-        h1("Validate Uploaded Metadata"),
+        h1("Download Validation Report"),
 
-        actionButton(
-          inputId = "validate",
-          label = "Validate metadata from spreadsheet",
-          icon = NULL
+
+        downloadButton(
+          outputId = "downloadValidationReport",
+          label = "Create and download"
         ),
 
         # Export Uploded Spreadsheet to xml ---------------------------------------

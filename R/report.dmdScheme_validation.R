@@ -26,7 +26,6 @@ report.dmdScheme_validation <- function(
   report_title = "Validation of data against dmdScheme",
   ...
 ) {
-
   if (length(report) != 1) {
     stop("'report' has to be exactly of length 1!")
   }
