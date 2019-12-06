@@ -78,6 +78,12 @@ shinyUI(
         hr(),
         h1("Download Validation Report"),
 
+        radioButtons(
+          inputId = "formatValidationReport",
+          label = "Format of report",
+          choices = list("html" = "html", "docx" = "docx", "pdf" = "pdf"),
+          selected = "html"
+        ),
 
         downloadButton(
           outputId = "downloadValidationReport",

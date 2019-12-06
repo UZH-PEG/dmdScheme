@@ -29,14 +29,14 @@ shinyServer(
     # Open new Spreadsheet ----------------------------------------------------
 
     output$newEmptySpreadsheet <- downloadHandler(
-      filename = paste0(scheme_active()$name, "_", scheme_active()$version, ".xlsx"),
+      filename = function(){paste0(scheme_active()$name, "_", scheme_active()$version, ".xlsx")},
       content = function(file) {
         open_new_spreadsheet(file = file, keepData = FALSE)
       }
     )
 
     output$newExampleSpreadsheet <- downloadHandler(
-      filename = paste0(scheme_active()$name, "_", scheme_active()$version, "_example.xlsx"),
+      filename = function(){paste0(scheme_active()$name, "_", scheme_active()$version, "_example.xlsx")},
       content = function(file) {
         open_new_spreadsheet(file = file, keepData = TRUE)
       }
@@ -45,24 +45,24 @@ shinyServer(
     # Validate ----------------------------------------------------------------
 
     output$downloadValidationReport <- downloadHandler(
-      filename = ifelse(
-        is.null(input$spreadsheet$datapath),
-        paste0(scheme_active()$name, "_", scheme_active()$version, "_validationReport.html"),
-        paste0(basename(input$spreadsheet$datapath), "_ValidationReport.html")
-      ),
+      filename = function(){
+        paste0(input$spreadsheet$name, "_ValidationReport.", input$formatValidationReport)
+      },
       content = function(file) {
-        x <- report( x = input$spreadsheet$datapath, open = FALSE, report = "html", file = file )
+        report( x = input$spreadsheet$datapath, open = FALSE, report = input$formatValidationReport, file = file )
       }
     )
 
     # Export to xml -----------------------------------------------------------
 
     output$downloadData <- downloadHandler(
-      filename = ifelse(
-        is.null(input$spreadsheet$datapath),
-        "export.xml",
-        gsub(".xlsx", ".xml", basename(input$spreadsheet$datapath))
-      ),
+      filename = function(){
+        ifelse(
+          is.null(input$spreadsheet$name),
+          "export.xml",
+          gsub(".xlsx", ".xml", input$spreadsheet$name)
+        )
+      },
       content = function(file) {
         x <- write_xml( x = read_excel(input$spreadsheet$datapath), file = file, output = "complete" )
       }
