@@ -35,8 +35,8 @@ shinyServer(
       }
     )
 
-    output$newExamleSpreadsheet <- downloadHandler(
-      filename = paste0(scheme_active()$name, "_", scheme_active()$version, ".xlsx"),
+    output$newExampleSpreadsheet <- downloadHandler(
+      filename = paste0(scheme_active()$name, "_", scheme_active()$version, "_example.xlsx"),
       content = function(file) {
         open_new_spreadsheet(file = file, keepData = TRUE)
       }
