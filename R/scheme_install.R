@@ -1,8 +1,9 @@
 #' Functions to manage schemes
 #'
-#' \bold{\code{scheme_install()}:} Installed schemes are copied to \code{system.file("installedSchemes",
-#' package = "dmdScheme")} and , if necessary, an \code{.xlsx} definition is
-#' saved in addition. These can be listed by using \link{scheme_list}.
+#' \bold{\code{scheme_install()}:} Installed schemes are copied to
+#' \code{cache("installedSchemes")} and , if necessary, an \code{.xlsx}
+#' definition is saved in addition. These can be listed by using
+#' \link{scheme_list}.
 #' @param repo repo of the schemes.
 #' @param file if give, this file will be used as the local scheme definition, and \code{repo} will be ignored
 #' @param overwrite if \code{TRUE}, the scheme will be overwritten if it exists
@@ -68,11 +69,9 @@ scheme_install <- function(
     stop("schemeDefinition does not exist!")
   }
 
-  path <- (system.file("installedSchemes", package = "dmdScheme"))
-
   utils::untar(
     tarfile = schemeDefinition,
-    exdir = path
+    exdir = cache("installedSchemes", create = TRUE)
   )
 
   # Return ------------------------------------------------------------------

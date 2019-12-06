@@ -16,7 +16,7 @@
 #'
 scheme_list <- function() {
 
-  result <- system.file("installedSchemes", package = "dmdScheme") %>%
+  result <- cache("installedSchemes") %>%
     list.dirs(full.names = FALSE, recursive = FALSE) %>%
     strsplit("_")
 

@@ -9,7 +9,7 @@
 scheme_path_xml <- function() {
   schemeName <- paste0(scheme_active()$name, "_", scheme_active()$version )
 
-  result <- system.file("installedSchemes", schemeName, paste0(schemeName, ".xml"), package = "dmdScheme")
+  result <- file.path(cache("installedSchemes", schemeName), paste0(schemeName, ".xml"))
 
   return(result)
 }

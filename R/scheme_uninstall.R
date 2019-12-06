@@ -1,9 +1,11 @@
 #' Functions to manage schemes
 #'
-#' \bold{\code{scheme_uninstall()}:} Installed schemes are deleted from \code{system.file("installedSchemes",
-#' package = "dmdScheme")} and moved to a temporary folder which is rteturned invisibly.
+#' \bold{\code{scheme_uninstall()}:} Installed schemes are deleted from
+#' \code{cache("installedSchemes")} and moved to a temporary folder which is
+#' rteturned invisibly.
 #'
-#' @return invisibly returns the temporary location where the scheme definition is moved to.
+#' @return invisibly returns the temporary location where the scheme definition
+#'   is moved to.
 #'
 #' @rdname scheme
 #'
@@ -36,11 +38,10 @@ scheme_uninstall <- function(
   }
 
   schemeName <- paste0( name, "_", version)
-  sourcedir <- system.file("installedSchemes", schemeName, package = "dmdScheme")
   tmpdir <- tempfile()
   dir.create(tmpdir, recursive = TRUE)
   file.copy(
-    from = sourcedir,
+    from = cache("installedSchemes"),
     to = tmpdir,
     recursive = TRUE
   )

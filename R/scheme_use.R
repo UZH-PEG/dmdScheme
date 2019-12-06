@@ -30,7 +30,7 @@ scheme_use <- function(
 
 
   schemeName <- paste0( name, "_", version)
-  schemeDefinition <- system.file("installedSchemes", schemeName, paste0( schemeName, ".xml" ), package = "dmdScheme")
+  schemeDefinition <- file.path(cache("installedSchemes", schemeName), paste0( schemeName, ".xml" ))
 
   scheme_example <- read_xml(  schemeDefinition, useSchemeInXml = TRUE )
 
