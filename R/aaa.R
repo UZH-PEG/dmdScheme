@@ -1,3 +1,5 @@
+.dmdScheme_cache <- new.env(FALSE, parent = globalenv())
+
 .onAttach <- function(libname, pkgname) {
   ver <- utils::packageDescription(
     utils::packageName(),

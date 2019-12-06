@@ -75,7 +75,8 @@ invisibly \code{NULL}
 
 Returns the info about the scheme definitions in this repo as a \code{list}.
 
-invisibly returns the temporary location where the scheme definition is moved to.
+invisibly returns the temporary location where the scheme definition
+  is moved to.
 }
 \description{
 \bold{\code{scheme_active()}:} Shows the name and version of the active scheme.
@@ -87,9 +88,10 @@ repo at \url{https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository}. This
 function dowloads a scheme definition, specified by \code{name} and
 \code{version}, and saves it locally under the name \code{destfile}
 
-\bold{\code{scheme_install()}:} Installed schemes are copied to \code{system.file("installedSchemes",
-package = "dmdScheme")} and , if necessary, an \code{.xlsx} definition is
-saved in addition. These can be listed by using \link{scheme_list}.
+\bold{\code{scheme_install()}:} Installed schemes are copied to
+\code{cache("installedSchemes")} and , if necessary, an \code{.xlsx}
+definition is saved in addition. These can be listed by using
+\link{scheme_list}.
 
 \bold{\code{scheme_installed()}:} Checks if a scheme is installed
 
@@ -101,8 +103,9 @@ Documentation can only be found in the \code{.xls} files.
 
 Scheme definitions can be stored in an online repo.
 
-\bold{\code{scheme_uninstall()}:} Installed schemes are deleted from \code{system.file("installedSchemes",
-package = "dmdScheme")} and moved to a temporary folder which is rteturned invisibly.
+\bold{\code{scheme_uninstall()}:} Installed schemes are deleted from
+\code{cache("installedSchemes")} and moved to a temporary folder which is
+rteturned invisibly.
 
 \bold{\code{scheme_use()}:} Switch from the current scheme to a new scheme as defined in the scheme
 \code{schemeDefinition}. Installed schemes can be listed by using \code{scheme_list()}.
