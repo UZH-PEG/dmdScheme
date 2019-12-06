@@ -50,8 +50,11 @@ report.dmdScheme_validation <- function(
   if (report != "none") {
     dir.create(reportDir)
 
+    tempReport <- file.path(tempdir(), "report.Rmd")
+    file.copy(system.file("reports", "validation_report.Rmd", package = "dmdScheme"), tempReport, overwrite = TRUE)
+
     result <- rmarkdown::render(
-      input = system.file("reports", "validation_report.Rmd", package = "dmdScheme"),
+      input = tempReport,
       output_format = ifelse(
         report == "all",
         "all",
