@@ -2,10 +2,6 @@
 #'
 #'
 #' Scheme definitions can be stored in an online repo.
-#' @param baseurl a \code{character} string containing the base url of the
-#'   repository in which the scheme definitions are located.
-#' @param ... additional parameter for the function \code{download.file}.
-#'
 #' @return Returns the info about the scheme definitions in this repo as a \code{list}.
 #'
 #' @rdname scheme

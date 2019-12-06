@@ -59,11 +59,6 @@ repository in which the scheme definitions are located.}
 \item{repo}{repo of the schemes.}
 
 \item{file}{if give, this file will be used as the local scheme definition, and \code{repo} will be ignored}
-
-\item{baseurl}{a \code{character} string containing the base url of the
-repository in which the scheme definitions are located.}
-
-\item{...}{additional parameter for the function \code{download.file}.}
 }
 \value{
 \code{data.frame} with two columns containing name and version of the default scheme
