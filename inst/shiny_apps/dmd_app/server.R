@@ -45,7 +45,11 @@ shinyServer(
     # Validate ----------------------------------------------------------------
 
     output$downloadValidationReport <- downloadHandler(
-      filename = paste0(basename(input$spreadsheet$datapath), "_ValidationReport.html"),
+      filename = ifelse(
+        is.null(input$spreadsheet$datapath),
+        paste0(scheme_active()$name, "_", scheme_active()$version, "_validationReport.html"),
+        paste0(basename(input$spreadsheet$datapath), "_ValidationReport.html")
+      ),
       content = function(file) {
         x <- report( x = input$spreadsheet$datapath, open = FALSE, report = "html", file = file )
       }
