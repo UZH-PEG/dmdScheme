@@ -39,7 +39,7 @@ shinyUI(
         radioButtons(
           inputId = "loadPackage",
           label = h3("Available dmdSchemes"),
-          choices = names(scheme_list_in_repo()),
+          choices = apply(scheme_list(), 1, paste0, collapse = "_"), #names(scheme_list_in_repo()),
           selected = scheme_active() %>% paste0(collapse = "_")
         ),
         textOutput(
