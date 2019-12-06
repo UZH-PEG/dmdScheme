@@ -41,12 +41,15 @@ scheme_uninstall <- function(
   tmpdir <- tempfile()
   dir.create(tmpdir, recursive = TRUE)
   file.copy(
-    from = cache("installedSchemes"),
+    from = cache("installedSchemes", schemeName),
     to = tmpdir,
     recursive = TRUE
   )
 
-  unlink(sourcedir, recursive = TRUE)
+  unlink(
+    cache("installedSchemes", schemeName),
+    recursive = TRUE
+  )
   message("Scheme ", schemeName, " deleted and moved to")
   return( tmpdir )
 }

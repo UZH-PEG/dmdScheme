@@ -5,7 +5,7 @@ Description: A Package forming the core for developing own domain specific metad
 Version: 0.9.11.1
 schemeVersion: 0.9.5
 schemeName: dmdScheme
-Date: 2019-25-11
+Date: 2019-11-25
 Authors@R: c( person( "Rainer M.", "Krug", role = c("aut", "cre"), email = "Rainer.Krug@uzh.ch" ), person( "Owen L.", "Petchey", role = c("ctb"), email = "Owen.Petchey@uzh.ch" )
                    )
 URL: https://exp-micro-ecol-hub.github.io/dmdScheme/, https://github.com/Exp-Micro-Ecol-Hub/dmdScheme
@@ -13,7 +13,7 @@ BugReports: https://github.com/rkrug/dmdScheme/issues
 DOI: https://zenodo.org/record/3229615
 Depends: R (>= 3.5.0)
 Imports: tools, methods, utils, magrittr (>= 1.5), dplyr (>= 0.1.8), tibble (>= 2.1.1), readxl (>= 1.2.0), xml2, 
-      rlang (>= 0.3.1), rmarkdown, knitr, digest (>= 0.6), openxlsx, data.table, writexl, rappdirs
+      rlang (>= 0.3.1), rmarkdown, knitr, digest (>= 0.6), openxlsx, data.table, writexl, rappdirs, yaml
 Remotes: rkrug/plantuml
 License: MIT + file LICENSE
 Encoding: UTF-8

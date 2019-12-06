@@ -7,6 +7,7 @@
 #' @rdname scheme
 #'
 #' @importFrom utils download.file
+#' @importFrom yaml read_yaml
 #' @export
 #'
 #' @examples
