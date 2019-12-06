@@ -18,7 +18,7 @@
 #' @export
 #'
 #' @examples
-#' x <- validate(dmdScheme_raw)
+#' x <- validate(dmdScheme_raw())
 #'
 #' ## default printout as list
 #' x

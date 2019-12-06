@@ -36,6 +36,6 @@ dmdScheme as object of class \code{dmdScheme_raw}
 Generic function to convert the data stored in the object \code{x} into a new object of class \code{dmdScheme_raw...}
 }
 \examples{
-as_dmdScheme_raw(dmdScheme, keepData = TRUE)
+as_dmdScheme_raw(dmdScheme(), keepData = TRUE)
 
 }

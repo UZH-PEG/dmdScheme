@@ -1,6 +1,6 @@
 context("09-print.dmdScheme.validation()")
 
-x <- validate( x = dmdScheme_raw, errorIfStructFalse = TRUE)
+x <- validate( x = dmdScheme_raw(), errorIfStructFalse = TRUE)
 
 test_that(
   "print.dmdScheme.validation() raises error with wrong type",

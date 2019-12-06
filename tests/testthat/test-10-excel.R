@@ -37,7 +37,7 @@ test_that(
         raw = TRUE,
         verbose = FALSE
       ) %>% `attr<-`("fileName", "none"),
-      expected = dmdScheme_raw %>% `attr<-`("fileName", "none")
+      expected = dmdScheme_raw() %>% `attr<-`("fileName", "none")
     )
   }
 )
@@ -52,7 +52,7 @@ test_that(
         raw = FALSE,
         verbose = FALSE
       ) %>% `attr<-`("fileName", "none"),
-      expected = dmdScheme_example %>% `attr<-`("fileName", "none")
+      expected = dmdScheme_example() %>% `attr<-`("fileName", "none")
     )
   }
 )
@@ -67,7 +67,7 @@ test_that(
         raw = FALSE,
         verbose = FALSE
       ) %>% `attr<-`("fileName", "none"),
-      expected = dmdScheme %>% `attr<-`("fileName", "none")
+      expected = dmdScheme() %>% `attr<-`("fileName", "none")
     )
   }
 )
@@ -79,8 +79,8 @@ test_that(
   "read_excel() --> write_excel() roundtrip",
   {
     expect_equal(
-      object = dmdScheme_example %>% write_excel(file = tempfile(fileext = ".xlsx")) %>% read_excel() %>% `attr<-`("fileName", "none"),
-      expected = dmdScheme_example %>% `attr<-`("fileName", "none")
+      object = dmdScheme_example() %>% write_excel(file = tempfile(fileext = ".xlsx")) %>% read_excel() %>% `attr<-`("fileName", "none"),
+      expected = dmdScheme_example() %>% `attr<-`("fileName", "none")
     )
   }
 )

@@ -22,7 +22,7 @@ Convert the object \code{x} to an \code{xml_document} object using the function 
 If no method \code{as_xml()} exists for the object |class{x}, an error will be raised.
 }
 \examples{
-write_excel(dmdScheme, file = tempfile())
-write_excel(dmdScheme_raw, file = tempfile())
+write_excel(dmdScheme(), file = tempfile())
+write_excel(dmdScheme_raw(), file = tempfile())
 
 }

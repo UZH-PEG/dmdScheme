@@ -17,7 +17,7 @@
 #' @export
 #'
 #' @examples
-#' # write_xml(dmdScheme_raw, file = tempfile())
+#' # write_xml(dmdScheme_raw(), file = tempfile())
 #'
 read_xml <- function(
   file,

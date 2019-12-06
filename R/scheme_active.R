@@ -13,8 +13,8 @@
 scheme_active <- function() {
   return(
     data.frame(
-      name = attr(dmdScheme, "dmdSchemeName"),
-      version = attr(dmdScheme, "dmdSchemeVersion"),
+      name = attr(dmdScheme(), "dmdSchemeName"),
+      version = attr(dmdScheme(), "dmdSchemeVersion"),
       stringsAsFactors = FALSE)
   )
 }

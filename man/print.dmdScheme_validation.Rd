@@ -35,7 +35,7 @@ When using different values for \code{format}, different outputs are generated:
 }
 }
 \examples{
-x <- validate(dmdScheme_raw)
+x <- validate(dmdScheme_raw())
 
 ## default printout as list
 x

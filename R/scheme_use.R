@@ -33,20 +33,13 @@ scheme_use <- function(
   schemeDefinition <- file.path(cache("installedSchemes", schemeName), paste0( schemeName, ".xml" ))
 
   scheme_example <- read_xml(  schemeDefinition, useSchemeInXml = TRUE )
-
-  unlockBinding("dmdScheme_example", as.environment("package:dmdScheme"))
-  assign("dmdScheme_example", scheme_example, "package:dmdScheme")
-  lockBinding("dmdScheme_example", as.environment("package:dmdScheme"))
+  assign("dmdScheme_example", scheme_example, envir = .dmdScheme_cache)
 
   scheme_raw <- as_dmdScheme_raw(scheme_example)
-  unlockBinding("dmdScheme_raw", as.environment("package:dmdScheme"))
-  assign("dmdScheme_raw", scheme_raw, "package:dmdScheme")
-  lockBinding("dmdScheme_raw", as.environment("package:dmdScheme"))
+  assign("dmdScheme_raw", scheme_raw, envir = .dmdScheme_cache)
 
   scheme <- as_dmdScheme(scheme_raw, keepData = FALSE, checkVersion = FALSE)
-  unlockBinding("dmdScheme", as.environment("package:dmdScheme"))
-  assign("dmdScheme", scheme, "package:dmdScheme")
-  lockBinding("dmdScheme", as.environment("package:dmdScheme"))
+  assign("dmdScheme", scheme, envir = .dmdScheme_cache)
 
   message("Theme switched to ", schemeName)
 }

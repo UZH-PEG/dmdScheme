@@ -16,7 +16,6 @@ as_dmdScheme.dmdSchemeData_raw <- function(
   verbose = FALSE
   ) {
 
-
   if (verbose) message("propertySet : ", names(x)[[2]])
 
 

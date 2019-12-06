@@ -13,8 +13,8 @@
 #' @export
 #'
 #' @examples
-#' write_excel(dmdScheme, file = tempfile())
-#' write_excel(dmdScheme_raw, file = tempfile())
+#' write_excel(dmdScheme(), file = tempfile())
+#' write_excel(dmdScheme_raw(), file = tempfile())
 #'
 write_excel <- function(
   x,

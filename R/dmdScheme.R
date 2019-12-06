@@ -25,14 +25,11 @@
 #' }
 #'
 #' @aliases dmdSchemeSet dmdSchemeData
+#' @export
 #' @examples
-#' \dontrun{
-#' ## Created by using
-#' dmdScheme <- as_dmdScheme(
-#'   x = dmdScheme_raw,
-#'   keepData = FALSE,
-#'   verbose = TRUE,
-#'   checkVersion = FALSE
-#' )
-#' }
-"dmdScheme"
+#' dmdScheme()
+#'
+dmdScheme <- function(){
+  return( get("dmdScheme", envir = .dmdScheme_cache) )
+}
+

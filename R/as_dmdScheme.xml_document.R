@@ -13,9 +13,9 @@
 #' @export
 #'
 #' @examples
-#' xml <- as_xml(dmdScheme_example)
+#' xml <- as_xml(dmdScheme_example())
 #' x <- as_dmdScheme(xml)
-#' all.equal(dmdScheme_example, x)
+#' all.equal(dmdScheme_example(), x)
 #'
 as_dmdScheme.xml_document <- function(
   x,
@@ -143,7 +143,7 @@ as_dmdScheme.xml_document <- function(
     }
     result <- xml_to_dmdSchemeOnly(x)
   } else {
-    result <- dmdScheme
+    result <- dmdScheme()
     # Check if result scheme exists -------------------------------------------
 
     if (is.null(result)) {

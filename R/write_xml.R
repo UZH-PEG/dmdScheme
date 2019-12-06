@@ -11,7 +11,7 @@
 #' @export
 #'
 #' @examples
-#' write_xml(dmdScheme, file = tempfile())
+#' write_xml(dmdScheme(), file = tempfile())
 #'
 write_xml <- function(
   x,

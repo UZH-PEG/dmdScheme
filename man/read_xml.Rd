@@ -25,6 +25,6 @@ corresponding definition from the installed package.}
 Read the XML file \code{file} and convert it to a \code{dmdScheme} object using the function \code{as_dmdScheme()}.
 }
 \examples{
-# write_xml(dmdScheme_raw, file = tempfile())
+# write_xml(dmdScheme_raw(), file = tempfile())
 
 }

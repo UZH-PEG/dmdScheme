@@ -48,7 +48,7 @@ validate(
 
 ## validate a `dmdScheme_raw object`
 validate(
-   x = dmdScheme_raw
+   x = dmdScheme_raw()
 )
 
 ## use `read_raw()` to read an Excel spreadsheet into a `dmdScheme_raw` object

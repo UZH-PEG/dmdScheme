@@ -15,7 +15,7 @@
 #' @examples
 #' ## validate a `dmdScheme_raw object`
 #' validate(
-#'    x = dmdScheme_raw
+#'    x = dmdScheme_raw()
 #' )
 #'
 #' ## use `read_raw()` to read an Excel spreadsheet into a `dmdScheme_raw` object
@@ -241,7 +241,7 @@ validate.dmdSchemeSet_raw <- function(
     result$descriptionDetails <- ""
     ##
     struct <- as_dmdScheme( x, keepData = FALSE, verbose = FALSE)
-    dmdScheme_test <- dmdScheme
+    dmdScheme_test <- dmdScheme()
     attr(struct, "fileName") <- "none"
     attr(dmdScheme_test, "fileName") <- "none"
     result$details <- all.equal(struct, dmdScheme_test)

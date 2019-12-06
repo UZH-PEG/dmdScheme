@@ -34,7 +34,7 @@ test_that(
       object = read_xml(
         file = scheme_path_xml()
       ),
-      expected = dmdScheme_example
+      expected = dmdScheme_example()
     )
   }
 )
@@ -45,8 +45,8 @@ test_that(
   "read_xml() --> write_xml() roundtrip",
   {
     expect_equal(
-      object = dmdScheme_example %>% write_xml(file = tempfile(fileext = ".xml")) %>% read_xml() %>% `attr<-`("fileName", "none"),
-      expected = dmdScheme_example %>% `attr<-`("fileName", "none")
+      object = dmdScheme_example() %>% write_xml(file = tempfile(fileext = ".xml")) %>% read_xml() %>% `attr<-`("fileName", "none"),
+      expected = dmdScheme_example() %>% `attr<-`("fileName", "none")
     )
   }
 )
