@@ -15,3 +15,4 @@ library
 wildcard
 ONLY_LOCAL
 dmdScheme.xlsx
+NOT_IN_PACKAGE
