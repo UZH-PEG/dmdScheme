@@ -1,5 +1,5 @@
 ---
-title: "Metadata scheme for Mirocosm Experiments"
+title: "Package to develop and manage Domain Specific Metadata Schemes (dmdSchemes)"
 output: github_document
 ---
 

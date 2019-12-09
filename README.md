@@ -1,4 +1,5 @@
-Metadata scheme for Mirocosm Experiments
+Package to develop and manage Domain Specific Metadata Schemes
+(dmdSchemes)
 ================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
