@@ -19,7 +19,7 @@
 #' @describeIn report report of a `dmdScheme_validation` object.
 report.dmdScheme_validation <- function(
   x,
-  file,
+  file = tempfile(),
   open = TRUE,
   report = "html",
   report_author = "Tester",

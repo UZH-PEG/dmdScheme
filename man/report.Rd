@@ -7,15 +7,15 @@
 \alias{report.dmdScheme_validation}
 \title{Generic function for creating a report from an object \code{x}}
 \usage{
-report(x, file, open = TRUE, report = "html",
+report(x, file = tempfile(), open = TRUE, report = "html",
   report_author = "Myself", report_title = "Report of something", ...)
 
-\method{report}{character}(x, file, open = TRUE, report = "html",
-  report_author = "Tester",
+\method{report}{character}(x, file = tempfile(), open = TRUE,
+  report = "html", report_author = "Tester",
   report_title = "Validation of data against dmdScheme", ...)
 
-\method{report}{dmdScheme_validation}(x, file, open = TRUE,
-  report = "html", report_author = "Tester",
+\method{report}{dmdScheme_validation}(x, file = tempfile(),
+  open = TRUE, report = "html", report_author = "Tester",
   report_title = "Validation of data against dmdScheme", ...)
 }
 \arguments{

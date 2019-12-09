@@ -14,7 +14,7 @@
 #'
 report.character <- function(
   x,
-  file,
+  file = tempfile(),
   open = TRUE,
   report = "html",
   report_author = "Tester",
