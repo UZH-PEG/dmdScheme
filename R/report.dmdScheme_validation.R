@@ -30,52 +30,46 @@ report.dmdScheme_validation <- function(
     stop("'report' has to be exactly of length 1!")
   }
 
-  allowedFormats <- c("none", "html", "pdf", "word")
+  allowedFormats <- c("html", "pdf", "word")
   if (!(report %in% allowedFormats)) {
-    stop("'report' has to be one of the following values: ", allowedFormats)
+    stop("'report' has to be one of the following values: (", paste(allowedFormats, collapse = ', '), ")!")
   }
 
-  if (report != "none") {
-    if (missing(file)) {
-      reportDir <- tempfile( pattern = "validation_report" )
-      reportFile <- NULL
-    } else{
-      reportDir <- dirname(file)
-      reportFile <- basename(file)
-    }
+  if (length(report) > 1) {
+    stop("The length of the argument `report` has to be exactly one!")
   }
 
   # Generate report ---------------------------------------------------------
 
-  if (report != "none") {
-    dir.create(reportDir)
 
-    tempReport <- file.path(tempdir(), "validation_report.Rmd")
-    file.copy(system.file("reports", "validation_report.Rmd", package = "dmdScheme"), tempReport, overwrite = TRUE)
+  temppath <- tempfile()
+  dir.create(temppath, recursive = TRUE, showWarnings = FALSE)
+  tempReport <- file.path(temppath, "validation_report.Rmd")
+  file.copy(
+    from = system.file("reports", "validation_report.Rmd", package = "dmdScheme"),
+    to = tempReport,
+    overwrite = TRUE
+  )
 
-    result <- rmarkdown::render(
-      input = tempReport,
-      output_format = ifelse(
-        report == "all",
-        "all",
-        paste0(report, "_document")
-      ),
-      output_file = reportFile,
-      output_dir = reportDir,
-      params = list(
-        author = report_author,
-        title = report_title,
-        x = x,
-        result = x
-      )
+  result <- rmarkdown::render(
+    input = tempReport,
+    output_format = paste0(report, "_document"),
+    params = list(
+      author = report_author,
+      title = report_title,
+      x = x,
+      result = x
     )
-  } else {
-    result <- NULL
-  }
+  )
+
+  file.copy(
+    from = result,
+    to = file
+  )
 
   # Open report -------------------------------------------------------------
 
-  if (open & report != "none") {
+  if (open) {
     utils::browseURL(
       url = result,
       encodeIfNeeded = TRUE
@@ -84,7 +78,7 @@ report.dmdScheme_validation <- function(
 
   # Return result -----------------------------------------------------------
 
-  return(result)
+  return(file)
 }
 
 
