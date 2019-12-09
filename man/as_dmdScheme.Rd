@@ -56,11 +56,11 @@ dmdScheme as object of class \code{dmdScheme_set}
 Generic function to convert the data stored in the object \code{x} into a new object of class \code{dmdScheme...}
 }
 \examples{
-as_dmdScheme(dmdScheme_raw, keepData = TRUE)
-as_dmdScheme(dmdScheme_raw$Experiment)
+as_dmdScheme(dmdScheme_raw(), keepData = TRUE)
+as_dmdScheme(dmdScheme_raw()$Experiment)
 
-xml <- as_xml(dmdScheme_example)
+xml <- as_xml(dmdScheme_example())
 x <- as_dmdScheme(xml)
-all.equal(dmdScheme_example, x)
+all.equal(dmdScheme_example(), x)
 
 }

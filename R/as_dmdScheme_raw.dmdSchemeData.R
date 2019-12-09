@@ -11,7 +11,7 @@ as_dmdScheme_raw.dmdSchemeData <- function(
 
   # Extraxt data ------------------------------------------------------------
 
-  result <- tibble::as_tibble(x)
+  result <- suppressMessages( tibble::as_tibble(x) )
 
   if (attr(x, "propertyName") == "Experiment") {
     result <- cbind(nms = names(result), t(result))
@@ -80,9 +80,16 @@ as_dmdScheme_raw.dmdSchemeData <- function(
     )
 
     names(result) <- c("propertySet", attr(x, "propertyName"), rep(NA, ncol(result) - 2))
-    result <- as_tibble(result, .name_repair = "unique")
+    result <- suppressMessages(
+      as_tibble(result, .name_repair = "unique")
+    )
   }
 
+
+
+  # Make sure that all "NA" are set to NA -----------------------------------
+
+  result[result == "NA"]  <- NA
 
   # set class ---------------------------------------------------------------
 
@@ -90,6 +97,14 @@ as_dmdScheme_raw.dmdSchemeData <- function(
     "dmdSchemeData_raw",
     class(result)
   )
+
+  rawClass <- paste0(class(x)[[1]], "_raw")
+  if (rawClass != "dmdSchemeData_raw") {
+    class(result) <- append(
+      rawClass,
+      class(result)
+    )
+  }
 
   # Return ------------------------------------------------------------------
 

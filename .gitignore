@@ -15,4 +15,6 @@ library
 wildcard
 ONLY_LOCAL
 dmdScheme.xlsx
-NOT_IN_PACKAGE
+emeScheme_0.9.5.xlsx
+emeScheme_0.9.5.xml
+!dmdScheme_*.tar.gz

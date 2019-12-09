@@ -11,7 +11,7 @@
 #' @export
 #'
 #' @examples
-#' as_dmdScheme_raw(dmdScheme, keepData = TRUE)
+#' as_dmdScheme_raw(dmdScheme(), keepData = TRUE)
 #'
 as_dmdScheme_raw <- function(
   x,

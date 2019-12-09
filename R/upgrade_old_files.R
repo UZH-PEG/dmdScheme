@@ -25,7 +25,7 @@
 #' }
 upgrade_old_files <- function(
   file,
-  to = dmdScheme_versions()$scheme
+  to = scheme_active()$version
 ) {
   # Check if file exists ----------------------------------------------------
 
@@ -79,13 +79,13 @@ upgrade_old_files <- function(
 
   converted <- NULL
 
-  if (as.numeric_version(schemeVersion) > dmdScheme_versions(schemeName)[["scheme"]]) {
+  if (as.numeric_version(schemeVersion) > scheme_active()$version) {
     stop("Downgrade not supported!")
-  } else if (schemeVersion == dmdScheme_versions(schemeName)[["scheme"]]) {
+  } else if (schemeVersion == scheme_active()$version) {
     warning("File has same version as the installed package. No conversion necessary!")
     converted <- NULL
-  } else if (schemeVersion < dmdScheme_versions(schemeName)[["scheme"]]) {
-    stop("Upgrade from version ", schemeVersion, "to version ", dmdScheme_versions(schemeName)[["scheme"]], " not implemented yet!")
+  } else if (schemeVersion < scheme_active()$version) {
+    stop("Upgrade from version ", schemeVersion, "to version ", scheme_active()$version, " not implemented yet!")
   }
 
 # Return `converted` ------------------------------------------------------

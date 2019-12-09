@@ -2,6 +2,10 @@ library(shiny)
 library(dmdScheme)
 
 
+
+# Server definition -----------------------------------------------------------
+
+
 shinyServer(
   function(input, output) {
 
@@ -11,63 +15,56 @@ shinyServer(
       eventExpr = input$loadPackage,
       ignoreNULL = FALSE,
       handlerExpr = {
-        pkgs_inst <- dmdScheme_installed()[,"Package"]
-        if (is.null(input$loadPackage)) {
-          toLoad <- character(0)
-        } else {
-          toLoad <- sapply(
-            strsplit(input$loadPackage, " "),
-            "[[",
-            1
-          )
+        name <-  strsplit(input$loadPackage, "_")[[1]][[1]]
+        version <-  strsplit(input$loadPackage, "_")[[1]][[2]]
+        if (!scheme_installed(name, version)) {
+          scheme_install( name = name, version = version )
         }
-        toUnLoad <- pkgs_inst[ !(pkgs_inst %in% toLoad) ]
-        # unload unchecked schemes
-        for (x in toUnLoad) {
-          if ( isNamespaceLoaded(x) ) {
-            detach(paste0("package:", x), unload = TRUE, character.only = TRUE)
-          }
-        }
-        # load checked schemes
-        for (x in toLoad) {
-          require(x, character.only = TRUE)
-        }
-        ##
-        loaded <- "Packages Loaded:"
-        for (x in pkgs_inst) {
-          if ( isNamespaceLoaded(x) ) {
-            loaded <- paste(loaded, x)
-          }
-        }
-        output$loaded <- renderPrint(loaded)
+        scheme_use( name = name, version = version )
+
+        output$loaded <- renderPrint(paste("Active scheme is ", scheme_active()$name, " version ", scheme_active()$version))
       }
     )
 
     # Open new Spreadsheet ----------------------------------------------------
 
-    observeEvent(
-      eventExpr = input$open,
-      handlerExpr = {
-        open_new_spreadsheet( schemeName = strsplit(input$loadPackage, " ")[[1]][[1]] )
+    output$newEmptySpreadsheet <- downloadHandler(
+      filename = function(){paste0(scheme_active()$name, "_", scheme_active()$version, ".xlsx")},
+      content = function(file) {
+        open_new_spreadsheet(file = file, keepData = FALSE)
+      }
+    )
+
+    output$newExampleSpreadsheet <- downloadHandler(
+      filename = function(){paste0(scheme_active()$name, "_", scheme_active()$version, "_example.xlsx")},
+      content = function(file) {
+        open_new_spreadsheet(file = file, keepData = TRUE)
       }
     )
 
     # Validate ----------------------------------------------------------------
 
-    observeEvent(
-      eventExpr = input$validate,
-      handlerExpr = {
-        report( x = input$spreadsheet$datapath )
+    output$downloadValidationReport <- downloadHandler(
+      filename = function(){
+        paste0(input$spreadsheet$name, "_ValidationReport.", input$formatValidationReport)
+      },
+      content = function(file) {
+        report( x = input$spreadsheet$datapath, open = FALSE, report = input$formatValidationReport, file = file )
       }
     )
 
     # Export to xml -----------------------------------------------------------
 
-    observeEvent(
-      eventExpr = input$export,
-      handlerExpr = {
-        x <- as_xml( x = input$spreadsheet$datapath )
-        output$text <- renderPrint(x)
+    output$downloadData <- downloadHandler(
+      filename = function(){
+        ifelse(
+          is.null(input$spreadsheet$name),
+          "export.xml",
+          gsub(".xlsx", ".xml", input$spreadsheet$name)
+        )
+      },
+      content = function(file) {
+        x <- write_xml( x = read_excel(input$spreadsheet$datapath), file = file, output = "complete" )
       }
     )
 

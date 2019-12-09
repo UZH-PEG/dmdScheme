@@ -19,7 +19,7 @@
 #' @export
 #'
 #' @examples
-#' read_excel(file = system.file("dmdScheme.xlsx", package = "dmdScheme"))
+#' read_excel_raw( scheme_path_xlsx() )
 #'
 read_excel_raw <- function(
   file,
@@ -51,15 +51,15 @@ read_excel_raw <- function(
   # Check dmdSchemeVersion --------------------------------------------------
 
   if (checkVersion) {
-    if (dmdScheme_versions(schemeName)$scheme != schemeVersion) {
+    if (scheme_active()$version != schemeVersion) {
       stop("Version conflict - can not proceed:\n",
            file, " version : ", schemeVersion, "\n",
-           "installed dmdScheme version : ", dmdScheme_versions(schemeName)$scheme)
+           "installed dmdScheme version : ", scheme_active()$version)
     }
-    if (dmdScheme_versions(schemeName)$name != schemeName) {
+    if (scheme_active()$name != schemeName) {
       stop("Scheme conflict different schemes used - can not proceed:\n",
            file, " scheme name : ", schemeName, "\n",
-           "installed dmdScheme scheme : ", dmdScheme_versions(schemeName)$name)
+           "installed dmdScheme scheme : ", scheme_active()$name)
     }
   }
 

@@ -18,7 +18,7 @@ test_that(
   "read_excel() fails when file does not have right extension",
   {
     expect_error(
-      object = read_excel(system.file("Dummy_for_tests", package = "dmdScheme")),
+      object = read_excel( scheme_path_xml() ),
       regexp = "If x is a file name, it has to have the extension 'xls' or 'xlsx'"
     )
   }
@@ -32,12 +32,12 @@ test_that(
   {
     expect_equal(
       object = read_excel(
-        file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
+        file = scheme_path_xlsx(),
         keepData = TRUE,
         raw = TRUE,
         verbose = FALSE
-      ),
-      expected = dmdScheme_raw
+      ) %>% `attr<-`("fileName", "none"),
+      expected = dmdScheme_raw() %>% `attr<-`("fileName", "none")
     )
   }
 )
@@ -47,12 +47,12 @@ test_that(
   {
     expect_equal(
       object = read_excel(
-        file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
+        file = scheme_path_xlsx(),
         keepData = TRUE,
         raw = FALSE,
         verbose = FALSE
-      ),
-      expected = dmdScheme_example
+      ) %>% `attr<-`("fileName", "none"),
+      expected = dmdScheme_example() %>% `attr<-`("fileName", "none")
     )
   }
 )
@@ -62,12 +62,12 @@ test_that(
   {
     expect_equal(
       object = read_excel(
-        file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
+        file = scheme_path_xlsx(),
         keepData = FALSE,
         raw = FALSE,
         verbose = FALSE
-      ),
-      expected = dmdScheme
+      ) %>% `attr<-`("fileName", "none"),
+      expected = dmdScheme() %>% `attr<-`("fileName", "none")
     )
   }
 )
@@ -79,8 +79,8 @@ test_that(
   "read_excel() --> write_excel() roundtrip",
   {
     expect_equal(
-      object = dmdScheme_example %>% write_excel(file = tempfile(fileext = ".xlsx")) %>% read_excel() %>% `attr<-`("fileName", "none"),
-      expected = dmdScheme_example %>% `attr<-`("fileName", "none")
+      object = dmdScheme_example() %>% write_excel(file = tempfile(fileext = ".xlsx")) %>% read_excel() %>% `attr<-`("fileName", "none"),
+      expected = dmdScheme_example() %>% `attr<-`("fileName", "none")
     )
   }
 )

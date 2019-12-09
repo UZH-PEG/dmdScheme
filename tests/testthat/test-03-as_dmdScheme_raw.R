@@ -20,8 +20,8 @@ test_that(
   "as_dmdScheme_raw.dmdScheme()",
   {
     expect_equal(
-      object = as_dmdScheme_raw( x = dmdScheme_example ),
-      expect = dmdScheme_raw
+      object = as_dmdScheme_raw( x = dmdScheme_example() ),
+      expect = dmdScheme_raw()
     )
   }
 )
@@ -33,8 +33,8 @@ test_that(
   "as_dmdScheme_raw.xml_document()",
   {
     expect_equal(
-      object = as_dmdScheme_raw( x = as_xml(dmdScheme_example) ),
-      expect = dmdScheme_raw
+      object = as_dmdScheme_raw( x = as_xml(dmdScheme_example()) ),
+      expect = dmdScheme_raw()
     )
   }
 )

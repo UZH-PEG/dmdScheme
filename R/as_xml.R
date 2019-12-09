@@ -15,7 +15,7 @@
 #'
 #' @examples
 #'
-#' x <- as_xml( dmdScheme_example )
+#' x <- as_xml( dmdScheme_example() )
 #' x
 #'
 #' ## returns \code{xml_document} object

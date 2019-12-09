@@ -7,10 +7,10 @@
 #' @md
 #' @examples
 #' ## Report of `dmdScheme_validation`
-#' report( validate(dmdScheme_raw) )
+#' report( validate(dmdScheme_raw()) )
 #' \dontrun{
 #' report(
-#'    x = dmdScheme_raw,
+#'    x = dmdScheme_raw(),
 #'    report = "html",
 #'    report_author = "The Author I am",
 #'    report_title = "A Nice Report"
@@ -26,7 +26,6 @@ report.dmdScheme_validation <- function(
   report_title = "Validation of data against dmdScheme",
   ...
 ) {
-
   if (length(report) != 1) {
     stop("'report' has to be exactly of length 1!")
   }
@@ -51,8 +50,11 @@ report.dmdScheme_validation <- function(
   if (report != "none") {
     dir.create(reportDir)
 
+    tempReport <- file.path(tempdir(), "validation_report.Rmd")
+    file.copy(system.file("reports", "validation_report.Rmd", package = "dmdScheme"), tempReport, overwrite = TRUE)
+
     result <- rmarkdown::render(
-      input = system.file("reports", "validation_report.Rmd", package = "dmdScheme"),
+      input = tempReport,
       output_format = ifelse(
         report == "all",
         "all",

@@ -18,7 +18,7 @@ test_that(
   "read_xml() fails when file does not have right extension",
   {
     expect_error(
-      object = read_xml(system.file("Dummy_for_tests", package = "dmdScheme")),
+      object = read_xml( scheme_path_xlsx() ),
       regexp = "Start tag expected"
     )
   }
@@ -32,9 +32,9 @@ test_that(
   {
     expect_equal(
       object = read_xml(
-        file = system.file("dmdScheme_example.xml", package = "dmdScheme")
+        file = scheme_path_xml()
       ),
-      expected = dmdScheme_example
+      expected = dmdScheme_example()
     )
   }
 )
@@ -45,8 +45,8 @@ test_that(
   "read_xml() --> write_xml() roundtrip",
   {
     expect_equal(
-      object = dmdScheme_example %>% write_xml(file = tempfile(fileext = ".xml")) %>% read_xml() %>% `attr<-`("fileName", "none"),
-      expected = dmdScheme_example %>% `attr<-`("fileName", "none")
+      object = dmdScheme_example() %>% write_xml(file = tempfile(fileext = ".xml")) %>% read_xml() %>% `attr<-`("fileName", "none"),
+      expected = dmdScheme_example() %>% `attr<-`("fileName", "none")
     )
   }
 )

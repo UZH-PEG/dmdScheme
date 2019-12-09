@@ -43,8 +43,8 @@ as_dmdScheme.dmdSchemeSet_raw <- function(
 # Check version -----------------------------------------------------------
 
   if (checkVersion) {
-    if (dmdScheme_versions()$scheme != attr(x, "dmdSchemeVersion")) {
-      stop("Version conflict - can not proceed:\n", " x : version ", attr(x, "dmdSchemeVersion"), "\n", "installed dmdScheme version : ", dmdScheme_versions()$dmdScheme)
+    if (scheme_active()$version != attr(x, "dmdSchemeVersion")) {
+      stop("Version conflict - can not proceed:\n", " x : version ", attr(x, "dmdSchemeVersion"), "\n", "installed dmdScheme version : ", scheme_active()$version)
     }
   }
 

@@ -35,6 +35,14 @@ as_dmdScheme_raw.dmdSchemeSet <- function(
     class(result)
   )
 
+  rawClass <- paste0(attr(result, "dmdSchemeName"), "Set_raw")
+  if (rawClass != "dmdSchemeSet_raw") {
+    class(result) <- append(
+      rawClass,
+      class(result)
+    )
+  }
+
   # Return ------------------------------------------------------------------
 
   return(result)

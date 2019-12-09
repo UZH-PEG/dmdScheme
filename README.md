@@ -1,9 +1,10 @@
-Metadata scheme for Mirocosm Experiments
+Package to develop and manage Domain Specific Metadata Schemes
+(dmdSchemes)
 ================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3229615.svg)](https://doi.org/10.5281/zenodo.3229615)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3229615.svg)](https://doi.org/10.5281/zenodo.3229614)
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 

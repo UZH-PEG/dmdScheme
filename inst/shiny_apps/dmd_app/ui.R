@@ -1,3 +1,6 @@
+library(devtools)
+library(dmdScheme)
+
 #
 # This is the user-interface definition of a Shiny web application. You can
 # run the application by clicking 'Run App' above.
@@ -8,6 +11,9 @@
 #
 
 library(shiny)
+library(magrittr)
+
+
 
 # Define UI for application that draws a histogram
 shinyUI(
@@ -28,30 +34,31 @@ shinyUI(
 
         # Schemes to be loaded ----------------------------------------------------
 
-        h1("Schemes to be loaded"),
+        h1("Activate available scheme definitions"),
 
         radioButtons(
           inputId = "loadPackage",
-          label = h3("Instaled dmdSchemes"),
-          choices = as.list(paste(
-            dmdScheme_installed()[,"Package"],
-            dmdScheme_installed()[,"Version"]
-          )),
-          selected = "dmdScheme"
+          label = h3("Available dmdSchemes"),
+          choices = names(scheme_list_in_repo()),
+          selected = scheme_active() %>% paste0(collapse = "_")
         ),
         textOutput(
           outputId = "loaded"
         ),
 
-        # New Empty Scheme --------------------------------------------------------
+        # Download New Scheme --------------------------------------------------------
 
         hr(),
-        h1("New Empty Scheme"),
+        h1("Download New Scheme"),
 
-        actionButton(
-          inputId = "open",
-          label = "Open empty scheme in Spreadsheet",
-          icon = NULL
+        downloadButton(
+          outputId = "newEmptySpreadsheet",
+          label = "Empty scheme Spreadsheet"
+        ),
+
+        downloadButton(
+          outputId = "newExampleSpreadsheet",
+          label = "Example scheme Spreadsheet"
         ),
 
         # Upload Spreadsheet containing Metadata ----------------------------------
@@ -69,23 +76,28 @@ shinyUI(
         # Validate Uploaded Metadata ----------------------------------------------
 
         hr(),
-        h1("Validate Uploaded Metadata"),
+        h1("Download Validation Report"),
 
-        actionButton(
-          inputId = "validate",
-          label = "Validate metadata from spreadsheet",
-          icon = NULL
+        radioButtons(
+          inputId = "formatValidationReport",
+          label = "Format of report",
+          choices = list("html" = "html", "docx" = "docx", "pdf" = "pdf"),
+          selected = "html"
+        ),
+
+        downloadButton(
+          outputId = "downloadValidationReport",
+          label = "Create and download"
         ),
 
         # Export Uploded Spreadsheet to xml ---------------------------------------
 
         hr(),
-        h1("Export Uploded Spreadsheet to xml"),
+        h1("Export Uploaded Spreadsheet to xml"),
 
-        actionButton(
-          inputId = "export",
-          label = "Export metadata from spreadsheet to xml",
-          icon = NULL
+        downloadButton(
+          outputId = "downloadData",
+          label = "Export to xml"
         )
 
       ),

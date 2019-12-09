@@ -17,8 +17,8 @@
 #' @importFrom tools file_ext
 #'
 #' @examples
-#' as_dmdScheme(dmdScheme_raw, keepData = TRUE)
-#' as_dmdScheme(dmdScheme_raw$Experiment)
+#' as_dmdScheme(dmdScheme_raw(), keepData = TRUE)
+#' as_dmdScheme(dmdScheme_raw()$Experiment)
 #'
 as_dmdScheme <- function(
   x,

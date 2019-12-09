@@ -23,5 +23,7 @@
 ^ONLYLOCAL
 ^dmdScheme\.Rproj$
 ^dmdScheme\.xlsx$
-^ONLY_LOCAL$
 
+^ONLY_LOCAL$
+^NOT_IN_PACKAGE$
+^\./inst/installedSchemes/emeScheme_0\.9\.5$

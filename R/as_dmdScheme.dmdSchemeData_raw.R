@@ -16,7 +16,6 @@ as_dmdScheme.dmdSchemeData_raw <- function(
   verbose = FALSE
   ) {
 
-
   if (verbose) message("propertySet : ", names(x)[[2]])
 
 
@@ -53,12 +52,14 @@ as_dmdScheme.dmdSchemeData_raw <- function(
   if (x[[1,1]] == "Experiment") {
     if (verbose) message("Transposing...")
     #
-    x %<>%
-      t() %>%
-      tibble::as_tibble(rownames = NA, .name_repair = "unique") %>%
-      tibble::rownames_to_column("propertySet") %>%
-      dplyr::rename(Experiment = 2) %>%
-      dplyr::filter( .data$propertySet != "propertySet")
+    suppressMessages(
+      x %<>%
+        t() %>%
+        tibble::as_tibble(rownames = NA, .name_repair = "unique") %>%
+        tibble::rownames_to_column("propertySet") %>%
+        dplyr::rename(Experiment = 2) %>%
+        dplyr::filter( .data$propertySet != "propertySet")
+    )
   }
 
 # set all NA in valueProperty column to "NA" ------------------------------

@@ -7,7 +7,7 @@
 #' @md
 #' @examples
 #' ## Report of `dmdScheme_validation`
-#' report( system.file("dmdScheme.xlsx", package = "dmdScheme") )
+#' report( scheme_path_xlsx() )
 #'
 #' @describeIn report report of a `dmdScheme_validation` object.
 #'
@@ -29,7 +29,14 @@ report.character <- function(
 
 # Read and convert x ------------------------------------------------------
 
-  result <- report( validate(x, ...) )
+  result <- report(
+    validate(x, ...),
+    file = file,
+    open = open,
+    report = report,
+    report_author = report_author,
+    report_title = report_title
+  )
 
 # Return xml --------------------------------------------------------------
 

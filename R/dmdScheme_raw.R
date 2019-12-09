@@ -18,14 +18,11 @@
 #' }
 #'
 #' @aliases dmdSchemeSet_raw dmdSchemeData_raw
+#' @export
 #' @examples
-#' \dontrun{
-#' ## Created by using
-#' path <- system.fil;e( "dmdScheme.xlsx", package = "dmdScheme")
-#' dmdScheme_raw <- read_excel(
-#'   file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
-#'   verbose = TRUE,
-#'   raw = TRUE
-#' )
-#' }
-"dmdScheme_raw"
+#' dmdScheme_raw()
+#'
+dmdScheme_raw <- function(){
+  return( get("dmdScheme_raw", envir = .dmdScheme_cache) )
+}
+

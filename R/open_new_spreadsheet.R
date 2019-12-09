@@ -4,7 +4,6 @@
 #' New data can be entered and the file has to be saved at a different location
 #' as it is a read-only file.
 #'
-#' @param schemeName name of the package in which the template of the scheme sits. Default value: \code{dmdScheme}
 #' @param file if not \code{NULL}, the template will be saved to this file.
 #' @param open if \code{TRUE}, the file will be opened. This can produce different results depending on the OS, browsr and browser settings.
 #' @param keepData if \code{TRUE} the data entry areas will be emptied. If \code{FALSE}. the example data will be included.
@@ -14,7 +13,9 @@
 #' @param .skipBrowseURL internal use (testing only). if \code{TRUE} skip the call of \code{browseURL()}
 #'
 #' @return invisibly the fully qualified path to the file which \bold{would} have been opened, if \code{open == TRUE}.
-#' @importFrom utils browseURL URLencode
+#'
+#' @importFrom utils browseURL URLencode packageName
+#'
 #' @export
 #' @examples
 #' \dontrun{
@@ -22,7 +23,6 @@
 #' }
 #'
 open_new_spreadsheet <- function(
-  schemeName,
   file = NULL,
   open = TRUE,
   keepData = FALSE,
@@ -31,10 +31,6 @@ open_new_spreadsheet <- function(
   verbose = FALSE,
   .skipBrowseURL = FALSE
 ) {
-  if (missing(schemeName)) {
-    stop("Missing schemeName - please provide schemeName!")
-  }
-  ##
   fn <- ""
   on.exit(
     {
@@ -88,21 +84,31 @@ open_new_spreadsheet <- function(
     )
   }
 
+  schemeName <- scheme_path_xlsx()
+
 # Temporary file name -----------------------------------------------------
 
-  fn <- tempfile(pattern = paste0(schemeName, "."), fileext = ".xlsx")
+  fnpath <- tempfile()
+  dir.create(fnpath, recursive = TRUE)
+  fn <- file.path( fnpath, basename(schemeName) )
 
 # Format if asked for, otherwise copy to fn unchanged ---------------------
 
+  schemeName <- scheme_path_xlsx()
+
+  if (!file.exists(schemeName)) {
+    stop("Scheme definition is not installed! Please use `scheme_list() to see all installed schemes!")
+  }
+
   if (format) {
     format_dmdScheme_xlsx(
-      fn_org = system.file(paste0(schemeName, ".xlsx"), package = schemeName),
+      fn_org = schemeName,
       fn_new = fn,
       keepData = keepData
     )
   } else {
     file.copy(
-      from = system.file(paste0(schemeName, ".xlsx"), package = schemeName),
+      from = schemeName,
       to = fn
     )
   }
@@ -121,7 +127,7 @@ open_new_spreadsheet <- function(
     orgFn <- fn
     fn <- file
     Sys.chmod(fn, "0755")
-    if (verbose){
+    if (verbose) {
       message( "The template has been copied from",
                "          ", orgFn,
                "to",

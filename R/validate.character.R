@@ -15,7 +15,7 @@
 #' @examples
 #' ## validata an Excel file containing the metadata
 #' validate(
-#'     x = system.file("dmdScheme.xlsx", package = "dmdScheme")
+#'     x = scheme_path_xlsx()
 #' )
 #'
 validate.character <- function(

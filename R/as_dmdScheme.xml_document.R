@@ -13,9 +13,9 @@
 #' @export
 #'
 #' @examples
-#' xml <- as_xml(dmdScheme_example)
+#' xml <- as_xml(dmdScheme_example())
 #' x <- as_dmdScheme(xml)
-#' all.equal(dmdScheme_example, x)
+#' all.equal(dmdScheme_example(), x)
 #'
 as_dmdScheme.xml_document <- function(
   x,
@@ -58,7 +58,7 @@ as_dmdScheme.xml_document <- function(
 
     xml <- x
 
-    # Check if outup = "complete" ---------------------------------------------
+    # Check if output = "complete" --------------------------------------------
     if (!(xml2::xml_attr(xml, "output") %in% c("complete", "scheme"))) {
       stop("Can not create scheme from this xml!")
     }
@@ -76,9 +76,11 @@ as_dmdScheme.xml_document <- function(
       # Create tibble with names and type ---------------------------------------
 
       dmdD <- tibble()
-      for (j in 1:length(atr$names)) {
-        dmdD <- tibble::add_column(dmdD, !!(atr$names[j]) := get(atr$type[j])(1))
-      }
+      suppressMessages(
+        for (j in 1:length(atr$names)) {
+          dmdD <- tibble::add_column(dmdD, !!(atr$names[j]) := get(atr$type[j])(1))
+        }
+      )
       dmdD[1,] <- NA
 
       atr <- atr[ !(names(atr) %in% c("names")) ]
@@ -141,12 +143,7 @@ as_dmdScheme.xml_document <- function(
     }
     result <- xml_to_dmdSchemeOnly(x)
   } else {
-    result <- NULL
-    try(
-      {
-        result <- get(eval(xml2::xml_attrs(x)[["dmdSchemeName"]]))
-      }
-    )
+    result <- dmdScheme()
     # Check if result scheme exists -------------------------------------------
 
     if (is.null(result)) {
