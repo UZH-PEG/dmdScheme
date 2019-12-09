@@ -49,7 +49,9 @@ shinyServer(
         paste0(input$spreadsheet$name, "_ValidationReport.", input$formatValidationReport)
       },
       content = function(file) {
-        report( x = input$spreadsheet$datapath, open = FALSE, report = input$formatValidationReport, file = file )
+        reportFormat <- input$formatValidationReport
+        if (reportFormat == "docx") {reportFormat <- "word"}
+        report( x = input$spreadsheet$datapath, open = FALSE, report = reportFormat, file = file )
       }
     )
 
