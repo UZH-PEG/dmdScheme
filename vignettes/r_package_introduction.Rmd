@@ -22,7 +22,6 @@ library(here)
 # library(dplyr)
 # library(knitr)
 library(kableExtra)
-# library(plantuml)
 #
 v <- read.dcf(here::here('DESCRIPTION'), all = TRUE)[['Version']]
 ```
