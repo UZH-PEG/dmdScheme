@@ -16,7 +16,7 @@ env:
 matrix:
   include:
   - r: devel
-      after_success:
+    after_success:
       - Rscript -e 'library(covr); codecov()'
   - r: release
     os: osx
