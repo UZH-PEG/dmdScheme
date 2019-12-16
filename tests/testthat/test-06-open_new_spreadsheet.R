@@ -36,14 +36,14 @@ test_that(
 
 ##
 
-test_that(
-  "open_new_spreadsheet() creates file",
-  {
-    expect_true(
-      object = file.exists( suppressWarnings(open_new_spreadsheet(file = NULL, format = FALSE, open = FALSE, overwrite = FALSE) ) )
-    )
-  }
-)
+# test_that(
+#   "open_new_spreadsheet() creates file",
+#   {
+#     expect_true(
+#       object = file.exists( suppressWarnings(open_new_spreadsheet(file = NULL, format = FALSE, open = FALSE, overwrite = FALSE) ) )
+#     )
+#   }
+# )
 
 unlink(fn)
 

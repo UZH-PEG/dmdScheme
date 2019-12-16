@@ -67,8 +67,12 @@ $details
   name  temperature light humidity incubator container microcosmVolume mediaType
   <chr> <chr>       <chr> <chr>    <chr>     <chr>     <chr>           <chr>    
 1 TRUE  TRUE        TRUE  TRUE     TRUE      TRUE      TRUE            TRUE     
-# … with 6 more variables: mediaConcentration <chr>, cultureConditions <chr>,
-#   comunityType <chr>, mediaAdditions <chr>, duration <chr>, comment <chr>
+  mediaConcentration cultureConditions comunityType mediaAdditions duration
+  <chr>              <chr>             <chr>        <chr>          <chr>   
+1 TRUE               TRUE              TRUE         TRUE           TRUE    
+  comment
+  <chr>  
+1 <NA>   
 
 $header
 [1] "**<span style=\"color:#00FF00\">conversion of values into specified type lossless possible - OK</span>**"
@@ -369,14 +373,18 @@ $error
 
 $details
 # A tibble: 4 x 10
-  measurementID variable method unit  object noOfSamplesInTi… samplingVolume
-  <chr>         <chr>    <chr>  <chr> <chr>  <chr>            <chr>         
-1 TRUE          TRUE     TRUE   TRUE  TRUE   TRUE             TRUE          
-2 TRUE          TRUE     TRUE   TRUE  TRUE   TRUE             TRUE          
-3 TRUE          TRUE     TRUE   TRUE  TRUE   TRUE             TRUE          
-4 TRUE          TRUE     TRUE   TRUE  TRUE   TRUE             TRUE          
-# … with 3 more variables: dataExtractionID <chr>, measuredFrom <chr>,
-#   comment <chr>
+  measurementID variable method unit  object noOfSamplesInTimeSeries
+  <chr>         <chr>    <chr>  <chr> <chr>  <chr>                  
+1 TRUE          TRUE     TRUE   TRUE  TRUE   TRUE                   
+2 TRUE          TRUE     TRUE   TRUE  TRUE   TRUE                   
+3 TRUE          TRUE     TRUE   TRUE  TRUE   TRUE                   
+4 TRUE          TRUE     TRUE   TRUE  TRUE   TRUE                   
+  samplingVolume dataExtractionID measuredFrom comment
+  <chr>          <chr>            <chr>        <chr>  
+1 TRUE           TRUE             TRUE         <NA>   
+2 TRUE           TRUE             TRUE         <NA>   
+3 TRUE           TRUE             TRUE         <NA>   
+4 TRUE           TRUE             TRUE         <NA>   
 
 $header
 [1] "**<span style=\"color:#00FF00\">conversion of values into specified type lossless possible - OK</span>**"
