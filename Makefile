@@ -75,7 +75,7 @@ clean_html:
 web: html vignettes readme
 	cp -f $(VIGHTML) $(OUTDIR)/
 	mkdir -p $(DATADIR)
-	cp -f $(EXAMPLEXML) $(DATADIR)/
+#	cp -f $(EXAMPLEXML) $(DATADIR)/
 
 clean_web: clean_html clean_vignettes clean_readme
 	rm -f VIGHTMLOUT
