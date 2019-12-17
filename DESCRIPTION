@@ -6,7 +6,7 @@ Description: A Package forming the core for developing own domain specific metad
 Version: 1.0.0
 schemeVersion: 0.9.5
 schemeName: dmdScheme
-Date: 2019-11-25
+Date: 2019-12-17
 Authors@R: 
     c(person(given = "Rainer M.",
              family = "Krug",
