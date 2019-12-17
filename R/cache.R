@@ -62,8 +62,8 @@ cache <- function(
           "   cache(createPermanent = TRUE)\n",
           "and restart R\n",
           "and a permanent cache will be created which will survive restarts.",
-          "\n",
-          "#############################################\n"
+          "#############################################\n",
+          "\n"
         )
       }
     }
