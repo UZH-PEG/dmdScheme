@@ -28,6 +28,17 @@ cache <- function(
     ##
     if (!dir.exists(basedirConfig)) {
       if (!create) {
+        message(
+          "\n",
+          "#############################################\n",
+          "The cache will be in a temporary location and be deleted when you quit R.\n",
+          "To make it permanent, call\n",
+          "   dmdScheme::cache(create = TRUE)\n",
+          "BEFORE LOADING THE dmdScheme PACKAGE\n",
+          "and a permanent cache will be created which will survive restarts.",
+          "\n",
+          "#############################################\n"
+        )
         basedirConfig <- tempfile(pattern = "dmdScheme_" )
       }
       dir.create(
