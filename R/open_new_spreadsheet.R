@@ -10,7 +10,6 @@
 #' @param format if \code{FALSE} the sheet will be opened as the sheet is. if \code{TRUE}, it will be formated nicely.
 #' @param overwrite if \code{TRUE}, the file specified in \code{file} will be overwritten. if \code{FALSE}, an error will be raised ehen the file exists.
 #' @param verbose give verbose progress info. Useful for debugging.
-#' @param .skipBrowseURL internal use (testing only). if \code{TRUE} skip the call of \code{browseURL()}
 #'
 #' @return invisibly the fully qualified path to the file which \bold{would} have been opened, if \code{open == TRUE}.
 #'
@@ -28,8 +27,7 @@ open_new_spreadsheet <- function(
   keepData = FALSE,
   format = TRUE,
   overwrite = FALSE,
-  verbose = FALSE,
-  .skipBrowseURL = FALSE
+  verbose = FALSE
 ) {
   fn <- ""
   on.exit(
@@ -147,9 +145,7 @@ open_new_spreadsheet <- function(
       )
     }
     fn <- utils::URLencode(fn)
-    if (!.skipBrowseURL) {
-      utils::browseURL(fn)
-    }
+    utils::browseURL(fn)
   }
 
 # Return invisibly the final file name ------------------------------------

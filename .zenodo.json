@@ -1,0 +1,18 @@
+{
+    "description": "<p>Metadata is essential for the managing and archiving of data. Consequentially, metadata<br>\nschemes, which standardise the property names used in specifying the metadata, play an essential role in this. Nevertheless (or because of this),&nbsp;metadata schemes are usually big, complex, difficult to read and understand,&nbsp;and, in consequence, are not used as often as they should be.<br>\n<br>\nThis package provides a framework called `dmdScheme`, which</p>\n\n<ul>\n\t<li>&nbsp;makes it easier to develop a domain specific metadata scheme by using a spreadsheet as the base for defining the new scheme</li>\n\t<li>&nbsp; provides basic functionality for the new metadata scheme,&nbsp;including entering, validating, exporting and saving of the new metadata</li>\n\t<li>makies it easier to enter new metadata&nbsp;by using a spreadsheet to enter the new metadata which can than be imported and exported as xml</li>\n</ul>",
+    "license": "MIT",
+    "title": "dmdScheme: An R package for working with Domain specific MetaData Schemes",
+    "upload_type": "software",
+    "creators": [
+        {
+            "orcid": "0000-0002-7490-0066",
+            "affiliation": "University of Z\u00fcrich",
+            "name": "Rainer M Krug"
+        },
+        {
+            "orcid": "0000-0002-7724-1633",
+            "affiliation": "University of Z\u00fcrich",
+            "name": "Owen Petchey"
+        }
+    ]
+}

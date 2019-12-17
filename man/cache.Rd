@@ -4,24 +4,24 @@
 \alias{cache}
 \title{Return cache directory}
 \usage{
-cache(..., delete = FALSE, create = FALSE)
+cache(..., delete = FALSE, createPermanent = FALSE)
 }
 \arguments{
 \item{...}{sub caches}
 
 \item{delete}{if \code{TRUE}, the cache directory will be deleted.}
 
-\item{create}{if \code{TRUE}, the folder will be created. This is done, when
+\item{createPermanent}{if \code{TRUE}, the folder will be created. This is done, when
 \code{delete = TRUE} after deleting the directory.}
 }
 \value{
 fully qualified path to the cache folder
 }
 \description{
-If the cache folder does not exist, and \code{create = FALSE}, a temporary location is used. To make the cache permanent, call
+If the cache folder does not exist, and \code{createPermanent = FALSE}, a temporary location is used. To make the cache permanent, call
 }
 \details{
-\code{cache(create = TRUE)}
+\code{cache(createPermanent = TRUE)}
 
 and restart your R session.
 }

@@ -1,25 +1,33 @@
 Package: dmdScheme
 Title: Domain Specific MetaData Scheme
-Description: A Package forming the core for developing own domain specific metadata schemes. It contains the basic functionality needed for all meatdata schemes based on the
-                   \code{dmdScheme}.
-Version: 0.9.22
+Description: A Package forming the core for developing own domain specific metadata schemes. 
+                  It contains the basic functionality needed for all meatdata schemes based on the
+                  \code{dmdScheme}. See R.M. Krug and O. Petchey (2019) <DOI:10.5281/zenodo.3578638>.
+Version: 1.0.0
 schemeVersion: 0.9.5
 schemeName: dmdScheme
 Date: 2019-11-25
-Authors@R: c( person( "Rainer M.", "Krug", role = c("aut", "cre"), email = "Rainer.Krug@uzh.ch" ), person( "Owen L.", "Petchey", role = c("ctb"), email = "Owen.Petchey@uzh.ch" )
-                   )
+Authors@R: 
+    c(person(given = "Rainer M.",
+             family = "Krug",
+             role = c("aut", "cre"),
+             email = "Rainer.Krug@uzh.ch",
+             comment = c(ORCID = "0000-0002-7490-0066")),
+      person(given = "Owen L.",
+             family = "Petchey",
+             role = "ctb",
+             email = "Owen.Petchey@uzh.ch",
+             comment = c(ORCID = "0000-0002-7724-1633")))
 URL: https://exp-micro-ecol-hub.github.io/dmdScheme/, https://github.com/Exp-Micro-Ecol-Hub/dmdScheme
 BugReports: https://github.com/rkrug/dmdScheme/issues
-DOI: https://zenodo.org/record/3229615
+DOI: <doi:10.5281/zenodo.3229615>
 Depends: R (>= 3.5.0)
 Imports: tools, methods, utils, magrittr (>= 1.5), dplyr (>= 0.1.8), tibble (>= 2.1.1), readxl (>= 1.2.0), xml2, 
       rlang (>= 0.3.1), rmarkdown, knitr, digest (>= 0.6), openxlsx, data.table, writexl, rappdirs, yaml
-Remotes: rkrug/plantuml
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 StagedInstall: true
 RoxygenNote: 6.1.1
 Suggests: covr (>= 3.2.1), testthat (>= 2.0.1), here (>= 0.1), kableExtra (>= 0.9.0), shiny
-Enhances: plantuml (>= 0.2.3.2)
 VignetteBuilder: knitr

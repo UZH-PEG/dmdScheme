@@ -1,6 +1,8 @@
 ---
 title: "Howto Create a new scheme"
 subtitle: "`r library(dmdScheme);paste0(scheme_active()$name, '_', scheme_active()$version)`"
+author: "Rainer M Krug <Rainer.Krug@uzh.ch>"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Howto_create_new_scheme}
@@ -30,10 +32,14 @@ The development of this package is hosted on [github](https://github.com/rkrug/d
 
 ```{r eval = FALSE}
 install.packages("remotes")
-remotes::install_github("Exp-Micro-Ecol-Hub/dmdScheme", build_opts = "build_vignettes = TRUE")
+remotes::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "master", build_opts = "build_vignettes = TRUE")
 ```
 
-For general uasage, we recommend to use the CRAN package distribution for production usage. If you want to try (or need) the newest features, use the drat version, and only if you want to live at the bleeding edge, and can live with crashes and untested exciting new features, use the github version. 
+There are three different versions available:
+
+- **CRAN** For general uasage, we recommend to use the CRAN package distribution for production usage. 
+- **github `ref = "master"** The github version from the master branch (`ref = "master`) is the stable branch and will become over time the next CRAN release. You can use this if you want to try (or need) the newest features. It should be stable.
+- **github `ref = "dev"** The bleeding edge version. This is the one with the newest features which possibly includes non-stable versions. If you can live with crashes, you can use this version. But be warned: errors will occur, and features will change without notice. This is not recommended for production usage.
 
 # Create new scheme
 
