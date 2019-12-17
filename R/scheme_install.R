@@ -71,7 +71,7 @@ scheme_install <- function(
 
   utils::untar(
     tarfile = schemeDefinition,
-    exdir = cache("installedSchemes", create = TRUE)
+    exdir = cache("installedSchemes", createPermanent = FALSE)
   )
 
   # Return ------------------------------------------------------------------
