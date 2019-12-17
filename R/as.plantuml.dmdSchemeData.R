@@ -1,9 +1,9 @@
-#' Generic function to convert \code{dmdSchemeData} to a \code{plantuml} object
+#' Method to convert \code{dmdSchemeData} to a \code{plantuml} object
 #'
 #' @param x object to be converted
 #' @param complete internal
 #' @param nm internal
-#' @param ... other arguments passed to other functions
+#' @param ... further arguments passed to other functions
 #'
 #' @return object of class \code{plantuml} which can be plotted
 #' @export

@@ -2,7 +2,7 @@
 % Please edit documentation in R/as.plantuml.dmdSchemeSet.R
 \name{as.plantuml.dmdSchemeSet}
 \alias{as.plantuml.dmdSchemeSet}
-\title{Generic function to convert \code{dmdSchemeSet} to a \code{plantuml} object}
+\title{Method to convert \code{dmdSchemeSet} to a \code{plantuml} object}
 \usage{
 as.plantuml.dmdSchemeSet(x, complete, nm, ...)
 }
@@ -13,11 +13,11 @@ as.plantuml.dmdSchemeSet(x, complete, nm, ...)
 
 \item{nm}{internal}
 
-\item{...}{other arguments passed to other functions}
+\item{...}{further arguments passed to other functions}
 }
 \value{
 object of class \code{plantuml} which can be plotted
 }
 \description{
-Generic function to convert \code{dmdSchemeSet} to a \code{plantuml} object
+Method to convert \code{dmdSchemeSet} to a \code{plantuml} object
 }

@@ -1,8 +1,24 @@
-#' Create examples in workingdirectoryt
+#' Create examples in working directory
 #'
-#' This function copies the installed example into the working directory so that it can be used.
+#' Each package based on a \code{dmdScheme} can contain examples. This function is the interface to these examples.
+#' In the package \code{dmdScheme}, no examples are included.
+#' The function has two basic usages:
+#'   1. by using `make_example(schemeName = "NameOfTheScheme")` all included
+#'      examples are listed
+#'   2. by using `make_example(name = "basic", schemeName =
+#'      "NameOfTheScheme")` it will create the example named `basic` in a
+#'      subdirectory in the current working directory. An existing directory with
+#'      the same name, will nod be overwritten!
+#'
+#' The examples have to be located in a directory called `example_data`.
+#' The function is doing two things:
+#'   1. Copying the **complete** directory from the `example_data` directory
+#'      to the current working directory
+#'   2. running `knitr::purl` on **all** `./code/*.Rmd` to extract the code into `.R`
+#'      script files. If you want to include an RMarkdown files in the `./code`
+#'      directory from thisa, use the `.rmd` extension (small letters).
 #' @param name name of the example
-#' @param schemeName name of the package in which the example sits. Default value: \code{dmdScheme}
+#' @param schemeName name of the package in which the example sits.
 #'
 #' @return invisibly \code{NULL}
 #'
@@ -11,6 +27,7 @@
 #'
 #' @export
 #'
+#' @md
 #' @examples
 #' make_example()
 #' \dontrun{
@@ -63,7 +80,7 @@ make_example <- function(
     # Show user_manual --------------------------------------------------------
     switch(
       name,
-      basic = utils::RShowDoc("user_manual", package = "dmdScheme"),
+      basic = utils::RShowDoc("user_manual", package = schemeName),
       message("No documentation specified to be opened!")
     )
   }

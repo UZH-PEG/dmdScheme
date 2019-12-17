@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmdScheme fileName="dmdScheme.xlsx" dmdSchemeName="dmdScheme" dmdSchemeVersion="0.9.5" propertyName="dmdScheme" output="complete" class="dmdSchemeSet #%# list" names="Experiment #%# Genus #%# Treatments #%# Measurement #%# DataExtraction #%# DataFileMetaData">
+  <ExperimentList propertyName="Experiment" unit="NA #%# NA #%# NA #%# NA #%# NA #%# NA #%# ml #%# NA #%# g/l #%# NA #%# NA #%# NA #%# days #%# NA" type="character #%# character #%# character #%# character #%# character #%# character #%# numeric #%# character #%# numeric #%# character #%# character #%# character #%# integer #%# character" suggestedValues="NA #%# treatment, in degrees celsius, measurement #%# treatment,light, dark, cycle , e.g. 16:8 LD #%# treatment, relative humidity in % #%# none, bench #%# NA #%# NA #%# NA #%# NA #%# axenic, dirty, clean #%# treatment, single trophic level, multiple trophic level #%# NA #%# NA #%# NA" Description="The name of the experiment. #%# Temperature used for all treatments. If different between treatments, use &quot;treatment&quot; and specify in the Treatment sheet. #%# Light used for all treatments. If different between treatments, use &quot;treatment&quot; and specify in the Treatment sheet. #%# Humidity used for all treatments. If different between treatments, use &quot;treatment&quot; and specify in the Treatment sheet. #%# What type of incubator is used. #%# What type of container is used. #%# Volume of the microcosm container. Not the volume of the culture medium! #%# NA #%# NA #%# Conditions of the cultures for all treatments. #%# Characterisation of the microbe community. #%# NA #%# Length of the experiment in days. This should only include the time in which the measurements were taken! #%# Additional features of the Experiment you want to provide" names="name #%# temperature #%# light #%# humidity #%# incubator #%# container #%# microcosmVolume #%# mediaType #%# mediaConcentration #%# cultureConditions #%# comunityType #%# mediaAdditions #%# duration #%# comment" class="dmdSchemeData #%# tbl_df #%# tbl #%# data.frame">
+    <Experiment>
+      <name>ASR-expt1</name>
+      <temperature>20</temperature>
+      <light>semi-ambient</light>
+      <humidity>ambient</humidity>
+      <incubator>not given here</incubator>
+      <container>Duran type bottle, red lids, 250ml</container>
+      <microcosmVolume>100</microcosmVolume>
+      <mediaType>PPM</mediaType>
+      <mediaConcentration>0.55</mediaConcentration>
+      <cultureConditions>dirty</cultureConditions>
+      <comunityType>initially unknown</comunityType>
+      <mediaAdditions>Wheat seeds added on specific dates, see file wheat_seed_additions.csv</mediaAdditions>
+      <duration>100</duration>
+      <comment/>
+    </Experiment>
+  </ExperimentList>
+  <GenusList propertyName="Genus" unit="NA #%# NA #%# cells / ml #%# NA #%# NA" type="character #%# character #%# character #%# character #%# character" suggestedValues="NA #%# NA #%# treatment #%# bacteria, bacterivore, predator, phototroph #%# NA" allowedValues="NA #%# NA #%# NA #%# NA #%# NA" Description="Id of the species and strain. Each speciesId has to be unique. #%# Where the species was obtained from. #%# Initial density used for all treatments. If different between treatments, use &quot;treatment&quot; and specify in the Treatment sheet. #%# Functional group of the species. #%# NA" names="speciesID #%# colour #%# density #%# functionalGroup #%# comment" class="dmdSchemeData #%# tbl_df #%# tbl #%# data.frame">
+    <Genus speciesID="tt_1">
+      <speciesID>tt_1</speciesID>
+      <colour>ATCC</colour>
+      <density>1</density>
+      <functionalGroup>bacterivore</functionalGroup>
+      <comment>http://www.lgcstandards-atcc.org/products/all/30007.aspx</comment>
+    </Genus>
+    <Genus speciesID="unknown">
+      <speciesID>unknown</speciesID>
+      <colour>unknown</colour>
+      <density/>
+      <functionalGroup>unknown</functionalGroup>
+      <comment/>
+    </Genus>
+  </GenusList>
+  <TreatmentsList propertyName="Treatments" unit="NA #%# NA #%# NA" type="character #%# character #%# character" suggestedValues="species, temperatur, light, initial density, comunity composition, densities, dispersal, viscosity, disturbance, communityType #%# value,  variable: freetext #%# NA" allowedValues="NA #%# NA #%# NA" Description="ID of the the treatment decribed in this a row. Each treatmentId can occur multiple times as it can contain multiple treatment levels. #%# The value of the parameter if the parameter is constant over time, or a description of the variability. If unit is speciesId, comma separated list of all species in the treatment. #%# NA" names="treatmentID #%# treatmentLevelHeight #%# comment" class="dmdSchemeData #%# tbl_df #%# tbl #%# data.frame">
+    <Treatments treatmentID="Lid_treatment">
+      <treatmentID>Lid_treatment</treatmentID>
+      <treatmentLevelHeight>Loose</treatmentLevelHeight>
+      <comment/>
+    </Treatments>
+    <Treatments treatmentID="Lid_treatment">
+      <treatmentID>Lid_treatment</treatmentID>
+      <treatmentLevelHeight>Tight</treatmentLevelHeight>
+      <comment/>
+    </Treatments>
+    <Treatments treatmentID="species_1">
+      <treatmentID>species_1</treatmentID>
+      <treatmentLevelHeight>tt_1, unknown</treatmentLevelHeight>
+      <comment/>
+    </Treatments>
+    <Treatments treatmentID="species_2">
+      <treatmentID>species_2</treatmentID>
+      <treatmentLevelHeight>unknown</treatmentLevelHeight>
+      <comment/>
+    </Treatments>
+    <Treatments treatmentID="species_3">
+      <treatmentID>species_3</treatmentID>
+      <treatmentLevelHeight>tt_1</treatmentLevelHeight>
+      <comment/>
+    </Treatments>
+  </TreatmentsList>
+  <MeasurementList propertyName="Measurement" unit="NA #%# NA #%# NA #%# NA #%# NA #%# NA #%# ml #%# NA #%# NA #%# NA" type="character #%# character #%# character #%# character #%# character #%# integer #%# numeric #%# character #%# character #%# character" suggestedValues="NA #%# O2 concentration, video, manual count, abundance, DNA #%# presens Optode, microscopy #%# %, mmol, count #%# species, OUT, gene, community, particles #%# NA #%# NA #%# NA #%# NA #%# NA" allowedValues="NA #%# NA #%# NA #%# NA #%# NA #%# NA #%# NA #%# NA #%# NA #%# NA" Description="Id of the Measurement process. This includes methodology, variables . Each measurementId specifies one Measurement process and must be unique in this column. Should be in the mapping column in the DataFileMetaData tab. #%# The variable measured. #%# Name of the method used. #%# Unit of the measured variable #%# The object measured. E.g. species in the case of manual count, gene for genetic analysis, particle for particle counters. #%# Total number of all samples in the time series. #%# The sampling volumne. If e.g. atmosphere in container is sampled (oxygen measurements), than enter 0.&#10;Please use NA if sampling volumne is variable. #%# as used in the sheet DataExtraction, column dataExtractionID #%# if measured from the experiment, raw, else the measurementId (first column) of the Measurement it is based on. #%# NA" names="measurementID #%# variable #%# method #%# unit #%# object #%# noOfSamplesInTimeSeries #%# samplingVolume #%# dataExtractionID #%# measuredFrom #%# comment" class="dmdSchemeData #%# tbl_df #%# tbl #%# data.frame">
+    <Measurement measurementID="oxygen concentration">
+      <measurementID>oxygen concentration</measurementID>
+      <variable>DO</variable>
+      <method>presens Optode</method>
+      <unit>%</unit>
+      <object>community</object>
+      <noOfSamplesInTimeSeries>50</noOfSamplesInTimeSeries>
+      <samplingVolume>0</samplingVolume>
+      <dataExtractionID>none</dataExtractionID>
+      <measuredFrom>raw</measuredFrom>
+      <comment/>
+    </Measurement>
+    <Measurement measurementID="abundance">
+      <measurementID>abundance</measurementID>
+      <variable>abundance</variable>
+      <method>molecular</method>
+      <unit>count</unit>
+      <object>species</object>
+      <noOfSamplesInTimeSeries>6</noOfSamplesInTimeSeries>
+      <samplingVolume>0.5</samplingVolume>
+      <dataExtractionID>Mol_Analy_pipeline1</dataExtractionID>
+      <measuredFrom>sequenceData</measuredFrom>
+      <comment/>
+    </Measurement>
+    <Measurement measurementID="smell">
+      <measurementID>smell</measurementID>
+      <variable>smell</variable>
+      <method>nose</method>
+      <unit>rotten eggs or not</unit>
+      <object>community</object>
+      <noOfSamplesInTimeSeries>6</noOfSamplesInTimeSeries>
+      <samplingVolume>0</samplingVolume>
+      <dataExtractionID>none</dataExtractionID>
+      <measuredFrom>raw</measuredFrom>
+      <comment/>
+    </Measurement>
+    <Measurement measurementID="sequenceData">
+      <measurementID>sequenceData</measurementID>
+      <variable>DNA</variable>
+      <method>NGS</method>
+      <unit>Nucleotide</unit>
+      <object>DNA fragment</object>
+      <noOfSamplesInTimeSeries>6</noOfSamplesInTimeSeries>
+      <samplingVolume>0</samplingVolume>
+      <dataExtractionID>none</dataExtractionID>
+      <measuredFrom>raw</measuredFrom>
+      <comment/>
+    </Measurement>
+  </MeasurementList>
+  <DataExtractionList propertyName="DataExtraction" unit="NA #%# NA #%# NA #%# NA #%# NA" type="character #%# character #%# character #%# character #%# character" suggestedValues="NA #%# bemovi x.y.z #%# NA #%# NA #%# NA" allowedValues="NA #%# NA #%# NA #%# NA #%# NA" Description="Name of the DataExtraction process. This includes methodology, variables . Each name specifies one extraction process and can occur multiple times in the case of multiple parameters in the analysis. #%# Method used for the DataExtraction process. If possible including version (in the case of R packages). #%# parameter in the analysis. Only needs to be specified if it varies from the default. #%# value of the parameter (you can enter a number or a word) #%# NA" names="dataExtractionID #%# method #%# parameter #%# value #%# comment" class="dmdSchemeData #%# tbl_df #%# tbl #%# data.frame">
+    <DataExtraction dataExtractionID="Mol_Analy_pipeline1">
+      <dataExtractionID>Mol_Analy_pipeline1</dataExtractionID>
+      <method/>
+      <parameter/>
+      <value/>
+      <comment>See description in file xxx.yyy</comment>
+    </DataExtraction>
+  </DataExtractionList>
+  <DataFileMetaDataList propertyName="DataFileMetaData" unit="NA #%# NA #%# NA #%# NA #%# NA #%# NA #%# NA" type="character #%# character #%# character #%# character #%# character #%# character #%# character" suggestedValues="NA #%# NA #%# NA #%# NA #%# NA #%# NA #%# NA" allowedValues="NA #%# NA #%# ID, Treatment, Measurement, Species, other #%# NA #%# integer, numeric, character, logical, datetime, date, time #%# NA #%# NA" Description="the name of the data set. #%# Name of column in the data file. &#10;Each column in the data file needs to be documented!&#10;or NA&#10;if it is for the whole data file and not specified in the dataFileName #%# The type of the data in the column.&#10;ID: ID field (unique ID of unit of replication);&#10;Treatment: specifies treatment; &#10;Measurement: contains measurements; &#10;Species: contains species; &#10;other: other type of data #%# columnData = Treatment: &#10;treatmentID as in the Treatment tab; &#10;columnData = Species: &#10;treatmentID refering to species composition as in the Treatment tab&#10;columnData = Measurement: &#10;measurementID as in the Measurement tab; &#10;otherwise:&#10;NA #%# Type of the column. #%# if column contains measurement: General description. If type is datatime, date, or time, give the order of year month day hour minute second as e.g. ymdhms, ymd, or hms. (Do not give any other information, e.g. give nothing about how months are entered (e.g. number or name), or how years, months, day, etc are separated. #%# NA" names="dataFileName #%# columnName #%# columnData #%# mappingColumn #%# type #%# description #%# comment" class="dmdSchemeData #%# tbl_df #%# tbl #%# data.frame">
+    <DataFileMetaData>
+      <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+      <columnName>Jar_ID</columnName>
+      <columnData>ID</columnData>
+      <mappingColumn/>
+      <type>character</type>
+      <description/>
+      <comment/>
+    </DataFileMetaData>
+    <DataFileMetaData>
+      <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+      <columnName>DO</columnName>
+      <columnData>Measurement</columnData>
+      <mappingColumn>oxygen concentration</mappingColumn>
+      <type>numeric</type>
+      <description/>
+      <comment/>
+    </DataFileMetaData>
+    <DataFileMetaData>
+      <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+      <columnName>Unit_1</columnName>
+      <columnData>other</columnData>
+      <mappingColumn/>
+      <type>character</type>
+      <description/>
+      <comment/>
+    </DataFileMetaData>
+    <DataFileMetaData>
+      <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+      <columnName>Mode</columnName>
+      <columnData>other</columnData>
+      <mappingColumn/>
+      <type>character</type>
+      <description/>
+      <comment/>
+    </DataFileMetaData>
+    <DataFileMetaData>
+      <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+      <columnName>Location</columnName>
+      <columnData>other</columnData>
+      <mappingColumn/>
+      <type>character</type>
+      <description/>
+      <comment/>
+    </DataFileMetaData>
+    <DataFileMetaData>
+      <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+      <columnName>Date_time</columnName>
+      <columnData>other</columnData>
+      <mappingColumn/>
+      <type>datetime</type>
+      <description>ymdhms</description>
+      <comment/>
+    </DataFileMetaData>
+    <DataFileMetaData>
+      <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+      <columnName>Lid_treatment</columnName>
+      <columnData>Treatment</columnData>
+      <mappingColumn>Lid_treatment</mappingColumn>
+      <type>character</type>
+      <description/>
+      <comment/>
+    </DataFileMetaData>
+    <DataFileMetaData>
+      <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+      <columnName>Jar_type</columnName>
+      <columnData>other</columnData>
+      <mappingColumn/>
+      <type>character</type>
+      <description/>
+      <comment/>
+    </DataFileMetaData>
+    <DataFileMetaData>
+      <dataFileName>dissolved_oxygen_measures.csv</dataFileName>
+      <columnName>Jar_ID</columnName>
+      <columnData>ID</columnData>
+      <mappingColumn/>
+      <type>character</type>
+      <description/>
+      <comment/>
+    </DataFileMetaData>
+    <DataFileMetaData>
+      <dataFileName>smell.csv</dataFileName>
+      <columnName/>
+      <columnData>Species</columnData>
+      <mappingColumn>species_1</mappingColumn>
+      <type>character</type>
+      <description/>
+      <comment/>
+    </DataFileMetaData>
+    <DataFileMetaData>
+      <dataFileName>smell.csv</dataFileName>
+      <columnName>smell</columnName>
+      <columnData>Measurement</columnData>
+      <mappingColumn>smell</mappingColumn>
+      <type>character</type>
+      <description/>
+      <comment/>
+    </DataFileMetaData>
+    <DataFileMetaData>
+      <dataFileName>smell.csv</dataFileName>
+      <columnName>Date</columnName>
+      <columnData>other</columnData>
+      <mappingColumn/>
+      <type>datetime</type>
+      <description>ymdhms</description>
+      <comment/>
+    </DataFileMetaData>
+    <DataFileMetaData>
+      <dataFileName>smell.csv</dataFileName>
+      <columnName>Lid_treatment</columnName>
+      <columnData>Treatment</columnData>
+      <mappingColumn>Lid_treatment</mappingColumn>
+      <type>character</type>
+      <description/>
+      <comment/>
+    </DataFileMetaData>
+    <DataFileMetaData>
+      <dataFileName>smell.csv</dataFileName>
+      <columnName>Jar_type</columnName>
+      <columnData>other</columnData>
+      <mappingColumn/>
+      <type>character</type>
+      <description/>
+      <comment/>
+    </DataFileMetaData>
+    <DataFileMetaData>
+      <dataFileName>abundances.csv</dataFileName>
+      <columnName/>
+      <columnData>Species</columnData>
+      <mappingColumn>species_3</mappingColumn>
+      <type>character</type>
+      <description/>
+      <comment/>
+    </DataFileMetaData>
+    <DataFileMetaData>
+      <dataFileName>abundances.csv</dataFileName>
+      <columnName>Jar_ID</columnName>
+      <columnData>ID</columnData>
+      <mappingColumn/>
+      <type>character</type>
+      <description/>
+      <comment/>
+    </DataFileMetaData>
+    <DataFileMetaData>
+      <dataFileName>abundances.csv</dataFileName>
+      <columnName>Date_time</columnName>
+      <columnData>other</columnData>
+      <mappingColumn/>
+      <type>datetime</type>
+      <description>ymdhms</description>
+      <comment/>
+    </DataFileMetaData>
+    <DataFileMetaData>
+      <dataFileName>abundances.csv</dataFileName>
+      <columnName>Lid_treatment</columnName>
+      <columnData>Treatment</columnData>
+      <mappingColumn>Lid_treatment</mappingColumn>
+      <type>character</type>
+      <description/>
+      <comment/>
+    </DataFileMetaData>
+    <DataFileMetaData>
+      <dataFileName>abundances.csv</dataFileName>
+      <columnName>Jar_type</columnName>
+      <columnData>other</columnData>
+      <mappingColumn/>
+      <type>character</type>
+      <description/>
+      <comment/>
+    </DataFileMetaData>
+    <DataFileMetaData>
+      <dataFileName>abundances.csv</dataFileName>
+      <columnName>count_number</columnName>
+      <columnData>Measurement</columnData>
+      <mappingColumn>abundance</mappingColumn>
+      <type>numeric</type>
+      <description/>
+      <comment/>
+    </DataFileMetaData>
+  </DataFileMetaDataList>
+</dmdScheme>

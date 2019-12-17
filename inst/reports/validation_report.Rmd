@@ -36,8 +36,8 @@ if (is.null(x)) {
   if (!require("dmdScheme")) {
     devtools::load_all()
   }
-  x <- dmdScheme::dmdScheme_raw
-  result <- validate(x = dmdScheme_raw, validateData = TRUE, report = "none", path = system.file("example_data", "basic", "data", "archiving_data", package = "dmdScheme"))
+  x <- dmdScheme::dmdScheme_raw()
+  result <- validate(x = dmdScheme_raw(), validateData = TRUE, report = "none", path = system.file("example_data", "basic", "data", "archiving_data", package = "dmdScheme"))
 }
 ## ##
 ## Define colours for results of evaluation

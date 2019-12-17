@@ -1,28 +1,25 @@
 Package: dmdScheme
-Title: Domain MetaData Scheme
-Description: A Package forming the core for developing own domain specific metadata schemes. It contains the basic functionality needed for all meatdata
-                 schemes based on the \code{dmdScheme}.
-Version: 0.9.9
+Title: Domain Specific MetaData Scheme
+Description: A Package forming the core for developing own domain specific metadata schemes. It contains the basic functionality needed for all meatdata schemes based on the
+                   \code{dmdScheme}.
+Version: 0.9.22
 schemeVersion: 0.9.5
 schemeName: dmdScheme
-Date: 2019-05-23
-Authors@R: c( person( "Rainer M.", "Krug", role = c("aut", "cre"), email = "Rainer.Krug@uzh.ch" ), person( "Owen L.", "Petchey", role = c("ctb"), email
-                 = "Owen.Petchey@uzh.ch" ), person("Vanessa W.", "de Melo", role = c("ctb"), email = "Vanessa Weber de Melo
-                 <vanessa.weberdemelo@uzh.ch>" ), person("Frank", "Pennekamp", role = c("ctb"), email = "Frank Pennekamp <frank.pennekamp@uzh.ch>") )
-URL: https://rkrug.github.io/dmdScheme/, https://github.com/rkrug/dmdScheme
+Date: 2019-11-25
+Authors@R: c( person( "Rainer M.", "Krug", role = c("aut", "cre"), email = "Rainer.Krug@uzh.ch" ), person( "Owen L.", "Petchey", role = c("ctb"), email = "Owen.Petchey@uzh.ch" )
+                   )
+URL: https://exp-micro-ecol-hub.github.io/dmdScheme/, https://github.com/Exp-Micro-Ecol-Hub/dmdScheme
 BugReports: https://github.com/rkrug/dmdScheme/issues
 DOI: https://zenodo.org/record/3229615
 Depends: R (>= 3.5.0)
-Imports: tools, methods, utils, magrittr (>= 1.5), dplyr (>= 0.1.8), tibble (>= 2.1.1), readxl (>= 1.2.0), openxlsx (>= 4.1.1), XML (>= 3.98-1.16),
-                 rlang (>= 0.3.1), taxize (>= 0.9.5), rmarkdown, knitr, digest (>= 0.6)
-Remotes: awalker89/openxlsx, rkrug/plantuml
+Imports: tools, methods, utils, magrittr (>= 1.5), dplyr (>= 0.1.8), tibble (>= 2.1.1), readxl (>= 1.2.0), xml2, 
+      rlang (>= 0.3.1), rmarkdown, knitr, digest (>= 0.6), openxlsx, data.table, writexl, rappdirs, yaml
+Remotes: rkrug/plantuml
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 StagedInstall: true
 RoxygenNote: 6.1.1
-Suggests: covr (>= 3.2.1), testthat (>= 2.0.1), here (>= 0.1), kableExtra (>= 0.9.0)
+Suggests: covr (>= 3.2.1), testthat (>= 2.0.1), here (>= 0.1), kableExtra (>= 0.9.0), shiny
 Enhances: plantuml (>= 0.2.3.2)
-schemeUpdate: 2019-05-28 11:31:14
-schemeMD5: 486c5e0ee06591d541b441774bc4d19f
 VignetteBuilder: knitr

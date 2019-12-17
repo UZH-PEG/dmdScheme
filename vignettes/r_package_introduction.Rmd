@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 library(dmdScheme)
-# library(here)
+library(here)
 # library(magrittr)
 # library(dplyr)
 # library(knitr)
@@ -29,11 +29,13 @@ v <- read.dcf(here::here('DESCRIPTION'), all = TRUE)[['Version']]
 
 # The R Package
 
-The Definition of the dmdScheme is done in an R package, which gives all the tools to enter the meatada and to export it into xml.
+The package `dmdScheme` is a base package to define domain specific metadata schemes, enter the metadata, validate the entered metadata, and export it to xml format for further processing by e.g. archival repositories. This vignette will give an overview over the `dmdScheme` package and what it contains. More detailed information about the development, including a suggested workflow, can be found in the vignette **Howto create a new scheme**. The usage of a derived scheme is explained in the package `emeScheme` in the vignette **User Manual**.
 
 ## Installation
 
-The package is not yet on CRAN. Therefore it needs to be installed from github. This will install the last verion on github. 
+**OP: Make sure this section is consistent with the corresponding on in  howto_create_new_scheme.rmd
+
+The package is not yet on CRAN. Therefore it needs to be installed from github. This will install the last verion on github.
 
 For a list of releases see [here](https://github.com/rkrug/dmdScheme/releases)
 
@@ -41,11 +43,11 @@ For a list of releases see [here](https://github.com/rkrug/dmdScheme/releases)
 ## install the devtools package if not installed yet
 # install.packages("devtools")
 
-## install the last version of dmdScheme from github
+## install the last stable version of dmdScheme from github
 devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", build_opts = c("--no-resave-data"))
 
 ## install a specific release, e.g. v0.8, of dmdScheme from github
-devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "v0.8", build_opts = c("--no-resave-data"))
+devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "dev", build_opts = c("--no-resave-data"))
 ```
 
 
@@ -55,45 +57,79 @@ To enter new data to the dmdScheme, you have to
 
 ```{r echo=TRUE, eval = FALSE}
 library("dmdScheme")
-enter_new_metadata()
+open_new_spreadsheet("dmdScheme")
 ```
 
-This should open Excel and the file should look similar to this:
+This will open Excel and the file should look similar to this, when looking at the second tab:
 
-![](./figs/enter_new_data.png)
+<!-- ![](./figs/enter_new_data.png) -->
 
-1) The file is saved in a temporary directory. It needs to be saved at a different location, if you want to keep the changes. 
+The following points are important to remember:
+
+1) The file is saved in a **temporary** directory. It needs to be saved at a different location, if you want to keep the changes.
 2) Data can only be entered in the green cells with. All other cells are write protected.
 
 After entering the data, save it to a location for further processing.
 
+
+## Validating your metadata
+
+The metadata in the spreadsheet can be validated by using
+
+```{r validate, echo = TRUE, eval = TRUE}
+val <- validate( scheme_path_xlsx() )
+```
+
+which results in an object of class `dmdScheme_validation`.
+
+To create a report (html, pdf or docx) yo can use the `report()` function:
+
+```{r report, echo = TRUE, eval = FALSE}
+report(val)
+```
+
+which will open a html report in your browser.
+
+## Converting Metadata to xml
+
+You can export the data to an an xml file:
+
+```{r example_export_xml, echo=TRUE, eval = TRUE}
+x <- read_excel( scheme_path_xlsx() )
+as_xml( x )
+```
+
+When you specify the argument `file`, the xml will be saved:
+
+```{r example_export_xml_file, echo=TRUE, eval = TRUE}
+xmlFile = tempfile(fileext = ".xml")
+x <- read_excel( scheme_path_xlsx() )
+write_xml( x = x, file = xmlFile )
+```
+
+## Re-import from xml into R
+
+```{r example_import_xml, eval = TRUE}
+x <- read_xml( xmlFile )
+x
+```
+
 ## Importing Data from Excel Sheet
 
-Next, you have to import the data entered in the Excel sheet int R:
+Next, you have to import the data entered in the Excel sheet into R. For simplicity, we use here a file included in the package. If you want to load your own file, replace `scheme_path_xlsx()` with the file name and path to that file.
 
-```{r echo = TRUE, eval = FALSE}
-x <- read_from_excel(
-      file = "PATH/WHERE/THE/FILE/IS/file.xlsx",
-      keepData = TRUE,
-      verbose = TRUE,
-      raw = FALSE 
+```{r echo = TRUE, eval = TRUE}
+x <- read_excel(
+      file = scheme_path_xlsx(),
+      verbose = TRUE
 )
 ```
 
-For convenience, we use the exapmle data included in the package by using
-
-```{r}
-x <- read_from_excel(
-      file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
-      keepData = TRUE,
-      verbose = TRUE,
-      raw = FALSE 
-)
-```
+The `verbose = TRUE` argument will produce messages which will show you what is happening and will help to identify problems.
 
 ## Print dmdScheme Data
 
-dmdScheme Data can be printed by using the `print()` function. The function has three arguments which control the printout:
+`dmdScheme` Data can be printed by using the `print()` function. The function has three arguments which control the printout:
 
 * `printAttr`: if `TRUE` (default) print the **basic** attributes prefixed with `A   `
 * `printExAttr`: if `TRUE` print the **all** attributes prefixed with `X   `
@@ -134,43 +170,8 @@ print(
   printData = TRUE
 )
 ```
-## Converting Metadata to xml
 
-You can export the data to an an xml file:
-
-```{r example_export_xml, echo=TRUE, eval = FALSE}
-dmdSchemeToXml( x, tag = "ExampleData" )
-```
-
-When you specify the argument `file`, the xml will be saved:
-
-```{r example_export_xml_file, echo=TRUE, eval = FALSE}
-dmdSchemeToXml( x, tag = "ExampleData", file = "ExampleData.xml" )
-```
-
-
-<!-- ## Re-import from xml into R -->
-
-<!-- **<span style="color:red">TODO This needs some more work see issue #5 </span>**  -->
-
-<!-- ```{r example_import_xml, eval = FALSE} -->
-<!-- addDataTodmdScheme() %>% -->
-<!--   dmdSchemeToXml( tag = "Example Data" ) %>% -->
-<!--   xmlTodmdScheme() %>% -->
-<!--   str() -->
-<!-- ``` -->
-
-## Validation
-### `dmdSchemeSet_raw` against `dmdScheme`
-
-When running `read_from_excel()`, the dafault is to validate the raw data before conversion to an `dmdScheme` object to guarantee a valid `dmdScheme` is returned. If the validation fails, an error is raised.
-
-### xml against xsd
-
-Not incorporated yet but planned.
 
 ## General things
 
-The dmdScheme data in R can be also saved, loaded, and edited using the standard R commands.
-
-
+The `dmdScheme` data in R can be also saved, loaded, and edited using the standard R commands.

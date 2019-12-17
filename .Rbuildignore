@@ -9,6 +9,7 @@
 ^dmdScheme\.xml$
 ^\.covrignore$
 ^codecov\.yml$
+^deploy.sh$
 ^\.travis\.yml$
 ^README\..*$
 ^NEWS\..*$
@@ -23,3 +24,6 @@
 ^dmdScheme\.Rproj$
 ^dmdScheme\.xlsx$
 
+^ONLY_LOCAL$
+^NOT_IN_PACKAGE$
+^\./inst/installedSchemes/emeScheme_0\.9\.5$

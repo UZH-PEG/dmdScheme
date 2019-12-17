@@ -1,6 +1,5 @@
 #' @export
 #'
-#' @importFrom taxize gnr_resolve
 #' @importFrom magrittr %>% %<>%
 #' @importFrom dplyr filter select
 #' @importFrom utils browseURL glob2rx
@@ -10,6 +9,19 @@
 #' @importFrom magrittr extract2
 #' @importFrom digest digest
 #'
+#' @describeIn validate validate a `dmdSchemeSet_raw` object
+#'
+#' @md
+#' @examples
+#' ## validate a `dmdScheme_raw object`
+#' validate(
+#'    x = dmdScheme_raw()
+#' )
+#'
+#' ## use `read_raw()` to read an Excel spreadsheet into a `dmdScheme_raw` object
+#' x <- read_excel_raw( scheme_path_xlsx() )
+#' validate( x = x )
+#'
 validate.dmdSchemeSet_raw <- function(
   x,
   path = ".",
@@ -18,7 +30,7 @@ validate.dmdSchemeSet_raw <- function(
 ) {
   # Helper functions --------------------------------------------------------
 
-  new_dmdScheme_validation <- function() {
+  as_dmdScheme_validation <- function() {
     result <- list(
       error = NA,
       details = NA,
@@ -32,7 +44,7 @@ validate.dmdSchemeSet_raw <- function(
   }
 
   validateTypes <- function(sraw, sconv) {
-    result <- new_dmdScheme_validation()
+    result <- as_dmdScheme_validation()
     ##
     result$header <- "conversion of values into specified type lossless possible"
     result$description <- paste(
@@ -75,7 +87,7 @@ validate.dmdSchemeSet_raw <- function(
     if (is.null(attr(sraw, "allowedValues"))){
       result <- NULL
     } else {
-      result <- new_dmdScheme_validation()
+      result <- as_dmdScheme_validation()
       ##
       result$header <- "values in suggestedValues"
       result$description <- paste(
@@ -133,7 +145,7 @@ validate.dmdSchemeSet_raw <- function(
     if (is.null(attr(sraw, "allowedValues"))){
       result <- NULL
     } else {
-      result <- new_dmdScheme_validation()
+      result <- as_dmdScheme_validation()
       ##
       result$header <- "values in allowedValues"
       result$description <- paste(
@@ -183,7 +195,7 @@ validate.dmdSchemeSet_raw <- function(
   }
 
   validateIDField <- function(sraw){
-    result <- new_dmdScheme_validation()
+    result <- as_dmdScheme_validation()
     ##
     result$header <- "ID Field presendt and in the first column"
     result$description <- paste(
@@ -218,7 +230,7 @@ validate.dmdSchemeSet_raw <- function(
   }
 
   validateStructure <- function( x ){
-    result <- new_dmdScheme_validation()
+    result <- as_dmdScheme_validation()
     ##
     result$header <- "Structural / Formal validity"
     result$description <- paste(
@@ -228,10 +240,12 @@ validate.dmdSchemeSet_raw <- function(
     )
     result$descriptionDetails <- ""
     ##
-    struct <- new_dmdSchemeSet( x, keepData = FALSE, verbose = FALSE)
-    attr(struct, "propertyName") <- "dmdScheme"
-    result$details <- all.equal(struct, dmdScheme)
-    if (isTRUE(result$details)){
+    struct <- as_dmdScheme( x, keepData = FALSE, verbose = FALSE)
+    dmdScheme_test <- dmdScheme()
+    attr(struct, "fileName") <- "none"
+    attr(dmdScheme_test, "fileName") <- "none"
+    result$details <- all.equal(struct, dmdScheme_test)
+    if (isTRUE(result$details)) {
       result$error <- 0
     } else {
       result$error <- 3
@@ -243,7 +257,7 @@ validate.dmdSchemeSet_raw <- function(
   }
 
   validateExperiment <- function( x, xraw, xconv ){
-    result <- new_dmdScheme_validation()
+    result <- as_dmdScheme_validation()
     ##
     result$header <- "Experiment"
     result$description <- paste(
@@ -277,7 +291,7 @@ validate.dmdSchemeSet_raw <- function(
   }
 
   validateTab <- function( x, xraw, xconv ){
-    result <- new_dmdScheme_validation()
+    result <- as_dmdScheme_validation()
     ##
     result$header <- names(x)
     result$description <- paste(
@@ -313,7 +327,7 @@ validate.dmdSchemeSet_raw <- function(
   }
 
   validateDataFileMetaDataDataFileExists <- function(xraw, path) {
-    result <- new_dmdScheme_validation()
+    result <- as_dmdScheme_validation()
     ##
     result$header <- "`dataFile` exists in path"
     result$description <- paste(
@@ -356,7 +370,7 @@ validate.dmdSchemeSet_raw <- function(
   }
 
   validateDataFileMetaData <- function( x, xraw, xconv, path ){
-    result <- new_dmdScheme_validation()
+    result <- as_dmdScheme_validation()
     ##
     result$header <- "DataFileMetaData"
     result$description <- paste(
@@ -393,7 +407,7 @@ validate.dmdSchemeSet_raw <- function(
 
   # Define result structure of class dmdScheme_validation ----------------------
 
-  result <- new_dmdScheme_validation()
+  result <- as_dmdScheme_validation()
   result$description <- paste(
     "The result of the overall validation of the data."
   )
@@ -415,8 +429,8 @@ validate.dmdSchemeSet_raw <- function(
   # Validata data -----------------------------------------------------------
 
   if ((result$structure$error == 0) & validateData){
-    xconv <- suppressWarnings( new_dmdSchemeSet(x, keepData = TRUE, convertTypes = TRUE,  verbose = FALSE, warnToError = FALSE) )
-    xraw  <-                   new_dmdSchemeSet(x, keepData = TRUE, convertTypes = FALSE, verbose = FALSE, warnToError = FALSE)
+    xconv <- suppressWarnings( as_dmdScheme(x, keepData = TRUE, convertTypes = TRUE,  verbose = FALSE, warnToError = FALSE) )
+    xraw  <-                   as_dmdScheme(x, keepData = TRUE, convertTypes = FALSE, verbose = FALSE, warnToError = FALSE)
 
     result$Experiment <- validateExperiment(x["Experiment"], xraw["Experiment"], xconv["Experiment"])
 

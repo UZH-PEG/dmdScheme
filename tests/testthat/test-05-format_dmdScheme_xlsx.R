@@ -1,4 +1,4 @@
-context("format_dmdScheme_xlsx()")
+context("05-format_dmdScheme_xlsx()")
 
 # fail because of file -------------------------------------------------------------
 
@@ -14,10 +14,10 @@ test_that(
 
 #
 # test_that(
-#   "read_from_excel() fails when file does not have right extension",
+#   "read_excel() fails when file does not have right extension",
 #   {
 #     expect_error(
-#       object = read_from_excel(system.file("Dummy_for_tests", package = "dmdScheme")),
+#       object = read_excel(system.file("Dummy_for_tests", package = "dmdScheme")),
 #       regexp = "If x is a file name, it has to have the extension 'xls' or 'xlsx'"
 #     )
 #   }
@@ -27,11 +27,11 @@ test_that(
 # # read from xlsx --- value ----------------------------------------------------------
 #
 # test_that(
-#   "read_from_excel() keepData and raw",
+#   "read_excel() keepData and raw",
 #   {
 #     expect_known_value(
-#       object = read_from_excel(
-#         file = "dmdScheme.xlsx",
+#       object = read_excel(
+#         file = scheme_path_xlsx(),
 #         keepData = TRUE,
 #         raw = TRUE,
 #         verbose = FALSE
@@ -42,11 +42,11 @@ test_that(
 # )
 #
 # test_that(
-#   "read_from_excel() keepData and raw",
+#   "read_excel() keepData and raw",
 #   {
 #     expect_known_value(
-#       object = read_from_excel(
-#         file = "dmdScheme.xlsx",
+#       object = read_excel(
+#         file = scheme_path_xlsx(),
 #         keepData = FALSE,
 #         raw = FALSE,
 #         verbose = FALSE
@@ -60,11 +60,11 @@ test_that(
 # # # read from xlsx --- output -----------------------------------------------
 # #
 # # test_that(
-# #   "read_from_excel() keepData and raw",
+# #   "read_excel() keepData and raw",
 # #   {
 # #     expect_known_output(
-# #       object = read_from_excel(
-# #         file = system.file("dmdScheme.xlsx", package = "dmdScheme"),
+# #       object = read_excel(
+# #         file = scheme_path_xlsx(),
 # #         keepData = TRUE,
 # #         raw = TRUE,
 # #         verbose = TRUE

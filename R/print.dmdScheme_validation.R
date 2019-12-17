@@ -1,4 +1,4 @@
-#' print function for \code{dmdScheme_validation}
+#' Print method for \code{dmdScheme_validation} object
 #'
 #' When using different values for \code{format}, different outputs are generated:
 #' \itemize{
@@ -18,7 +18,7 @@
 #' @export
 #'
 #' @examples
-#' x <- validate(dmdScheme_raw)
+#' x <- validate(dmdScheme_raw())
 #'
 #' ## default printout as list
 #' x
@@ -37,7 +37,7 @@
 #' #    print(result, level = 2, listLevel = 20, type = "summary")
 #' # ```
 print.dmdScheme_validation <- function(x, level = 1, listLevel = 3, type = "default", format = "markdown", error = c(0, 1, 2, 3, NA), ...) {
-  switch (
+  switch(
     type,
     default = NextMethod(),
     summary = print_dmdScheme_validation_summary(x, level = level, listLevel = listLevel, error = error),

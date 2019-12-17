@@ -4,19 +4,43 @@
 \name{pkg.dmdScheme}
 \alias{pkg.dmdScheme}
 \alias{pkg.dmdScheme-package}
-\title{dmdScheme: A package containing the definition for a metadata scheme for Experimental Microcosm Ecological experiments.}
+\title{dmdScheme: A package containing the framework for Domain specific MetaData Schemes}
 \description{
-Metadata is essential for the managing of data. Consequentally, metadata
-schemes play an importent role in this. Nevertheless (or because of this),
-metadata schemes are usuallu big, complex, difficult to read and understant,
-and, in consequence, are not used as often as they dshould be. Therefore, we
-developed a metadata scheme, called \code{dmdScheme} which is focussed on one
-homogeneous field, so that the metadata scheme is not to complex and can easiliy
-used.
-This package provides:
-1) the authorative definition of the dmdScheme
-2) object definitions for this scheme for R
-3) Excel spreadsheet for entering the metadata for an experiment, i.e. multiple data files
-4) functions to validate this metadata
-5) functions to export the metadata to xml files, one per data file
+Metadata is essential for the managing and archiving of data. Consequentially, metadata
+schemes, which standardise the property names used in specifying the metadata, play an essential role in this. Nevertheless (or because of this),
+metadata schemes are usually big, complex, difficult to read and understand,
+and, in consequence, are not used as often as they should be.
+}
+\details{
+This package provides a framework called \code{dmdScheme}, which
+\itemize{
+\item \strong{makes it easier to develop a domain specific metadata scheme}: by using a spreadsheet as the base for defining the new scheme
+\itemize{
+\item \strong{provides basic functionality for the new metadata scheme}: including entering, validating, exporting and saving of the new metadata
+\item \strong{makies it easier to enter new metadata}: by uising a spreadsheet to enter the new metadata which can than be imported and exported as xml
+}
+}
+
+This package provides for the \strong{creator} of a new Domain Specific MetaData Scheme:
+\enumerate{
+\item a simple way of discussing and developing a new scheme as it is
+represented in a spreadsheet
+\item a function to create a new R package for a
+new domain specific metadata scheme which is based on a spreadsheet
+containing the definition and inherits all the functionality of this
+package (validation, printing, export, import, ...)
+\item easy update of the new scheme based by re-importing the new
+version of the scheme from the spreadsheet by simply calling one function
+\item easy extension of the functionality as the whole architecture is based
+on S3 methods and the new scheme inherits from the \code{dmdScheme} objects.
+}
+
+This package provides for the \strong{user} of a Domain Specific MetaData Scheme:
+\enumerate{
+\item the authorative definition of an example \code{dmdScheme}
+\item object definitions for this scheme for R
+\item Excel spreadsheet for entering the metadata for an experiment
+\item functions to validate this metadata
+\item functions to export the metadata to xml files, one per data file
+}
 }
