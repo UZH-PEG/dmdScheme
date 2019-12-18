@@ -20,7 +20,7 @@ Authors@R:
              comment = c(ORCID = "0000-0002-7724-1633")))
 URL: https://exp-micro-ecol-hub.github.io/dmdScheme/, https://github.com/Exp-Micro-Ecol-Hub/dmdScheme
 BugReports: https://github.com/rkrug/dmdScheme/issues
-DOI: <doi:10.5281/zenodo.3229615>
+DOI: <doi:10.5281/zenodo.3581970>
 Depends: R (>= 3.5.0)
 Imports: tools, methods, utils, magrittr (>= 1.5), dplyr (>= 0.1.8), tibble (>= 2.1.1), readxl (>= 1.2.0), xml2, 
       rlang (>= 0.3.1), rmarkdown, knitr, digest (>= 0.6), openxlsx, data.table, writexl, rappdirs, yaml

@@ -41,7 +41,7 @@ devtools::load_all(here())
 v <- read.dcf(here::here('DESCRIPTION'), all = TRUE)[['Version']]
 ```
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3229614.svg)](https://doi.org/10.5281/zenodo.3229614)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3581970.svg)](https://doi.org/10.5281/zenodo.3581970)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 

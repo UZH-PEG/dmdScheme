@@ -8,14 +8,14 @@ citEntry(entry = "Manual",
   journal      = "Zenodo",
   year         = "2019",
   version      = "v0.9.22",
-  doi          = "10.5281/zenodo.3578638",
-  url          = "https://doi.org/10.5281/zenodo.3578638",
+  doi          = "10.5281/zenodo.3581970",
+  url          = "https://doi.org/10.5281/zenodo.3581970",
 
   textVersion  =
   paste("Rainer M. Krug, Owen L/ Petchey (2019).",
         "{dmdScheme}: An R package for working with Domain specific MetaData Schemes.",
         "(version v0.9.22).",
         "Zenodo",
-        "http://doi.org/10.5281/zenodo.3578638")
+        "http://doi.org/10.5281/zenodo.3581970")
 )
 
