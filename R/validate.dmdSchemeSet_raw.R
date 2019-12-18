@@ -63,6 +63,10 @@ validate.dmdSchemeSet_raw <- function(
       "One or more FALSE values will result in an ERROR."
     )
     ##
+    if (nrow(sraw) == 0) {
+      sraw <- tibble::add_row(sraw)
+      sconv <- tibble::add_row(sconv)
+    }
     t <- sraw == sconv
     na <- is.na(t)
     t[na] <- TRUE
@@ -84,7 +88,7 @@ validate.dmdSchemeSet_raw <- function(
   }
 
   validateSuggestedValues <- function(sraw) {
-    if (is.null(attr(sraw, "allowedValues"))){
+    if (is.null(attr(sraw, "allowedValues"))) {
       result <- NULL
     } else {
       result <- as_dmdScheme_validation()
@@ -142,7 +146,7 @@ validate.dmdSchemeSet_raw <- function(
   }
 
   validateAllowedValues <- function(sraw) {
-    if (is.null(attr(sraw, "allowedValues"))){
+    if (is.null(attr(sraw, "allowedValues"))) {
       result <- NULL
     } else {
       result <- as_dmdScheme_validation()
@@ -229,7 +233,7 @@ validate.dmdSchemeSet_raw <- function(
     return(result)
   }
 
-  validateStructure <- function( x ){
+  validateStructure <- function(x){
     result <- as_dmdScheme_validation()
     ##
     result$header <- "Structural / Formal validity"
@@ -256,7 +260,7 @@ validate.dmdSchemeSet_raw <- function(
     return(result)
   }
 
-  validateExperiment <- function( x, xraw, xconv ){
+  validateExperiment <- function( x, xraw, xconv ) {
     result <- as_dmdScheme_validation()
     ##
     result$header <- "Experiment"
@@ -290,7 +294,7 @@ validate.dmdSchemeSet_raw <- function(
     return(result)
   }
 
-  validateTab <- function( x, xraw, xconv ){
+  validateTab <- function( x, xraw, xconv ) {
     result <- as_dmdScheme_validation()
     ##
     result$header <- names(x)
@@ -369,7 +373,7 @@ validate.dmdSchemeSet_raw <- function(
     return(result)
   }
 
-  validateDataFileMetaData <- function( x, xraw, xconv, path ){
+  validateDataFileMetaData <- function(x, xraw, xconv, path){
     result <- as_dmdScheme_validation()
     ##
     result$header <- "DataFileMetaData"
@@ -428,7 +432,7 @@ validate.dmdSchemeSet_raw <- function(
 
   # Validata data -----------------------------------------------------------
 
-  if ((result$structure$error == 0) & validateData){
+  if ((result$structure$error == 0) & validateData) {
     xconv <- suppressWarnings( as_dmdScheme(x, keepData = TRUE, convertTypes = TRUE,  verbose = FALSE, warnToError = FALSE) )
     xraw  <-                   as_dmdScheme(x, keepData = TRUE, convertTypes = FALSE, verbose = FALSE, warnToError = FALSE)
 
