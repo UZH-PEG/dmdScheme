@@ -28,7 +28,7 @@
 #'   path = tempdir()
 #' )
 make_new_package <- function(
-  path = scheme_active()$name
+  path = "."
 ){
   success <- FALSE
   on.exit(
@@ -39,6 +39,7 @@ make_new_package <- function(
           recursive = TRUE,
           force = TRUE
         )
+        stop("Something went wrong - package not created!")
       }
     }
   )
