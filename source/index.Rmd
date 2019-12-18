@@ -62,29 +62,48 @@ Github site [https://github.com/Exp-Micro-Ecol-Hub/dmdScheme](https://github.com
 <!-- See the vignette "Description" at <a href="description_dmdScheme.html" target="_blank">vignette 'Description'</a>. -->
 
 # The R Package
-The R package `dmdScheme` is the base package for all `dmdScheme` schemes. The metadata scheme used by this package (`dmdScheme`) in itself is just a template and of no real appliocability. It needs to be adjusted to actual needs and uploaded to the site [dmdScheme repository](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/tree/master) so that it can be used.
+The R package `dmdScheme` is the base package for all `dmdScheme` schemes. The metadata scheme used by this package (`dmdScheme`) in itself is just a template and of no real applicability. It needs to be adjusted to actual needs and uploaded to the site [dmdScheme repository](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/tree/master) so that it can be used.
 
-The definition of the dmdScheme can be found at the [dmdScheme repository](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/tree/master) The R package provides the functionality to work in R with the scheme, i.e. to enter, validate and export the metadata.
+The definition of the dmdScheme can be found at the [dmdScheme repository](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository). The R package provides the functionality to work in R with the scheme, i.e. to enter, validate and export the metadata.
 
 ## Installation
 
-The package is not yet on CRAN. Therefore it needs to be installed from github. This will install the last verion on github. 
+The recommended way is to install from CRAN the stable released version:
 
-For a list of releases see [here](https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/releases)
+```{r echo=TRUE, eval = FALSE}
+install.packages("dmdScheme")
+```
 
+
+To install the **master** branch, the stable branch which will become the new CRAN release, from the [dmdScheme repository on github](https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/tree/master), run
+ 
+```{r echo=TRUE, eval = FALSE}
+## install the devtools package if not installed yet
+# install.packages("devtools")
+
+devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "master", build_opts = NULL)
+```
+ 
+If you are feelinfg adventourous, want to live at the bleeding edge and can live with non-working features, you can install the **dev** branch. This branch is **not stable** and features and functionality can appear or be remioved without prior notice:
 
 ```{r echo=TRUE, eval = FALSE}
 ## install the devtools package if not installed yet
 # install.packages("devtools")
 
-## install the last version of dmdScheme from github incl vignettes
-devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "master", build_opts = c("--no-resave-data"))
+devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "dev", build_opts = NULL)
+```
+ 
+Other branches are not generally recommended for instalation unless you are developing `dmdScheme`!
 
-## install a specific release or branch of dmdScheme from github
-devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "dev", build_opts = c("--no-resave-data"))
+## Loading the package
+
+When you load the package, the definition of the scheme is downloaded from the [dmdScheme repository](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/tree/master) installed to a temporary scheme library in a temporary directory for usage in this R session. As this scheme library is styored in a temporary directory, it will be deleted when youu quit your R session and re-downloaded each time you start a new session and load the package. To create a permanent package library you have to create a cache in the user directory. To do this, run
+
+```{r echo=TRUE, eval = FALSE}
+cache(createPermanent = TRUE)
 ```
 
-for a list of releases see this [link on github](https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/tags).
+and restart your R session. Noiw the definitions of the installed `dmdSchemes` will be installed in this user cache and be available permanently. For further info, see the documenatation of the command `cache()`.
 
 ## Accompagnying documentation (vignettes)
 

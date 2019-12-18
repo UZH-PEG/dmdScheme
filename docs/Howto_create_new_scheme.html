@@ -12,7 +12,7 @@
 
 <meta name="author" content="Rainer M Krug Rainer.Krug@uzh.ch" />
 
-<meta name="date" content="2019-12-17" />
+<meta name="date" content="2019-12-18" />
 
 <title>Howto Create a new scheme</title>
 
@@ -20,19 +20,18 @@
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -52,7 +51,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -306,53 +305,35 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <h1 class="title toc-ignore">Howto Create a new scheme</h1>
 <h3 class="subtitle">dmdScheme_0.9.5</h3>
 <h4 class="author">Rainer M Krug <a href="mailto:Rainer.Krug@uzh.ch" class="email">Rainer.Krug@uzh.ch</a></h4>
-<h4 class="date">2019-12-17</h4>
+<h4 class="date">2019-12-18</h4>
 
 
 
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<p>This package contains all the functionality to easily create a new metadata scheme package. The new scheme package will contain all files needed so that it cna be easily be distriburted and used. In addition, this package contains a function which uses the active scheme as the default scheme and which can be used to add functionality to work with this scheme. As the new package depends on this package (<code>dmdScheme</code>), it contains all functionality already contained in this package.</p>
-</div>
-<div id="install-the-package-dmdscheme" class="section level1">
-<h1>Install the package <code>dmdScheme</code></h1>
-<p>In most cases, when you read this, you already have installed the package <code>dmdScheme</code>. If not there are three ways to install it:</p>
-<ol style="list-style-type: decimal">
-<li>via CRAN This will install the last stable version. It is momentarily not possible, as the package is not yet released on CRAN.</li>
-</ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;dmdScheme&quot;</span>)</span></code></pre></div>
-<ol start="2" style="list-style-type: decimal">
-<li>via github This will install the last development version. The development of this package is hosted on <a href="https://github.com/rkrug/dmdScheme">github</a>. You can also install from there. This will give you the most recent version in development. You can also choose different branches to install. Please see the documentation of the <a href="https://github.com/r-lib/remotes">remotes package</a> for details.</li>
-</ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;Exp-Micro-Ecol-Hub/dmdScheme&quot;</span>, <span class="dt">ref =</span> <span class="st">&quot;master&quot;</span>, <span class="dt">build_opts =</span> <span class="st">&quot;build_vignettes = TRUE&quot;</span>)</span></code></pre></div>
-<p>There are three different versions available:</p>
-<ul>
-<li><strong>CRAN</strong> For general uasage, we recommend to use the CRAN package distribution for production usage.</li>
-<li>**github <code>ref = &quot;master&quot;** The github version from the master branch (</code>ref = &quot;master`) is the stable branch and will become over time the next CRAN release. You can use this if you want to try (or need) the newest features. It should be stable.</li>
-<li><strong>github `ref = “dev”</strong> The bleeding edge version. This is the one with the newest features which possibly includes non-stable versions. If you can live with crashes, you can use this version. But be warned: errors will occur, and features will change without notice. This is not recommended for production usage.</li>
-</ul>
+<p>This package contains all the functionality to easily create a new metadata scheme. The resulting scheme package will contain all files needed so that it can be easily be distributed and used, and can be either be distributed directly or uploaded to an online repository, e.g. the default <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository">dmdScheme repository</a>.</p>
 </div>
 <div id="create-new-scheme" class="section level1">
 <h1>Create new scheme</h1>
 <p>To create your own scheme package entails a few simple steps.</p>
 <ol style="list-style-type: decimal">
-<li>Open an existing scheme definition you want to use as a baseline. The easies is to use the command</li>
+<li>Open an existing scheme definition you want to use as a starting point. The easies is to use the command</li>
 </ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">open_new_spreadsheet</span>(<span class="dt">keepData =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">open_new_spreadsheet</span>(<span class="dt">keepData =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <p>which will open the current scheme including example data in your spreadsheet program of choice.</p>
 <p><strong>If the <code>.xlsx</code> file is locked, you can unlock it by using the password <code>test</code>.</strong></p>
 <p>You can also manually extract the <code>.xlsx</code> file from any scheme package and use it.</p>
+<p>It is important, that the final scheme contains example data as the resulting scheme package has to contain example data.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>Edit the new scheme definition</li>
 </ol>
 <p>This <code>.xlsx</code> file can be edited following the limitations as specified in the <strong>Minimum requirements for metadatascheme based on dmdScheme</strong>. After modifications have been done and the spreadsheet has been saved, the scheme package can be created by using</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">scheme_make</span>( <span class="st">&quot;TheFile.xlsx&quot;</span> )</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">scheme_make</span>( <span class="st">&quot;TheFile.xlsx&quot;</span> )</span></code></pre></div>
 <p>which will create a file named <code>NAME_VERSION.tar.gz</code> in the directory <code>path</code> based on the scheme definition in <code>TheFile.xlsx</code>. <code>NAME</code> and <code>VERSION</code> are the scheme name and scheme version as specified in the cell <code>(H:1)</code> in sheet <code>Experiment</code>.</p>
 <p>The following two commands will install the new scheme and use it:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">scheme_install</span>(<span class="dt">file =</span> <span class="st">&quot;NAME_VERSION.tar.gz&quot;</span>)</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="kw">scheme_use</span>(<span class="st">&quot;NAME&quot;</span>, <span class="st">&quot;VERSION&quot;</span>)</span></code></pre></div>
-<p>To upload the scheme to the main repository on <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository">github</a>, please either clone the repo and send a pull request or contact the owner of the repository.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">scheme_install</span>(<span class="dt">file =</span> <span class="st">&quot;NAME_VERSION.tar.gz&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">scheme_use</span>(<span class="st">&quot;NAME&quot;</span>, <span class="st">&quot;VERSION&quot;</span>)</span></code></pre></div>
+<p>To upload the scheme to the main repository on <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository">github</a>, please either clone the repo and send a pull request or file an issue with the scheme package as an attachment.</p>
 </div>
 <div id="create-r-package-to-extending-the-functionality-of-the-dmdscheme-package" class="section level1">
 <h1>Create R package to Extending the functionality of the <code>dmdScheme</code> package</h1>
@@ -361,10 +342,32 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <li>depends on the package <code>dmdScheme</code>, and</li>
 <li>automatically downloads, installs and activates a specific scheme definition and not the default dmdScheme.</li>
 </ol>
-<p>Similar to the function <code>package.skeleton()</code> in the <code>utils</code> package, <code>dmdScheme</code> provides a function which creates a package skeleton with the required functionality. To create a package which adds new functionality to the scheme <code>NAME_VERSION.xlsx</code>, one simply has to run</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">make_new_package</span>()</span></code></pre></div>
-<p>whcih will create a folder named <code>NAME</code> which contains the package. This package can now be edited, packaged, distributed and installed as any other R package.</p>
-<p>For an extensive example of this see the R folder in the <a href="https://github.com/Exp-Micro-Ecol-Hub/emeScheme">emeScheme package on github</a>.</p>
+<p>Similar to the function <code>package.skeleton()</code> in the <code>utils</code> package, <code>dmdScheme</code> provides a function which creates a package skeleton with the required functionality.</p>
+<p>To for example create a package in the folder <code>path = tempdir()</code> which depends on the R package <code>dmdScheme</code> and loads and activates upon loading the scheme <code>emeScheme</code> of version <code>0.9.5</code> which is in the default repository:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">scheme_installed</span>(<span class="st">&quot;emeScheme&quot;</span>, <span class="st">&quot;0.9.5&quot;</span>)) {</span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="kw">scheme_install</span>(<span class="st">&quot;emeScheme&quot;</span>, <span class="st">&quot;0.9.5&quot;</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a>}</span></code></pre></div>
+<pre><code>## Scheme definition `/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpE1RIul/file2253286e982f/emeScheme_0.9.5.tar.gz, installed with
+## name:    emeScheme
+## version: 0.9.5</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">scheme_use</span>(<span class="st">&quot;emeScheme&quot;</span>, <span class="st">&quot;0.9.5&quot;</span>)</span></code></pre></div>
+<pre><code>## Theme switched to emeScheme_0.9.5</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">make_new_package</span>( <span class="dt">path =</span> <span class="kw">tempdir</span>() )</span></code></pre></div>
+<pre><code>## Creating directories ...</code></pre>
+<pre><code>## Creating DESCRIPTION ...</code></pre>
+<pre><code>## Creating NAMESPACE ...</code></pre>
+<pre><code>## Creating Read-and-delete-me ...</code></pre>
+<pre><code>## Copying code files ...</code></pre>
+<pre><code>## Making help files ...</code></pre>
+<pre><code>## Done.</code></pre>
+<pre><code>## Further steps are described in &#39;/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpE1RIul/emeScheme/Read-and-delete-me&#39;.</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">scheme_use</span>(<span class="st">&quot;dmdScheme&quot;</span>, <span class="st">&quot;0.9.5&quot;</span>)</span></code></pre></div>
+<pre><code>## Theme switched to dmdScheme_0.9.5</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="kw">scheme_uninstall</span>(<span class="st">&quot;emeScheme&quot;</span>, <span class="st">&quot;0.9.5&quot;</span>)</span></code></pre></div>
+<pre><code>## Scheme emeScheme_0.9.5 deleted and moved to</code></pre>
+<pre><code>## [1] &quot;/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpE1RIul/file225374c94a65&quot;</code></pre>
+<p><strong>NOTE: If the scheme package is not in the default repository, the file <code>inst/aaa.R</code> in the new package needs to be adapted to automatically anstall and use the scheme!</strong></p>
+<p>For an example of an R package of this kind see the R folder in the <a href="https://github.com/Exp-Micro-Ecol-Hub/emeScheme">emeScheme package on github</a>.</p>
 </div>
 
 

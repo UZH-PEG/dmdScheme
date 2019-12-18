@@ -30,58 +30,72 @@ library(kableExtra)
 
 # The R Package
 
-The package `dmdScheme` is a base package for the usage and development of domain specific metadata schemes. It provides functionality to enter the metadata, validate the entered metadata, and export it to xml format for further processing by e.g. archival repositories. This document will give an overview over the `dmdScheme` package and what it contains. More detailed information about the development, including a suggested workflow, can be found in the vignette **Howto create a new scheme**.
+The package `dmdScheme` is a base package for the usage and development of domain specific metadata schemes. It provides functionality to enter the metadata, validate the entered metadata, and export it to xml format for further processing by e.g. archival repositories. This document will give an overview over the `dmdScheme` package and what it contains. More detailed information about the development, including a suggested workflow to create a new scheme definition, can be found in the vignette **Howto create a new scheme**.
 
-# Install the package `dmdScheme`
-In most cases, when you read this, you already have installed the package `dmdScheme`. If not there are three ways to install it:
+## Installation
 
-1. via CRAN
-This will install the last stable version.
-It is momentarily not possible, as the package is not yet released on CRAN.
+The recommended way is to install from CRAN the stable released version:
 
-```{r eval = FALSE}
+```{r echo = TRUE, eval = FALSE}
 install.packages("dmdScheme")
 ```
 
 
-2. via github
-This will install the last development version.
-The development of this package is hosted on [github](https://github.com/rkrug/dmdScheme). You can also install from there. This will give you the most recent version in development. You can also choose different branches to install. Please see the documentation of the [remotes package](https://github.com/r-lib/remotes) for details.
+To install the **master** branch, the stable branch which will become the new CRAN release, from the [dmdScheme repository on github](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/tree/master), run
+ 
+```{r echo=TRUE, eval = FALSE}
+## install the devtools package if not installed yet
+# install.packages("devtools")
 
-```{r eval = FALSE}
-## install.packages("remotes")
-remotes::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "master", build_opts = "build_vignettes = TRUE")
+devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "master", build_opts = NULL)
+```
+ 
+If you are feelinfg adventourous, want to live at the bleeding edge and can live with non-working features, you can install the **dev** branch. This branch is **not stable** and features and functionality can appear or be remioved without prior notice:
+
+```{r echo=TRUE, eval = FALSE}
+## install the devtools package if not installed yet
+# install.packages("devtools")
+
+devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "dev", build_opts = NULL)
+```
+ 
+Other branches are not generally recommended for instalation unless you are developing `dmdScheme`!
+
+## Loading the package
+
+When you load the package, the definition of the scheme is downloaded from the [dmdScheme repository](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/tree/master) installed to a temporary scheme library in a temporary directory for usage in this R session. As this scheme library is styored in a temporary directory, it will be deleted when youu quit your R session and re-downloaded each time you start a new session and load the package. To create a permanent package library you have to create a cache in the user directory. To do this, run
+
+```{r echo=TRUE, eval = FALSE}
+cache(createPermanent = TRUE)
 ```
 
-There are three different versions available:
-
-- **CRAN** For general uasage, we recommend to use the CRAN package distribution for production usage. 
-- **github `ref = "master"** The github version from the master branch (`ref = "master`) is the stable branch and will become over time the next CRAN release. You can use this if you want to try (or need) the newest features. It should be stable.
-- **github `ref = "dev"** The bleeding edge version. This is the one with the newest features which possibly includes non-stable versions. If you can live with crashes, you can use this version. But be warned: errors will occur, and features will change without notice. This is not recommended for production usage.
+and restart your R session. Noiw the definitions of the installed `dmdSchemes` will be installed in this user cache and be available permanently. For further info, see the documenatation of the command `cache()`.
 
 
-# Managing installed schemes
-
-To load the package, you have to run
-
-```{r}
-library("dmdScheme")
-```
-
-This will load the package and use the default scheme definition.
+## Managing installed schemes
+ 
+Once loaded, the default scheme definition from the package is, when necessary, installed and used.
 
 There are several commands to manage installed schemes. All these commands start with `scheme_`.
 
 These are in detail:
 
-## **`scheme_default()`**
+### `scheme_default()`
 returns the default scheme and version, i.e. the one with which the dmdScheme package is based. This can be the `dmdScheme` package itself, or a package crewated with `make_new_package()`.
 
 ```{r}
 scheme_default()
 ```
 
-## **`scheme_install()`**
+### `scheme_list_in_repo()`
+Show the schemes available in a repo. The defaut repo is [](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository). The function reads and simly returns the file `SCHEME_DEFINITIONS.yaml` in the folder `schemes` in the repository.
+
+
+```{r}
+scheme_list_in_repo()
+```
+
+### `scheme_install()`
 Install a new scheme definition. In the normal usecase, this function uses `scheme_download_url()` to download the scheme defintion from the default [github repository](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository) and installs it. The usage is
 
 ```{r}
@@ -89,20 +103,20 @@ scheme_install(name = "emeScheme", version = "0.9.5")
 ```
 
 
-## **`scheme_list()`**
+### `scheme_list()`
 Shows the installed schemes.
 ```{r}
 scheme_list()
 ```
 
-## **`scheme_use()`**
+### `scheme_use()`
 Activate the scheme `NAME` with version `VERSION`
 
 ```{r}
 scheme_use(name = "emeScheme", version = "0.9.5")
 ```
 
-## **`scheme_active()`** 
+### `scheme_active()` 
 Shows the currently active scheme.
 
 ```{r}
@@ -112,26 +126,33 @@ scheme_active()
 ```
 
 
-## **`scheme_uninstall()`**
+### `scheme_uninstall()`
 Uninstall an installed scheme. The scheme definition, is deleted from the scheme library, and moved to a temporary flder which wil be deleted at the end of the R session.
 ```{r}
 scheme_uninstall(name = "emeScheme", version = "0.9.5")
 
 ```
 
-## **`scheme_path_xlsx()`**
+### `scheme_installed()
+Return `TRUE, if the scheme is installed
+```{r}
+scheme_installed(name = "emeScheme", version = "0.9.5")
+```
+
+
+### `scheme_path_xlsx()`
 Returns the path to the `.xlsx` representation of the currently active scheme.
 ```{r}
 scheme_path_xlsx()
 ```
 
-## **`scheme_path_xml()`**
+### `scheme_path_xml()`
 Returns the path to the `.xml` representation of the currently active scheme.
 ```{r}
 scheme_path_xml()
 ```
 
-## **`scheme_make()`**
+### `scheme_make()`
 This function is used to package a new scheme. For details see the vignette `Howto Create a new scheme`.
 
 # Entering new Metadata
@@ -153,48 +174,6 @@ The following points are important to remember:
 
 After entering the data, save it to a location for further processing.
 
-
-## Validating your metadata
-
-The metadata in the spreadsheet can be validated by using
-
-```{r eval = FALSE}
-val <- validate( scheme_path_xlsx() )
-```
-
-which results in an object of class `dmdScheme_validation`.
-
-To create a report (html, pdf or docx) yo can use the `report()` function:
-
-```{r eval = FALSE}
-report(val)
-```
-
-which will open a html report in your browser.
-
-## Converting Metadata to xml
-
-You can export the data to an an xml file:
-
-```{r eval = FALSE}
-x <- read_excel( scheme_path_xlsx() )
-as_xml( x )
-```
-
-When you specify the argument `file`, the xml will be saved:
-
-```{r eval = FALSE}
-xmlFile = tempfile(fileext = ".xml")
-x <- read_excel( scheme_path_xlsx() )
-write_xml( x = x, file = xmlFile )
-```
-
-## Re-import from xml into R
-
-```{r eval = FALSE}
-x <- read_xml( xmlFile )
-x
-```
 
 ## Importing Data from Excel Sheet
 
@@ -252,6 +231,57 @@ print(
   printData = TRUE
 )
 ```
+
+## Validating your metadata
+
+The metadata in the spreadsheet can be validated by using the following command and which results in an object of class `dmdScheme_validation`.
+
+```{r}
+validate( scheme_path_xlsx() )
+
+```
+
+
+To create a report (html, pdf or docx) yo can use the `report()` function:
+
+```{r eval = FALSE}
+report( scheme_path_xlsx() )
+```
+
+which will open a html report in your browser.
+
+## Converting Metadata to xml
+
+You can export the data to an an `xml_document` object as defined in the `xml2` package to do further processing:
+
+```{r}
+x <- read_excel( scheme_path_xlsx() )
+xml <- as_xml( x, file = xmlFile)
+xml
+```
+
+You can save the xml to a file by using
+
+```{r}
+xmlFile <-  tempfile(fileext = ".xml")
+
+xml2::write_xml(x = xml, file = xmlFile)
+```
+
+or directly in one command
+```{r}
+xmlFile <-  tempfile(fileext = ".xml")
+
+write_xml( x = x, file = xmlFile )
+```
+
+## Re-import from xml into R
+
+```{r}
+x <- read_xml( xmlFile )
+x
+```
+
 
 
 ## General things

@@ -12,40 +12,13 @@ vignette: >
 
 # Introduction
 
-This package contains all the functionality to easily create a new metadata scheme package. The new scheme package will contain all files needed so that it cna be easily be distriburted and used. In addition, this package contains a function which uses the active scheme as the default scheme and which can be used to add functionality to work with this scheme. As the new package depends on this package (`dmdScheme`), it contains all functionality already contained in this package.
-
-# Install the package `dmdScheme`
-In most cases, when you read this, you already have installed the package `dmdScheme`. If not there are three ways to install it:
-
-1. via CRAN
-This will install the last stable version.
-It is momentarily not possible, as the package is not yet released on CRAN.
-
-```{r, eval = FALSE}
-install.packages("dmdScheme")
-```
-
-
-2. via github
-This will install the last development version.
-The development of this package is hosted on [github](https://github.com/rkrug/dmdScheme). You can also install from there. This will give you the most recent version in development. You can also choose different branches to install. Please see the documentation of the [remotes package](https://github.com/r-lib/remotes) for details.
-
-```{r eval = FALSE}
-install.packages("remotes")
-remotes::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "master", build_opts = "build_vignettes = TRUE")
-```
-
-There are three different versions available:
-
-- **CRAN** For general uasage, we recommend to use the CRAN package distribution for production usage. 
-- **github `ref = "master"** The github version from the master branch (`ref = "master`) is the stable branch and will become over time the next CRAN release. You can use this if you want to try (or need) the newest features. It should be stable.
-- **github `ref = "dev"** The bleeding edge version. This is the one with the newest features which possibly includes non-stable versions. If you can live with crashes, you can use this version. But be warned: errors will occur, and features will change without notice. This is not recommended for production usage.
+This package contains all the functionality to easily create a new metadata scheme. The resulting scheme package will contain all files needed so that it can be easily be distributed and used, and can be either be distributed directly or uploaded to an online repository, e.g. the default [dmdScheme repository](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository).
 
 # Create new scheme
 
 To create your own scheme package entails a few simple steps.
 
-1. Open an existing scheme definition you want to use as a baseline. The easies is to use the command   
+1. Open an existing scheme definition you want to use as a starting point. The easies is to use the command   
 
 ```{r eval=FALSE, echo=TRUE}
 open_new_spreadsheet(keepData = TRUE)
@@ -56,6 +29,8 @@ which will open the current scheme including example data in your spreadsheet pr
 **If the `.xlsx` file is locked, you can unlock it by using the password `test`.**
 
 You can also manually extract the `.xlsx` file from any scheme package and use it.
+
+It is important, that the final scheme contains example data as the resulting scheme package has to contain example data.
 
 2. Edit the new scheme definition
 
@@ -74,7 +49,7 @@ scheme_install(file = "NAME_VERSION.tar.gz")
 scheme_use("NAME", "VERSION")
 ```
 
-To upload the scheme to the main repository on [github](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository), please either clone the repo and send a pull request or contact the owner of the repository.
+To upload the scheme to the main repository on [github](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository), please either clone the repo and send a pull request or file an issue with the scheme package as an attachment.
 
 # Create R package to Extending the functionality of the `dmdScheme` package
 The package `dmdScheme` package is only providing the base functionality for working with dmdSchemes. In many cases, the functionality needs to be extended to be able to work with other schemes. This can be done by creating a new package which is
@@ -82,12 +57,22 @@ The package `dmdScheme` package is only providing the base functionality for wor
 1. depends on the package `dmdScheme`, and
 2. automatically downloads, installs and activates a specific scheme definition and not the default dmdScheme.
 
-Similar to the function `package.skeleton()` in the `utils` package, `dmdScheme` provides a function which creates a package skeleton with the required functionality. To create a package which adds new functionality to the scheme `NAME_VERSION.xlsx`, one simply has to run
+Similar to the function `package.skeleton()` in the `utils` package, `dmdScheme` provides a function which creates a package skeleton with the required functionality. 
+
+To for example create a package in the folder `path = tempdir()` which depends on the R package `dmdScheme` and loads and activates upon loading the scheme `emeScheme` of version `0.9.5` which is in the default repository:
  
-```{r eval = FALSE, echo = TRUE}
-make_new_package()
+```{r eval = TRUE, echo = TRUE}
+if (!scheme_installed("emeScheme", "0.9.5")) {
+  scheme_install("emeScheme", "0.9.5")
+}
+scheme_use("emeScheme", "0.9.5")
+
+make_new_package( path = tempdir() )
+
+scheme_use("dmdScheme", "0.9.5")
+scheme_uninstall("emeScheme", "0.9.5")
 ```
 
-whcih will create a folder named `NAME` which contains the package. This package can now be edited, packaged, distributed and installed as any other R package.
+**NOTE: If the scheme package is not in the default repository, the file `inst/aaa.R` in the new package needs to be adapted to automatically anstall and use the scheme!**
 
-For an extensive example of this see the R folder in the [emeScheme package on github](https://github.com/Exp-Micro-Ecol-Hub/emeScheme).
+For an example of an R package of this kind see the R folder in the [emeScheme package on github](https://github.com/Exp-Micro-Ecol-Hub/emeScheme).

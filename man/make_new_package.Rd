@@ -4,7 +4,7 @@
 \alias{make_new_package}
 \title{Create anew package skelleton to add functiuonality to the currently active scheme.}
 \usage{
-make_new_package(path = scheme_active()$name)
+make_new_package(path = ".")
 }
 \arguments{
 \item{path}{path where the package should be created. Default is the current
