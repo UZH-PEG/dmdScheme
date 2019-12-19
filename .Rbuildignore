@@ -28,3 +28,4 @@
 ^NOT_IN_PACKAGE$
 ^\./inst/installedSchemes/emeScheme_0\.9\.5$
 ^\.zenodo\.json$
+^SCHEME_PACKAGE$
