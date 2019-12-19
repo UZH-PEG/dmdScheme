@@ -127,6 +127,11 @@ clean_check:
 
 ####
 
+# check_rhub
+# 	@Rscript -e "rhub::check_for_cran(".")
+
+####
+
 test:
 	@Rscript -e "devtools::test()"
 

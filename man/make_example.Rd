@@ -4,12 +4,10 @@
 \alias{make_example}
 \title{Create examples in working directory}
 \usage{
-make_example(name, schemeName = "dmdScheme")
+make_example(name)
 }
 \arguments{
 \item{name}{name of the example}
-
-\item{schemeName}{name of the package in which the example sits.}
 }
 \value{
 invisibly \code{NULL}

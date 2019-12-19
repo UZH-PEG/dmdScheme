@@ -26,7 +26,7 @@
 scheme_install <- function(
   name,
   version,
-  repo = "https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/raw/master/",
+  repo = scheme_repo(),
   file = NULL,
   overwrite = FALSE
 ){

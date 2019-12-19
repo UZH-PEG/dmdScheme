@@ -1,7 +1,7 @@
 #' Download scheme definition from url
 #'
 #'
-#' Scheme definitions can be stored in an online repo. The default is a github
+#'  \bold{\code{scheme_download()}:} Scheme definitions can be stored in an online repo. The default is a github
 #' repo at \url{https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository}. This
 #' function dowloads a scheme definition, specified by \code{name} and
 #' \code{version}, and saves it locally under the name \code{destfile}
@@ -28,7 +28,7 @@ scheme_download <- function(
   version,
   destfile = NULL,
   overwrite = FALSE,
-  baseurl = "https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/raw/master/",
+  baseurl = scheme_repo(),
   ...
 ) {
 
