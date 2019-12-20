@@ -87,16 +87,6 @@ clean_web: clean_html clean_vignettes clean_readme
 
 ####
 
-update:
-	Rscript -e "devtools::load_all(here::here()); dmdScheme:::updateFromNewSheet()"
-
-####
-
-updateForce:
-	@Rscript -e "devtools::load_all(here::here()); dmdScheme:::updateFromNewSheet(force = TRUE)"
-
-####
-
 docs:
 	Rscript -e "devtools::document(roclets = c('rd', 'collate', 'namespace', 'vignette'))"
 
