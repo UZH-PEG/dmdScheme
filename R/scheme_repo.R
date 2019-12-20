@@ -21,13 +21,13 @@ scheme_repo <- function(
 ) {
   if (!is.null(repo)) {
     assign(
-      x = "default_repo",
+      x = "default_schemeRepo",
       value = "https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/raw/master/",
       envir = .dmdScheme_cache
     )
   }
 
-  repo <- get("scheme_repo", envir = .dmdScheme_cache)
+  repo <- get("default_schemeRepo", envir = .dmdScheme_cache)
 
 
   return(repo)

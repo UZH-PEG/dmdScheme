@@ -12,7 +12,7 @@
 
 <meta name="author" content="Rainer M Krug Rainer.Krug@uzh.ch" />
 
-<meta name="date" content="2019-12-18" />
+<meta name="date" content="2019-12-20" />
 
 <title>Howto Create a new scheme</title>
 
@@ -305,7 +305,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <h1 class="title toc-ignore">Howto Create a new scheme</h1>
 <h3 class="subtitle">dmdScheme_0.9.5</h3>
 <h4 class="author">Rainer M Krug <a href="mailto:Rainer.Krug@uzh.ch" class="email">Rainer.Krug@uzh.ch</a></h4>
-<h4 class="date">2019-12-18</h4>
+<h4 class="date">2019-12-20</h4>
 
 
 
@@ -347,7 +347,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">scheme_installed</span>(<span class="st">&quot;emeScheme&quot;</span>, <span class="st">&quot;0.9.5&quot;</span>)) {</span>
 <span id="cb4-2"><a href="#cb4-2"></a>  <span class="kw">scheme_install</span>(<span class="st">&quot;emeScheme&quot;</span>, <span class="st">&quot;0.9.5&quot;</span>)</span>
 <span id="cb4-3"><a href="#cb4-3"></a>}</span></code></pre></div>
-<pre><code>## Scheme definition `/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpE1RIul/file2253286e982f/emeScheme_0.9.5.tar.gz, installed with
+<pre><code>## Scheme definition `/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpGgecHO/file1f5e3e8b7492/emeScheme_0.9.5.tar.gz, installed with
 ## name:    emeScheme
 ## version: 0.9.5</code></pre>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">scheme_use</span>(<span class="st">&quot;emeScheme&quot;</span>, <span class="st">&quot;0.9.5&quot;</span>)</span></code></pre></div>
@@ -360,12 +360,12 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <pre><code>## Copying code files ...</code></pre>
 <pre><code>## Making help files ...</code></pre>
 <pre><code>## Done.</code></pre>
-<pre><code>## Further steps are described in &#39;/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpE1RIul/emeScheme/Read-and-delete-me&#39;.</code></pre>
+<pre><code>## Further steps are described in &#39;/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpGgecHO/emeScheme/Read-and-delete-me&#39;.</code></pre>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">scheme_use</span>(<span class="st">&quot;dmdScheme&quot;</span>, <span class="st">&quot;0.9.5&quot;</span>)</span></code></pre></div>
 <pre><code>## Theme switched to dmdScheme_0.9.5</code></pre>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="kw">scheme_uninstall</span>(<span class="st">&quot;emeScheme&quot;</span>, <span class="st">&quot;0.9.5&quot;</span>)</span></code></pre></div>
 <pre><code>## Scheme emeScheme_0.9.5 deleted and moved to</code></pre>
-<pre><code>## [1] &quot;/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpE1RIul/file225374c94a65&quot;</code></pre>
+<pre><code>## [1] &quot;/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpGgecHO/file1f5e35923d52&quot;</code></pre>
 <p><strong>NOTE: If the scheme package is not in the default repository, the file <code>inst/aaa.R</code> in the new package needs to be adapted to automatically anstall and use the scheme!</strong></p>
 <p>For an example of an R package of this kind see the R folder in the <a href="https://github.com/Exp-Micro-Ecol-Hub/emeScheme">emeScheme package on github</a>.</p>
 </div>

@@ -47,26 +47,33 @@ make_new_package <- function(
   # Create package skeleton -------------------------------------------------
 
   dir.create(path, recursive = TRUE, showWarnings = FALSE)
+  success <- TRUE
   utils::package.skeleton(
     name = scheme_active()$name,
     path = path,
     force = FALSE,
     code_files = system.file("aaa.R", package = packageName())
   )
+  success <- FALSE
+
+  # Add default scheme and version to aaa.R ---------------------------------
+
+  aaaFile <- file.path(path, scheme_active()$name, "R", "aaa.R")
+  aaa  <- readLines(aaaFile)
+  aaa  <- gsub(pattern = "XXXyyyschemNameyyyXXX",    x = aaa, replacement = dmdScheme::scheme_active()$name   )
+  aaa  <- gsub(pattern = "XXXyyyschemVersionyyyXXX", x = aaa, replacement = dmdScheme::scheme_active()$version)
+  writeLines(aaa, con = aaaFile)
 
   # Add info to DECRIPTION file ---------------------------------------------
 
   cat(
     "LazyData: true",
     "Depends: dmdScheme",
-    paste0("schemeName: ",    scheme_active()$name ),
-    paste0("schemeVersion: ", scheme_active()$version),
     "\n",
     sep = "\n",
     file = file.path(path, scheme_active()$name, "DESCRIPTION"),
     append = TRUE
   )
-  ##
 
   # Update from new sheet ---------------------------------------------------
 

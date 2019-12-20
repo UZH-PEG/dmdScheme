@@ -18,7 +18,7 @@
 \usage{
 scheme_active()
 
-scheme_default()
+scheme_default(name = NULL, version = NULL)
 
 scheme_download(name, version, destfile = NULL, overwrite = FALSE,
   baseurl = scheme_repo(), ...)
@@ -84,7 +84,11 @@ invisibly returns the temporary location where the scheme definition
 \description{
 \bold{\code{scheme_active()}:} Shows the name and version of the active scheme.
 
-\bold{\code{scheme_default()}:} Shows the name of the default scheme which comes with the package and can not be deleted.
+\bold{\code{scheme_default()}:} Shows the name of the default scheme which
+comes with the package and can not be deleted. If \code{name}and
+\code{version} is specified, the default scheme to be used will be set.
+\bold{There is no need to do this only internally!}. Otherwise, the scheme
+repository used is only returned.
 
 \bold{\code{scheme_download()}:} Scheme definitions can be stored in an online repo. The default is a github
 repo at \url{https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository}. This
