@@ -24,7 +24,7 @@
     dmdScheme::scheme_install(
       name = dmdScheme::scheme_default()$name,
       version = dmdScheme::scheme_default()$version,
-      repo = dmdScheme::scheme_repo())
+      repo = scheme_repo())
   }
 
   dmdScheme::scheme_use(

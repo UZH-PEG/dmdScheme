@@ -29,12 +29,12 @@ scheme_default <- function(name = NULL, version = NULL) {
     )
   }
 
-  return(
-    data.frame(
-      name =  get("default_schemeName", envir = .dmdScheme_cache),
-      version = get("default_schemeVersion", envir = .dmdScheme_cache),
-      stringsAsFactors = FALSE
-    )
+  result <- data.frame(
+    name =  get("default_schemeName", envir = .dmdScheme_cache),
+    version = get("default_schemeVersion", envir = .dmdScheme_cache),
+    stringsAsFactors = FALSE
   )
+
+  return(result)
 
 }
