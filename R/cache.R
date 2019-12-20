@@ -33,7 +33,7 @@ cache <- function(
         "#############################################\n",
         "Permanent cache created at\n",
         "   ", basedirConfig, "\n",
-        "You have to restart R to use this cache!",
+        "You have to restart R to use this cache!\n",
         "#############################################\n",
         "\n"
       )
@@ -61,7 +61,7 @@ cache <- function(
           "To make it permanent, call\n",
           "   cache(createPermanent = TRUE)\n",
           "and restart R\n",
-          "and a permanent cache will be created which will survive restarts.",
+          "and a permanent cache will be created which will survive restarts.\n",
           "#############################################\n",
           "\n"
         )
