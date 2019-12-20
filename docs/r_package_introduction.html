@@ -12,7 +12,7 @@
 
 <meta name="author" content="Rainer M Krug Rainer.Krug@uzh.ch" />
 
-<meta name="date" content="2019-12-18" />
+<meta name="date" content="2019-12-20" />
 
 <title>R Package Introduction</title>
 
@@ -305,7 +305,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <h1 class="title toc-ignore">R Package Introduction</h1>
 <h3 class="subtitle">dmdScheme_0.9.5</h3>
 <h4 class="author">Rainer M Krug <a href="mailto:Rainer.Krug@uzh.ch" class="email">Rainer.Krug@uzh.ch</a></h4>
-<h4 class="date">2019-12-18</h4>
+<h4 class="date">2019-12-20</h4>
 
 
 
@@ -375,7 +375,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <h3><code>scheme_install()</code></h3>
 <p>Install a new scheme definition. In the normal usecase, this function uses <code>scheme_download_url()</code> to download the scheme defintion from the default <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository">github repository</a> and installs it. The usage is</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">scheme_install</span>(<span class="dt">name =</span> <span class="st">&quot;emeScheme&quot;</span>, <span class="dt">version =</span> <span class="st">&quot;0.9.5&quot;</span>)</span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt; Scheme definition `/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpE1RIul/file22533f0c6604/emeScheme_0.9.5.tar.gz, installed with</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt; Scheme definition `/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpGgecHO/file1f5e7b975ba3/emeScheme_0.9.5.tar.gz, installed with</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt; name:    emeScheme</span></span>
 <span id="cb7-4"><a href="#cb7-4"></a><span class="co">#&gt; version: 0.9.5</span></span></code></pre></div>
 </div>
@@ -410,7 +410,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <p>Uninstall an installed scheme. The scheme definition, is deleted from the scheme library, and moved to a temporary flder which wil be deleted at the end of the R session.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">scheme_uninstall</span>(<span class="dt">name =</span> <span class="st">&quot;emeScheme&quot;</span>, <span class="dt">version =</span> <span class="st">&quot;0.9.5&quot;</span>)</span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="co">#&gt; Scheme emeScheme_0.9.5 deleted and moved to</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="co">#&gt; [1] &quot;/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpE1RIul/file22531993bd5d&quot;</span></span></code></pre></div>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="co">#&gt; [1] &quot;/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpGgecHO/file1f5ed697796&quot;</span></span></code></pre></div>
 </div>
 <div id="scheme_installed-returntrue-if-the-scheme-is-installed" class="section level3">
 <h3><code>scheme_installed() Return</code>TRUE, if the scheme is installed</h3>
@@ -421,13 +421,13 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <h3><code>scheme_path_xlsx()</code></h3>
 <p>Returns the path to the <code>.xlsx</code> representation of the currently active scheme.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">scheme_path_xlsx</span>()</span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="co">#&gt; [1] &quot;/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpE1RIul/dmdScheme_22531f4882b/installedSchemes/dmdScheme_0.9.5/dmdScheme_0.9.5.xlsx&quot;</span></span></code></pre></div>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="co">#&gt; [1] &quot;/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpGgecHO/dmdScheme_1f5e5b844b30/installedSchemes/dmdScheme_0.9.5/dmdScheme_0.9.5.xlsx&quot;</span></span></code></pre></div>
 </div>
 <div id="scheme_path_xml" class="section level3">
 <h3><code>scheme_path_xml()</code></h3>
 <p>Returns the path to the <code>.xml</code> representation of the currently active scheme.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw">scheme_path_xml</span>()</span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="co">#&gt; [1] &quot;/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpE1RIul/dmdScheme_22531f4882b/installedSchemes/dmdScheme_0.9.5/dmdScheme_0.9.5.xml&quot;</span></span></code></pre></div>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="co">#&gt; [1] &quot;/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpGgecHO/dmdScheme_1f5e5b844b30/installedSchemes/dmdScheme_0.9.5/dmdScheme_0.9.5.xml&quot;</span></span></code></pre></div>
 </div>
 <div id="scheme_make" class="section level3">
 <h3><code>scheme_make()</code></h3>
@@ -1632,7 +1632,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>xmlFile &lt;-<span class="st">  </span><span class="kw">tempfile</span>(<span class="dt">fileext =</span> <span class="st">&quot;.xml&quot;</span>)</span>
 <span id="cb25-2"><a href="#cb25-2"></a></span>
 <span id="cb25-3"><a href="#cb25-3"></a><span class="kw">write_xml</span>( <span class="dt">x =</span> x, <span class="dt">file =</span> xmlFile )</span>
-<span id="cb25-4"><a href="#cb25-4"></a><span class="co">#&gt; [1] &quot;/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpE1RIul/file22535dadd692.xml&quot;</span></span></code></pre></div>
+<span id="cb25-4"><a href="#cb25-4"></a><span class="co">#&gt; [1] &quot;/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpGgecHO/file1f5e6d2a19e6.xml&quot;</span></span></code></pre></div>
 </div>
 <div id="re-import-from-xml-into-r" class="section level2">
 <h2>Re-import from xml into R</h2>

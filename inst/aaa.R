@@ -1,13 +1,38 @@
 .onAttach <- function(libname, pkgname) {
-  ver <- utils::packageDescription(
-    utils::packageName(),
-    fields = c( "schemeName", "schemeVersion" )
+
+  assign(
+    x = "scheme_repo",
+    value = "https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/raw/master/",
+    envir = .dmdScheme_cache
   )
 
-  if ( !dmdScheme::scheme_installed( ver$schemeName, ver$schemeVersion) ) {
-    dmdScheme::scheme_install(ver$schemeName, ver$schemeVersion, repo = "https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/raw/master/")
+  assign(
+    x = "defaultSchemeName",
+    value = "XXXyyyschemNameyyyXXX",
+    envir = .dmdScheme_cache
+  )
+
+  assign(
+    x = "defaultSchemeVersion",
+    value = "XXXyyyschemVersionyyyXXX",
+    envir = .dmdScheme_cache
+  )
+
+  if (
+    !dmdScheme::scheme_installed(
+      name = dmdScheme::scheme_default()$name,
+      version = dmdScheme::scheme_default()$version
+    )
+  ) {
+    dmdScheme::scheme_install(
+      name = dmdScheme::scheme_default()$name,
+      version = dmdScheme::scheme_default()$version,
+      repo = scheme_repo())
   }
 
-  dmdScheme::scheme_use( name = ver$schemeName, version = ver$schemeVersion)
+  dmdScheme::scheme_use(
+    name = dmdScheme::scheme_default()$name,
+    version = dmdScheme::scheme_default()$version
+  )
 
 }

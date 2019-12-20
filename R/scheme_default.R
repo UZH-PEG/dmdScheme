@@ -11,10 +11,13 @@
 #' scheme_default()
 #'
 scheme_default <- function() {
-  ver <- utils::packageDescription(
-    "dmdScheme",
-    fields = c( "schemeName", "schemeVersion" )
+
+  return(
+    data.frame(
+      name =  get("defaultSchemeName", envir = .dmdScheme_cache),
+      version = get("defaultSchemeVersion", envir = .dmdScheme_cache),
+      stringsAsFactors = FALSE
+    )
   )
 
-  return( data.frame(name = ver$schemeName, version = ver$schemeVersion, stringsAsFactors = FALSE) )
 }
