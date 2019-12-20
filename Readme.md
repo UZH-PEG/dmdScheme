@@ -8,6 +8,9 @@ Package to develop and manage Domain Specific Metadata Schemes
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/dmdScheme)](https://cran.r-project.org/package=dmdScheme)"
+[![CRAN\_Status\_Badge\_version\_last\_release](https://www.r-pkg.org/badges/version-last-release/dmdScheme)](https://cran.r-project.org/package=dmdScheme)
+
 **master**: [![Build
 Status](https://travis-ci.org/Exp-Micro-Ecol-Hub/dmdScheme.svg?branch=master)](https://travis-ci.org/Exp-Micro-Ecol-Hub/dmdScheme)
 [![Coverage
