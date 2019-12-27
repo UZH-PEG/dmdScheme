@@ -352,7 +352,7 @@ validate.dmdSchemeSet_raw <- function(
       "One or more FALSE or missing values will result in an ERROR."
     )
     ##
-    fns <- unique(xraw[[1]]["dataFileName"])
+    fns <- unique(xraw[[1]]["dataFileName"])[[1]]
     result$details <- data.frame(
       dataFileName = fns,
       IsOK = fns %>% file.path(path, .) %>% file.exists(),
