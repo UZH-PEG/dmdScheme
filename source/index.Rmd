@@ -1,5 +1,5 @@
 ---
-title: "Experimental Microbial Ecology Metadata Scheme"
+title: "Domain specific MetaData Scheme (dmdScheme)"
 subtitle: "dmdScheme version v`r read.dcf(here::here('DESCRIPTION'), all = TRUE)[['Version']]`"
 author: "Rainer M. Krug"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
@@ -16,7 +16,7 @@ output:
     toc: true
     toc_float: true
 nocite: '@*'
-bibliography: dmdScheme_papers.bib
+# bibliography: dmdScheme_papers.bib
 link-citations: TRUE
 ---
 
@@ -26,7 +26,6 @@ library(magrittr)
 library(dplyr)
 library(knitr)
 library(kableExtra)
-library(plantuml)
 ##
 knitr::opts_chunk$set(
 	echo = FALSE,
@@ -42,99 +41,96 @@ devtools::load_all(here())
 v <- read.dcf(here::here('DESCRIPTION'), all = TRUE)[['Version']]
 ```
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3229615.svg)](https://doi.org/10.5281/zenodo.3229615)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3581970.svg)](https://doi.org/10.5281/zenodo.3581970)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-[![Build Status](https://travis-ci.org/rkrug/dmdScheme.svg?branch=master)](https://travis-ci.org/rkrug/dmdScheme)
+[![Build Status](https://travis-ci.com/Exp-Micro-Ecol-Hub/dmdScheme.svg?branch=master)](https://travis-ci.com/Exp-Micro-Ecol-Hub/dmdScheme)
 <!-- [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/Exp-Micro-Ecol-Hub/dmdScheme?branch=dev&svg=true)](https://ci.appveyor.com/project/Exp-Micro-Ecol-Hub/dmdScheme) -->
 
 [![Coverage status](https://codecov.io/gh/Exp-Micro-Ecol-Hub/dmdScheme/branch/master/graph/badge.svg)](https://codecov.io/github/Exp-Micro-Ecol-Hub/dmdScheme?branch=dev)
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-orange.png)](https://www.tidyverse.org/lifecycle/#mturing)
-[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+<!-- [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) -->
 
 Github site [https://github.com/Exp-Micro-Ecol-Hub/dmdScheme](https://github.com/Exp-Micro-Ecol-Hub/dmdScheme)
 
-# User Manual of the dmdScheme
-See the vignette "User Manual" at <a href="user_manual.html" target="_blank">vignette 'User manual'</a>.
+<!-- # User Manual of the dmdScheme -->
+<!-- See the vignette "User Manual" at <a href="user_manual.html" target="_blank">vignette 'User manual'</a>. -->
 
-# Desription and Definition of the dmdScheme
-See the vignette "Description" at <a href="description_dmdScheme.html" target="_blank">vignette 'Description'</a>.
+<!-- # Desription and Definition of the dmdScheme -->
+<!-- See the vignette "Description" at <a href="description_dmdScheme.html" target="_blank">vignette 'Description'</a>. -->
 
 # The R Package
-The Definition of the dmdScheme is done in an R package, which gives all the tools to enter the metadata and to export it into xml.
+The R package `dmdScheme` is the base package for all `dmdScheme` schemes. The metadata scheme used by this package (`dmdScheme`) in itself is just a template and of no real applicability. It needs to be adjusted to actual needs and uploaded to the site [dmdScheme repository](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/tree/master) so that it can be used.
+
+The definition of the dmdScheme can be found at the [dmdScheme repository](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository). The R package provides the functionality to work in R with the scheme, i.e. to enter, validate and export the metadata.
 
 ## Installation
 
-The package is not yet on CRAN. Therefore it needs to be installed from github. This will install the last verion on github. 
+The recommended way is to install from CRAN the stable released version:
 
-For a list of releases see [here](https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/releases)
-
-```{r echo = FALSE, eval = TRUE, options}
-
+```{r echo=TRUE, eval = FALSE}
+install.packages("dmdScheme")
 ```
+
+
+To install the **master** branch, the stable branch which will become the new CRAN release, from the [dmdScheme repository on github](https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/tree/master), run
+ 
+```{r echo=TRUE, eval = FALSE}
+## install the devtools package if not installed yet
+# install.packages("devtools")
+
+devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "master", build_opts = NULL)
+```
+ 
+If you are feelinfg adventourous, want to live at the bleeding edge and can live with non-working features, you can install the **dev** branch. This branch is **not stable** and features and functionality can appear or be remioved without prior notice:
 
 ```{r echo=TRUE, eval = FALSE}
 ## install the devtools package if not installed yet
 # install.packages("devtools")
 
-## install the last version of dmdScheme from github incl vignettes
-devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", build_opts = c("--no-resave-data"))
+devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "dev", build_opts = NULL)
+```
+ 
+Other branches are not generally recommended for instalation unless you are developing `dmdScheme`!
 
-## install a specific release of dmdScheme from github
-devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "v0.8", build_opts = c("--no-resave-data"))
+## Loading the package
+
+When you load the package, the definition of the scheme is downloaded from the [dmdScheme repository](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/tree/master) installed to a temporary scheme library in a temporary directory for usage in this R session. As this scheme library is styored in a temporary directory, it will be deleted when youu quit your R session and re-downloaded each time you start a new session and load the package. To create a permanent package library you have to create a cache in the user directory. To do this, run
+
+```{r echo=TRUE, eval = FALSE}
+cache(createPermanent = TRUE)
 ```
 
-for a list of releases see this [link on github](https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/tags).
+and restart your R session. Noiw the definitions of the installed `dmdSchemes` will be installed in this user cache and be available permanently. For further info, see the documenatation of the command `cache()`.
 
-## Introduction
+## Accompagnying documentation (vignettes)
 
-See the vignette "Introduction" at <a href="r_package_introduction.html" target="_blank">vignette 'Introduction'</a>.
+- <a href="r_package_introduction.html" target="_blank">'R Package Introduction'</a> for a general description of the package
+- <a href="Howto_create_new_scheme.html" target="_blank">'Howto Create a new scheme'</a> for a walk-through of creating a new scheme
+- <a href="minimum_requirements_dmdScheme.html" target="_blank">'Minimum requirements for metadatascheme based on dmdScheme'</a> for the minimum requirements of what a new scheme definition must contain.
 
 # Other Resources
-## Outdated Presentations
-* [The dmdScheme - an Introduction](https://rkrug.github.io/dmdScheme_Introduction/The_dmdScheme.html) by Rainer M Krug. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2247069.svg)](https://doi.org/10.5281/zenodo.2247069)
+
+## Example scheme
+
+For a workable example with data see the documentation of the [emeScheme](https://exp-micro-ecol-hub.github.io/emeScheme/)
+
+## Presentations
+
+- July 2019: [Metadata is sexy!](https://rkrug.github.io/metadata_is_sexy/metadata_is_sexy.html) by Rainer M. Krug  
+    [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3246331.svg)](https://doi.org/10.5281/zenodo.3246331)
+- September 2019: [Live Demo](https://rkrug.github.io/LiveDemoDmdScheme/) by Rainer M. Krug  
+- September 2019, GFÖ, Münster: [Metadata can be easy!](https://rkrug.github.io/GFO_2019) by Rainer M. Krug & Owen L. Petchey   
+    [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3386077.svg)](https://doi.org/10.5281/zenodo.3386077)
+- [From Zero to Hero - Metadata Made Easy!](https://rkrug.github.io/from_zero_to_hero-metadata_made_easy/from_zero_to_hero-metadata_can_be_easy.html) by Rainer M. Krug   
+    [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3517816.svg)](https://doi.org/10.5281/zenodo.3517816)
+- December 2019, BES, Belfast: Metadata made easy by Rainer M. Krug & Owen L. Petchey   
+    [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3571351.svg)](https://doi.org/10.5281/zenodo.3571351)
 
 
-# Appendix
-## Experimental Microbial Ecology Protocols
-In the  [supplement to their paper](https://emeh-protocols.readthedocs.io/en/latest/) to their paper, @altermatt_big_2015 specify the following sections for a protocoll. The sections are as followed:
-
-```
-1. Materials
-1.1 Species used
-1.2 Culture medium
-1.3 Bacteria
-1.4 Apparatus
-1.5 Lab practices
-1.6 Long term maintenance
-1.7 Long term preservation
-2. Measurements
-2.1 Sampling
-2.2 Microscopy
-2.3 Image analysis
-2.4 Particle counter
-2.5 Bacterial density
-2.6 Raman microspectroscopy
-2.7 Barcoding
-2.8 Ge-, prote- and epigenomics
-2.9 Respirometry
-2.10 Nutrients and decomposition
-2.11 Protocol unavailable
-2.12 Interactions
-3. Manipulations
-3.1 Protocol unavailable
-3.2 Density
-3.3 Disturbance
-3.4 Nutrients and viscosity
-3.5 Spatial structure
-3.6 temperature
-3.7 Biotic environment
-```
-
-We use these sections as a starting point to define a metadata scheme to describe the microcosm experiment. 
-
-The sections in the [Experimental Microbial Ecology Protocols] were supplemented and assessed by reviewing the methods in the papers in the [References] section below.
-
-# References
-
+# Outdated Resources (**Just for historical reasons**)
+## Presentations
+- December 2018: [The dmdScheme - an Introduction](https://rkrug.github.io/emeScheme_Introduction/The_emeScheme.html) by Rainer M Krug  
+    [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2244998.svg)](https://doi.org/10.5281/zenodo.2244998)

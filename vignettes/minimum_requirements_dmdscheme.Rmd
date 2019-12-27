@@ -1,7 +1,7 @@
 ---
-title: "Minimum requirements for metadatascheme based on dmdScheme"
+title: "Minimum requirements for MetaData scheme based on dmdScheme"
 subtitle: "`r library(dmdScheme);paste0(scheme_active()$name, '_', scheme_active()$version)`"
-author: "Rainer M Krug <Rainer@uzh.ch>"
+author: "Rainer M Krug <Rainer.Krug@uzh.ch>"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -19,11 +19,11 @@ knitr::opts_chunk$set(
 library(dmdScheme)
 ```
 
-## Introduction
+# Introduction
 
 This document outlines the minimum requirements for metadata schemes derived from `dmdScheme` so that all functions in the `dmdScheme` package will work.
 
-## Requirements
+# Requirements
 
 1. Tab name has to be identical to `propertySet` value (Cell `A:2` in the tab Experiment, `B:1` in other tabs)
 
@@ -40,7 +40,7 @@ This tab is different to the others as it has
 4. Each tab except `Experiment` and `DataFileMetaData` needs an ID field  
 Applies to all tabs except `Experiment` and `DataFileMetaData
 
-    * The first column in the tab must contain a field named `...ID`.
+    * The first column in the tab must be a column named `...ID`.
 
 5. The spreadsheet can contain a tab `DOCUMENTATION`
 This tab can contain information for the user and will not be imported.

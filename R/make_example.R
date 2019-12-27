@@ -18,7 +18,6 @@
 #'      script files. If you want to include an RMarkdown files in the `./code`
 #'      directory from thisa, use the `.rmd` extension (small letters).
 #' @param name name of the example
-#' @param schemeName name of the package in which the example sits.
 #'
 #' @return invisibly \code{NULL}
 #'
@@ -34,14 +33,15 @@
 #' make_example("basic")
 #' }
 make_example <- function(
-  name,
-  schemeName = "dmdScheme"
+  name
 ) {
-  example_dir <- system.file("example_data", package = schemeName)
+  example_dir <- cache("installedSchemes", paste0(scheme_active()$name, "_", scheme_active()$version), "examples")
   examples <- list.dirs( example_dir, recursive = FALSE, full.names = FALSE)
+
+
   if (missing(name)) {
     message("Included examples are:")
-    message(examples)
+    message(paste(examples, collapse = "\n"))
   } else {
     if (!(name %in% examples)) {
       stop("Invalid example. 'name' has to be one of the following values: ", examples, ".")
@@ -49,7 +49,7 @@ make_example <- function(
 
     # Define example and to directory -----------------------------------------
 
-    example_dir <- system.file("example_data", name, package = schemeName)
+    example_dir <- file.path(example_dir, name)
     to_dir <- file.path(".", name)
 
     # Copy Example into working directory -------------------------------------
@@ -77,12 +77,17 @@ make_example <- function(
       )
     }
 
-    # Show user_manual --------------------------------------------------------
-    switch(
-      name,
-      basic = utils::RShowDoc("user_manual", package = schemeName),
-      message("No documentation specified to be opened!")
-    )
+    # Show name.html --------------------------------------------------------
+
+    doc <- file.path(example_dir, paste0(name, ".html"))
+    if (file.exists(doc)) {
+      utils::browseURL(
+        url = doc,
+        encodeIfNeeded = TRUE
+      )
+    } else {
+      message("No documentation included in the example `", name, "`!")
+    }
   }
 
   # Return ------------------------------------------------------------------

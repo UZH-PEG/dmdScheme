@@ -1,0 +1,21 @@
+citHeader("To cite dmdScheme in publications use:")
+
+citEntry(entry = "Manual",
+  title        = "{dmdScheme}: An R package for working with Domain
+                   specific MetaData Schemes",
+  author       = personList(as.person("Rainer M. Krug"),
+                   as.person("Owen L. Petchey")),
+  journal      = "Zenodo",
+  year         = "2019",
+  version      = "v0.9.22",
+  doi          = "10.5281/zenodo.3581970",
+  url          = "https://doi.org/10.5281/zenodo.3581970",
+
+  textVersion  =
+  paste("Rainer M. Krug, Owen L/ Petchey (2019).",
+        "{dmdScheme}: An R package for working with Domain specific MetaData Schemes.",
+        "(version v0.9.22).",
+        "Zenodo",
+        "http://doi.org/10.5281/zenodo.3581970")
+)
+

@@ -73,6 +73,14 @@ shinyUI(
           accept = c(".xlsx", "xls")
         ),
 
+        h1("Upload Datafiles"),
+
+        fileInput(
+          inputId = "dataFiles",
+          label = "Select Datafiles",
+          multiple = TRUE
+        ),
+
         # Validate Uploaded Metadata ----------------------------------------------
 
         hr(),

@@ -4,14 +4,24 @@
 \alias{scheme_make}
 \title{Functions to manage schemes}
 \usage{
-scheme_make(schemeDefinition, path = ".", overwrite = FALSE)
+scheme_make(schemeDefinition, examples = NULL, path = ".",
+  overwrite = FALSE)
 }
 \arguments{
-\item{schemeDefinition}{path to the \code{.xlsx} file containing the \bold{definition} of the scheme as well as the \bold{example}}
+\item{schemeDefinition}{path to the \code{.xlsx} file containing the
+\bold{definition} of the scheme as well as the \bold{example}}
+
+\item{examples}{character vector of directories which should be included as
+examples. The name of the director will be the name of the example. The
+example can contain a file with the name \code{EXAMPLENAME.html} where
+\code{EXAMPLENAME} is the name of the folder. This html will abe
+automatically opened when calling \code{make_example("EXAMPLENAME")}
+Otherwise there are no restrictions to formats.}
 
 \item{path}{where the final scheme definition should be created.}
 
-\item{overwrite}{if \code{TRUE}, the scheme definition in \code{path} will be overwritten.}
+\item{overwrite}{if \code{TRUE}, the scheme definition in \code{path} will be
+overwritten.}
 }
 \value{
 fully qualified path to the created scheme

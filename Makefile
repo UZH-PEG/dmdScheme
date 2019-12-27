@@ -75,7 +75,7 @@ clean_html:
 web: html vignettes readme
 	cp -f $(VIGHTML) $(OUTDIR)/
 	mkdir -p $(DATADIR)
-	cp -f $(EXAMPLEXML) $(DATADIR)/
+#	cp -f $(EXAMPLEXML) $(DATADIR)/
 
 clean_web: clean_html clean_vignettes clean_readme
 	rm -f VIGHTMLOUT
@@ -84,16 +84,6 @@ clean_web: clean_html clean_vignettes clean_readme
 ####
 
 ########### Package  ###########
-
-####
-
-update:
-	Rscript -e "devtools::load_all(here::here()); dmdScheme:::updateFromNewSheet()"
-
-####
-
-updateForce:
-	@Rscript -e "devtools::load_all(here::here()); dmdScheme:::updateFromNewSheet(force = TRUE)"
 
 ####
 
@@ -124,6 +114,11 @@ check: build-cran
 
 clean_check:
 	$(RM) -r ./../$(PKGNAME).Rcheck/
+
+####
+
+# check_rhub
+# 	@Rscript -e "rhub::check_for_cran(".")
 
 ####
 

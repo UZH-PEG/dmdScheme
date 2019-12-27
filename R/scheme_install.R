@@ -26,7 +26,7 @@
 scheme_install <- function(
   name,
   version,
-  repo = "https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/raw/master/",
+  repo = scheme_repo(),
   file = NULL,
   overwrite = FALSE
 ){
@@ -71,7 +71,7 @@ scheme_install <- function(
 
   utils::untar(
     tarfile = schemeDefinition,
-    exdir = cache("installedSchemes", create = TRUE)
+    exdir = cache("installedSchemes", createPermanent = FALSE)
   )
 
   # Return ------------------------------------------------------------------

@@ -5,8 +5,7 @@
 \title{Open the metadata scheme as a spreadsheet in a spreadsheet editor}
 \usage{
 open_new_spreadsheet(file = NULL, open = TRUE, keepData = FALSE,
-  format = TRUE, overwrite = FALSE, verbose = FALSE,
-  .skipBrowseURL = FALSE)
+  format = TRUE, overwrite = FALSE, verbose = FALSE)
 }
 \arguments{
 \item{file}{if not \code{NULL}, the template will be saved to this file.}
@@ -20,8 +19,6 @@ open_new_spreadsheet(file = NULL, open = TRUE, keepData = FALSE,
 \item{overwrite}{if \code{TRUE}, the file specified in \code{file} will be overwritten. if \code{FALSE}, an error will be raised ehen the file exists.}
 
 \item{verbose}{give verbose progress info. Useful for debugging.}
-
-\item{.skipBrowseURL}{internal use (testing only). if \code{TRUE} skip the call of \code{browseURL()}}
 }
 \value{
 invisibly the fully qualified path to the file which \bold{would} have been opened, if \code{open == TRUE}.
