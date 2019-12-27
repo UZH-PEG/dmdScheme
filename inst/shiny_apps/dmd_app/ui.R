@@ -13,7 +13,12 @@ library(dmdScheme)
 library(shiny)
 library(magrittr)
 
-
+# Based on https://gist.github.com/wch/c3653fb39a00c63b33cf
+R_lib <- tempfile(pattern = "R_lib")
+if (!file.exists(R_lib)) {
+  dir.create(R_lib)
+}
+.libPaths( c(normalizePath(R_lib), .libPaths()) )
 
 # Define UI for application that draws a histogram
 shinyUI(

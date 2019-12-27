@@ -2,7 +2,6 @@ library(shiny)
 library(dmdScheme)
 
 
-
 # Server definition -----------------------------------------------------------
 
 
@@ -18,8 +17,9 @@ shinyServer(
         name <-  strsplit(input$loadPackage, "_")[[1]][[1]]
         version <-  strsplit(input$loadPackage, "_")[[1]][[2]]
         if (!scheme_installed(name, version)) {
-          scheme_install( name = name, version = version )
+          scheme_install( name = name, version = version, overwrite = TRUE )
         }
+        do.call(library, list(name))
         scheme_use( name = name, version = version )
 
         output$loaded <- renderPrint(paste("Active scheme is ", scheme_active()$name, " version ", scheme_active()$version))
@@ -53,7 +53,6 @@ shinyServer(
         if (reportFormat == "docx") {
           reportFormat <- "word"
         }
-        browser()
         metadata <- input$spreadsheet$datapath
         dataPath <- dirname(input$dataFiles$datapath)[[1]]
         dataFiles <- file.path(dataPath, input$dataFiles$name)
