@@ -8,6 +8,8 @@
 #'   \code{EXAMPLENAME} is the name of the folder. This html will abe
 #'   automatically opened when calling \code{make_example("EXAMPLENAME")}
 #'   Otherwise there are no restrictions to formats.
+#' @param install_R_package path to the R script to install the R package. If \code{NULL},
+#'   no command is given.
 #' @param path where the final scheme definition should be created.
 #' @param overwrite if \code{TRUE}, the scheme definition in \code{path} will be
 #'   overwritten.
@@ -21,6 +23,7 @@
 scheme_make <- function(
   schemeDefinition,
   examples = NULL,
+  install_R_package = NULL,
   path = ".",
   overwrite = FALSE
 ){
@@ -50,7 +53,10 @@ scheme_make <- function(
   tmppath <- file.path(rootpath, schemeName)
   dir.create(tmppath, recursive = TRUE)
 
-  file.copy(schemeDefinition, file.path(tmppath, paste0(schemeName, ".xlsx")))
+  file.copy(
+    from = schemeDefinition,
+    to = file.path(tmppath, paste0(schemeName, ".xlsx"))
+  )
 
   write_xml(
     x = scheme,
@@ -68,6 +74,12 @@ scheme_make <- function(
     )
   }
 
+  if (!is.null(install_R_package)) {
+    file.copy(
+      from = install_R_package,
+      to = file.path(tmppath, "install_R_package.R"))
+  }
+
   # build package -----------------------------------------------------------
 
   writeLines(version, file.path(tmppath, "schemePackageVersion"))
@@ -76,7 +88,6 @@ scheme_make <- function(
   names(md5) <- basename(names(md5))
 
   utils::write.table(md5, file.path(tmppath, "md5sum.txt"))
-
 
   oldwd <- setwd(rootpath)
   try(

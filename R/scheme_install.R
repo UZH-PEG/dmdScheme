@@ -5,8 +5,11 @@
 #' definition is saved in addition. These can be listed by using
 #' \link{scheme_list}.
 #' @param repo repo of the schemes.
-#' @param file if give, this file will be used as the local scheme definition, and \code{repo} will be ignored
+#' @param file if give, this file will be used as the local scheme definition,
+#'   and \code{repo} will be ignored
 #' @param overwrite if \code{TRUE}, the scheme will be overwritten if it exists
+#' @param install_package if \code{TRUE}, install / update the accompanying R
+#'   package. This should usually be left at \code{TRUE}.
 #'
 #' @return invisibly \code{NULL}
 #'
@@ -28,7 +31,8 @@ scheme_install <- function(
   version,
   repo = scheme_repo(),
   file = NULL,
-  overwrite = FALSE
+  overwrite = FALSE,
+  install_package = TRUE
 ){
 
   if (!is.null(file)) {
@@ -49,7 +53,6 @@ scheme_install <- function(
       stop("Scheme is already installed! Use `overwrite = TRUE` if you want to overwrite it!")
     }
   }
-
 
   # Download when rep == NULL -----------------------------------------------
 
@@ -73,6 +76,24 @@ scheme_install <- function(
     tarfile = schemeDefinition,
     exdir = cache("installedSchemes", createPermanent = FALSE)
   )
+
+  # Install R package -------------------------------------------------------
+
+  if (install_package) {
+    script <- file.path(
+      cache("installedSchemes", paste0(name, "_", version), createPermanent = FALSE),
+      "install_R_package.R"
+    )
+    if (file.exists(script)) {
+      installed <- name %in% rownames(installed.packages())
+      if (!installed) {
+        source(script, echo = TRUE)
+      } else {
+        message("Package ", name, " is alrady installed!")
+      }
+    }
+  }
+
 
   # Return ------------------------------------------------------------------
 

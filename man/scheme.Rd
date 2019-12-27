@@ -24,7 +24,7 @@ scheme_download(name, version, destfile = NULL, overwrite = FALSE,
   baseurl = scheme_repo(), ...)
 
 scheme_install(name, version, repo = scheme_repo(), file = NULL,
-  overwrite = FALSE)
+  overwrite = FALSE, install_package = TRUE)
 
 scheme_installed(name, version)
 
@@ -58,6 +58,8 @@ repository in which the scheme definitions are located.}
 \item{repo}{repo of the schemes.}
 
 \item{file}{if give, this file will be used as the local scheme definition, and \code{repo} will be ignored}
+
+\item{install_package}{if \code{TRUE}, install / update the accompanying R package}
 }
 \value{
 \code{data.frame} with two columns containing name and version of the default scheme
