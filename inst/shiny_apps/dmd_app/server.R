@@ -50,8 +50,21 @@ shinyServer(
       },
       content = function(file) {
         reportFormat <- input$formatValidationReport
-        if (reportFormat == "docx") {reportFormat <- "word"}
-        report( x = input$spreadsheet$datapath, open = FALSE, report = reportFormat, file = file )
+        if (reportFormat == "docx") {
+          reportFormat <- "word"
+        }
+        browser()
+        metadata <- input$spreadsheet$datapath
+        dataPath <- dirname(input$dataFiles$datapath)[[1]]
+        dataFiles <- file.path(dataPath, input$dataFiles$name)
+        file.copy(input$dataFiles$datapath, dataFiles, overwrite = TRUE)
+        report(
+          x = metadata,
+          path = dataPath,
+          open = FALSE,
+          report = reportFormat,
+          file = file
+        )
       }
     )
 
