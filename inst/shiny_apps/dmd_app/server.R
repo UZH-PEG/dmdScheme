@@ -1,8 +1,21 @@
 library(shiny)
 library(dmdScheme)
+library(devtools)
 
+# For emeScheme startup to make loading faster ----------------------------
+
+library(digest)
+library(dplyr)
+library(magrittr)
+library(methods)
+library(rlang)
+library(rmarkdown)
+library(taxize)
+library(tibble)
+library(utils)
 
 # Server definition -----------------------------------------------------------
+
 
 
 shinyServer(
@@ -13,27 +26,37 @@ shinyServer(
     observeEvent(
       eventExpr = input$loadPackage,
       ignoreNULL = FALSE,
-      handlerExpr = {
-        output$loaded <- renderPrint(paste("Loading Scheme ", scheme_active()$name, " version ", scheme_active()$version, "..."))
-        name <-  strsplit(input$loadPackage, "_")[[1]][[1]]
-        version <-  strsplit(input$loadPackage, "_")[[1]][[2]]
-        if (!scheme_installed(name, version)) {
-          scheme_install(
-            name = name,
-            version = version,
-            overwrite = TRUE
-          )
-          scheme_install_r_package(
-            name = name,
-            version = version,
-            reinstall = TRUE
-          )
-        }
-        do.call(library, list(name))
-        scheme_use( name = name, version = version )
+      handlerExpr = withProgress(
+        message = 'Loading Scheme and R Package - this might take some time',
+        min = 0,
+        max = 4,
+        value = 0,
+        {
+          name <-  strsplit(input$loadPackage, "_")[[1]][[1]]
+          version <-  strsplit(input$loadPackage, "_")[[1]][[2]]
+          if (!scheme_installed(name, version)) {
+            incProgress(1, message = "Installing Scheme...")
+            scheme_install(
+              name = name,
+              version = version,
+              overwrite = TRUE
+            )
+            incProgress(1, message = "Instaling R Package - this can take some time...")
+            scheme_install_r_package(
+              name = name,
+              version = version,
+              reinstall = TRUE
+            )
+          }
+          incProgress(1, message = "Loading R Package and Scheme...")
+          do.call(library, list(name))
+          scheme_use( name = name, version = version )
 
-        output$loaded <- renderPrint(paste("Active scheme is ", scheme_active()$name, " version ", scheme_active()$version))
-      }
+          incProgress(1, message = "Done!")
+
+          output$loaded <- renderPrint(paste("Active scheme is ", scheme_active()$name, " version ", scheme_active()$version))
+        }
+      )
     )
 
     # Open new Spreadsheet ----------------------------------------------------

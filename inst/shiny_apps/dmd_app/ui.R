@@ -1,5 +1,18 @@
 library(devtools)
 library(dmdScheme)
+library(devtools)
+
+# For emeScheme startup to make loading faster ----------------------------
+
+library(digest)
+library(dplyr)
+library(magrittr)
+library(methods)
+library(rlang)
+library(rmarkdown)
+library(taxize)
+library(tibble)
+library(utils)
 
 #
 # This is the user-interface definition of a Shiny web application. You can
