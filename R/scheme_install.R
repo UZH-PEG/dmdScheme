@@ -9,7 +9,8 @@
 #'   and \code{repo} will be ignored
 #' @param overwrite if \code{TRUE}, the scheme will be overwritten if it exists
 #' @param install_package if \code{TRUE}, install / update the accompanying R
-#'   package. This should usually be left at \code{TRUE}.
+#'   package. You can do it manually later by running
+#'   \code{scheme_install_r_package("NAME", "VERSION")}.
 #'
 #' @return invisibly \code{NULL}
 #'
@@ -32,7 +33,7 @@ scheme_install <- function(
   repo = scheme_repo(),
   file = NULL,
   overwrite = FALSE,
-  install_package = TRUE
+  install_package = FALSE
 ){
 
   if (!is.null(file)) {
@@ -77,23 +78,12 @@ scheme_install <- function(
     exdir = cache("installedSchemes", createPermanent = FALSE)
   )
 
-  # Install R package -------------------------------------------------------
+
+  # install R package -------------------------------------------------------
 
   if (install_package) {
-    script <- file.path(
-      cache("installedSchemes", paste0(name, "_", version), createPermanent = FALSE),
-      "install_R_package.R"
-    )
-    if (file.exists(script)) {
-      installed <- name %in% rownames(installed.packages())
-      if (!installed) {
-        source(script, echo = TRUE)
-      } else {
-        message("Package ", name, " is alrady installed!")
-      }
-    }
+    scheme_install_r_package( name = name, version = version, reinstall = overwrite)
   }
-
 
   # Return ------------------------------------------------------------------
 

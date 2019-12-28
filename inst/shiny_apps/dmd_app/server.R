@@ -14,10 +14,20 @@ shinyServer(
       eventExpr = input$loadPackage,
       ignoreNULL = FALSE,
       handlerExpr = {
+        output$loaded <- renderPrint(paste("Loading Scheme ", scheme_active()$name, " version ", scheme_active()$version, "..."))
         name <-  strsplit(input$loadPackage, "_")[[1]][[1]]
         version <-  strsplit(input$loadPackage, "_")[[1]][[2]]
         if (!scheme_installed(name, version)) {
-          scheme_install( name = name, version = version, overwrite = TRUE )
+          scheme_install(
+            name = name,
+            version = version,
+            overwrite = TRUE
+          )
+          scheme_install_r_package(
+            name = name,
+            version = version,
+            reinstall = TRUE
+          )
         }
         do.call(library, list(name))
         scheme_use( name = name, version = version )
@@ -56,7 +66,11 @@ shinyServer(
         metadata <- input$spreadsheet$datapath
         dataPath <- dirname(input$dataFiles$datapath)[[1]]
         dataFiles <- file.path(dataPath, input$dataFiles$name)
-        file.copy(input$dataFiles$datapath, dataFiles, overwrite = TRUE)
+        file.copy(
+          from = input$dataFiles$datapath,
+          to = dataFiles,
+          overwrite = TRUE
+        )
         report(
           x = metadata,
           path = dataPath,
@@ -73,12 +87,28 @@ shinyServer(
       filename = function(){
         ifelse(
           is.null(input$spreadsheet$name),
-          "export.xml",
-          gsub(".xlsx", ".xml", input$spreadsheet$name)
+          "export_xml.tar.gz",
+          gsub(".xlsx", "_xml.tar.gz", input$spreadsheet$name)
         )
       },
       content = function(file) {
-        x <- write_xml( x = read_excel(input$spreadsheet$datapath), file = file, output = "complete" )
+        xmlPath <- file.path(dirname(file), "xml")
+        dir.create(xmlPath)
+        x <- write_xml(
+          x = read_excel(input$spreadsheet$datapath),
+          file = file.path(xmlPath, "dummy.xml"),
+          output = "complete"
+        )
+        oldwd <- setwd(xmlPath)
+        try(
+          utils::tar(
+            tarfile = file,
+            files = ".",
+            compression = "gzip"
+          )
+        )
+        setwd(oldwd)
+
       }
     )
 

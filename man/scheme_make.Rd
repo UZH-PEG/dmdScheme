@@ -4,8 +4,8 @@
 \alias{scheme_make}
 \title{Functions to manage schemes}
 \usage{
-scheme_make(schemeDefinition, examples = NULL, path = ".",
-  overwrite = FALSE)
+scheme_make(schemeDefinition, examples = NULL,
+  install_R_package = NULL, path = ".", overwrite = FALSE)
 }
 \arguments{
 \item{schemeDefinition}{path to the \code{.xlsx} file containing the
@@ -17,6 +17,9 @@ example can contain a file with the name \code{EXAMPLENAME.html} where
 \code{EXAMPLENAME} is the name of the folder. This html will abe
 automatically opened when calling \code{make_example("EXAMPLENAME")}
 Otherwise there are no restrictions to formats.}
+
+\item{install_R_package}{path to the R script to install the R package. If \code{NULL},
+no command is given.}
 
 \item{path}{where the final scheme definition should be created.}
 
