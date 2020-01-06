@@ -10,6 +10,7 @@
 #'
 #' @rdname scheme
 #'
+#' @importFrom utils installed.packages remove.packages
 #' @export
 #'
 #' @examples
@@ -27,10 +28,10 @@ scheme_install_r_package <- function(
     "install_R_package.R"
   )
   if (file.exists(script)) {
-    installed <- name %in% rownames(installed.packages())
+    installed <- name %in% rownames(utils::installed.packages())
     if (installed) {
       if (reinstall) {
-        remove.packages("name")
+        utils::remove.packages("name")
       } else {
         message(
           "Package ", name, " is already installed!\n",
