@@ -1,8 +1,8 @@
 Package: dmdScheme
 Title: Domain Specific MetaData Scheme
-Description: A Package forming the core for developing own domain specific metadata schemes. 
+Description: Forms the core for developing own domain specific metadata schemes. 
                   It contains the basic functionality needed for all metadata schemes based on the
-                  \code{dmdScheme}. See R.M. Krug and O.L. Petchey (2019) <DOI:10.5281/zenodo.3581970>.
+                  'dmdScheme'. See R.M. Krug and O.L. Petchey (2019) <DOI:10.5281/zenodo.3581970>.
 Version: 1.0.0
 Date: 2019-12-17
 Authors@R: 

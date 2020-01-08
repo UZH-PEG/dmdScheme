@@ -27,7 +27,7 @@ scheme_install_r_package <- function(
     "install_R_package.R"
   )
   if (file.exists(script)) {
-    installed <- name %in% rownames(installed.packages())
+    installed <- system.file(package = name) != ""
     if (installed) {
       if (reinstall) {
         remove.packages("name")
