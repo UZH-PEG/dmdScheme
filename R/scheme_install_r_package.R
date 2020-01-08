@@ -10,6 +10,7 @@
 #'
 #' @rdname scheme
 #'
+#' @importFrom utils installed.packages remove.packages
 #' @export
 #'
 #' @examples
@@ -30,7 +31,7 @@ scheme_install_r_package <- function(
     installed <- system.file(package = name) != ""
     if (installed) {
       if (reinstall) {
-        remove.packages("name")
+        utils::remove.packages("name")
       } else {
         message(
           "Package ", name, " is already installed!\n",

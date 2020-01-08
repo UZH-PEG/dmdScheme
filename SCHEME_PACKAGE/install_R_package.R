@@ -1,1 +1,6 @@
-devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme",ref = "master", force = TRUE)
+devtools::install_github(
+  repo = "Exp-Micro-Ecol-Hub/dmdScheme",
+  ref = "master",
+  force = TRUE,
+  upgrade = "never"
+)
