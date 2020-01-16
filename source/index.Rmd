@@ -110,7 +110,7 @@ and restart your R session. Noiw the definitions of the installed `dmdSchemes` w
 
 - <a href="r_package_introduction.html" target="_blank">'R Package Introduction'</a> for a general description of the package
 - <a href="Howto_create_new_scheme.html" target="_blank">'Howto Create a new scheme'</a> for a walk-through of creating a new scheme
-- <a href="minimum_requirements_dmdScheme.html" target="_blank">'Minimum requirements for metadatascheme based on dmdScheme'</a> for the minimum requirements of what a new scheme definition must contain.
+- <a href="minimum_requirements_dmdscheme.html" target="_blank">'Minimum requirements for metadatascheme based on dmdScheme'</a> for the minimum requirements of what a new scheme definition must contain.
 
 # Other Resources
 
