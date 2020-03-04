@@ -4,8 +4,13 @@
 \alias{read_excel}
 \title{Read scheme data from Excel file into \code{\link[dmdScheme]{dmdSchemeSet}} object}
 \usage{
-read_excel(file, keepData = TRUE, verbose = FALSE, raw = FALSE,
-  validate = TRUE)
+read_excel(
+  file,
+  keepData = TRUE,
+  verbose = FALSE,
+  raw = FALSE,
+  validate = TRUE
+)
 }
 \arguments{
 \item{file}{the name of the Excel file (.xls or .xlsx) containing the data to

@@ -17,7 +17,7 @@ converted to an object of class \code{\link[dmdScheme]{dmdSchemeSet}}.
 }
 \details{
 \describe{
-  \item{\code{dmdSchemeData_raw}: }{a \code{\link[tibble]{tibble}} as returned by the function \code{\link[readxl]{read_excel}} with the class \code{dmdSchemeData_raw}}
+  \item{\code{dmdSchemeData_raw}: }{a \code{data.frame} as returned by the function \code{\link[readxl]{read_excel}} with the class \code{dmdSchemeData_raw}}
   \item{\code{dmdSchemeSet_raw: }}{a \code{list} with where each element is a \code{dmdSchemeData_raw} object with additional attributes:
     \describe{
       \item{propertyName: }{name of the dmdScheme for which this object contains the raw data. In the spreadsheet, it is in the cell H1 in ther in the Experiment tab (DATA dmeScheme v0.9.5.)}

@@ -21,11 +21,23 @@ scheme_active()
 
 scheme_default(name = NULL, version = NULL)
 
-scheme_download(name, version, destfile = NULL, overwrite = FALSE,
-  baseurl = scheme_repo(), ...)
+scheme_download(
+  name,
+  version,
+  destfile = NULL,
+  overwrite = FALSE,
+  baseurl = scheme_repo(),
+  ...
+)
 
-scheme_install(name, version, repo = scheme_repo(), file = NULL,
-  overwrite = FALSE, install_package = FALSE)
+scheme_install(
+  name,
+  version,
+  repo = scheme_repo(),
+  file = NULL,
+  overwrite = FALSE,
+  install_package = FALSE
+)
 
 scheme_install_r_package(name, version, reinstall = FALSE)
 

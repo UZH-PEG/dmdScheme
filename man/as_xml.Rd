@@ -35,7 +35,7 @@ Generic function to convert an object to xml
 x <- as_xml( dmdScheme_example() )
 x
 
-## returns \\code{xml_document} object
+## returns \code{xml_document} object
 
 
 }

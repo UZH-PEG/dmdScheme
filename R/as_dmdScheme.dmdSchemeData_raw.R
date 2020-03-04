@@ -1,7 +1,6 @@
 #' @importFrom dplyr filter
 #' @importFrom magrittr %<>% %>%
 #' @importFrom rlang .data
-#' @importFrom tibble as_tibble
 #'
 #' @rdname as_dmdScheme
 #' @export
@@ -17,7 +16,6 @@ as_dmdScheme.dmdSchemeData_raw <- function(
   ) {
 
   if (verbose) message("propertySet : ", names(x)[[2]])
-
 
 # Check for class dmdSchemeSet_raw ----------------------------------------
 
@@ -52,14 +50,22 @@ as_dmdScheme.dmdSchemeData_raw <- function(
   if (x[[1,1]] == "Experiment") {
     if (verbose) message("Transposing...")
     #
-    suppressMessages(
-      x %<>%
-        t() %>%
-        tibble::as_tibble(rownames = NA, .name_repair = "unique") %>%
-        tibble::rownames_to_column("propertySet") %>%
-        dplyr::rename(Experiment = 2) %>%
-        dplyr::filter( .data$propertySet != "propertySet")
-    )
+
+    x <- rbind(NA, x)
+    x[1,] <- names(x)
+    rownames(x) <- c(x[1:2,1], 2:(nrow(x) - 1))
+    x <- x[,-1]
+    x <- as.data.frame(t(as.matrix(x)), stringsAsFactors = FALSE)
+    rownames(x) <- 1:nrow(x)
+
+    # suppressMessages(
+    #   x %<>%
+    #     t() %>%
+    #     tibble::as_tibble(rownames = NA, .name_repair = "unique") %>%
+    #     tibble::rownames_to_column("propertySet") %>%
+    #     dplyr::rename(Experiment = 2) %>%
+    #     dplyr::filter( .data$propertySet != "propertySet")
+    # )
   }
 
 # set all NA in valueProperty column to "NA" ------------------------------
@@ -116,6 +122,9 @@ as_dmdScheme.dmdSchemeData_raw <- function(
 # apply type --------------------------------------------------------------
 
   if (convertTypes) {
+
+    # REPLACE x[[i]][] <- Map(`class<-`, x[[i]], types)
+
     if (verbose) message("Apply types...")
     #
     type <- attr(x, "type")

@@ -59,6 +59,8 @@ as_dmdScheme.xml_document <- function(
     xml <- x
 
     # Check if output = "complete" --------------------------------------------
+
+
     if (!(xml2::xml_attr(xml, "output") %in% c("complete", "scheme"))) {
       stop("Can not create scheme from this xml!")
     }
@@ -66,41 +68,37 @@ as_dmdScheme.xml_document <- function(
 
     # Do conversion iteratively by ...List ------------------------------------
 
-    dmdS <- list()
-    for (i in 1:xml2::xml_length(xml)) {
-      List <- xml2::xml_child(xml, i)
+    dmdS <- lapply(
+      1:xml2::xml_length(xml),
+      function(i) {
+        atr <- xmlAttrList( xml2::xml_child(xml, i) )
+        atr <- atr[ !(names(atr) %in% c("row.names", "output")) ]
 
-      atr <- xmlAttrList(List)
-      atr <- atr[ !(names(atr) %in% c("row.names", "output")) ]
+        # Create data.frame with names and type ---------------------------------------
 
-      # Create tibble with names and type ---------------------------------------
+        dmdD <- data.frame(matrix(ncol = length(atr$names), nrow = 1), stringsAsFactors = FALSE)
 
-      dmdD <- tibble()
-      suppressMessages(
-        for (j in 1:length(atr$names)) {
-          dmdD <- tibble::add_column(dmdD, !!(atr$names[j]) := get(atr$type[j])(1))
+        colnames(dmdD) <- atr$names
+        atr <- atr[ !(names(atr) %in% c("names")) ]
+
+        dmdD[] <- Map(`class<-`, dmdD, atr$type)
+
+        # Set class ---------------------------------------------------------------
+
+        class(dmdD) <- append( grep("tbl_df|tbl|data.frame", atr$class, invert = TRUE, value = TRUE), class(dmdD) )
+        atr <- atr[ !(names(atr) %in% c("class")) ]
+
+        # Add remaining attributes ------------------------------------------------
+
+        for (a in names(atr)) {
+          attr(dmdD, a) <-  atr[[a]]
         }
-      )
-      dmdD[1,] <- NA
 
-      atr <- atr[ !(names(atr) %in% c("names")) ]
+        # Return dmdSchemeData ----------------------------------------------------
 
-      # Set class ---------------------------------------------------------------
-
-      class(dmdD) <- atr$class
-
-      atr <- atr[ !(names(atr) %in% c("class")) ]
-
-      # Add remaining attributes ------------------------------------------------
-
-      for (a in names(atr)) {
-        attr(dmdD, a) <-  atr[[a]]
+        return(dmdD)
       }
-
-      # Return dmdSchemeData ----------------------------------------------------
-
-      dmdS[[i]] <- dmdD
-    }
+    )
 
 
     # Get Attributes ----------------------------------------------------------
@@ -201,12 +199,23 @@ as_dmdScheme.xml_document <- function(
 
         # add data to result ------------------------------------------------------
 
-        result[[sheet]] <- tibble::add_row(
+        ####
+        types <- sapply(result[[sheet]], typeof)
+        result[[sheet]] <- rbind(
           result[[sheet]],
-          !!!unlist(
-            xmlList[[sheetList]][[i]]
-          )
+          unlist( xmlList[[sheetList]][[i]] )
         )
+
+        result[[sheet]][] <- Map(`class<-`, result[[sheet]], types)
+
+        ####
+
+        # result[[sheet]] <- tibble::add_row(
+        #   result[[sheet]],
+        #   !!!unlist(
+        #     xmlList[[sheetList]][[i]]
+        #   )
+        # )
 
         # As the scheme contains a row with NAs already, this needs to be deleted ----
 
@@ -220,11 +229,6 @@ as_dmdScheme.xml_document <- function(
         #
         type <- attr(result[[sheet]], "type")
 
-        for (i in 1:ncol(result[[sheet]])) {
-          if (verbose) message("   Apply type '", type[i], "' to '", names(result[[sheet]])[[i]], "'...")
-          #
-          result[[sheet]][[i]] <- as(result[[sheet]][[i]], Class = type[i])
-        }
       }
     }
 

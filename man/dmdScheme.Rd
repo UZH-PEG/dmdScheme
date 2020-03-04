@@ -12,7 +12,7 @@ dmdScheme()
 The dataset contains the authorative definition of the dmdScheme. It contains no data, except one row \code{NA}.
 There are two S3 classes defined and used:
 \describe{
-  \item{\code{dmdSchemeData}: }{a \code{\link[tibble]{tibble}} with the class \code{dmdSchemeData}.
+  \item{\code{dmdSchemeData}: }{a \code{data.frame} with the class \code{dmdSchemeData}.
     Each column is one property of the metadata. It has the following attributes:
     \describe{
       \item{propertyName: }{name of the data. In the spreadsheet, it is in the cell below (in the Experiment tab) or to the right (other tabs).}

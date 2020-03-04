@@ -10,43 +10,61 @@ as_dmdScheme_raw.dmdSchemeData <- function(
 ) {
 
   # Extraxt data ------------------------------------------------------------
+  result <- as.data.frame(x, stringsAsFactors = FALSE)
 
-  result <- suppressMessages( tibble::as_tibble(x) )
+  cns <- names(attributes(x))
+  cns <- grep(
+    "row.names|propertyName|names|class",
+    cns,
+    value = TRUE,
+    invert = TRUE
+  )
 
   if (attr(x, "propertyName") == "Experiment") {
+
     result <- cbind(nms = names(result), t(result))
     colnames(result) <- c("valueProperty", "DATA")
-    result <- tibble::as_tibble(result)
+    result <- as.data.frame(result, stringsAsFactors = FALSE)
+    rownames(result) <- 1:nrow(result)
 
-    result <- tibble::add_column(
-      result,
+    result <- cbind.data.frame(
       propertySet = c( attr(x, "propertyName"), rep(NA, nrow(result) - 1) ),
-      .before = 1
-    )
-
-    cns <- names(attributes(x))
-    cns <- grep(
-      "row.names|propertyName|names|class",
-      cns,
-      value = TRUE,
-      invert = TRUE
+      result,
+      stringsAsFactors = FALSE
     )
 
     for (cn in cns) {
-      result <- tibble::add_column(
+      result <- cbind.data.frame(
         result,
-        !!(cn) := c( attr(x, cn) ),
-        .before = ncol(result)
+        attr(x, cn),
+        stringsAsFactors = FALSE
       )
+      colnames(result)[ncol(result)] <- cn
     }
+
+    nm <- colnames(result)
+    result <- result[c( nm[1:2], cns, nm[3] )]
+
+    # result <- cbind(nms = names(result), t(result))
+    # colnames(result) <- c("valueProperty", "DATA")
+    # result <- tibble::as_tibble(result)
+
+    # result <- tibble::add_column(
+    #   result,
+    #   propertySet = c( attr(x, "propertyName"), rep(NA, nrow(result) - 1) ),
+    #   .before = 1
+    # )
+
+
+    # for (cn in cns) {
+    #   result <- tibble::add_column(
+    #     result,
+    #     !!(cn) := c( attr(x, cn) ),
+    #     .before = ncol(result)
+    #   )
+    # }
+
   } else {
-    cns <- names(attributes(x))
-    cns <- grep(
-      "row.names|propertyName|names|class",
-      cns,
-      value = TRUE,
-      invert = TRUE
-    )
     cns <- rev(cns)
     cns <- c(cns, "names")
 
@@ -72,7 +90,7 @@ as_dmdScheme_raw.dmdSchemeData <- function(
     } else if (noNAs < 0) {
       result <- rbind(result, NA)
     }
-
+browser()
     result <- tibble::add_column(
       result,
       propertySet = propSet,

@@ -72,7 +72,7 @@ validate.dmdSchemeSet_raw <- function(
     t[na] <- TRUE
     result$details <- as.data.frame(sraw, stringsAsFactors = FALSE)
     result$details[t] <- TRUE
-    result$details[!t] <- paste( result$details[!t], "!=", as.data.frame(sconv)[!t])
+    result$details[!t] <- paste( result$details[!t], "!=", as.data.frame(sconv, stringsAsFactors = FALSE)[!t])
     result$details[na] <- NA
     result$details <- as_tibble(result$details, .name_repair = "unique")
     ##
@@ -234,6 +234,7 @@ validate.dmdSchemeSet_raw <- function(
   }
 
   validateStructure <- function(x){
+
     result <- as_dmdScheme_validation()
     ##
     result$header <- "Structural / Formal validity"

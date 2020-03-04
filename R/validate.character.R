@@ -4,7 +4,6 @@
 #' @importFrom dplyr filter select
 #' @importFrom utils browseURL glob2rx
 #' @importFrom rmarkdown render
-#' @importFrom tibble tibble
 #' @importFrom utils read.csv
 #' @importFrom magrittr extract2
 #' @importFrom digest digest

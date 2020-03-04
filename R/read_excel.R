@@ -26,7 +26,6 @@
 #'   \code{dmdSchemeSet}
 #'
 #' @importFrom magrittr %>% equals not
-#' @importFrom readxl read_excel excel_sheets
 #' @importFrom tools file_path_sans_ext file_ext
 #'
 #' @export

@@ -8,7 +8,7 @@ XA      row.names: 1
 XA      propertyName: Experiment
 XA      suggestedValues: NA | treatment, in degrees celsius, measurement | treatment,light, dark, cycle , e.g. 16:8 LD | treatment, relative humidity in % | none, bench | NA | NA | NA | NA | axenic, dirty, clean | treatment, single trophic level, multiple trophic level | NA | NA | NA
 XA      Description: The name of the experiment. | Temperature used for all treatments. If different between treatments, use "treatment" and specify in the Treatment sheet. | Light used for all treatments. If different between treatments, use "treatment" and specify in the Treatment sheet. | Humidity used for all treatments. If different between treatments, use "treatment" and specify in the Treatment sheet. | What type of incubator is used. | What type of container is used. | Volume of the microcosm container. Not the volume of the culture medium! | NA | NA | Conditions of the cultures for all treatments. | Characterisation of the microbe community. | NA | Length of the experiment in days. This should only include the time in which the measurements were taken! | Additional features of the Experiment you want to provide
-XA      class: dmdSchemeData | tbl_df | tbl | data.frame
+XA      class: dmdSchemeData | data.frame
 
           name temperature light humidity incubator container microcosmVolume
 D       1 <NA>        <NA>  <NA>     <NA>      <NA>      <NA>              NA

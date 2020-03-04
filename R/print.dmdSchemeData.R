@@ -30,7 +30,7 @@ print.dmdSchemeData <- function(x, ..., printAttr = TRUE, printExtAttr = FALSE, 
   }
   ##
   if (printData) {
-    x <- as.data.frame(x)
+    x <- as.data.frame(x, stringsAsFactors = FALSE)
 
     ### adapted from print.data.frame
     n <- length(row.names(x))

@@ -7,14 +7,11 @@
 \alias{validate.dmdSchemeSet_raw}
 \title{Generic function to validate an object which represents a \code{dmdScheme}}
 \usage{
-validate(x, path = ".", validateData = TRUE,
-  errorIfStructFalse = TRUE)
+validate(x, path = ".", validateData = TRUE, errorIfStructFalse = TRUE)
 
-\method{validate}{character}(x, path = ".", validateData = TRUE,
-  errorIfStructFalse = TRUE)
+\method{validate}{character}(x, path = ".", validateData = TRUE, errorIfStructFalse = TRUE)
 
-\method{validate}{dmdSchemeSet_raw}(x, path = ".", validateData = TRUE,
-  errorIfStructFalse = TRUE)
+\method{validate}{dmdSchemeSet_raw}(x, path = ".", validateData = TRUE, errorIfStructFalse = TRUE)
 }
 \arguments{
 \item{x}{object referring to a \code{dmdScheme} to be validatedof class \code{dmdSchemeSet_raw} as returned from \code{read_excel( keepData = FALSE, raw = TRUE)} or file name of an xlsx file containing the metadata.}

@@ -3,7 +3,6 @@
 \docType{package}
 \name{pkg.dmdScheme}
 \alias{pkg.dmdScheme}
-\alias{pkg.dmdScheme-package}
 \title{dmdScheme: A package containing the framework for Domain specific MetaData Schemes}
 \description{
 Metadata is essential for the managing and archiving of data. Consequentially, metadata
@@ -15,10 +14,8 @@ and, in consequence, are not used as often as they should be.
 This package provides a framework called \code{dmdScheme}, which
 \itemize{
 \item \strong{makes it easier to develop a domain specific metadata scheme}: by using a spreadsheet as the base for defining the new scheme
-\itemize{
 \item \strong{provides basic functionality for the new metadata scheme}: including entering, validating, exporting and saving of the new metadata
 \item \strong{makies it easier to enter new metadata}: by uising a spreadsheet to enter the new metadata which can than be imported and exported as xml
-}
 }
 
 This package provides for the \strong{creator} of a new Domain Specific MetaData Scheme:
