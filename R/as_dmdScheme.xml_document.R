@@ -83,18 +83,24 @@ as_dmdScheme.xml_document <- function(
 
         dmdD[] <- Map(`class<-`, dmdD, atr$type)
 
+
+        # Add remaining attributes ------------------------------------------------
+
+        for (a in grep(pattern = "class", x = names(atr), invert = TRUE, value = TRUE)) {
+          atr[[a]] <- gsub("^$", NA, atr[[a]])
+          atr[[a]] <- gsub("^NA$", NA, atr[[a]])
+          attr(dmdD, a) <-  atr[[a]]
+        }
+
         # Set class ---------------------------------------------------------------
 
         class(dmdD) <- append( grep("tbl_df|tbl|data.frame", atr$class, invert = TRUE, value = TRUE), class(dmdD) )
         atr <- atr[ !(names(atr) %in% c("class")) ]
 
-        # Add remaining attributes ------------------------------------------------
-
-        for (a in names(atr)) {
-          attr(dmdD, a) <-  atr[[a]]
-        }
-
         # Return dmdSchemeData ----------------------------------------------------
+        rownames(dmdD) <- NULL
+
+        # attributes(dmdD) <- attributes(dmdD)[ order(names(attributes(dmdD))) ]
 
         return(dmdD)
       }
@@ -122,6 +128,11 @@ as_dmdScheme.xml_document <- function(
     return(dmdS)
 
   }
+
+
+# End Helper Functions ----------------------------------------------------
+
+
 
   # create scheme -----------------------------------------------------------
 
@@ -201,9 +212,13 @@ as_dmdScheme.xml_document <- function(
 
         ####
         types <- sapply(result[[sheet]], typeof)
+        data <- xmlList[[sheetList]][[i]]
+        is.na(data) <- lengths(data) == 0
+        data <- unlist(data)
+        #
         result[[sheet]] <- rbind(
           result[[sheet]],
-          unlist( xmlList[[sheetList]][[i]] )
+          data
         )
 
         result[[sheet]][] <- Map(`class<-`, result[[sheet]], types)
@@ -223,11 +238,10 @@ as_dmdScheme.xml_document <- function(
           result[[sheet]] <- result[[sheet]][-1,]
         }
 
-        # Apply types -------------------------------------------------------------
+        rownames(result[[sheet]]) <- NULL
 
-        if (verbose) message("Apply types...")
-        #
-        type <- attr(result[[sheet]], "type")
+        # attributes(result[[sheet]]) <- attributes(result[[sheet]])[ order(names(attributes(result[[sheet]]))) ]
+
 
       }
     }
@@ -237,6 +251,8 @@ as_dmdScheme.xml_document <- function(
     atr <- xmlAttrList(x)
     atr <- atr[ !(names(atr) %in% c("row.names", "output", "dmdSchemeName", "dmdSchemeVersion" )) ]
     for (i in names(atr)) {
+      atr[[i]] <- gsub("^$", NA, atr[[i]])
+      atr[[i]] <- gsub("^NA$", NA, atr[[i]])
       attr(result, i) <- atr[[i]]
     }
   }

@@ -90,7 +90,7 @@ as_dmdScheme_raw.dmdSchemeData <- function(
     } else if (noNAs < 0) {
       result <- rbind(result, NA)
     }
-browser()
+
     result <- tibble::add_column(
       result,
       propertySet = propSet,

@@ -56,7 +56,7 @@ as_dmdScheme.dmdSchemeData_raw <- function(
     rownames(x) <- c(x[1:2,1], 2:(nrow(x) - 1))
     x <- x[,-1]
     x <- as.data.frame(t(as.matrix(x)), stringsAsFactors = FALSE)
-    rownames(x) <- 1:nrow(x)
+    # rownames(x) <- 1:nrow(x)
 
     # suppressMessages(
     #   x %<>%
@@ -95,7 +95,8 @@ as_dmdScheme.dmdSchemeData_raw <- function(
   #
   for (a in attrToSet) {
     attr(x, which = a) <- dplyr::filter(x, .data$valueProperty == a)[,-1] %>%
-      unlist()
+      unlist() %>%
+      as.vector()
     x %<>% dplyr::filter(.data$valueProperty != a)
   }
 
@@ -145,7 +146,9 @@ as_dmdScheme.dmdSchemeData_raw <- function(
   )
 
   if (verbose) message("Done")
-  #
+
+  # attributes(x) <- attributes(x)[ order(names(attributes(x))) ]
+
 # return object -----------------------------------------------------------
 
   return(x)
