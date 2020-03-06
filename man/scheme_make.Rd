@@ -4,8 +4,13 @@
 \alias{scheme_make}
 \title{Functions to manage schemes}
 \usage{
-scheme_make(schemeDefinition, examples = NULL,
-  install_R_package = NULL, path = ".", overwrite = FALSE)
+scheme_make(
+  schemeDefinition,
+  examples = NULL,
+  install_R_package = NULL,
+  path = ".",
+  overwrite = FALSE
+)
 }
 \arguments{
 \item{schemeDefinition}{path to the \code{.xlsx} file containing the

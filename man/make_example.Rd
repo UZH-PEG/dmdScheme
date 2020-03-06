@@ -30,7 +30,7 @@ The function is doing two things:
 \enumerate{
 \item Copying the \strong{complete} directory from the \code{example_data} directory
 to the current working directory
-\item running \code{knitr::purl} on \strong{all} \code{./code/*.Rmd} to extract the code into \code{.R}
+\item running \code{knitr::purl} on \strong{all} \verb{./code/*.Rmd} to extract the code into \code{.R}
 script files. If you want to include an RMarkdown files in the \code{./code}
 directory from thisa, use the \code{.rmd} extension (small letters).
 }

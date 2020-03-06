@@ -124,7 +124,8 @@ validate.dmdSchemeSet_raw <- function(
             #   TRUE,
             #   paste0("'", result$details[rowN, colN], "' not in suggested Values!")
             # )
-            result$details[rowN, colN] <- al
+# browser()
+            result$details[rowN, colN] <- as.character(al)
           }
         }
         ##
@@ -182,7 +183,7 @@ validate.dmdSchemeSet_raw <- function(
             #   TRUE,
             #   paste0("'", result$details[rowN, colN], "' not in allowed Values!")
             # )
-            result$details[rowN, colN] <- al
+            result$details[rowN, colN] <- as.character(al)
           }
         }
         ##

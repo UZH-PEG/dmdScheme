@@ -4,8 +4,14 @@
 \alias{open_new_spreadsheet}
 \title{Open the metadata scheme as a spreadsheet in a spreadsheet editor}
 \usage{
-open_new_spreadsheet(file = NULL, open = TRUE, keepData = FALSE,
-  format = TRUE, overwrite = FALSE, verbose = FALSE)
+open_new_spreadsheet(
+  file = NULL,
+  open = TRUE,
+  keepData = FALSE,
+  format = TRUE,
+  overwrite = FALSE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{file}{if not \code{NULL}, the template will be saved to this file.}

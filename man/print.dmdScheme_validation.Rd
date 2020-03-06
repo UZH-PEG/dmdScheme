@@ -4,9 +4,15 @@
 \alias{print.dmdScheme_validation}
 \title{Print method for \code{dmdScheme_validation} object}
 \usage{
-\method{print}{dmdScheme_validation}(x, level = 1, listLevel = 3,
-  type = "default", format = "markdown", error = c(0, 1, 2, 3, NA),
-  ...)
+\method{print}{dmdScheme_validation}(
+  x,
+  level = 1,
+  listLevel = 3,
+  type = "default",
+  format = "markdown",
+  error = c(0, 1, 2, 3, NA),
+  ...
+)
 }
 \arguments{
 \item{x}{object of class \code{dmdScheme_validation}}

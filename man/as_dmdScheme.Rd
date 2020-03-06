@@ -11,16 +11,27 @@
 \usage{
 as_dmdScheme(x, keepData = FALSE, ..., verbose = FALSE)
 
-\method{as_dmdScheme}{dmdSchemeData_raw}(x, keepData = TRUE,
-  convertTypes = TRUE, warnToError = TRUE, checkVersion = TRUE, ...,
-  verbose = FALSE)
+\method{as_dmdScheme}{dmdSchemeData_raw}(
+  x,
+  keepData = TRUE,
+  convertTypes = TRUE,
+  warnToError = TRUE,
+  checkVersion = TRUE,
+  ...,
+  verbose = FALSE
+)
 
-\method{as_dmdScheme}{dmdSchemeSet_raw}(x, keepData = FALSE,
-  warnToError = TRUE, convertTypes = TRUE, checkVersion = TRUE, ...,
-  verbose = FALSE)
+\method{as_dmdScheme}{dmdSchemeSet_raw}(
+  x,
+  keepData = FALSE,
+  warnToError = TRUE,
+  convertTypes = TRUE,
+  checkVersion = TRUE,
+  ...,
+  verbose = FALSE
+)
 
-\method{as_dmdScheme}{xml_document}(x, keepData = TRUE,
-  useSchemeInXml = NULL, ..., verbose = FALSE)
+\method{as_dmdScheme}{xml_document}(x, keepData = TRUE, useSchemeInXml = NULL, ..., verbose = FALSE)
 }
 \arguments{
 \item{x}{object to be converted}

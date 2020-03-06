@@ -201,11 +201,19 @@ as_dmdScheme.xml_document <- function(
 
         # add data to result ------------------------------------------------------
 
+        data <- xmlList[[sheetList]][[i]] %>%
+          unlist() %>%
+          t() %>%
+          as.data.frame(stringsAsFactors = FALSE)
+
+        types <- sapply(result[[sheet]], typeof)
+        types <- types[names(types) %in% names(data)]
+
+        data[] <- Map(`class<-`, data,types)
+
         result[[sheet]] <- tibble::add_row(
           result[[sheet]],
-          !!!unlist(
-            xmlList[[sheetList]][[i]]
-          )
+          data
         )
 
         # As the scheme contains a row with NAs already, this needs to be deleted ----

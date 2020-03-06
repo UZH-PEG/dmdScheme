@@ -4,8 +4,7 @@
 \alias{read_xml}
 \title{Function to read x from an XML file}
 \usage{
-read_xml(file, keepData = TRUE, useSchemeInXml = NULL,
-  verbose = FALSE)
+read_xml(file, keepData = TRUE, useSchemeInXml = NULL, verbose = FALSE)
 }
 \arguments{
 \item{file}{Path to file or connection to write to.}

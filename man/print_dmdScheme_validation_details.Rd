@@ -4,8 +4,14 @@
 \alias{print_dmdScheme_validation_details}
 \title{Internal function to ptint dmdScheme_validation of format \code{summary}}
 \usage{
-print_dmdScheme_validation_details(x, level, listLevel, format,
-  error = c(0, 1, 2, 3, NA), ...)
+print_dmdScheme_validation_details(
+  x,
+  level,
+  listLevel,
+  format,
+  error = c(0, 1, 2, 3, NA),
+  ...
+)
 }
 \arguments{
 \item{x}{as in print.dmdScheme_validation}

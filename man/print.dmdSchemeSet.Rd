@@ -4,8 +4,14 @@
 \alias{print.dmdSchemeSet}
 \title{Print method for \code{dmdSchemeSet} object}
 \usage{
-\method{print}{dmdSchemeSet}(x, ..., printAttr = TRUE,
-  printExtAttr = FALSE, printData = TRUE, .prefix = "")
+\method{print}{dmdSchemeSet}(
+  x,
+  ...,
+  printAttr = TRUE,
+  printExtAttr = FALSE,
+  printData = TRUE,
+  .prefix = ""
+)
 }
 \arguments{
 \item{x}{object of type \code{dmdSchemeSet}}
