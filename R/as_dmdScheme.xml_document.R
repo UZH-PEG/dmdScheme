@@ -213,7 +213,7 @@ as_dmdScheme.xml_document <- function(
 
         result[[sheet]] <- tibble::add_row(
           result[[sheet]],
-          data
+          !!!data
         )
 
         # As the scheme contains a row with NAs already, this needs to be deleted ----
