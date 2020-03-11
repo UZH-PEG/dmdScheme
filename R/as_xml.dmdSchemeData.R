@@ -14,7 +14,7 @@ as_xml.dmdSchemeData <- function(
     stop("Wrong value for 'output'. 'output' has to be one of the following values:", paste(outputValues, collapse = " "))
   }
 
-  # x is of type dmdSchemeData and therefore a tibble ------------------
+  # x is of type dmdSchemeData and therefore a data.frame ------------------
 
   xml <- xml2::xml_new_root(paste0(attr(x, "propertyName"), "List"))
 

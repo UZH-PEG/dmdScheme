@@ -109,6 +109,7 @@ read_excel_raw <- function(
       return(x)
     }
   )
+
   names(result) <- propSheets
 
   # Set Attributes ----------------------------------------------------------

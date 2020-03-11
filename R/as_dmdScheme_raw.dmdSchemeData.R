@@ -1,4 +1,3 @@
-#' @importFrom tibble as_tibble add_column
 #' @importFrom rlang !! :=
 #'
 #' @rdname as_dmdScheme_raw
@@ -65,6 +64,7 @@ as_dmdScheme_raw.dmdSchemeData <- function(
     # }
 
   } else {
+
     cns <- rev(cns)
     cns <- c(cns, "names")
 
@@ -91,18 +91,24 @@ as_dmdScheme_raw.dmdSchemeData <- function(
       result <- rbind(result, NA)
     }
 
-    result <- tibble::add_column(
-      result,
+    result <- cbind.data.frame(
       propertySet = propSet,
-      .before = 1
+      result,
+      stringsAsFactors = FALSE
     )
 
-    names(result) <- c("propertySet", attr(x, "propertyName"), rep(NA, ncol(result) - 2))
-    result <- suppressMessages(
-      as_tibble(result, .name_repair = "unique")
-    )
+    # result <- tibble::add_column(
+    #   result,
+    #   propertySet = propSet,
+    #   .before = 1
+    # )
+
+    # Emulate the name repair = "unique" from readxl::read_excel ----------------
+
+
+    names(result) <- c("propertySet", attr(x, "propertyName"), paste0("...", 3:length(names(result) )))
+
   }
-
 
 
   # Make sure that all "NA" are set to NA -----------------------------------

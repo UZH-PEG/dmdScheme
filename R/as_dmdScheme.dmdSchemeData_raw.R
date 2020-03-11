@@ -74,7 +74,7 @@ as_dmdScheme.dmdSchemeData_raw <- function(
 
 # set propertySetName -----------------------------------------------------
 
-  attr(x, "propertyName") <- names(x)[[2]]
+  attr(x, "propertyName") <- NA
 
 # set names ---------------------------------------------------------------
 
