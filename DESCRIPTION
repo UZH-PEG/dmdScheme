@@ -3,7 +3,7 @@ Title: Domain Specific MetaData Scheme
 Description: Forms the core for developing own domain specific metadata schemes. 
                   It contains the basic functionality needed for all metadata schemes based on the
                   'dmdScheme'. See R.M. Krug and O.L. Petchey (2019) <DOI:10.5281/zenodo.3581970>.
-Version: 1.0.9
+Version: 1.1.0
 Date: 2020-03-17
 Authors@R: 
     c(person(given = "Rainer M.",
