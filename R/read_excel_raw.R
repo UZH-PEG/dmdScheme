@@ -90,7 +90,7 @@ read_excel_raw <- function(
           sheet = sheet,
           na = c("", "NA", "na")
         )
-      )
+      ) %>% as.data.frame(stringsAsFactors = FALSE)
       notNARow <- x %>%
         is.na() %>%
         rowSums() %>%
@@ -109,6 +109,7 @@ read_excel_raw <- function(
       return(x)
     }
   )
+
   names(result) <- propSheets
 
   # Set Attributes ----------------------------------------------------------

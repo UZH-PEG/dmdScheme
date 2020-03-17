@@ -1,4 +1,8 @@
+# release 1.1.0
 
+Doe to incompatibilities in the new release of tibble and expected incompatibilities o=in dplyr, these two dependencies were removed.
+
+# release 1.0.0
 
 * Due to change in serialization format in R 3.6.0, only compatible with R >= 3.5.0 
 

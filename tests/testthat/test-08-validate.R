@@ -9,7 +9,8 @@ x <- dmdScheme_raw()
     {
       expect_known_value(
         object = validate( x = x, errorIfStructFalse = TRUE),
-        file = "ref-08-validate.dmdScheme.CORRECT.rda"
+        file = "ref-08-validate.dmdScheme.CORRECT.rda",
+        update = TRUE
       )
     }
   )
@@ -21,7 +22,8 @@ test_that(
   {
     expect_known_value(
       object = validate( x = scheme_path_xlsx(), errorIfStructFalse = TRUE),
-      file = "ref-08-validate.character.CORRECT.rda"
+      file = "ref-08-validate.character.CORRECT.rda",
+      update = TRUE
     )
   }
 )

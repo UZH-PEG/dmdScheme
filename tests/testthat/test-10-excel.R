@@ -25,6 +25,21 @@ test_that(
 )
 
 
+# read raw  from xlsx ----------------------------------------------------------
+
+test_that(
+  "read_excel_raw() `keepData = TRUE` and `raw = TRUE`",
+  {
+    expect_equal(
+      object = read_excel_raw(
+        file = scheme_path_xlsx(),
+        checkVersion = FALSE
+      ) %>% `attr<-`("fileName", "none"),
+      expected = dmdScheme_raw() %>% `attr<-`("fileName", "none")
+    )
+  }
+)
+
 # read from xlsx --- value ----------------------------------------------------------
 
 test_that(

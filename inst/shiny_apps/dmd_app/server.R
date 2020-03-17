@@ -5,13 +5,11 @@ library(devtools)
 # For emeScheme startup to make loading faster ----------------------------
 
 library(digest)
-library(dplyr)
 library(magrittr)
 library(methods)
 library(rlang)
 library(rmarkdown)
 library(taxize)
-library(tibble)
 library(utils)
 
 # Server definition -----------------------------------------------------------

@@ -1,7 +1,5 @@
-#' @importFrom dplyr filter
 #' @importFrom magrittr %<>% %>%
 #' @importFrom rlang .data
-#' @importFrom tibble as_tibble
 #'
 #' @rdname as_dmdScheme
 #' @export
@@ -17,7 +15,6 @@ as_dmdScheme.dmdSchemeData_raw <- function(
   ) {
 
   if (verbose) message("propertySet : ", names(x)[[2]])
-
 
 # Check for class dmdSchemeSet_raw ----------------------------------------
 
@@ -52,14 +49,22 @@ as_dmdScheme.dmdSchemeData_raw <- function(
   if (x[[1,1]] == "Experiment") {
     if (verbose) message("Transposing...")
     #
-    suppressMessages(
-      x %<>%
-        t() %>%
-        tibble::as_tibble(rownames = NA, .name_repair = "unique") %>%
-        tibble::rownames_to_column("propertySet") %>%
-        dplyr::rename(Experiment = 2) %>%
-        dplyr::filter( .data$propertySet != "propertySet")
-    )
+
+    x <- rbind(NA, x)
+    x[1,] <- names(x)
+    rownames(x) <- c(x[1:2,1], 2:(nrow(x) - 1))
+    x <- x[,-1]
+    x <- as.data.frame(t(as.matrix(x)), stringsAsFactors = FALSE)
+    # rownames(x) <- 1:nrow(x)
+
+    # suppressMessages(
+    #   x %<>%
+    #     t() %>%
+    #     tibble::as_tibble(rownames = NA, .name_repair = "unique") %>%
+    #     tibble::rownames_to_column("propertySet") %>%
+    #     dplyr::rename(Experiment = 2) %>%
+    #     dplyr::filter( .data$propertySet != "propertySet")
+    # )
   }
 
 # set all NA in valueProperty column to "NA" ------------------------------
@@ -68,15 +73,17 @@ as_dmdScheme.dmdSchemeData_raw <- function(
 
 # set propertySetName -----------------------------------------------------
 
-  attr(x, "propertyName") <- names(x)[[2]]
+  attr(x, "propertyName") <- NA
 
 # set names ---------------------------------------------------------------
 
   if (verbose) message("Set names...")
   #
-  names(x) <- as.character(dplyr::filter(x, .data$propertySet == "valueProperty"))
+  # names(x) <- as.character(dplyr::filter(x, .data$propertySet == "valueProperty"))
+  names(x) <- as.character(x[x[["propertySet"]] == "valueProperty",])
 
-  x %<>% dplyr::filter(.data$valueProperty != "valueProperty")
+  # x %<>% dplyr::filter(.data$valueProperty != "valueProperty")
+  x <- x[!x[["valueProperty"]] == "valueProperty",]
 
 # extract attributes to set -----------------------------------------------
 
@@ -88,21 +95,30 @@ as_dmdScheme.dmdSchemeData_raw <- function(
   if (verbose) message("Set attributes...")
   #
   for (a in attrToSet) {
-    attr(x, which = a) <- dplyr::filter(x, .data$valueProperty == a)[,-1] %>%
-      unlist()
-    x %<>% dplyr::filter(.data$valueProperty != a)
+    attr(x, which = a) <- as.character(x[x[["valueProperty"]] == a,])[-1]
+    # dplyr::filter(x, .data$valueProperty == a)[,-1] %>%
+    #  unlist() %>%
+    #  as.vector()
+    # x %<>% dplyr::filter(.data$valueProperty != a)
+    x <- x[x[["valueProperty"]] != a,]
+    rownames(x) <- NULL
   }
 
 # remove valueProperty column ---------------------------------------------
 
-  x %<>% dplyr::select(-.data$valueProperty)
+  # x %<>% dplyr::select(-.data$valueProperty)
+  attrs <- attributes(x)
+  x <- x[-which(names(x) == "valueProperty")]
+  attrs[["names"]] <- grep( "valueProperty", attrs[["names"]], value = TRUE, invert = TRUE)
+  attributes(x) <- attrs
 
 # if !keepData remove all but one data column , is not, only remove the ones with only NAs ----------------------------
 
   if (!keepData) {
     if (verbose) message("Trimming to one row of NAs...")
     #
-    x %<>% dplyr::filter(c(TRUE, rep(FALSE, nrow(x) - 1)) )
+    # x %<>% dplyr::filter(c(TRUE, rep(FALSE, nrow(x) - 1)) )
+    x <- x[1,]
     x[] <- NA
   } else {
     allNA <- apply(
@@ -116,6 +132,9 @@ as_dmdScheme.dmdSchemeData_raw <- function(
 # apply type --------------------------------------------------------------
 
   if (convertTypes) {
+
+    # REPLACE x[[i]][] <- Map(`class<-`, x[[i]], types)
+
     if (verbose) message("Apply types...")
     #
     type <- attr(x, "type")
@@ -136,7 +155,9 @@ as_dmdScheme.dmdSchemeData_raw <- function(
   )
 
   if (verbose) message("Done")
-  #
+
+  # attributes(x) <- attributes(x)[ order(names(attributes(x))) ]
+
 # return object -----------------------------------------------------------
 
   return(x)

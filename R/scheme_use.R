@@ -32,14 +32,15 @@ scheme_use <- function(
   schemeName <- paste0( name, "_", version)
   schemeDefinition <- file.path(cache("installedSchemes", schemeName), paste0( schemeName, ".xml" ))
 
-  scheme_example <- read_xml(  schemeDefinition, useSchemeInXml = TRUE )
+  scheme <- read_xml(  schemeDefinition, useSchemeInXml = TRUE, keepData = FALSE )
+  assign("dmdScheme", scheme, envir = .dmdScheme_cache)
+
+  scheme_example <- read_xml(  schemeDefinition, useSchemeInXml = TRUE, keepData = TRUE )
   assign("dmdScheme_example", scheme_example, envir = .dmdScheme_cache)
 
   scheme_raw <- as_dmdScheme_raw(scheme_example)
   assign("dmdScheme_raw", scheme_raw, envir = .dmdScheme_cache)
 
-  scheme <- as_dmdScheme(scheme_raw, keepData = FALSE, checkVersion = FALSE)
-  assign("dmdScheme", scheme, envir = .dmdScheme_cache)
 
   message("Theme switched to ", schemeName)
 }
