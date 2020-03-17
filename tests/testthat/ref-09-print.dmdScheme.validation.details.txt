@@ -55,7 +55,7 @@ The details are a table of the same dimension as the input (green) area of the m
 |TRUE |TRUE        |TRUE  |TRUE     |TRUE      |TRUE      |TRUE            |TRUE      |TRUE               |TRUE              |TRUE         |TRUE           |TRUE     |NA      |
 
 
-## **<span style="color:#55AA00">Genus - note</span>**
+## **<span style="color:#FF0000">Genus - error</span>**
 
 The details are a table with one row per unique validation.
  The column `Module` contains the name of the validation,
@@ -74,7 +74,7 @@ The details are a table with one row per unique validation.
 |:---------------|:---------|:-----|
 |types           |OK        |TRUE  |
 |suggestedValues |note      |FALSE |
-|allowedValues   |note      |FALSE |
+|allowedValues   |error     |FALSE |
 |IDField         |OK        |TRUE  |
 
 -  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
@@ -97,31 +97,32 @@ The details are a table of the same dimension as the input (green) area of the m
  
     FALSE: If the cell value is not contained in the suggestedValues list.
     TRUE : If the cell value is contained in the suggestedValues list.
-    NA   : empty cell
+    NA   : empty cell or no suggested values specified
  
  One or more FALSE values will result in a WARNING.  
 
 
-|density |functionalGroup |
-|:-------|:---------------|
-|FALSE   |TRUE            |
-|TRUE    |FALSE           |
+|speciesID |colour |density |functionalGroup |comment |
+|:---------|:------|:-------|:---------------|:-------|
+|FALSE     |FALSE  |FALSE   |TRUE            |FALSE   |
+|FALSE     |FALSE  |TRUE    |FALSE           |TRUE    |
 
--  **<span style="color:#55AA00">values in allowedValues - note</span>**   
+-  **<span style="color:#FF0000">values in allowedValues - error</span>**   
 The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
  
     FALSE: If the cell value is not contained in the allowedValues list.
     TRUE : If the cell value is contained in the allowedValues list.
-    NA   : empty cell
+    NA   : empty cell or no allowed values specified
  
  One or more FALSE values will result in an ERROR.  
 
 
-|x  |
-|:--|
-|NA |
+|speciesID |colour |density |functionalGroup |comment |
+|:---------|:------|:-------|:---------------|:-------|
+|FALSE     |FALSE  |FALSE   |FALSE           |FALSE   |
+|FALSE     |FALSE  |TRUE    |FALSE           |TRUE    |
 
--  **<span style="color:#00FF00">ID Field presendt and in the first column - OK</span>**   
+-  **<span style="color:#00FF00">ID Field present and in the first column - OK</span>**   
 Returns a boolean value, with the following possible values:
  
     TRUE  : The tab's first column is an ID field
@@ -135,7 +136,7 @@ Returns a boolean value, with the following possible values:
 |tab has ID field in first column |TRUE |
 
 
-## **<span style="color:#55AA00">Treatments - note</span>**
+## **<span style="color:#FF0000">Treatments - error</span>**
 
 The details are a table with one row per unique validation.
  The column `Module` contains the name of the validation,
@@ -154,7 +155,7 @@ The details are a table with one row per unique validation.
 |:---------------|:---------|:-----|
 |types           |OK        |TRUE  |
 |suggestedValues |note      |FALSE |
-|allowedValues   |note      |FALSE |
+|allowedValues   |error     |FALSE |
 |IDField         |OK        |TRUE  |
 
 -  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
@@ -180,34 +181,38 @@ The details are a table of the same dimension as the input (green) area of the m
  
     FALSE: If the cell value is not contained in the suggestedValues list.
     TRUE : If the cell value is contained in the suggestedValues list.
-    NA   : empty cell
+    NA   : empty cell or no suggested values specified
  
  One or more FALSE values will result in a WARNING.  
 
 
-|treatmentID |treatmentLevelHeight |
-|:-----------|:--------------------|
-|FALSE       |FALSE                |
-|FALSE       |FALSE                |
-|FALSE       |FALSE                |
-|FALSE       |FALSE                |
-|FALSE       |FALSE                |
+|treatmentID |treatmentLevelHeight |comment |
+|:-----------|:--------------------|:-------|
+|FALSE       |FALSE                |TRUE    |
+|FALSE       |FALSE                |TRUE    |
+|FALSE       |FALSE                |TRUE    |
+|FALSE       |FALSE                |TRUE    |
+|FALSE       |FALSE                |TRUE    |
 
--  **<span style="color:#55AA00">values in allowedValues - note</span>**   
+-  **<span style="color:#FF0000">values in allowedValues - error</span>**   
 The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
  
     FALSE: If the cell value is not contained in the allowedValues list.
     TRUE : If the cell value is contained in the allowedValues list.
-    NA   : empty cell
+    NA   : empty cell or no allowed values specified
  
  One or more FALSE values will result in an ERROR.  
 
 
-|x  |
-|:--|
-|NA |
+|treatmentID |treatmentLevelHeight |comment |
+|:-----------|:--------------------|:-------|
+|FALSE       |FALSE                |TRUE    |
+|FALSE       |FALSE                |TRUE    |
+|FALSE       |FALSE                |TRUE    |
+|FALSE       |FALSE                |TRUE    |
+|FALSE       |FALSE                |TRUE    |
 
--  **<span style="color:#00FF00">ID Field presendt and in the first column - OK</span>**   
+-  **<span style="color:#00FF00">ID Field present and in the first column - OK</span>**   
 Returns a boolean value, with the following possible values:
  
     TRUE  : The tab's first column is an ID field
@@ -221,7 +226,7 @@ Returns a boolean value, with the following possible values:
 |tab has ID field in first column |TRUE |
 
 
-## **<span style="color:#55AA00">Measurement - note</span>**
+## **<span style="color:#FF0000">Measurement - error</span>**
 
 The details are a table with one row per unique validation.
  The column `Module` contains the name of the validation,
@@ -240,7 +245,7 @@ The details are a table with one row per unique validation.
 |:---------------|:---------|:-----|
 |types           |OK        |TRUE  |
 |suggestedValues |note      |FALSE |
-|allowedValues   |note      |FALSE |
+|allowedValues   |error     |FALSE |
 |IDField         |OK        |TRUE  |
 
 -  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
@@ -265,33 +270,36 @@ The details are a table of the same dimension as the input (green) area of the m
  
     FALSE: If the cell value is not contained in the suggestedValues list.
     TRUE : If the cell value is contained in the suggestedValues list.
-    NA   : empty cell
+    NA   : empty cell or no suggested values specified
  
  One or more FALSE values will result in a WARNING.  
 
 
-|variable |method |unit  |object |
-|:--------|:------|:-----|:------|
-|FALSE    |TRUE   |TRUE  |TRUE   |
-|TRUE     |FALSE  |TRUE  |TRUE   |
-|FALSE    |FALSE  |FALSE |TRUE   |
-|TRUE     |FALSE  |FALSE |FALSE  |
+|measurementID |variable |method |unit  |object |noOfSamplesInTimeSeries |samplingVolume |dataExtractionID |measuredFrom |comment |
+|:-------------|:--------|:------|:-----|:------|:-----------------------|:--------------|:----------------|:------------|:-------|
+|FALSE         |FALSE    |TRUE   |TRUE  |TRUE   |FALSE                   |FALSE          |FALSE            |FALSE        |TRUE    |
+|FALSE         |TRUE     |FALSE  |TRUE  |TRUE   |FALSE                   |FALSE          |FALSE            |FALSE        |TRUE    |
+|FALSE         |FALSE    |FALSE  |FALSE |TRUE   |FALSE                   |FALSE          |FALSE            |FALSE        |TRUE    |
+|FALSE         |TRUE     |FALSE  |FALSE |FALSE  |FALSE                   |FALSE          |FALSE            |FALSE        |TRUE    |
 
--  **<span style="color:#55AA00">values in allowedValues - note</span>**   
+-  **<span style="color:#FF0000">values in allowedValues - error</span>**   
 The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
  
     FALSE: If the cell value is not contained in the allowedValues list.
     TRUE : If the cell value is contained in the allowedValues list.
-    NA   : empty cell
+    NA   : empty cell or no allowed values specified
  
  One or more FALSE values will result in an ERROR.  
 
 
-|x  |
-|:--|
-|NA |
+|measurementID |variable |method |unit  |object |noOfSamplesInTimeSeries |samplingVolume |dataExtractionID |measuredFrom |comment |
+|:-------------|:--------|:------|:-----|:------|:-----------------------|:--------------|:----------------|:------------|:-------|
+|FALSE         |FALSE    |FALSE  |FALSE |FALSE  |FALSE                   |FALSE          |FALSE            |FALSE        |TRUE    |
+|FALSE         |FALSE    |FALSE  |FALSE |FALSE  |FALSE                   |FALSE          |FALSE            |FALSE        |TRUE    |
+|FALSE         |FALSE    |FALSE  |FALSE |FALSE  |FALSE                   |FALSE          |FALSE            |FALSE        |TRUE    |
+|FALSE         |FALSE    |FALSE  |FALSE |FALSE  |FALSE                   |FALSE          |FALSE            |FALSE        |TRUE    |
 
--  **<span style="color:#00FF00">ID Field presendt and in the first column - OK</span>**   
+-  **<span style="color:#00FF00">ID Field present and in the first column - OK</span>**   
 Returns a boolean value, with the following possible values:
  
     TRUE  : The tab's first column is an ID field
@@ -305,7 +313,7 @@ Returns a boolean value, with the following possible values:
 |tab has ID field in first column |TRUE |
 
 
-## **<span style="color:#55AA00">DataExtraction - note</span>**
+## **<span style="color:#FF0000">DataExtraction - error</span>**
 
 The details are a table with one row per unique validation.
  The column `Module` contains the name of the validation,
@@ -323,8 +331,8 @@ The details are a table with one row per unique validation.
 |Module          |errorCode |isOK  |
 |:---------------|:---------|:-----|
 |types           |OK        |TRUE  |
-|suggestedValues |OK        |TRUE  |
-|allowedValues   |note      |FALSE |
+|suggestedValues |note      |FALSE |
+|allowedValues   |error     |FALSE |
 |IDField         |OK        |TRUE  |
 
 -  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
@@ -341,35 +349,35 @@ The details are a table of the same dimension as the input (green) area of the m
 |:----------------|:------|:---------|:-----|:-------|
 |TRUE             |NA     |NA        |NA    |TRUE    |
 
--  **<span style="color:#00FF00">values in suggestedValues - OK</span>**   
+-  **<span style="color:#55AA00">values in suggestedValues - note</span>**   
 The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
  
     FALSE: If the cell value is not contained in the suggestedValues list.
     TRUE : If the cell value is contained in the suggestedValues list.
-    NA   : empty cell
+    NA   : empty cell or no suggested values specified
  
  One or more FALSE values will result in a WARNING.  
 
 
-|method |
-|:------|
-|TRUE   |
+|dataExtractionID |method |parameter |value |comment |
+|:----------------|:------|:---------|:-----|:-------|
+|FALSE            |TRUE   |TRUE      |TRUE  |FALSE   |
 
--  **<span style="color:#55AA00">values in allowedValues - note</span>**   
+-  **<span style="color:#FF0000">values in allowedValues - error</span>**   
 The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
  
     FALSE: If the cell value is not contained in the allowedValues list.
     TRUE : If the cell value is contained in the allowedValues list.
-    NA   : empty cell
+    NA   : empty cell or no allowed values specified
  
  One or more FALSE values will result in an ERROR.  
 
 
-|x  |
-|:--|
-|NA |
+|dataExtractionID |method |parameter |value |comment |
+|:----------------|:------|:---------|:-----|:-------|
+|FALSE            |TRUE   |TRUE      |TRUE  |FALSE   |
 
--  **<span style="color:#00FF00">ID Field presendt and in the first column - OK</span>**   
+-  **<span style="color:#00FF00">ID Field present and in the first column - OK</span>**   
 Returns a boolean value, with the following possible values:
  
     TRUE  : The tab's first column is an ID field
@@ -401,7 +409,7 @@ The details are a table with one row per unique validation.
 |Module         |errorCode |isOK  |
 |:--------------|:---------|:-----|
 |types          |OK        |TRUE  |
-|allowedValues  |OK        |TRUE  |
+|allowedValues  |error     |FALSE |
 |dataFilesExist |error     |FALSE |
 
 -  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
@@ -437,38 +445,38 @@ The details are a table of the same dimension as the input (green) area of the m
 |TRUE         |TRUE       |TRUE       |NA            |TRUE |NA          |NA      |
 |TRUE         |TRUE       |TRUE       |TRUE          |TRUE |NA          |NA      |
 
--  **<span style="color:#00FF00">values in allowedValues - OK</span>**   
+-  **<span style="color:#FF0000">values in allowedValues - error</span>**   
 The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
  
     FALSE: If the cell value is not contained in the allowedValues list.
     TRUE : If the cell value is contained in the allowedValues list.
-    NA   : empty cell
+    NA   : empty cell or no allowed values specified
  
  One or more FALSE values will result in an ERROR.  
 
 
-|columnData |type |
-|:----------|:----|
-|TRUE       |TRUE |
-|TRUE       |TRUE |
-|TRUE       |TRUE |
-|TRUE       |TRUE |
-|TRUE       |TRUE |
-|TRUE       |TRUE |
-|TRUE       |TRUE |
-|TRUE       |TRUE |
-|TRUE       |TRUE |
-|TRUE       |TRUE |
-|TRUE       |TRUE |
-|TRUE       |TRUE |
-|TRUE       |TRUE |
-|TRUE       |TRUE |
-|TRUE       |TRUE |
-|TRUE       |TRUE |
-|TRUE       |TRUE |
-|TRUE       |TRUE |
-|TRUE       |TRUE |
-|TRUE       |TRUE |
+|dataFileName |columnName |columnData |mappingColumn |type |description |comment |
+|:------------|:----------|:----------|:-------------|:----|:-----------|:-------|
+|FALSE        |FALSE      |TRUE       |TRUE          |TRUE |TRUE        |TRUE    |
+|FALSE        |FALSE      |TRUE       |FALSE         |TRUE |TRUE        |TRUE    |
+|FALSE        |FALSE      |TRUE       |TRUE          |TRUE |TRUE        |TRUE    |
+|FALSE        |FALSE      |TRUE       |TRUE          |TRUE |TRUE        |TRUE    |
+|FALSE        |FALSE      |TRUE       |TRUE          |TRUE |TRUE        |TRUE    |
+|FALSE        |FALSE      |TRUE       |TRUE          |TRUE |FALSE       |TRUE    |
+|FALSE        |FALSE      |TRUE       |FALSE         |TRUE |TRUE        |TRUE    |
+|FALSE        |FALSE      |TRUE       |TRUE          |TRUE |TRUE        |TRUE    |
+|FALSE        |FALSE      |TRUE       |TRUE          |TRUE |TRUE        |TRUE    |
+|FALSE        |TRUE       |TRUE       |FALSE         |TRUE |TRUE        |TRUE    |
+|FALSE        |FALSE      |TRUE       |FALSE         |TRUE |TRUE        |TRUE    |
+|FALSE        |FALSE      |TRUE       |TRUE          |TRUE |FALSE       |TRUE    |
+|FALSE        |FALSE      |TRUE       |FALSE         |TRUE |TRUE        |TRUE    |
+|FALSE        |FALSE      |TRUE       |TRUE          |TRUE |TRUE        |TRUE    |
+|FALSE        |TRUE       |TRUE       |FALSE         |TRUE |TRUE        |TRUE    |
+|FALSE        |FALSE      |TRUE       |TRUE          |TRUE |TRUE        |TRUE    |
+|FALSE        |FALSE      |TRUE       |TRUE          |TRUE |FALSE       |TRUE    |
+|FALSE        |FALSE      |TRUE       |FALSE         |TRUE |TRUE        |TRUE    |
+|FALSE        |FALSE      |TRUE       |TRUE          |TRUE |TRUE        |TRUE    |
+|FALSE        |FALSE      |TRUE       |FALSE         |TRUE |TRUE        |TRUE    |
 
 -  **<span style="color:#FF0000">`dataFile` exists in path - error</span>**   
 The details are a table with one row per unique `variable` The following values are possible for the column `isTRUE`:

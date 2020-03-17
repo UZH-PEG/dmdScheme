@@ -1,4 +1,4 @@
-as_dmdScheme_validation <- function() {
+new_dmdScheme_validation <- function() {
   result <- list(
     error = NA,
     details = NA,
@@ -16,7 +16,7 @@ as_dmdScheme_validation <- function() {
 
 
 validateStructure <- function(x){
-  result <- as_dmdScheme_validation()
+  result <- new_dmdScheme_validation()
   ##
   result$header <- "Structural / Formal validity"
   result$description <- paste(
@@ -43,7 +43,8 @@ validateStructure <- function(x){
 }
 
 validateTypes <- function(sraw, sconv) {
-  result <- as_dmdScheme_validation()
+
+  result <- new_dmdScheme_validation()
   ##
   result$header <- "conversion of values into specified type lossless possible"
   result$description <- paste(
@@ -63,8 +64,14 @@ validateTypes <- function(sraw, sconv) {
   )
   ##
   if (nrow(sraw) == 0) {
-    sraw <- tibble::add_row(sraw)
-    sconv <- tibble::add_row(sconv)
+    message(
+      "Please report this message at github at\n",
+      "   https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/issues\n",
+      "or send an email to Rainer.Krug@uzh.ch\n",
+      "including the fiel you wanted to validate As this should not happenned!!!"
+      )
+    # sraw <- tibble::add_row(sraw)
+    # sconv <- tibble::add_row(sconv)
   }
   t <- sraw == sconv
   na <- is.na(t)
@@ -90,7 +97,7 @@ validateSuggestedValues <- function(sraw) {
   if (is.null(attr(sraw, "allowedValues"))) {
     result <- NULL
   } else {
-    result <- as_dmdScheme_validation()
+    result <- new_dmdScheme_validation()
     ##
     result$header <- "values in suggestedValues"
     result$description <- paste(
@@ -103,17 +110,17 @@ validateSuggestedValues <- function(sraw) {
       "\n",
       "   FALSE: If the cell value is not contained in the suggestedValues list.\n",
       "   TRUE : If the cell value is contained in the suggestedValues list.\n",
-      "   NA   : empty cell\n",
+      "   NA   : empty cell or no suggested values specified\n",
       "\n",
       "One or more FALSE values will result in a WARNING."
     )
     ##
+    sugVal <- strsplit(attr(sraw, "suggestedValues"), ",")
+    # sugVal <- sugVal[!is.na(sugVal)]
+    ##
     result$details <- sraw
     class(result$details) <- "data.frame"
-    #      result$details <- as_tibble(sraw, .name_repair = "unique")
-    sugVal <- strsplit(attr(sraw, "suggestedValues"), ",")
-    result$details <- result$details[,!is.na(sugVal)]
-    sugVal <- sugVal[!is.na(sugVal)]
+    # result$details <- result$details[,!is.na(sugVal)]
     ##
     if (length(sugVal) > 0) {
       for (colN in 1:ncol(result$details)) {
@@ -150,7 +157,7 @@ validateAllowedValues <- function(sraw) {
   if (is.null(attr(sraw, "allowedValues"))) {
     result <- NULL
   } else {
-    result <- as_dmdScheme_validation()
+    result <- new_dmdScheme_validation()
     ##
     result$header <- "values in allowedValues"
     result$description <- paste(
@@ -163,17 +170,17 @@ validateAllowedValues <- function(sraw) {
       "\n",
       "   FALSE: If the cell value is not contained in the allowedValues list.\n",
       "   TRUE : If the cell value is contained in the allowedValues list.\n",
-      "   NA   : empty cell\n",
+      "   NA   : empty cell or no allowed values specified\n",
       "\n",
       "One or more FALSE values will result in an ERROR."
     )
     ##
+    allVal <- strsplit(attr(sraw, "allowedValues"), ",")
+    # allVal <- allVal[!is.na(allVal)]
+    #
     result$details <- sraw
     class(result$details) <- "data.frame"
-    #      result$details <- as_tibble(sraw, .name_repair = "unique")
-    allVal <- strsplit(attr(sraw, "allowedValues"), ",")
-    result$details <- result$details[,!is.na(allVal)]
-    allVal <- allVal[!is.na(allVal)]
+    # result$details <- result$details[,!is.na(allVal)]
     ##
     if (length(allVal) > 0) {
       for (colN in 1:ncol(result$details)) {
@@ -202,7 +209,7 @@ validateAllowedValues <- function(sraw) {
 }
 
 validateIDField <- function(sraw){
-  result <- as_dmdScheme_validation()
+  result <- new_dmdScheme_validation()
   ##
   result$header <- "ID Field present and in the first column"
   result$description <- paste(
@@ -241,7 +248,7 @@ validateIDField <- function(sraw){
 
 
 validateExperiment <- function( x, xraw, xconv ) {
-  result <- as_dmdScheme_validation()
+  result <- new_dmdScheme_validation()
   ##
   result$header <- "Experiment"
   result$description <- paste(
@@ -275,7 +282,7 @@ validateExperiment <- function( x, xraw, xconv ) {
 }
 
 validateTab <- function( x, xraw, xconv ) {
-  result <- as_dmdScheme_validation()
+  result <- new_dmdScheme_validation()
   ##
   result$header <- names(x)
   result$description <- paste(
@@ -311,7 +318,7 @@ validateTab <- function( x, xraw, xconv ) {
 }
 
 validateDataFileMetaDataDataFileExists <- function(xraw, path) {
-  result <- as_dmdScheme_validation()
+  result <- new_dmdScheme_validation()
   ##
   result$header <- "`dataFile` exists in path"
   result$description <- paste(
@@ -354,7 +361,7 @@ validateDataFileMetaDataDataFileExists <- function(xraw, path) {
 }
 
 validateDataFileMetaData <- function(x, xraw, xconv, path){
-  result <- as_dmdScheme_validation()
+  result <- new_dmdScheme_validation()
   ##
   result$header <- "DataFileMetaData"
   result$description <- paste(

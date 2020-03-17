@@ -1,4 +1,3 @@
-#' @importFrom dplyr select starts_with
 #' @importFrom methods is as
 #' @importFrom magrittr set_names %<>%
 #' @importFrom tools file_ext

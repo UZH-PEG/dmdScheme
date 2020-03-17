@@ -1,7 +1,6 @@
 #' @export
 #'
 #' @importFrom magrittr %>% %<>%
-#' @importFrom dplyr filter select
 #' @importFrom utils browseURL glob2rx
 #' @importFrom rmarkdown render
 #' @importFrom utils read.csv

@@ -23,7 +23,7 @@ link-citations: TRUE
 ```{r setup, echo = FALSE, include = FALSE}
 library(here)
 library(magrittr)
-library(dplyr)
+# library(dplyr)
 library(knitr)
 library(kableExtra)
 ##

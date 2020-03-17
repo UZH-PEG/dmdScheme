@@ -1,10 +1,8 @@
 #' @export
 #'
 #' @importFrom magrittr %>% %<>%
-#' @importFrom dplyr filter select
 #' @importFrom utils browseURL glob2rx
 #' @importFrom rmarkdown render
-#' @importFrom tibble tibble
 #' @importFrom utils read.csv
 #' @importFrom magrittr extract2
 #' @importFrom digest digest
@@ -30,7 +28,7 @@ validate.dmdSchemeSet_raw <- function(
 ) {
   # Define result structure of class dmdScheme_validation ----------------------
 
-  result <- as_dmdScheme_validation()
+  result <- new_dmdScheme_validation()
   result$description <- paste(
     "The result of the overall validation of the data."
   )
@@ -55,14 +53,17 @@ validate.dmdSchemeSet_raw <- function(
     xconv <- suppressWarnings( as_dmdScheme(x, keepData = TRUE, convertTypes = TRUE,  verbose = FALSE, warnToError = FALSE) )
     xraw  <-                   as_dmdScheme(x, keepData = TRUE, convertTypes = FALSE, verbose = FALSE, warnToError = FALSE)
 
+    message("Validating Experiment")
     result$Experiment <- validateExperiment(x["Experiment"], xraw["Experiment"], xconv["Experiment"])
 
     tabs <- names(x)
     tabs <- grep("Experiment|DataFileMetaData", names(x), invert = TRUE, value = TRUE)
     for (tab in tabs) {
+      message("Validating ", tab)
       result[[tab]] <- validateTab(x[tab], xraw[tab], xconv[tab])
     }
 
+    message("Validating DataFileMetaData")
     result$DataFileMetaData <- validateDataFileMetaData(x["DataFileMetaData"], xraw["DataFileMetaData"], xconv["DataFileMetaData"], path)
   }
 
