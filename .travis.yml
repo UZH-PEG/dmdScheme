@@ -36,10 +36,12 @@ addons:
     packages:
     - ghostscript
     - graphviz
+    - libjq-dev
   homebrew:
     packages:
     - ghostscript
     - graphviz
+    - jq
 
 # after_success:
 #   - test $TRAVIS_PULL_REQUEST == "false" &&
