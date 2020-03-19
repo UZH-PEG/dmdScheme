@@ -127,9 +127,17 @@ validateSuggestedValues <- function(sraw) {
     ##
     if (length(sugVal) > 0) {
       for (colN in 1:ncol(result$details)) {
-        v <- c( trimws(sugVal[[colN]]), "NA", NA, "" )
+        v <- trimws(sugVal[[colN]])
+        if (!(length(v) == 1 && is.na(v))) {
+          v <- c( v, "NA", NA, "" )
+        }
         for (rowN in 1:nrow(result$details)) {
-          al <- result$details[rowN, colN] %in% v
+          if (length(v) && is.na(v)) {
+            al <- NA
+          } else {
+            al <- result$details[rowN, colN] %in% v
+          }
+
           # al <- ifelse(
           #   al,
           #   TRUE,
@@ -188,9 +196,16 @@ validateAllowedValues <- function(sraw) {
     ##
     if (length(allVal) > 0) {
       for (colN in 1:ncol(result$details)) {
-        v <- c( trimws(allVal[[colN]]), "NA", NA, "" )
+        v <- trimws(allVal[[colN]])
+        if (!(length(v) == 1 && is.na(v))) {
+          v <- c( v, "NA", NA, "" )
+        }
         for (rowN in 1:nrow(result$details)) {
-          al <- result$details[rowN, colN] %in% v
+          if (length(v) && is.na(v)) {
+            al <- NA
+          } else {
+            al <- result$details[rowN, colN] %in% v
+          }
           # al <- ifelse(
           #   al,
           #   TRUE,

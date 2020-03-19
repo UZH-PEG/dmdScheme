@@ -17,7 +17,7 @@ Test if the metadata concerning **Experiment** is correct.  This includes column
     Test if the metadata entered follows the type for the column, i.e. integer, characterd, .... The validation is done by verifying if the column can be losslessly converted from character to the columnb type specified. the value NA is allowed in all column types, empty cells should be avoided.
 
 
-## **<span style="color:#FF0000">Genus - error</span>**
+## **<span style="color:#55AA00">Genus - note</span>**
 
 Test if the metadata concerning ** Genus ** is correct.  This includes column names, required info, ... 
 
@@ -27,14 +27,14 @@ Test if the metadata concerning ** Genus ** is correct.  This includes column na
 -  **<span style="color:#55AA00">values in suggestedValues - note</span>**   
     Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided.
 
--  **<span style="color:#FF0000">values in allowedValues - error</span>**   
+-  **<span style="color:#00FF00">values in allowedValues - OK</span>**   
     Test if the metadata entered is ion the allowedValues list. The value NA is allowed in all column types, empty cells should be avoided.
 
 -  **<span style="color:#00FF00">ID Field present and in the first column - OK</span>**   
     Check if the tab's first column contains an ID field, named as `...ID`. This function does not check for uniqueness of this ID field!
 
 
-## **<span style="color:#FF0000">Treatments - error</span>**
+## **<span style="color:#55AA00">Treatments - note</span>**
 
 Test if the metadata concerning ** Treatments ** is correct.  This includes column names, required info, ... 
 
@@ -44,14 +44,14 @@ Test if the metadata concerning ** Treatments ** is correct.  This includes colu
 -  **<span style="color:#55AA00">values in suggestedValues - note</span>**   
     Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided.
 
--  **<span style="color:#FF0000">values in allowedValues - error</span>**   
+-  **<span style="color:#00FF00">values in allowedValues - OK</span>**   
     Test if the metadata entered is ion the allowedValues list. The value NA is allowed in all column types, empty cells should be avoided.
 
 -  **<span style="color:#00FF00">ID Field present and in the first column - OK</span>**   
     Check if the tab's first column contains an ID field, named as `...ID`. This function does not check for uniqueness of this ID field!
 
 
-## **<span style="color:#FF0000">Measurement - error</span>**
+## **<span style="color:#55AA00">Measurement - note</span>**
 
 Test if the metadata concerning ** Measurement ** is correct.  This includes column names, required info, ... 
 
@@ -61,24 +61,24 @@ Test if the metadata concerning ** Measurement ** is correct.  This includes col
 -  **<span style="color:#55AA00">values in suggestedValues - note</span>**   
     Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided.
 
--  **<span style="color:#FF0000">values in allowedValues - error</span>**   
+-  **<span style="color:#00FF00">values in allowedValues - OK</span>**   
     Test if the metadata entered is ion the allowedValues list. The value NA is allowed in all column types, empty cells should be avoided.
 
 -  **<span style="color:#00FF00">ID Field present and in the first column - OK</span>**   
     Check if the tab's first column contains an ID field, named as `...ID`. This function does not check for uniqueness of this ID field!
 
 
-## **<span style="color:#FF0000">DataExtraction - error</span>**
+## **<span style="color:#00FF00">DataExtraction - OK</span>**
 
 Test if the metadata concerning ** DataExtraction ** is correct.  This includes column names, required info, ... 
 
 -  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
     Test if the metadata entered follows the type for the column, i.e. integer, characterd, .... The validation is done by verifying if the column can be losslessly converted from character to the columnb type specified. the value NA is allowed in all column types, empty cells should be avoided.
 
--  **<span style="color:#55AA00">values in suggestedValues - note</span>**   
+-  **<span style="color:#00FF00">values in suggestedValues - OK</span>**   
     Test if the metadata entered is ion the suggestedValues list. The value NA is allowed in all column types, empty cells should be avoided.
 
--  **<span style="color:#FF0000">values in allowedValues - error</span>**   
+-  **<span style="color:#00FF00">values in allowedValues - OK</span>**   
     Test if the metadata entered is ion the allowedValues list. The value NA is allowed in all column types, empty cells should be avoided.
 
 -  **<span style="color:#00FF00">ID Field present and in the first column - OK</span>**   
@@ -92,7 +92,7 @@ Test if the metadata concerning **DataExtraction** is correct.  This includes co
 -  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
     Test if the metadata entered follows the type for the column, i.e. integer, characterd, .... The validation is done by verifying if the column can be losslessly converted from character to the columnb type specified. the value NA is allowed in all column types, empty cells should be avoided.
 
--  **<span style="color:#FF0000">values in allowedValues - error</span>**   
+-  **<span style="color:#00FF00">values in allowedValues - OK</span>**   
     Test if the metadata entered is ion the allowedValues list. The value NA is allowed in all column types, empty cells should be avoided.
 
 -  **<span style="color:#FF0000">`dataFile` exists in path - error</span>**   
