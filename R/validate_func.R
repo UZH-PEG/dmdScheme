@@ -1,4 +1,8 @@
+#' Create new \code{dmdScheme_validation} object
+#'
+#' @return new \code{dmdScheme_validation} object
 #' @export
+#'
 new_dmdScheme_validation <- function() {
   result <- list(
     error = NA,
@@ -15,7 +19,13 @@ new_dmdScheme_validation <- function() {
 
 # General validation functions --------------------------------------------
 
+#' Validate structure of \code{dmdScheme} object
+#'
+#' @param x object of type \code{dmdScheme_raw}
+#'
+#' @return \code{dmdScheme_validation} object
 #' @export
+#'
 validateStructure <- function(x){
   result <- new_dmdScheme_validation()
   ##
@@ -43,7 +53,14 @@ validateStructure <- function(x){
   return(result)
 }
 
+#' Validate type of tab
+#'
+#' @param sraw object of type \code{dmdScheme_data} generated with types not converted
+#' @param sconv object of type \code{dmdScheme_data} generated with types converted
+#'
+#' @return \code{dmdScheme_validation} object
 #' @export
+#'
 validateTypes <- function(sraw, sconv) {
 
   result <- new_dmdScheme_validation()
@@ -95,7 +112,13 @@ validateTypes <- function(sraw, sconv) {
   return( result )
 }
 
+#' Validate suggested values
+#'
+#' @param sraw object of type \code{dmdScheme_data} generated with types not converted
+#'
+#' @return \code{dmdScheme_validation} object
 #' @export
+#'
 validateSuggestedValues <- function(sraw) {
   if (is.null(attr(sraw, "allowedValues"))) {
     result <- NULL
@@ -128,11 +151,13 @@ validateSuggestedValues <- function(sraw) {
     if (length(sugVal) > 0) {
       for (colN in 1:ncol(result$details)) {
         v <- trimws(sugVal[[colN]])
-        if (!(length(v) == 1 && is.na(v))) {
+        if (all(is.na(v))) {
+          v <- NA
+        } else {
           v <- c( v, "NA", NA, "" )
         }
         for (rowN in 1:nrow(result$details)) {
-          if (length(v) && is.na(v)) {
+          if (all(is.na(v))) {
             al <- NA
           } else {
             al <- result$details[rowN, colN] %in% v
@@ -164,7 +189,13 @@ validateSuggestedValues <- function(sraw) {
   return( result )
 }
 
+#' Validate allowed values
+#'
+#' @param sraw object of type \code{dmdScheme_data} generated with types not converted
+#'
+#' @return \code{dmdScheme_validation} object
 #' @export
+#'
 validateAllowedValues <- function(sraw) {
   if (is.null(attr(sraw, "allowedValues"))) {
     result <- NULL
@@ -197,11 +228,13 @@ validateAllowedValues <- function(sraw) {
     if (length(allVal) > 0) {
       for (colN in 1:ncol(result$details)) {
         v <- trimws(allVal[[colN]])
-        if (!(length(v) == 1 && is.na(v))) {
+        if (all(is.na(v))) {
+          v <- NA
+        } else {
           v <- c( v, "NA", NA, "" )
         }
         for (rowN in 1:nrow(result$details)) {
-          if (length(v) && is.na(v)) {
+          if (all(is.na(v))) {
             al <- NA
           } else {
             al <- result$details[rowN, colN] %in% v
@@ -227,7 +260,13 @@ validateAllowedValues <- function(sraw) {
   return( result )
 }
 
+#' Validate id field
+#'
+#' @param sraw object of type \code{dmdScheme_data} generated with types not converted
+#'
+#' @return \code{dmdScheme_validation} object
 #' @export
+#'
 validateIDField <- function(sraw){
   result <- new_dmdScheme_validation()
   ##
@@ -263,7 +302,14 @@ validateIDField <- function(sraw){
   return(result)
 }
 
+#' Validate suggested values
+#'
+#' @param xraw object of type \code{dmdScheme_set} generated with types not converted
+#' @param path path to the data files
+#'
+#' @return \code{dmdScheme_validation} object
 #' @export
+#'
 validateDataFileMetaDataDataFileExists <- function(xraw, path) {
   result <- new_dmdScheme_validation()
   ##
