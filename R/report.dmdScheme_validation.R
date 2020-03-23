@@ -3,6 +3,8 @@
 #' @details
 #' **`report.dmdScheme_validation`** creates a report of the object returnes from a `validate()`.
 #'
+#' @importFrom utils browseURL
+#'
 #' @export
 #' @md
 #' @examples
@@ -70,10 +72,14 @@ report.dmdScheme_validation <- function(
   # Open report -------------------------------------------------------------
 
   if (open) {
-    utils::browseURL(
-      url = result,
-      encodeIfNeeded = TRUE
-    )
+    if (interactive()) {
+      utils::browseURL(
+        url = result,
+        encodeIfNeeded = TRUE
+      )
+    } else {
+      message("Non-interactive session. If interactive session, the report would be opened.")
+    }
   }
 
   # Return result -----------------------------------------------------------

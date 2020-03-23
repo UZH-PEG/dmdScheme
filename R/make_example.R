@@ -23,6 +23,7 @@
 #'
 #' @importFrom knitr purl
 #' @importFrom utils RShowDoc
+#' @importFrom utils browseURL
 #'
 #' @export
 #'
@@ -81,10 +82,14 @@ make_example <- function(
 
     doc <- file.path(example_dir, paste0(name, ".html"))
     if (file.exists(doc)) {
-      utils::browseURL(
-        url = doc,
-        encodeIfNeeded = TRUE
-      )
+      if (interactive()) {
+        utils::browseURL(
+          url = doc,
+          encodeIfNeeded = TRUE
+        )
+      } else {
+        message("Non-interactive session. If interactive session, a document would be opened.")
+      }
     } else {
       message("No documentation included in the example `", name, "`!")
     }
