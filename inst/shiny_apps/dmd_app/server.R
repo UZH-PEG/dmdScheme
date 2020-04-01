@@ -62,14 +62,14 @@ shinyServer(
     output$newEmptySpreadsheet <- downloadHandler(
       filename = function(){paste0(scheme_active()$name, "_", scheme_active()$version, ".xlsx")},
       content = function(file) {
-        open_new_spreadsheet(file = file, keepData = FALSE)
+        open_new_spreadsheet(file = file, keepData = FALSE, open = FALSE)
       }
     )
 
     output$newExampleSpreadsheet <- downloadHandler(
       filename = function(){paste0(scheme_active()$name, "_", scheme_active()$version, "_example.xlsx")},
       content = function(file) {
-        open_new_spreadsheet(file = file, keepData = TRUE)
+        open_new_spreadsheet(file = file, keepData = TRUE, open = FALSE)
       }
     )
 
@@ -85,20 +85,29 @@ shinyServer(
           reportFormat <- "word"
         }
         metadata <- input$spreadsheet$datapath
-        dataPath <- dirname(input$dataFiles$datapath)[[1]]
-        dataFiles <- file.path(dataPath, input$dataFiles$name)
-        file.copy(
-          from = input$dataFiles$datapath,
-          to = dataFiles,
-          overwrite = TRUE
-        )
-        report(
-          x = metadata,
-          path = dataPath,
-          open = FALSE,
-          report = reportFormat,
-          file = file
-        )
+        if (!is.null(input$dataFiles$datapath)) {
+          dataPath <- dirname(input$dataFiles$datapath)[[1]]
+          dataFiles <- file.path(dataPath, input$dataFiles$name)
+          file.copy(
+            from = input$dataFiles$datapath,
+            to = dataFiles,
+            overwrite = TRUE
+          )
+          report(
+            x = metadata,
+            path = dataPath,
+            open = FALSE,
+            report = reportFormat,
+            file = file
+          )
+        } else {
+          report(
+            x = metadata,
+            open = FALSE,
+            report = reportFormat,
+            file = file
+          )
+        }
       }
     )
 
