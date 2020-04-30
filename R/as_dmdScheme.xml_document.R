@@ -210,6 +210,7 @@ as_dmdScheme.xml_document <- function(
 
         # add data to result ------------------------------------------------------
 
+
         ####
         types <- sapply(result[[sheet]], typeof)
         data <- xmlList[[sheetList]][[i]]
@@ -217,6 +218,7 @@ as_dmdScheme.xml_document <- function(
         data <- unlist(data)
         #
         result[[sheet]] <- rbind(
+
           result[[sheet]],
           data
         )

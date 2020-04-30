@@ -145,7 +145,11 @@ open_new_spreadsheet <- function(
       )
     }
     fn <- utils::URLencode(fn)
-    utils::browseURL(fn)
+    if (interactive()) {
+      utils::browseURL(fn)
+    } else {
+      message("non-interactive session - would open the spreadsheet in interactive session.")
+    }
   }
 
 # Return invisibly the final file name ------------------------------------

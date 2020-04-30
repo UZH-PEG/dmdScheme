@@ -1,3 +1,8 @@
+#' Create new \code{dmdScheme_validation} object
+#'
+#' @return new \code{dmdScheme_validation} object
+#' @export
+#'
 new_dmdScheme_validation <- function() {
   result <- list(
     error = NA,
@@ -14,7 +19,13 @@ new_dmdScheme_validation <- function() {
 
 # General validation functions --------------------------------------------
 
-
+#' Validate structure of \code{dmdScheme} object
+#'
+#' @param x object of type \code{dmdScheme_raw}
+#'
+#' @return \code{dmdScheme_validation} object
+#' @export
+#'
 validateStructure <- function(x){
   result <- new_dmdScheme_validation()
   ##
@@ -42,6 +53,14 @@ validateStructure <- function(x){
   return(result)
 }
 
+#' Validate type of tab
+#'
+#' @param sraw object of type \code{dmdScheme_data} generated with types not converted
+#' @param sconv object of type \code{dmdScheme_data} generated with types converted
+#'
+#' @return \code{dmdScheme_validation} object
+#' @export
+#'
 validateTypes <- function(sraw, sconv) {
 
   result <- new_dmdScheme_validation()
@@ -93,6 +112,13 @@ validateTypes <- function(sraw, sconv) {
   return( result )
 }
 
+#' Validate suggested values
+#'
+#' @param sraw object of type \code{dmdScheme_data} generated with types not converted
+#'
+#' @return \code{dmdScheme_validation} object
+#' @export
+#'
 validateSuggestedValues <- function(sraw) {
   if (is.null(attr(sraw, "allowedValues"))) {
     result <- NULL
@@ -124,9 +150,19 @@ validateSuggestedValues <- function(sraw) {
     ##
     if (length(sugVal) > 0) {
       for (colN in 1:ncol(result$details)) {
-        v <- c( trimws(sugVal[[colN]]), "NA", NA, "" )
+        v <- trimws(sugVal[[colN]])
+        if (all(is.na(v))) {
+          v <- NA
+        } else {
+          v <- c( v, "NA", NA, "" )
+        }
         for (rowN in 1:nrow(result$details)) {
-          al <- result$details[rowN, colN] %in% v
+          if (all(is.na(v))) {
+            al <- NA
+          } else {
+            al <- result$details[rowN, colN] %in% v
+          }
+
           # al <- ifelse(
           #   al,
           #   TRUE,
@@ -153,6 +189,13 @@ validateSuggestedValues <- function(sraw) {
   return( result )
 }
 
+#' Validate allowed values
+#'
+#' @param sraw object of type \code{dmdScheme_data} generated with types not converted
+#'
+#' @return \code{dmdScheme_validation} object
+#' @export
+#'
 validateAllowedValues <- function(sraw) {
   if (is.null(attr(sraw, "allowedValues"))) {
     result <- NULL
@@ -184,9 +227,18 @@ validateAllowedValues <- function(sraw) {
     ##
     if (length(allVal) > 0) {
       for (colN in 1:ncol(result$details)) {
-        v <- c( trimws(allVal[[colN]]), "NA", NA, "" )
+        v <- trimws(allVal[[colN]])
+        if (all(is.na(v))) {
+          v <- NA
+        } else {
+          v <- c( v, "NA", NA, "" )
+        }
         for (rowN in 1:nrow(result$details)) {
-          al <- result$details[rowN, colN] %in% v
+          if (all(is.na(v))) {
+            al <- NA
+          } else {
+            al <- result$details[rowN, colN] %in% v
+          }
           # al <- ifelse(
           #   al,
           #   TRUE,
@@ -208,6 +260,13 @@ validateAllowedValues <- function(sraw) {
   return( result )
 }
 
+#' Validate id field
+#'
+#' @param sraw object of type \code{dmdScheme_data} generated with types not converted
+#'
+#' @return \code{dmdScheme_validation} object
+#' @export
+#'
 validateIDField <- function(sraw){
   result <- new_dmdScheme_validation()
   ##
@@ -243,80 +302,14 @@ validateIDField <- function(sraw){
   return(result)
 }
 
-
-# Tab specific validation functions ---------------------------------------
-
-
-validateExperiment <- function( x, xraw, xconv ) {
-  result <- new_dmdScheme_validation()
-  ##
-  result$header <- "Experiment"
-  result$description <- paste(
-    "Test if the metadata concerning **Experiment** is correct. ",
-    "This includes column names, required info, ... "
-  )
-  result$descriptionDetails <- paste(
-    "The details are a table with one row per unique validation.\n",
-    "The column `Module` contains the name of the validation,\n",
-    "The column `error` contains the actual error of the validation.\n",
-    "The following values are possible for the column `isTRUE`:\n",
-    "\n",
-    "   TRUE : If the validation was `OK`.\n",
-    "   FALSE: If the validation was an `error`, `warning` or `note`.\n",
-    "   NA   : If at least one v alidation resulted in `NA\n",
-    "\n",
-    "One or more FALSE or missing values values will result in an ERROR."
-  )
-  ##
-  result$types <- validateTypes(xraw[[1]], xconv[[1]])
-  result$suggestedValues <- validateSuggestedValues(xraw[[1]])
-  ##
-  result$details <- valErr_isOK(result)
-  result$error <- max(valErr_extract(result, returnRootError = FALSE), na.rm = FALSE)
-  if (is.na(result$error)) {
-    result$error <- 3
-  }
-  result$header <- valErr_TextErrCol(result)
-  ##
-  return(result)
-}
-
-validateTab <- function( x, xraw, xconv ) {
-  result <- new_dmdScheme_validation()
-  ##
-  result$header <- names(x)
-  result$description <- paste(
-    "Test if the metadata concerning **", names(x), "** is correct. ",
-    "This includes column names, required info, ... "
-  )
-  result$descriptionDetails <- paste(
-    "The details are a table with one row per unique validation.\n",
-    "The column `Module` contains the name of the validation,\n",
-    "The column `error` contains the actual error of the validation.\n",
-    "The following values are possible for the column `isTRUE`:\n",
-    "\n",
-    "   TRUE : If the validation was `OK`.\n",
-    "   FALSE: If the validation was an `error`, `warning` or `note`.\n",
-    "   NA   : If at least one v alidation resulted in `NA\n",
-    "\n",
-    "One or more FALSE or missing values values will result in an ERROR."
-  )
-  ##
-  result$types <- validateTypes(xraw[[1]], xconv[[1]])
-  result$suggestedValues <- validateSuggestedValues(xraw[[1]])
-  result$allowedValues <- validateAllowedValues(xraw[[1]])
-  result$IDField <- validateIDField(xraw[[1]])
-  ##
-  result$details <- valErr_isOK(result)
-  result$error <- max(valErr_extract(result), na.rm = FALSE)
-  if (is.na(result$error)) {
-    result$error <- 3
-  }
-  result$header <- valErr_TextErrCol(result)
-  ##
-  return(result)
-}
-
+#' Validate suggested values
+#'
+#' @param xraw object of type \code{dmdScheme_set} generated with types not converted
+#' @param path path to the data files
+#'
+#' @return \code{dmdScheme_validation} object
+#' @export
+#'
 validateDataFileMetaDataDataFileExists <- function(xraw, path) {
   result <- new_dmdScheme_validation()
   ##
@@ -360,6 +353,79 @@ validateDataFileMetaDataDataFileExists <- function(xraw, path) {
   return(result)
 }
 
+# Tab specific validation functions ---------------------------------------
+## these should not be exported, as they are specific to the scheme!
+
+validateExperiment <- function(x, xraw, xconv) {
+  result <- new_dmdScheme_validation()
+  ##
+  result$header <- "Experiment"
+  result$description <- paste(
+    "Test if the metadata concerning **Experiment** is correct. ",
+    "This includes column names, required info, ... "
+  )
+  result$descriptionDetails <- paste(
+    "The details are a table with one row per unique validation.\n",
+    "The column `Module` contains the name of the validation,\n",
+    "The column `error` contains the actual error of the validation.\n",
+    "The following values are possible for the column `isTRUE`:\n",
+    "\n",
+    "   TRUE : If the validation was `OK`.\n",
+    "   FALSE: If the validation was an `error`, `warning` or `note`.\n",
+    "   NA   : If at least one v alidation resulted in `NA\n",
+    "\n",
+    "One or more FALSE or missing values values will result in an ERROR."
+  )
+  ##
+  result$types <- validateTypes(xraw[[1]], xconv[[1]])
+  result$suggestedValues <- validateSuggestedValues(xraw[[1]])
+  ##
+  result$details <- valErr_isOK(result)
+  result$error <- max(valErr_extract(result, returnRootError = FALSE), na.rm = FALSE)
+  if (is.na(result$error)) {
+    result$error <- 3
+  }
+  result$header <- valErr_TextErrCol(result)
+  ##
+  return(result)
+}
+
+validateTab <- function(x, xraw, xconv) {
+  result <- new_dmdScheme_validation()
+  ##
+  result$header <- names(x)
+  result$description <- paste(
+    "Test if the metadata concerning **", names(x), "** is correct. ",
+    "This includes column names, required info, ... "
+  )
+  result$descriptionDetails <- paste(
+    "The details are a table with one row per unique validation.\n",
+    "The column `Module` contains the name of the validation,\n",
+    "The column `error` contains the actual error of the validation.\n",
+    "The following values are possible for the column `isTRUE`:\n",
+    "\n",
+    "   TRUE : If the validation was `OK`.\n",
+    "   FALSE: If the validation was an `error`, `warning` or `note`.\n",
+    "   NA   : If at least one v alidation resulted in `NA\n",
+    "\n",
+    "One or more FALSE or missing values values will result in an ERROR."
+  )
+  ##
+  result$types <- validateTypes(xraw[[1]], xconv[[1]])
+  result$suggestedValues <- validateSuggestedValues(xraw[[1]])
+  result$allowedValues <- validateAllowedValues(xraw[[1]])
+  result$IDField <- validateIDField(xraw[[1]])
+  ##
+  result$details <- valErr_isOK(result)
+  result$error <- max(valErr_extract(result), na.rm = FALSE)
+  if (is.na(result$error)) {
+    result$error <- 3
+  }
+  result$header <- valErr_TextErrCol(result)
+  ##
+  return(result)
+}
+
 validateDataFileMetaData <- function(x, xraw, xconv, path){
   result <- new_dmdScheme_validation()
   ##
@@ -394,5 +460,4 @@ validateDataFileMetaData <- function(x, xraw, xconv, path){
   ##
   return(result)
 }
-
 

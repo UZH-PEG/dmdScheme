@@ -1,7 +1,6 @@
 #' @export
 #'
 #' @importFrom magrittr %>% %<>%
-#' @importFrom utils browseURL glob2rx
 #' @importFrom rmarkdown render
 #' @importFrom utils read.csv
 #' @importFrom magrittr extract2
@@ -26,6 +25,7 @@ validate.dmdSchemeSet_raw <- function(
   validateData = TRUE,
   errorIfStructFalse = TRUE
 ) {
+
   # Define result structure of class dmdScheme_validation ----------------------
 
   result <- new_dmdScheme_validation()
