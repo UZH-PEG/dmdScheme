@@ -9,12 +9,12 @@
 #'
 #' @examples
 #' scheme_active()
-#'
 scheme_active <- function() {
   return(
     data.frame(
       name = attr(dmdScheme(), "dmdSchemeName"),
       version = attr(dmdScheme(), "dmdSchemeVersion"),
-      stringsAsFactors = FALSE)
+      stringsAsFactors = FALSE
+    )
   )
 }

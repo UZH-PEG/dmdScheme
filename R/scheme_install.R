@@ -28,14 +28,12 @@
 #' }
 #'
 scheme_install <- function(
-  name,
-  version,
-  repo = scheme_repo(),
-  file = NULL,
-  overwrite = FALSE,
-  install_package = FALSE
-){
-
+                           name,
+                           version,
+                           repo = scheme_repo(),
+                           file = NULL,
+                           overwrite = FALSE,
+                           install_package = FALSE) {
   if (!is.null(file)) {
     if (!file.exists(file)) {
       stop("schemeDefinition as specified in `file` does not exist!")
@@ -49,7 +47,7 @@ scheme_install <- function(
     rm(schemeName)
   }
 
-  if ( scheme_installed(name, version) ) {
+  if (scheme_installed(name, version)) {
     if (!overwrite) {
       stop("Scheme is already installed! Use `overwrite = TRUE` if you want to overwrite it!")
     }
@@ -82,7 +80,7 @@ scheme_install <- function(
   # install R package -------------------------------------------------------
 
   if (install_package) {
-    scheme_install_r_package( name = name, version = version, reinstall = overwrite)
+    scheme_install_r_package(name = name, version = version, reinstall = overwrite)
   }
 
   # Return ------------------------------------------------------------------
@@ -93,5 +91,5 @@ scheme_install <- function(
     "version: ", version
   )
 
-  invisible( NULL )
+  invisible(NULL)
 }

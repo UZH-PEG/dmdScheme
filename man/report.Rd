@@ -83,16 +83,15 @@ This generic function creates a report based on the object.
 
 \examples{
 ## Report of `dmdScheme_validation`
-report( scheme_path_xlsx() )
-
+report(scheme_path_xlsx())
 ## Report of `dmdScheme_validation`
-report( validate(dmdScheme_raw()) )
+report(validate(dmdScheme_raw()))
 \dontrun{
 report(
-   x = dmdScheme_raw(),
-   report = "html",
-   report_author = "The Author I am",
-   report_title = "A Nice Report"
+  x = dmdScheme_raw(),
+  report = "html",
+  report_author = "The Author I am",
+  report_title = "A Nice Report"
 )
 }
 }

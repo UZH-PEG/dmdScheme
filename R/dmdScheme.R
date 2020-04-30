@@ -28,8 +28,6 @@
 #' @export
 #' @examples
 #' dmdScheme()
-#'
-dmdScheme <- function(){
-  return( get("dmdScheme", envir = .dmdScheme_cache) )
+dmdScheme <- function() {
+  return(get("dmdScheme", envir = .dmdScheme_cache))
 }
-

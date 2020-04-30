@@ -15,14 +15,10 @@
 #' @examples
 #' as_dmdScheme(dmdScheme_raw(), keepData = TRUE)
 #' as_dmdScheme(dmdScheme_raw()$Experiment)
-#'
 as_dmdScheme <- function(
-  x,
-  keepData = FALSE,
-  ...,
-  verbose = FALSE
-) {
-
+                         x,
+                         keepData = FALSE,
+                         ...,
+                         verbose = FALSE) {
   UseMethod("as_dmdScheme")
-
 }

@@ -15,11 +15,9 @@
 #' @export
 #'
 format_dmdScheme_xlsx <- function(
-  fn_org,
-  fn_new,
-  keepData = TRUE
-) {
-
+                                  fn_org,
+                                  fn_new,
+                                  keepData = TRUE) {
   protect_possible <- utils::packageVersion("openxlsx") >= numeric_version("4.1.1")
 
   # HELPER: set borders thick around range and thin inside ------------------
@@ -52,7 +50,7 @@ format_dmdScheme_xlsx <- function(
       gridExpand = TRUE
     )
 
-    ##right borders
+    ## right borders
     openxlsx::addStyle(
       wb = wb,
       sheet = sheet,
@@ -80,7 +78,7 @@ format_dmdScheme_xlsx <- function(
       gridExpand = TRUE
     )
 
-    ##bottom borders
+    ## bottom borders
     openxlsx::addStyle(
       wb = wb,
       sheet = sheet,
@@ -93,7 +91,6 @@ format_dmdScheme_xlsx <- function(
       stack = TRUE,
       gridExpand = TRUE
     )
-
   }
 
   # Set maximum number of rows for entering -------------------------------------------------------------------
@@ -108,7 +105,7 @@ format_dmdScheme_xlsx <- function(
       fontSize = 14,
       fontColour = "blue",
       numFmt = "GENERAL",
-      border = c("top", "bottom", "left", "right") ,
+      border = c("top", "bottom", "left", "right"),
       borderColour = "black",
       borderStyle = "thin",
       bgFill = NULL,
@@ -127,7 +124,7 @@ format_dmdScheme_xlsx <- function(
       fontSize = 14,
       fontColour = "blue",
       numFmt = "GENERAL",
-      border = c("top", "bottom", "left", "right") ,
+      border = c("top", "bottom", "left", "right"),
       borderColour = "black",
       borderStyle = "thin",
       bgFill = NULL,
@@ -154,7 +151,7 @@ format_dmdScheme_xlsx <- function(
       fontSize = 11,
       fontColour = "black",
       numFmt = "GENERAL",
-      border = c("top", "bottom", "left", "right") ,
+      border = c("top", "bottom", "left", "right"),
       borderColour = "black",
       borderStyle = "thin",
       bgFill = NULL,
@@ -173,7 +170,7 @@ format_dmdScheme_xlsx <- function(
       fontSize = 11,
       fontColour = "black",
       numFmt = "GENERAL",
-      border = c("top", "bottom", "left", "right") ,
+      border = c("top", "bottom", "left", "right"),
       borderColour = "black",
       borderStyle = "thin",
       bgFill = NULL,
@@ -198,9 +195,9 @@ format_dmdScheme_xlsx <- function(
   # identify range of data cells --------------------------------------------
 
   data <- openxlsx::readWorkbook(wb, sheet = sheet, colNames = FALSE, rowNames = FALSE)
-  colNames <- unlist( data[1,] )
+  colNames <- unlist(data[1, ])
   nameCol <- which(colNames == "valueProperty")
-  rowNames <- unlist(data[,nameCol])
+  rowNames <- unlist(data[, nameCol])
 
   dataRows <- 2:nrow(data)
   dataCols <- grep("DATA", colNames):ncol(data)
@@ -308,7 +305,7 @@ format_dmdScheme_xlsx <- function(
     data <- openxlsx::readWorkbook(wb, sheet = sheet, colNames = FALSE, rowNames = FALSE)
     rowNames <- data[[1]]
     nameRow <- which(rowNames == "valueProperty")
-    colNames <- unlist(data[nameRow,])
+    colNames <- unlist(data[nameRow, ])
 
     dataCols <- 2:ncol(data)
     dataRows <- grep("DATA", rowNames):nrow(data)
@@ -394,7 +391,6 @@ format_dmdScheme_xlsx <- function(
         password = "test"
       )
     }
-
   }
 
 
@@ -435,6 +431,5 @@ format_dmdScheme_xlsx <- function(
 
   # return invisibly the workbook -------------------------------------------
 
-  invisible( wb )
+  invisible(wb)
 }
-

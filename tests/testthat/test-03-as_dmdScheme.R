@@ -20,7 +20,7 @@ test_that(
   "as_dmdScheme() `keepData = FALSE`",
   {
     expect_equal(
-      object = as_dmdScheme( x = dmdScheme_raw(), keepData = FALSE ),
+      object = as_dmdScheme(x = dmdScheme_raw(), keepData = FALSE),
       expect = dmdScheme()
     )
   }
@@ -31,7 +31,7 @@ test_that(
   "as_dmdScheme() `keepData = TRUE`",
   {
     expect_equal(
-      object = as_dmdScheme( x = dmdScheme_raw(), keepData = TRUE ),
+      object = as_dmdScheme(x = dmdScheme_raw(), keepData = TRUE),
       expect = dmdScheme_example()
     )
   }

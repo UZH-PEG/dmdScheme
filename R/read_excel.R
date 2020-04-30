@@ -40,17 +40,15 @@
 #'   file = fn,
 #'   raw = TRUE
 #' )
-#'
 read_excel <- function(
-  file,
-  keepData = TRUE,
-  verbose = FALSE,
-  raw = FALSE,
-  validate = TRUE
-) {
+                       file,
+                       keepData = TRUE,
+                       verbose = FALSE,
+                       raw = FALSE,
+                       validate = TRUE) {
 
 
-# Read raw checks -------------------------------------------------
+  # Read raw checks -------------------------------------------------
 
   result <- read_excel_raw(
     file = file,
@@ -58,7 +56,7 @@ read_excel <- function(
     checkVersion = TRUE
   )
 
-# Validate imported structure against dmdScheme ---------------------------
+  # Validate imported structure against dmdScheme ---------------------------
 
   if (validate) {
     validate(
@@ -68,7 +66,7 @@ read_excel <- function(
     )
   }
 
-# Convert to dmdScheme if asked for ---------------------------------------
+  # Convert to dmdScheme if asked for ---------------------------------------
 
   if (!raw) {
     result <- as_dmdScheme(
@@ -78,7 +76,7 @@ read_excel <- function(
     )
   }
 
-# Return result -----------------------------------------------------------
+  # Return result -----------------------------------------------------------
 
   return(result)
 }

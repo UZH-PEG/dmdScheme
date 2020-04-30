@@ -28,21 +28,18 @@
 #'   path = tempdir()
 #' )
 make_new_package <- function(
-  path = "."
-){
+                             path = ".") {
   success <- FALSE
-  on.exit(
-    {
-      if (!success) {
-        unlink(
-          x = file.path(path, scheme_active()$name),
-          recursive = TRUE,
-          force = TRUE
-        )
-        stop("Something went wrong - package not created!")
-      }
+  on.exit({
+    if (!success) {
+      unlink(
+        x = file.path(path, scheme_active()$name),
+        recursive = TRUE,
+        force = TRUE
+      )
+      stop("Something went wrong - package not created!")
     }
-  )
+  })
 
   # Create package skeleton -------------------------------------------------
 
@@ -59,9 +56,9 @@ make_new_package <- function(
   # Add default scheme and version to aaa.R ---------------------------------
 
   aaaFile <- file.path(path, scheme_active()$name, "R", "aaa.R")
-  aaa  <- readLines(aaaFile)
-  aaa  <- gsub(pattern = "XXXyyyschemNameyyyXXX",    x = aaa, replacement = dmdScheme::scheme_active()$name   )
-  aaa  <- gsub(pattern = "XXXyyyschemVersionyyyXXX", x = aaa, replacement = dmdScheme::scheme_active()$version)
+  aaa <- readLines(aaaFile)
+  aaa <- gsub(pattern = "XXXyyyschemNameyyyXXX", x = aaa, replacement = dmdScheme::scheme_active()$name)
+  aaa <- gsub(pattern = "XXXyyyschemVersionyyyXXX", x = aaa, replacement = dmdScheme::scheme_active()$version)
   writeLines(aaa, con = aaaFile)
 
   # Add info to DECRIPTION file ---------------------------------------------

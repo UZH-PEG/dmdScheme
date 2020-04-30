@@ -54,5 +54,4 @@ read_excel(
   file = fn,
   raw = TRUE
 )
-
 }

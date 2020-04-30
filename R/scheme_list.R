@@ -15,7 +15,6 @@
 #' @export
 #'
 scheme_list <- function() {
-
   result <- cache("installedSchemes") %>%
     list.dirs(full.names = FALSE, recursive = FALSE) %>%
     strsplit("_")

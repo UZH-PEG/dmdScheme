@@ -62,7 +62,7 @@ print_dmdScheme_validation_summary <- function(x, level, listLevel, error = c(0,
   if (x$error %in% error) {
     if (level < listLevel) {
       cat_ln()
-      cat_ln( paste(rep("#", level), collapse = ""), " ", x$header)
+      cat_ln(paste(rep("#", level), collapse = ""), " ", x$header)
       cat_ln()
       cat_ln("", x$description)
       cat_ln()
@@ -99,7 +99,7 @@ print_dmdScheme_validation_details <- function(x, level, listLevel, format, erro
   if (x$error %in% error) {
     if (level < listLevel) {
       cat_ln()
-      cat_ln( paste(rep("#", level), collapse = ""), " ", x$header)
+      cat_ln(paste(rep("#", level), collapse = ""), " ", x$header)
       cat_ln()
       cat_ln("", x$descriptionDetails)
       cat_ln()

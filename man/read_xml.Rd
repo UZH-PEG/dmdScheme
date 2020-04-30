@@ -25,5 +25,4 @@ Read the XML file \code{file} and convert it to a \code{dmdScheme} object using 
 }
 \examples{
 # write_xml(dmdScheme_raw(), file = tempfile())
-
 }

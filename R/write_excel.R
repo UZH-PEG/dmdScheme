@@ -15,18 +15,15 @@
 #' @examples
 #' write_excel(dmdScheme(), file = tempfile())
 #' write_excel(dmdScheme_raw(), file = tempfile())
-#'
 write_excel <- function(
-  x,
-  file,
-  ...
-) {
-
+                        x,
+                        file,
+                        ...) {
   if (!inherits(x, "dmdSchemeSet_raw")) {
     x <- as_dmdScheme_raw(x)
   }
 
-# The column names with ... need to be set to "" --------------------------
+  # The column names with ... need to be set to "" --------------------------
 
   for (i in 1:length(x)) {
     toEmpty <- grep("^\\.\\.\\.[0-9]$", colnames(x[[i]]))
@@ -35,7 +32,7 @@ write_excel <- function(
     }
   }
 
-# Write excel file --------------------------------------------------------
+  # Write excel file --------------------------------------------------------
 
   # tmpfile <- tempfile(fileext = ".xlsx")
 
@@ -44,15 +41,15 @@ write_excel <- function(
     path = file,
     ...
   )
-#
-#   format_dmdScheme_xlsx(
-#     fn_org = tmpfile,
-#     fn_new = file,
-#     keepData = TRUE
-#   )
+  #
+  #   format_dmdScheme_xlsx(
+  #     fn_org = tmpfile,
+  #     fn_new = file,
+  #     keepData = TRUE
+  #   )
 
 
-# Return result -----------------------------------------------------------
+  # Return result -----------------------------------------------------------
 
-return(invisible(result))
+  return(invisible(result))
 }

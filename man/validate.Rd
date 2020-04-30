@@ -40,16 +40,14 @@ object of class \code{dmdScheme_validation}.
 \examples{
 ## validata an Excel file containing the metadata
 validate(
-    x = scheme_path_xlsx()
+  x = scheme_path_xlsx()
 )
-
 ## validate a `dmdScheme_raw object`
 validate(
-   x = dmdScheme_raw()
+  x = dmdScheme_raw()
 )
 
 ## use `read_raw()` to read an Excel spreadsheet into a `dmdScheme_raw` object
-x <- read_excel_raw( scheme_path_xlsx() )
-validate( x = x )
-
+x <- read_excel_raw(scheme_path_xlsx())
+validate(x = x)
 }

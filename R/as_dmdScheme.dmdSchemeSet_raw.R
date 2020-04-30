@@ -15,23 +15,22 @@
 #' @export
 #'
 as_dmdScheme.dmdSchemeSet_raw <- function(
-  x,
-  keepData = FALSE,
-  warnToError = TRUE,
-  convertTypes = TRUE,
-  checkVersion = TRUE,
-  ...,
-  verbose = FALSE
-) {
+                                          x,
+                                          keepData = FALSE,
+                                          warnToError = TRUE,
+                                          convertTypes = TRUE,
+                                          checkVersion = TRUE,
+                                          ...,
+                                          verbose = FALSE) {
 
 
-# Check for class dmdSchemeSet_raw ----------------------------------------
+  # Check for class dmdSchemeSet_raw ----------------------------------------
 
   if (!inherits(x, "dmdSchemeSet_raw")) {
     stop("x has to be inherit from class 'dmdSchemeSet_raw'")
   }
 
-# identify class ----------------------------------------------------------
+  # identify class ----------------------------------------------------------
 
   newClass <- class(x)[[1]]
   newClass <- gsub("_raw", "", newClass)
@@ -39,7 +38,7 @@ as_dmdScheme.dmdSchemeSet_raw <- function(
     newClass <- c(newClass, "dmdSchemeSet")
   }
 
-# Check version -----------------------------------------------------------
+  # Check version -----------------------------------------------------------
 
   if (checkVersion) {
     if (scheme_active()$version != attr(x, "dmdSchemeVersion")) {
@@ -47,7 +46,7 @@ as_dmdScheme.dmdSchemeSet_raw <- function(
     }
   }
 
-# Iterate through dmdScheme_raw and create dmdSchemeData objects -----------
+  # Iterate through dmdScheme_raw and create dmdSchemeData objects -----------
 
   result <- lapply(
     names(x),
@@ -65,13 +64,13 @@ as_dmdScheme.dmdSchemeSet_raw <- function(
   )
   names(result) <- names(x)
 
-# Set attributes ----------------------------------------------------------
+  # Set attributes ----------------------------------------------------------
 
   attr(result, "fileName") <- attr(x, "fileName")
   attr(result, "propertyName") <- attr(x, "propertyName")
   attr(result, "dmdSchemeName") <- attr(x, "dmdSchemeName")
 
-# set class ---------------------------------------------------------------
+  # set class ---------------------------------------------------------------
 
   class(result) <- append(
     newClass,
@@ -82,8 +81,7 @@ as_dmdScheme.dmdSchemeSet_raw <- function(
 
   attr(result, "dmdSchemeVersion") <- attr(x, "dmdSchemeVersion")
 
-# Return ------------------------------------------------------------------
+  # Return ------------------------------------------------------------------
 
   return(result)
 }
-

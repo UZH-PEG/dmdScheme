@@ -17,8 +17,7 @@
 #' # returns the repo used:
 #' scheme_repo()
 scheme_repo <- function(
-  repo = NULL
-) {
+                        repo = NULL) {
   if (!is.null(repo)) {
     assign(
       x = "default_schemeRepo",
@@ -31,5 +30,5 @@ scheme_repo <- function(
 
 
   return(repo)
-##
+  ##
 }

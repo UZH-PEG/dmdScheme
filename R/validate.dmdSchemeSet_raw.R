@@ -12,19 +12,17 @@
 #' @examples
 #' ## validate a `dmdScheme_raw object`
 #' validate(
-#'    x = dmdScheme_raw()
+#'   x = dmdScheme_raw()
 #' )
 #'
 #' ## use `read_raw()` to read an Excel spreadsheet into a `dmdScheme_raw` object
-#' x <- read_excel_raw( scheme_path_xlsx() )
-#' validate( x = x )
-#'
+#' x <- read_excel_raw(scheme_path_xlsx())
+#' validate(x = x)
 validate.dmdSchemeSet_raw <- function(
-  x,
-  path = ".",
-  validateData = TRUE,
-  errorIfStructFalse = TRUE
-) {
+                                      x,
+                                      path = ".",
+                                      validateData = TRUE,
+                                      errorIfStructFalse = TRUE) {
 
   # Define result structure of class dmdScheme_validation ----------------------
 
@@ -40,7 +38,7 @@ validate.dmdSchemeSet_raw <- function(
 
   # Validate structure ------------------------------------------------------
 
-  result$structure <- validateStructure( x )
+  result$structure <- validateStructure(x)
   if (result$structure$error != 0 & errorIfStructFalse) {
     message(result$structure$details)
     stop("Structure of the object to be evaluated is wrong. See the info above for details.")
@@ -50,8 +48,8 @@ validate.dmdSchemeSet_raw <- function(
   # Validata data -----------------------------------------------------------
 
   if ((result$structure$error == 0) & validateData) {
-    xconv <- suppressWarnings( as_dmdScheme(x, keepData = TRUE, convertTypes = TRUE,  verbose = FALSE, warnToError = FALSE) )
-    xraw  <-                   as_dmdScheme(x, keepData = TRUE, convertTypes = FALSE, verbose = FALSE, warnToError = FALSE)
+    xconv <- suppressWarnings(as_dmdScheme(x, keepData = TRUE, convertTypes = TRUE, verbose = FALSE, warnToError = FALSE))
+    xraw <- as_dmdScheme(x, keepData = TRUE, convertTypes = FALSE, verbose = FALSE, warnToError = FALSE)
 
     message("Validating Experiment")
     result$Experiment <- validateExperiment(x["Experiment"], xraw["Experiment"], xconv["Experiment"])
@@ -79,5 +77,3 @@ validate.dmdSchemeSet_raw <- function(
 
   return(result)
 }
-
-

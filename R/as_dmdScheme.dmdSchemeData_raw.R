@@ -5,24 +5,22 @@
 #' @export
 #'
 as_dmdScheme.dmdSchemeData_raw <- function(
-  x,
-  keepData = TRUE,
-  convertTypes = TRUE,
-  warnToError = TRUE,
-  checkVersion = TRUE,
-  ...,
-  verbose = FALSE
-  ) {
-
+                                           x,
+                                           keepData = TRUE,
+                                           convertTypes = TRUE,
+                                           warnToError = TRUE,
+                                           checkVersion = TRUE,
+                                           ...,
+                                           verbose = FALSE) {
   if (verbose) message("propertySet : ", names(x)[[2]])
 
-# Check for class dmdSchemeSet_raw ----------------------------------------
+  # Check for class dmdSchemeSet_raw ----------------------------------------
 
   if (!inherits(x, "dmdSchemeData_raw")) {
     stop("x has to inherit from class 'dmdSchemeData_raw'")
   }
 
-# identify class ----------------------------------------------------------
+  # identify class ----------------------------------------------------------
 
   newClass <- class(x)[[1]]
   newClass <- gsub("_raw", "", newClass)
@@ -31,11 +29,11 @@ as_dmdScheme.dmdSchemeData_raw <- function(
   }
 
 
-# Remove _raw classes -----------------------------------------------------
+  # Remove _raw classes -----------------------------------------------------
 
   class(x) <- grep("_raw", class(x), invert = TRUE, value = TRUE)
 
-# Set warn to 2 to convert warnings to errors -----------------------------
+  # Set warn to 2 to convert warnings to errors -----------------------------
 
   if (warnToError) {
     oldWarn <- options()$warn
@@ -44,16 +42,16 @@ as_dmdScheme.dmdSchemeData_raw <- function(
     on.exit(options(warn = oldWarn))
   }
 
-# transpose when Experiment -----------------------------------------------
+  # transpose when Experiment -----------------------------------------------
 
-  if (x[[1,1]] == "Experiment") {
+  if (x[[1, 1]] == "Experiment") {
     if (verbose) message("Transposing...")
     #
 
     x <- rbind(NA, x)
-    x[1,] <- names(x)
-    rownames(x) <- c(x[1:2,1], 2:(nrow(x) - 1))
-    x <- x[,-1]
+    x[1, ] <- names(x)
+    rownames(x) <- c(x[1:2, 1], 2:(nrow(x) - 1))
+    x <- x[, -1]
     x <- as.data.frame(t(as.matrix(x)), stringsAsFactors = FALSE)
     # rownames(x) <- 1:nrow(x)
 
@@ -67,58 +65,58 @@ as_dmdScheme.dmdSchemeData_raw <- function(
     # )
   }
 
-# set all NA in valueProperty column to "NA" ------------------------------
+  # set all NA in valueProperty column to "NA" ------------------------------
 
   x$propertySet[is.na(x$propertySet)] <- "NA"
 
-# set propertySetName -----------------------------------------------------
+  # set propertySetName -----------------------------------------------------
 
   attr(x, "propertyName") <- NA
 
-# set names ---------------------------------------------------------------
+  # set names ---------------------------------------------------------------
 
   if (verbose) message("Set names...")
   #
   # names(x) <- as.character(dplyr::filter(x, .data$propertySet == "valueProperty"))
-  names(x) <- as.character(x[x[["propertySet"]] == "valueProperty",])
+  names(x) <- as.character(x[x[["propertySet"]] == "valueProperty", ])
 
   # x %<>% dplyr::filter(.data$valueProperty != "valueProperty")
-  x <- x[!x[["valueProperty"]] == "valueProperty",]
+  x <- x[!x[["valueProperty"]] == "valueProperty", ]
 
-# extract attributes to set -----------------------------------------------
+  # extract attributes to set -----------------------------------------------
 
   attrToSet <- x$valueProperty
-  attrToSet <- attrToSet[ 1:(grep("DATA", x$valueProperty) - 1) ]
+  attrToSet <- attrToSet[1:(grep("DATA", x$valueProperty) - 1)]
 
-# set attributes ----------------------------------------------------------
+  # set attributes ----------------------------------------------------------
 
   if (verbose) message("Set attributes...")
   #
   for (a in attrToSet) {
-    attr(x, which = a) <- as.character(x[x[["valueProperty"]] == a,])[-1]
+    attr(x, which = a) <- as.character(x[x[["valueProperty"]] == a, ])[-1]
     # dplyr::filter(x, .data$valueProperty == a)[,-1] %>%
     #  unlist() %>%
     #  as.vector()
     # x %<>% dplyr::filter(.data$valueProperty != a)
-    x <- x[x[["valueProperty"]] != a,]
+    x <- x[x[["valueProperty"]] != a, ]
     rownames(x) <- NULL
   }
 
-# remove valueProperty column ---------------------------------------------
+  # remove valueProperty column ---------------------------------------------
 
   # x %<>% dplyr::select(-.data$valueProperty)
   attrs <- attributes(x)
   x <- x[-which(names(x) == "valueProperty")]
-  attrs[["names"]] <- grep( "valueProperty", attrs[["names"]], value = TRUE, invert = TRUE)
+  attrs[["names"]] <- grep("valueProperty", attrs[["names"]], value = TRUE, invert = TRUE)
   attributes(x) <- attrs
 
-# if !keepData remove all but one data column , is not, only remove the ones with only NAs ----------------------------
+  # if !keepData remove all but one data column , is not, only remove the ones with only NAs ----------------------------
 
   if (!keepData) {
     if (verbose) message("Trimming to one row of NAs...")
     #
     # x %<>% dplyr::filter(c(TRUE, rep(FALSE, nrow(x) - 1)) )
-    x <- x[1,]
+    x <- x[1, ]
     x[] <- NA
   } else {
     allNA <- apply(
@@ -126,10 +124,10 @@ as_dmdScheme.dmdSchemeData_raw <- function(
       1,
       all
     )
-    x <- x[!allNA,]
+    x <- x[!allNA, ]
   }
 
-# apply type --------------------------------------------------------------
+  # apply type --------------------------------------------------------------
 
   if (convertTypes) {
 
@@ -145,12 +143,12 @@ as_dmdScheme.dmdSchemeData_raw <- function(
     }
   }
 
-# set class ---------------------------------------------------------------
+  # set class ---------------------------------------------------------------
 
   if (verbose) message("Set class...")
   #
   class(x) <- append(
-    newClass ,
+    newClass,
     class(x),
   )
 
@@ -158,7 +156,7 @@ as_dmdScheme.dmdSchemeData_raw <- function(
 
   # attributes(x) <- attributes(x)[ order(names(attributes(x))) ]
 
-# return object -----------------------------------------------------------
+  # return object -----------------------------------------------------------
 
   return(x)
 }

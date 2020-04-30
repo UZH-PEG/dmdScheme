@@ -12,12 +12,9 @@
 #'
 #' @examples
 #' scheme_list_in_repo()
-#'
 scheme_list_in_repo <- function(
-  baseurl = scheme_repo(),
-  ...
-) {
-
+                                baseurl = scheme_repo(),
+                                ...) {
   destfile <- tempfile(fileext = ".yaml")
 
   url <- paste0(
@@ -25,7 +22,7 @@ scheme_list_in_repo <- function(
     "schemes/SCHEME_DEFINITIONS.yaml"
   )
 
-  result <- utils::download.file( url = url, destfile = destfile, ...)
+  result <- utils::download.file(url = url, destfile = destfile, ...)
 
   if (result != 0) {
     stop("Download not successfull. Return value from `download.file() = `", result)
@@ -36,5 +33,5 @@ scheme_list_in_repo <- function(
   rm(destfile)
 
   return(result)
-##
+  ##
 }

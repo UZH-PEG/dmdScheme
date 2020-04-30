@@ -25,15 +25,12 @@
 #'
 #'
 report <- function(
-  x,
-  file = tempfile(),
-  open = TRUE,
-  report = "html",
-  report_author = "Myself",
-  report_title = "Report of something",
-  ...
-) {
-
+                   x,
+                   file = tempfile(),
+                   open = TRUE,
+                   report = "html",
+                   report_author = "Myself",
+                   report_title = "Report of something",
+                   ...) {
   UseMethod("report", x)
-
 }

@@ -2,13 +2,12 @@
 #' @export
 #'
 as_xml_list.dmdSchemeSet <- function(
-  x,
-  output = "metadata",
-  ...
-) {
+                                     x,
+                                     output = "metadata",
+                                     ...) {
   xml <- as_xml(x, output = output, ...)
 
-# Return xml --------------------------------------------------------------
+  # Return xml --------------------------------------------------------------
 
   return(list(xml))
 }

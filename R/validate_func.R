@@ -12,7 +12,7 @@ new_dmdScheme_validation <- function() {
     descriptionDetails = "To Be Added",
     comment = ""
   )
-  class(result) <- append( "dmdScheme_validation", class(result) )
+  class(result) <- append("dmdScheme_validation", class(result))
   return(result)
 }
 
@@ -26,7 +26,7 @@ new_dmdScheme_validation <- function() {
 #' @return \code{dmdScheme_validation} object
 #' @export
 #'
-validateStructure <- function(x){
+validateStructure <- function(x) {
   result <- new_dmdScheme_validation()
   ##
   result$header <- "Structural / Formal validity"
@@ -37,7 +37,7 @@ validateStructure <- function(x){
   )
   result$descriptionDetails <- ""
   ##
-  struct <- as_dmdScheme( x, keepData = FALSE, verbose = FALSE)
+  struct <- as_dmdScheme(x, keepData = FALSE, verbose = FALSE)
   dmdScheme_test <- dmdScheme()
   attr(struct, "fileName") <- "none"
   attr(dmdScheme_test, "fileName") <- "none"
@@ -62,7 +62,6 @@ validateStructure <- function(x){
 #' @export
 #'
 validateTypes <- function(sraw, sconv) {
-
   result <- new_dmdScheme_validation()
   ##
   result$header <- "conversion of values into specified type lossless possible"
@@ -88,7 +87,7 @@ validateTypes <- function(sraw, sconv) {
       "   https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/issues\n",
       "or send an email to Rainer.Krug@uzh.ch\n",
       "including the fiel you wanted to validate As this should not happenned!!!"
-      )
+    )
     # sraw <- tibble::add_row(sraw)
     # sconv <- tibble::add_row(sconv)
   }
@@ -97,11 +96,11 @@ validateTypes <- function(sraw, sconv) {
   t[na] <- TRUE
   result$details <- as.data.frame(sraw, stringsAsFactors = FALSE)
   result$details[t] <- TRUE
-  result$details[!t] <- paste( result$details[!t], "!=", as.data.frame(sconv, stringsAsFactors = FALSE)[!t])
+  result$details[!t] <- paste(result$details[!t], "!=", as.data.frame(sconv, stringsAsFactors = FALSE)[!t])
   result$details[na] <- NA
   #    result$details <- as_tibble(result$details, .name_repair = "unique")
   ##
-  result$error = ifelse(
+  result$error <- ifelse(
     all(result$details == TRUE, na.rm = TRUE),
     0,
     3
@@ -109,7 +108,7 @@ validateTypes <- function(sraw, sconv) {
   ##
   result$header <- valErr_TextErrCol(result)
   ##
-  return( result )
+  return(result)
 }
 
 #' Validate suggested values
@@ -154,7 +153,7 @@ validateSuggestedValues <- function(sraw) {
         if (all(is.na(v))) {
           v <- NA
         } else {
-          v <- c( v, "NA", NA, "" )
+          v <- c(v, "NA", NA, "")
         }
         for (rowN in 1:nrow(result$details)) {
           if (all(is.na(v))) {
@@ -172,21 +171,21 @@ validateSuggestedValues <- function(sraw) {
         }
       }
       ##
-      result$error = ifelse(
+      result$error <- ifelse(
         all(result$details == TRUE, na.rm = TRUE),
         0,
         1
       )
     } else {
       result$details <- NA
-      result$error = 1
+      result$error <- 1
     }
 
     ##
     result$header <- valErr_TextErrCol(result)
   }
   ##
-  return( result )
+  return(result)
 }
 
 #' Validate allowed values
@@ -231,7 +230,7 @@ validateAllowedValues <- function(sraw) {
         if (all(is.na(v))) {
           v <- NA
         } else {
-          v <- c( v, "NA", NA, "" )
+          v <- c(v, "NA", NA, "")
         }
         for (rowN in 1:nrow(result$details)) {
           if (all(is.na(v))) {
@@ -248,16 +247,16 @@ validateAllowedValues <- function(sraw) {
         }
       }
       ##
-      result$error = ifelse( all(result$details == TRUE,na.rm = TRUE), 0, 3)
+      result$error <- ifelse(all(result$details == TRUE, na.rm = TRUE), 0, 3)
     } else {
       result$details <- NA
-      result$error = 1
+      result$error <- 1
     }
     ##
     result$header <- valErr_TextErrCol(result)
   }
   ##
-  return( result )
+  return(result)
 }
 
 #' Validate id field
@@ -267,7 +266,7 @@ validateAllowedValues <- function(sraw) {
 #' @return \code{dmdScheme_validation} object
 #' @export
 #'
-validateIDField <- function(sraw){
+validateIDField <- function(sraw) {
   result <- new_dmdScheme_validation()
   ##
   result$header <- "ID Field present and in the first column"
@@ -291,7 +290,7 @@ validateIDField <- function(sraw){
     stringsAsFactors = FALSE
   )
   ##
-  result$error <-  ifelse(
+  result$error <- ifelse(
     all(result$details$isOK),
     0,
     3
@@ -426,7 +425,7 @@ validateTab <- function(x, xraw, xconv) {
   return(result)
 }
 
-validateDataFileMetaData <- function(x, xraw, xconv, path){
+validateDataFileMetaData <- function(x, xraw, xconv, path) {
   result <- new_dmdScheme_validation()
   ##
   result$header <- "DataFileMetaData"
@@ -460,4 +459,3 @@ validateDataFileMetaData <- function(x, xraw, xconv, path){
   ##
   return(result)
 }
-

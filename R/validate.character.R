@@ -13,25 +13,23 @@
 #' @examples
 #' ## validata an Excel file containing the metadata
 #' validate(
-#'     x = scheme_path_xlsx()
+#'   x = scheme_path_xlsx()
 #' )
-#'
 validate.character <- function(
-  x,
-  path = ".",
-  validateData = TRUE,
-  errorIfStructFalse = TRUE
-) {
+                               x,
+                               path = ".",
+                               validateData = TRUE,
+                               errorIfStructFalse = TRUE) {
 
 
   # Load from excel sheet  ---------------------------------
 
-    raw <- read_excel(
-      file = x,
-      keepData = TRUE,
-      validate = FALSE,
-      raw = TRUE
-    )
+  raw <- read_excel(
+    file = x,
+    keepData = TRUE,
+    validate = FALSE,
+    raw = TRUE
+  )
 
   ##
   return(
@@ -43,6 +41,3 @@ validate.character <- function(
     )
   )
 }
-
-
-

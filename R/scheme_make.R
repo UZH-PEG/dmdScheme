@@ -21,13 +21,11 @@
 #' @export
 #'
 scheme_make <- function(
-  schemeDefinition,
-  examples = NULL,
-  install_R_package = NULL,
-  path = ".",
-  overwrite = FALSE
-){
-
+                        schemeDefinition,
+                        examples = NULL,
+                        install_R_package = NULL,
+                        path = ".",
+                        overwrite = FALSE) {
   scheme <- as_dmdScheme(
     read_excel_raw(
       file = schemeDefinition,
@@ -65,7 +63,7 @@ scheme_make <- function(
   )
 
   tmpExamples <- file.path(tmppath, "examples")
-  dir.create( tmpExamples )
+  dir.create(tmpExamples)
   for (exdir in examples) {
     file.copy(
       from = exdir,
@@ -77,14 +75,15 @@ scheme_make <- function(
   if (!is.null(install_R_package)) {
     file.copy(
       from = install_R_package,
-      to = file.path(tmppath, "install_R_package.R"))
+      to = file.path(tmppath, "install_R_package.R")
+    )
   }
 
   # build package -----------------------------------------------------------
 
   writeLines(version, file.path(tmppath, "schemePackageVersion"))
 
-  md5 <- tools::md5sum( list.files(tmppath, recursive = TRUE, full.names = TRUE) )
+  md5 <- tools::md5sum(list.files(tmppath, recursive = TRUE, full.names = TRUE))
   names(md5) <- basename(names(md5))
 
   utils::write.table(md5, file.path(tmppath, "md5sum.txt"))

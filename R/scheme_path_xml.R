@@ -5,9 +5,8 @@
 #'
 #' @examples
 #' scheme_path_xlsx()
-#'
 scheme_path_xml <- function() {
-  schemeName <- paste0(scheme_active()$name, "_", scheme_active()$version )
+  schemeName <- paste0(scheme_active()$name, "_", scheme_active()$version)
 
   result <- file.path(cache("installedSchemes", schemeName), paste0(schemeName, ".xml"))
 

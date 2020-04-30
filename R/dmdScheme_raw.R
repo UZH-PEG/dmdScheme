@@ -21,8 +21,6 @@
 #' @export
 #' @examples
 #' dmdScheme_raw()
-#'
-dmdScheme_raw <- function(){
-  return( get("dmdScheme_raw", envir = .dmdScheme_cache) )
+dmdScheme_raw <- function() {
+  return(get("dmdScheme_raw", envir = .dmdScheme_cache))
 }
-

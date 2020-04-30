@@ -11,5 +11,4 @@ The dataset contains example data. It was created by using the code below.
 }
 \examples{
 dmdScheme_example()
-
 }

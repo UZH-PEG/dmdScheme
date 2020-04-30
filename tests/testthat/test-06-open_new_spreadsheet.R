@@ -46,4 +46,3 @@ test_that(
 # )
 
 unlink(fn)
-

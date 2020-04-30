@@ -24,12 +24,12 @@
     dmdScheme::scheme_install(
       name = dmdScheme::scheme_default()$name,
       version = dmdScheme::scheme_default()$version,
-      repo = scheme_repo())
+      repo = scheme_repo()
+    )
   }
 
   dmdScheme::scheme_use(
     name = dmdScheme::scheme_default()$name,
     version = dmdScheme::scheme_default()$version
   )
-
 }

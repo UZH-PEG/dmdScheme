@@ -24,14 +24,12 @@
 #'   version = "0.9.5"
 #' )
 scheme_download <- function(
-  name,
-  version,
-  destfile = NULL,
-  overwrite = FALSE,
-  baseurl = scheme_repo(),
-  ...
-) {
-
+                            name,
+                            version,
+                            destfile = NULL,
+                            overwrite = FALSE,
+                            baseurl = scheme_repo(),
+                            ...) {
   if (is.null(destfile)) {
     path <- tempfile()
     dir.create(path)
@@ -40,7 +38,7 @@ scheme_download <- function(
     destfile <- normalizePath(destfile)
   }
 
-  if ( file.exists(destfile) & (!overwrite) ) {
+  if (file.exists(destfile) & (!overwrite)) {
     stop("destfile does exist!\n", "  Use `overwrite = TRUE` to overwrite destfile.")
   }
 
@@ -50,12 +48,12 @@ scheme_download <- function(
     name, "_", version, ".tar.gz"
   )
 
-  result <- utils::download.file( url = url, destfile = destfile, ...)
+  result <- utils::download.file(url = url, destfile = destfile, ...)
 
   if (result != 0) {
     stop("Download not successfull. Return value from `download.file() = `", result)
   }
 
   return(invisible(destfile))
-##
+  ##
 }

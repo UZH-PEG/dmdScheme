@@ -4,9 +4,8 @@
 #' @export
 #'
 as_dmdScheme_raw.dmdSchemeData <- function(
-  x,
-  ...
-) {
+                                           x,
+                                           ...) {
 
   # Extraxt data ------------------------------------------------------------
   result <- as.data.frame(x, stringsAsFactors = FALSE)
@@ -20,14 +19,13 @@ as_dmdScheme_raw.dmdSchemeData <- function(
   )
 
   if (attr(x, "propertyName") == "Experiment") {
-
     result <- cbind(nms = names(result), t(result))
     colnames(result) <- c("valueProperty", "DATA")
     result <- as.data.frame(result, stringsAsFactors = FALSE)
     rownames(result) <- 1:nrow(result)
 
     result <- cbind.data.frame(
-      propertySet = c( attr(x, "propertyName"), rep(NA, nrow(result) - 1) ),
+      propertySet = c(attr(x, "propertyName"), rep(NA, nrow(result) - 1)),
       result,
       stringsAsFactors = FALSE
     )
@@ -42,7 +40,7 @@ as_dmdScheme_raw.dmdSchemeData <- function(
     }
 
     nm <- colnames(result)
-    result <- result[c( nm[1:2], cns, nm[3] )]
+    result <- result[c(nm[1:2], cns, nm[3])]
 
     # result <- cbind(nms = names(result), t(result))
     # colnames(result) <- c("valueProperty", "DATA")
@@ -62,9 +60,7 @@ as_dmdScheme_raw.dmdSchemeData <- function(
     #     .before = ncol(result)
     #   )
     # }
-
   } else {
-
     cns <- rev(cns)
     cns <- c(cns, "names")
 
@@ -86,7 +82,7 @@ as_dmdScheme_raw.dmdSchemeData <- function(
 
     noNAs <- nrow(result) - length(propSet)
     if (noNAs > 0) {
-      propSet <- c(propSet,  rep(NA, noNAs))
+      propSet <- c(propSet, rep(NA, noNAs))
     } else if (noNAs < 0) {
       result <- rbind(result, NA)
     }
@@ -106,14 +102,13 @@ as_dmdScheme_raw.dmdSchemeData <- function(
     # Emulate the name repair = "unique" from readxl::read_excel ----------------
 
 
-    names(result) <- c("propertySet", attr(x, "propertyName"), paste0("...", 3:length(names(result) )))
-
+    names(result) <- c("propertySet", attr(x, "propertyName"), paste0("...", 3:length(names(result))))
   }
 
 
   # Make sure that all "NA" are set to NA -----------------------------------
 
-  result[result == "NA"]  <- NA
+  result[result == "NA"] <- NA
 
   # set class ---------------------------------------------------------------
 
@@ -134,4 +129,3 @@ as_dmdScheme_raw.dmdSchemeData <- function(
 
   return(result)
 }
-

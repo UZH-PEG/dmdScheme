@@ -17,15 +17,13 @@
 #' @md
 #'
 
-validate <- function (
-  x,
-  path = ".",
-  validateData = TRUE,
-  errorIfStructFalse = TRUE
-) {
+validate <- function(
+                     x,
+                     path = ".",
+                     validateData = TRUE,
+                     errorIfStructFalse = TRUE) {
 
   # Check arguments ---------------------------------------------------------
 
   UseMethod("validate", x)
-
 }

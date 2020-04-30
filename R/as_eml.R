@@ -16,10 +16,7 @@
 #'
 #'
 as_eml <- function(
-  x,
-  ...
-) {
-
+                   x,
+                   ...) {
   UseMethod("as_eml")
-
 }

@@ -24,9 +24,8 @@
 #' upgrade("dmdScheme.xml")
 #' }
 upgrade_old_files <- function(
-  file,
-  to = scheme_active()$version
-) {
+                              file,
+                              to = scheme_active()$version) {
   # Check if file exists ----------------------------------------------------
 
   if (!file.exists(file)) {
@@ -57,7 +56,7 @@ upgrade_old_files <- function(
     rm(xml)
   }
 
-# Check scheme name --------------------------------------------------------
+  # Check scheme name --------------------------------------------------------
 
   scheme <- NULL
   try(
@@ -68,14 +67,15 @@ upgrade_old_files <- function(
   )
 
   if (is.null(scheme)) {
-    stop("The scheme is in a not in a loaded scheme definition.\n",
-         "  Load the R package containing the scheme before trying again."
+    stop(
+      "The scheme is in a not in a loaded scheme definition.\n",
+      "  Load the R package containing the scheme before trying again."
     )
   }
 
   rm(scheme)
 
-# Check version number and do conversion -----------------------------------
+  # Check version number and do conversion -----------------------------------
 
   converted <- NULL
 
@@ -88,7 +88,7 @@ upgrade_old_files <- function(
     stop("Upgrade from version ", schemeVersion, "to version ", scheme_active()$version, " not implemented yet!")
   }
 
-# Return `converted` ------------------------------------------------------
+  # Return `converted` ------------------------------------------------------
 
   invisible(converted)
 }

@@ -35,5 +35,4 @@ There are two S3 classes defined and used:
 }
 \examples{
 dmdScheme()
-
 }

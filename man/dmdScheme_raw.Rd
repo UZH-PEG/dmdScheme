@@ -29,5 +29,4 @@ converted to an object of class \code{\link[dmdScheme]{dmdSchemeSet}}.
 }
 \examples{
 dmdScheme_raw()
-
 }

@@ -24,6 +24,5 @@ Reads the data from an Excel file as is and no validation. Only validation of
 the scheme version and scheme name is done (when \code{checkVersion = TRUE}).
 }
 \examples{
-read_excel_raw( scheme_path_xlsx() )
-
+read_excel_raw(scheme_path_xlsx())
 }

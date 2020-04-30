@@ -28,10 +28,8 @@ Generic function to convert an object to a list containing xml(s)
 }
 \examples{
 
-x <- as_xml_list( dmdScheme_example() )
+x <- as_xml_list(dmdScheme_example())
 x
 
 ## returns a \code{list()} with one \code{xml_document} object
-
-
 }

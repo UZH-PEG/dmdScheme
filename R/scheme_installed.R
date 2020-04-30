@@ -14,9 +14,8 @@
 #' scheme_installed("dmdScheme", "0.7.3")
 #' }
 scheme_installed <- function(
-  name,
-  version
-) {
+                             name,
+                             version) {
   result <- paste0(name, "_", version) %in% apply(scheme_list(), MARGIN = 1, paste, collapse = "_")
   return(result)
 }

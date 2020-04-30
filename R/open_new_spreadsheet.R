@@ -22,48 +22,45 @@
 #' }
 #'
 open_new_spreadsheet <- function(
-  file = NULL,
-  open = TRUE,
-  keepData = FALSE,
-  format = TRUE,
-  overwrite = FALSE,
-  verbose = FALSE
-) {
+                                 file = NULL,
+                                 open = TRUE,
+                                 keepData = FALSE,
+                                 format = TRUE,
+                                 overwrite = FALSE,
+                                 verbose = FALSE) {
   fn <- ""
-  on.exit(
-    {
-      if (open & verbose) {
-        message(
-          "###############################################################\n",
-          "## The template should have opened in Excel.                 ##\n",
-          "##                                                           ##\n",
-          "## If Excel is not in the foreground, it might               ##\n",
-          "## have opened in the background.                            ##\n",
-          "##                                                           ##\n",
-          "## Depending on the browser, the file might                  ##\n",
-          "## have been downloaded to the default download location.    ##\n",
-          "##                                                           ##\n",
-          "## If nothing happened either,                               ##\n",
-          "## you can open the file directly in Excel from              ##\n",
-          "##                                                           ##\n",
-          "## In this case, please file a bug report at                 ##\n",
-          "##                                                           ##\n",
-          "##    https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/issues ##\n",
-          "##                                                           ##\n",
-          "## and provide                                               ##\n",
-          "##      - Operating System and version                       ##\n",
-          "##      - Default browser                                    ##\n",
-          "##      - file location                                      ##\n",
-          "##                                                           ##\n",
-          "## Thanks.                                                   ##\n",
-          "###############################################################\n"
-        )
-      }
+  on.exit({
+    if (open & verbose) {
+      message(
+        "###############################################################\n",
+        "## The template should have opened in Excel.                 ##\n",
+        "##                                                           ##\n",
+        "## If Excel is not in the foreground, it might               ##\n",
+        "## have opened in the background.                            ##\n",
+        "##                                                           ##\n",
+        "## Depending on the browser, the file might                  ##\n",
+        "## have been downloaded to the default download location.    ##\n",
+        "##                                                           ##\n",
+        "## If nothing happened either,                               ##\n",
+        "## you can open the file directly in Excel from              ##\n",
+        "##                                                           ##\n",
+        "## In this case, please file a bug report at                 ##\n",
+        "##                                                           ##\n",
+        "##    https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/issues ##\n",
+        "##                                                           ##\n",
+        "## and provide                                               ##\n",
+        "##      - Operating System and version                       ##\n",
+        "##      - Default browser                                    ##\n",
+        "##      - file location                                      ##\n",
+        "##                                                           ##\n",
+        "## Thanks.                                                   ##\n",
+        "###############################################################\n"
+      )
     }
-  )
+  })
   ##
 
-# Warning if `format = TRUE` ----------------------------------------------
+  # Warning if `format = TRUE` ----------------------------------------------
   if (format) {
     message(
       "###############################################################\n",
@@ -84,13 +81,13 @@ open_new_spreadsheet <- function(
 
   schemeName <- scheme_path_xlsx()
 
-# Temporary file name -----------------------------------------------------
+  # Temporary file name -----------------------------------------------------
 
   fnpath <- tempfile()
   dir.create(fnpath, recursive = TRUE)
-  fn <- file.path( fnpath, basename(schemeName) )
+  fn <- file.path(fnpath, basename(schemeName))
 
-# Format if asked for, otherwise copy to fn unchanged ---------------------
+  # Format if asked for, otherwise copy to fn unchanged ---------------------
 
   schemeName <- scheme_path_xlsx()
 
@@ -111,7 +108,7 @@ open_new_spreadsheet <- function(
     )
   }
 
-# If file specified, copy temporary file to final destination -------------
+  # If file specified, copy temporary file to final destination -------------
 
   if (!is.null(file)) {
     result <- file.copy(
@@ -126,16 +123,17 @@ open_new_spreadsheet <- function(
     fn <- file
     Sys.chmod(fn, "0755")
     if (verbose) {
-      message( "The template has been copied from",
-               "          ", orgFn,
-               "to",
-               "          ", fn,
-               ""
+      message(
+        "The template has been copied from",
+        "          ", orgFn,
+        "to",
+        "          ", fn,
+        ""
       )
     }
   }
 
-# If open == TRUE, open the file ------------------------------------------
+  # If open == TRUE, open the file ------------------------------------------
 
   if (open) {
     if (verbose) {
@@ -152,8 +150,7 @@ open_new_spreadsheet <- function(
     }
   }
 
-# Return invisibly the final file name ------------------------------------
+  # Return invisibly the final file name ------------------------------------
 
   invisible(fn)
 }
-

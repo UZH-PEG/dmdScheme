@@ -4,11 +4,9 @@
 #' @export
 #'
 as_xml.dmdSchemeData <- function(
-  x,
-  output = "metadata",
-  ...
-) {
-
+                                 x,
+                                 output = "metadata",
+                                 ...) {
   outputValues <- c("metadata", "complete")
   if (!(output %in% outputValues)) {
     stop("Wrong value for 'output'. 'output' has to be one of the following values:", paste(outputValues, collapse = " "))
@@ -49,7 +47,7 @@ as_xml.dmdSchemeData <- function(
       collapse = " #%# "
     )
     atrs <- atrs[-which(names(atrs) == "row.names")]
-    xml2::xml_attrs( xml ) <- atrs
+    xml2::xml_attrs(xml) <- atrs
   }
 
   # Return xml --------------------------------------------------------------

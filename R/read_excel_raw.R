@@ -19,13 +19,11 @@
 #' @export
 #'
 #' @examples
-#' read_excel_raw( scheme_path_xlsx() )
-#'
+#' read_excel_raw(scheme_path_xlsx())
 read_excel_raw <- function(
-  file,
-  verbose = FALSE,
-  checkVersion = TRUE
-) {
+                           file,
+                           verbose = FALSE,
+                           checkVersion = TRUE) {
 
   # Check if file exists ----------------------------------------------------
 
@@ -41,7 +39,7 @@ read_excel_raw <- function(
 
   # Extract Scheme and version ----------------------------------------------
 
-  v <- readxl::read_excel(path = file, sheet = "Experiment",  .name_repair = "unique") %>%
+  v <- readxl::read_excel(path = file, sheet = "Experiment", .name_repair = "unique") %>%
     names() %>%
     grep("DATA", ., value = TRUE) %>%
     strsplit(" ")
@@ -52,29 +50,33 @@ read_excel_raw <- function(
 
   if (checkVersion) {
     if (scheme_active()$version != schemeVersion) {
-      stop("Version conflict - can not proceed:\n",
-           file, " version : ", schemeVersion, "\n",
-           "installed dmdScheme version : ", scheme_active()$version)
+      stop(
+        "Version conflict - can not proceed:\n",
+        file, " version : ", schemeVersion, "\n",
+        "installed dmdScheme version : ", scheme_active()$version
+      )
     }
     if (scheme_active()$name != schemeName) {
-      stop("Scheme conflict different schemes used - can not proceed:\n",
-           file, " scheme name : ", schemeName, "\n",
-           "installed dmdScheme scheme : ", scheme_active()$name)
+      stop(
+        "Scheme conflict different schemes used - can not proceed:\n",
+        file, " scheme name : ", schemeName, "\n",
+        "installed dmdScheme scheme : ", scheme_active()$name
+      )
     }
   }
 
   # Define class ------------------------------------------------------------
 
   if (schemeName == "dmdScheme") {
-    newSetClass <-  "dmdSchemeSet_raw"
+    newSetClass <- "dmdSchemeSet_raw"
   } else {
-    newSetClass <- c( paste0(schemeName, "Set_raw"), "dmdSchemeSet_raw")
+    newSetClass <- c(paste0(schemeName, "Set_raw"), "dmdSchemeSet_raw")
   }
 
   if (schemeName == "dmdScheme") {
-    newDataClass <-  "dmdSchemeData_raw"
+    newDataClass <- "dmdSchemeData_raw"
   } else {
-    newDataClass <- c( paste0(schemeName, "Data_raw"), "dmdSchemeData_raw")
+    newDataClass <- c(paste0(schemeName, "Data_raw"), "dmdSchemeData_raw")
   }
 
   # Load sheets from excel file  --------------------

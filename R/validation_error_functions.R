@@ -3,8 +3,8 @@
 # error levels ------------------------------------------------------------
 
 valErr_errorLevels <- data.frame(
-  level = c( 0,    1,      2,         3,       NA ),
-  text  = c("OK", "note", "warning", "error", "NA"),
+  level = c(0, 1, 2, 3, NA),
+  text = c("OK", "note", "warning", "error", "NA"),
   colour = c(colorRampPalette(colors = c("green", "red"))(4), "black"),
   stringsAsFactors = FALSE
 )
@@ -28,7 +28,7 @@ valErr_info <- function(error) {
     )
     result <- do.call(rbind, result)
   } else {
-    level <- ifelse (
+    level <- ifelse(
       is.na(error),
       rep(5, length(error)),
       which(valErr_errorLevels$text == error)
@@ -42,9 +42,9 @@ valErr_info <- function(error) {
     if ((length(level) == 0) | is.na(level)) {
       stop(error, " not a valid error identifier. See the variable 'valErr_errorLevels' for allowed values.")
     }
-    result <- valErr_errorLevels[level,]
+    result <- valErr_errorLevels[level, ]
   }
-  return( result )
+  return(result)
 }
 
 
@@ -61,7 +61,7 @@ valErr_info <- function(error) {
 #' @export
 #'
 valErr_TextErrCol <- function(text, error, addError = TRUE) {
-  if (inherits(text, "dmdScheme_validation") ) {
+  if (inherits(text, "dmdScheme_validation")) {
     result <- valErr_TextErrCol(
       text = text$header,
       error = text$error,
@@ -81,12 +81,12 @@ valErr_TextErrCol <- function(text, error, addError = TRUE) {
     result <- paste0(
       '**<span style="color:',
       valErr_info(error)$colour,
-    '">',
+      '">',
       text,
-      '</span>**'
+      "</span>**"
     )
   }
-  return( result )
+  return(result)
 }
 
 
@@ -104,9 +104,9 @@ valErr_extract <- function(x, returnRootError = FALSE) {
   }
   err <- unlist(x)
   # select all whose name ends with "error", i.e. all fields which contain the error of the validations
-  err <- err[ grep("error$", names(err)) ]
+  err <- err[grep("error$", names(err))]
   nms <- names(err)
-  err <-  as.numeric(err)
+  err <- as.numeric(err)
   names(err) <- nms
   if (!returnRootError) {
     err <- err[-1]
@@ -122,7 +122,7 @@ valErr_extract <- function(x, returnRootError = FALSE) {
 #' @return named numeric vector of the error levels of the different validations done
 #' @export
 #'
-valErr_isOK <- function(x, returnRootError = FALSE){
+valErr_isOK <- function(x, returnRootError = FALSE) {
   if (!inherits(x, "dmdScheme_validation")) {
     stop(" x has to be an object of type 'dmdScheme_validation'.")
   }

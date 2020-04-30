@@ -21,5 +21,4 @@ If no method \code{as_xml()} exists for the object |class{x}, an error will be r
 }
 \examples{
 write_xml(dmdScheme(), file = tempfile())
-
 }

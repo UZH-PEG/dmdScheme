@@ -16,10 +16,9 @@
 #' @export
 #'
 cache <- function(
-  ...,
-  delete = FALSE,
-  createPermanent = FALSE
-) {
+                  ...,
+                  delete = FALSE,
+                  createPermanent = FALSE) {
   basedirConfig <- rappdirs::user_config_dir(appname = "dmdScheme", appauthor = "dmdScheme")
   if (createPermanent) {
     if (!dir.exists(basedirConfig)) {
@@ -45,7 +44,7 @@ cache <- function(
       if (dir.exists(basedirConfig)) {
         assign("basedirConfig", basedirConfig, envir = .dmdScheme_cache)
       } else {
-        basedirConfig <- tempfile(pattern = "dmdScheme_" )
+        basedirConfig <- tempfile(pattern = "dmdScheme_")
         dir.create(
           basedirConfig,
           recursive = TRUE,

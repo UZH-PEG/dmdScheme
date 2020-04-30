@@ -154,9 +154,7 @@ The name of the active scheme is saved in \code{dmdScheme_active}
 }
 \examples{
 scheme_active()
-
 scheme_default()
-
 scheme_download(
   name = "dmdScheme",
   version = "0.9.5"
@@ -175,7 +173,6 @@ scheme_installed("dmdScheme", "0.9.5")
 scheme_installed("dmdScheme", "0.7.3")
 }
 scheme_list_in_repo()
-
 # returns the repo used:
 scheme_repo()
 \dontrun{
@@ -184,5 +181,4 @@ scheme_uninstall(name = "schemename", version = "schemeversion")
 
 scheme_list()
 scheme_use(name = "dmdScheme", version = "0.9.5")
-
 }

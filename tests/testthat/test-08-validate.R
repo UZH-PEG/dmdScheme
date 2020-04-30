@@ -4,16 +4,16 @@ x <- dmdScheme_raw()
 
 # returns TRUE -------------------------------------------------------------
 
-  test_that(
-    "validata_raw() returns correct value when correct",
-    {
-      expect_known_value(
-        object = validate( x = x, errorIfStructFalse = TRUE),
-        file = "ref-08-validate.dmdScheme.CORRECT.rda",
-        update = TRUE
-      )
-    }
-  )
+test_that(
+  "validata_raw() returns correct value when correct",
+  {
+    expect_known_value(
+      object = validate(x = x, errorIfStructFalse = TRUE),
+      file = "ref-08-validate.dmdScheme.CORRECT.rda",
+      update = TRUE
+    )
+  }
+)
 
 paste0(scheme_default(), ".xlsx")
 
@@ -21,7 +21,7 @@ test_that(
   "validata_raw() returns correct value when correct",
   {
     expect_known_value(
-      object = validate( x = scheme_path_xlsx(), errorIfStructFalse = TRUE),
+      object = validate(x = scheme_path_xlsx(), errorIfStructFalse = TRUE),
       file = "ref-08-validate.character.CORRECT.rda",
       update = TRUE
     )
@@ -36,7 +36,7 @@ test_that(
   "validata_raw() fails",
   {
     expect_known_value(
-      object =  suppressMessages(validate( x = x, errorIfStructFalse = FALSE)),
+      object = suppressMessages(validate(x = x, errorIfStructFalse = FALSE)),
       file = "ref-08-validate.DIFFERENCES.rda"
     )
   }
@@ -48,7 +48,7 @@ test_that(
   "validata_raw() fails",
   {
     expect_error(
-      object = validate( x = x, errorIfStructFalse = TRUE),
+      object = validate(x = x, errorIfStructFalse = TRUE),
       regexp = ("Structure of the object to be evaluated is wrong. See the info above for details.")
     )
   }

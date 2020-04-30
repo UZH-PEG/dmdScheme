@@ -9,16 +9,13 @@
 #' @export
 #'
 as_dmdScheme_raw.xml_document <- function(
-  x,
-  useSchemeInXml = NULL,
-  ...
-) {
-
+                                          x,
+                                          useSchemeInXml = NULL,
+                                          ...) {
   dmd <- as_dmdScheme(x, useSchemeInXml = useSchemeInXml, keepData = TRUE)
-  result <- as_dmdScheme_raw( dmd, ...  )
+  result <- as_dmdScheme_raw(dmd, ...)
 
   # Return ------------------------------------------------------------------
 
   return(result)
 }
-

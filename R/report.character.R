@@ -7,27 +7,24 @@
 #' @md
 #' @examples
 #' ## Report of `dmdScheme_validation`
-#' report( scheme_path_xlsx() )
-#'
+#' report(scheme_path_xlsx())
 #' @describeIn report report of a `dmdScheme_validation` object.
 #'
 #'
 report.character <- function(
-  x,
-  file = tempfile(),
-  open = TRUE,
-  report = "html",
-  report_author = "Tester",
-  report_title = "Validation of data against dmdScheme",
-  ...
-) {
-
+                             x,
+                             file = tempfile(),
+                             open = TRUE,
+                             report = "html",
+                             report_author = "Tester",
+                             report_title = "Validation of data against dmdScheme",
+                             ...) {
   if (!file.exists(x)) {
     stop("If x is a character, it has to be the file name of a spreadsheet containing the scheme data!")
   }
 
 
-# Read and convert x ------------------------------------------------------
+  # Read and convert x ------------------------------------------------------
 
   result <- report(
     validate(x, ...),
@@ -38,7 +35,7 @@ report.character <- function(
     report_title = report_title
   )
 
-# Return xml --------------------------------------------------------------
+  # Return xml --------------------------------------------------------------
 
   return(result)
 }

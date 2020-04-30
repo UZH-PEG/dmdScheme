@@ -13,9 +13,7 @@
 #'
 #' @examples
 #' scheme_default()
-#'
 scheme_default <- function(name = NULL, version = NULL) {
-
   if (!is.null(name) & !is.null(version)) {
     assign(
       x = "default_schemeName",
@@ -30,11 +28,10 @@ scheme_default <- function(name = NULL, version = NULL) {
   }
 
   result <- data.frame(
-    name =  get("default_schemeName", envir = .dmdScheme_cache),
+    name = get("default_schemeName", envir = .dmdScheme_cache),
     version = get("default_schemeVersion", envir = .dmdScheme_cache),
     stringsAsFactors = FALSE
   )
 
   return(result)
-
 }

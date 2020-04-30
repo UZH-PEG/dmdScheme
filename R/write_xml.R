@@ -12,15 +12,12 @@
 #'
 #' @examples
 #' write_xml(dmdScheme(), file = tempfile())
-#'
 write_xml <- function(
-  x,
-  file,
-  output = "metadata",
-  ...
-) {
-
-  xml_list <- as_xml_list( x = x, output = output, ... )
+                      x,
+                      file,
+                      output = "metadata",
+                      ...) {
+  xml_list <- as_xml_list(x = x, output = output, ...)
 
   if (length(xml_list) == 1) {
     xml2::write_xml(

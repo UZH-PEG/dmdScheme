@@ -17,10 +17,8 @@
 #' }
 #'
 scheme_uninstall <- function(
-  name = NULL,
-  version = NULL
-){
-
+                             name = NULL,
+                             version = NULL) {
   if (!scheme_installed(name, version)) {
     stop("Scheme with the name '", name, "' and version `", version, "` is not instaled!")
   }
@@ -29,15 +27,15 @@ scheme_uninstall <- function(
     stop("Version '", version, "' of scheme '", name, "' is not instaled!")
   }
 
-  if ( all(c(name, version) == scheme_default()) ) {
+  if (all(c(name, version) == scheme_default())) {
     stop("You can not uninstall the default scheme definition which comes with the package!")
   }
 
-  if ( all(c(name, version) == scheme_active()) ) {
+  if (all(c(name, version) == scheme_active())) {
     stop("You can not uninstall the currently active scheme definition!")
   }
 
-  schemeName <- paste0( name, "_", version)
+  schemeName <- paste0(name, "_", version)
   tmpdir <- tempfile()
   dir.create(tmpdir, recursive = TRUE)
   file.copy(
@@ -51,5 +49,5 @@ scheme_uninstall <- function(
     recursive = TRUE
   )
   message("Scheme ", schemeName, " deleted and moved to")
-  return( tmpdir )
+  return(tmpdir)
 }

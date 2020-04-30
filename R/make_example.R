@@ -34,10 +34,9 @@
 #' make_example("basic")
 #' }
 make_example <- function(
-  name
-) {
+                         name) {
   example_dir <- cache("installedSchemes", paste0(scheme_active()$name, "_", scheme_active()$version), "examples")
-  examples <- list.dirs( example_dir, recursive = FALSE, full.names = FALSE)
+  examples <- list.dirs(example_dir, recursive = FALSE, full.names = FALSE)
 
 
   if (missing(name)) {
@@ -55,7 +54,7 @@ make_example <- function(
 
     # Copy Example into working directory -------------------------------------
 
-    if (file.exists( to_dir )) {
+    if (file.exists(to_dir)) {
       stop("directory '", name, "' exists. I will not overwrite it. I haven't done anything. Example creation aborted.")
     }
     file.copy(
@@ -66,7 +65,7 @@ make_example <- function(
 
     # Extract R code from all .Rmd files --------------------------------------
 
-    rmd <- list.files( file.path(to_dir, "code"), pattern = "Rmd")
+    rmd <- list.files(file.path(to_dir, "code"), pattern = "Rmd")
     for (f in rmd) {
       suppressMessages(
         knitr::purl(

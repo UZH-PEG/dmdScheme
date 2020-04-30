@@ -37,5 +37,4 @@ Generic function to convert the data stored in the object \code{x} into a new ob
 }
 \examples{
 as_dmdScheme_raw(dmdScheme(), keepData = TRUE)
-
 }

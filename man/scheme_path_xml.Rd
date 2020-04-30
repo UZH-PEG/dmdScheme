@@ -14,5 +14,4 @@ Functions to manage schemes
 }
 \examples{
 scheme_path_xlsx()
-
 }

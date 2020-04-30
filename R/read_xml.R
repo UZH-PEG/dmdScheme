@@ -18,14 +18,12 @@
 #'
 #' @examples
 #' # write_xml(dmdScheme_raw(), file = tempfile())
-#'
 read_xml <- function(
-  file,
-  keepData = TRUE,
-  useSchemeInXml = NULL,
-  verbose = FALSE
-) {
-  xml <- xml2::read_xml( file )
+                     file,
+                     keepData = TRUE,
+                     useSchemeInXml = NULL,
+                     verbose = FALSE) {
+  xml <- xml2::read_xml(file)
 
   return(
     as_dmdScheme(

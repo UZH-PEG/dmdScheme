@@ -10,7 +10,7 @@
 #' @return invisibly x
 #' @export
 #'
-print.dmdSchemeData <- function(x, ..., printAttr = TRUE, printExtAttr = FALSE, printData = TRUE, .prefix = ""){
+print.dmdSchemeData <- function(x, ..., printAttr = TRUE, printExtAttr = FALSE, printData = TRUE, .prefix = "") {
   ##
   cat_ln(.prefix, " ", attr(x, "propertyName"), " - dmdSchemeData")
   if (printAttr) {
@@ -35,9 +35,12 @@ print.dmdSchemeData <- function(x, ..., printAttr = TRUE, printExtAttr = FALSE, 
     ### adapted from print.data.frame
     n <- length(row.names(x))
     if (length(x) == 0L) {
-      cat(sprintf(ngettext(n, "data with 0 columns and %d row",
-                           "data with 0 columns and %d rows"), n), "\n",
-          sep = "")
+      cat(sprintf(ngettext(
+        n, "data with 0 columns and %d row",
+        "data with 0 columns and %d rows"
+      ), n), "\n",
+      sep = ""
+      )
     }
     else if (n == 0L) {
       cat_ln("D   ", .prefix, "###### No Data in dmdSchemeData ######")

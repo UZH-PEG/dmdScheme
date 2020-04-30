@@ -5,7 +5,6 @@
 #' @export
 #' @examples
 #' dmdScheme_example()
-#'
-dmdScheme_example <- function(){
-  return( get("dmdScheme_example", envir = .dmdScheme_cache) )
+dmdScheme_example <- function() {
+  return(get("dmdScheme_example", envir = .dmdScheme_cache))
 }

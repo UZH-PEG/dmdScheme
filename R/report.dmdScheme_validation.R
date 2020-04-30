@@ -9,32 +9,31 @@
 #' @md
 #' @examples
 #' ## Report of `dmdScheme_validation`
-#' report( validate(dmdScheme_raw()) )
+#' report(validate(dmdScheme_raw()))
 #' \dontrun{
 #' report(
-#'    x = dmdScheme_raw(),
-#'    report = "html",
-#'    report_author = "The Author I am",
-#'    report_title = "A Nice Report"
+#'   x = dmdScheme_raw(),
+#'   report = "html",
+#'   report_author = "The Author I am",
+#'   report_title = "A Nice Report"
 #' )
 #' }
 #' @describeIn report report of a `dmdScheme_validation` object.
 report.dmdScheme_validation <- function(
-  x,
-  file = tempfile(),
-  open = TRUE,
-  report = "html",
-  report_author = "Tester",
-  report_title = "Validation of data against dmdScheme",
-  ...
-) {
+                                        x,
+                                        file = tempfile(),
+                                        open = TRUE,
+                                        report = "html",
+                                        report_author = "Tester",
+                                        report_title = "Validation of data against dmdScheme",
+                                        ...) {
   if (length(report) != 1) {
     stop("'report' has to be exactly of length 1!")
   }
 
   allowedFormats <- c("html", "pdf", "word")
   if (!(report %in% allowedFormats)) {
-    stop("'report' has to be one of the following values: (", paste(allowedFormats, collapse = ', '), ")!")
+    stop("'report' has to be one of the following values: (", paste(allowedFormats, collapse = ", "), ")!")
   }
 
   if (length(report) > 1) {
@@ -86,5 +85,3 @@ report.dmdScheme_validation <- function(
 
   return(file)
 }
-
-

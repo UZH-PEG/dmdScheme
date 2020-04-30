@@ -2,9 +2,8 @@
 #' @export
 #'
 as_dmdScheme_raw.dmdSchemeSet <- function(
-  x,
-  ...
-) {
+                                          x,
+                                          ...) {
 
   # Iterate through dmdScheme_raw and create dmdSchemeData objects -----------
 
@@ -46,4 +45,3 @@ as_dmdScheme_raw.dmdSchemeSet <- function(
 
   return(result)
 }
-

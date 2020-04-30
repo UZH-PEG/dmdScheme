@@ -10,7 +10,7 @@
 #' @return invisibly x
 #' @export
 #'
-print.dmdSchemeSet <- function(x, ..., printAttr = TRUE, printExtAttr = FALSE, printData = TRUE, .prefix = ""){
+print.dmdSchemeSet <- function(x, ..., printAttr = TRUE, printExtAttr = FALSE, printData = TRUE, .prefix = "") {
   ##
   cat_ln(.prefix, " ", attr(x, "propertyName"), " - dmdSchemeSet")
   lapply(

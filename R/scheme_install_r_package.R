@@ -19,10 +19,9 @@
 #' }
 #'
 scheme_install_r_package <- function(
-  name,
-  version,
-  reinstall = FALSE
-){
+                                     name,
+                                     version,
+                                     reinstall = FALSE) {
   script <- file.path(
     cache("installedSchemes", paste0(name, "_", version), createPermanent = FALSE),
     "install_R_package.R"
@@ -41,9 +40,8 @@ scheme_install_r_package <- function(
     } else {
       source(script, echo = TRUE)
     }
-
   }
 
 
-  invisible( NULL )
+  invisible(NULL)
 }

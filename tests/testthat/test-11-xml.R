@@ -18,7 +18,7 @@ test_that(
   "read_xml() fails when file does not have right extension",
   {
     expect_error(
-      object = read_xml( scheme_path_xlsx() ),
+      object = read_xml(scheme_path_xlsx()),
       regexp = "Start tag expected"
     )
   }
@@ -50,4 +50,3 @@ test_that(
     )
   }
 )
-

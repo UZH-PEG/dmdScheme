@@ -18,7 +18,7 @@ test_that(
   "read_excel() fails when file does not have right extension",
   {
     expect_error(
-      object = read_excel( scheme_path_xml() ),
+      object = read_excel(scheme_path_xml()),
       regexp = "If x is a file name, it has to have the extension 'xls' or 'xlsx'"
     )
   }
@@ -99,4 +99,3 @@ test_that(
     )
   }
 )
-

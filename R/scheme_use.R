@@ -18,24 +18,21 @@
 #' @examples
 #' scheme_list()
 #' scheme_use(name = "dmdScheme", version = "0.9.5")
-#'
 scheme_use <- function(
-  name = NULL,
-  version = NULL
-) {
-
+                       name = NULL,
+                       version = NULL) {
   if (!scheme_installed(name, version)) {
     stop("`", name, "_", version, "`is not instaled!")
   }
 
 
-  schemeName <- paste0( name, "_", version)
-  schemeDefinition <- file.path(cache("installedSchemes", schemeName), paste0( schemeName, ".xml" ))
+  schemeName <- paste0(name, "_", version)
+  schemeDefinition <- file.path(cache("installedSchemes", schemeName), paste0(schemeName, ".xml"))
 
-  scheme <- read_xml(  schemeDefinition, useSchemeInXml = TRUE, keepData = FALSE )
+  scheme <- read_xml(schemeDefinition, useSchemeInXml = TRUE, keepData = FALSE)
   assign("dmdScheme", scheme, envir = .dmdScheme_cache)
 
-  scheme_example <- read_xml(  schemeDefinition, useSchemeInXml = TRUE, keepData = TRUE )
+  scheme_example <- read_xml(schemeDefinition, useSchemeInXml = TRUE, keepData = TRUE)
   assign("dmdScheme_example", scheme_example, envir = .dmdScheme_cache)
 
   scheme_raw <- as_dmdScheme_raw(scheme_example)
