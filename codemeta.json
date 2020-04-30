@@ -309,7 +309,7 @@
   ],
   "releaseNotes": "https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/blob/master/NEWS.md",
   "readme": "https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/blob/master/Readme.md",
-  "fileSize": "512.146KB",
+  "fileSize": "788.639KB",
   "contIntegration": [
     "https://travis-ci.org/Exp-Micro-Ecol-Hub/dmdScheme",
     "https://codecov.io/github/Exp-Micro-Ecol-Hub/dmdScheme?branch=master",
