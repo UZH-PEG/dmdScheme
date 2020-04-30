@@ -42,7 +42,7 @@ SCHEMEMAKE = library(dmdScheme); \
 
 #############
 
-all: check clean_web web clean_check
+all: check web
 
 ####
 
@@ -52,7 +52,6 @@ clean: clean_web
 
 scheme_package:
 	Rscript -e "$(SCHEMEMAKE)"
-
 
 ########### Website ###########
 
@@ -68,6 +67,11 @@ clean_readme:
 
 ####
 
+web: readme
+		@Rscript -e "pkgdown::build_site()"
+
+####
+
 vignettes: $(VIGHTML)
 
 $(VIGHTML): $(VIGRMD)
@@ -76,32 +80,14 @@ $(VIGHTML): $(VIGRMD)
 clean_vignettes:
 	@Rscript -e "devtools::clean_vignettes()"
 
-#####
-
-html:	$(HTML)
-# %.html: %.Rmd
-$(OUTDIR)/%.html: $(SRCDIR)/%.Rmd
-	@Rscript -e "rmarkdown::render('$<', output_format = 'prettydoc::html_pretty', output_dir = './$(OUTDIR)/')"
-
-clean_html:
-	rm -f $(HTML)
-
-####
-
-web: html vignettes readme
-	cp -f $(VIGHTML) $(OUTDIR)/
-	mkdir -p $(DATADIR)
-#	cp -f $(EXAMPLEXML) $(DATADIR)/
-
-clean_web: clean_html clean_vignettes clean_readme
-	rm -f VIGHTMLOUT
-	rm -rf $(DATADIR)
-
 ####
 
 ########### Package  ###########
 
 ####
+
+codemeta:
+	Rscript -e "codemetar::write_codemeta()"
 
 docs:
 	Rscript -e "devtools::document(roclets = c('rd', 'collate', 'namespace', 'vignette'))"
@@ -166,4 +152,4 @@ list: list_variables list_targets
 
 #############
 
-.PHONY: list files update clean clean_vignettes clean_web clean_html publish docs scheme_package
+.PHONY: list files update clean clean_vignettes web publish docs scheme_package codemeta

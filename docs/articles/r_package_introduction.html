@@ -178,7 +178,7 @@
 </h3>
 <p>Install a new scheme definition. In the normal usecase, this function uses <code>scheme_download_url()</code> to download the scheme defintion from the default <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository">github repository</a> and installs it. The usage is</p>
 <div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="fu"><a href="../reference/scheme.html">scheme_install</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="st">"emeScheme"</span>, <span class="kw">version</span> <span class="kw">=</span> <span class="st">"0.9.5"</span>)
-<span class="co">#&gt; Scheme definition `/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpUM2ONF/file50d075f41f0d/emeScheme_0.9.5.tar.gz, installed with</span>
+<span class="co">#&gt; Scheme definition `/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpXFEJYP/file556d24ef62a9/emeScheme_0.9.5.tar.gz, installed with</span>
 <span class="co">#&gt; name:    emeScheme</span>
 <span class="co">#&gt; version: 0.9.5</span></pre></body></html></div>
 </div>
@@ -221,7 +221,7 @@
 <p>Uninstall an installed scheme. The scheme definition, is deleted from the scheme library, and moved to a temporary flder which wil be deleted at the end of the R session.</p>
 <div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu"><a href="../reference/scheme.html">scheme_uninstall</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="st">"emeScheme"</span>, <span class="kw">version</span> <span class="kw">=</span> <span class="st">"0.9.5"</span>)
 <span class="co">#&gt; Scheme emeScheme_0.9.5 deleted and moved to</span>
-<span class="co">#&gt; [1] "/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpUM2ONF/file50d0c7e90a8"</span></pre></body></html></div>
+<span class="co">#&gt; [1] "/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpXFEJYP/file556d3b1d6dd3"</span></pre></body></html></div>
 </div>
 <div id="scheme_installed-returntrue-if-the-scheme-is-installed" class="section level3">
 <h3 class="hasAnchor">
@@ -235,7 +235,7 @@
 </h3>
 <p>Returns the path to the <code>.xlsx</code> representation of the currently active scheme.</p>
 <div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="fu"><a href="../reference/scheme_path_xlsx.html">scheme_path_xlsx</a></span>()
-<span class="co">#&gt; [1] "/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpUM2ONF/dmdScheme_50d03c4496d/installedSchemes/dmdScheme_0.9.5/dmdScheme_0.9.5.xlsx"</span></pre></body></html></div>
+<span class="co">#&gt; [1] "/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpXFEJYP/dmdScheme_556d4df427cb/installedSchemes/dmdScheme_0.9.5/dmdScheme_0.9.5.xlsx"</span></pre></body></html></div>
 </div>
 <div id="scheme_path_xml" class="section level3">
 <h3 class="hasAnchor">
@@ -243,7 +243,7 @@
 </h3>
 <p>Returns the path to the <code>.xml</code> representation of the currently active scheme.</p>
 <div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="fu"><a href="../reference/scheme_path_xml.html">scheme_path_xml</a></span>()
-<span class="co">#&gt; [1] "/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpUM2ONF/dmdScheme_50d03c4496d/installedSchemes/dmdScheme_0.9.5/dmdScheme_0.9.5.xml"</span></pre></body></html></div>
+<span class="co">#&gt; [1] "/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpXFEJYP/dmdScheme_556d4df427cb/installedSchemes/dmdScheme_0.9.5/dmdScheme_0.9.5.xml"</span></pre></body></html></div>
 </div>
 <div id="scheme_make" class="section level3">
 <h3 class="hasAnchor">
@@ -1473,7 +1473,7 @@
 <div class="sourceCode" id="cb25"><html><body><pre class="r"><span class="no">xmlFile</span> <span class="kw">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span>(<span class="kw">fileext</span> <span class="kw">=</span> <span class="st">".xml"</span>)
 
 <span class="fu"><a href="../reference/write_xml.html">write_xml</a></span>( <span class="kw">x</span> <span class="kw">=</span> <span class="no">x</span>, <span class="kw">file</span> <span class="kw">=</span> <span class="no">xmlFile</span> )
-<span class="co">#&gt; [1] "/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpUM2ONF/file50d07d547e68.xml"</span></pre></body></html></div>
+<span class="co">#&gt; [1] "/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpXFEJYP/file556d208f8ab.xml"</span></pre></body></html></div>
 </div>
 <div id="re-import-from-xml-into-r" class="section level2">
 <h2 class="hasAnchor">
