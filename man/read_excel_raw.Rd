@@ -26,3 +26,11 @@ the scheme version and scheme name is done (when \code{checkVersion = TRUE}).
 \examples{
 read_excel_raw(scheme_path_xlsx())
 }
+\seealso{
+Other inoutoutput: 
+\code{\link{read_excel}()},
+\code{\link{read_xml}()},
+\code{\link{write_excel}()},
+\code{\link{write_xml}()}
+}
+\concept{inoutoutput}

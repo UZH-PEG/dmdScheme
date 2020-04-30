@@ -5,6 +5,7 @@
 #' @return \code{TRUE} if the theme is installed, \code{FALSE} if not
 #'
 #' @rdname scheme
+#' @family scheme
 #'
 #' @export
 #'

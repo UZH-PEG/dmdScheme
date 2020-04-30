@@ -32,3 +32,9 @@ invisibly x
 \description{
 Print method for \code{dmdSchemeData} object
 }
+\seealso{
+Other print: 
+\code{\link{print.dmdSchemeSet}()},
+\code{\link{print.dmdScheme_validation}()}
+}
+\concept{print}

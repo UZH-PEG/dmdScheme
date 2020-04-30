@@ -51,3 +51,29 @@ validate(
 x <- read_excel_raw(scheme_path_xlsx())
 validate(x = x)
 }
+\seealso{
+Other validation: 
+\code{\link{new_dmdScheme_validation}()},
+\code{\link{report}()},
+\code{\link{valErr_TextErrCol}()},
+\code{\link{valErr_extract}()},
+\code{\link{valErr_info}()},
+\code{\link{valErr_isOK}()}
+
+Other validation: 
+\code{\link{new_dmdScheme_validation}()},
+\code{\link{report}()},
+\code{\link{valErr_TextErrCol}()},
+\code{\link{valErr_extract}()},
+\code{\link{valErr_info}()},
+\code{\link{valErr_isOK}()}
+
+Other validation: 
+\code{\link{new_dmdScheme_validation}()},
+\code{\link{report}()},
+\code{\link{valErr_TextErrCol}()},
+\code{\link{valErr_extract}()},
+\code{\link{valErr_info}()},
+\code{\link{valErr_isOK}()}
+}
+\concept{validation}

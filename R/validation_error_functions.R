@@ -18,6 +18,8 @@ valErr_errorLevels <- data.frame(
 #'
 #' @return the row from valErr_errorLevels corresponding to the argument \code{error}
 #'
+#' @family validation
+#'
 #' @export
 #'
 valErr_info <- function(error) {
@@ -55,6 +57,8 @@ valErr_info <- function(error) {
 #'   function will be called with \code{text = text$header, error = text$error}
 #' @param error either level, text or colour of error (see \code{valErr_errorLevels})
 #' @param addError if the error text should be added in the front of the \code{text}.
+#'
+#' @family validation
 #'
 #' @return the coloured text or error text
 #'
@@ -95,6 +99,8 @@ valErr_TextErrCol <- function(text, error, addError = TRUE) {
 #' @param x object of class \code{dmdScheme_validation}
 #' @param returnRootError if \code{TRUE}, return all errors \bold{including} the error in the object x.
 #'
+#' @family validation
+#'
 #' @return named numeric vector of the error levels of the different validations done
 #' @export
 #'
@@ -118,6 +124,8 @@ valErr_extract <- function(x, returnRootError = FALSE) {
 #'
 #' @param x \code{data.frame} with the fields \code{Module}, \code{error} and \code{isOK}
 #' @param returnRootError if \code{TRUE}, return all errors \bold{including} the error in the object x.
+#'
+#' @family validation
 #'
 #' @return named numeric vector of the error levels of the different validations done
 #' @export

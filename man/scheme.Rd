@@ -182,3 +182,49 @@ scheme_uninstall(name = "schemename", version = "schemeversion")
 scheme_list()
 scheme_use(name = "dmdScheme", version = "0.9.5")
 }
+\seealso{
+Other scheme: 
+\code{\link{scheme_path_xlsx}()},
+\code{\link{scheme_path_xml}()}
+
+Other scheme: 
+\code{\link{scheme_path_xlsx}()},
+\code{\link{scheme_path_xml}()}
+
+Other scheme: 
+\code{\link{scheme_path_xlsx}()},
+\code{\link{scheme_path_xml}()}
+
+Other scheme: 
+\code{\link{scheme_path_xlsx}()},
+\code{\link{scheme_path_xml}()}
+
+Other scheme: 
+\code{\link{scheme_path_xlsx}()},
+\code{\link{scheme_path_xml}()}
+
+Other scheme: 
+\code{\link{scheme_path_xlsx}()},
+\code{\link{scheme_path_xml}()}
+
+Other scheme: 
+\code{\link{scheme_path_xlsx}()},
+\code{\link{scheme_path_xml}()}
+
+Other scheme: 
+\code{\link{scheme_path_xlsx}()},
+\code{\link{scheme_path_xml}()}
+
+Other scheme: 
+\code{\link{scheme_path_xlsx}()},
+\code{\link{scheme_path_xml}()}
+
+Other scheme: 
+\code{\link{scheme_path_xlsx}()},
+\code{\link{scheme_path_xml}()}
+
+Other scheme: 
+\code{\link{scheme_path_xlsx}()},
+\code{\link{scheme_path_xml}()}
+}
+\concept{scheme}

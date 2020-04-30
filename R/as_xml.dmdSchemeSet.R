@@ -1,6 +1,7 @@
 #' @importFrom xml2 xml_new_root xml_attrs xml_attr xml_add_child
 #'
 #' @rdname as_xml
+#' @family conversion
 #' @export
 #'
 as_xml.dmdSchemeSet <- function(

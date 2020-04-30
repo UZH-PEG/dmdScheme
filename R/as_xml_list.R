@@ -11,6 +11,7 @@
 #' @return a \code{list()}  where each element is  \code{xml_document} object
 #'
 #' @rdname as_xml_list
+#' @family conversion
 #' @export
 #'
 #' @examples

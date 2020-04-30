@@ -15,3 +15,13 @@ the row from valErr_errorLevels corresponding to the argument \code{error}
 \description{
 Return info about error representation
 }
+\seealso{
+Other validation: 
+\code{\link{new_dmdScheme_validation}()},
+\code{\link{report}()},
+\code{\link{valErr_TextErrCol}()},
+\code{\link{valErr_extract}()},
+\code{\link{valErr_isOK}()},
+\code{\link{validate}()}
+}
+\concept{validation}

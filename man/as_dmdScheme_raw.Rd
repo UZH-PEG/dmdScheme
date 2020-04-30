@@ -38,3 +38,29 @@ Generic function to convert the data stored in the object \code{x} into a new ob
 \examples{
 as_dmdScheme_raw(dmdScheme(), keepData = TRUE)
 }
+\seealso{
+Other conversion: 
+\code{\link{as_dmdScheme}()},
+\code{\link{as_eml}()},
+\code{\link{as_xml_list}()},
+\code{\link{as_xml}()}
+
+Other conversion: 
+\code{\link{as_dmdScheme}()},
+\code{\link{as_eml}()},
+\code{\link{as_xml_list}()},
+\code{\link{as_xml}()}
+
+Other conversion: 
+\code{\link{as_dmdScheme}()},
+\code{\link{as_eml}()},
+\code{\link{as_xml_list}()},
+\code{\link{as_xml}()}
+
+Other conversion: 
+\code{\link{as_dmdScheme}()},
+\code{\link{as_eml}()},
+\code{\link{as_xml_list}()},
+\code{\link{as_xml}()}
+}
+\concept{conversion}

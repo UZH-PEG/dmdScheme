@@ -73,3 +73,29 @@ xml <- as_xml(dmdScheme_example())
 x <- as_dmdScheme(xml)
 all.equal(dmdScheme_example(), x)
 }
+\seealso{
+Other conversion: 
+\code{\link{as_dmdScheme_raw}()},
+\code{\link{as_eml}()},
+\code{\link{as_xml_list}()},
+\code{\link{as_xml}()}
+
+Other conversion: 
+\code{\link{as_dmdScheme_raw}()},
+\code{\link{as_eml}()},
+\code{\link{as_xml_list}()},
+\code{\link{as_xml}()}
+
+Other conversion: 
+\code{\link{as_dmdScheme_raw}()},
+\code{\link{as_eml}()},
+\code{\link{as_xml_list}()},
+\code{\link{as_xml}()}
+
+Other conversion: 
+\code{\link{as_dmdScheme_raw}()},
+\code{\link{as_eml}()},
+\code{\link{as_xml_list}()},
+\code{\link{as_xml}()}
+}
+\concept{conversion}

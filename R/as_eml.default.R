@@ -1,6 +1,6 @@
 #'
 #' @rdname as_eml
-#'
+#' @family conversion
 #' @export
 #'
 #'

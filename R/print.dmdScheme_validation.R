@@ -14,6 +14,8 @@
 #' @param error numeric v ector, containing error levels to print. Default is all error levels.
 #' @param ... additional arguments for the function \code{knitr::kable()} function to format the table.
 #'
+#' @family print
+#'
 #' @return invisibly returns x
 #' @export
 #'

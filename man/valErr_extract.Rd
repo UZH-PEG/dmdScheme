@@ -17,3 +17,13 @@ named numeric vector of the error levels of the different validations done
 \description{
 Extract all fields named error of class \code{dmdScheme_validation}
 }
+\seealso{
+Other validation: 
+\code{\link{new_dmdScheme_validation}()},
+\code{\link{report}()},
+\code{\link{valErr_TextErrCol}()},
+\code{\link{valErr_info}()},
+\code{\link{valErr_isOK}()},
+\code{\link{validate}()}
+}
+\concept{validation}

@@ -8,6 +8,7 @@
 #'
 #' @describeIn validate validate a `dmdSchemeSet_raw` object
 #'
+#' @family validation
 #' @md
 #' @examples
 #' ## validate a `dmdScheme_raw object`

@@ -25,6 +25,8 @@
 #'   Class \code{dmdScheme_raw}, otherwise an object of class
 #'   \code{dmdSchemeSet}
 #'
+#' @family inoutoutput
+#'
 #' @importFrom magrittr %>% equals not
 #' @importFrom tools file_path_sans_ext file_ext
 #'

@@ -22,3 +22,11 @@ If no method \code{as_xml()} exists for the object |class{x}, an error will be r
 \examples{
 write_xml(dmdScheme(), file = tempfile())
 }
+\seealso{
+Other inoutoutput: 
+\code{\link{read_excel_raw}()},
+\code{\link{read_excel}()},
+\code{\link{read_xml}()},
+\code{\link{write_excel}()}
+}
+\concept{inoutoutput}

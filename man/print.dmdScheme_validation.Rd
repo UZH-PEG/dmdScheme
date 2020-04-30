@@ -60,3 +60,9 @@ print(x, type = "details")
 #    print(result, level = 2, listLevel = 20, type = "summary")
 # ```
 }
+\seealso{
+Other print: 
+\code{\link{print.dmdSchemeData}()},
+\code{\link{print.dmdSchemeSet}()}
+}
+\concept{print}

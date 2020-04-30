@@ -10,6 +10,7 @@
 #' @importFrom rlang :=
 #'
 #' @rdname as_dmdScheme
+#' @family conversion
 #' @export
 #'
 #' @examples

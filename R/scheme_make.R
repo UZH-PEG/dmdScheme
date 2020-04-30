@@ -14,6 +14,8 @@
 #' @param overwrite if \code{TRUE}, the scheme definition in \code{path} will be
 #'   overwritten.
 #'
+#'  @family scheme
+#'
 #' @importFrom utils write.table
 #' @importFrom tools md5sum
 #'

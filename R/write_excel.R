@@ -7,6 +7,8 @@
 #' @param file Path to file or connection to write to.
 #' @param ... additional parameter for the conversion function \code{(openxlsx::write.xlsx())}
 #'
+#' @family inoutoutput
+#'
 #' @return invisibly returns the path to the file saved to
 #'
 #' @importFrom writexl write_xlsx

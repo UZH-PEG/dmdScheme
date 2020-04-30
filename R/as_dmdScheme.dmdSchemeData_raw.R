@@ -2,6 +2,7 @@
 #' @importFrom rlang .data
 #'
 #' @rdname as_dmdScheme
+#' @family conversion
 #' @export
 #'
 as_dmdScheme.dmdSchemeData_raw <- function(

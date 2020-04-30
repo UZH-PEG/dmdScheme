@@ -11,6 +11,7 @@
 #'   defined in the scheme definition package!
 #'
 #' @rdname as_eml
+#' @family conversion
 #'
 #' @export
 #'

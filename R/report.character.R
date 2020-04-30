@@ -5,6 +5,7 @@
 #'
 #' @export
 #' @md
+#' @family validation
 #' @examples
 #' ## Report of `dmdScheme_validation`
 #' report(scheme_path_xlsx())

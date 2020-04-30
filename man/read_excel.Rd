@@ -55,3 +55,11 @@ read_excel(
   raw = TRUE
 )
 }
+\seealso{
+Other inoutoutput: 
+\code{\link{read_excel_raw}()},
+\code{\link{read_xml}()},
+\code{\link{write_excel}()},
+\code{\link{write_xml}()}
+}
+\concept{inoutoutput}

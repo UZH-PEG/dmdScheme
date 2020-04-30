@@ -1,6 +1,7 @@
 #' Functions to manage schemes
 #'
 #' @return fully qualified path to the \code{xlsx} file containing the scheme definitipn and the example, \code{NULL} if it does not exist.
+#' @family scheme
 #' @export
 #'
 #' @examples

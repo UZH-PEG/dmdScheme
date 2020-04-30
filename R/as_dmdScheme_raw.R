@@ -8,6 +8,7 @@
 #' @md
 #'
 #' @rdname as_dmdScheme_raw
+#' @family conversion
 #' @export
 #'
 #' @examples

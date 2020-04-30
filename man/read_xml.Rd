@@ -26,3 +26,11 @@ Read the XML file \code{file} and convert it to a \code{dmdScheme} object using 
 \examples{
 # write_xml(dmdScheme_raw(), file = tempfile())
 }
+\seealso{
+Other inoutoutput: 
+\code{\link{read_excel_raw}()},
+\code{\link{read_excel}()},
+\code{\link{write_excel}()},
+\code{\link{write_xml}()}
+}
+\concept{inoutoutput}

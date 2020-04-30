@@ -1,5 +1,7 @@
 #' Create new \code{dmdScheme_validation} object
 #'
+#' @family validation
+#'
 #' @return new \code{dmdScheme_validation} object
 #' @export
 #'

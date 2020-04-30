@@ -10,6 +10,7 @@
 #'   definition
 #'
 #' @rdname scheme
+#' @family scheme
 #'
 #' @importFrom tools file_ext
 #'

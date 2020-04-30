@@ -9,6 +9,7 @@
 #'
 #' @describeIn validate validate a `character` object referring to a spreadsheet file which contains the metadata.
 #' @md
+#' @family validation
 #'
 #' @examples
 #' ## validata an Excel file containing the metadata

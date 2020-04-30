@@ -21,3 +21,13 @@ the coloured text or error text
 \description{
 Colour the \code{text} by using the error colour
 }
+\seealso{
+Other validation: 
+\code{\link{new_dmdScheme_validation}()},
+\code{\link{report}()},
+\code{\link{valErr_extract}()},
+\code{\link{valErr_info}()},
+\code{\link{valErr_isOK}()},
+\code{\link{validate}()}
+}
+\concept{validation}

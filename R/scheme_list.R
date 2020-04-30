@@ -8,6 +8,7 @@
 #' @return \code{data.frame} with two columns containing name and version of the intalled schemes
 #'
 #' @rdname scheme
+#' @family scheme
 #'
 #' @importFrom tools file_path_sans_ext
 #' @importFrom magrittr %>%

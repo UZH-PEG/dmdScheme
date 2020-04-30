@@ -8,6 +8,7 @@
 #'   is moved to.
 #'
 #' @rdname scheme
+#' @family scheme
 #'
 #' @export
 #'

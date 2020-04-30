@@ -15,3 +15,9 @@ Functions to manage schemes
 \examples{
 scheme_path_xlsx()
 }
+\seealso{
+Other scheme: 
+\code{\link{scheme_active}()},
+\code{\link{scheme_path_xlsx}()}
+}
+\concept{scheme}

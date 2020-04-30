@@ -9,6 +9,7 @@
 #' @return invisibly \code{NULL}
 #'
 #' @rdname scheme
+#' @family scheme
 #'
 #' @importFrom utils installed.packages remove.packages
 #' @export

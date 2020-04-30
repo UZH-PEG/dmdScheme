@@ -7,6 +7,8 @@
 #' @param printData default \code{TRUE} - data is printed
 #' @param .prefix mainly for internal use - prefix for all printed lines
 #'
+#' @family print
+#'
 #' @return invisibly x
 #' @export
 #'

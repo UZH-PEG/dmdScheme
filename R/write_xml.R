@@ -7,6 +7,8 @@
 #' @param output specifies the content and format of the exported xml. see \link{as_xml} for details
 #' @param ... additional parameter for the conversion function \code{as_xml}
 #'
+#' @family inoutoutput
+#'
 #' @importFrom xml2 write_xml
 #' @export
 #'

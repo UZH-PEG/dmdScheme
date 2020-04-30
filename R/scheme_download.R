@@ -14,6 +14,7 @@
 #' @return invisibly the value of \code{destfile}
 #'
 #' @rdname scheme
+#' @family scheme
 #'
 #' @importFrom utils download.file
 #' @export

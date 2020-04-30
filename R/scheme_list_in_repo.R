@@ -5,6 +5,7 @@
 #' @return Returns the info about the scheme definitions in this repo as a \code{list}.
 #'
 #' @rdname scheme
+#' @family scheme
 #'
 #' @importFrom utils download.file
 #' @importFrom yaml read_yaml

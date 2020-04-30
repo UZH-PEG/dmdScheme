@@ -18,6 +18,8 @@
 #' @param report_title title of the report to be included in the report
 #' @param ... further arguments passed to or from other methods
 #'
+#' @family validation
+#'
 #' @return return the path and filename of the report
 #'
 #' @export

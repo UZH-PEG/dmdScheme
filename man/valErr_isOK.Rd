@@ -17,3 +17,13 @@ named numeric vector of the error levels of the different validations done
 \description{
 Creates \code{data.frame} from object of class \code{dmdScheme_validation} for usage in \code{details} of validation
 }
+\seealso{
+Other validation: 
+\code{\link{new_dmdScheme_validation}()},
+\code{\link{report}()},
+\code{\link{valErr_TextErrCol}()},
+\code{\link{valErr_extract}()},
+\code{\link{valErr_info}()},
+\code{\link{validate}()}
+}
+\concept{validation}

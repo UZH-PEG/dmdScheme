@@ -12,6 +12,7 @@
 #'   will be skipped.
 #'
 #' @rdname as_dmdScheme
+#' @family conversion
 #' @export
 #'
 as_dmdScheme.dmdSchemeSet_raw <- function(

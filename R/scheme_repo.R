@@ -10,6 +10,7 @@
 #'   used.
 #'
 #' @rdname scheme
+#' @family scheme
 #'
 #' @export
 #'

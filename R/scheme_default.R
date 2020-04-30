@@ -8,6 +8,7 @@
 #' @return \code{data.frame} with two columns containing name and version of the default scheme
 #'
 #' @rdname scheme
+#' @family scheme
 #'
 #' @export
 #'

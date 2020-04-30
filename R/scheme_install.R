@@ -15,6 +15,7 @@
 #' @return invisibly \code{NULL}
 #'
 #' @rdname scheme
+#' @family scheme
 #'
 #' @importFrom utils untar
 #' @importFrom tools file_path_sans_ext

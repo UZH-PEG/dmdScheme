@@ -1,4 +1,5 @@
 #' @rdname as_xml_list
+#' @family conversion
 #' @export
 #'
 as_xml_list.dmdSchemeSet <- function(

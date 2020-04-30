@@ -11,6 +11,7 @@
 #'   corresponding definition from the installed package.
 #' @param verbose give verbose progress info. Useful for debugging.
 #'
+#' @family inoutoutput
 #'
 #' @importFrom xml2 read_xml
 #'

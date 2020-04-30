@@ -33,3 +33,17 @@ x
 
 ## returns a \code{list()} with one \code{xml_document} object
 }
+\seealso{
+Other conversion: 
+\code{\link{as_dmdScheme_raw}()},
+\code{\link{as_dmdScheme}()},
+\code{\link{as_eml}()},
+\code{\link{as_xml}()}
+
+Other conversion: 
+\code{\link{as_dmdScheme_raw}()},
+\code{\link{as_dmdScheme}()},
+\code{\link{as_eml}()},
+\code{\link{as_xml}()}
+}
+\concept{conversion}

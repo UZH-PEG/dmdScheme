@@ -12,3 +12,13 @@ new \code{dmdScheme_validation} object
 \description{
 Create new \code{dmdScheme_validation} object
 }
+\seealso{
+Other validation: 
+\code{\link{report}()},
+\code{\link{valErr_TextErrCol}()},
+\code{\link{valErr_extract}()},
+\code{\link{valErr_info}()},
+\code{\link{valErr_isOK}()},
+\code{\link{validate}()}
+}
+\concept{validation}

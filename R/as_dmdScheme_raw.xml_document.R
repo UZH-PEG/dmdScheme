@@ -6,6 +6,7 @@
 #'   corresponding definition from the installed package.
 #'
 #' @rdname as_dmdScheme_raw
+#' @family conversion
 #' @export
 #'
 as_dmdScheme_raw.xml_document <- function(

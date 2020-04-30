@@ -10,6 +10,8 @@
 #'   between the package scheme version and the scheme version of the file.
 #'   Aborts with an error if there is a conflict.
 #'
+#' @family inoutoutput
+#'
 #' @return object of class \code{dmdScheme_raw}
 #'
 #' @importFrom magrittr %>% equals not

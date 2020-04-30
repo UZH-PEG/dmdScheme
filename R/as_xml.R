@@ -11,6 +11,7 @@
 #' @return an \code{xml_document} object
 #'
 #' @rdname as_xml
+#' @family conversion
 #' @export
 #'
 #' @examples

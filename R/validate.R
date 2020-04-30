@@ -9,6 +9,8 @@
 #' @param validateData if \code{TRUE} data is validated as well; the structure is always validated
 #' @param errorIfStructFalse if \code{TRUE} an error will be raised if the schemes are not identical, i.e. there are structural differences.
 #'
+#' @family validation
+#'
 #' @return return the \code{dmdScheme_validation} object
 #'
 #' @aliases validate

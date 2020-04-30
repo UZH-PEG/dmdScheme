@@ -7,6 +7,7 @@
 #'
 #' @export
 #' @md
+#' @family validation
 #' @examples
 #' ## Report of `dmdScheme_validation`
 #' report(validate(dmdScheme_raw()))

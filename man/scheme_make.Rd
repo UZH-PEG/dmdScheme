@@ -29,7 +29,9 @@ no command is given.}
 \item{path}{where the final scheme definition should be created.}
 
 \item{overwrite}{if \code{TRUE}, the scheme definition in \code{path} will be
-overwritten.}
+  overwritten.
+
+ @family scheme}
 }
 \value{
 fully qualified path to the created scheme

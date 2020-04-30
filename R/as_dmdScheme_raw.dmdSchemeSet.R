@@ -1,4 +1,5 @@
 #' @rdname as_dmdScheme_raw
+#' @family conversion
 #' @export
 #'
 as_dmdScheme_raw.dmdSchemeSet <- function(

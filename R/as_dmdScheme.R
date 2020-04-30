@@ -10,6 +10,7 @@
 #' @md
 #'
 #' @rdname as_dmdScheme
+#' @family conversion
 #' @export
 #'
 #' @examples
