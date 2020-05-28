@@ -1,3 +1,9 @@
+# release 1.1.3
+
+Fix https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/issues/23 which caused errors in validation due to CR LF versus LF in Excel sheet.
+
+NB: The Description is now ignored in the structural validation!
+
 # release 1.1.0
 
 Doe to incompatibilities in the new release of tibble and expected incompatibilities o=in dplyr, these two dependencies were removed.
