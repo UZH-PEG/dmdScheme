@@ -1,5 +1,3 @@
-#' @importFrom rlang !! :=
-#'
 #' @rdname as_dmdScheme_raw
 #' @export
 #'
@@ -19,7 +17,7 @@ as_dmdScheme_raw.dmdSchemeData <- function(
     invert = TRUE
   )
 
-  if (attr(x, "propertyName") == "Experiment") {
+  if (toTranspose(attr(x, "propertyName"))) {
 
     result <- cbind(nms = names(result), t(result))
     colnames(result) <- c("valueProperty", "DATA")
@@ -44,24 +42,6 @@ as_dmdScheme_raw.dmdSchemeData <- function(
     nm <- colnames(result)
     result <- result[c( nm[1:2], cns, nm[3] )]
 
-    # result <- cbind(nms = names(result), t(result))
-    # colnames(result) <- c("valueProperty", "DATA")
-    # result <- tibble::as_tibble(result)
-
-    # result <- tibble::add_column(
-    #   result,
-    #   propertySet = c( attr(x, "propertyName"), rep(NA, nrow(result) - 1) ),
-    #   .before = 1
-    # )
-
-
-    # for (cn in cns) {
-    #   result <- tibble::add_column(
-    #     result,
-    #     !!(cn) := c( attr(x, cn) ),
-    #     .before = ncol(result)
-    #   )
-    # }
 
   } else {
 

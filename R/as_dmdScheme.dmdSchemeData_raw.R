@@ -14,8 +14,6 @@ as_dmdScheme.dmdSchemeData_raw <- function(
   verbose = FALSE
   ) {
 
-  if (verbose) message("propertySet : ", names(x)[[2]])
-
 # Check for class dmdSchemeSet_raw ----------------------------------------
 
   if (!inherits(x, "dmdSchemeData_raw")) {
@@ -44,10 +42,10 @@ as_dmdScheme.dmdSchemeData_raw <- function(
     on.exit(options(warn = oldWarn))
   }
 
-# transpose when Experiment -----------------------------------------------
+# transpose when toTranspose() -----------------------------------------------
 
-  if (x[[1,1]] == "Experiment") {
-    if (verbose) message("Transposing...")
+  if (toTranspose(x[[1,1]])) {
+    if (verbose) message("Transposing ", x[[1,1]], "...")
     #
 
     x <- rbind(NA, x)
@@ -55,17 +53,9 @@ as_dmdScheme.dmdSchemeData_raw <- function(
     rownames(x) <- c(x[1:2,1], 2:(nrow(x) - 1))
     x <- x[,-1]
     x <- as.data.frame(t(as.matrix(x)), stringsAsFactors = FALSE)
-    # rownames(x) <- 1:nrow(x)
-
-    # suppressMessages(
-    #   x %<>%
-    #     t() %>%
-    #     tibble::as_tibble(rownames = NA, .name_repair = "unique") %>%
-    #     tibble::rownames_to_column("propertySet") %>%
-    #     dplyr::rename(Experiment = 2) %>%
-    #     dplyr::filter( .data$propertySet != "propertySet")
-    # )
   }
+
+  if (verbose) message("Processing propertySet : ", names(x)[[2]])
 
 # set all NA in valueProperty column to "NA" ------------------------------
 
