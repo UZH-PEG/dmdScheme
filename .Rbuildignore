@@ -31,3 +31,4 @@
 ^SCHEME_PACKAGE$
 
 ^dmdScheme\.bbprojectd$
+^codemeta\.json$
