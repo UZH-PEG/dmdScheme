@@ -39,8 +39,21 @@ validateStructure <- function(x){
   ##
   struct <- as_dmdScheme( x, keepData = FALSE, verbose = FALSE)
   dmdScheme_test <- dmdScheme()
+
+  # Set irrelevant attributes to same values --------------------------------
+
   attr(struct, "fileName") <- "none"
   attr(dmdScheme_test, "fileName") <- "none"
+
+  for (n in names(struct)) {
+    attr(struct[[n]], "Description") <- "none"
+  }
+  for (n in names(dmdScheme_test)) {
+    attr(dmdScheme_test[[n]], "Description") <- "none"
+  }
+
+  # And do the comparison ---------------------------------------------------
+
   result$details <- all.equal(struct, dmdScheme_test)
   if (isTRUE(result$details)) {
     result$error <- 0
