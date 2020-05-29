@@ -1,3 +1,6 @@
+# release 1.1.3.1
+Make use of pandoc in examples as dontrun to make CRAN happy
+
 # release 1.1.3
 
 Fix https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/issues/23 which caused errors in validation due to CR LF versus LF in Excel sheet.
