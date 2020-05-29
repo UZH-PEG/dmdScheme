@@ -9,8 +9,8 @@
 #' @md
 #' @examples
 #' ## Report of `dmdScheme_validation`
-#' report( validate(dmdScheme_raw()) )
 #' \dontrun{
+#' report( validate(dmdScheme_raw()) )
 #' report(
 #'    x = dmdScheme_raw(),
 #'    report = "html",

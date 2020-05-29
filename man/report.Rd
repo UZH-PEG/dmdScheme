@@ -86,8 +86,8 @@ This generic function creates a report based on the object.
 report( scheme_path_xlsx() )
 
 ## Report of `dmdScheme_validation`
-report( validate(dmdScheme_raw()) )
 \dontrun{
+report( validate(dmdScheme_raw()) )
 report(
    x = dmdScheme_raw(),
    report = "html",

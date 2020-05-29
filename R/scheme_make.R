@@ -13,6 +13,7 @@
 #' @param path where the final scheme definition should be created.
 #' @param overwrite if \code{TRUE}, the scheme definition in \code{path} will be
 #'   overwritten.
+#' @param index_template the index template file which can be added
 #'
 #' @importFrom utils write.table
 #' @importFrom tools md5sum
@@ -25,7 +26,8 @@ scheme_make <- function(
   examples = NULL,
   install_R_package = NULL,
   path = ".",
-  overwrite = FALSE
+  overwrite = FALSE,
+  index_template = NULL
 ){
 
   scheme <- as_dmdScheme(
@@ -71,6 +73,13 @@ scheme_make <- function(
       from = exdir,
       to = file.path(tmpExamples),
       recursive = TRUE
+    )
+  }
+
+  if (!is.null(index_template)) {
+    file.copy(
+      from = index_template,
+      to = file.path(tmppath, paste0("index.", file_ext(index_template)))
     )
   }
 
