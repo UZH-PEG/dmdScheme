@@ -27,7 +27,7 @@ This document outlines the minimum requirements for metadata schemes derived fro
 
 1. Tab name has to be identical to `propertySet` value (Cell `A:2` in the tab Experiment, `B:1` in other tabs)
 
-2. One tab named `Experiment` is required
+2. One tab named `Experiment` is required.
 This tab is different to the others as it has
     1. horizontal layout
     2. only one value per property allowed
