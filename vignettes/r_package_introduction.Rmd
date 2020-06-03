@@ -50,7 +50,7 @@ To install the **master** branch, the stable branch which will become the new CR
 devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "master", build_opts = NULL)
 ```
  
-If you are feelinfg adventourous, want to live at the bleeding edge and can live with non-working features, you can install the **dev** branch. This branch is **not stable** and features and functionality can appear or be remioved without prior notice:
+If you are feeling adventurous, want to live at the bleeding edge and can live with non-working features, you can install the **dev** branch. This branch is **not stable** and features and functionality can appear or be remioved without prior notice:
 
 ```{r echo=TRUE, eval = FALSE}
 ## install the devtools package if not installed yet
@@ -59,7 +59,7 @@ If you are feelinfg adventourous, want to live at the bleeding edge and can live
 devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "dev", build_opts = NULL)
 ```
  
-Other branches are not generally recommended for instalation unless you are developing `dmdScheme`!
+Other branches are not generally recommended for installation unless you are involved in `dmdScheme` package development.
 
 ## Loading the package
 
