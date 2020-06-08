@@ -1,4 +1,6 @@
  dmdScheme - dmdSchemeSet
+     MdBibliometric - dmdSchemeData
+     MdAuthors - dmdSchemeData
      Experiment - dmdSchemeData
      Genus - dmdSchemeData
      Treatments - dmdSchemeData

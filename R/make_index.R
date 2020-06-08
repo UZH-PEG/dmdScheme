@@ -18,8 +18,8 @@
 #'   uses \bold{pandoc} for the conversion!.}
 #' @param pandoc_bin pandoc executable. Needs fully qualified path when not in
 #'   \code{$PATH}.
-#' @param .pandoc_args arguments for calling pandoc
-#' @param ...additional arguments for methods
+#' @param pandoc_args arguments for calling pandoc
+#' @param ... additional arguments for methods
 #'
 #' @return returns path to the created \code{index.md} file
 #'

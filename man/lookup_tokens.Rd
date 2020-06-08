@@ -7,7 +7,7 @@
 lookup_tokens(tokens, scheme, author = "")
 }
 \arguments{
-\item{tokens}{a character vector containing tokens. These can be enclosed in %% or not.}
+\item{tokens}{a character vector containing tokens. These can be enclosed in \code{\%\%TOKEN\%\%} or not.}
 
 \item{scheme}{a \code{dmdSchemeSet} object}
 
@@ -23,7 +23,7 @@ For a detailed explanation of these tokens see the vignette \code{Create and
 Customize the index Template}.
 }
 \examples{
-replace_tokens(
+lookup_tokens(
   tokens = c(
       "\%\%Treatments.*.2\%\%",
      "\%\%Experiment.*.*\%\%",

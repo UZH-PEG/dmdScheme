@@ -87,6 +87,7 @@ report( scheme_path_xlsx() )
 
 ## Report of `dmdScheme_validation`
 \dontrun{
+# This needs pandoc to run successfully
 report( validate(dmdScheme_raw()) )
 report(
    x = dmdScheme_raw(),

@@ -109,9 +109,7 @@ uses \bold{pandoc} for the conversion!.}}
 \item{pandoc_bin}{pandoc executable. Needs fully qualified path when not in
 \code{$PATH}.}
 
-\item{.pandoc_args}{arguments for calling pandoc}
-
-\item{...additional}{arguments for methods}
+\item{pandoc_args}{arguments for calling pandoc}
 }
 \value{
 dmdScheme as object of class \code{dmdScheme_set}

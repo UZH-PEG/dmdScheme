@@ -4,6 +4,7 @@
 #' @rdname as_dmdScheme
 #' @importFrom tools file_ext
 #' @importFrom knitr kable
+#' @importFrom stringr str_length str_pad
 #' @export
 #'
 #' @examples

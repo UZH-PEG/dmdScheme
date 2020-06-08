@@ -2,17 +2,19 @@
 #'
 #' For a detailed explanation of these tokens see the vignette \code{Create and
 #' Customize the index Template}.
-#' @param tokens a character vector containing tokens. These can be enclosed in %% or not.
+#' @param tokens a character vector containing tokens. These can be enclosed in \code{\%\%TOKEN\%\%} or not.
 #' @param scheme a \code{dmdSchemeSet} object
 #' @param author the author of the index document
 #'
 #' @return a list of the length of the input vector \code{tokens}
 #'   containing the objects returned by the tokens. Null if the tokens contains
 #'   invalid values.
+#'
+#' @importFrom utils str
 #' @export
 #'
 #' @examples
-#' replace_tokens(
+#' lookup_tokens(
 #'   tokens = c(
 #'       "%%Treatments.*.2%%",
 #'      "%%Experiment.*.*%%",
