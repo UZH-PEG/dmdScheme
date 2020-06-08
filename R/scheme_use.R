@@ -17,7 +17,7 @@
 #'
 #' @examples
 #' scheme_list()
-#' scheme_use(name = "dmdScheme", version = "0.9.5")
+#' scheme_use(name = "dmdScheme", version = "0.9.9")
 #'
 scheme_use <- function(
   name = NULL,

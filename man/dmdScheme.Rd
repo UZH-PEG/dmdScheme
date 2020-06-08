@@ -26,8 +26,8 @@ There are two S3 classes defined and used:
   }
   \item{\code{dmdSchemeSet: }}{a \code{list} with where each element is a \code{dmdSchemeData} object with additional attributes:
     \describe{
-      \item{propertyName: }{name of the dmdScheme used. In the spreadsheet, it is in the cell H1 in ther in the Experiment tab (DATA dmeScheme v0.9.5.)}
-      \item{dmdSchemeVersion: }{version of the dmdScheme used. In the spreadsheet, it is in the cell H1 in ther in the Experiment tab (DATA dmeScheme v0.9.5.)}
+      \item{propertyName: }{name of the dmdScheme used. In the spreadsheet, it is in the cell H1 in ther in the Experiment tab (DATA dmeScheme v0.9.9.)}
+      \item{dmdSchemeVersion: }{version of the dmdScheme used. In the spreadsheet, it is in the cell H1 in ther in the Experiment tab (DATA dmeScheme v0.9.9.)}
       \item{names: }{the names of the \code{dmdSchemeData} sets. In the spreadsheet, the names of the tabs.}
     }
   }
