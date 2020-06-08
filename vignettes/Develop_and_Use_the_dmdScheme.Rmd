@@ -199,7 +199,7 @@ Shows the currently active scheme.
 
 ```{r}
 scheme_active()
-scheme_use(name = "dmdScheme", version = "0.9.5")
+scheme_use(name = "dmdScheme", version = "0.9.9")
 scheme_active()
 ```
 
