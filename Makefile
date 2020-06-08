@@ -30,6 +30,12 @@ READMERMD = Readme.Rmd
 READMEMD = Readme.md
 READMEHTML = Readme.html
 
+
+PLANTUML  := $(wildcard vignettes/figs/*.puml)
+PPNG      := $(PLANTUML:.puml=.png)
+PSVG      := $(PLANTUML:.puml=.svg)
+
+
 SCHEMEMAKE = library(dmdScheme); \
 	setwd('SCHEME_PACKAGE'); \
 	scheme_make( \
@@ -48,6 +54,35 @@ all: check clean_web web clean_check
 
 clean: clean_web
 
+################################
+############# figs_vignette ####
+################################
+
+figs_vignette: ppng psvg
+	
+clean_figs: clean_ppng clean_psvg
+
+############# ppng #############
+
+ppng: $(PPNG)
+$(PPNG):$(PLANTUML)
+	plantuml $(PLANTUML) -nbthread auto
+
+clean_ppng:
+	rm -f $(PPNG)
+	rm -f $(PPNG:.png=.cmapx)
+
+
+############# psvg #############
+
+psvg: $(PSVG)
+$(PSVG):$(PLANTUML)
+	plantuml $(PLANTUML) -tsvg -nbthread auto
+
+clean_psvg:
+	rm -f $(PSVG)
+
+	
 ########### scheme package ###########
 
 scheme_package:
@@ -70,7 +105,7 @@ clean_readme:
 
 vignettes: $(VIGHTML)
 
-$(VIGHTML): $(VIGRMD)
+$(VIGHTML): figs_vignette $(VIGRMD)
 	@Rscript -e "devtools::build_vignettes()"
 
 clean_vignettes:
@@ -79,6 +114,7 @@ clean_vignettes:
 #####
 
 html:	$(HTML)
+
 # %.html: %.Rmd
 $(OUTDIR)/%.html: $(SRCDIR)/%.Rmd
 	@Rscript -e "rmarkdown::render('$<', output_format = 'prettydoc::html_pretty', output_dir = './$(OUTDIR)/')"
@@ -103,16 +139,17 @@ clean_web: clean_html clean_vignettes clean_readme
 
 ####
 
-docs:
+docs: figs_vignette
 	Rscript -e "devtools::document(roclets = c('rd', 'collate', 'namespace', 'vignette'))"
+	
 
-build:
+build: figs_vignette
 	cd ..;\
 	R CMD build $(PKGSRC)
 
 ####
 
-build-cran:
+build-cran: figs_vignette
 	cd ..;\
 	R CMD build $(PKGSRC)
 
@@ -140,6 +177,7 @@ clean_check:
 
 test:
 	@Rscript -e "devtools::test()"
+	
 
 ####
 
