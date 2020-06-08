@@ -1,0 +1,36 @@
+#!/usr/local/bin/plantuml
+
+@startuml
+
+
+start
+''''''''''''
+:= Open [[https://rmkrug.shinyapps.io/dmd_app/]]
+..BROWSER..|
+''''''''''''
+:= Select scheme 
+..BROWSER..
+""Availabe dmdSchemes"";
+''''''''''''
+:= Download New Scheme
+..BROWSER..;
+''''''''''''
+repeat
+  := Enter / Edit metadata in downloaded xlsx
+  ..Excel, Pages, Libre Office, Google Docs, etc..;
+  := Upload Spreadsheet containig Metadata
+  ..BROWSER..|
+  := Upload Datafiles
+  ..BROWSER..|
+  := Validation metadata and create report
+  ..BROWSER..;
+repeat while (errors or warnings?) is (yes)
+-> no;
+''''''''''''
+:= Export Uploaded Spreadsheet to xml
+..BROWSER..;
+''''''''''''
+stop
+
+@enduml
+
