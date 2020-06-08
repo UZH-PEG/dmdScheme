@@ -292,7 +292,7 @@ format_dmdScheme_xlsx <- function(
 
   wb <- openxlsx::loadWorkbook(fn_org)
 
-  # Set formating and validation on Experiment worksheet ---------------
+  # Set formating and validation on worksheet ---------------
 
   for ( sheet in toTranspose()) {
     if (sheet %in% openxlsx::sheets(wb)) {
@@ -309,16 +309,10 @@ format_dmdScheme_xlsx <- function(
   # Set formating and validation on all worksheets except of toTransposed()  -----------------
 
   propSets <- grep(
-    pattern = "Experiment",
+    pattern = paste(c(toTranspose(), "DOCUMENTATION"), collapse = "|"),
     x = openxlsx::sheets(wb),
     value = TRUE,
     invert = TRUE
-  )
-  propSets <- grep(
-    "DOCUMENTATION",
-    propSets,
-    invert = TRUE,
-    value = TRUE
   )
 
 
