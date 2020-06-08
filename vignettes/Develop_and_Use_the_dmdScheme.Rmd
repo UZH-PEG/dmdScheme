@@ -520,4 +520,22 @@ The following section gives the mapping between `emeScheme` and `EML`.
   - else -> `attributes$attributeDefinition`
 - comment -> `attributes$attributeDefinition`
 
+# Customize the index template
 
+The index template is a text file, in which tokens are replaced by values from the a `dmdScheme` when calling the function `make_index( x = A_dmdScheme, template = "the/index/template/file.txt)`. 
+Tokens are enclosed by` %%...%%` and must not contain any white spaces (tab, space, ...).
+
+The following tokens are allowed at the moment:
+
+## Tokens which are replaced with values from a `dmdScheme`
+
+- **`%%propertySet%%` or `%%propertySet.*%%` or `%%propertySet.*.*%%`**: replace with the propertySet as a table
+- **`propertySet.valueProperty` or `propertySet.valueProperty.*`**: replace with the valueProperty (column) from a propertySet as a comma separated list
+- **`%%propertySet.valueProperty.N%%`**: replace with the Nth valueProperty from a propertySet
+- **`%%propertySet.*.N%%`***: replace with the Nth row from a propertySet
+
+If the token starts with an `!fun!`, the R function `fun` is executed using the result. For example `%%!unique!DataFileMetaData.dataFileName`%% would only return a vector containing the unique `dataFileName`.
+
+## Special tokens
+- **`%%DATE%%`**: will be replaced with the current date
+- **`%%AUTHOR%%`**: will be replaced with the author as supplied to the function
