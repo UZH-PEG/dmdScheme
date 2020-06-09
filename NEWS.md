@@ -1,3 +1,8 @@
+# dev
+- Adds bibliometric metadata and handling of multiple "vertiiical" sheets
+- Adds autocreation of index file which summarises the metadata
+- Adds additional tests
+
 # release 1.1.3.1
 Make use of pandoc in examples as dontrun to make CRAN happy
 
