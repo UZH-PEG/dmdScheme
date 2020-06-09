@@ -114,10 +114,6 @@ make_index.dmdSchemeSet <- function(
 
   # The creation of index ---------------------------------------------------
 
-  if (!inherits(scheme, "dmdSchemeSet")) {
-    "`scheme` must be a decendant from `dmdSchemeSet`!"
-  }
-
   fn <- file.path(path, basename(template))
 
   # Check fn and template paths ---------------------------------------------
@@ -163,6 +159,7 @@ make_index.dmdSchemeSet <- function(
   writeLines(index, fn)
 
   # TODO - add tests before trying!
+
   for (type_out in make) {
     fn_in <- fn
     type_in <- tools::file_ext(fn_in)
