@@ -118,6 +118,9 @@ lookup_tokens <- function(
         } else {
           ind <- suppressWarnings( as.integer(token[[3]]) )
           if (isTRUE( as.character(ind) == token[[3]] )) {
+            if (ind >= length(result)) {
+              return(error_token(token, "indexToLarge"))
+            }
             result <- result[[ind]]
             result <- as.character(result)
             if (!is.null(cmd)) {
