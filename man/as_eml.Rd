@@ -26,13 +26,13 @@ A \code{list} object which can be converted to EML. It can be
 Generic function to convert an object to an object which can be saved as EML
 }
 \seealso{
-Other conversion:
+Other conversion: 
 \code{\link{as_dmdScheme_raw}()},
 \code{\link{as_dmdScheme}()},
 \code{\link{as_xml_list}()},
 \code{\link{as_xml}()}
 
-Other conversion:
+Other conversion: 
 \code{\link{as_dmdScheme_raw}()},
 \code{\link{as_dmdScheme}()},
 \code{\link{as_xml_list}()},

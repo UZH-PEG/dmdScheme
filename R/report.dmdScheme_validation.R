@@ -10,8 +10,9 @@
 #' @family validation
 #' @examples
 #' ## Report of `dmdScheme_validation`
-#' report(validate(dmdScheme_raw()))
 #' \dontrun{
+#' # This needs pandoc to run successfully
+#' report( validate(dmdScheme_raw()) )
 #' report(
 #'   x = dmdScheme_raw(),
 #'   report = "html",

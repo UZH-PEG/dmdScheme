@@ -11,7 +11,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' scheme_installed("dmdScheme", "0.9.5")
+#' scheme_installed("dmdScheme", "0.9.9")
 #' scheme_installed("dmdScheme", "0.7.3")
 #' }
 scheme_installed <- function(

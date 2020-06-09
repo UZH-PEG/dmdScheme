@@ -169,7 +169,7 @@ scheme_install_r_package()
 }
 
 \dontrun{
-scheme_installed("dmdScheme", "0.9.5")
+scheme_installed("dmdScheme", "0.9.9")
 scheme_installed("dmdScheme", "0.7.3")
 }
 scheme_list_in_repo()
@@ -180,7 +180,8 @@ scheme_uninstall(name = "schemename", version = "schemeversion")
 }
 
 scheme_list()
-scheme_use(name = "dmdScheme", version = "0.9.5")
+scheme_use(name = "dmdScheme", version = "0.9.9")
+
 }
 \seealso{
 Other scheme: 

@@ -9,7 +9,8 @@ scheme_make(
   examples = NULL,
   install_R_package = NULL,
   path = ".",
-  overwrite = FALSE
+  overwrite = FALSE,
+  index_template = NULL
 )
 }
 \arguments{
@@ -29,7 +30,9 @@ no command is given.}
 \item{path}{where the final scheme definition should be created.}
 
 \item{overwrite}{if \code{TRUE}, the scheme definition in \code{path} will be
-  overwritten.
+overwritten.}
+
+\item{index_template}{the index template file which can be added
 
  @family scheme}
 }

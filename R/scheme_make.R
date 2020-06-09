@@ -13,6 +13,7 @@
 #' @param path where the final scheme definition should be created.
 #' @param overwrite if \code{TRUE}, the scheme definition in \code{path} will be
 #'   overwritten.
+#' @param index_template the index template file which can be added
 #'
 #'  @family scheme
 #'
@@ -23,11 +24,14 @@
 #' @export
 #'
 scheme_make <- function(
-                        schemeDefinition,
-                        examples = NULL,
-                        install_R_package = NULL,
-                        path = ".",
-                        overwrite = FALSE) {
+  schemeDefinition,
+  examples = NULL,
+  install_R_package = NULL,
+  path = ".",
+  overwrite = FALSE,
+  index_template = NULL
+){
+
   scheme <- as_dmdScheme(
     read_excel_raw(
       file = schemeDefinition,
@@ -71,6 +75,13 @@ scheme_make <- function(
       from = exdir,
       to = file.path(tmpExamples),
       recursive = TRUE
+    )
+  }
+
+  if (!is.null(index_template)) {
+    file.copy(
+      from = index_template,
+      to = file.path(tmppath, paste0("index.", file_ext(index_template)))
     )
   }
 

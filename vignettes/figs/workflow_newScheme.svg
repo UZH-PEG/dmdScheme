@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="651px" preserveAspectRatio="none" style="width:575px;height:651px;" version="1.1" viewBox="0 0 575 651" width="575px" zoomAndPan="magnify"><defs><filter height="300%" id="f1x4xi6s1a8sqa" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><ellipse cx="273.5" cy="20" fill="#000000" filter="url(#f1x4xi6s1a8sqa)" rx="10" ry="10" style="stroke: none; stroke-width: 1.0;"/><rect fill="#FEFECE" filter="url(#f1x4xi6s1a8sqa)" height="80.9141" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="309" x="119" y="50"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="289" x="129" y="75.4688">Install and load `dmdScheme` in R</text><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,2.0;" x1="119" x2="253.5" y1="85.9102" y2="85.9102"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="40" x="253.5" y="89.9453">R code</text><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,2.0;" x1="293.5" x2="428" y1="85.9102" y2="85.9102"/><text fill="#000000" font-family="monospace" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="203" x="129" y="104.1152">install.packages("dmdScheme")</text><text fill="#000000" font-family="monospace" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="140" x="129" y="118.084">library("dmdScheme")</text><rect fill="#FEFECE" filter="url(#f1x4xi6s1a8sqa)" height="122.8203" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="285" x="131" y="150.9141"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="265" x="141" y="176.3828">Download dmdScheme template</text><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,2.0;" x1="131" x2="253.5" y1="186.8242" y2="186.8242"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="40" x="253.5" y="190.8594">R code</text><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,2.0;" x1="293.5" x2="416" y1="186.8242" y2="186.8242"/><text fill="#000000" font-family="monospace" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="147" x="141" y="205.0293">open_new_spreadsheet(</text><text fill="#000000" font-family="monospace" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="84" x="169" y="218.998">"emeScheme",</text><text fill="#000000" font-family="monospace" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="189" x="169" y="232.9668">file = "theNewScheme.xlsx",</text><text fill="#000000" font-family="monospace" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="91" x="169" y="246.9355">format = TRUE</text><text fill="#000000" font-family="monospace" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="7" x="141" y="260.9043">)</text><rect fill="#FEFECE" filter="url(#f1x4xi6s1a8sqa)" height="38.8438" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="527" x="10" y="337.7344"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="507" x="20" y="363.2031">Edit spreadsheet and save the scheme in 'theNewScheme.xlsx'</text><polygon fill="#FEFECE" filter="url(#f1x4xi6s1a8sqa)" points="273.5,293.7344,285.5,305.7344,273.5,317.7344,261.5,305.7344,273.5,293.7344" style="stroke: #A80036; stroke-width: 1.5;"/><polygon fill="#FEFECE" filter="url(#f1x4xi6s1a8sqa)" points="172.5,396.5781,374.5,396.5781,386.5,408.5781,374.5,420.5781,172.5,420.5781,160.5,408.5781,172.5,396.5781" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="202" x="172.5" y="412.7354">next iteration of scheme development</text><rect fill="#FEFECE" filter="url(#f1x4xi6s1a8sqa)" height="136.7891" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="288" x="129.5" y="461.8535"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="268" x="139.5" y="487.3223">Build scheme definition package</text><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,2.0;" x1="129.5" x2="269.5" y1="497.7637" y2="497.7637"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="8" x="269.5" y="501.7988">R</text><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,2.0;" x1="277.5" x2="417.5" y1="497.7637" y2="497.7637"/><text fill="#000000" font-family="monospace" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="84" x="139.5" y="515.9688">scheme_make(</text><text fill="#000000" font-family="monospace" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="119" x="153.5" y="529.9375">schemeDefinition,</text><text fill="#000000" font-family="monospace" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="112" x="153.5" y="543.9063">examples = NULL,</text><text fill="#000000" font-family="monospace" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="175" x="153.5" y="557.875">install_R_package = NULL,</text><text fill="#000000" font-family="monospace" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="203" x="153.5" y="571.8438">path = ".", overwrite = FALSE</text><text fill="#000000" font-family="monospace" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="7" x="139.5" y="585.8125">)</text><ellipse cx="273.5" cy="629.6426" fill="#FFFFFF" filter="url(#f1x4xi6s1a8sqa)" rx="11" ry="11" style="stroke: #000000; stroke-width: 1.0;"/><ellipse cx="273.5" cy="629.6426" fill="#000000" rx="6" ry="6" style="stroke: #7F7F7F; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="273.5" x2="273.5" y1="30" y2="50"/><polygon fill="#A80036" points="269.5,40,273.5,50,277.5,40,273.5,44" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="273.5" x2="273.5" y1="130.9141" y2="150.9141"/><polygon fill="#A80036" points="269.5,140.9141,273.5,150.9141,277.5,140.9141,273.5,144.9141" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="273.5" x2="273.5" y1="317.7344" y2="337.7344"/><polygon fill="#A80036" points="269.5,327.7344,273.5,337.7344,277.5,327.7344,273.5,331.7344" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="386.5" x2="549" y1="408.5781" y2="408.5781"/><polygon fill="#A80036" points="545,367.1563,549,357.1563,553,367.1563,549,363.1563" style="stroke: #A80036; stroke-width: 1.5;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="549" x2="549" y1="305.7344" y2="408.5781"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="549" x2="285.5" y1="305.7344" y2="305.7344"/><polygon fill="#A80036" points="295.5,301.7344,285.5,305.7344,295.5,309.7344,291.5,305.7344" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="273.5" x2="273.5" y1="376.5781" y2="396.5781"/><polygon fill="#A80036" points="269.5,386.5781,273.5,396.5781,277.5,386.5781,273.5,390.5781" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="273.5" x2="273.5" y1="273.7344" y2="293.7344"/><polygon fill="#A80036" points="269.5,283.7344,273.5,293.7344,277.5,283.7344,273.5,287.7344" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="273.5" x2="273.5" y1="420.5781" y2="461.8535"/><polygon fill="#A80036" points="269.5,451.8535,273.5,461.8535,277.5,451.8535,273.5,455.8535" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="27" x="277.5" y="442.0332">done</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="273.5" x2="273.5" y1="598.6426" y2="618.6426"/><polygon fill="#A80036" points="269.5,608.6426,273.5,618.6426,277.5,608.6426,273.5,612.6426" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[219fdf15222b6bf5abe03ec47ee2ffe9]
+@startuml
+
+start
+''''''''''''
+:= Install and load `dmdScheme` in R
+..R code..
+""install.packages("dmdScheme")""
+""library("dmdScheme")"";
+''''''''''''
+:= Download dmdScheme template
+..R code..
+""open_new_spreadsheet(""
+""    "emeScheme",""
+""    file = "theNewScheme.xlsx",""
+""    format = TRUE""
+"")"";
+''''''''''''
+repeat
+  := Edit spreadsheet and save the scheme in 'theNewScheme.xlsx';
+repeat while (next iteration of scheme development);
+-> done;
+''''''''''''
+:= Build scheme definition package
+..R..
+""scheme_make(""
+""  schemeDefinition,""
+""  examples = NULL,""
+""  install_R_package = NULL,""
+""  path = ".", overwrite = FALSE""
+"")"";
+''''''''''''
+stop
+
+@enduml
+
+@startuml
+
+start
+:= Install and load `dmdScheme` in R
+..R code..
+""install.packages("dmdScheme")""
+""library("dmdScheme")"";
+:= Download dmdScheme template
+..R code..
+""open_new_spreadsheet(""
+""    "emeScheme",""
+""    file = "theNewScheme.xlsx",""
+""    format = TRUE""
+"")"";
+repeat
+  := Edit spreadsheet and save the scheme in 'theNewScheme.xlsx';
+repeat while (next iteration of scheme development);
+-> done;
+:= Build scheme definition package
+..R..
+""scheme_make(""
+""  schemeDefinition,""
+""  examples = NULL,""
+""  install_R_package = NULL,""
+""  path = ".", overwrite = FALSE""
+"")"";
+stop
+
+@enduml
+
+PlantUML version 1.2020.12(Sat Jun 06 12:54:15 CEST 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: FR
+--></g></svg>

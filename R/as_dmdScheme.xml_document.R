@@ -7,7 +7,6 @@
 #'
 #'
 #' @importFrom xml2 xml_attrs as_list xml_name xml_children
-#' @importFrom rlang :=
 #'
 #' @rdname as_dmdScheme
 #' @family conversion

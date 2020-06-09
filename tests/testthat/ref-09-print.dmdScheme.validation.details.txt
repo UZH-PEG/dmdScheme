@@ -55,6 +55,165 @@ The details are a table of the same dimension as the input (green) area of the m
 |TRUE |TRUE        |TRUE  |TRUE     |TRUE      |TRUE      |TRUE            |TRUE      |TRUE               |TRUE              |TRUE         |TRUE           |TRUE     |NA      |
 
 
+## **<span style="color:#FF0000">MdBibliometric - error</span>**
+
+The details are a table with one row per unique validation.
+ The column `Module` contains the name of the validation,
+ The column `error` contains the actual error of the validation.
+ The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If the validation was `OK`.
+    FALSE: If the validation was an `error`, `warning` or `note`.
+    NA   : If at least one v alidation resulted in `NA
+ 
+ One or more FALSE or missing values values will result in an ERROR.
+
+
+
+|Module          |errorCode |isOK  |
+|:---------------|:---------|:-----|
+|types           |OK        |TRUE  |
+|suggestedValues |OK        |TRUE  |
+|allowedValues   |OK        |TRUE  |
+|IDField         |error     |FALSE |
+
+-  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell contains an error, i.e. can not be losslessly converted.
+    TRUE : If the cell can be losslessly converted and is OK.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in an ERROR.  
+
+
+|uploadType |doi  |publicationDate |title |description |version |language |keywords |additionalNotes |accessRights |accessRightsInfo |license |
+|:----------|:----|:---------------|:-----|:-----------|:-------|:--------|:--------|:---------------|:------------|:----------------|:-------|
+|TRUE       |TRUE |TRUE            |TRUE  |TRUE        |NA      |TRUE     |TRUE     |NA              |TRUE         |NA               |TRUE    |
+
+-  **<span style="color:#00FF00">values in suggestedValues - OK</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell value is not contained in the suggestedValues list.
+    TRUE : If the cell value is contained in the suggestedValues list.
+    NA   : empty cell or no suggested values specified
+ 
+ One or more FALSE values will result in a WARNING.  
+
+
+|uploadType |doi |publicationDate |title |description |version |language |keywords |additionalNotes |accessRights |accessRightsInfo |license |
+|:----------|:---|:---------------|:-----|:-----------|:-------|:--------|:--------|:---------------|:------------|:----------------|:-------|
+|NA         |NA  |NA              |NA    |NA          |NA      |NA       |NA       |NA              |NA           |NA               |TRUE    |
+
+-  **<span style="color:#00FF00">values in allowedValues - OK</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell value is not contained in the allowedValues list.
+    TRUE : If the cell value is contained in the allowedValues list.
+    NA   : empty cell or no allowed values specified
+ 
+ One or more FALSE values will result in an ERROR.  
+
+
+|uploadType |doi |publicationDate |title |description |version |language |keywords |additionalNotes |accessRights |accessRightsInfo |license |
+|:----------|:---|:---------------|:-----|:-----------|:-------|:--------|:--------|:---------------|:------------|:----------------|:-------|
+|TRUE       |NA  |NA              |NA    |NA          |NA      |NA       |NA       |NA              |TRUE         |NA               |NA      |
+
+-  **<span style="color:#FF0000">ID Field present and in the first column - error</span>**   
+Returns a boolean value, with the following possible values:
+ 
+    TRUE  : The tab's first column is an ID field
+    FALSE : The tab's first column is not an ID field
+ 
+ FALSE will result in an ERROR.  
+
+
+|hasIDField                       |isOK  |
+|:--------------------------------|:-----|
+|tab has ID field in first column |FALSE |
+
+
+## **<span style="color:#FF0000">MdAuthors - error</span>**
+
+The details are a table with one row per unique validation.
+ The column `Module` contains the name of the validation,
+ The column `error` contains the actual error of the validation.
+ The following values are possible for the column `isTRUE`:
+ 
+    TRUE : If the validation was `OK`.
+    FALSE: If the validation was an `error`, `warning` or `note`.
+    NA   : If at least one v alidation resulted in `NA
+ 
+ One or more FALSE or missing values values will result in an ERROR.
+
+
+
+|Module          |errorCode |isOK  |
+|:---------------|:---------|:-----|
+|types           |OK        |TRUE  |
+|suggestedValues |OK        |TRUE  |
+|allowedValues   |error     |FALSE |
+|IDField         |OK        |TRUE  |
+
+-  **<span style="color:#00FF00">conversion of values into specified type lossless possible - OK</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell contains an error, i.e. can not be losslessly converted.
+    TRUE : If the cell can be losslessly converted and is OK.
+    NA   : empty cell
+ 
+ One or more FALSE values will result in an ERROR.  
+
+
+|authorID |familyName |givenName |affiliation |orcid |role |
+|:--------|:----------|:---------|:-----------|:-----|:----|
+|TRUE     |TRUE       |TRUE      |TRUE        |NA    |TRUE |
+|TRUE     |TRUE       |TRUE      |TRUE        |NA    |TRUE |
+
+-  **<span style="color:#00FF00">values in suggestedValues - OK</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell value is not contained in the suggestedValues list.
+    TRUE : If the cell value is contained in the suggestedValues list.
+    NA   : empty cell or no suggested values specified
+ 
+ One or more FALSE values will result in a WARNING.  
+
+
+|authorID |familyName |givenName |affiliation |orcid |role |
+|:--------|:----------|:---------|:-----------|:-----|:----|
+|NA       |NA         |NA        |NA          |NA    |NA   |
+|NA       |NA         |NA        |NA          |NA    |NA   |
+
+-  **<span style="color:#FF0000">values in allowedValues - error</span>**   
+The details are a table of the same dimension as the input (green) area of the meatadata sheet. The following values are possible:
+ 
+    FALSE: If the cell value is not contained in the allowedValues list.
+    TRUE : If the cell value is contained in the allowedValues list.
+    NA   : empty cell or no allowed values specified
+ 
+ One or more FALSE values will result in an ERROR.  
+
+
+|authorID |familyName |givenName |affiliation |orcid |role  |
+|:--------|:----------|:---------|:-----------|:-----|:-----|
+|NA       |NA         |NA        |NA          |NA    |FALSE |
+|NA       |NA         |NA        |NA          |NA    |TRUE  |
+
+-  **<span style="color:#00FF00">ID Field present and in the first column - OK</span>**   
+Returns a boolean value, with the following possible values:
+ 
+    TRUE  : The tab's first column is an ID field
+    FALSE : The tab's first column is not an ID field
+ 
+ FALSE will result in an ERROR.  
+
+
+|hasIDField                       |isOK |
+|:--------------------------------|:----|
+|tab has ID field in first column |TRUE |
+
+
 ## **<span style="color:#55AA00">Genus - note</span>**
 
 The details are a table with one row per unique validation.
