@@ -13,7 +13,7 @@ The dataset contains raw data. An object of class \code{dmdScheme_raw} is
 returned by the function \code{\link[dmdScheme]{read_excel_raw}} with the argument
 \code{raw = TRUE} and \code{\link[dmdScheme]{read_excel_raw}}. It is usually an
 intermediate object, as in the normal workflow, this object is automatically
-converted to an object of class \code{\link[dmdScheme]{dmdSchemeSet}}.
+converted to an object of class \code{dmdSchemeSet}.
 }
 \details{
 \describe{

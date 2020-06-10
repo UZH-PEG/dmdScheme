@@ -1,4 +1,4 @@
-#' Read scheme data from Excel file into \code{\link[dmdScheme]{dmdSchemeSet}} object
+#' Read scheme data from Excel file into \code{dmdSchemeSet} object
 #'
 #' Reads the data from an Excel file. Validation of the scheme version and
 #' scheme name is always done. Additional validations are done depending on the
