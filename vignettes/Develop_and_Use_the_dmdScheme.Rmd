@@ -8,7 +8,7 @@ output:
     toc: true
     toc_depth: 4
 vignette: >
-  %\VignetteIndexEntry{Develop and Use the dmdScheme}
+  %\VignetteIndexEntry{Develop and use the `dmdScheme`}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -68,9 +68,12 @@ In R, the spreadsheet can be obtained by using the `open_new_spreadsheet()` comm
 
 Figure 3 shows two screenshots of the spreadsheet as opened in Excel.
 
-```{r fig3, fig.show = "hold", out.width = "90%", fig.align = "center", fig.cap = "**Figure 3**: Two example tabs (Experiment and Species) from the `emeScheme` spreadsheet. The complete spreadsheet can be found in the supplemental material `emeScheme.xlsx`.", echo = FALSE}
-knitr::include_graphics("./figs/Spreadsheet_01_Experiment.png")
-knitr::include_graphics("./figs/Spreadsheet_02_Species.png")
+```{r fig3, fig.show = "hold", out.width = "90%", fig.align = "center", fig.cap = "**Figure 3**: Some example tabs from the `emeScheme` spreadsheet. The first to contain bibliometric metadata modeled along the requirements by DataCite and the autors, while the others containmetadata about the experiment and the data files. The complete spreadsheet can be found in the supplemental material `emeScheme.xlsx`.", echo = FALSE}
+knitr::include_graphics("./figs/Spreadsheet_01_MdBibliometric.png")
+knitr::include_graphics("./figs/Spreadsheet_02_MdAuthor.png")
+knitr::include_graphics("./figs/Spreadsheet_03_Experiment.png")
+knitr::include_graphics("./figs/Spreadsheet_04_Genus.png")
+knitr::include_graphics("./figs/Spreadsheet_08_DataFileMetadata.png")
 ```
 
 
