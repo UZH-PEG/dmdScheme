@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_excel.R
 \name{read_excel}
 \alias{read_excel}
-\title{Read scheme data from Excel file into \code{\link[dmdScheme]{dmdSchemeSet}} object}
+\title{Read scheme data from Excel file into \code{dmdSchemeSet} object}
 \usage{
 read_excel(
   file,

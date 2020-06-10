@@ -1,4 +1,4 @@
-#' Object of class \code{\link[dmdScheme]{dmdSchemeSet}} containing example data.
+#' Object of class \code{dmdSchemeSet} containing example data.
 #'
 #' The dataset contains example data. It was created by using the code below.
 #'

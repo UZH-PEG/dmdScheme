@@ -2,7 +2,7 @@
 % Please edit documentation in R/dmdScheme_example.R
 \name{dmdScheme_example}
 \alias{dmdScheme_example}
-\title{Object of class \code{\link[dmdScheme]{dmdSchemeSet}} containing example data.}
+\title{Object of class \code{dmdSchemeSet} containing example data.}
 \usage{
 dmdScheme_example()
 }
