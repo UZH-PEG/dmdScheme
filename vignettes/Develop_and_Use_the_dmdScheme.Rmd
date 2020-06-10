@@ -147,7 +147,7 @@ When you load the package, the definition of the scheme is downloaded from the [
 cache(createPermanent = TRUE)
 ```
 
-and restart your R session. Noiw the definitions of the installed `dmdSchemes` will be installed in this user cache and be available permanently. For further info, see the documenatation of the command `cache()`.
+and restart your R session. Now the definitions of the installed `dmdSchemes` will be installed in this user cache and be available permanently. For further info, see the documenatation of the command `cache()`.
 
 
 ## Managing installed schemes
@@ -165,6 +165,13 @@ returns the default scheme and version, i.e. the one with which the dmdScheme pa
 scheme_default()
 ```
 
+### `scheme_repo()`
+Get or set scheme repository. If `repo` is specified, the scheme repository to be used is set. Otherwise, the scheme repository used is only returned.
+
+```{r}
+scheme_repo()
+```
+
 ### `scheme_list_in_repo()`
 Show the schemes available in a repo. The defaut repo is [](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository). The function reads and simly returns the file `SCHEME_DEFINITIONS.yaml` in the folder `schemes` in the repository.
 
@@ -173,6 +180,15 @@ Show the schemes available in a repo. The defaut repo is [](https://github.com/E
 scheme_list_in_repo()
 ```
 
+### `scheme_download()`
+Download a scheme definition from the repo set and stores in the destfile.
+The function returns the fully qualified file name to the downloaded file invisibly.
+
+```{r}
+scheme_download(name = "emeScheme", version = "0.9.5", destfile = tempfile())
+```
+
+
 ### `scheme_install()`
 Install a new scheme definition. In the normal usecase, this function uses `scheme_download_url()` to download the scheme defintion from the default [github repository](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository) and installs it. The usage is
 
@@ -180,6 +196,12 @@ Install a new scheme definition. In the normal usecase, this function uses `sche
 scheme_install(name = "emeScheme", version = "0.9.5")
 ```
 
+### `scheme_install_r_package()`
+Installs the accompanying R package of the same name as the scheme. This does only install the package - it still b=needs to be loaded to be used!
+
+```{r}
+scheme_install_r_package(name = "emeScheme", version = "0.9.5")
+```
 
 ### `scheme_list()`
 Shows the installed schemes.
@@ -203,6 +225,29 @@ scheme_use(name = "dmdScheme", version = "0.9.9")
 scheme_active()
 ```
 
+
+### `scheme_path_index_template()`
+Returns the path to the index template. The search order is:
+1. the index file included in the scheme package 
+2. the scheme package included in the `dmdScheme` package (**not** the acompanying package!).
+
+```{r}
+scheme_path_index_template()
+```
+
+### `scheme_path_xlsx()`
+Returns the path to the `xlsx` file included in the scheme package.
+
+```{r}
+scheme_path_xlsx()
+```
+
+### `scheme_path_xml()`
+Returns the path to the `xml` file included in the scheme package.
+
+```{r}
+scheme_path_xml()
+```
 
 ### `scheme_uninstall()`
 Uninstall an installed scheme. The scheme definition, is deleted from the scheme library, and moved to a temporary flder which wil be deleted at the end of the R session.

@@ -16,9 +16,10 @@ start
 := Install the `emeScheme` scheme
 ..R..
 ""scheme_install("emeScheme", "1.0.0")""|
-:= Install the `emeScheme` acompagnying R package
+:= Install and load the `emeScheme` acompagnying R package
 ..R..
-""scheme_install_r_package("emeScheme", "1.0.0")""|
+""scheme_install_r_package("emeScheme", "1.0.0")""
+""library("emeScheme")""|
 := Select scheme
 ..R..
 ""scheme_use("emeScheme", "1.0.0")""
