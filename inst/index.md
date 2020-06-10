@@ -2,7 +2,6 @@
 title:  %%MdBibliometric.title%%
 subtitle: %%MdBibliometric.description%%
 author: %%AUTHOR%%
-date: %%DATE%%    
 ---
 
 # Bibliometric Metadata

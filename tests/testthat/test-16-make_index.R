@@ -36,6 +36,7 @@ test_that(
         pandoc_args = "-s"
       )),
       print = TRUE,
+      update = TRUE,
       file = "ref-16-make_index.txt"
     )
   }

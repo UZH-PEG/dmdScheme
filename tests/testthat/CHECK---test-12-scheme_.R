@@ -115,16 +115,16 @@ test_that(
 )
 
 
-test_that(
-  "scheme_install() installs scheme from repo",
-  {
-    expect_message(
-      object = scheme_install("emeScheme", "0.9.5", install_package = TRUE),
-      regexp ="name:    emeScheme
-version: 0.9.5"
-    )
-  }
-)
+# test_that(
+#   "scheme_install() installs scheme from repo",
+#   {
+#     expect_message(
+#       object = scheme_install("emeScheme", "0.9.5", install_package = TRUE),
+#       regexp ="name:    emeScheme
+# version: 0.9.5"
+#     )
+#   }
+# )
 
 test_that(
   "scheme_install() gives message when already installed",
