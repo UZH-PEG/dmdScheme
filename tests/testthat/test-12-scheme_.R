@@ -44,41 +44,50 @@ test_that(
 )
 
 
-
-test_that(
-  "scheme_install() installs scheme from repo",
-  {
-    expect_message(
-      object = scheme_install("dmdScheme", "0.9.5"),
-      regexp ="name:    dmdScheme
-version: 0.9.5"
-    )
-  }
-)
-
-
-
 test_that(
   "scheme_installed() returns TRUE when not installed",
   {
     expect_true(
-      object = scheme_installed("dmdScheme", "0.9.5")
+      object = scheme_installed("dmdScheme", "0.9.9")
     )
   }
 )
 
 
+# test_that(
+#   "scheme_install() installs scheme from repo",
+#   {
+#     expect_message(
+#       object = scheme_install("dmdScheme", "0.9.5"),
+#       regexp ="name:    dmdScheme
+# version: 0.9.5"
+#     )
+#   }
+# )
 
 
-test_that(
-  "scheme_uninstall() uninstalls scheme",
-  {
-    expect_message(
-      object = scheme_uninstall("dmdScheme", "0.9.5"),
-      regexp ="Scheme dmdScheme_0.9.5 deleted and moved to"
-    )
-  }
-)
+
+# test_that(
+#   "scheme_installed() returns TRUE when not installed",
+#   {
+#     expect_true(
+#       object = scheme_installed("dmdScheme", "0.9.9")
+#     )
+#   }
+# )
+#
+#
+#
+#
+# test_that(
+#   "scheme_uninstall() uninstalls scheme",
+#   {
+#     expect_message(
+#       object = scheme_uninstall("dmdScheme", "0.9.5"),
+#       regexp ="Scheme dmdScheme_0.9.5 deleted and moved to"
+#     )
+#   }
+# )
 
 
 
