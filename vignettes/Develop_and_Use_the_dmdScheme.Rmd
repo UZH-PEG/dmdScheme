@@ -1,0 +1,589 @@
+---
+title: "Develop and use the `dmdScheme`"
+subtitle: "`r library(dmdScheme);paste0(scheme_active()$name, '_', scheme_active()$version)`"
+author: "Rainer M Krug <Rainer.Krug@uzh.ch>"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_vignette: 
+    toc: true
+    toc_depth: 4
+vignette: >
+  %\VignetteIndexEntry{Develop and use the `dmdScheme`}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+ 
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	eval = TRUE,
+  	collapse = TRUE,
+	message = TRUE,
+  	comment = "#>"
+)
+library(dmdScheme)
+library(here)
+library(kableExtra)
+```
+
+
+# Using the `dmdScheme`
+
+The functionality for using the dmdScheme is available either via the online app (which is identical to being housed at an inhouse shiny server), the local running app, or via the R command line. The simplest method is using the online app, as no additional software needs to be installed locally. To be able to use the dmdScheme functionality locally, either via the app or via the R command line, it is necessary to install R [@RCoreTeam2019] and the `dmdScheme` package [@Krug2019a] in R.
+
+In the following section, I will go through the different stages of using the `dmdScheme` web app, a local app or from the R prompt. The detailed commands which have to be used can be found in Figure 1.
+
+
+```{r fig1, echo = FALSE, fig.show = "hold", out.width = "33%", fig.align = "default", fig.cap = "**Figure 1**: Workflow of using `dmdScheme` (A) via the web app, (B) via the app locally, (C) via the R prompt. Square boxes indicate steps which are not common to all three, rounded boxes indicate steps identical to the different ways, although how they are executed can differ."}
+knitr::include_graphics("./figs/workflow_enterMetaData_app_online.png")
+knitr::include_graphics("./figs/workflow_enterMetaData_app_local.png")
+knitr::include_graphics("./figs/workflow_enterMetaData_R.png")
+```
+
+
+
+## Preparation
+The app (Figure 2) can be accessed either via the internet as a web app at [https://rmkrug.shinyapps.io/dmd_app/](https://rmkrug.shinyapps.io/dmd_app/), or locally. To run it locally, you need R installed and the `dmdScheme` package installed, preferably from CRAN. After loading the `dmdScheme` package, you can start the app locally by running `run_app()` at the R prompt. After these steps, the usage of the two apps is identical.
+
+When using the `dmdScheme` from the command line, the initial setup is the same as running the app locally, only that it is not necessary to start the app.
+
+
+```{r fig2, fig.show = "hold", out.width = "40%", fig.align = "center", fig.cap = "**Figure 2**: Screenshot of the dmdScheme app.", echo = FALSE}
+knitr::include_graphics("./figs/app.jpg")
+```
+
+
+## Select scheme
+
+The package `dmdScheme` does not come with a specific scheme, and installs upon loading a generic dmdScheme from the dmdScheme scheme repository at [https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository). In nearly all circumstances, a specific scheme needs to be installed, together with the accompanying R package. In the app, this is done via selecting a theme in the section "Available dmdSchemes". This list is generated automatically upon starting of the app from the schemes available in the scheme repository. The selection of the scheme will download the scheme definition package, install any accompanying R package as specified in the scheme definition package, load the accompanying R package, and activate the scheme definition. 
+
+To do this from the R prompt, one has do these steps manually and install the scheme, install the accompanying R package, load the accompanying R package, and activate the scheme itself (see Figure 1 C for the commands).
+
+## Download new scheme
+
+
+ The spreadsheet to enter the metadata can be obtained from the app via the "Empty scheme spreadsheet" bottom. This will download an `.xlsx` spreadsheet containing the definition of the scheme and fields which need to be filled in. 
+
+In R, the spreadsheet can be obtained by using the `open_new_spreadsheet()` command.
+
+Figure 3 shows two screenshots of the spreadsheet as opened in Excel.
+
+```{r fig3, fig.show = "hold", out.width = "90%", fig.align = "center", fig.cap = "**Figure 3**: Some example tabs from the `emeScheme` spreadsheet. The first to contains bibliometric metadata modelled along the requirements by DataCite and the authors in the second tab. The third one contains metadata about the Species used in the experiment. The complete spreadsheet can be found in the supplemental material `emeScheme.xlsx`.", echo = FALSE}
+knitr::include_graphics("./figs/Spreadsheet_01_MdBibliometric.jpg")
+knitr::include_graphics("./figs/Spreadsheet_02_MdAuthor.jpg")
+# knitr::include_graphics("./figs/Spreadsheet_03_Experiment.jpg")
+knitr::include_graphics("./figs/Spreadsheet_04_Genus.jpg")
+# knitr::include_graphics("./figs/Spreadsheet_08_DataFileMetadata.jpg")
+```
+
+
+## Enter / Edit metadata on downloaded xlsx
+
+The entering of the metadata is done in the spreadsheet downloaded before. The spreadsheet contains the definition of the scheme as well as all information needed to fill in the metadata, including "type" of the metadata (e.g. numeric, character, or boolean), "allowed values" or "suggested values", "unit" as well as a "Description" field. 
+
+Metadata can be entered in all green cells, while all red cells are (should be) locked and are part of the scheme definition. 
+
+Here the familiarity of researchers with spreadsheets plays an important role, as the technical details of the entering itself do not need to be explained as it is a standard spreadsheet. 
+
+ The metadata in the `.xlsx` file can be entered and edited in likely all spreadsheet programs which can read and write `.xlsx` files. We tested successfully Excel, Pages, Libre Office and Google Docs. 
+
+A spreadsheet as frontend for entering the metadata offers the additional possibilities to specify validation rules within the spreadsheet itself to be checked during the entering process and not only afterwards. As we wanted to maintain the flexibility to edit the spreadsheet in different spreadsheet editors in a consistent way, this is not implemented in the dmdScheme or emeScheme [@Krug2019b], but could be easily done in other schemes.
+
+## Validate metadata and create report
+
+To be able to validate the metadata, the validation needs access to the metadata as well as (in most cases) the data files themselves, as the validation can include checking for complete definition of the column names in tables, as implemented in the @Krug2019b.  Consequentially, the metadata as well as the data needs to be uploaded to the app, which is done via the "Upload spreadsheet containing metadata" and the "Upload datafiles" buttons. In the case of the web app, these are uploaded to the server running the app (in this case [https://www.shinyapps.io](https://www.shinyapps.io), which is run by RStudio Inc.). If there are e.g. confidentiality or size reasons why an upload to a server is not an option, one could host an inhouse shiny server, which would run the shiny server and the app. The other option would be to use the local app, in which case the metadata and data remain on the local computer. Nevertheless, the data is copied into a different directory. If for example size constraints would prohibit that approach, one can use the R prompt. In this case, the validation function does not need to do any copying of the data, and only needs the path to the directory in which the data resides.
+
+After completion of the validation, the app (web or local) downloads a report, in the default setting an html report. Optional, the report could be a word `docx` document or a `pdf`.
+
+The report (see Figure 4) does show **errors** (which normally should be fixed), **warnings**, which are not necessarily errors, but can be errors (depending on the validation rules), and **notes**. The level of details, and aspects validated, in this report depends on the validation function, which can be changed in the accompanying R package. 
+
+The editing - validation cycle should be repeated until the report is satisfactory.
+
+On the R prompt, the validation involve the two commands `validate()` and `report()` to validate the spreadsheet and to create the report from the object resulting from the validation.
+
+```{r fig4, fig.show = "hold", out.width = "90%", fig.align = "center", fig.cap = "**Figure 4**: Example validation report, as cfrom the validation included in the `emeScheme` package [@Krug2019b].", echo = FALSE}
+knitr::include_graphics("./figs/ValidationReport.jpg")
+```
+
+
+## Export uploaded spreadsheet to xml
+In the app, the xml can be obtained by using the "Export to xml" button. Depending on the export functionality implemented for the selected scheme (as defined in the accompanying R package), the file returned is an `.xml` file (`dmdScheme`) or a compressed archive (`.tar.gz`) containing multiple `.xml` files  (e.g. for the `emeScheme`, one per data file). On the R prompt, the command `write_xml()` will export to a single (`dmdScheme`) or multiple `.xml` files (`emeScheme`) and return the names(s) of the file(s) exported.
+
+# The R Package
+
+The package `dmdScheme` is a base package for the usage and development of domain specific metadata schemes. It provides functionality to enter the metadata, validate the entered metadata, and export it to xml format for further processing by e.g. archival repositories. This document will give an overview over the `dmdScheme` package and what it contains. More detailed information about the development, including a suggested workflow to create a new scheme definition, can be found in the vignette **Howto create a new scheme**.
+
+## Installation
+
+The recommended way is to install from CRAN the stable released version:
+
+```{r echo = TRUE, eval = FALSE}
+install.packages("dmdScheme")
+```
+
+
+To install the **master** branch, the stable branch which will become the new CRAN release, from the [dmdScheme repository on github](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/tree/master), run
+ 
+```{r echo=TRUE, eval = FALSE}
+## install the devtools package if not installed yet
+# install.packages("devtools")
+
+devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "master", build_opts = NULL)
+```
+ 
+If you are feeling adventurous, want to live at the bleeding edge and can live with non-working features, you can install the **dev** branch. This branch is **not stable** and features and functionality can appear or be remioved without prior notice:
+
+```{r echo=TRUE, eval = FALSE}
+## install the devtools package if not installed yet
+# install.packages("devtools")
+
+devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "dev", build_opts = NULL)
+```
+ 
+Other branches are not generally recommended for installation unless you are involved in `dmdScheme` package development.
+
+## Loading the package
+
+When you load the package, the definition of the scheme is downloaded from the [dmdScheme repository](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/tree/master) installed to a temporary scheme library in a temporary directory for usage in this R session. As this scheme library is styored in a temporary directory, it will be deleted when youu quit your R session and re-downloaded each time you start a new session and load the package. To create a permanent package library you have to create a cache in the user directory. To do this, run
+
+```{r echo=TRUE, eval = FALSE}
+cache(createPermanent = TRUE)
+```
+
+and restart your R session. Now the definitions of the installed `dmdSchemes` will be installed in this user cache and be available permanently. For further info, see the documenatation of the command `cache()`.
+
+
+## Managing installed schemes
+ 
+Once loaded, the default scheme definition from the package is, when necessary, installed and used.
+
+There are several commands to manage installed schemes. All these commands start with `scheme_`.
+
+These are in detail:
+
+### `scheme_default()`
+returns the default scheme and version, i.e. the one with which the dmdScheme package is based. This can be the `dmdScheme` package itself, or a package crewated with `make_new_package()`.
+
+```{r}
+scheme_default()
+```
+
+### `scheme_repo()`
+Get or set scheme repository. If `repo` is specified, the scheme repository to be used is set. Otherwise, the scheme repository used is only returned.
+
+```{r}
+scheme_repo()
+```
+
+### `scheme_list_in_repo()`
+Show the schemes available in a repo. The defaut repo is [](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository). The function reads and simly returns the file `SCHEME_DEFINITIONS.yaml` in the folder `schemes` in the repository.
+
+
+```{r}
+scheme_list_in_repo()
+```
+
+### `scheme_download()`
+Download a scheme definition from the repo set and stores in the destfile.
+The function returns the fully qualified file name to the downloaded file invisibly.
+
+```{r}
+scheme_download(name = "emeScheme", version = "0.9.5", destfile = tempfile())
+```
+
+
+### `scheme_install()`
+Install a new scheme definition. In the normal usecase, this function uses `scheme_download_url()` to download the scheme defintion from the default [github repository](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository) and installs it. The usage is
+
+```{r}
+scheme_install(name = "emeScheme", version = "0.9.5")
+```
+
+### `scheme_install_r_package()`
+Installs the accompanying R package of the same name as the scheme. This does only install the package - it still b=needs to be loaded to be used!
+
+```{r}
+scheme_install_r_package(name = "emeScheme", version = "0.9.5")
+```
+
+### `scheme_list()`
+Shows the installed schemes.
+```{r}
+scheme_list()
+```
+
+### `scheme_use()`
+Activate the scheme `NAME` with version `VERSION`
+
+```{r}
+scheme_use(name = "emeScheme", version = "0.9.5")
+```
+
+### `scheme_active()` 
+Shows the currently active scheme.
+
+```{r}
+scheme_active()
+scheme_use(name = "dmdScheme", version = "0.9.9")
+scheme_active()
+```
+
+
+### `scheme_path_index_template()`
+Returns the path to the index template. The search order is:
+1. the index file included in the scheme package 
+2. the scheme package included in the `dmdScheme` package (**not** the acompanying package!).
+
+```{r}
+scheme_path_index_template()
+```
+
+### `scheme_path_xlsx()`
+Returns the path to the `xlsx` file included in the scheme package.
+
+```{r}
+scheme_path_xlsx()
+```
+
+### `scheme_path_xml()`
+Returns the path to the `xml` file included in the scheme package.
+
+```{r}
+scheme_path_xml()
+```
+
+### `scheme_uninstall()`
+Uninstall an installed scheme. The scheme definition, is deleted from the scheme library, and moved to a temporary flder which wil be deleted at the end of the R session.
+```{r}
+scheme_uninstall(name = "emeScheme", version = "0.9.5")
+
+```
+
+### `scheme_installed()`
+Return `TRUE, if the scheme is installed
+```{r}
+scheme_installed(name = "emeScheme", version = "0.9.5")
+```
+
+
+### `scheme_path_xlsx()`
+
+Returns the path to the `.xlsx` representation of the currently active scheme.
+```{r}
+scheme_path_xlsx()
+```
+
+### `scheme_path_xml()`
+Returns the path to the `.xml` representation of the currently active scheme.
+```{r}
+scheme_path_xml()
+```
+
+### `scheme_make()`
+This function is used to package a new scheme. For details see the vignette `Howto Create a new scheme`.
+
+# Entering new Metadata
+
+To enter new data to the dmdScheme, you have to run the command
+
+```{r eval = FALSE}
+open_new_spreadsheet()
+```
+
+This will open Excel and the file should look similar to this, when looking at the second tab as in Figure 3.
+
+The following points are important to remember:
+
+1) The file is saved in a **temporary** directory. It needs to be saved at a different location, if you want to keep the changes.
+2) Data can only be entered in the green cells with. All other cells are write protected.
+
+After entering the data, save it to a location for further processing.
+
+
+## Importing Data from Excel Sheet
+
+Next, you have to import the data entered in the Excel sheet into R. For simplicity, we use here a file included in the package. If you want to load your own file, replace `scheme_path_xlsx()` with the file name and path to that file.
+
+```{r}
+x <- read_excel(
+      file = scheme_path_xlsx(),
+      verbose = TRUE
+)
+```
+
+The `verbose = TRUE` argument will produce messages which will show you what is happening and will help to identify problems.
+
+## Print dmdScheme Data
+
+`dmdScheme` Data can be printed by using the `print()` function. The function has three arguments which control the printout:
+
+* `printAttr`: if `TRUE` (default) print the **basic** attributes prefixed with `A   `
+* `printExAttr`: if `TRUE` print the **all** attributes prefixed with `X   `
+* `printData`: if `TRUE` (default) print the data prefixed with `D   `
+
+```{r}
+print(
+  x,
+  printAttr = FALSE,
+  printExtAttr = FALSE,
+  printData = FALSE
+)
+```
+
+```{r}
+print(
+  x,
+  printAttr = TRUE,
+  printExtAttr = FALSE,
+  printData = FALSE
+)
+```
+
+```{r}
+print(
+  x,
+  printAttr = TRUE,
+  printExtAttr = TRUE,
+  printData = FALSE
+)
+```
+
+```{r}
+print(
+  x,
+  printAttr = TRUE,
+  printExtAttr = TRUE,
+  printData = TRUE
+)
+```
+
+## Validating your metadata
+
+The metadata in the spreadsheet can be validated by using the following command and which results in an object of class `dmdScheme_validation`.
+
+```{r}
+validate( scheme_path_xlsx() )
+
+```
+
+
+To create a report (html, pdf or docx) yo can use the `report()` function:
+
+```{r eval = FALSE}
+report( scheme_path_xlsx() )
+```
+
+which will open a html report in your browser.
+
+## Converting Metadata to xml
+
+You can export the data to an an `xml_document` object as defined in the `xml2` package to do further processing:
+
+```{r}
+x <- read_excel( scheme_path_xlsx() )
+xml <- as_xml( x, file = xmlFile)
+xml
+```
+
+You can save the xml to a file by using
+
+```{r}
+xmlFile <-  tempfile(fileext = ".xml")
+
+xml2::write_xml(x = xml, file = xmlFile)
+```
+
+or directly in one command
+```{r}
+xmlFile <-  tempfile(fileext = ".xml")
+
+write_xml( x = x, file = xmlFile )
+```
+
+## Re-import from xml into R
+
+```{r}
+x <- read_xml( xmlFile )
+x
+```
+
+# Developing new dmdScheme derived scheme definitions
+This package contains all the functionality to easily create a new metadata scheme. The resulting scheme package will contain all files needed so that it can be easily be distributed and used, and can be either be distributed directly or uploaded to an online repository, e.g. the default [dmdScheme repository](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository).
+
+A new scheme definition only has to include the scheme definition and example data. It can also contain additional examples and an R script to install the accompanying R package, but these are not required. 
+
+
+## Create and edit new definition
+To create the scheme itself (as shown in Figure 5), it is recommended to begin with an existing scheme. It is possible to edit most aspects in the scheme definition `xlsx` file, including adding or deleting tabs (only the Experiment and DataFileProperties tabs are needed), adding or removing rows (Experiment tab) or columns (other tabs), changing the types, suggested values, allowed values and units. **If the `.xlsx` file is locked, you can unlock it by using the password `test`.**
+
+It is important that the final scheme contains example data as 
+- internal processing of the `.xlsx` file require example data and will fail if a scheme without example data is provided, and 
+- it is much more user friendly if the user of a package not only sees the empty scheme, but also a filled in scheme with example data.
+
+
+This `.xlsx` file can be edited following the limitations as specified below. After modifications have been done and the spreadsheet has been saved, the scheme package can be created by using
+
+```{r eval = FALSE}
+scheme_make( "TheFile.xlsx" )
+```
+
+which will create a file named `NAME_VERSION.tar.gz` in the directory `path` based on the scheme definition in `TheFile.xlsx`. `NAME` and `VERSION` are the scheme name and scheme version as specified in the cell `(H:1)` in sheet `Experiment`.
+
+The following two commands will install the new scheme and use it:
+
+```{r eval = FALSE, echo = TRUE}
+scheme_install(file = "NAME_VERSION.tar.gz")
+scheme_use("NAME", "VERSION")
+```
+
+To upload the scheme to the main repository on [github](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository), please either clone the repo and send a pull request or file an issue with the scheme package as an attachment.
+
+
+## Minimum requirements for metadata schemes derived from `dmdScheme`
+There are a few minimum requirements for `dmdScheme` derived metadata schemes, so that all functions in the `dmdScheme` package will work.
+
+These are:
+
+1. Tab name has to be identical to `propertySet` value (Cell `A:2` in the tab Experiment, `B:1` in other tabs)
+
+2. One tab named `Experiment` is required.
+This tab is different to the others as it has
+    1. horizontal layout
+    2. only one value per property allowed
+    3. the top-right cell, i.e. the one above the values to be entered, contains the word **DATA**, **name of the scheme** and **version of the scheme** separated by a space, e.g. **DATA emeScheme v0.9.5**
+    
+3. One tab named `DataFileMetaData` is required
+
+    * one column named `dataFileName`
+
+4. Each tab except `Experiment` and `DataFileMetaData` needs an ID field  
+Applies to all tabs except `Experiment` and `DataFileMetaData
+
+    * The first column in the tab must be a column named `...ID`.
+
+5. The spreadsheet can contain a tab `DOCUMENTATION`
+This tab can contain information for the user and will not be imported.
+
+
+
+```{r fig5, fig.show = "hold", out.width = "50%", fig.align = "center", fig.cap = "**Figure 5**: Create a new domain specific scheme based on dmdScheme.", echo = FALSE}
+knitr::include_graphics("./figs/workflow_newScheme.png")
+```
+
+# Developing accompanying R packages
+
+The package `dmdScheme` package is only providing the base functionality for working with dmdSchemes. In many cases, the functionality needs to be extended to be able to work with other schemes. This can be done by creating an accompanying R package. It is a standard R package which should
+
+- depend on the `dmdScheme` package
+- automatically downloads, installs and activates a specific scheme definition and not the default dmdScheme.
+
+It is not necessary to build an accompanying R package, but doing so will make it possible to adapt many aspects of the validation and export process to the needs of a specific domain. 
+
+The easiest to develop an accompanying R package is to
+- use `scheme_use()` to use the new scheme for which the accompanying package should be developed
+- use the convenience function `make_new_package()` to create a package skeleton which fulfils these requirements
+
+Now, functions can be added. For an example see [https://github.com/Exp-Micro-Ecol-Hub/emeScheme](https://github.com/Exp-Micro-Ecol-Hub/emeScheme), in which the methods `as_xml_list.emeSchemeSet.R` and `validate.emeSchemeSet_raw.R` extend the generic functions `as_xml_list()` and `validate()` when the the scheme is an `emeScheme`. 
+
+# Linking derived scheme to other metadata scheme
+
+<span style="color:red">TODO</span>	
+
+To illustrate ho a `dmdScheme` derived metadata scheme can be mapped (and exported) to another metadata scheme, we look at the example of the [EML scheme](https://eml.ecoinformatics.org) as it is widely used in ecology and the structural functionality is included in the `dmdScheme` package.
+
+The actual mapping and development of the function to do the actual export, as well as this document, is work in progress and details can (will) change in further releases of `dmdScheme`.
+
+## Approach and Mapping
+
+???OP: Explain why the following is necessary.?? It is essential that only one data file is described and only one method is used in the data file. An emeScheme object containing more than one data file must be split into multiple metadata files with one data file per metadata file by using `dmdScheme:::as_xml.dmdSchemeSet()` to export and split the file - will be done automatically eventually.
+
+At the moment, only a `emeScheme` -> dmdScheme `EML` is implemented. It is done by using the [EML package](https://CRAN.R-project.org/package=EML) in R.
+
+The following section gives the mapping between `emeScheme` and `EML`.
+
+### Experiment
+- name ->
+- temperature -> 
+- light -> 
+- humidity -> 
+- incubator -> 
+- container -> 
+- microcosmVolume -> 
+- mediaType -> 
+- mediaConcentration -> 
+- cultureConditions -> 
+- comunityType -> 
+- mediaAdditions -> 
+- duration -> 
+- comment -> 
+ 
+### Species
+- speciesID ->
+- name -> 
+- strain -> 
+- source -> 
+- density -> 
+- functionalGroup -> 
+- comment -> 
+ 
+### Treatment
+- treatmentID -> `factors$attributeName`
+- unit -> `factors$definition`
+- treatmentLevel -> 
+  - unit != "" -> different factor levels / codes, will be split into `factors$code`
+- comment -> `factors$definition`
+
+### Measurement
+- measurementID -> 
+- variable -> 
+- method -> 
+- unit -> `attributes$unit`
+- object -> 
+- noOfSamplesInTimeSeries -> 
+- samplingVolume -> 
+- dataExtractionID -> 
+- measuredFrom -> 
+- comment -> 
+
+### DataExtraction
+- dataExtractionID
+- method -> 
+- parameter -> 
+- value -> 
+- comment -> 
+ 
+### DataFileMetaData
+- dataFileName -> 
+- columnName -> `attributes$attributeName`
+- columnData -> defines meaning of mappingColumn (see below)
+- mappingColumn ->
+  - columnData = "ID" -> 
+  - columnData = "Treatment" -> 
+  - columnData = "Measurement" -> 
+  - columnData = "Species" -> 
+  - columnData = "other" -> 
+- type -> `attributes$numberType`
+- description -> 
+  - type = "datatime" -> `attributes$formatString`
+  - else -> `attributes$attributeDefinition`
+- comment -> `attributes$attributeDefinition`
+
+# Customize the index template
+
+The index template is a text file, in which tokens are replaced by values from the a `dmdScheme` when calling the function `make_index( x = A_dmdScheme, template = "the/index/template/file.txt)`. 
+Tokens are enclosed by` %%...%%` and must not contain any white spaces (tab, space, ...).
+
+The following tokens are allowed at the moment:
+
+## Tokens which are replaced with values from a `dmdScheme`
+
+- **`%%propertySet%%` or `%%propertySet.*%%` or `%%propertySet.*.*%%`**: replace with the propertySet as a table
+- **`propertySet.valueProperty` or `propertySet.valueProperty.*`**: replace with the valueProperty (column) from a propertySet as a comma separated list
+- **`%%propertySet.valueProperty.N%%`**: replace with the Nth valueProperty from a propertySet
+- **`%%propertySet.*.N%%`***: replace with the Nth row from a propertySet
+
+If the token starts with an `!fun!`, the R function `fun` is executed using the result. For example `%%!unique!DataFileMetaData.dataFileName`%% would only return a vector containing the unique `dataFileName`.
+
+## Special tokens
+- **`%%DATE%%`**: will be replaced with the current date
+- **`%%AUTHOR%%`**: will be replaced with the author as supplied to the function

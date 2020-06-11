@@ -10,7 +10,7 @@
 
   dmdScheme::scheme_default(
     name = "dmdScheme",
-    version = "0.9.5"
+    version = "0.9.9"
   )
 
   # Install and Use default scheme ------------------------------------------

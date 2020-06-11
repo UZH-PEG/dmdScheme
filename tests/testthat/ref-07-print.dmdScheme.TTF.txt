@@ -1,4 +1,28 @@
  dmdScheme - dmdSchemeSet
+     MdBibliometric - dmdSchemeData
+A       Names : uploadType | doi | publicationDate | title | description | version | language | keywords | additionalNotes | accessRights | accessRightsInfo | license
+A       Units : 
+A       Type  : character | character | character | character | character | character | character | character | character | character | character | character
+
+XA      propertyName: MdBibliometric
+XA      suggestedValues: NA | NA | NA | NA | NA | NA | NA | NA | NA | NA | NA | Creative Commons Attribution 4.0 International
+XA      allowedValues: Dataset, Image - Photo, Video / Audio | NA | NA | NA | NA | NA | NA | NA | NA | Open, Embargoed, Restricted, Closed | NA | NA
+XA      Description: The type of the data. Needs tobe one as specified in the allowedValues | The DOI of the dataset. Usually the reserved DOI. | Date of publication of the data package in the format YYYY-MM-DD | Title of the data package | Short description of the data deposited | The version of the dataset. Usually empty, but the version should be specified if the dataset is augmented or corrected. | The language of the dataset. E.g. "eng", "fr", … | Keywords describing the dataset | Some additional info, which does not fit in any category. | Access rights to the data, normally Open or Embargoed. | if Embargoed, the date until embargoed (YYYY-MM-DD), if Restricted, conditions under which access is granted to the data | Should normally be "Creative Commons Attribution 4.0 International" (CCA4)
+XA      row.names: 1
+XA      class: dmdSchemeData | data.frame
+
+     MdAuthors - dmdSchemeData
+A       Names : authorID | familyName | givenName | affiliation | orcid | role
+A       Units : NA | NA | NA | NA | NA | NA
+A       Type  : character | character | character | character | character | character
+
+XA      propertyName: MdAuthors
+XA      suggestedValues: NA | NA | NA | NA | NA | NA
+XA      allowedValues: NA | NA | NA | NA | NA | Conceptualization, Data curation, Formal Analysis, Funding acquisition, Investigation, Methodology, Project administration, Resources, Software, Supervision, Validation, Visualization, Writing – original draft, Writing – review & editing
+XA      Description: Just an id - can be a number | Family name of the author | Given name(s) of the authors | Affiliation of the author | ORCID (Open Researcher and Contributor ID, as issued by https://orcid.org) | Role of the author, using the CRediT – Contributor Roles Taxonomy at https://casrai.org/credit/. Can be more than one.
+XA      row.names: 1 | 2
+XA      class: dmdSchemeData | data.frame
+
      Experiment - dmdSchemeData
 A       Names : name | temperature | light | humidity | incubator | container | microcosmVolume | mediaType | mediaConcentration | cultureConditions | comunityType | mediaAdditions | duration | comment
 A       Units : NA | NA | NA | NA | NA | NA | ml | NA | g/l | NA | NA | NA | days | NA

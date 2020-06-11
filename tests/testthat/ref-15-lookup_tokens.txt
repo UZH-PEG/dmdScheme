@@ -1,0 +1,39 @@
+$`%%MdAuthors%%`
+  authorID familyName givenName                       affiliation orcid
+1        1    Petchey   Owen L. University of Zurich, Switzerland  <NA>
+2        2       Krug Rainer M. University of Zurich, Switzerland  <NA>
+                              role
+1 Conceptualization, Investigation
+2                    Data curation
+
+$`%%MdAuthors.*%%`
+  authorID familyName givenName                       affiliation orcid
+1        1    Petchey   Owen L. University of Zurich, Switzerland  <NA>
+2        2       Krug Rainer M. University of Zurich, Switzerland  <NA>
+                              role
+1 Conceptualization, Investigation
+2                    Data curation
+
+$`%%MdAuthors.*.*%%`
+  authorID familyName givenName                       affiliation orcid
+1        1    Petchey   Owen L. University of Zurich, Switzerland  <NA>
+2        2       Krug Rainer M. University of Zurich, Switzerland  <NA>
+                              role
+1 Conceptualization, Investigation
+2                    Data curation
+
+$`%%MdAuthors.familyName%%`
+[1] "Petchey" "Krug"   
+
+$`%%MdAuthors.familyName.*%%`
+[1] "Petchey" "Krug"   
+
+$`%%MdAuthors.familyName.2%%`
+[1] "%%MdAuthors.familyName.2%%indexToLarge%%"
+
+$`%%MdAuthors.*.2%%`
+  authorID familyName givenName                       affiliation orcid
+2        2       Krug Rainer M. University of Zurich, Switzerland  <NA>
+           role
+2 Data curation
+
