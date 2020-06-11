@@ -1,9 +1,9 @@
 # release 1.2
+
+This is a feature add release.
 - Adds bibliometric metadata and handling of multiple "vertiiical" sheets
 - Adds autocreation of index file which summarises the metadata
 - Adds additional tests
-# release 1.2
-This is a feature add release.
 
 New features are:
 - default scheme (`dmdScheme 0.9.9`) includes bibliometric metadata

@@ -24,6 +24,7 @@ dir.create(fn)
 test_that(
   "returns index as expected",
   {
+    skip_on_os("windows")
     expect_known_output(
       object = (make_index.dmdSchemeSet(
         scheme = dmdScheme_example(),
@@ -45,6 +46,7 @@ test_that(
 test_that(
   "raises error as output exists",
   {
+    skip_on_os("windows")
     expect_error(
       object = make_index.dmdSchemeSet(
         scheme = dmdScheme_example(),
