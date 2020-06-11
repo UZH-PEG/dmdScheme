@@ -32,3 +32,6 @@
 
 ^dmdScheme\.bbprojectd$
 ^codemeta\.json$
+
+^screenshots_highres$
+
