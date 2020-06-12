@@ -36,7 +36,7 @@ as it is a read-only file.
 }
 \examples{
 \dontrun{
-open_new_spreadsheet(schemeName = "dmdScheme", format = FALSE, verbose = TRUE)
+  open_new_spreadsheet(schemeName = "dmdScheme", format = FALSE, verbose = TRUE)
 }
 
 }

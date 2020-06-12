@@ -23,7 +23,7 @@
 #'
 #' @return returns path to the created \code{index.md} file
 #'
-#' @rdname as_dmdScheme
+#' @rdname make_index
 #' @export
 #'
 make_index <- function(

@@ -27,7 +27,6 @@ test_that(
 test_that(
   "open_new_spreadsheet() returns path when file exist and overwrite = TRUE",
   {
-    skip_on_cran()
     expect_equal(
       object = suppressWarnings(open_new_spreadsheet(file = fn, format = TRUE, overwrite = TRUE, open = FALSE)),
       expected = fn,
