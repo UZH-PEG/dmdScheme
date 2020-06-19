@@ -487,90 +487,36 @@ Now, functions can be added. For an example see [https://github.com/Exp-Micro-Ec
 
 # Linking derived scheme to other metadata scheme
 
-<span style="color:red">TODO</span>	
+To discuss how a `dmdScheme` derived metadata scheme can be mapped (and exported) to another metadata scheme, we look at the example of the [EML scheme](https://eml.ecoinformatics.org) as it is widely used in ecology and the structural functionality is included in the `dmdScheme` package.
 
-To illustrate ho a `dmdScheme` derived metadata scheme can be mapped (and exported) to another metadata scheme, we look at the example of the [EML scheme](https://eml.ecoinformatics.org) as it is widely used in ecology and the structural functionality is included in the `dmdScheme` package.
+The actual mapping and development of the function to do the actual export is work in progress.
 
-The actual mapping and development of the function to do the actual export, as well as this document, is work in progress and details can (will) change in further releases of `dmdScheme`.
+## General considerations
+
+The `EML` scheme does provide sections to provide information about affectively all parts of the `dmdScheme`. Nevertheless, the `emeScheme` is a metadata scheme which is experiment based, i.e. can describe multiple datasets with multiple different methods, while the `EML` scheme is dataset based and can only contain one method. Terefore, to make this linking possible, we have to assume that the `dmdScheme` describes only one dataset. This can be either done by "physically" only describing one dataset per Spreadsheet, or by using a function which splits the `dmdScheme` which contains multiple datasets into per-dataset `dmdSchemes`. 
+
+This second approach is implemented in the `emeScheme` in the function `emeSCheme_extract()` function, which extracts the data related to a single data file. This extraction can not be implemented in the `dmdScheme` package, as it is highly dependant on the metadata provided and how the different sheets relate to the data files.
+
+In the same way, that the extract function can not be implemented in the general `dmdScheme`, the actual export to the `EML` scheme can also only be done in the specific scheme as it is also highly dependable on the metadata included. In addition, it can not be stated that **all** `dmdScheme` derived schemes can be exported to an `EML` scheme as all kind of data can be added to the scheme definition, and it is very likely that not all metadata in all `dmdScheme` derived schemes can be mapped to the `EML` scheme.
+
+Finally, the aim of this mapping will not be a conversion to `EML` which can be re-imported into a `dmdScheme`, resulting in an identical object. This might be possible, but the aim would be simply to export the relevant metadata to `EML`, so that it can be indexed by repositories handling `EML` metadata schemes. The original `dmdScheme` metadata would be included in the data package.
 
 ## Approach and Mapping
 
-???OP: Explain why the following is necessary.?? It is essential that only one data file is described and only one method is used in the data file. An emeScheme object containing more than one data file must be split into multiple metadata files with one data file per metadata file by using `dmdScheme:::as_xml.dmdSchemeSet()` to export and split the file - will be done automatically eventually.
+To implement the export to `EML`, two functions need to be implemented:
+1. splitting of the experiment based `dmdScheme` into individual data file based metadata sets
+2. translation of the individual data file metadata sets to the  EML` format.
 
-At the moment, only a `emeScheme` -> dmdScheme `EML` is implemented. It is done by using the [EML package](https://CRAN.R-project.org/package=EML) in R.
-
-The following section gives the mapping between `emeScheme` and `EML`.
-
-### Experiment
-- name ->
-- temperature -> 
-- light -> 
-- humidity -> 
-- incubator -> 
-- container -> 
-- microcosmVolume -> 
-- mediaType -> 
-- mediaConcentration -> 
-- cultureConditions -> 
-- comunityType -> 
-- mediaAdditions -> 
-- duration -> 
-- comment -> 
- 
-### Species
-- speciesID ->
-- name -> 
-- strain -> 
-- source -> 
-- density -> 
-- functionalGroup -> 
-- comment -> 
- 
-### Treatment
-- treatmentID -> `factors$attributeName`
-- unit -> `factors$definition`
-- treatmentLevel -> 
-  - unit != "" -> different factor levels / codes, will be split into `factors$code`
-- comment -> `factors$definition`
-
-### Measurement
-- measurementID -> 
-- variable -> 
-- method -> 
-- unit -> `attributes$unit`
-- object -> 
-- noOfSamplesInTimeSeries -> 
-- samplingVolume -> 
-- dataExtractionID -> 
-- measuredFrom -> 
-- comment -> 
-
-### DataExtraction
-- dataExtractionID
-- method -> 
-- parameter -> 
-- value -> 
-- comment -> 
- 
-### DataFileMetaData
-- dataFileName -> 
-- columnName -> `attributes$attributeName`
-- columnData -> defines meaning of mappingColumn (see below)
-- mappingColumn ->
-  - columnData = "ID" -> 
-  - columnData = "Treatment" -> 
-  - columnData = "Measurement" -> 
-  - columnData = "Species" -> 
-  - columnData = "other" -> 
-- type -> `attributes$numberType`
-- description -> 
-  - type = "datatime" -> `attributes$formatString`
-  - else -> `attributes$attributeDefinition`
-- comment -> `attributes$attributeDefinition`
+For the translation, a mapping needs to be done, which links metadata properties i the `dmdScheme` to metadata properties in the `EML` scheme. AS discussed above, this does not need to be a 1-1 linking, and the (theoretical?) re-import of the `EML` scheme does not necessarily need to re-create the original `dmdScheme` metadata set.
 
 # Customize the index template
 
-The index template is a text file, in which tokens are replaced by values from the a `dmdScheme` when calling the function `make_index( x = A_dmdScheme, template = "the/index/template/file.txt)`. 
+<span style="color:red">TODO</span>
+
+The aim of an index file is, to giva a short and concise overview over the data package deposited. It should contain certain metadata points, e.g. the DOI, authors, license, description, file name(s) of data file(s) and whatever else is considered necessary, to get a basic understanding of the dataset.
+
+The index file is created based on a text template, in which tokens are stand for metadata  values from the a `dmdScheme`. These are replaced with the actual metadata properties  when calling the function `make_index( x = A_dmdScheme, template = "the/index/template/file.txt)`. If asked for, the resulting index file is translated to pdf and html by using pandoc.
+
 Tokens are enclosed by` %%...%%` and must not contain any white spaces (tab, space, ...).
 
 The following tokens are allowed at the moment:
@@ -582,8 +528,11 @@ The following tokens are allowed at the moment:
 - **`%%propertySet.valueProperty.N%%`**: replace with the Nth valueProperty from a propertySet
 - **`%%propertySet.*.N%%`***: replace with the Nth row from a propertySet
 
-If the token starts with an `!fun!`, the R function `fun` is executed using the result. For example `%%!unique!DataFileMetaData.dataFileName`%% would only return a vector containing the unique `dataFileName`.
+If the token starts with an `%%!fun!xxx%%`, the R function `fun` is executed and the result is inserted in the index file. For example `%%!unique!DataFileMetaData.dataFileName%%` would only return a vector containing the unique `dataFileName`.
 
 ## Special tokens
+
+Special tokens are tokens which do not extract data from the metadata scheme. There are at the moment only two:
+
 - **`%%DATE%%`**: will be replaced with the current date
 - **`%%AUTHOR%%`**: will be replaced with the author as supplied to the function
