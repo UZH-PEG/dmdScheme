@@ -29,7 +29,7 @@ library(kableExtra)
 
 # Using the `dmdScheme`
 
-The functionality for using the dmdScheme is available either via the online app (which is identical to being housed at an inhouse shiny server), the local running app, or via the R command line. The simplest method is using the online app, as no additional software needs to be installed locally. To be able to use the dmdScheme functionality locally, either via the app or via the R command line, it is necessary to install R [@RCoreTeam2019] and the `dmdScheme` package [@Krug2019a] in R.
+The functionality for using the dmdScheme is available either via the online app (which is identical to being housed at an inhouse shiny server), the local running app, or via the R command line. The simplest method is using the online app, as no additional software needs to be installed locally. To be able to use the dmdScheme functionality locally, either via the app or via the R command line, it is necessary to install R and the `dmdScheme` package  in R.
 
 In the following section, I will go through the different stages of using the `dmdScheme` web app, a local app or from the R prompt. The detailed commands which have to be used can be found in Figure 1.
 
@@ -87,7 +87,7 @@ Here the familiarity of researchers with spreadsheets plays an important role, a
 
  The metadata in the `.xlsx` file can be entered and edited in likely all spreadsheet programs which can read and write `.xlsx` files. We tested successfully Excel, Pages, Libre Office and Google Docs. 
 
-A spreadsheet as frontend for entering the metadata offers the additional possibilities to specify validation rules within the spreadsheet itself to be checked during the entering process and not only afterwards. As we wanted to maintain the flexibility to edit the spreadsheet in different spreadsheet editors in a consistent way, this is not implemented in the dmdScheme or emeScheme [@Krug2019b], but could be easily done in other schemes.
+A spreadsheet as frontend for entering the metadata offers the additional possibilities to specify validation rules within the spreadsheet itself to be checked during the entering process and not only afterwards. As we wanted to maintain the flexibility to edit the spreadsheet in different spreadsheet editors in a consistent way, this is not implemented in the dmdScheme or emeScheme, but could be easily done in other schemes.
 
 ## Validate metadata and create report
 
@@ -101,7 +101,7 @@ The editing - validation cycle should be repeated until the report is satisfacto
 
 On the R prompt, the validation involve the two commands `validate()` and `report()` to validate the spreadsheet and to create the report from the object resulting from the validation.
 
-```{r fig4, fig.show = "hold", out.width = "90%", fig.align = "center", fig.cap = "**Figure 4**: Example validation report, as cfrom the validation included in the `emeScheme` package [@Krug2019b].", echo = FALSE}
+```{r fig4, fig.show = "hold", out.width = "90%", fig.align = "center", fig.cap = "**Figure 4**: Example validation report, as cfrom the validation included in the `emeScheme` package.", echo = FALSE}
 knitr::include_graphics("./figs/ValidationReport.jpg")
 ```
 
@@ -510,8 +510,6 @@ To implement the export to `EML`, two functions need to be implemented:
 For the translation, a mapping needs to be done, which links metadata properties i the `dmdScheme` to metadata properties in the `EML` scheme. AS discussed above, this does not need to be a 1-1 linking, and the (theoretical?) re-import of the `EML` scheme does not necessarily need to re-create the original `dmdScheme` metadata set.
 
 # Customize the index template
-
-<span style="color:red">TODO</span>
 
 The aim of an index file is, to giva a short and concise overview over the data package deposited. It should contain certain metadata points, e.g. the DOI, authors, license, description, file name(s) of data file(s) and whatever else is considered necessary, to get a basic understanding of the dataset.
 
