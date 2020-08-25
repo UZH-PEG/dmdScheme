@@ -29,9 +29,9 @@ library(kableExtra)
 
 # Using the `dmdScheme`
 
-The functionality for using the dmdScheme is available either via the online app (which is identical to being housed at an inhouse shiny server), the local running app, or via the R command line. The simplest method is using the online app, as no additional software needs to be installed locally. To be able to use the dmdScheme functionality locally, either via the app or via the R command line, it is necessary to install R [@RCoreTeam2019] and the `dmdScheme` package [@Krug2019a] in R.
+The functionality for using the dmdScheme is available either via the online app (which can also be housed at an inhouse shiny server), the local running app, or via the R command line. The simplest method is using the online app, as no additional software needs to be installed locally. To be able to use the dmdScheme functionality locally, either via the app or via the R command line, it is necessary to install R [@RCoreTeam2019] and the `dmdScheme` package [@Krug2019a] in R.
 
-In the following section, I will go through the different stages of using the `dmdScheme` web app, a local app or from the R prompt. The detailed commands which have to be used can be found in Figure 1.
+In the following section, I will go through the different stages of using the `dmdScheme` via tehe web app, a local app or the R prompt. The detailed commands which have to be used can be found in Figure 1.
 
 
 ```{r fig1, echo = FALSE, fig.show = "hold", out.width = "33%", fig.align = "default", fig.cap = "**Figure 1**: Workflow of using `dmdScheme` (A) via the web app, (B) via the app locally, (C) via the R prompt. Square boxes indicate steps which are not common to all three, rounded boxes indicate steps identical to the different ways, although how they are executed can differ."}
@@ -43,7 +43,7 @@ knitr::include_graphics("./figs/workflow_enterMetaData_R.png")
 
 
 ## Preparation
-The app (Figure 2) can be accessed either via the internet as a web app at [https://rmkrug.shinyapps.io/dmd_app/](https://rmkrug.shinyapps.io/dmd_app/), or locally. To run it locally, you need R installed and the `dmdScheme` package installed, preferably from CRAN. After loading the `dmdScheme` package, you can start the app locally by running `run_app()` at the R prompt. After these steps, the usage of the two apps is identical.
+The app (Figure 2) can be accessed either via the internet as a web app at [https://rmkrug.shinyapps.io/dmd_app/](https://rmkrug.shinyapps.io/dmd_app/), or locally. To run it locally, you need R and the `dmdScheme` package installed. After loading the `dmdScheme` package, you can start the app locally by running `run_app()` at the R prompt. After these steps, the usage of the two apps is identical.
 
 When using the `dmdScheme` from the command line, the initial setup is the same as running the app locally, only that it is not necessary to start the app.
 
