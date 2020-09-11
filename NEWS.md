@@ -1,3 +1,7 @@
+# release 1.2.1
+This is a maintanance release, which moves `openxlsx` into the suggests section and makes 
+`format_dmdScheme_xlsx()` issue a warning and handling the missing package `openxlsx` gracefully.
+
 # release 1.2
 
 This is a feature add release.

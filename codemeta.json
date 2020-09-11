@@ -14,14 +14,13 @@
   ],
   "issueTracker": "https://github.com/rkrug/dmdScheme/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.2",
+  "version": "1.2.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "4.0.0",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.0 (2020-04-24)",
+  "runtimePlatform": "R version 4.0.2 (2020-06-22)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -134,6 +133,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=dplyr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "openxlsx",
+      "name": "openxlsx",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=openxlsx"
     }
   ],
   "softwareRequirements": [
@@ -248,18 +259,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "openxlsx",
-      "name": "openxlsx",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=openxlsx"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "writexl",
       "name": "writexl",
       "provider": {
@@ -321,12 +320,7 @@
   ],
   "releaseNotes": "https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/blob/master/NEWS.md",
   "readme": "https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/blob/master/Readme.md",
-  "contIntegration": [
-    "https://travis-ci.org/Exp-Micro-Ecol-Hub/dmdScheme",
-    "https://codecov.io/github/Exp-Micro-Ecol-Hub/dmdScheme?branch=master",
-    "https://travis-ci.org/Exp-Micro-Ecol-Hub/dmdScheme",
-    "https://codecov.io/github/Exp-Micro-Ecol-Hub/dmdScheme?branch=dev"
-  ],
+  "contIntegration": ["https://travis-ci.org/Exp-Micro-Ecol-Hub/dmdScheme", "https://codecov.io/github/Exp-Micro-Ecol-Hub/dmdScheme?branch=master", "https://travis-ci.org/Exp-Micro-Ecol-Hub/dmdScheme", "https://codecov.io/github/Exp-Micro-Ecol-Hub/dmdScheme?branch=dev"],
   "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing",
   "keywords": "metadata-scheme",
   "citation": [
@@ -359,5 +353,6 @@
         }
       }
     }
-  ]
+  ],
+  "fileSize": "0KB"
 }
