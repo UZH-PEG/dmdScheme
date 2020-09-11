@@ -12,9 +12,9 @@
     "https://exp-micro-ecol-hub.github.io/dmdScheme/",
     "https://CRAN.R-project.org/package=dmdScheme"
   ],
-  "issueTracker": "https://github.com/rkrug/dmdScheme/issues/",
+  "issueTracker": "https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/issues/",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
