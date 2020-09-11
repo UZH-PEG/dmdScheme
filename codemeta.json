@@ -7,14 +7,14 @@
   "identifier": "dmdScheme",
   "description": "Forms the core for developing own domain specific metadata schemes. \n                  It contains the basic functionality needed for all metadata schemes based on the\n                  'dmdScheme'. See R.M. Krug and O.L. Petchey (2019) <DOI:10.5281/zenodo.3581970>.",
   "name": "dmdScheme: Domain Specific MetaData Scheme",
-  "codeRepository": "https://github.com/Exp-Micro-Ecol-Hub/dmdScheme",
+  "codeRepository": "https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/",
   "relatedLink": [
     "https://exp-micro-ecol-hub.github.io/dmdScheme/",
     "https://CRAN.R-project.org/package=dmdScheme"
   ],
-  "issueTracker": "https://github.com/rkrug/dmdScheme/issues",
+  "issueTracker": "https://github.com/rkrug/dmdScheme/issues/",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
