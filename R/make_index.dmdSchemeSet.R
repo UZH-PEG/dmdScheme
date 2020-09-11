@@ -1,14 +1,18 @@
 #' Title
 #'
 #'
-#' @rdname as_dmdScheme
 #' @importFrom tools file_ext
 #' @importFrom knitr kable
 #' @importFrom stringr str_length str_pad
 #' @export
 #'
+#' @rdname make_index
+#'
 #' @examples
-#' make_index( dmdScheme_example(), path = tempdir() )
+#' \dontrun{
+#'   # takes to long for CRAN
+#'   make_index( dmdScheme_example(), path = tempdir() )
+#' }
 #'
 make_index.dmdSchemeSet <- function(
   scheme,

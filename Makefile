@@ -58,9 +58,9 @@ clean: clean_web
 ############# figs_vignette ####
 ################################
 
-figs_vignette: ppng psvg
-	
-clean_figs: clean_ppng clean_psvg
+figs_vignette: ppng # psvg
+
+clean_figs: clean_ppng # clean_psvg
 
 ############# ppng #############
 
@@ -82,7 +82,7 @@ $(PSVG):$(PLANTUML)
 clean_psvg:
 	rm -f $(PSVG)
 
-	
+
 ########### scheme package ###########
 
 scheme_package:
@@ -141,7 +141,7 @@ clean_web: clean_html clean_vignettes clean_readme
 
 docs: figs_vignette
 	Rscript -e "devtools::document(roclets = c('rd', 'collate', 'namespace', 'vignette'))"
-	
+
 
 build: figs_vignette
 	cd ..;\
@@ -170,14 +170,17 @@ clean_check:
 
 ####
 
-# check_rhub
-# 	@Rscript -e "rhub::check_for_cran(".")
+check-rhub-bkg: build-cran
+	@Rscript -e "x <- rhub::check_for_cran(email = 'Rainer@krugs.de', path = './../$(PKGNAME)_$(PKGVERS).tar.gz')"
+
+check-rhub: build-cran
+	@Rscript -e "x <- rhub::check_for_cran(email = 'Rainer@krugs.de', path = './../$(PKGNAME)_$(PKGVERS).tar.gz', show_status = TRUE)"
 
 ####
 
 test:
 	@Rscript -e "devtools::test()"
-	
+
 
 ####
 
