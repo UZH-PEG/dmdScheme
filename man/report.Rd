@@ -82,8 +82,12 @@ This generic function creates a report based on the object.
 }}
 
 \examples{
+\dontrun{
+## This examples requires pandoc
 ## Report of `dmdScheme_validation`
 report( scheme_path_xlsx() )
+}
+
 
 ## Report of `dmdScheme_validation`
 \dontrun{

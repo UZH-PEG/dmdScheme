@@ -14,7 +14,7 @@
   ],
   "issueTracker": "https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/issues/",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
