@@ -66,6 +66,9 @@ shinyUI(
 
         hr(),
         h1("Download New Scheme"),
+        h4("The download of an Empty Spreadsheet may result in a corrupted file!"),
+        h5("You can either let Excel repair the spreadsheet or"),
+        h5("download the Example Spreadsheet and delete all the data in it."),
 
         downloadButton(
           outputId = "newEmptySpreadsheet",

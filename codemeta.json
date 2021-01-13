@@ -18,10 +18,9 @@
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "4.0.0",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.0 (2020-04-24)",
+  "runtimePlatform": "R version 4.0.3 (2020-10-10)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -319,14 +318,8 @@
       "sameAs": "https://CRAN.R-project.org/package=stringr"
     }
   ],
-  "releaseNotes": "https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/blob/master/NEWS.md",
   "readme": "https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/blob/master/Readme.md",
-  "contIntegration": [
-    "https://travis-ci.org/Exp-Micro-Ecol-Hub/dmdScheme",
-    "https://codecov.io/github/Exp-Micro-Ecol-Hub/dmdScheme?branch=master",
-    "https://travis-ci.org/Exp-Micro-Ecol-Hub/dmdScheme",
-    "https://codecov.io/github/Exp-Micro-Ecol-Hub/dmdScheme?branch=dev"
-  ],
+  "contIntegration": ["https://travis-ci.org/Exp-Micro-Ecol-Hub/dmdScheme", "https://codecov.io/github/Exp-Micro-Ecol-Hub/dmdScheme?branch=master", "https://travis-ci.org/Exp-Micro-Ecol-Hub/dmdScheme", "https://codecov.io/github/Exp-Micro-Ecol-Hub/dmdScheme?branch=dev"],
   "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing",
   "keywords": "metadata-scheme",
   "citation": [
@@ -359,5 +352,6 @@
         }
       }
     }
-  ]
+  ],
+  "fileSize": "0KB"
 }

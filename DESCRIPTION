@@ -25,6 +25,6 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 StagedInstall: true
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Suggests: covr (>= 3.2.1), testthat (>= 2.0.1), here (>= 0.1), kableExtra (>= 0.9.0), shiny, dplyr (>= 0.1.8)
 VignetteBuilder: knitr
