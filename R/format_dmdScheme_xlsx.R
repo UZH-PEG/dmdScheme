@@ -1,4 +1,4 @@
-#' Format the metadata scjheme file
+#' Format the metadata scheme file
 #'
 #' Loads  \code{fn_org)}, formats it and saves it as \code{fn_new}.
 #' @param fn_org file name of the original excel file to be formated
@@ -8,9 +8,6 @@
 #'
 #' @importFrom magrittr %>%
 #' @importFrom utils packageVersion
-#' @importFrom openxlsx addStyle loadWorkbook readWorkbook
-#'   removeRowHeights deleteData createStyle writeFormula
-#'   saveWorkbook
 #'
 #' @export
 #'
@@ -19,6 +16,25 @@ format_dmdScheme_xlsx <- function(
   fn_new,
   keepData = TRUE
 ) {
+
+  if (!file.exists(fn_org)) {
+    stop("File `fn_org` does not exist")
+  }
+
+  if (!requireNamespace("openxlsx", quietly = TRUE)) {
+    warning(
+      "Formating skipped as package `openxlsx` is not installed.\n",
+      "try to install it via CRAN or, if it is not available there,\n",
+      "install it from github https://github.com/ycphs/openxlsx\n",
+      "Copying `fn_org` to `fn_new` and \n",
+      "returning NULL!"
+      )
+    file.copy(
+      fn_org,
+      fn_new
+    )
+    return(NULL)
+  }
 
   protect_possible <- utils::packageVersion("openxlsx") >= numeric_version("4.1.1")
 

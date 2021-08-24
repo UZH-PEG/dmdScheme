@@ -7,7 +7,7 @@ test_that(
   {
     expect_error(
       object = format_dmdScheme_xlsx("DOES_NOT_EXIST"),
-      regexp = "File does not exist"
+      regexp = "File `fn_org` does not exis"
     )
   }
 )

@@ -2,7 +2,7 @@
 % Please edit documentation in R/format_dmdScheme_xlsx.R
 \name{format_dmdScheme_xlsx}
 \alias{format_dmdScheme_xlsx}
-\title{Format the metadata scjheme file}
+\title{Format the metadata scheme file}
 \usage{
 format_dmdScheme_xlsx(fn_org, fn_new, keepData = TRUE)
 }

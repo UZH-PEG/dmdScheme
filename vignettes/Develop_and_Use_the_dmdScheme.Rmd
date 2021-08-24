@@ -108,7 +108,7 @@ Here the familiarity of researchers with spreadsheets plays an important role, a
 
 The metadata in the `.xlsx` file can be entered and edited in likely all spreadsheet programs which can read and write `.xlsx` files. We tested successfully Excel, Pages, Libre Office and Google Docs.
 
-A spreadsheet as frontend for entering the metadata offers the additional possibilities to specify validation rules within the spreadsheet itself to be checked during the entering process and not only afterwards. As we wanted to maintain the flexibility to edit the spreadsheet in different spreadsheet editors in a consistent way, this is not implemented in the dmdScheme or emeScheme [@Krug2019b], but could be easily done in other schemes.
+A spreadsheet as frontend for entering the metadata offers the additional possibilities to specify validation rules within the spreadsheet itself to be checked during the entering process and not only afterwards. As we wanted to maintain the flexibility to edit the spreadsheet in different spreadsheet editors in a consistent way, this is not implemented in the dmdScheme or emeScheme, but could be easily done in other schemes.
 
 ## Validate metadata and create report
 
@@ -582,10 +582,14 @@ Now, functions can be added. For an example see [https://github.com/Exp-Micro-Ec
 <!--   - else -> `attributes$attributeDefinition` -->
 <!-- - comment -> `attributes$attributeDefinition` -->
 
-<!--
+
 # Customize the index template
 
-The index template is a text file, in which tokens are replaced by values from the a `dmdScheme` when calling the function `make_index( x = A_dmdScheme, template = "the/index/template/file.txt)`.
+The aim of an index file is, to giva a short and concise overview over the data package deposited. It should contain certain metadata points, e.g. the DOI, authors, license, description, file name(s) of data file(s) and whatever else is considered necessary, to get a basic understanding of the dataset.
+
+The index file is created based on a text template, in which tokens are stand for metadata  values from the a `dmdScheme`. These are replaced with the actual metadata properties  when calling the function `make_index( x = A_dmdScheme, template = "the/index/template/file.txt)`. If asked for, the resulting index file is translated to pdf and html by using pandoc.
+
+
 Tokens are enclosed by` %%...%%` and must not contain any white spaces (tab, space, ...).
 
 The following tokens are allowed at the moment:
@@ -597,9 +601,12 @@ The following tokens are allowed at the moment:
 - **`%%propertySet.valueProperty.N%%`**: replace with the Nth valueProperty from a propertySet
 - **`%%propertySet.*.N%%`***: replace with the Nth row from a propertySet
 
-If the token starts with an `!fun!`, the R function `fun` is executed using the result. For example `%%!unique!DataFileMetaData.dataFileName`%% would only return a vector containing the unique `dataFileName`.
+If the token starts with an `%%!fun!xxx%%`, the R function `fun` is executed and the result is inserted in the index file. For example `%%!unique!DataFileMetaData.dataFileName%%` would only return a vector containing the unique `dataFileName`.
 
 ## Special tokens
+
+Special tokens are tokens which do not extract data from the metadata scheme. There are at the moment only two:
+
 - **`%%DATE%%`**: will be replaced with the current date
 - **`%%AUTHOR%%`**: will be replaced with the author as supplied to the function
 -->

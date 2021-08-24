@@ -5,11 +5,15 @@
 #'
 #' @export
 #' @md
-#' @examples
-#' ## Report of `dmdScheme_validation`
-#' report( scheme_path_xlsx() )
 #'
 #' @describeIn report report of a `dmdScheme_validation` object.
+#'
+#' @examples
+#' \dontrun{
+#' ## This examples requires pandoc
+#' ## Report of `dmdScheme_validation`
+#' report( scheme_path_xlsx() )
+#' }
 #'
 #'
 report.character <- function(

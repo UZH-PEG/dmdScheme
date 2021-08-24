@@ -4,9 +4,12 @@
 #' **`report.dmdScheme_validation`** creates a report of the object returnes from a `validate()`.
 #'
 #' @importFrom utils browseURL
+#' @importFrom rmarkdown render
 #'
 #' @export
 #' @md
+#' @describeIn report report of a `dmdScheme_validation` object.
+#'
 #' @examples
 #' ## Report of `dmdScheme_validation`
 #' \dontrun{
@@ -19,7 +22,6 @@
 #'    report_title = "A Nice Report"
 #' )
 #' }
-#' @describeIn report report of a `dmdScheme_validation` object.
 report.dmdScheme_validation <- function(
   x,
   file = tempfile(),
