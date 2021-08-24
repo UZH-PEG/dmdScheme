@@ -3,8 +3,8 @@ Title: Domain Specific MetaData Scheme
 Description: Forms the core for developing own domain specific metadata schemes. 
                   It contains the basic functionality needed for all metadata schemes based on the
                   'dmdScheme'. See R.M. Krug and O.L. Petchey (2019) <DOI:10.5281/zenodo.3581970>.
-Version: 1.2.6
-Date: 2020-09-11
+Version: 1.2.7
+Date: 2021-08-24
 Authors@R: 
     c(person(given = "Rainer M.",
              family = "Krug",
@@ -23,7 +23,6 @@ Imports: tools, methods, utils, magrittr (>= 1.5), readxl (>= 1.2.0), xml2,
       rlang (>= 0.3.1), rmarkdown, knitr, digest (>= 0.6), writexl, rappdirs, yaml, EML, stringr
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
 StagedInstall: true
 RoxygenNote: 7.1.1
 Suggests: covr (>= 3.2.1), 

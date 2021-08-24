@@ -14,13 +14,13 @@
   ],
   "issueTracker": "https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/issues/",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.2 (2020-06-22)",
+  "runtimePlatform": "R version 4.1.1 (2021-08-10)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -354,5 +354,5 @@
       }
     }
   ],
-  "fileSize": "0KB"
+  "fileSize": "7579.666KB"
 }
