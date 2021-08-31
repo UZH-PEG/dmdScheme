@@ -3,8 +3,8 @@ title: "Develop and use the `dmdScheme`"
 subtitle: "`r library(dmdScheme);paste0(scheme_active()$name, '_', scheme_active()$version)`"
 author: "Rainer M Krug <Rainer.Krug@uzh.ch>"
 date: "`r Sys.Date()`"
-output: 
-  rmarkdown::html_vignette: 
+output:
+  rmarkdown::html_vignette:
     toc: true
     toc_depth: 4
   pdf_document: default
@@ -13,9 +13,29 @@ vignette: >
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 ---
- 
+
 ```{r setup, include = FALSE}
 library(knitr)
+
+### See https://bookdown.org/yihui/rmarkdown-cookbook/hook-truncate.html
+# save the built-in output hook
+hook_output <- knitr::knit_hooks$get("output")
+
+# set a new output hook to truncate text output
+knitr::knit_hooks$set(output = function(x, options) {
+  if (!is.null(n <- options$out.lines)) {
+    x <- xfun::split_lines(x)
+    if (length(x) > n) {
+      # truncate the output
+      x <- c(head(x, n), "....\n")
+    }
+    x <- paste(x, collapse = "\n")
+  }
+  hook_output(x, options)
+})
+###
+
+
 
 knitr::opts_chunk$set(
 	echo = TRUE,
@@ -25,7 +45,8 @@ knitr::opts_chunk$set(
   	comment = "#>",
   	# tidy.opts = list(width.cutoff=60),
   	# tidy = TRUE,
-  	linewidth = 60
+  	linewidth = 60,
+	out.lines = 4
 )
 library(dmdScheme)
 library(here)
@@ -76,14 +97,14 @@ knitr::include_graphics("./figs/app.jpg", auto_pdf = TRUE)
 
 ## Select scheme
 
-The package `dmdScheme` does not come with a specific scheme, and installs upon loading a generic dmdScheme from the dmdScheme scheme repository at [https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository). In nearly all circumstances, a specific scheme needs to be installed, together with the accompanying R package. In the app, this is done via selecting a theme in the section "Available dmdSchemes". This list is populated automatically upon starting of the app from the schemes available in the scheme repository. The selection of the scheme will download the scheme definition package, install any accompanying R package as specified in the scheme definition package, load the accompanying R package, and activate the scheme definition. 
+The package `dmdScheme` does not come with a specific scheme, and installs upon loading a generic dmdScheme from the dmdScheme scheme repository at [https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository). In nearly all circumstances, a specific scheme needs to be installed, together with the accompanying R package. In the app, this is done via selecting a theme in the section "Available dmdSchemes". This list is populated automatically upon starting of the app from the schemes available in the scheme repository. The selection of the scheme will download the scheme definition package, install any accompanying R package as specified in the scheme definition package, load the accompanying R package, and activate the scheme definition.
 
 To do this from the R prompt, one has do these steps manually and install the scheme, install the accompanying R package, load the accompanying R package, and activate the scheme itself (see Figure 1 C for the commands).
 
 ## Download new scheme
 
 
-The spreadsheet to enter the metadata can be obtained from the app via the "Empty scheme spreadsheet" button. This will download an `.xlsx` spreadsheet containing the definition of the scheme and the cells for the metadata which need to be filled in. 
+The spreadsheet to enter the metadata can be obtained from the app via the "Empty scheme spreadsheet" button. This will download an `.xlsx` spreadsheet containing the definition of the scheme and the cells for the metadata which need to be filled in.
 
 In R, the spreadsheet can be obtained by using the `open_new_spreadsheet()` command.
 
@@ -100,13 +121,13 @@ knitr::include_graphics("./figs/Spreadsheet_04_Genus.jpg", auto_pdf = TRUE)
 
 ## Enter / Edit metadata on downloaded xlsx
 
-The entering of the metadata is done in the spreadsheet downloaded before. The spreadsheet contains the definition of the scheme as well as all information needed to fill in the metadata, including "type" of the metadata (e.g. numeric, character, or boolean), "allowed values" or "suggested values", "unit" as well as a "Description" field. 
+The entering of the metadata is done in the spreadsheet downloaded before. The spreadsheet contains the definition of the scheme as well as all information needed to fill in the metadata, including "type" of the metadata (e.g. numeric, character, or boolean), "allowed values" or "suggested values", "unit" as well as a "Description" field.
 
-Metadata can be entered in all green cells, while all red cells are (should be) locked and are part of the scheme definition. 
+Metadata can be entered in all green cells, while all red cells are (should be) locked and are part of the scheme definition.
 
-Here the familiarity of researchers with spreadsheets plays an important role, as the technical details of the entering itself do not need to be explained as it is a standard spreadsheet. 
+Here the familiarity of researchers with spreadsheets plays an important role, as the technical details of the entering itself do not need to be explained as it is a standard spreadsheet.
 
-The metadata in the `.xlsx` file can be entered and edited in likely all spreadsheet programs which can read and write `.xlsx` files. We tested successfully Excel, Pages, Libre Office and Google Docs. 
+The metadata in the `.xlsx` file can be entered and edited in likely all spreadsheet programs which can read and write `.xlsx` files. We tested successfully Excel, Pages, Libre Office and Google Docs.
 
 A spreadsheet as frontend for entering the metadata offers the additional possibilities to specify validation rules within the spreadsheet itself to be checked during the entering process and not only afterwards. As we wanted to maintain the flexibility to edit the spreadsheet in different spreadsheet editors in a consistent way, this is not implemented in the dmdScheme or emeScheme, but could be easily done in other schemes.
 
@@ -116,7 +137,7 @@ To be able to validate the metadata, the validation needs access to the metadata
 
 After completion of the validation, the app (web or local) downloads a report, in the default setting an html report. Optional, the report could be a word `docx` document or a `pdf`.
 
-The report (see Figure 4) does show **errors** (which normally should be fixed), **warnings**, which are not as critical as errors and should be assessed one by one, and **notes**. The level of details, and aspects validated, in this report depends on the validation function, which can be changed in the accompanying R package. 
+The report (see Figure 4) does show **errors** (which normally should be fixed), **warnings**, which are not as critical as errors and should be assessed one by one, and **notes**. The level of details, and aspects validated, in this report depends on the validation function, which can be changed in the accompanying R package.
 
 The editing - validation cycle should be repeated until the report is satisfactory.
 
@@ -144,14 +165,14 @@ install.packages("dmdScheme")
 
 
 To install the **master** branch, the stable branch which will become the new CRAN release, from the [dmdScheme repository on github](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/tree/master), run
- 
+
 ```{r echo=TRUE, eval = FALSE}
 ## install the devtools package if not installed yet
 # install.packages("devtools")
 
 devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "master", build_opts = NULL)
 ```
- 
+
 If you are feeling adventurous, want to live at the bleeding edge and can live with non-working features, you can install the **dev** branch. This branch is **not stable** and features and functionality can appear or be removed without prior notice. This is, unless there is a **really** good reason, not recommended for production use:
 
 ```{r echo=TRUE, eval = FALSE}
@@ -160,7 +181,7 @@ If you are feeling adventurous, want to live at the bleeding edge and can live w
 
 devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "dev", build_opts = NULL)
 ```
- 
+
 Other branches are not generally recommended for installation unless you are involved in `dmdScheme` package development.
 
 ## Loading the package
@@ -175,7 +196,7 @@ and restart your R session. Now the definitions of the installed `dmdSchemes` wi
 
 
 ## Managing installed schemes
- 
+
 Once the package is loaded, the default scheme definition from the package is installed and used.
 
 There are several commands to manage installed schemes. All these commands start with `scheme_`.
@@ -241,7 +262,7 @@ Activate the scheme `NAME` with version `VERSION`
 scheme_use(name = "emeScheme", version = "0.9.5")
 ```
 
-### `scheme_active()` 
+### `scheme_active()`
 Shows the currently active scheme.
 
 ```{r}
@@ -254,7 +275,7 @@ scheme_active()
 ### `scheme_path_index_template()`
 Returns the path to the index template. The search order is:
 
-1. the index file included in the scheme package 
+1. the index file included in the scheme package
 2. the scheme package included in the `dmdScheme` package (**not** the acompanying package!).
 
 ```{r}
@@ -424,14 +445,14 @@ x
 # Developing new dmdSchemes derived scheme definitions
 This package contains all the functionality to easily create a new metadata scheme. The resulting scheme package will contain all files needed so that it can be easily be distributed and used, and can be either be distributed directly or uploaded to an online repository, e.g. the default [dmdScheme repository](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository).
 
-A new scheme definition only has to include the scheme definition and example data. It can also contain additional examples and an R script to install the accompanying R package, but these are not required. 
+A new scheme definition only has to include the scheme definition and example data. It can also contain additional examples and an R script to install the accompanying R package, but these are not required.
 
 
 ## Create and edit new definition
 To create the scheme itself (as shown in Figure 5), it is recommended to begin with an existing scheme. It is possible to edit most aspects in the scheme definition `xlsx` file, including adding or deleting tabs (only the Experiment and DataFileProperties tabs are needed), adding or removing rows (Experiment tab) or columns (other tabs), changing the types, suggested values, allowed values and units. **If the `.xlsx` file is locked, you can unlock it by using the password `test`.**
 
-It is important that the final scheme contains example data as 
-- internal processing of the `.xlsx` file require example data and will fail if a scheme without example data is provided, and 
+It is important that the final scheme contains example data as
+- internal processing of the `.xlsx` file require example data and will fail if a scheme without example data is provided, and
 - it is much more user friendly if the user of a package not only sees the empty scheme, but also a filled in scheme with example data.
 
 
@@ -465,14 +486,14 @@ This tab is different to the others as it has
     1. horizontal layout
     2. only one value per property allowed
     3. the top-right cell, i.e. the one above the values to be entered, contains the word **DATA**, **name of the scheme** and **version of the scheme** separated by a space, e.g. **DATA emeScheme v0.9.5**
-    
+
 2. The tabs `MdBibliometric` and `MdAuthors` are required as they contain all the bibliometric and author metadata
 
 3. One tab named `DataFileMetaData` is required
 
     * one column named `dataFileName`
 
-4. Each tab except `Experiment`, `DataFileMetaData` and `MdBibliometric` needs an ID field  
+4. Each tab except `Experiment`, `DataFileMetaData` and `MdBibliometric` needs an ID field
 Applies to all tabs except `Experiment` and `DataFileMetaData`
 
     * The first column in the tab must be a column named `...ID`.
@@ -493,13 +514,13 @@ The package `dmdScheme` package is only providing the base functionality for wor
 - depend on the `dmdScheme` package (as it extends it's capabilities), and
 - automatically downloads, installs and activates a specific scheme definition and not the default dmdScheme.
 
-It is not necessary to build an accompanying R package, but doing so will make it possible to adapt many aspects of the validation and export process to the needs of a specific domain. 
+It is not necessary to build an accompanying R package, but doing so will make it possible to adapt many aspects of the validation and export process to the needs of a specific domain.
 
 The easiest to develop an accompanying R package is to
 - use `scheme_use()` to activate a new scheme for which the accompanying package should be developed
 - use the convenience function `make_new_package()` to create a package skeleton which fulfils these requirements
 
-Now, functions can be added. For an example see [https://github.com/Exp-Micro-Ecol-Hub/emeScheme](https://github.com/Exp-Micro-Ecol-Hub/emeScheme), in which the methods `as_xml_list.emeSchemeSet.R` and `validate.emeSchemeSet_raw.R` extend the generic functions `as_xml_list()` and `validate()`. 
+Now, functions can be added. For an example see [https://github.com/Exp-Micro-Ecol-Hub/emeScheme](https://github.com/Exp-Micro-Ecol-Hub/emeScheme), in which the methods `as_xml_list.emeSchemeSet.R` and `validate.emeSchemeSet_raw.R` extend the generic functions `as_xml_list()` and `validate()`.
 
 <!-- # Linking derived scheme to other metadata scheme -->
 
@@ -608,3 +629,4 @@ Special tokens are tokens which do not extract data from the metadata scheme. Th
 
 - **`%%DATE%%`**: will be replaced with the current date
 - **`%%AUTHOR%%`**: will be replaced with the author as supplied to the function
+
