@@ -17,6 +17,26 @@ vignette: >
 ```{r setup, include = FALSE}
 library(knitr)
 
+### See https://bookdown.org/yihui/rmarkdown-cookbook/hook-truncate.html
+# save the built-in output hook
+hook_output <- knitr::knit_hooks$get("output")
+
+# set a new output hook to truncate text output
+knitr::knit_hooks$set(output = function(x, options) {
+  if (!is.null(n <- options$out.lines)) {
+    x <- xfun::split_lines(x)
+    if (length(x) > n) {
+      # truncate the output
+      x <- c(head(x, n), "....\n")
+    }
+    x <- paste(x, collapse = "\n")
+  }
+  hook_output(x, options)
+})
+###
+
+
+
 knitr::opts_chunk$set(
 	echo = TRUE,
 	eval = TRUE,
@@ -25,7 +45,8 @@ knitr::opts_chunk$set(
   	comment = "#>",
   	# tidy.opts = list(width.cutoff=60),
   	# tidy = TRUE,
-  	linewidth = 60
+  	linewidth = 60,
+	out.lines = 4
 )
 library(dmdScheme)
 library(here)
@@ -154,7 +175,8 @@ To install the **master** branch, the stable branch which will become the new CR
 devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "master", build_opts = NULL)
 ```
 
-If you are feeling adventurous and can live with non-working features, you can install the **dev** branch. This branch is **not stable** and features and functionality can appear or be removed without prior notice. This is, unless there is a **really** good reason, not recommended for production use:
+
+If you are feeling adventurous, want to live at the bleeding edge and can live with possibly non-working features, you can install the **dev** branch. This branch is **not stable** and features and functionality can appear or be removed without prior notice. This is, unless there is a **really** good reason, not recommended for production use:
 
 ```{r echo=TRUE, eval = FALSE}
 ## install the devtools package if not installed yet
@@ -474,7 +496,8 @@ This tab is different to the others as it has
 
     * one column named `dataFileName`
 
-4. Each tab except `Experiment`, `DataFileMetaData` and `MdBibliometric` needs an ID field.
+4. Each tab except `Experiment`, `DataFileMetaData` and `MdBibliometric` needs an ID field
+Applies to all tabs except `Experiment` and `DataFileMetaData`
 
     * The first column in the tab must be a column named `...ID`.
 
@@ -609,4 +632,3 @@ Special tokens are tokens which do not extract data from the metadata scheme. Th
 
 - **`%%DATE%%`**: will be replaced with the current date
 - **`%%AUTHOR%%`**: will be replaced with the author as supplied to the function
--->
