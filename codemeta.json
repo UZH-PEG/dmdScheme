@@ -1,32 +1,20 @@
 {
-  "@context": [
-    "https://doi.org/10.5063/schema/codemeta-2.0",
-    "http://schema.org"
-  ],
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "dmdScheme",
-  "description": "Forms the core for developing own domain specific metadata schemes. \n                  It contains the basic functionality needed for all metadata schemes based on the\n                  'dmdScheme'. See R.M. Krug and O.L. Petchey (2019) <DOI:10.5281/zenodo.3581970>.",
+  "description": "Forms the core for developing own domain specific metadata schemes. It contains the basic functionality needed for all metadata schemes based on the 'dmdScheme'. See R.M. Krug and O.L. Petchey (2019) <DOI:10.5281/zenodo.3581970>.",
   "name": "dmdScheme: Domain Specific MetaData Scheme",
+  "relatedLink": "https://exp-micro-ecol-hub.github.io/dmdScheme/",
   "codeRepository": "https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/",
-  "relatedLink": [
-    "https://exp-micro-ecol-hub.github.io/dmdScheme/",
-    "https://CRAN.R-project.org/package=dmdScheme"
-  ],
   "issueTracker": "https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/issues/",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.2.6",
+  "version": "1.2.8",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.2 (2020-06-22)",
-  "provider": {
-    "@id": "https://cran.r-project.org",
-    "@type": "Organization",
-    "name": "Comprehensive R Archive Network (CRAN)",
-    "url": "https://cran.r-project.org"
-  },
+  "runtimePlatform": "R version 4.1.2 (2021-11-01)",
   "author": [
     {
       "@type": "Person",
@@ -45,8 +33,6 @@
       "@id": "https://orcid.org/0000-0002-7724-1633"
     }
   ],
-  "copyrightHolder": {},
-  "funder": {},
   "maintainer": [
     {
       "@type": "Person",
@@ -145,31 +131,43 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=openxlsx"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "xfun",
+      "name": "xfun",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=xfun"
     }
   ],
-  "softwareRequirements": [
-    {
+  "softwareRequirements": {
+    "1": {
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
       "version": ">= 3.5.0"
     },
-    {
+    "2": {
       "@type": "SoftwareApplication",
       "identifier": "tools",
       "name": "tools"
     },
-    {
+    "3": {
       "@type": "SoftwareApplication",
       "identifier": "methods",
       "name": "methods"
     },
-    {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
     },
-    {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "magrittr",
       "name": "magrittr",
@@ -182,7 +180,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=magrittr"
     },
-    {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "readxl",
       "name": "readxl",
@@ -195,7 +193,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=readxl"
     },
-    {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "xml2",
       "name": "xml2",
@@ -207,7 +205,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=xml2"
     },
-    {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "rlang",
       "name": "rlang",
@@ -220,7 +218,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rlang"
     },
-    {
+    "9": {
       "@type": "SoftwareApplication",
       "identifier": "rmarkdown",
       "name": "rmarkdown",
@@ -232,7 +230,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
     },
-    {
+    "10": {
       "@type": "SoftwareApplication",
       "identifier": "knitr",
       "name": "knitr",
@@ -244,7 +242,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=knitr"
     },
-    {
+    "11": {
       "@type": "SoftwareApplication",
       "identifier": "digest",
       "name": "digest",
@@ -257,7 +255,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=digest"
     },
-    {
+    "12": {
       "@type": "SoftwareApplication",
       "identifier": "writexl",
       "name": "writexl",
@@ -269,7 +267,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=writexl"
     },
-    {
+    "13": {
       "@type": "SoftwareApplication",
       "identifier": "rappdirs",
       "name": "rappdirs",
@@ -281,7 +279,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rappdirs"
     },
-    {
+    "14": {
       "@type": "SoftwareApplication",
       "identifier": "yaml",
       "name": "yaml",
@@ -293,7 +291,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=yaml"
     },
-    {
+    "15": {
       "@type": "SoftwareApplication",
       "identifier": "EML",
       "name": "EML",
@@ -305,7 +303,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=EML"
     },
-    {
+    "16": {
       "@type": "SoftwareApplication",
       "identifier": "stringr",
       "name": "stringr",
@@ -316,13 +314,10 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=stringr"
-    }
-  ],
-  "releaseNotes": "https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/blob/master/NEWS.md",
-  "readme": "https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/blob/master/Readme.md",
-  "contIntegration": ["https://travis-ci.org/Exp-Micro-Ecol-Hub/dmdScheme", "https://codecov.io/github/Exp-Micro-Ecol-Hub/dmdScheme?branch=master", "https://travis-ci.org/Exp-Micro-Ecol-Hub/dmdScheme", "https://codecov.io/github/Exp-Micro-Ecol-Hub/dmdScheme?branch=dev"],
-  "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing",
-  "keywords": "metadata-scheme",
+    },
+    "SystemRequirements": null
+  },
+  "fileSize": "7311.688KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -354,5 +349,9 @@
       }
     }
   ],
-  "fileSize": "0KB"
+  "releaseNotes": "https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/blob/master/NEWS.md",
+  "readme": "https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/blob/master/Readme.md",
+  "contIntegration": ["https://travis-ci.org/Exp-Micro-Ecol-Hub/dmdScheme", "https://codecov.io/github/Exp-Micro-Ecol-Hub/dmdScheme?branch=master", "https://travis-ci.org/Exp-Micro-Ecol-Hub/dmdScheme", "https://codecov.io/github/Exp-Micro-Ecol-Hub/dmdScheme?branch=dev"],
+  "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing",
+  "keywords": "metadata-scheme"
 }
