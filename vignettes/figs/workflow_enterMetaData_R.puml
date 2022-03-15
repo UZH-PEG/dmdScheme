@@ -1,0 +1,56 @@
+#!/usr/local/bin/plantuml
+
+@startuml
+
+skinparam state {
+  BackgroundColor<<Func>> Olive
+}
+
+start
+''''''''''''
+:= Install and load the `dmdScheme` package in R
+..R..
+""install.packages("dmdScheme")""
+""library("dmdScheme")""|
+''''''''''''
+:= Install the `emeScheme` scheme
+..R..
+""scheme_install("emeScheme", "1.0.0")""|
+:= Install and load the `emeScheme` acompagnying R package
+..R..
+""scheme_install_r_package("emeScheme", "1.0.0")""
+""library("emeScheme")""|
+:= Select scheme
+..R..
+""scheme_use("emeScheme", "1.0.0")""
+""library("emeScheme")"";
+''''''''''''
+:= Download new Scheme
+..R..
+""open_new_spreadsheet(""
+""    "emeScheme",""
+""    file = "metadata.xlsx",""
+""     format = TRUE""
+"")"";
+''''''''''''
+repeat
+  	:= Enter / Edit metadata in downloaded xlsx
+  	..Excel, Pages, Libre Office, Google Docs, etc..;
+	:= Validate metadata and create report
+	..R..
+  	""val <- validate("metadata.xlsx", path = ".")""
+  	""report(x = val, report = "html")"";
+repeat while (errors or warnings?) is (yes)
+-> no;
+''''''''''''
+:= Export Uploaded Spreadsheet to xml
+..R..
+""write_xml(""
+""    x = read_excel("metadata.xlsx"),""
+""    file = "metadata.xml"),""
+""    output = "complete"""
+"")"";
+''''''''''''
+stop
+
+@enduml

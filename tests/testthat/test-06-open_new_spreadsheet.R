@@ -8,7 +8,7 @@ test_that(
   "open_new_spreadsheet() returns path after saving to file and opening - `format = TRUE`",
   {
     expect_equal(
-      object = suppressWarnings(open_new_spreadsheet(file = fn, format = TRUE, open = FALSE)),
+      object = suppressWarnings(open_new_spreadsheet(file = fn, format = FALSE, open = FALSE)),
       expected = fn,
     )
   }
@@ -28,7 +28,7 @@ test_that(
   "open_new_spreadsheet() returns path when file exist and overwrite = TRUE",
   {
     expect_equal(
-      object = suppressWarnings(open_new_spreadsheet(file = fn, format = FALSE, overwrite = TRUE, open = FALSE)),
+      object = suppressWarnings(open_new_spreadsheet(file = fn, format = TRUE, overwrite = TRUE, open = FALSE)),
       expected = fn,
     )
   }

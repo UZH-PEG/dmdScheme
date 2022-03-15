@@ -3,12 +3,18 @@
 #' @details
 #' **`report.dmdScheme_validation`** creates a report of the object returnes from a `validate()`.
 #'
+#' @importFrom utils browseURL
+#' @importFrom rmarkdown render
+#'
 #' @export
 #' @md
+#' @describeIn report report of a `dmdScheme_validation` object.
+#'
 #' @examples
 #' ## Report of `dmdScheme_validation`
-#' report( validate(dmdScheme_raw()) )
 #' \dontrun{
+#' # This needs pandoc to run successfully
+#' report( validate(dmdScheme_raw()) )
 #' report(
 #'    x = dmdScheme_raw(),
 #'    report = "html",
@@ -16,7 +22,6 @@
 #'    report_title = "A Nice Report"
 #' )
 #' }
-#' @describeIn report report of a `dmdScheme_validation` object.
 report.dmdScheme_validation <- function(
   x,
   file = tempfile(),
@@ -70,10 +75,14 @@ report.dmdScheme_validation <- function(
   # Open report -------------------------------------------------------------
 
   if (open) {
-    utils::browseURL(
-      url = result,
-      encodeIfNeeded = TRUE
-    )
+    if (interactive()) {
+      utils::browseURL(
+        url = result,
+        encodeIfNeeded = TRUE
+      )
+    } else {
+      message("Non-interactive session. If interactive session, the report would be opened.")
+    }
   }
 
   # Return result -----------------------------------------------------------

@@ -17,6 +17,17 @@ test_that(
 # creates correctly the dmdScheme_example object --------------------------
 
 test_that(
+  "as_dmdScheme() `keepData = FALSE`",
+  {
+    expect_equal(
+      object = as_dmdScheme( x = dmdScheme_raw(), keepData = FALSE ),
+      expect = dmdScheme()
+    )
+  }
+)
+
+
+test_that(
   "as_dmdScheme() `keepData = TRUE`",
   {
     expect_equal(
@@ -26,15 +37,6 @@ test_that(
   }
 )
 
-test_that(
-  "as_dmdScheme() `keepData = FALSE`",
-  {
-    expect_equal(
-      object = as_dmdScheme( x = dmdScheme_raw(), keepData = FALSE ),
-      expect = dmdScheme()
-    )
-  }
-)
 
 # # as_dmdScheme --- verbose -----------------------------------------------
 #

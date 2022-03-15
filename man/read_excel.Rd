@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_excel.R
 \name{read_excel}
 \alias{read_excel}
-\title{Read scheme data from Excel file into \code{\link[dmdScheme]{dmdSchemeSet}} object}
+\title{Read scheme data from Excel file into \code{dmdSchemeSet} object}
 \usage{
 read_excel(
   file,
@@ -35,7 +35,7 @@ cases where you want to change this value to \code{FALSE}. But if you do,
 the result will not be validated. \bold{This can lead to invalid schemes!}.}
 }
 \value{
-either if \code{raw = TRUE} a list of tibbles from the worksheets of
+either if \code{raw = TRUE} a list of data.frames from the worksheets of
   Class \code{dmdScheme_raw}, otherwise an object of class
   \code{dmdSchemeSet}
 }

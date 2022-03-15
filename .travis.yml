@@ -26,7 +26,7 @@ matrix:
     - sw_vers
   - r: release
   - r: oldrel
-  - r: 3.5
+#  - r: 3.5
 
 before_install:
 - echo "TRAVIS_OS_NAME = $TRAVIS_OS_NAME"
@@ -36,10 +36,14 @@ addons:
     packages:
     - ghostscript
     - graphviz
+    - libjq-dev
+    - libv8-dev
   homebrew:
     packages:
     - ghostscript
     - graphviz
+    - jq
+    - v8
 
 # after_success:
 #   - test $TRAVIS_PULL_REQUEST == "false" &&

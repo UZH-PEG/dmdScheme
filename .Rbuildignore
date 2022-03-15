@@ -29,3 +29,9 @@
 ^\./inst/installedSchemes/emeScheme_0\.9\.5$
 ^\.zenodo\.json$
 ^SCHEME_PACKAGE$
+
+^dmdScheme\.bbprojectd$
+^codemeta\.json$
+
+^screenshots_highres$
+

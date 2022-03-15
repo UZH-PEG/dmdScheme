@@ -1,4 +1,3 @@
-#' @importFrom dplyr select starts_with
 #' @importFrom methods is as
 #' @importFrom magrittr set_names %<>%
 #' @importFrom tools file_ext
@@ -51,13 +50,20 @@ as_dmdScheme.dmdSchemeSet_raw <- function(
 # Iterate through dmdScheme_raw and create dmdSchemeData objects -----------
 
   result <- lapply(
-    x,
-    as_dmdScheme,
-    keepData = keepData,
-    convertTypes = convertTypes,
-    verbose = verbose,
-    warnToError = warnToError
+    names(x),
+    function(nm) {
+      dd <- as_dmdScheme(
+        x = x[[nm]],
+        keepData = keepData,
+        convertTypes = convertTypes,
+        verbose = verbose,
+        warnToError = warnToError
+      )
+      attr(dd, "propertyName") <- nm
+      return(dd)
+    }
   )
+  names(result) <- names(x)
 
 # Set attributes ----------------------------------------------------------
 

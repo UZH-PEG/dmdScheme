@@ -5,7 +5,7 @@
 #' @param x object which can be convertewd to a \code{dmdSchemeSet_raw} odject using the function \code{as_dmdScheme_raw} which will
 #'  saved as an \code{xlsx} file.
 #' @param file Path to file or connection to write to.
-#' @param ... additional parameter for the conversion function \code{(openxlsx::write.xlsx())}
+#' @param ... additional parameter for the conversion function \code{(writexl::write_xlsx())}
 #'
 #' @return invisibly returns the path to the file saved to
 #'

@@ -1,4 +1,35 @@
+# release 1.2.1
+This is a maintanance release, which moves `openxlsx` into the suggests section and makes 
+`format_dmdScheme_xlsx()` issue a warning and handling the missing package `openxlsx` gracefully.
 
+# release 1.2
+
+This is a feature add release.
+- Adds bibliometric metadata and handling of multiple "vertiiical" sheets
+- Adds autocreation of index file which summarises the metadata
+- Adds additional tests
+
+New features are:
+- default scheme (`dmdScheme 0.9.9`) includes bibliometric metadata
+- all functions can now handle multiple "vertical" tabs / sheets
+- the function `make_index()` creates an index document which is, when pandoc is installed, converted to word, pdf or html format. This is based on a template file which contains tokens which are replaced with metadatafrom a supplied scheme.
+- rewritten vignette
+
+
+# release 1.1.3.1
+Make use of pandoc in examples as dontrun to make CRAN happy
+
+# release 1.1.3
+
+Fix https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/issues/23 which caused errors in validation due to CR LF versus LF in Excel sheet.
+
+NB: The Description is now ignored in the structural validation!
+
+# release 1.1.0
+
+Doe to incompatibilities in the new release of tibble and expected incompatibilities o=in dplyr, these two dependencies were removed.
+
+# release 1.0.0
 
 * Due to change in serialization format in R 3.6.0, only compatible with R >= 3.5.0 
 

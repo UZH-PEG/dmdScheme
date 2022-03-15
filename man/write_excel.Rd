@@ -12,7 +12,7 @@ saved as an \code{xlsx} file.}
 
 \item{file}{Path to file or connection to write to.}
 
-\item{...}{additional parameter for the conversion function \code{(openxlsx::write.xlsx())}}
+\item{...}{additional parameter for the conversion function \code{(writexl::write_xlsx())}}
 }
 \value{
 invisibly returns the path to the file saved to

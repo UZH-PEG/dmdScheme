@@ -1,4 +1,4 @@
-#' Format the metadata scjheme file
+#' Format the metadata scheme file
 #'
 #' Loads  \code{fn_org)}, formats it and saves it as \code{fn_new}.
 #' @param fn_org file name of the original excel file to be formated
@@ -8,9 +8,6 @@
 #'
 #' @importFrom magrittr %>%
 #' @importFrom utils packageVersion
-#' @importFrom openxlsx addStyle loadWorkbook readWorkbook
-#'   removeRowHeights deleteData createStyle writeFormula
-#'   saveWorkbook
 #'
 #' @export
 #'
@@ -19,6 +16,25 @@ format_dmdScheme_xlsx <- function(
   fn_new,
   keepData = TRUE
 ) {
+
+  if (!file.exists(fn_org)) {
+    stop("File `fn_org` does not exist")
+  }
+
+  if (!requireNamespace("openxlsx", quietly = TRUE)) {
+    warning(
+      "Formating skipped as package `openxlsx` is not installed.\n",
+      "try to install it via CRAN or, if it is not available there,\n",
+      "install it from github https://github.com/ycphs/openxlsx\n",
+      "Copying `fn_org` to `fn_new` and \n",
+      "returning NULL!"
+      )
+    file.copy(
+      fn_org,
+      fn_new
+    )
+    return(NULL)
+  }
 
   protect_possible <- utils::packageVersion("openxlsx") >= numeric_version("4.1.1")
 
@@ -94,6 +110,107 @@ format_dmdScheme_xlsx <- function(
       gridExpand = TRUE
     )
 
+  }
+
+  # HELPER: format_toTranspose() --------------------------------------------
+
+  format_toTranspose <- function(
+    sheet,
+    wb,
+    max_row,
+    dataStyle,
+    rowNameStyle,
+    colInfoStyle
+  ) {
+    data <- openxlsx::readWorkbook(wb, sheet = sheet, colNames = FALSE, rowNames = FALSE)
+    colNames <- unlist( data[1,] )
+    nameCol <- which(colNames == "valueProperty")
+    rowNames <- unlist(data[,nameCol])
+
+    dataRows <- 2:nrow(data)
+    dataCols <- grep("DATA", colNames):ncol(data)
+
+    # format data range -------------------------------------------------------
+
+    openxlsx::addStyle(
+      wb = wb,
+      sheet = sheet,
+      style = dataStyle,
+      rows = dataRows,
+      cols = dataCols,
+      gridExpand = TRUE
+    )
+    setBorders(
+      wb = wb,
+      sheet = sheet,
+      rows = dataRows,
+      cols = dataCols
+    )
+
+    # format col names --------------------------------------------------------
+
+    openxlsx::addStyle(
+      wb = wb,
+      sheet = sheet,
+      style = rowNameStyle,
+      rows = 1,
+      cols = 1:dataCols,
+      gridExpand = TRUE
+    )
+    setBorders(
+      wb = wb,
+      sheet = sheet,
+      rows = 1,
+      cols = 1:dataCols
+    )
+
+    # format row name and info ---------------------------------------------
+
+    openxlsx::addStyle(
+      wb = wb,
+      sheet = sheet,
+      style = colInfoStyle,
+      rows = dataRows,
+      cols = 1:(dataCols - 1),
+      gridExpand = TRUE
+    )
+    setBorders(
+      wb = wb,
+      sheet = sheet,
+      rows = dataRows,
+      cols = 1:(dataCols - 1)
+    )
+
+
+    # remove row heights to make automatic ------------------------------------
+
+    openxlsx::removeRowHeights(
+      wb = wb,
+      sheet = sheet,
+      rows = 1:max_row
+    )
+
+
+    # delete data if keepData is FALSE ----------------------------------------
+
+    if (!keepData) {
+      openxlsx::deleteData(
+        wb = wb,
+        sheet = sheet,
+        cols = dataCols,
+        rows = dataRows,
+        gridExpand = TRUE
+      )
+    }
+
+    # protect sheet -----------------------------------------------------------
+    if (protect_possible) {
+      openxlsx::protectWorksheet(
+        wb = wb,
+        sheet = sheet,
+        password = "test"
+      )
+    }
   }
 
   # Set maximum number of rows for entering -------------------------------------------------------------------
@@ -191,115 +308,29 @@ format_dmdScheme_xlsx <- function(
 
   wb <- openxlsx::loadWorkbook(fn_org)
 
-  # Set formating and validation on Experiment worksheet ---------------
+  # Set formating and validation on worksheet ---------------
 
-  sheet <- "Experiment"
-
-  # identify range of data cells --------------------------------------------
-
-  data <- openxlsx::readWorkbook(wb, sheet = sheet, colNames = FALSE, rowNames = FALSE)
-  colNames <- unlist( data[1,] )
-  nameCol <- which(colNames == "valueProperty")
-  rowNames <- unlist(data[,nameCol])
-
-  dataRows <- 2:nrow(data)
-  dataCols <- grep("DATA", colNames):ncol(data)
-
-  # format data range -------------------------------------------------------
-
-  openxlsx::addStyle(
-    wb = wb,
-    sheet = sheet,
-    style = dataStyle,
-    rows = dataRows,
-    cols = dataCols,
-    gridExpand = TRUE
-  )
-  setBorders(
-    wb = wb,
-    sheet = sheet,
-    rows = dataRows,
-    cols = dataCols
-  )
-
-  # format col names --------------------------------------------------------
-
-  openxlsx::addStyle(
-    wb = wb,
-    sheet = sheet,
-    style = rowNameStyle,
-    rows = 1,
-    cols = 1:dataCols,
-    gridExpand = TRUE
-  )
-  setBorders(
-    wb = wb,
-    sheet = sheet,
-    rows = 1,
-    cols = 1:dataCols
-  )
-
-  # format row name and info ---------------------------------------------
-
-  openxlsx::addStyle(
-    wb = wb,
-    sheet = sheet,
-    style = colInfoStyle,
-    rows = dataRows,
-    cols = 1:(dataCols - 1),
-    gridExpand = TRUE
-  )
-  setBorders(
-    wb = wb,
-    sheet = sheet,
-    rows = dataRows,
-    cols = 1:(dataCols - 1)
-  )
-
-
-  # remove row heights to make automatic ------------------------------------
-
-  openxlsx::removeRowHeights(
-    wb = wb,
-    sheet = sheet,
-    rows = 1:max_row
-  )
-
-
-  # delete data if keepData is FALSE ----------------------------------------
-
-  if (!keepData) {
-    openxlsx::deleteData(
-      wb = wb,
-      sheet = sheet,
-      cols = dataCols,
-      rows = dataRows,
-      gridExpand = TRUE
-    )
+  for ( sheet in toTranspose()) {
+    if (sheet %in% openxlsx::sheets(wb)) {
+      format_toTranspose(
+        sheet,
+        wb = wb,
+        max_row = max_row,
+        dataStyle = dataStyle,
+        rowNameStyle = rowNameStyle,
+        colInfoStyle = colInfoStyle)
+    }
   }
 
-  # protect sheet -----------------------------------------------------------
-  if (protect_possible) {
-    openxlsx::protectWorksheet(
-      wb = wb,
-      sheet = sheet,
-      password = "test"
-    )
-  }
-  # Set formating and validation on all worksheets except of Experiment  -----------------
+  # Set formating and validation on all worksheets except of toTransposed()  -----------------
 
   propSets <- grep(
-    pattern = "Experiment",
+    pattern = paste(c(toTranspose(), "DOCUMENTATION"), collapse = "|"),
     x = openxlsx::sheets(wb),
     value = TRUE,
     invert = TRUE
   )
-  propSets <- grep(
-    "DOCUMENTATION",
-    propSets,
-    invert = TRUE,
-    value = TRUE
-  )
+
 
   for (sheet in propSets) {
 

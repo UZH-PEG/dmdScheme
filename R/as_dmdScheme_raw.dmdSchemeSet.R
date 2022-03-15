@@ -18,7 +18,6 @@ as_dmdScheme_raw.dmdSchemeSet <- function(
 
   v <- paste0("DATA ", attr(x, "dmdSchemeName"), " v", attr(x, "dmdSchemeVersion"))
 
-
   names(result[["Experiment"]])[[length(result[["Experiment"]])]] <- v
 
   # Set attributes ----------------------------------------------------------

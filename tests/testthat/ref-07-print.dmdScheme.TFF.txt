@@ -1,4 +1,14 @@
  dmdScheme - dmdSchemeSet
+     MdBibliometric - dmdSchemeData
+A       Names : uploadType | doi | publicationDate | title | description | version | language | keywords | additionalNotes | accessRights | accessRightsInfo | license
+A       Units : 
+A       Type  : character | character | character | character | character | character | character | character | character | character | character | character
+
+     MdAuthors - dmdSchemeData
+A       Names : authorID | familyName | givenName | affiliation | orcid | role
+A       Units : NA | NA | NA | NA | NA | NA
+A       Type  : character | character | character | character | character | character
+
      Experiment - dmdSchemeData
 A       Names : name | temperature | light | humidity | incubator | container | microcosmVolume | mediaType | mediaConcentration | cultureConditions | comunityType | mediaAdditions | duration | comment
 A       Units : NA | NA | NA | NA | NA | NA | ml | NA | g/l | NA | NA | NA | days | NA
