@@ -211,16 +211,9 @@ as_dmdScheme.xml_document <- function(
         # add data to result ------------------------------------------------------
 
 
-        ####
-        types <- sapply(result[[sheet]], typeof)
-        data <- xmlList[[sheetList]][[i]]
-        is.na(data) <- lengths(data) == 0
-        data <- unlist(data)
-        #
-        result[[sheet]] <- rbind(
-
+        data <- vctrs::vec_cast(data, result[[sheet]])
           result[[sheet]],
-          data
+          !!!data
         )
 
         result[[sheet]][] <- Map(`class<-`, result[[sheet]], types)
