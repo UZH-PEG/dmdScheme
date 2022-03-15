@@ -5,7 +5,7 @@ This is a maintanance release, which moves `openxlsx` into the suggests section 
 # release 1.2
 
 This is a feature add release.
-- Adds bibliometric metadata and handling of multiple "vertiiical" sheets
+- Adds bibliometric metadata and handling of multiple "vertical" sheets
 - Adds autocreation of index file which summarises the metadata
 - Adds additional tests
 

@@ -71,7 +71,7 @@ library(kableExtra)
 
 # Using the `dmdScheme`
 
-The functionality for using the dmdScheme is available either via the online app (which can also be housed at an inhouse shiny server), the local running app, or via the R command line. The simplest method is using the online app, as no additional software needs to be installed locally. To be able to use the dmdScheme functionality locally, either via the app or via the R command line, it is necessary to install R [@RCoreTeam2019] and the `dmdScheme` package [@Krug2019a] in R.
+The functionality for using the dmdScheme is available either via the online app (which can also be run on an in-house shiny server), the local running app, or via the R command line. The simplest method is using the online app, as no additional software needs to be installed locally. To be able to use the dmdScheme functionality locally, either via the app or via the R command line, it is necessary to install R [@RCoreTeam2019] and the `dmdScheme` package [@Krug2019a] in R.
 
 In the following section, I will go through the different stages of using the `dmdScheme` via the web app, a local app or the R prompt. The detailed commands which have to be used can be found in Figure 1.
 
@@ -133,7 +133,9 @@ A spreadsheet as frontend for entering the metadata offers the additional possib
 
 ## Validate metadata and create report
 
-To be able to validate the metadata, the validation needs access to the metadata as well as (in most cases) the data files themselves, as the validation can include checking for complete definition of the column names in tables, as implemented in the @Krug2019b. Consequentially, the metadata as well as the data needs to be uploaded to the app, which is done via the "Upload spreadsheet containing metadata" and the "Upload datafiles" buttons. In the case of the web app, these are uploaded to the server running the app (in this case [https://www.shinyapps.io](https://www.shinyapps.io), which is run by RStudio Inc.). If there are e.g. confidentiality or size reasons why an upload to a server is not an option, one could host an inhouse shiny server, which would run the shiny server and the app. The other option would be to use the local app, in which case the metadata and data remain on the local computer. Nevertheless, the data is copied into a different directory. If for example size constraints would prohibit that approach, one can use the R prompt. In this case, the validation function does not need to do any copying of the data, and only needs the path to the directory in which the data resides.
+To be able to validate the metadata, the validation needs access to the metadata as well as (in most cases) the data files themselves, as the validation can include checking for complete definition of the column names in tables, as implemented in the @Krug2019b. Consequentially, the metadata as well as the data needs to be uploaded to the app, which is done via the "Upload spreadsheet containing metadata" and the "Upload datafiles" buttons. In the case of the web app, these are uploaded to the server running the app (in this case [https://www.shinyapps.io](https://www.shinyapps.io), which is run by RStudio Inc.).
+
+If there are e.g. confidentiality or size reasons why an upload to a server is not an option, one could host an inhouse shiny server, which would run the shiny server and the app. The other option would be to use the local app, in which case the metadata and data remain on the local computer. Nevertheless, the data is copied into a different directory. If for example size constraints would prohibit that approach, one can use the R prompt. In this case, the validation function does not need to do any copying of the data, and only needs the path to the directory in which the data resides.
 
 After completion of the validation, the app (web or local) downloads a report, in the default setting an html report. Optional, the report could be a word `docx` document or a `pdf`.
 
@@ -173,7 +175,8 @@ To install the **master** branch, the stable branch which will become the new CR
 devtools::install_github("Exp-Micro-Ecol-Hub/dmdScheme", ref = "master", build_opts = NULL)
 ```
 
-If you are feeling adventurous, want to live at the bleeding edge and can live with non-working features, you can install the **dev** branch. This branch is **not stable** and features and functionality can appear or be removed without prior notice. This is, unless there is a **really** good reason, not recommended for production use:
+
+If you are feeling adventurous, want to live at the bleeding edge and can live with possibly non-working features, you can install the **dev** branch. This branch is **not stable** and features and functionality can appear or be removed without prior notice. This is, unless there is a **really** good reason, not recommended for production use:
 
 ```{r echo=TRUE, eval = FALSE}
 ## install the devtools package if not installed yet
@@ -192,7 +195,7 @@ When you load the package, the definition of the scheme is downloaded from the [
 cache(createPermanent = TRUE)
 ```
 
-and restart your R session. Now the definitions of the installed `dmdSchemes` will be installed in this user cache and be available permanently. For further info, see the documenatation of the command `cache()`.
+and restart your R session. Now the definitions of the installed `dmdSchemes` will be installed in this user cache and be available permanently. For further info, see the documentation of the command `cache()`.
 
 
 ## Managing installed schemes
@@ -235,7 +238,7 @@ scheme_download(name = "emeScheme", version = "0.9.5", destfile = tempfile())
 
 
 ### `scheme_install()`
-Install a new scheme definition. In the normal usecase, this function uses `scheme_download()` to download the scheme defintion from the default [github repository](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository) and installs it. The usage is
+Install a new scheme definition. In the normal usecase, this function uses `scheme_download()` to download the scheme definition from the default [github repository](https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository) and installs it. The usage is
 
 ```{r}
 scheme_install(name = "emeScheme", version = "0.9.5")
@@ -449,7 +452,7 @@ A new scheme definition only has to include the scheme definition and example da
 
 
 ## Create and edit new definition
-To create the scheme itself (as shown in Figure 5), it is recommended to begin with an existing scheme. It is possible to edit most aspects in the scheme definition `xlsx` file, including adding or deleting tabs (only the Experiment and DataFileProperties tabs are needed), adding or removing rows (Experiment tab) or columns (other tabs), changing the types, suggested values, allowed values and units. **If the `.xlsx` file is locked, you can unlock it by using the password `test`.**
+To create the scheme itself (as shown in Figure 5), it is recommended to begin with an existing scheme. It is possible to edit most aspects in the scheme definition `xlsx` file, including adding or deleting tabs (only the Experiment and DataFileProperties tabs are needed), adding or removing rows ("vertical" tabs like e.g. the Experiment tab) or columns (horizontal (other) tabs), changing the types, suggested values, allowed values and units. **If the `.xlsx` file is locked, you can unlock it by using the password `test`.**
 
 It is important that the final scheme contains example data as
 - internal processing of the `.xlsx` file require example data and will fail if a scheme without example data is provided, and
@@ -481,7 +484,7 @@ These are:
 
 1. Tab name has to be identical to `propertySet` value (Cell `A:2` in the tab Experiment, `B:1` in other tabs)
 
-2. One tab named `Experiment` is required.
+2. The tab named `Experiment` is required.
 This tab is different to the others as it has
     1. horizontal layout
     2. only one value per property allowed
@@ -489,7 +492,7 @@ This tab is different to the others as it has
 
 2. The tabs `MdBibliometric` and `MdAuthors` are required as they contain all the bibliometric and author metadata
 
-3. One tab named `DataFileMetaData` is required
+3. The tab named `DataFileMetaData` is required
 
     * one column named `dataFileName`
 
@@ -498,8 +501,7 @@ Applies to all tabs except `Experiment` and `DataFileMetaData`
 
     * The first column in the tab must be a column named `...ID`.
 
-5. The spreadsheet can contain a tab `DOCUMENTATION`
-This tab can contain information for the user and will not be imported.
+5. The spreadsheet can contain a tab `DOCUMENTATION`. This tab can contain information for the user and will not be imported.
 
 
 
@@ -516,7 +518,7 @@ The package `dmdScheme` package is only providing the base functionality for wor
 
 It is not necessary to build an accompanying R package, but doing so will make it possible to adapt many aspects of the validation and export process to the needs of a specific domain.
 
-The easiest to develop an accompanying R package is to
+The easiest method to develop an accompanying R package is to
 - use `scheme_use()` to activate a new scheme for which the accompanying package should be developed
 - use the convenience function `make_new_package()` to create a package skeleton which fulfils these requirements
 
@@ -610,6 +612,7 @@ The aim of an index file is, to giva a short and concise overview over the data 
 
 The index file is created based on a text template, in which tokens are stand for metadata  values from the a `dmdScheme`. These are replaced with the actual metadata properties  when calling the function `make_index( x = A_dmdScheme, template = "the/index/template/file.txt)`. If asked for, the resulting index file is translated to pdf and html by using pandoc.
 
+
 Tokens are enclosed by` %%...%%` and must not contain any white spaces (tab, space, ...).
 
 The following tokens are allowed at the moment:
@@ -629,4 +632,3 @@ Special tokens are tokens which do not extract data from the metadata scheme. Th
 
 - **`%%DATE%%`**: will be replaced with the current date
 - **`%%AUTHOR%%`**: will be replaced with the author as supplied to the function
-
