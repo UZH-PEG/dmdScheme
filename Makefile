@@ -171,7 +171,7 @@ clean_check:
 
 ####
 
-check-rhub-bkg: build-cran
+check-rhub-pkg: build-cran
 	@Rscript -e "x <- rhub::check_for_cran(email = 'Rainer@krugs.de', path = './../$(PKGNAME)_$(PKGVERS).tar.gz')"
 
 check-rhub: build-cran
