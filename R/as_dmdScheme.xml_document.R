@@ -18,11 +18,11 @@
 #'}
 #'
 as_dmdScheme.xml_document <- function(
-  x,
-  keepData = TRUE,
-  useSchemeInXml = NULL,
-  ...,
-  verbose = FALSE
+    x,
+    keepData = TRUE,
+    useSchemeInXml = NULL,
+    ...,
+    verbose = FALSE
 ){
 
   # Helper functions --------------------------------------------------------
@@ -130,7 +130,7 @@ as_dmdScheme.xml_document <- function(
   }
 
 
-# End Helper Functions ----------------------------------------------------
+  # End Helper Functions ----------------------------------------------------
 
 
 
@@ -212,16 +212,20 @@ as_dmdScheme.xml_document <- function(
 
 
         ####
+
+
         types <- sapply(result[[sheet]], typeof)
+
         data <- xmlList[[sheetList]][[i]]
         is.na(data) <- lengths(data) == 0
         data <- unlist(data)
+
         #
         result[[sheet]] <- rbind(
-
           result[[sheet]],
           data
         )
+
 
         result[[sheet]][] <- Map(`class<-`, result[[sheet]], types)
 

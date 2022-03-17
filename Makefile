@@ -140,6 +140,7 @@ clean_web: clean_html clean_vignettes clean_readme
 ####
 
 docs: figs_vignette
+	Rscript -e "codemetar::write_codemeta()"
 	Rscript -e "devtools::document(roclets = c('rd', 'collate', 'namespace', 'vignette'))"
 
 
