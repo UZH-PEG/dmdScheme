@@ -16,8 +16,8 @@ Authors@R:
              role = "ctb",
              email = "Owen.Petchey@uzh.ch",
              comment = c(ORCID = "0000-0002-7724-1633")))
-URL: https://exp-micro-ecol-hub.github.io/dmdScheme/, https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/
-BugReports: https://github.com/Exp-Micro-Ecol-Hub/dmdScheme/issues/
+URL: https://UZH-PEG.github.io/dmdScheme/, https://github.com/UZH-PEG/dmdScheme/
+BugReports: https://github.com/UZH-PEG/dmdScheme/issues/
 Depends: R (>= 3.5.0)
 Imports: tools, 
       methods, 
