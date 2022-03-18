@@ -36,3 +36,5 @@
 ^screenshots_highres$
 
 ^\.github$
+^_pkgdown\.yml$
+^pkgdown$
