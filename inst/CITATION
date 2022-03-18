@@ -7,15 +7,13 @@ citEntry(entry = "Manual",
                    as.person("Owen L. Petchey")),
   journal      = "Zenodo",
   year         = "2019",
-  version      = "v0.9.22",
-  doi          = "10.5281/zenodo.3581970",
-  url          = "https://doi.org/10.5281/zenodo.3581970",
+  doi          = "10.5281/zenodo.3229614",
+  url          = "https://doi.org/10.5281/zenodo.3229614",
 
   textVersion  =
-  paste("Rainer M. Krug, Owen L/ Petchey (2019).",
+  paste("Rainer M. Krug, Owen L. Petchey (2019).",
         "{dmdScheme}: An R package for working with Domain specific MetaData Schemes.",
-        "(version v0.9.22).",
         "Zenodo",
-        "http://doi.org/10.5281/zenodo.3581970")
+        "https://doi.org/10.5281/zenodo.3229614")
 )
 

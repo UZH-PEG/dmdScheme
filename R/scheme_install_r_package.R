@@ -29,17 +29,13 @@ scheme_install_r_package <- function(
   )
   if (file.exists(script)) {
     installed <- system.file(package = name) != ""
-    if (installed) {
-      if (reinstall) {
-        utils::remove.packages(name)
-      } else {
-        message(
-          "Package ", name, " is already installed!\n",
-          "To re-install or update, please specify `reinstall = TRUE`"
-        )
-      }
-    } else {
+    if (reinstall) {
       source(script, echo = TRUE)
+    } else {
+      message(
+        "Package ", name, " is already installed!\n",
+        "To re-install or update, please specify `reinstall = TRUE`"
+      )
     }
 
   }

@@ -43,7 +43,7 @@ shinyServer(
             scheme_install_r_package(
               name = name,
               version = version,
-              reinstall = TRUE
+              reinstall = FALSE
             )
           }
           incProgress(1, message = "Loading R Package and Scheme...")
