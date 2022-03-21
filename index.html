@@ -37,7 +37,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-3">
+    <div id="navbar" class="collapse navbar-collapse ms-2">
       <ul class="navbar-nav me-auto">
 <li class="nav-item">
   <a class="nav-link" href="reference/index.html">Reference</a>
@@ -70,10 +70,187 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9">
-Forms the core for developing own domain specific metadata schemes. 
-                  It contains the basic functionality needed for all metadata schemes based on the
-                  'dmdScheme'. See R.M. Krug and O.L. Petchey (2019) &lt;<a href="https://doi.org/10.5281/zenodo.3581970" class="external-link">doi:10.5281/zenodo.3581970</a>&gt;.
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header"><h1 id="dmdscheme">
+<code>dmdScheme</code><a class="anchor" aria-label="anchor" href="#dmdscheme"></a>
+</h1></div>
+<p>An R Package to develop and manage Domain Specific Metadata Schemes
+(dmdSchemes)</p>
+<div class="section level2">
+<h2 id="general">General<a class="anchor" aria-label="anchor" href="#general"></a>
+</h2>
+<p><a href="https://doi.org/10.5281/zenodo.3581970" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.3581970.svg" alt="DOI"></a> <a href="https://opensource.org/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a> <a href="https://www.tidyverse.org/lifecycle/#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-green.png" alt="lifecycle"></a></p>
+</div>
+<div class="section level2">
+<h2 id="checks">Checks<a class="anchor" aria-label="anchor" href="#checks"></a>
+</h2>
+<p><a href="https://github.com/UZH-PEG/dmdScheme/actions" class="external-link"><img src="https://github.com/UZH-PEG/dmdScheme/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a> <a href="https://uzh-peg.r-universe.dev" class="external-link"><img src="https://uzh-peg.r-universe.dev/badges/:registry" alt=":registry status badge"></a></p>
+</div>
+<div class="section level2">
+<h2 id="coverage">Coverage<a class="anchor" aria-label="anchor" href="#coverage"></a>
+</h2>
+<p><a href="https://codecov.io/gh/UZH-PEG/dmdScheme" class="external-link"><img src="https://codecov.io/gh/UZH-PEG/dmdScheme/branch/master/graph/badge.svg?token=hCiW2fKgTv" alt="codecov coverage status"></a></p>
+</div>
+<div class="section level2">
+<h2 id="r-universe-official-distribution-channel">R-Universe (<strong>official</strong> distribution channel)<a class="anchor" aria-label="anchor" href="#r-universe-official-distribution-channel"></a>
+</h2>
+<p><a href="https://uzh-peg.r-universe.dev" class="external-link"><img src="https://uzh-peg.r-universe.dev/badges/:name" alt=":name status badge"></a> <a href="https://uzh-peg.r-universe.dev" class="external-link"><img src="https://uzh-peg.r-universe.dev/badges/dmdScheme" alt="dmdScheme status badge"></a></p>
+</div>
+<div class="section level2">
+<h2 id="cran-archived-at-the-moment">CRAN (archived at the moment)<a class="anchor" aria-label="anchor" href="#cran-archived-at-the-moment"></a>
+</h2>
+<p><a href="https://cran.r-project.org/package=dmdScheme" class="external-link"><img src="https://www.r-pkg.org/badges/version/dmdScheme" alt="CRAN_Status_Badge"></a> <a href="https://cran.r-project.org/package=dmdScheme" class="external-link"><img src="https://www.r-pkg.org/badges/version-last-release/dmdScheme" alt="CRAN_Status_Badge_version_last_release"></a> <a href="https://cran.r-project.org/package=dmdScheme" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/grand-total/dmdScheme?color=green"></a></p>
+</div>
+</div>
+<div class="section level1">
+<h1 id="the-r-package">The R Package<a class="anchor" aria-label="anchor" href="#the-r-package"></a>
+</h1>
+<p>The R package <code>dmdScheme</code> is the base package for all
+<code>dmdScheme</code> schemes. The metadata scheme used by this package
+(<code>dmdScheme</code>) in itself is just a template and of no real
+applicability. It needs to be adjusted to actual needs and uploaded to
+the site <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/tree/master" class="external-link">dmdScheme
+repository</a> so that it can be used.</p>
+<p>The definition of the dmdScheme can be found at the <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository" class="external-link">dmdScheme
+repository</a>. The R package provides the functionality to work in R
+with the scheme, i.e. to enter, validate and export the metadata.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>The recommended way is to install from the <a href="https://uzh-peg.r-universe.dev/" class="external-link">R-Universe</a> where the stable
+released will always be available:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Enable universe by uzh-peg</span>
+<span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>
+  uzhpeg <span class="op">=</span> <span class="st">'https://uzh-peg.r-universe.dev'</span>,
+  CRAN <span class="op">=</span> <span class="st">'https://cloud.r-project.org'</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># Install dmdScheme</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'dmdScheme'</span><span class="op">)</span></code></pre></div>
+<p>To install the <strong>master</strong> branch, the stable branch
+which will become the new stable release, from the <a href="https://github.com/UZH-PEG/dmdScheme/tree/master" class="external-link">dmdScheme
+repository on github</a>, run</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## install the remotes package if not installed yet</span>
+<span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org" class="external-link">"remotes"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"UZH-PEG/dmdScheme"</span>, ref <span class="op">=</span> <span class="st">"master"</span>, build_opts <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+<p>If you are feling adventurous, want to live at the bleeding edge and
+can live with non-working features, you can install the
+<strong>dev</strong> branch. This branch is under development and
+<strong>not guranteed to be stable</strong>! Features and functionality
+can appear or be removed without prior notice:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## install the remotes package if not installed yet</span>
+<span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org" class="external-link">"remotes"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"Exp-Micro-Ecol-Hub/dmdScheme"</span>, ref <span class="op">=</span> <span class="st">"dev"</span>, build_opts <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+<p>Other branches are not generally recommended for installation unless
+you are developing <code>dmdScheme</code> or need certain features
+available in other brances!</p>
+</div>
+<div class="section level2">
+<h2 id="loading-the-package">Loading the package<a class="anchor" aria-label="anchor" href="#loading-the-package"></a>
+</h2>
+<p>When you load the package, the definition of the scheme is downloaded
+from the <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/tree/master" class="external-link">dmdScheme
+repository</a> and installed in a temporary scheme library in a
+temporary directory for usage in this R session only. As this scheme
+library is stored in a temporary directory, it will be deleted when you
+quit your R session and must be re-downloaded each time you start a new
+session and load the package. To create a permanent package library you
+have to create a cache in the user directory. To do this, run</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://exp-micro-ecol-hub.github.io/dmdScheme/" class="external-link">dmdScheme</a></span><span class="op">)</span>
+<span class="fu"><a href="reference/cache.html">cache</a></span><span class="op">(</span>createPermanent <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<p>and restart your R session. Now the definitions of the installed
+<code>dmdSchemes</code> will be installed in this user cache and be
+available permanently. For further info, see the documentation of the
+command <code><a href="reference/cache.html">cache()</a></code> in the <code>dmdScheme</code> package.</p>
+</div>
+<div class="section level2">
+<h2 id="accompagnying-documentation-vignettes">Accompagnying documentation (vignettes)<a class="anchor" aria-label="anchor" href="#accompagnying-documentation-vignettes"></a>
+</h2>
+<ul>
+<li>
+<a href="r_package_introduction.html" target="_blank">‘R Package
+Introduction’</a> for a general description of the package</li>
+<li>
+<a href="Howto_create_new_scheme.html" target="_blank">‘Howto Create
+a new scheme’</a> for a walk-through of creating a new scheme</li>
+<li>
+<a href="minimum_requirements_dmdscheme.html" target="_blank">‘Minimum
+requirements for metadatascheme based on dmdScheme’</a> for the minimum
+requirements of what a new scheme definition must contain.</li>
+</ul>
+</div>
+</div>
+<div class="section level1">
+<h1 id="other-resources">Other Resources<a class="anchor" aria-label="anchor" href="#other-resources"></a>
+</h1>
+<div class="section level2">
+<h2 id="example-scheme">Example scheme<a class="anchor" aria-label="anchor" href="#example-scheme"></a>
+</h2>
+<p>For a workable example with data see the documentation of the <a href="https://exp-micro-ecol-hub.github.io/emeScheme/" class="external-link">emeScheme</a></p>
+</div>
+<div class="section level2">
+<h2 id="presentations">Presentations<a class="anchor" aria-label="anchor" href="#presentations"></a>
+</h2>
+<ul>
+<li>July 2019: <a href="https://rkrug.github.io/metadata_is_sexy/metadata_is_sexy.html" class="external-link">Metadata
+is sexy!</a> by Rainer M. Krug<br><a href="https://doi.org/10.5281/zenodo.3246331" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.3246331.svg" alt="DOI"></a>
+</li>
+<li>September 2019: <a href="https://rkrug.github.io/LiveDemoDmdScheme/" class="external-link">Live Demo</a> by
+Rainer M. Krug<br>
+</li>
+<li>September 2019, GFÖ, Münster: <a href="https://rkrug.github.io/GFO_2019" class="external-link">Metadata can be easy!</a> by
+Rainer M. Krug &amp; Owen L. Petchey<br><a href="https://doi.org/10.5281/zenodo.3386077" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.3386077.svg" alt="DOI"></a>
+</li>
+<li>
+<a href="https://rkrug.github.io/from_zero_to_hero-metadata_made_easy/from_zero_to_hero-metadata_can_be_easy.html" class="external-link">From
+Zero to Hero - Metadata Made Easy!</a> by Rainer M. Krug<br><a href="https://doi.org/10.5281/zenodo.3517816" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.3517816.svg" alt="DOI"></a>
+</li>
+<li>December 2019, BES, Belfast: Metadata made easy by Rainer M. Krug
+&amp; Owen L. Petchey<br><a href="https://doi.org/10.5281/zenodo.3571351" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.3571351.svg" alt="DOI"></a>
+</li>
+</ul>
+</div>
+</div>
+<div class="section level1">
+<h1 id="outdated-resources-just-for-historical-reasons">Outdated Resources (<strong>Just for historical
+reasons</strong>)<a class="anchor" aria-label="anchor" href="#outdated-resources-just-for-historical-reasons"></a>
+</h1>
+<div class="section level2">
+<h2 id="presentations-1">Presentations<a class="anchor" aria-label="anchor" href="#presentations-1"></a>
+</h2>
+<ul>
+<li>December 2018: <a href="https://rkrug.github.io/emeScheme_Introduction/The_emeScheme.html" class="external-link">The
+dmdScheme - an Introduction</a> by Rainer M Krug<br><a href="https://doi.org/10.5281/zenodo.2244998" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.2244998.svg" alt="DOI"></a>
+</li>
+</ul>
+<hr>
+<p>Please see the <a href="https://UZH-PEG.github.io/dmdScheme/" class="external-link">github
+repository</a> or the <a href="https://uzh-peg.github.io/dmdScheme/">dmdScheme Homepage</a> for
+details.</p>
+</div>
+</div>
+<div class="section level1">
+<h1 id="other-links">Other Links:<a class="anchor" aria-label="anchor" href="#other-links"></a>
+</h1>
+<ul>
+<li>The <a href="http://emeh.info" class="external-link">Experimental Microbial Ecology
+Hub</a>
+</li>
+<li>The <a href="http://emeh-protocols.readthedocs.org/en/latest/" class="external-link">Experimental
+Microbial Ecology Protocols</a>
+</li>
+</ul>
+</div>
+
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
@@ -121,7 +298,8 @@ Forms the core for developing own domain specific metadata schemes.
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
+2.0.1.</p>
 </div>
 
     </footer>

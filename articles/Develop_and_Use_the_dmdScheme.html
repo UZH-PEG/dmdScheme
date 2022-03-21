@@ -33,7 +33,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-3">
+    <div id="navbar" class="collapse navbar-collapse ms-2">
       <ul class="navbar-nav me-auto">
 <li class="nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
@@ -66,13 +66,12 @@
   </div>
 </nav><div class="container template-article">
 
-
-
-<script src="Develop_and_Use_the_dmdScheme_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+<div class="row">
   <main id="main"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Develop and use the `dmdScheme`</h1>
             <h3 data-toc-skip class="subtitle">dmdScheme_0.9.9</h3>
-                        <h4 data-toc-skip class="author">Rainer M Krug <a href="mailto:Rainer.Krug@uzh.ch" class="email">Rainer.Krug@uzh.ch</a>
+                        <h4 data-toc-skip class="author">Rainer M Krug
+<a href="mailto:Rainer.Krug@uzh.ch" class="email">Rainer.Krug@uzh.ch</a>
 </h4>
             
             <h4 data-toc-skip class="date">2022-03-21</h4>
@@ -83,83 +82,187 @@
 
     
     
-<div class="section level2">
-<h2 id="using-the-dmdscheme">Using the <code>dmdScheme</code><a class="anchor" aria-label="anchor" href="#using-the-dmdscheme"></a>
-</h2>
-<p>The functionality for using the <code>dmdScheme</code> is available either via the online app (which can also be run on an in-house shiny server), a local running app, or via the R command line. The simplest method is using the online app, as no additional software needs to be installed locally. To be able to use the <code>dmdScheme</code> functionality locally, either via the app or via the R command line, it is necessary to install <a href="https://cran.r-project.org" class="external-link">R</a> and the <a href="https://uzh-peg.github.io/dmdScheme/"><code>dmdScheme</code> package</a>.</p>
-<p>In the following section, I will go through the different stages of using the <code>dmdScheme</code> via the web app, a local app or the R prompt. The detailed commands which have to be used can be found in Figure 1.</p>
+<div class="section level1">
+<h1 id="using-the-dmdscheme">Using the <code>dmdScheme</code><a class="anchor" aria-label="anchor" href="#using-the-dmdscheme"></a>
+</h1>
+<p>The functionality for using the <code>dmdScheme</code> is available
+either via the online app (which can also be run on an in-house shiny
+server), a local running app, or via the R command line. The simplest
+method is using the online app, as no additional software needs to be
+installed locally. To be able to use the <code>dmdScheme</code>
+functionality locally, either via the app or via the R command line, it
+is necessary to install <a href="https://cran.r-project.org" class="external-link">R</a> and
+the <a href="https://uzh-peg.github.io/dmdScheme/"><code>dmdScheme</code>
+package</a>.</p>
+<p>In the following section, I will go through the different stages of
+using the <code>dmdScheme</code> via the web app, a local app or the R
+prompt. The detailed commands which have to be used can be found in
+Figure 1.</p>
 <div class="figure">
 <img src="figs/workflow_enterMetaData_app_online.png" alt="**Figure 1**: Workflow of using `dmdScheme` (A) via the web app, (B) via the app locally, (C) via the R prompt. Square boxes indicate steps which are not common to all three, rounded boxes indicate steps identical to the different ways, although how they are executed can differ." width="33%"><img src="figs/workflow_enterMetaData_app_local.png" alt="**Figure 1**: Workflow of using `dmdScheme` (A) via the web app, (B) via the app locally, (C) via the R prompt. Square boxes indicate steps which are not common to all three, rounded boxes indicate steps identical to the different ways, although how they are executed can differ." width="33%"><img src="figs/workflow_enterMetaData_R.png" alt="**Figure 1**: Workflow of using `dmdScheme` (A) via the web app, (B) via the app locally, (C) via the R prompt. Square boxes indicate steps which are not common to all three, rounded boxes indicate steps identical to the different ways, although how they are executed can differ." width="33%"><p class="caption">
-<strong>Figure 1</strong>: Workflow of using <code>dmdScheme</code> (A) via the web app, (B) via the app locally, (C) via the R prompt. Square boxes indicate steps which are not common to all three, rounded boxes indicate steps identical to the different ways, although how they are executed can differ.
+<strong>Figure 1</strong>: Workflow of using <code>dmdScheme</code> (A)
+via the web app, (B) via the app locally, (C) via the R prompt. Square
+boxes indicate steps which are not common to all three, rounded boxes
+indicate steps identical to the different ways, although how they are
+executed can differ.
 </p>
 </div>
-<div class="section level3">
-<h3 id="preparation">Preparation<a class="anchor" aria-label="anchor" href="#preparation"></a>
-</h3>
-<p>The app (Figure 2) can be accessed either via the internet as a web app at <a href="https://rmkrug.shinyapps.io/dmd_app/" class="external-link">https://rmkrug.shinyapps.io/dmd_app/</a>, or locally. To run it locally, you need R and the <code>dmdScheme</code> package installed. After loading the <code>dmdScheme</code> package, you can start the app locally by running <code><a href="../reference/run_app.html">run_app()</a></code> at the R prompt. After these steps, the usage of the two apps is identical.</p>
-<p>When using the <code>dmdScheme</code> from the command line, the initial setup is the same as running the app locally, only that it is not necessary to start the app.</p>
+<div class="section level2">
+<h2 id="preparation">Preparation<a class="anchor" aria-label="anchor" href="#preparation"></a>
+</h2>
+<p>The app (Figure 2) can be accessed either via the internet as a web
+app at <a href="https://rmkrug.shinyapps.io/dmd_app/" class="external-link">https://rmkrug.shinyapps.io/dmd_app/</a>,
+or locally. To run it locally, you need R and the <code>dmdScheme</code>
+package installed. After loading the <code>dmdScheme</code> package, you
+can start the app locally by running <code><a href="../reference/run_app.html">run_app()</a></code> at the R
+prompt. After these steps, the usage of the two apps is identical.</p>
+<p>When using the <code>dmdScheme</code> from the command line, the
+initial setup is the same as running the app locally, only that it is
+not necessary to start the app.</p>
 <div class="figure" style="text-align: center">
 <img src="figs/app.jpg" alt="**Figure 2**: Screenshot of the dmdScheme app." width="40%"><p class="caption">
 <strong>Figure 2</strong>: Screenshot of the dmdScheme app.
 </p>
 </div>
 </div>
-<div class="section level3">
-<h3 id="select-scheme">Select scheme<a class="anchor" aria-label="anchor" href="#select-scheme"></a>
-</h3>
-<p>The package <code>dmdScheme</code> does not come with a specific scheme, and installs upon loading a generic dmdScheme from the dmdScheme scheme repository at <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository" class="external-link">https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository</a>. In nearly all circumstances, a specific scheme needs to be installed, together with the accompanying R package. In the app, this is done via selecting a theme in the section “Available dmdSchemes”. This list is populated automatically upon starting of the app from the schemes available in the scheme repository. The selection of the scheme will download the scheme definition package, install any accompanying R package as specified in the scheme definition package, load the accompanying R package, and activate the scheme definition.</p>
-<p>To do this from the R prompt, one has do these steps manually and install the scheme, install the accompanying R package, load the accompanying R package, and activate the scheme itself (see Figure 1 C for the commands).</p>
+<div class="section level2">
+<h2 id="select-scheme">Select scheme<a class="anchor" aria-label="anchor" href="#select-scheme"></a>
+</h2>
+<p>The package <code>dmdScheme</code> does not come with a specific
+scheme, and installs upon loading a generic dmdScheme from the dmdScheme
+scheme repository at <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository" class="external-link">https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository</a>.
+In nearly all circumstances, a specific scheme needs to be installed,
+together with the accompanying R package. In the app, this is done via
+selecting a theme in the section “Available dmdSchemes”. This list is
+populated automatically upon starting of the app from the schemes
+available in the scheme repository. The selection of the scheme will
+download the scheme definition package, install any accompanying R
+package as specified in the scheme definition package, load the
+accompanying R package, and activate the scheme definition.</p>
+<p>To do this from the R prompt, one has do these steps manually and
+install the scheme, install the accompanying R package, load the
+accompanying R package, and activate the scheme itself (see Figure 1 C
+for the commands).</p>
 </div>
-<div class="section level3">
-<h3 id="download-new-scheme">Download new scheme<a class="anchor" aria-label="anchor" href="#download-new-scheme"></a>
-</h3>
-<p>The spreadsheet to enter the metadata can be obtained from the app via the “Empty scheme spreadsheet” button. This will download an <code>.xlsx</code> spreadsheet containing the definition of the scheme and the cells for the metadata which need to be filled in.</p>
-<p>In R, the spreadsheet can be obtained by using the <code><a href="../reference/open_new_spreadsheet.html">open_new_spreadsheet()</a></code> command.</p>
-<p>Figure 3 shows two screenshots of the spreadsheet as opened in Excel.</p>
+<div class="section level2">
+<h2 id="download-new-scheme">Download new scheme<a class="anchor" aria-label="anchor" href="#download-new-scheme"></a>
+</h2>
+<p>The spreadsheet to enter the metadata can be obtained from the app
+via the “Empty scheme spreadsheet” button. This will download an
+<code>.xlsx</code> spreadsheet containing the definition of the scheme
+and the cells for the metadata which need to be filled in.</p>
+<p>In R, the spreadsheet can be obtained by using the
+<code><a href="../reference/open_new_spreadsheet.html">open_new_spreadsheet()</a></code> command.</p>
+<p>Figure 3 shows two screenshots of the spreadsheet as opened in
+Excel.</p>
 <div class="figure" style="text-align: center">
 <img src="figs/Spreadsheet_01_MdBibliometric.jpg" alt="**Figure 3**: Some example tabs from the `emeScheme` spreadsheet. The first to contains bibliometric metadata modelled along the requirements by DataCite and the authors in the second tab. The third one contains metadata about the Species used in the experiment. The complete spreadsheet can be found in the supplemental material `emeScheme.xlsx`." width="90%"><img src="figs/Spreadsheet_02_MdAuthor.jpg" alt="**Figure 3**: Some example tabs from the `emeScheme` spreadsheet. The first to contains bibliometric metadata modelled along the requirements by DataCite and the authors in the second tab. The third one contains metadata about the Species used in the experiment. The complete spreadsheet can be found in the supplemental material `emeScheme.xlsx`." width="90%"><img src="figs/Spreadsheet_04_Genus.jpg" alt="**Figure 3**: Some example tabs from the `emeScheme` spreadsheet. The first to contains bibliometric metadata modelled along the requirements by DataCite and the authors in the second tab. The third one contains metadata about the Species used in the experiment. The complete spreadsheet can be found in the supplemental material `emeScheme.xlsx`." width="90%"><p class="caption">
-<strong>Figure 3</strong>: Some example tabs from the <code>emeScheme</code> spreadsheet. The first to contains bibliometric metadata modelled along the requirements by DataCite and the authors in the second tab. The third one contains metadata about the Species used in the experiment. The complete spreadsheet can be found in the supplemental material <code>emeScheme.xlsx</code>.
+<strong>Figure 3</strong>: Some example tabs from the
+<code>emeScheme</code> spreadsheet. The first to contains bibliometric
+metadata modelled along the requirements by DataCite and the authors in
+the second tab. The third one contains metadata about the Species used
+in the experiment. The complete spreadsheet can be found in the
+supplemental material <code>emeScheme.xlsx</code>.
 </p>
-</div>
-</div>
-<div class="section level3">
-<h3 id="enter-edit-metadata-on-downloaded-xlsx">Enter / Edit metadata on downloaded xlsx<a class="anchor" aria-label="anchor" href="#enter-edit-metadata-on-downloaded-xlsx"></a>
-</h3>
-<p>The entering of the metadata is done in the spreadsheet downloaded before. The spreadsheet contains the definition of the scheme as well as all information needed to fill in the metadata, including “type” of the metadata (e.g. numeric, character, or boolean), “allowed values” or “suggested values”, “unit” as well as a “Description” field.</p>
-<p>Metadata can be entered in all green cells, while all red cells are (should be) locked and are part of the scheme definition.</p>
-<p>Here the familiarity of researchers with spreadsheets plays an important role, as the technical details of the entering itself do not need to be explained as it is a standard spreadsheet.</p>
-<p>The metadata in the <code>.xlsx</code> file can be entered and edited in likely all spreadsheet programs which can read and write <code>.xlsx</code> files. We tested successfully Excel, Pages, Libre Office and Google Docs.</p>
-<p>A spreadsheet as frontend for entering the metadata offers the additional possibilities to specify validation rules within the spreadsheet itself to be checked during the entering process and not only afterwards. As we wanted to maintain the flexibility to edit the spreadsheet in different spreadsheet editors in a consistent way, this is not implemented in the <code>dmdScheme</code> or <code>emeScheme</code>, but could be easily done in other schemes.</p>
-</div>
-<div class="section level3">
-<h3 id="validate-metadata-and-create-report">Validate metadata and create report<a class="anchor" aria-label="anchor" href="#validate-metadata-and-create-report"></a>
-</h3>
-<p>To be able to validate the metadata, the validation needs access to the metadata as well as (in most cases) the data files themselves, as the validation can include checking for complete definition of the column names in tables, as implemented in the <span class="citation">@Krug2019b</span>. Consequentially, the metadata as well as the data needs to be uploaded to the app, which is done via the “Upload spreadsheet containing metadata” and the “Upload datafiles” buttons. In the case of the web app, these are uploaded to the server running the app (in this case <a href="https://www.shinyapps.io" class="external-link">https://www.shinyapps.io</a>, which is run by RStudio Inc.).</p>
-<p>If there are e.g. confidentiality or size reasons why an upload to a server is not an option, one could host an in-house shiny server, which would run the shiny server and the app. The other option would be to use the local app, in which case the metadata and data remain on the local computer. Nevertheless, the data is copied into a different directory. If for example size constraints would prohibit that approach, one can use the R prompt. In this case, the validation function does not need to do any copying of the data, and only needs the path to the directory in which the data resides.</p>
-<p>After completion of the validation, the app (web or local) downloads a report, in the default setting an html report. Optional, the report could be a word <code>docx</code> document or a <code>pdf</code>.</p>
-<p>The report (see Figure 4) does show <strong>errors</strong> (which normally should be fixed), <strong>warnings</strong>, which are not as critical as errors and should be assessed one by one, and <strong>notes</strong>. The level of details, and aspects validated, in this report depends on the validation function, which can be changed in the accompanying R package.</p>
-<p>The editing - validation cycle should be repeated until the report is satisfactory.</p>
-<p>On the R prompt, the validation involve the two commands <code><a href="../reference/validate.html">validate()</a></code> and <code><a href="../reference/report.html">report()</a></code> to validate the spreadsheet and to create the report from the object resulting from the validation.</p>
-<div class="figure" style="text-align: center">
-<img src="figs/ValidationReport.jpg" alt="**Figure 4**: Example validation report, as cfrom the validation included in the `emeScheme` package [@Krug2019b]." width="90%"><p class="caption">
-<strong>Figure 4</strong>: Example validation report, as cfrom the validation included in the <code>emeScheme</code> package <span class="citation">[@Krug2019b]</span>.
-</p>
-</div>
-</div>
-<div class="section level3">
-<h3 id="export-uploaded-spreadsheet-to-xml">Export uploaded spreadsheet to xml<a class="anchor" aria-label="anchor" href="#export-uploaded-spreadsheet-to-xml"></a>
-</h3>
-<p>In the app, the xml can be obtained by using the “Export to xml” button. Depending on the export functionality implemented for the selected scheme (as defined in the accompanying R package), the file returned is an <code>.xml</code> file (<code>dmdScheme</code>) or a compressed archive (<code>.tar.gz</code>) containing multiple <code>.xml</code> files (e.g. for the <code>emeScheme</code>, one per data file). On the R prompt, the command <code><a href="../reference/write_xml.html">write_xml()</a></code> will export to a single (<code>dmdScheme</code>) or multiple <code>.xml</code> files (<code>emeScheme</code>) and return the names(s) of the file(s) exported.</p>
 </div>
 </div>
 <div class="section level2">
-<h2 id="the-r-package">The R Package<a class="anchor" aria-label="anchor" href="#the-r-package"></a>
+<h2 id="enter-edit-metadata-on-downloaded-xlsx">Enter / Edit metadata on downloaded xlsx<a class="anchor" aria-label="anchor" href="#enter-edit-metadata-on-downloaded-xlsx"></a>
 </h2>
-<p>The package <code>dmdScheme</code> is a base package for the usage and development of domain specific metadata schemes. It provides functionality to enter the metadata, validate the entered metadata, and export it to xml format for further processing by e.g. archival repositories. This document will give an overview over the <code>dmdScheme</code> package and what it contains.</p>
-<div class="section level3">
-<h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
-</h3>
-<p>The recommended way is to install from the <a href="https://uzh-peg.r-universe.dev/" class="external-link">R-Universe</a> which always contains the last stable version:</p>
+<p>The entering of the metadata is done in the spreadsheet downloaded
+before. The spreadsheet contains the definition of the scheme as well as
+all information needed to fill in the metadata, including “type” of the
+metadata (e.g. numeric, character, or boolean), “allowed values” or
+“suggested values”, “unit” as well as a “Description” field.</p>
+<p>Metadata can be entered in all green cells, while all red cells are
+(should be) locked and are part of the scheme definition.</p>
+<p>Here the familiarity of researchers with spreadsheets plays an
+important role, as the technical details of the entering itself do not
+need to be explained as it is a standard spreadsheet.</p>
+<p>The metadata in the <code>.xlsx</code> file can be entered and edited
+in likely all spreadsheet programs which can read and write
+<code>.xlsx</code> files. We tested successfully Excel, Pages, Libre
+Office and Google Docs.</p>
+<p>A spreadsheet as frontend for entering the metadata offers the
+additional possibilities to specify validation rules within the
+spreadsheet itself to be checked during the entering process and not
+only afterwards. As we wanted to maintain the flexibility to edit the
+spreadsheet in different spreadsheet editors in a consistent way, this
+is not implemented in the <code>dmdScheme</code> or
+<code>emeScheme</code>, but could be easily done in other schemes.</p>
+</div>
+<div class="section level2">
+<h2 id="validate-metadata-and-create-report">Validate metadata and create report<a class="anchor" aria-label="anchor" href="#validate-metadata-and-create-report"></a>
+</h2>
+<p>To be able to validate the metadata, the validation needs access to
+the metadata as well as (in most cases) the data files themselves, as
+the validation can include checking for complete definition of the
+column names in tables, as implemented in the <span class="citation">@Krug2019b</span>. Consequentially, the metadata as
+well as the data needs to be uploaded to the app, which is done via the
+“Upload spreadsheet containing metadata” and the “Upload datafiles”
+buttons. In the case of the web app, these are uploaded to the server
+running the app (in this case <a href="https://www.shinyapps.io" class="external-link">https://www.shinyapps.io</a>, which is
+run by RStudio Inc.).</p>
+<p>If there are e.g. confidentiality or size reasons why an upload to a
+server is not an option, one could host an in-house shiny server, which
+would run the shiny server and the app. The other option would be to use
+the local app, in which case the metadata and data remain on the local
+computer. Nevertheless, the data is copied into a different directory.
+If for example size constraints would prohibit that approach, one can
+use the R prompt. In this case, the validation function does not need to
+do any copying of the data, and only needs the path to the directory in
+which the data resides.</p>
+<p>After completion of the validation, the app (web or local) downloads
+a report, in the default setting an html report. Optional, the report
+could be a word <code>docx</code> document or a <code>pdf</code>.</p>
+<p>The report (see Figure 4) does show <strong>errors</strong> (which
+normally should be fixed), <strong>warnings</strong>, which are not as
+critical as errors and should be assessed one by one, and
+<strong>notes</strong>. The level of details, and aspects validated, in
+this report depends on the validation function, which can be changed in
+the accompanying R package.</p>
+<p>The editing - validation cycle should be repeated until the report is
+satisfactory.</p>
+<p>On the R prompt, the validation involve the two commands
+<code><a href="../reference/validate.html">validate()</a></code> and <code><a href="../reference/report.html">report()</a></code> to validate the
+spreadsheet and to create the report from the object resulting from the
+validation.</p>
+<div class="figure" style="text-align: center">
+<img src="figs/ValidationReport.jpg" alt="**Figure 4**: Example validation report, as cfrom the validation included in the `emeScheme` package [@Krug2019b]." width="90%"><p class="caption">
+<strong>Figure 4</strong>: Example validation report, as cfrom the
+validation included in the <code>emeScheme</code> package <span class="citation">[@Krug2019b]</span>.
+</p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="export-uploaded-spreadsheet-to-xml">Export uploaded spreadsheet to xml<a class="anchor" aria-label="anchor" href="#export-uploaded-spreadsheet-to-xml"></a>
+</h2>
+<p>In the app, the xml can be obtained by using the “Export to xml”
+button. Depending on the export functionality implemented for the
+selected scheme (as defined in the accompanying R package), the file
+returned is an <code>.xml</code> file (<code>dmdScheme</code>) or a
+compressed archive (<code>.tar.gz</code>) containing multiple
+<code>.xml</code> files (e.g. for the <code>emeScheme</code>, one per
+data file). On the R prompt, the command <code><a href="../reference/write_xml.html">write_xml()</a></code> will
+export to a single (<code>dmdScheme</code>) or multiple
+<code>.xml</code> files (<code>emeScheme</code>) and return the names(s)
+of the file(s) exported.</p>
+</div>
+</div>
+<div class="section level1">
+<h1 id="the-r-package">The R Package<a class="anchor" aria-label="anchor" href="#the-r-package"></a>
+</h1>
+<p>The package <code>dmdScheme</code> is a base package for the usage
+and development of domain specific metadata schemes. It provides
+functionality to enter the metadata, validate the entered metadata, and
+export it to xml format for further processing by e.g. archival
+repositories. This document will give an overview over the
+<code>dmdScheme</code> package and what it contains.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>The recommended way is to install from the <a href="https://uzh-peg.r-universe.dev/" class="external-link">R-Universe</a> which always
+contains the last stable version:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Enable universe by uzh-peg</span>
 <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>
@@ -168,62 +271,91 @@
 
 <span class="co"># Install dmdScheme</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'dmdScheme'</span><span class="op">)</span></code></pre></div>
-<p>To install the <strong>master</strong> branch, the stable branch which will become the new CRAN release, from the <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/tree/master" class="external-link">dmdScheme repository on github</a>, run</p>
+<p>To install the <strong>master</strong> branch, the stable branch
+which will become the new CRAN release, from the <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/tree/master" class="external-link">dmdScheme
+repository on github</a>, run</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## install the remotes package if not installed yet</span>
 <span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org" class="external-link">"remotes"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
 <span class="op">}</span>
 
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"UZH-PEG/dmdScheme"</span>, ref <span class="op">=</span> <span class="st">"master"</span>, build_opts <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
-<p>If you are feeling adventurous, want to live at the bleeding edge and can live with possibly non-working features, you can install the <strong>dev</strong> branch. This branch is <strong>not stable</strong> and features and functionality can appear or be removed without prior notice. This is, unless there is a <strong>really</strong> good reason, not recommended for production use:</p>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"UZH-PEG/dmdScheme"</span>, ref <span class="op">=</span> <span class="st">"master"</span>, build_opts <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+<p>If you are feeling adventurous, want to live at the bleeding edge and
+can live with possibly non-working features, you can install the
+<strong>dev</strong> branch. This branch is <strong>not stable</strong>
+and features and functionality can appear or be removed without prior
+notice. This is, unless there is a <strong>really</strong> good reason,
+not recommended for production use:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## install the remotes package if not installed yet</span>
 <span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org" class="external-link">"remotes"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
 <span class="op">}</span>
 
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"UZH-PEG/dmdScheme"</span>, ref <span class="op">=</span> <span class="st">"dev"</span>, build_opts <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
-<p>Other branches are not generally recommended for installation unless you are involved in <code>dmdScheme</code> package development.</p>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"UZH-PEG/dmdScheme"</span>, ref <span class="op">=</span> <span class="st">"dev"</span>, build_opts <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+<p>Other branches are not generally recommended for installation unless
+you are involved in <code>dmdScheme</code> package development.</p>
 </div>
-<div class="section level3">
-<h3 id="loading-the-package">Loading the package<a class="anchor" aria-label="anchor" href="#loading-the-package"></a>
-</h3>
-<p>When you load the package, the definition of the scheme is downloaded from the <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/tree/master" class="external-link">dmdScheme repository</a> installed to a temporary scheme library in a temporary directory for usage in this R session. As this scheme library is stored in a temporary directory, it will be deleted when you quit your R session and it will be re-downloaded each time you start a new session and load the package. To create a permanent package library you have to create a cache in the user directory. To do this, run</p>
+<div class="section level2">
+<h2 id="loading-the-package">Loading the package<a class="anchor" aria-label="anchor" href="#loading-the-package"></a>
+</h2>
+<p>When you load the package, the definition of the scheme is downloaded
+from the <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/tree/master" class="external-link">dmdScheme
+repository</a> installed to a temporary scheme library in a temporary
+directory for usage in this R session. As this scheme library is stored
+in a temporary directory, it will be deleted when you quit your R
+session and it will be re-downloaded each time you start a new session
+and load the package. To create a permanent package library you have to
+create a cache in the user directory. To do this, run</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/cache.html">cache</a></span><span class="op">(</span>createPermanent <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<p>and restart your R session. Now the definitions of the installed <code>dmdSchemes</code> will be installed in this user cache and be available permanently. For further info, see the documentation of the command <code><a href="../reference/cache.html">cache()</a></code>.</p>
+<p>and restart your R session. Now the definitions of the installed
+<code>dmdSchemes</code> will be installed in this user cache and be
+available permanently. For further info, see the documentation of the
+command <code><a href="../reference/cache.html">cache()</a></code>.</p>
 </div>
-<div class="section level3">
-<h3 id="managing-installed-schemes">Managing installed schemes<a class="anchor" aria-label="anchor" href="#managing-installed-schemes"></a>
-</h3>
-<p>Once the package is loaded, the default scheme definition from the package is installed and used.</p>
-<p>There are several commands to manage installed schemes. All these commands start with <code>scheme_</code>.</p>
+<div class="section level2">
+<h2 id="managing-installed-schemes">Managing installed schemes<a class="anchor" aria-label="anchor" href="#managing-installed-schemes"></a>
+</h2>
+<p>Once the package is loaded, the default scheme definition from the
+package is installed and used.</p>
+<p>There are several commands to manage installed schemes. All these
+commands start with <code>scheme_</code>.</p>
 <p>These are in detail:</p>
-<div class="section level4">
-<h4 id="scheme_default">
+<div class="section level3">
+<h3 id="scheme_default">
 <code>scheme_default()</code><a class="anchor" aria-label="anchor" href="#scheme_default"></a>
-</h4>
-<p>returns the default scheme and version, i.e. the one with which the dmdScheme package is based. This can be the <code>dmdScheme</code> package itself, or a package created with <code><a href="../reference/make_new_package.html">make_new_package()</a></code>.</p>
+</h3>
+<p>returns the default scheme and version, i.e. the one with which the
+dmdScheme package is based. This can be the <code>dmdScheme</code>
+package itself, or a package created with
+<code><a href="../reference/make_new_package.html">make_new_package()</a></code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_default</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt;        name version</span>
 <span class="co">#&gt; 1 dmdScheme   0.9.9</span></code></pre></div>
 </div>
-<div class="section level4">
-<h4 id="scheme_repo">
+<div class="section level3">
+<h3 id="scheme_repo">
 <code>scheme_repo()</code><a class="anchor" aria-label="anchor" href="#scheme_repo"></a>
-</h4>
-<p>Get or set scheme repository. If <code>repo</code> is specified, the scheme repository to be used is set. Otherwise, the scheme repository used is only returned.</p>
+</h3>
+<p>Get or set scheme repository. If <code>repo</code> is specified, the
+scheme repository to be used is set. Otherwise, the scheme repository
+used is only returned.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_repo</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; [1] "https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/raw/master/"</span></code></pre></div>
 </div>
-<div class="section level4">
-<h4 id="scheme_list_in_repo">
+<div class="section level3">
+<h3 id="scheme_list_in_repo">
 <code>scheme_list_in_repo()</code><a class="anchor" aria-label="anchor" href="#scheme_list_in_repo"></a>
-</h4>
-<p>Show all schemes and version available in a repo. The defaut repo is <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository" class="external-link"></a>. The function reads and simply returns the file <code>SCHEME_DEFINITIONS.yaml</code> in the folder <code>schemes</code> in the repository.</p>
+</h3>
+<p>Show all schemes and version available in a repo. The defaut repo is
+<a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository" class="external-link"></a>.
+The function reads and simply returns the file
+<code>SCHEME_DEFINITIONS.yaml</code> in the folder <code>schemes</code>
+in the repository.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_list_in_repo</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; $dmdScheme_0.9.5</span>
@@ -232,41 +364,49 @@
 <span class="co">#&gt; </span>
 <span class="va">....</span></code></pre></div>
 </div>
-<div class="section level4">
-<h4 id="scheme_download">
+<div class="section level3">
+<h3 id="scheme_download">
 <code>scheme_download()</code><a class="anchor" aria-label="anchor" href="#scheme_download"></a>
-</h4>
-<p>Download a scheme definition from the repo set and stores in the destfile. The function returns the fully qualified file name to the downloaded file invisibly.</p>
+</h3>
+<p>Download a scheme definition from the repo set and stores in the
+destfile. The function returns the fully qualified file name to the
+downloaded file invisibly.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_download</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"emeScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.5"</span>, destfile <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; Warning in normalizePath(destfile): path[1]="/tmp/RtmphGdHy2/file37d6c694969":</span>
-<span class="co">#&gt; No such file or directory</span></code></pre></div>
+<span class="co">#&gt; Warning in normalizePath(destfile): path[1]="/var/folders/5k/</span>
+<span class="co">#&gt; g8z_7q3d6vb54m8k0cjy940r0000gq/T//RtmpKG2yNW/file3a20700b2dd7": No such file or</span>
+<span class="co">#&gt; directory</span></code></pre></div>
 </div>
-<div class="section level4">
-<h4 id="scheme_install">
+<div class="section level3">
+<h3 id="scheme_install">
 <code>scheme_install()</code><a class="anchor" aria-label="anchor" href="#scheme_install"></a>
-</h4>
-<p>Install a new scheme definition. In the normal usecase, this function uses <code><a href="../reference/scheme.html">scheme_download()</a></code> to download the scheme definition from the default <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository" class="external-link">github repository</a> and installs it. The usage is</p>
+</h3>
+<p>Install a new scheme definition. In the normal usecase, this function
+uses <code><a href="../reference/scheme.html">scheme_download()</a></code> to download the scheme definition
+from the default <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository" class="external-link">github
+repository</a> and installs it. The usage is</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_install</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"emeScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.5"</span><span class="op">)</span>
-<span class="co">#&gt; Scheme definition `/tmp/RtmphGdHy2/file37d66a68f258/emeScheme_0.9.5.tar.gz, installed with</span>
+<span class="co">#&gt; Scheme definition `/var/folders/5k/g8z_7q3d6vb54m8k0cjy940r0000gq/T//RtmpKG2yNW/file3a20535fc96a/emeScheme_0.9.5.tar.gz, installed with</span>
 <span class="co">#&gt; name:    emeScheme</span>
 <span class="co">#&gt; version: 0.9.5</span></code></pre></div>
 </div>
-<div class="section level4">
-<h4 id="scheme_install_r_package">
+<div class="section level3">
+<h3 id="scheme_install_r_package">
 <code>scheme_install_r_package()</code><a class="anchor" aria-label="anchor" href="#scheme_install_r_package"></a>
-</h4>
-<p>Installs the accompanying R package of the same name as the scheme. This does only install the package - it still needs to be loaded to be used!</p>
+</h3>
+<p>Installs the accompanying R package of the same name as the scheme.
+This does only install the package - it still needs to be loaded to be
+used!</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_install_r_package</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"emeScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.5"</span><span class="op">)</span>
 <span class="co">#&gt; Package emeScheme is already installed!</span>
 <span class="co">#&gt; To re-install or update, please specify `reinstall = TRUE`</span></code></pre></div>
 </div>
-<div class="section level4">
-<h4 id="scheme_list">
+<div class="section level3">
+<h3 id="scheme_list">
 <code>scheme_list()</code><a class="anchor" aria-label="anchor" href="#scheme_list"></a>
-</h4>
+</h3>
 <p>Shows the installed schemes.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_list</a></span><span class="op">(</span><span class="op">)</span>
@@ -274,19 +414,20 @@
 <span class="co">#&gt; 1 dmdScheme   0.9.9</span>
 <span class="co">#&gt; 2 emeScheme   0.9.5</span></code></pre></div>
 </div>
-<div class="section level4">
-<h4 id="scheme_use">
+<div class="section level3">
+<h3 id="scheme_use">
 <code>scheme_use()</code><a class="anchor" aria-label="anchor" href="#scheme_use"></a>
-</h4>
-<p>Activate the scheme <code>NAME</code> with version <code>VERSION</code></p>
+</h3>
+<p>Activate the scheme <code>NAME</code> with version
+<code>VERSION</code></p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_use</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"emeScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.5"</span><span class="op">)</span>
 <span class="co">#&gt; Theme switched to emeScheme_0.9.5</span></code></pre></div>
 </div>
-<div class="section level4">
-<h4 id="scheme_active">
+<div class="section level3">
+<h3 id="scheme_active">
 <code>scheme_active()</code><a class="anchor" aria-label="anchor" href="#scheme_active"></a>
-</h4>
+</h3>
 <p>Shows the currently active scheme.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_active</a></span><span class="op">(</span><span class="op">)</span>
@@ -298,81 +439,95 @@
 <span class="co">#&gt;        name version</span>
 <span class="co">#&gt; 1 dmdScheme   0.9.9</span></code></pre></div>
 </div>
-<div class="section level4">
-<h4 id="scheme_path_index_template">
+<div class="section level3">
+<h3 id="scheme_path_index_template">
 <code>scheme_path_index_template()</code><a class="anchor" aria-label="anchor" href="#scheme_path_index_template"></a>
-</h4>
+</h3>
 <p>Returns the path to the index template. The search order is:</p>
 <ol style="list-style-type: decimal">
 <li>the index file included in the scheme package</li>
-<li>the scheme package included in the <code>dmdScheme</code> package (<strong>not</strong> the acompanying package!).</li>
+<li>the scheme package included in the <code>dmdScheme</code> package
+(<strong>not</strong> the acompanying package!).</li>
 </ol>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scheme_path_index_template.html">scheme_path_index_template</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "/tmp/RtmphGdHy2/dmdScheme_37d6126f4056/installedSchemes/dmdScheme_0.9.9/index.md"</span></code></pre></div>
+<span class="co">#&gt; [1] "/var/folders/5k/g8z_7q3d6vb54m8k0cjy940r0000gq/T//RtmpKG2yNW/dmdScheme_3a2028555f76/installedSchemes/dmdScheme_0.9.9/index.md"</span></code></pre></div>
 </div>
-<div class="section level4">
-<h4 id="scheme_path_xlsx">
+<div class="section level3">
+<h3 id="scheme_path_xlsx">
 <code>scheme_path_xlsx()</code><a class="anchor" aria-label="anchor" href="#scheme_path_xlsx"></a>
-</h4>
-<p>Returns the path to the <code>xlsx</code> file included in the scheme package.</p>
+</h3>
+<p>Returns the path to the <code>xlsx</code> file included in the scheme
+package.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scheme_path_xlsx.html">scheme_path_xlsx</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "/tmp/RtmphGdHy2/dmdScheme_37d6126f4056/installedSchemes/dmdScheme_0.9.9/dmdScheme_0.9.9.xlsx"</span></code></pre></div>
+<span class="co">#&gt; [1] "/var/folders/5k/g8z_7q3d6vb54m8k0cjy940r0000gq/T//RtmpKG2yNW/dmdScheme_3a2028555f76/installedSchemes/dmdScheme_0.9.9/dmdScheme_0.9.9.xlsx"</span></code></pre></div>
 </div>
-<div class="section level4">
-<h4 id="scheme_path_xml">
+<div class="section level3">
+<h3 id="scheme_path_xml">
 <code>scheme_path_xml()</code><a class="anchor" aria-label="anchor" href="#scheme_path_xml"></a>
-</h4>
-<p>Returns the path to the <code>xml</code> file included in the scheme package.</p>
+</h3>
+<p>Returns the path to the <code>xml</code> file included in the scheme
+package.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scheme_path_xml.html">scheme_path_xml</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "/tmp/RtmphGdHy2/dmdScheme_37d6126f4056/installedSchemes/dmdScheme_0.9.9/dmdScheme_0.9.9.xml"</span></code></pre></div>
+<span class="co">#&gt; [1] "/var/folders/5k/g8z_7q3d6vb54m8k0cjy940r0000gq/T//RtmpKG2yNW/dmdScheme_3a2028555f76/installedSchemes/dmdScheme_0.9.9/dmdScheme_0.9.9.xml"</span></code></pre></div>
 </div>
-<div class="section level4">
-<h4 id="scheme_uninstall">
+<div class="section level3">
+<h3 id="scheme_uninstall">
 <code>scheme_uninstall()</code><a class="anchor" aria-label="anchor" href="#scheme_uninstall"></a>
-</h4>
-<p>Uninstall an installed scheme. The scheme definition, is deleted from the scheme library, and moved to a temporary flder which wil be deleted at the end of the R session.</p>
+</h3>
+<p>Uninstall an installed scheme. The scheme definition, is deleted from
+the scheme library, and moved to a temporary flder which wil be deleted
+at the end of the R session.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_uninstall</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"emeScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.5"</span><span class="op">)</span>
 <span class="co">#&gt; Scheme emeScheme_0.9.5 deleted and moved to</span>
-<span class="co">#&gt; [1] "/tmp/RtmphGdHy2/file37d65a1cbef4"</span></code></pre></div>
+<span class="co">#&gt; [1] "/var/folders/5k/g8z_7q3d6vb54m8k0cjy940r0000gq/T//RtmpKG2yNW/file3a206c4ceeb2"</span></code></pre></div>
 </div>
-<div class="section level4">
-<h4 id="scheme_installed">
+<div class="section level3">
+<h3 id="scheme_installed">
 <code>scheme_installed()</code><a class="anchor" aria-label="anchor" href="#scheme_installed"></a>
-</h4>
+</h3>
 <p>Return <code>TRUE</code>, if the scheme is installed</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_installed</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"emeScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.5"</span><span class="op">)</span>
 <span class="co">#&gt; [1] FALSE</span></code></pre></div>
 </div>
-<div class="section level4">
-<h4 id="scheme_make">
+<div class="section level3">
+<h3 id="scheme_make">
 <code>scheme_make()</code><a class="anchor" aria-label="anchor" href="#scheme_make"></a>
-</h4>
+</h3>
 <p>This function is used to package a new scheme.</p>
 </div>
 </div>
 </div>
-<div class="section level2">
-<h2 id="entering-new-metadata">Entering new Metadata<a class="anchor" aria-label="anchor" href="#entering-new-metadata"></a>
-</h2>
-<p>To enter new data to the <code>dmdScheme</code>, you have to run the command</p>
+<div class="section level1">
+<h1 id="entering-new-metadata">Entering new Metadata<a class="anchor" aria-label="anchor" href="#entering-new-metadata"></a>
+</h1>
+<p>To enter new data to the <code>dmdScheme</code>, you have to run the
+command</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/open_new_spreadsheet.html">open_new_spreadsheet</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>This will open Excel and the file should look similar to this, when looking at the second tab as in Figure 3.</p>
+<p>This will open Excel and the file should look similar to this, when
+looking at the second tab as in Figure 3.</p>
 <p>The following points are important to remember:</p>
 <ol style="list-style-type: decimal">
-<li>The file is saved in a <strong>temporary</strong> directory. It needs to be saved at a different location, if you want to keep the changes.</li>
-<li>Data can only be entered in the green cells with. All other cells are write protected.</li>
+<li>The file is saved in a <strong>temporary</strong> directory. It
+needs to be saved at a different location, if you want to keep the
+changes.</li>
+<li>Data can only be entered in the green cells with. All other cells
+are write protected.</li>
 </ol>
-<p>After entering the data, save it to a location for further processing.</p>
-<div class="section level3">
-<h3 id="importing-data-from-excel-sheet">Importing Data from Excel Sheet<a class="anchor" aria-label="anchor" href="#importing-data-from-excel-sheet"></a>
-</h3>
-<p>Next, you have to import the data entered in the Excel sheet into R. For simplicity, we use here a file included in the package. If you want to load your own file, replace <code><a href="../reference/scheme_path_xlsx.html">scheme_path_xlsx()</a></code> with the file name and path to that file.</p>
+<p>After entering the data, save it to a location for further
+processing.</p>
+<div class="section level2">
+<h2 id="importing-data-from-excel-sheet">Importing Data from Excel Sheet<a class="anchor" aria-label="anchor" href="#importing-data-from-excel-sheet"></a>
+</h2>
+<p>Next, you have to import the data entered in the Excel sheet into R.
+For simplicity, we use here a file included in the package. If you want
+to load your own file, replace <code><a href="../reference/scheme_path_xlsx.html">scheme_path_xlsx()</a></code> with the
+file name and path to that file.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_excel.html">read_excel</a></span><span class="op">(</span>
       file <span class="op">=</span> <span class="fu"><a href="../reference/scheme_path_xlsx.html">scheme_path_xlsx</a></span><span class="op">(</span><span class="op">)</span>,
@@ -490,21 +645,27 @@
 <span class="co">#&gt;    Apply type 'character' to 'comment'...</span>
 <span class="co">#&gt; Set class...</span>
 <span class="co">#&gt; Done</span></code></pre></div>
-<p>The <code>verbose = TRUE</code> argument will produce messages which will show you what is happening and will help to identify problems.</p>
+<p>The <code>verbose = TRUE</code> argument will produce messages which
+will show you what is happening and will help to identify problems.</p>
 </div>
-<div class="section level3">
-<h3 id="print-dmdscheme-data">Print dmdScheme Data<a class="anchor" aria-label="anchor" href="#print-dmdscheme-data"></a>
-</h3>
-<p><code>dmdScheme</code> Data can be printed by using the <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> function. The function has three arguments which control the printout:</p>
+<div class="section level2">
+<h2 id="print-dmdscheme-data">Print dmdScheme Data<a class="anchor" aria-label="anchor" href="#print-dmdscheme-data"></a>
+</h2>
+<p><code>dmdScheme</code> Data can be printed by using the
+<code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> function. The function has three arguments which
+control the printout:</p>
 <ul>
 <li>
-<code>printAttr</code>: if <code>TRUE</code> (default) print the <strong>basic</strong> attributes prefixed with <code>A</code>
+<code>printAttr</code>: if <code>TRUE</code> (default) print the
+<strong>basic</strong> attributes prefixed with <code>A</code>
 </li>
 <li>
-<code>printExAttr</code>: if <code>TRUE</code> print the <strong>all</strong> attributes prefixed with <code>X</code>
+<code>printExAttr</code>: if <code>TRUE</code> print the
+<strong>all</strong> attributes prefixed with <code>X</code>
 </li>
 <li>
-<code>printData</code>: if <code>TRUE</code> (default) print the data prefixed with <code>D</code>
+<code>printData</code>: if <code>TRUE</code> (default) print the
+data prefixed with <code>D</code>
 </li>
 </ul>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
@@ -556,10 +717,12 @@
 <span class="co">#&gt; A       Units : </span>
 <span class="va">....</span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="validating-your-metadata">Validating your metadata<a class="anchor" aria-label="anchor" href="#validating-your-metadata"></a>
-</h3>
-<p>The metadata in the spreadsheet can be validated by using the following command and which results in an object of class <code>dmdScheme_validation</code>.</p>
+<div class="section level2">
+<h2 id="validating-your-metadata">Validating your metadata<a class="anchor" aria-label="anchor" href="#validating-your-metadata"></a>
+</h2>
+<p>The metadata in the spreadsheet can be validated by using the
+following command and which results in an object of class
+<code>dmdScheme_validation</code>.</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/validate.html">validate</a></span><span class="op">(</span> <span class="fu"><a href="../reference/scheme_path_xlsx.html">scheme_path_xlsx</a></span><span class="op">(</span><span class="op">)</span> <span class="op">)</span>
 <span class="co">#&gt; Validating Experiment</span>
@@ -575,15 +738,17 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $details</span>
 <span class="va">....</span></code></pre></div>
-<p>To create a report (html, pdf or docx) yo can use the <code><a href="../reference/report.html">report()</a></code> function:</p>
+<p>To create a report (html, pdf or docx) yo can use the
+<code><a href="../reference/report.html">report()</a></code> function:</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/report.html">report</a></span><span class="op">(</span> <span class="fu"><a href="../reference/scheme_path_xlsx.html">scheme_path_xlsx</a></span><span class="op">(</span><span class="op">)</span> <span class="op">)</span></code></pre></div>
 <p>which will open a html report in your browser.</p>
 </div>
-<div class="section level3">
-<h3 id="converting-metadata-to-xml">Converting Metadata to xml<a class="anchor" aria-label="anchor" href="#converting-metadata-to-xml"></a>
-</h3>
-<p>You can export the data to an an <code>xml_document</code> object as defined in the <code>xml2</code> package to do further processing:</p>
+<div class="section level2">
+<h2 id="converting-metadata-to-xml">Converting Metadata to xml<a class="anchor" aria-label="anchor" href="#converting-metadata-to-xml"></a>
+</h2>
+<p>You can export the data to an an <code>xml_document</code> object as
+defined in the <code>xml2</code> package to do further processing:</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_excel.html">read_excel</a></span><span class="op">(</span> <span class="fu"><a href="../reference/scheme_path_xlsx.html">scheme_path_xlsx</a></span><span class="op">(</span><span class="op">)</span> <span class="op">)</span>
 <span class="va">xml</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_xml.html">as_xml</a></span><span class="op">(</span> <span class="va">x</span>, file <span class="op">=</span> <span class="va">xmlFile</span><span class="op">)</span>
@@ -603,11 +768,11 @@
 <code class="sourceCode R"><span class="va">xmlFile</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".xml"</span><span class="op">)</span>
 
 <span class="fu"><a href="../reference/write_xml.html">write_xml</a></span><span class="op">(</span> x <span class="op">=</span> <span class="va">x</span>, file <span class="op">=</span> <span class="va">xmlFile</span> <span class="op">)</span>
-<span class="co">#&gt; [1] "/tmp/RtmphGdHy2/file37d625c1d596.xml"</span></code></pre></div>
+<span class="co">#&gt; [1] "/var/folders/5k/g8z_7q3d6vb54m8k0cjy940r0000gq/T//RtmpKG2yNW/file3a206af3818d.xml"</span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="re-import-from-xml-into-r">Re-import from xml into R<a class="anchor" aria-label="anchor" href="#re-import-from-xml-into-r"></a>
-</h3>
+<div class="section level2">
+<h2 id="re-import-from-xml-into-r">Re-import from xml into R<a class="anchor" aria-label="anchor" href="#re-import-from-xml-into-r"></a>
+</h2>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_xml.html">read_xml</a></span><span class="op">(</span> <span class="va">xmlFile</span> <span class="op">)</span>
 <span class="va">x</span>
@@ -618,43 +783,83 @@
 <span class="va">....</span></code></pre></div>
 </div>
 </div>
+<div class="section level1">
+<h1 id="developing-new-dmdschemes-derived-scheme-definitions">Developing new dmdSchemes derived scheme definitions<a class="anchor" aria-label="anchor" href="#developing-new-dmdschemes-derived-scheme-definitions"></a>
+</h1>
+<p>This package contains all the functionality to easily create a new
+metadata scheme. The resulting scheme package will contain all files
+needed so that it can be easily be distributed and used, and can be
+either be distributed directly or uploaded to an online repository,
+e.g. the default <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository" class="external-link">dmdScheme
+repository</a>.</p>
+<p>A new scheme definition only has to include the scheme definition and
+example data. It can also contain additional examples and an R script to
+install the accompanying R package, but these are not required.</p>
 <div class="section level2">
-<h2 id="developing-new-dmdschemes-derived-scheme-definitions">Developing new dmdSchemes derived scheme definitions<a class="anchor" aria-label="anchor" href="#developing-new-dmdschemes-derived-scheme-definitions"></a>
+<h2 id="create-and-edit-new-definition">Create and edit new definition<a class="anchor" aria-label="anchor" href="#create-and-edit-new-definition"></a>
 </h2>
-<p>This package contains all the functionality to easily create a new metadata scheme. The resulting scheme package will contain all files needed so that it can be easily be distributed and used, and can be either be distributed directly or uploaded to an online repository, e.g. the default <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository" class="external-link">dmdScheme repository</a>.</p>
-<p>A new scheme definition only has to include the scheme definition and example data. It can also contain additional examples and an R script to install the accompanying R package, but these are not required.</p>
-<div class="section level3">
-<h3 id="create-and-edit-new-definition">Create and edit new definition<a class="anchor" aria-label="anchor" href="#create-and-edit-new-definition"></a>
-</h3>
-<p>To create the scheme itself (as shown in Figure 5), it is recommended to begin with an existing scheme. It is possible to edit most aspects in the scheme definition <code>xlsx</code> file, including adding or deleting tabs (only the Experiment and DataFileProperties tabs are needed), adding or removing rows (“vertical” tabs like e.g. the Experiment tab) or columns (horizontal (other) tabs), changing the types, suggested values, allowed values and units. <strong>If the <code>.xlsx</code> file is locked, you can unlock it by using the password <code>test</code>.</strong></p>
-<p>It is important that the final scheme contains example data as - internal processing of the <code>.xlsx</code> file require example data and will fail if a scheme without example data is provided, and - it is much more user friendly if the user of a package not only sees the empty scheme, but also a filled in scheme with example data.</p>
-<p>This <code>.xlsx</code> file can be edited following the limitations as specified below. After modifications have been done and the spreadsheet has been saved, the scheme package can be created by using</p>
+<p>To create the scheme itself (as shown in Figure 5), it is recommended
+to begin with an existing scheme. It is possible to edit most aspects in
+the scheme definition <code>xlsx</code> file, including adding or
+deleting tabs (only the Experiment and DataFileProperties tabs are
+needed), adding or removing rows (“vertical” tabs like e.g. the
+Experiment tab) or columns (horizontal (other) tabs), changing the
+types, suggested values, allowed values and units. <strong>If the
+<code>.xlsx</code> file is locked, you can unlock it by using the
+password <code>test</code>.</strong></p>
+<p>It is important that the final scheme contains example data as -
+internal processing of the <code>.xlsx</code> file require example data
+and will fail if a scheme without example data is provided, and - it is
+much more user friendly if the user of a package not only sees the empty
+scheme, but also a filled in scheme with example data.</p>
+<p>This <code>.xlsx</code> file can be edited following the limitations
+as specified below. After modifications have been done and the
+spreadsheet has been saved, the scheme package can be created by
+using</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scheme_make.html">scheme_make</a></span><span class="op">(</span> <span class="st">"TheFile.xlsx"</span> <span class="op">)</span></code></pre></div>
-<p>which will create a file named <code>NAME_VERSION.tar.gz</code> in the directory <code>path</code> based on the scheme definition in <code>TheFile.xlsx</code>. <code>NAME</code> and <code>VERSION</code> are the scheme name and scheme version as specified in the cell <code>(H:1)</code> in sheet <code>Experiment</code>.</p>
-<p>The following two commands will install the new scheme and use it:</p>
+<p>which will create a file named <code>NAME_VERSION.tar.gz</code> in
+the directory <code>path</code> based on the scheme definition in
+<code>TheFile.xlsx</code>. <code>NAME</code> and <code>VERSION</code>
+are the scheme name and scheme version as specified in the cell
+<code>(H:1)</code> in sheet <code>Experiment</code>.</p>
+<p>The following two commands will install the new scheme and use
+it:</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_install</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"NAME_VERSION.tar.gz"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/scheme.html">scheme_use</a></span><span class="op">(</span><span class="st">"NAME"</span>, <span class="st">"VERSION"</span><span class="op">)</span></code></pre></div>
-<p>To upload the scheme to the main repository on <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository" class="external-link">github</a>, please either clone the repo and send a pull request or file an issue with the scheme package as an attachment.</p>
+<p>To upload the scheme to the main repository on <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository" class="external-link">github</a>,
+please either clone the repo and send a pull request or file an issue
+with the scheme package as an attachment.</p>
 </div>
-<div class="section level3">
-<h3 id="minimum-requirements-for-metadata-schemes-derived-from-dmdscheme">Minimum requirements for metadata schemes derived from <code>dmdScheme</code><a class="anchor" aria-label="anchor" href="#minimum-requirements-for-metadata-schemes-derived-from-dmdscheme"></a>
-</h3>
-<p>There are a few minimum requirements for <code>dmdScheme</code> derived metadata schemes, so that all functions in the <code>dmdScheme</code> package will work.</p>
+<div class="section level2">
+<h2 id="minimum-requirements-for-metadata-schemes-derived-from-dmdscheme">Minimum requirements for metadata schemes derived from
+<code>dmdScheme</code><a class="anchor" aria-label="anchor" href="#minimum-requirements-for-metadata-schemes-derived-from-dmdscheme"></a>
+</h2>
+<p>There are a few minimum requirements for <code>dmdScheme</code>
+derived metadata schemes, so that all functions in the
+<code>dmdScheme</code> package will work.</p>
 <p>These are:</p>
 <ol style="list-style-type: decimal">
-<li><p>Tab name has to be identical to <code>propertySet</code> value (Cell <code>A:2</code> in the tab Experiment, <code>B:1</code> in other tabs)</p></li>
+<li><p>Tab name has to be identical to <code>propertySet</code> value
+(Cell <code>A:2</code> in the tab Experiment, <code>B:1</code> in other
+tabs)</p></li>
 <li>
-<p>The tab named <code>Experiment</code> is required. This tab is different to the others as it has</p>
+<p>The tab named <code>Experiment</code> is required. This tab is
+different to the others as it has</p>
 <ol style="list-style-type: decimal">
 <li>horizontal layout</li>
 <li>only one value per property allowed</li>
-<li>the top-right cell, i.e. the one above the values to be entered, contains the word <strong>DATA</strong>, <strong>name of the scheme</strong> and <strong>version of the scheme</strong> separated by a space, e.g. <strong>DATA emeScheme v0.9.5</strong>
+<li>the top-right cell, i.e. the one above the values to be entered,
+contains the word <strong>DATA</strong>, <strong>name of the
+scheme</strong> and <strong>version of the scheme</strong> separated by
+a space, e.g. <strong>DATA emeScheme v0.9.5</strong>
 </li>
 </ol>
 </li>
-<li><p>The tabs <code>MdBibliometric</code> and <code>MdAuthors</code> are required as they contain all the bibliometric and author metadata</p></li>
+<li><p>The tabs <code>MdBibliometric</code> and <code>MdAuthors</code>
+are required as they contain all the bibliometric and author
+metadata</p></li>
 <li>
 <p>The tab named <code>DataFileMetaData</code> is required</p>
 <ul>
@@ -663,31 +868,53 @@
 </ul>
 </li>
 <li>
-<p>Each tab except <code>Experiment</code>, <code>DataFileMetaData</code> and <code>MdBibliometric</code> needs an ID field Applies to all tabs except <code>Experiment</code> and <code>DataFileMetaData</code></p>
+<p>Each tab except <code>Experiment</code>,
+<code>DataFileMetaData</code> and <code>MdBibliometric</code> needs an
+ID field Applies to all tabs except <code>Experiment</code> and
+<code>DataFileMetaData</code></p>
 <ul>
-<li>The first column in the tab must be a column named <code>...ID</code>.</li>
+<li>The first column in the tab must be a column named
+<code>...ID</code>.</li>
 </ul>
 </li>
-<li><p>The spreadsheet can contain a tab <code>DOCUMENTATION</code>. This tab can contain information for the user and will not be imported.</p></li>
+<li><p>The spreadsheet can contain a tab <code>DOCUMENTATION</code>.
+This tab can contain information for the user and will not be
+imported.</p></li>
 </ol>
 <div class="figure" style="text-align: center">
 <img src="figs/workflow_newScheme.png" alt="**Figure 5**: Create a new domain specific scheme based on dmdScheme." width="50%"><p class="caption">
-<strong>Figure 5</strong>: Create a new domain specific scheme based on dmdScheme.
+<strong>Figure 5</strong>: Create a new domain specific scheme based on
+dmdScheme.
 </p>
 </div>
 </div>
 </div>
-<div class="section level2">
-<h2 id="developing-accompanying-r-packages">Developing accompanying R packages<a class="anchor" aria-label="anchor" href="#developing-accompanying-r-packages"></a>
-</h2>
-<p>The package <code>dmdScheme</code> package is only providing the base functionality for working with dmdSchemes. In many cases, the functionality needs to be extended to be able to work with other schemes. This can be done by creating an accompanying R package. It is a standard R package which has to</p>
+<div class="section level1">
+<h1 id="developing-accompanying-r-packages">Developing accompanying R packages<a class="anchor" aria-label="anchor" href="#developing-accompanying-r-packages"></a>
+</h1>
+<p>The package <code>dmdScheme</code> package is only providing the base
+functionality for working with dmdSchemes. In many cases, the
+functionality needs to be extended to be able to work with other
+schemes. This can be done by creating an accompanying R package. It is a
+standard R package which has to</p>
 <ul>
-<li>depend on the <code>dmdScheme</code> package (as it extends it’s capabilities), and</li>
-<li>automatically downloads, installs and activates a specific scheme definition and not the default dmdScheme.</li>
+<li>depend on the <code>dmdScheme</code> package (as it extends it’s
+capabilities), and</li>
+<li>automatically downloads, installs and activates a specific scheme
+definition and not the default dmdScheme.</li>
 </ul>
-<p>It is not necessary to build an accompanying R package, but doing so will make it possible to adapt many aspects of the validation and export process to the needs of a specific domain.</p>
-<p>The easiest method to develop an accompanying R package is to - use <code><a href="../reference/scheme.html">scheme_use()</a></code> to activate a new scheme for which the accompanying package should be developed - use the convenience function <code><a href="../reference/make_new_package.html">make_new_package()</a></code> to create a package skeleton which fulfils these requirements</p>
-<p>Now, functions can be added. For an example see <a href="https://github.com/Exp-Micro-Ecol-Hub/emeScheme" class="external-link">https://github.com/Exp-Micro-Ecol-Hub/emeScheme</a>, in which the methods <code>as_xml_list.emeSchemeSet.R</code> and <code>validate.emeSchemeSet_raw.R</code> extend the generic functions <code><a href="../reference/as_xml_list.html">as_xml_list()</a></code> and <code><a href="../reference/validate.html">validate()</a></code>.</p>
+<p>It is not necessary to build an accompanying R package, but doing so
+will make it possible to adapt many aspects of the validation and export
+process to the needs of a specific domain.</p>
+<p>The easiest method to develop an accompanying R package is to - use
+<code><a href="../reference/scheme.html">scheme_use()</a></code> to activate a new scheme for which the
+accompanying package should be developed - use the convenience function
+<code><a href="../reference/make_new_package.html">make_new_package()</a></code> to create a package skeleton which
+fulfils these requirements</p>
+<p>Now, functions can be added. For an example see <a href="https://github.com/Exp-Micro-Ecol-Hub/emeScheme" class="external-link">https://github.com/Exp-Micro-Ecol-Hub/emeScheme</a>,
+in which the methods <code>as_xml_list.emeSchemeSet.R</code> and
+<code>validate.emeSchemeSet_raw.R</code> extend the generic functions
+<code><a href="../reference/as_xml_list.html">as_xml_list()</a></code> and <code><a href="../reference/validate.html">validate()</a></code>.</p>
 <!-- # Linking derived scheme to other metadata scheme -->
 <!-- To illustrate how a `dmdScheme` derived metadata scheme can be mapped (and exported) to another metadata scheme, we look at the example of the [EML scheme](https://eml.ecoinformatics.org) as it is widely used in ecology and the structural functionality is included in the `dmdScheme` package. -->
 <!-- The actual mapping and development of the function to do the actual export, as well as this document, is work in progress and details can (will) change in further releases of `dmdScheme`. -->
@@ -757,37 +984,63 @@
 <!--   - else -> `attributes$attributeDefinition` -->
 <!-- - comment -> `attributes$attributeDefinition` -->
 </div>
-<div class="section level2">
-<h2 id="customize-the-index-template">Customize the index template<a class="anchor" aria-label="anchor" href="#customize-the-index-template"></a>
-</h2>
-<p>The aim of an index file is, to giva a short and concise overview over the data package deposited. It should contain certain metadata points, e.g. the DOI, authors, license, description, file name(s) of data file(s) and whatever else is considered necessary, to get a basic understanding of the data set.</p>
-<p>The index file is created based on a text template, in which tokens are stand for metadata values from the a <code>dmdScheme</code>. These are replaced with the actual metadata properties when calling the function <code>make_index( x = A_dmdScheme, template = "the/index/template/file.txt)</code>. If asked for, the resulting index file is translated to pdf and html by using pandoc.</p>
-<p>Tokens are enclosed by<code>%%...%%</code> and must not contain any white spaces (tab, space, …).</p>
+<div class="section level1">
+<h1 id="customize-the-index-template">Customize the index template<a class="anchor" aria-label="anchor" href="#customize-the-index-template"></a>
+</h1>
+<p>The aim of an index file is, to giva a short and concise overview
+over the data package deposited. It should contain certain metadata
+points, e.g. the DOI, authors, license, description, file name(s) of
+data file(s) and whatever else is considered necessary, to get a basic
+understanding of the data set.</p>
+<p>The index file is created based on a text template, in which tokens
+are stand for metadata values from the a <code>dmdScheme</code>. These
+are replaced with the actual metadata properties when calling the
+function
+<code>make_index( x = A_dmdScheme, template = "the/index/template/file.txt)</code>.
+If asked for, the resulting index file is translated to pdf and html by
+using pandoc.</p>
+<p>Tokens are enclosed by<code>%%...%%</code> and must not contain any
+white spaces (tab, space, …).</p>
 <p>The following tokens are allowed at the moment:</p>
-<div class="section level3">
-<h3 id="tokens-which-are-replaced-with-values-from-a-dmdscheme">Tokens which are replaced with values from a <code>dmdScheme</code><a class="anchor" aria-label="anchor" href="#tokens-which-are-replaced-with-values-from-a-dmdscheme"></a>
-</h3>
+<div class="section level2">
+<h2 id="tokens-which-are-replaced-with-values-from-a-dmdscheme">Tokens which are replaced with values from a
+<code>dmdScheme</code><a class="anchor" aria-label="anchor" href="#tokens-which-are-replaced-with-values-from-a-dmdscheme"></a>
+</h2>
 <ul>
 <li>
-<strong><code>%%propertySet%%</code> or <code>%%propertySet.*%%</code> or <code>%%propertySet.*.*%%</code></strong>: replace with the propertySet as a table</li>
+<strong><code>%%propertySet%%</code> or
+<code>%%propertySet.*%%</code> or
+<code>%%propertySet.*.*%%</code></strong>: replace with the propertySet
+as a table</li>
 <li>
-<strong><code>propertySet.valueProperty</code> or <code>propertySet.valueProperty.*</code></strong>: replace with the valueProperty (column) from a propertySet as a comma separated list</li>
+<strong><code>propertySet.valueProperty</code> or
+<code>propertySet.valueProperty.*</code></strong>: replace with the
+valueProperty (column) from a propertySet as a comma separated list</li>
 <li>
-<strong><code>%%propertySet.valueProperty.N%%</code></strong>: replace with the Nth valueProperty from a propertySet</li>
+<strong><code>%%propertySet.valueProperty.N%%</code></strong>:
+replace with the Nth valueProperty from a propertySet</li>
 <li>
-<strong><code>%%propertySet.*.N%%</code></strong>*: replace with the Nth row from a propertySet</li>
+<strong><code>%%propertySet.*.N%%</code></strong>*: replace with the
+Nth row from a propertySet</li>
 </ul>
-<p>If the token starts with an <code>%%!fun!xxx%%</code>, the R function <code>fun</code> is executed and the result is inserted in the index file. For example <code>%%!unique!DataFileMetaData.dataFileName%%</code> would only return a vector containing the unique <code>dataFileName</code>.</p>
+<p>If the token starts with an <code>%%!fun!xxx%%</code>, the R function
+<code>fun</code> is executed and the result is inserted in the index
+file. For example <code>%%!unique!DataFileMetaData.dataFileName%%</code>
+would only return a vector containing the unique
+<code>dataFileName</code>.</p>
 </div>
-<div class="section level3">
-<h3 id="special-tokens">Special tokens<a class="anchor" aria-label="anchor" href="#special-tokens"></a>
-</h3>
-<p>Special tokens are tokens which do not extract data from the metadata scheme. There are at the moment only two:</p>
+<div class="section level2">
+<h2 id="special-tokens">Special tokens<a class="anchor" aria-label="anchor" href="#special-tokens"></a>
+</h2>
+<p>Special tokens are tokens which do not extract data from the metadata
+scheme. There are at the moment only two:</p>
 <ul>
 <li>
-<strong><code>%%DATE%%</code></strong>: will be replaced with the current date</li>
+<strong><code>%%DATE%%</code></strong>: will be replaced with the
+current date</li>
 <li>
-<strong><code>%%AUTHOR%%</code></strong>: will be replaced with the author as supplied to the function</li>
+<strong><code>%%AUTHOR%%</code></strong>: will be replaced with the
+author as supplied to the function</li>
 </ul>
 </div>
 </div>
@@ -804,7 +1057,8 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
+2.0.1.</p>
 </div>
 
     </footer>
