@@ -3,8 +3,8 @@ Title: Domain Specific MetaData Scheme
 Description: Forms the core for developing own domain specific metadata schemes. 
                   It contains the basic functionality needed for all metadata schemes based on the
                   'dmdScheme'. See R.M. Krug and O.L. Petchey (2019) <DOI:10.5281/zenodo.3581970>.
-Version: 1.3.0
-Date: 2022-03-18
+Version: 1.3.1
+Date: 2022-03-23
 Authors@R: 
     c(person(given = "Rainer M.",
              family = "Krug",
@@ -17,8 +17,7 @@ Authors@R:
              email = "Owen.Petchey@uzh.ch",
              comment = c(ORCID = "0000-0002-7724-1633")))
 URL: https://UZH-PEG.github.io/dmdScheme/,
-    https://github.com/UZH-PEG/dmdScheme/,
-    https://uzh-peg.github.io/dmdScheme/
+    https://github.com/UZH-PEG/dmdScheme/
 BugReports: https://github.com/UZH-PEG/dmdScheme/issues/
 Depends: R (>= 3.5.0)
 Imports: tools, 

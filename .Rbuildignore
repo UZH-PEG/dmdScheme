@@ -38,3 +38,5 @@
 ^\.github$
 ^_pkgdown\.yml$
 ^pkgdown$
+
+^dmdScheme_papers\.bib

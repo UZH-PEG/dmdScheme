@@ -86,7 +86,7 @@ make_index.dmdSchemeSet <- function(
     result <- lapply(
       lookup,
       function(x){
-        if(class(x) == "data.frame"){
+        if (inherits(x, "data.frame")){
           md <- knitr::kable(x, format = "markdown")
           md <- paste(md, collapse = "\n")
         } else {
@@ -105,7 +105,7 @@ make_index.dmdSchemeSet <- function(
     result <- lapply(
       lookup,
       function(x){
-        if(class(x) == "data.frame"){
+        if (inherits(x, "data.frame")){
           md <- toString( x, format = "markdown")
         } else {
           md <- toString(x)
