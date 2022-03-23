@@ -19,14 +19,14 @@ badge](https://uzh-peg.r-universe.dev/badges/:registry)](https://uzh-peg.r-unive
 [![codecov coverage
 status](https://codecov.io/gh/UZH-PEG/dmdScheme/branch/master/graph/badge.svg?token=hCiW2fKgTv)](https://codecov.io/gh/UZH-PEG/dmdScheme)
 
-## R-Universe (**official** distribution channel)
+## R-Universe (official distribution channel of the `master` branch of github)
 
 [![:name status
 badge](https://uzh-peg.r-universe.dev/badges/:name)](https://uzh-peg.r-universe.dev)
 [![dmdScheme status
 badge](https://uzh-peg.r-universe.dev/badges/dmdScheme)](https://uzh-peg.r-universe.dev)
 
-## CRAN (archived at the moment)
+## CRAN (might be behind the R-Universe, but more stable)
 
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/dmdScheme)](https://cran.r-project.org/package=dmdScheme)
 [![CRAN_Status_Badge_version_last_release](https://www.r-pkg.org/badges/version-last-release/dmdScheme)](https://cran.r-project.org/package=dmdScheme)

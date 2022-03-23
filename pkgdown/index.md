@@ -19,18 +19,18 @@ badge](https://uzh-peg.r-universe.dev/badges/:registry)](https://uzh-peg.r-unive
 [![codecov coverage
 status](https://codecov.io/gh/UZH-PEG/dmdScheme/branch/master/graph/badge.svg?token=hCiW2fKgTv)](https://codecov.io/gh/UZH-PEG/dmdScheme)
 
-## R-Universe (**official** distribution channel)
+## CRAN (might be behind the R-Universe, but more stable)
+
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/dmdScheme)](https://cran.r-project.org/package=dmdScheme)
+[![CRAN_Status_Badge_version_last_release](https://www.r-pkg.org/badges/version-last-release/dmdScheme)](https://cran.r-project.org/package=dmdScheme)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/dmdScheme?color=green)](https://cran.r-project.org/package=dmdScheme)
+
+## R-Universe (official distribution channel of the `master` branch of github)
 
 [![:name status
 badge](https://uzh-peg.r-universe.dev/badges/:name)](https://uzh-peg.r-universe.dev)
 [![dmdScheme status
 badge](https://uzh-peg.r-universe.dev/badges/dmdScheme)](https://uzh-peg.r-universe.dev)
-
-## CRAN (archived at the moment)
-
-[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/dmdScheme)](https://cran.r-project.org/package=dmdScheme)
-[![CRAN_Status_Badge_version_last_release](https://www.r-pkg.org/badges/version-last-release/dmdScheme)](https://cran.r-project.org/package=dmdScheme)
-[![](http://cranlogs.r-pkg.org/badges/grand-total/dmdScheme?color=green)](https://cran.r-project.org/package=dmdScheme)
 
 # The R Package
 
@@ -48,11 +48,19 @@ i.e. to enter, validate and export the metadata.
 
 ## Installation
 
-The recommended way is to install from the
+The easiest way is to install from CRAN
+
+```{r}
+install.packages("dmdScheme")
+```
+
+The CRAN release might be behind the R-Universe (which reflects the `master` branch), but would be the conservative choice.
+
+The recommended way to install the version which is the last one on the `master` branch from the
 [R-Universe](https://uzh-peg.r-universe.dev/) where the stable released
 will always be available:
 
-``` r
+```{r}
 # Enable universe by uzh-peg
 options(repos = c(
   uzhpeg = 'https://uzh-peg.r-universe.dev',
@@ -60,19 +68,6 @@ options(repos = c(
 
 # Install dmdScheme
 install.packages('dmdScheme')
-```
-
-To install the **master** branch, the stable branch which will become
-the new stable release, from the [dmdScheme repository on
-github](https://github.com/UZH-PEG/dmdScheme/tree/master), run
-
-``` r
-## install the remotes package if not installed yet
-if (require("remotes")) {
-  install.packages("remotes")
-}
-
-remotes::install_github("UZH-PEG/dmdScheme", ref = "master", build_opts = NULL)
 ```
 
 If you are feling adventurous, want to live at the bleeding edge and can
