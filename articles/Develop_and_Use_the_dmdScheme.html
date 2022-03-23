@@ -239,7 +239,7 @@
 <p>Download a scheme definition from the repo set and stores in the destfile. The function returns the fully qualified file name to the downloaded file invisibly.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_download</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"emeScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.5"</span>, destfile <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; Warning in normalizePath(destfile): path[1]="/tmp/RtmpfzWZ31/file37e372e0a87a":</span>
+<span class="co">#&gt; Warning in normalizePath(destfile): path[1]="/tmp/RtmpBWlovh/file392433002bd":</span>
 <span class="co">#&gt; No such file or directory</span></code></pre></div>
 </div>
 <div class="section level4">
@@ -249,7 +249,7 @@
 <p>Install a new scheme definition. In the normal usecase, this function uses <code><a href="../reference/scheme.html">scheme_download()</a></code> to download the scheme definition from the default <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository" class="external-link">github repository</a> and installs it. The usage is</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_install</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"emeScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.5"</span><span class="op">)</span>
-<span class="co">#&gt; Scheme definition `/tmp/RtmpfzWZ31/file37e326d06231/emeScheme_0.9.5.tar.gz, installed with</span>
+<span class="co">#&gt; Scheme definition `/tmp/RtmpBWlovh/file39244f783853/emeScheme_0.9.5.tar.gz, installed with</span>
 <span class="co">#&gt; name:    emeScheme</span>
 <span class="co">#&gt; version: 0.9.5</span></code></pre></div>
 </div>
@@ -309,7 +309,7 @@
 </ol>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scheme_path_index_template.html">scheme_path_index_template</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "/tmp/RtmpfzWZ31/dmdScheme_37e37b27ef6a/installedSchemes/dmdScheme_0.9.9/index.md"</span></code></pre></div>
+<span class="co">#&gt; [1] "/tmp/RtmpBWlovh/dmdScheme_392418299836/installedSchemes/dmdScheme_0.9.9/index.md"</span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="scheme_path_xlsx">
@@ -318,7 +318,7 @@
 <p>Returns the path to the <code>xlsx</code> file included in the scheme package.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scheme_path_xlsx.html">scheme_path_xlsx</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "/tmp/RtmpfzWZ31/dmdScheme_37e37b27ef6a/installedSchemes/dmdScheme_0.9.9/dmdScheme_0.9.9.xlsx"</span></code></pre></div>
+<span class="co">#&gt; [1] "/tmp/RtmpBWlovh/dmdScheme_392418299836/installedSchemes/dmdScheme_0.9.9/dmdScheme_0.9.9.xlsx"</span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="scheme_path_xml">
@@ -327,7 +327,7 @@
 <p>Returns the path to the <code>xml</code> file included in the scheme package.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scheme_path_xml.html">scheme_path_xml</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "/tmp/RtmpfzWZ31/dmdScheme_37e37b27ef6a/installedSchemes/dmdScheme_0.9.9/dmdScheme_0.9.9.xml"</span></code></pre></div>
+<span class="co">#&gt; [1] "/tmp/RtmpBWlovh/dmdScheme_392418299836/installedSchemes/dmdScheme_0.9.9/dmdScheme_0.9.9.xml"</span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="scheme_uninstall">
@@ -337,7 +337,7 @@
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_uninstall</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"emeScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.5"</span><span class="op">)</span>
 <span class="co">#&gt; Scheme emeScheme_0.9.5 deleted and moved to</span>
-<span class="co">#&gt; [1] "/tmp/RtmpfzWZ31/file37e342e2db79"</span></code></pre></div>
+<span class="co">#&gt; [1] "/tmp/RtmpBWlovh/file392458e94985"</span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="scheme_installed">
@@ -603,7 +603,7 @@
 <code class="sourceCode R"><span class="va">xmlFile</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".xml"</span><span class="op">)</span>
 
 <span class="fu"><a href="../reference/write_xml.html">write_xml</a></span><span class="op">(</span> x <span class="op">=</span> <span class="va">x</span>, file <span class="op">=</span> <span class="va">xmlFile</span> <span class="op">)</span>
-<span class="co">#&gt; [1] "/tmp/RtmpfzWZ31/file37e36e1b4954.xml"</span></code></pre></div>
+<span class="co">#&gt; [1] "/tmp/RtmpBWlovh/file39245da27235.xml"</span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="re-import-from-xml-into-r">Re-import from xml into R<a class="anchor" aria-label="anchor" href="#re-import-from-xml-into-r"></a>
