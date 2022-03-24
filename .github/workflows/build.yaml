@@ -49,6 +49,7 @@ jobs:
     needs: R-CMD-check
     name: Covr Coverage
     runs-on: ubuntu-latest
+    if: ${{ success() }}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
@@ -71,6 +72,7 @@ jobs:
     name: pkgdown
     needs: R-CMD-check
     runs-on: ubuntu-latest
+    if: ${{ success() }}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
