@@ -1,3 +1,6 @@
+# Version 1.3.3
+Changes to keep CRAN compatibility - no impact on functionality only tests and vignette.
+
 # Version 1.2.10
 ## Major Changes
 * move from CRAN to R-Universe due to unreproducible errors on CRAN checks

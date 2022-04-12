@@ -180,6 +180,7 @@ check-rhub: build-cran
 ####
 
 test:
+	export _R_CHECK_LENGTH_1_LOGIC2_="abort,verbose"
 	@Rscript -e "devtools::test()"
 
 
