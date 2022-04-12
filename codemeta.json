@@ -4,17 +4,23 @@
   "identifier": "dmdScheme",
   "description": "Forms the core for developing own domain specific metadata schemes. It contains the basic functionality needed for all metadata schemes based on the 'dmdScheme'. See R.M. Krug and O.L. Petchey (2019) <DOI:10.5281/zenodo.3581970>.",
   "name": "dmdScheme: Domain Specific MetaData Scheme",
-  "relatedLink": "https://UZH-PEG.github.io/dmdScheme/",
+  "relatedLink": ["https://UZH-PEG.github.io/dmdScheme/", "https://CRAN.R-project.org/package=dmdScheme"],
   "codeRepository": "https://github.com/UZH-PEG/dmdScheme/",
   "issueTracker": "https://github.com/UZH-PEG/dmdScheme/issues/",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
   "runtimePlatform": "R version 4.1.3 (2022-03-10)",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
   "author": [
     {
       "@type": "Person",
@@ -304,7 +310,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "7311.757KB",
+  "fileSize": "7311.906KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
