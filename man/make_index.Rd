@@ -49,7 +49,7 @@ template is at \code{system.file("index.md", package = "dmdScheme")}}
 
 \item{make}{character vector containing types into which the generated index
 file should be converted to. default is html and pdf. \bold{This function
-uses \bold{pandoc} for the conversion!.}}
+uses pandoc for the conversion!.}}
 
 \item{pandoc_bin}{pandoc executable. Needs fully qualified path when not in
 \code{$PATH}.}

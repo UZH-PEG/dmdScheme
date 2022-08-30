@@ -70,4 +70,9 @@ Generic function to convert the data stored in the object \code{x} into a new ob
 as_dmdScheme(dmdScheme_raw(), keepData = TRUE)
 as_dmdScheme(dmdScheme_raw()$Experiment)
 
+xml <- as_xml(dmdScheme_example())
+x <- as_dmdScheme(xml)
+all.equal(dmdScheme_example(), x)
+
+
 }

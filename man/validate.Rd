@@ -32,11 +32,11 @@ object of class \code{dmdScheme_validation}.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{character}: validate a \code{character} object referring to a spreadsheet file which contains the metadata.
+\item \code{validate(character)}: validate a \code{character} object referring to a spreadsheet file which contains the metadata.
 
-\item \code{dmdSchemeSet_raw}: validate a \code{dmdSchemeSet_raw} object
+\item \code{validate(dmdSchemeSet_raw)}: validate a \code{dmdSchemeSet_raw} object
+
 }}
-
 \examples{
 ## validata an Excel file containing the metadata
 validate(

@@ -76,11 +76,11 @@ This generic function creates a report based on the object.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{character}: report of a \code{dmdScheme_validation} object.
+\item \code{report(character)}: report of a \code{dmdScheme_validation} object.
 
-\item \code{dmdScheme_validation}: report of a \code{dmdScheme_validation} object.
+\item \code{report(dmdScheme_validation)}: report of a \code{dmdScheme_validation} object.
+
 }}
-
 \examples{
 \dontrun{
 ## This examples requires pandoc

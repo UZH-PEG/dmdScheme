@@ -15,7 +15,7 @@
 #' @param author of the index file
 #' @param make character vector containing types into which the generated index
 #'   file should be converted to. default is html and pdf. \bold{This function
-#'   uses \bold{pandoc} for the conversion!.}
+#'   uses pandoc for the conversion!.}
 #' @param pandoc_bin pandoc executable. Needs fully qualified path when not in
 #'   \code{$PATH}.
 #' @param pandoc_args arguments for calling pandoc

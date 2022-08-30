@@ -1,3 +1,10 @@
+# Version 1.3.5
+- removed EML dependency as it was not used
+- fixed documantation note on CRAN
+
+# Version 1.3.4
+Update of documentation to use html5 formats as required by CRAN
+
 # Version 1.3.3
 Changes to keep CRAN compatibility - no impact on functionality only tests and vignette.
 

@@ -8,13 +8,13 @@
   "codeRepository": "https://github.com/UZH-PEG/dmdScheme/",
   "issueTracker": "https://github.com/UZH-PEG/dmdScheme/issues/",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.3.3",
+  "version": "1.3.5",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.1.3 (2022-03-10)",
+  "runtimePlatform": "R version 4.2.1 (2022-06-23)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -273,18 +273,6 @@
     },
     "15": {
       "@type": "SoftwareApplication",
-      "identifier": "EML",
-      "name": "EML",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=EML"
-    },
-    "16": {
-      "@type": "SoftwareApplication",
       "identifier": "stringr",
       "name": "stringr",
       "provider": {
@@ -297,7 +285,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "7313.155KB",
+  "fileSize": "7312.302KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
