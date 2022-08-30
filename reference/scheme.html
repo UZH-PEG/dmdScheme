@@ -32,7 +32,7 @@ rteturned invisibly.
 scheme_use(): Switch from the current scheme to a new scheme as defined in the scheme
 schemeDefinition. Installed schemes can be listed by using scheme_list().
 New schemes can be added to the library via a call to scheme_add().
-The name of the active scheme is saved in dmdScheme_active'><title>Functions to manage schemes — scheme_active • dmdScheme</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Functions to manage schemes — scheme_active"><meta property="og:description" content='scheme_active(): Shows the name and version of the active scheme.
+The name of the active scheme is saved in dmdScheme_active'><title>Functions to manage schemes — scheme_active • dmdScheme</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Functions to manage schemes — scheme_active"><meta property="og:description" content='scheme_active(): Shows the name and version of the active scheme.
 scheme_default(): Shows the name of the default scheme which
 comes with the package and can not be deleted. If nameand
 version is specified, the default scheme to be used will be set.
@@ -76,7 +76,7 @@ The name of the active scheme is saved in dmdScheme_active'><!-- mathjax --><scr
     
     <a class="navbar-brand me-2" href="../index.html">dmdScheme</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.5</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -156,41 +156,41 @@ The name of the active scheme is saved in <code>dmdScheme_active</code></p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">scheme_active</span><span class="op">(</span><span class="op">)</span>
-
-<span class="fu">scheme_default</span><span class="op">(</span>name <span class="op">=</span> <span class="cn">NULL</span>, version <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="fu">scheme_download</span><span class="op">(</span>
-  <span class="va">name</span>,
-  <span class="va">version</span>,
-  destfile <span class="op">=</span> <span class="cn">NULL</span>,
-  overwrite <span class="op">=</span> <span class="cn">FALSE</span>,
-  baseurl <span class="op">=</span> <span class="fu">scheme_repo</span><span class="op">(</span><span class="op">)</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="fu">scheme_install</span><span class="op">(</span>
-  <span class="va">name</span>,
-  <span class="va">version</span>,
-  repo <span class="op">=</span> <span class="fu">scheme_repo</span><span class="op">(</span><span class="op">)</span>,
-  file <span class="op">=</span> <span class="cn">NULL</span>,
-  overwrite <span class="op">=</span> <span class="cn">FALSE</span>,
-  install_package <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span>
-
-<span class="fu">scheme_install_r_package</span><span class="op">(</span><span class="va">name</span>, <span class="va">version</span>, reinstall <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-
-<span class="fu">scheme_installed</span><span class="op">(</span><span class="va">name</span>, <span class="va">version</span><span class="op">)</span>
-
-<span class="fu">scheme_list</span><span class="op">(</span><span class="op">)</span>
-
-<span class="fu">scheme_list_in_repo</span><span class="op">(</span>baseurl <span class="op">=</span> <span class="fu">scheme_repo</span><span class="op">(</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">scheme_repo</span><span class="op">(</span>repo <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="fu">scheme_uninstall</span><span class="op">(</span>name <span class="op">=</span> <span class="cn">NULL</span>, version <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="fu">scheme_use</span><span class="op">(</span>name <span class="op">=</span> <span class="cn">NULL</span>, version <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">scheme_active</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">scheme_default</span><span class="op">(</span>name <span class="op">=</span> <span class="cn">NULL</span>, version <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">scheme_download</span><span class="op">(</span></span>
+<span>  <span class="va">name</span>,</span>
+<span>  <span class="va">version</span>,</span>
+<span>  destfile <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  overwrite <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  baseurl <span class="op">=</span> <span class="fu">scheme_repo</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">scheme_install</span><span class="op">(</span></span>
+<span>  <span class="va">name</span>,</span>
+<span>  <span class="va">version</span>,</span>
+<span>  repo <span class="op">=</span> <span class="fu">scheme_repo</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  file <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  overwrite <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  install_package <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">scheme_install_r_package</span><span class="op">(</span><span class="va">name</span>, <span class="va">version</span>, reinstall <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">scheme_installed</span><span class="op">(</span><span class="va">name</span>, <span class="va">version</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">scheme_list</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">scheme_list_in_repo</span><span class="op">(</span>baseurl <span class="op">=</span> <span class="fu">scheme_repo</span><span class="op">(</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">scheme_repo</span><span class="op">(</span>repo <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">scheme_uninstall</span><span class="op">(</span>name <span class="op">=</span> <span class="cn">NULL</span>, version <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">scheme_use</span><span class="op">(</span>name <span class="op">=</span> <span class="cn">NULL</span>, version <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -198,74 +198,119 @@ The name of the active scheme is saved in <code>dmdScheme_active</code></p>
     <dl><dt>name</dt>
 <dd><p>a <code>character</code> string containing the name of the scheme
 definition</p></dd>
+
+
 <dt>version</dt>
 <dd><p>a <code>character</code> string containing the version of the scheme
 definition</p></dd>
+
+
 <dt>destfile</dt>
 <dd><p>a <code>character</code> string containing the name of the
 downloaded scheme definition. If <code>NULL</code>, a temporary file will be used.</p></dd>
+
+
 <dt>overwrite</dt>
 <dd><p>if <code>TRUE</code>, the scheme will be overwritten if it exists</p></dd>
+
+
 <dt>baseurl</dt>
 <dd><p>a <code>character</code> string containing the base url of the
 repository in which the scheme definitions are located.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>additional parameter for the function <code>download.file</code>.</p></dd>
+
+
 <dt>repo</dt>
 <dd><p>repo of the schemes.</p></dd>
+
+
 <dt>file</dt>
 <dd><p>if give, this file will be used as the local scheme definition,
 and <code>repo</code> will be ignored</p></dd>
+
+
 <dt>install_package</dt>
 <dd><p>if <code>TRUE</code>, install / update the accompanying R
 package. You can do it manually later by running
 <code>scheme_install_r_package("NAME", "VERSION")</code>.</p></dd>
+
+
 <dt>reinstall</dt>
 <dd><p>if <code>TRUE</code>, the R package will be uninstalled before
 installing it.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p><code>data.frame</code> with two columns containing name and version of the default scheme
-<code>data.frame</code> with two columns containing name and version of the default scheme
-invisibly the value of <code>destfile</code>invisibly <code>NULL</code>invisibly <code>NULL</code><code>TRUE</code> if the theme is installed, <code>FALSE</code> if not
-<code>data.frame</code> with two columns containing name and version of the intalled schemes
-Returns the info about the scheme definitions in this repo as a <code>list</code>.
-URL of the repo toi be used. If not set previously, the default repo
+    
+
+<p><code>data.frame</code> with two columns containing name and version of the default scheme</p>
+
+
+<p><code>data.frame</code> with two columns containing name and version of the default scheme</p>
+
+
+<p>invisibly the value of <code>destfile</code></p>
+
+
+
+<p>invisibly <code>NULL</code></p>
+
+
+
+<p>invisibly <code>NULL</code></p>
+
+
+
+<p><code>TRUE</code> if the theme is installed, <code>FALSE</code> if not</p>
+
+
+<p><code>data.frame</code> with two columns containing name and version of the intalled schemes</p>
+
+
+<p>Returns the info about the scheme definitions in this repo as a <code>list</code>.</p>
+
+
+<p>URL of the repo toi be used. If not set previously, the default repo
   at <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/" class="external-link">https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/</a> is
-  used.
-invisibly returns the temporary location where the scheme definition
+  used.</p>
+
+
+<p>invisibly returns the temporary location where the scheme definition
   is moved to.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">scheme_active</span><span class="op">(</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">scheme_active</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        name version</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 dmdScheme   0.9.9</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">scheme_default</span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">scheme_default</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        name version</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 dmdScheme   0.9.9</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">scheme_download</span><span class="op">(</span></span>
-<span class="r-in">  name <span class="op">=</span> <span class="st">"dmdScheme"</span>,</span>
-<span class="r-in">  version <span class="op">=</span> <span class="st">"0.9.5"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="fu">scheme_install</span><span class="op">(</span><span class="st">"path/to/definition.xml"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">scheme_install</span><span class="op">(</span><span class="st">"path/to/definition.xlsx"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="fu">scheme_install_r_package</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="fu">scheme_installed</span><span class="op">(</span><span class="st">"dmdScheme"</span>, <span class="st">"0.9.9"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">scheme_installed</span><span class="op">(</span><span class="st">"dmdScheme"</span>, <span class="st">"0.7.3"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"><span class="fu">scheme_list_in_repo</span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">scheme_download</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  name <span class="op">=</span> <span class="st">"dmdScheme"</span>,</span></span>
+<span class="r-in"><span>  version <span class="op">=</span> <span class="st">"0.9.5"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu">scheme_install</span><span class="op">(</span><span class="st">"path/to/definition.xml"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">scheme_install</span><span class="op">(</span><span class="st">"path/to/definition.xlsx"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu">scheme_install_r_package</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu">scheme_installed</span><span class="op">(</span><span class="st">"dmdScheme"</span>, <span class="st">"0.9.9"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">scheme_installed</span><span class="op">(</span><span class="st">"dmdScheme"</span>, <span class="st">"0.7.3"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="fu">scheme_list_in_repo</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $dmdScheme_0.9.5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $dmdScheme_0.9.5$name</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "dmdScheme"</span>
@@ -321,20 +366,20 @@ invisibly returns the temporary location where the scheme definition
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Scheme for Ecological Microcosom Experiments"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># returns the repo used:</span></span>
-<span class="r-in"><span class="fu">scheme_repo</span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># returns the repo used:</span></span></span>
+<span class="r-in"><span><span class="fu">scheme_repo</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/raw/master/"</span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="fu">scheme_uninstall</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"schemename"</span>, version <span class="op">=</span> <span class="st">"schemeversion"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">scheme_list</span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu">scheme_uninstall</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"schemename"</span>, version <span class="op">=</span> <span class="st">"schemeversion"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">scheme_list</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        name version</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 dmdScheme   0.9.9</span>
-<span class="r-in"><span class="fu">scheme_use</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"dmdScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.9"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">scheme_use</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"dmdScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.9"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Theme switched to dmdScheme_0.9.9</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -346,7 +391,7 @@ invisibly returns the temporary location where the scheme definition
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
     </footer></div>

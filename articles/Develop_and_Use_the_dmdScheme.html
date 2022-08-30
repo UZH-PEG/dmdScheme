@@ -8,8 +8,8 @@
 <meta name="description" content="dmdScheme">
 <title>Develop and use the `dmdScheme` • dmdScheme</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Develop and use the `dmdScheme`">
 <meta property="og:description" content="dmdScheme">
@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">dmdScheme</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.5</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,13 +69,13 @@
 
 
 <script src="Develop_and_Use_the_dmdScheme_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
-  <main id="main"><div class="page-header">
+  <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Develop and use the `dmdScheme`</h1>
             <h3 data-toc-skip class="subtitle">dmdScheme_0.9.9</h3>
                         <h4 data-toc-skip class="author">Rainer M Krug <a href="mailto:Rainer.Krug@uzh.ch" class="email">Rainer.Krug@uzh.ch</a>
 </h4>
             
-            <h4 data-toc-skip class="date">2022-04-12</h4>
+            <h4 data-toc-skip class="date">2022-08-30</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/UZH-PEG/dmdScheme/blob/HEAD/vignettes/Develop_and_Use_the_dmdScheme.Rmd" class="external-link"><code>vignettes/Develop_and_Use_the_dmdScheme.Rmd</code></a></small>
       <div class="d-none name"><code>Develop_and_Use_the_dmdScheme.Rmd</code></div>
@@ -161,29 +161,29 @@
 </h3>
 <p>The recommended way is to install from the <a href="https://uzh-peg.r-universe.dev/" class="external-link">R-Universe</a> which always contains the last stable version:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Enable universe by uzh-peg</span>
-<span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>
-  uzhpeg <span class="op">=</span> <span class="st">'https://uzh-peg.r-universe.dev'</span>,
-  CRAN <span class="op">=</span> <span class="st">'https://cloud.r-project.org'</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># Install dmdScheme</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'dmdScheme'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Enable universe by uzh-peg</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>  uzhpeg <span class="op">=</span> <span class="st">'https://uzh-peg.r-universe.dev'</span>,</span>
+<span>  CRAN <span class="op">=</span> <span class="st">'https://cloud.r-project.org'</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Install dmdScheme</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'dmdScheme'</span><span class="op">)</span></span></code></pre></div>
 <p>To install the <strong>master</strong> branch, the stable branch which will become the new CRAN release, from the <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/tree/master" class="external-link">dmdScheme repository on github</a>, run</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">## install the remotes package if not installed yet</span>
-<span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org" class="external-link">"remotes"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"UZH-PEG/dmdScheme"</span>, ref <span class="op">=</span> <span class="st">"master"</span>, build_opts <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">## install the remotes package if not installed yet</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org" class="external-link">"remotes"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"UZH-PEG/dmdScheme"</span>, ref <span class="op">=</span> <span class="st">"master"</span>, build_opts <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
 <p>If you are feeling adventurous, want to live at the bleeding edge and can live with possibly non-working features, you can install the <strong>dev</strong> branch. This branch is <strong>not stable</strong> and features and functionality can appear or be removed without prior notice. This is, unless there is a <strong>really</strong> good reason, not recommended for production use:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">## install the remotes package if not installed yet</span>
-<span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org" class="external-link">"remotes"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"UZH-PEG/dmdScheme"</span>, ref <span class="op">=</span> <span class="st">"dev"</span>, build_opts <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">## install the remotes package if not installed yet</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org" class="external-link">"remotes"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"UZH-PEG/dmdScheme"</span>, ref <span class="op">=</span> <span class="st">"dev"</span>, build_opts <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
 <p>Other branches are not generally recommended for installation unless you are involved in <code>dmdScheme</code> package development.</p>
 </div>
 <div class="section level3">
@@ -191,7 +191,7 @@
 </h3>
 <p>When you load the package, the definition of the scheme is downloaded from the <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/tree/master" class="external-link">dmdScheme repository</a> installed to a temporary scheme library in a temporary directory for usage in this R session. As this scheme library is stored in a temporary directory, it will be deleted when you quit your R session and it will be re-downloaded each time you start a new session and load the package. To create a permanent package library you have to create a cache in the user directory. To do this, run</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/cache.html">cache</a></span><span class="op">(</span>createPermanent <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/cache.html">cache</a></span><span class="op">(</span>createPermanent <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>and restart your R session. Now the definitions of the installed <code>dmdSchemes</code> will be installed in this user cache and be available permanently. For further info, see the documentation of the command <code><a href="../reference/cache.html">cache()</a></code>.</p>
 </div>
 <div class="section level3">
@@ -206,9 +206,9 @@
 </h4>
 <p>returns the default scheme and version, i.e. the one with which the dmdScheme package is based. This can be the <code>dmdScheme</code> package itself, or a package created with <code><a href="../reference/make_new_package.html">make_new_package()</a></code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_default</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt;        name version</span>
-<span class="co">#&gt; 1 dmdScheme   0.9.9</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/scheme.html">scheme_default</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;        name version</span></span>
+<span><span class="co">#&gt; 1 dmdScheme   0.9.9</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="scheme_repo">
@@ -216,8 +216,8 @@
 </h4>
 <p>Get or set scheme repository. If <code>repo</code> is specified, the scheme repository to be used is set. Otherwise, the scheme repository used is only returned.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_repo</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/raw/master/"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/scheme.html">scheme_repo</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/raw/master/"</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="scheme_list_in_repo">
@@ -225,12 +225,12 @@
 </h4>
 <p>Show all schemes and version available in a repo. The defaut repo is <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository" class="external-link"></a>. The function reads and simply returns the file <code>SCHEME_DEFINITIONS.yaml</code> in the folder <code>schemes</code> in the repository.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_list_in_repo</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; $dmdScheme_0.9.5</span>
-<span class="co">#&gt; $dmdScheme_0.9.5$name</span>
-<span class="co">#&gt; [1] "dmdScheme"</span>
-<span class="co">#&gt; </span>
-<span class="va">....</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/scheme.html">scheme_list_in_repo</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $dmdScheme_0.9.5</span></span>
+<span><span class="co">#&gt; $dmdScheme_0.9.5$name</span></span>
+<span><span class="co">#&gt; [1] "dmdScheme"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="va">....</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="scheme_download">
@@ -238,9 +238,9 @@
 </h4>
 <p>Download a scheme definition from the repo set and stores in the destfile. The function returns the fully qualified file name to the downloaded file invisibly.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_download</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"emeScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.5"</span>, destfile <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; Warning in normalizePath(destfile): path[1]="/tmp/Rtmp8o2pZI/file35642908aefe":</span>
-<span class="co">#&gt; No such file or directory</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/scheme.html">scheme_download</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"emeScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.5"</span>, destfile <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in normalizePath(destfile): path[1]="/tmp/Rtmp147KID/file3b051854e9bc":</span></span>
+<span><span class="co">#&gt; No such file or directory</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="scheme_install">
@@ -248,10 +248,10 @@
 </h4>
 <p>Install a new scheme definition. In the normal usecase, this function uses <code><a href="../reference/scheme.html">scheme_download()</a></code> to download the scheme definition from the default <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository" class="external-link">github repository</a> and installs it. The usage is</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_install</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"emeScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.5"</span><span class="op">)</span>
-<span class="co">#&gt; Scheme definition `/tmp/Rtmp8o2pZI/file3564279c0ec3/emeScheme_0.9.5.tar.gz, installed with</span>
-<span class="co">#&gt; name:    emeScheme</span>
-<span class="co">#&gt; version: 0.9.5</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/scheme.html">scheme_install</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"emeScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.5"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Scheme definition `/tmp/Rtmp147KID/file3b0568b77b05/emeScheme_0.9.5.tar.gz, installed with</span></span>
+<span><span class="co">#&gt; name:    emeScheme</span></span>
+<span><span class="co">#&gt; version: 0.9.5</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="scheme_install_r_package">
@@ -259,9 +259,9 @@
 </h4>
 <p>Installs the accompanying R package of the same name as the scheme. This does only install the package - it still needs to be loaded to be used!</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_install_r_package</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"emeScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.5"</span><span class="op">)</span>
-<span class="co">#&gt; Package emeScheme is already installed!</span>
-<span class="co">#&gt; To re-install or update, please specify `reinstall = TRUE`</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/scheme.html">scheme_install_r_package</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"emeScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.5"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Package emeScheme is already installed!</span></span>
+<span><span class="co">#&gt; To re-install or update, please specify `reinstall = TRUE`</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="scheme_list">
@@ -269,10 +269,10 @@
 </h4>
 <p>Shows the installed schemes.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_list</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt;        name version</span>
-<span class="co">#&gt; 1 dmdScheme   0.9.9</span>
-<span class="co">#&gt; 2 emeScheme   0.9.5</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/scheme.html">scheme_list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;        name version</span></span>
+<span><span class="co">#&gt; 1 dmdScheme   0.9.9</span></span>
+<span><span class="co">#&gt; 2 emeScheme   0.9.5</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="scheme_use">
@@ -280,8 +280,8 @@
 </h4>
 <p>Activate the scheme <code>NAME</code> with version <code>VERSION</code></p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_use</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"emeScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.5"</span><span class="op">)</span>
-<span class="co">#&gt; Theme switched to emeScheme_0.9.5</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/scheme.html">scheme_use</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"emeScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.5"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Theme switched to emeScheme_0.9.5</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="scheme_active">
@@ -289,14 +289,14 @@
 </h4>
 <p>Shows the currently active scheme.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_active</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt;        name version</span>
-<span class="co">#&gt; 1 emeScheme   0.9.5</span>
-<span class="fu"><a href="../reference/scheme.html">scheme_use</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"dmdScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.9"</span><span class="op">)</span>
-<span class="co">#&gt; Theme switched to dmdScheme_0.9.9</span>
-<span class="fu"><a href="../reference/scheme.html">scheme_active</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt;        name version</span>
-<span class="co">#&gt; 1 dmdScheme   0.9.9</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/scheme.html">scheme_active</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;        name version</span></span>
+<span><span class="co">#&gt; 1 emeScheme   0.9.5</span></span>
+<span><span class="fu"><a href="../reference/scheme.html">scheme_use</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"dmdScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.9"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Theme switched to dmdScheme_0.9.9</span></span>
+<span><span class="fu"><a href="../reference/scheme.html">scheme_active</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;        name version</span></span>
+<span><span class="co">#&gt; 1 dmdScheme   0.9.9</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="scheme_path_index_template">
@@ -308,8 +308,8 @@
 <li>the scheme package included in the <code>dmdScheme</code> package (<strong>not</strong> the acompanying package!).</li>
 </ol>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/scheme_path_index_template.html">scheme_path_index_template</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "/tmp/Rtmp8o2pZI/dmdScheme_35643fbdac90/installedSchemes/dmdScheme_0.9.9/index.md"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/scheme_path_index_template.html">scheme_path_index_template</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "/tmp/Rtmp147KID/dmdScheme_3b055a1fdc39/installedSchemes/dmdScheme_0.9.9/index.md"</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="scheme_path_xlsx">
@@ -317,8 +317,8 @@
 </h4>
 <p>Returns the path to the <code>xlsx</code> file included in the scheme package.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/scheme_path_xlsx.html">scheme_path_xlsx</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "/tmp/Rtmp8o2pZI/dmdScheme_35643fbdac90/installedSchemes/dmdScheme_0.9.9/dmdScheme_0.9.9.xlsx"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/scheme_path_xlsx.html">scheme_path_xlsx</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "/tmp/Rtmp147KID/dmdScheme_3b055a1fdc39/installedSchemes/dmdScheme_0.9.9/dmdScheme_0.9.9.xlsx"</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="scheme_path_xml">
@@ -326,8 +326,8 @@
 </h4>
 <p>Returns the path to the <code>xml</code> file included in the scheme package.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/scheme_path_xml.html">scheme_path_xml</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "/tmp/Rtmp8o2pZI/dmdScheme_35643fbdac90/installedSchemes/dmdScheme_0.9.9/dmdScheme_0.9.9.xml"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/scheme_path_xml.html">scheme_path_xml</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "/tmp/Rtmp147KID/dmdScheme_3b055a1fdc39/installedSchemes/dmdScheme_0.9.9/dmdScheme_0.9.9.xml"</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="scheme_uninstall">
@@ -335,9 +335,9 @@
 </h4>
 <p>Uninstall an installed scheme. The scheme definition, is deleted from the scheme library, and moved to a temporary flder which wil be deleted at the end of the R session.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_uninstall</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"emeScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.5"</span><span class="op">)</span>
-<span class="co">#&gt; Scheme emeScheme_0.9.5 deleted and moved to</span>
-<span class="co">#&gt; [1] "/tmp/Rtmp8o2pZI/file35643525cc6e"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/scheme.html">scheme_uninstall</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"emeScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.5"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Scheme emeScheme_0.9.5 deleted and moved to</span></span>
+<span><span class="co">#&gt; [1] "/tmp/Rtmp147KID/file3b056138483"</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="scheme_installed">
@@ -345,8 +345,8 @@
 </h4>
 <p>Return <code>TRUE</code>, if the scheme is installed</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_installed</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"emeScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.5"</span><span class="op">)</span>
-<span class="co">#&gt; [1] FALSE</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/scheme.html">scheme_installed</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"emeScheme"</span>, version <span class="op">=</span> <span class="st">"0.9.5"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] FALSE</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="scheme_make">
@@ -361,7 +361,7 @@
 </h2>
 <p>To enter new data to the <code>dmdScheme</code>, you have to run the command</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/open_new_spreadsheet.html">open_new_spreadsheet</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/open_new_spreadsheet.html">open_new_spreadsheet</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>This will open Excel and the file should look similar to this, when looking at the second tab as in Figure 3.</p>
 <p>The following points are important to remember:</p>
 <ol style="list-style-type: decimal">
@@ -374,122 +374,122 @@
 </h3>
 <p>Next, you have to import the data entered in the Excel sheet into R. For simplicity, we use here a file included in the package. If you want to load your own file, replace <code><a href="../reference/scheme_path_xlsx.html">scheme_path_xlsx()</a></code> with the file name and path to that file.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_excel.html">read_excel</a></span><span class="op">(</span>
-      file <span class="op">=</span> <span class="fu"><a href="../reference/scheme_path_xlsx.html">scheme_path_xlsx</a></span><span class="op">(</span><span class="op">)</span>,
-      verbose <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span>
-<span class="co">#&gt; Transposing MdBibliometric...</span>
-<span class="co">#&gt; Processing propertySet : MdBibliometric</span>
-<span class="co">#&gt; Set names...</span>
-<span class="co">#&gt; Set attributes...</span>
-<span class="co">#&gt; Apply types...</span>
-<span class="co">#&gt;    Apply type 'character' to 'uploadType'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'doi'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'publicationDate'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'title'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'description'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'version'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'language'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'keywords'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'additionalNotes'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'accessRights'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'accessRightsInfo'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'license'...</span>
-<span class="co">#&gt; Set class...</span>
-<span class="co">#&gt; Done</span>
-<span class="co">#&gt; Processing propertySet : MdAuthors</span>
-<span class="co">#&gt; Set names...</span>
-<span class="co">#&gt; Set attributes...</span>
-<span class="co">#&gt; Apply types...</span>
-<span class="co">#&gt;    Apply type 'character' to 'authorID'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'familyName'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'givenName'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'affiliation'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'orcid'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'role'...</span>
-<span class="co">#&gt; Set class...</span>
-<span class="co">#&gt; Done</span>
-<span class="co">#&gt; Transposing Experiment...</span>
-<span class="co">#&gt; Processing propertySet : Experiment</span>
-<span class="co">#&gt; Set names...</span>
-<span class="co">#&gt; Set attributes...</span>
-<span class="co">#&gt; Apply types...</span>
-<span class="co">#&gt;    Apply type 'character' to 'name'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'temperature'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'light'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'humidity'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'incubator'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'container'...</span>
-<span class="co">#&gt;    Apply type 'numeric' to 'microcosmVolume'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'mediaType'...</span>
-<span class="co">#&gt;    Apply type 'numeric' to 'mediaConcentration'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'cultureConditions'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'comunityType'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'mediaAdditions'...</span>
-<span class="co">#&gt;    Apply type 'integer' to 'duration'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'comment'...</span>
-<span class="co">#&gt; Set class...</span>
-<span class="co">#&gt; Done</span>
-<span class="co">#&gt; Processing propertySet : Genus</span>
-<span class="co">#&gt; Set names...</span>
-<span class="co">#&gt; Set attributes...</span>
-<span class="co">#&gt; Apply types...</span>
-<span class="co">#&gt;    Apply type 'character' to 'speciesID'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'colour'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'density'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'functionalGroup'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'comment'...</span>
-<span class="co">#&gt; Set class...</span>
-<span class="co">#&gt; Done</span>
-<span class="co">#&gt; Processing propertySet : Treatments</span>
-<span class="co">#&gt; Set names...</span>
-<span class="co">#&gt; Set attributes...</span>
-<span class="co">#&gt; Apply types...</span>
-<span class="co">#&gt;    Apply type 'character' to 'treatmentID'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'treatmentLevelHeight'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'comment'...</span>
-<span class="co">#&gt; Set class...</span>
-<span class="co">#&gt; Done</span>
-<span class="co">#&gt; Processing propertySet : Measurement</span>
-<span class="co">#&gt; Set names...</span>
-<span class="co">#&gt; Set attributes...</span>
-<span class="co">#&gt; Apply types...</span>
-<span class="co">#&gt;    Apply type 'character' to 'measurementID'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'variable'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'method'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'unit'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'object'...</span>
-<span class="co">#&gt;    Apply type 'integer' to 'noOfSamplesInTimeSeries'...</span>
-<span class="co">#&gt;    Apply type 'numeric' to 'samplingVolume'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'dataExtractionID'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'measuredFrom'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'comment'...</span>
-<span class="co">#&gt; Set class...</span>
-<span class="co">#&gt; Done</span>
-<span class="co">#&gt; Processing propertySet : DataExtraction</span>
-<span class="co">#&gt; Set names...</span>
-<span class="co">#&gt; Set attributes...</span>
-<span class="co">#&gt; Apply types...</span>
-<span class="co">#&gt;    Apply type 'character' to 'dataExtractionID'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'method'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'parameter'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'value'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'comment'...</span>
-<span class="co">#&gt; Set class...</span>
-<span class="co">#&gt; Done</span>
-<span class="co">#&gt; Processing propertySet : DataFileMetaData</span>
-<span class="co">#&gt; Set names...</span>
-<span class="co">#&gt; Set attributes...</span>
-<span class="co">#&gt; Apply types...</span>
-<span class="co">#&gt;    Apply type 'character' to 'dataFileName'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'columnName'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'columnData'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'mappingColumn'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'type'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'description'...</span>
-<span class="co">#&gt;    Apply type 'character' to 'comment'...</span>
-<span class="co">#&gt; Set class...</span>
-<span class="co">#&gt; Done</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_excel.html">read_excel</a></span><span class="op">(</span></span>
+<span>      file <span class="op">=</span> <span class="fu"><a href="../reference/scheme_path_xlsx.html">scheme_path_xlsx</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>      verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; Transposing MdBibliometric...</span></span>
+<span><span class="co">#&gt; Processing propertySet : MdBibliometric</span></span>
+<span><span class="co">#&gt; Set names...</span></span>
+<span><span class="co">#&gt; Set attributes...</span></span>
+<span><span class="co">#&gt; Apply types...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'uploadType'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'doi'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'publicationDate'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'title'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'description'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'version'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'language'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'keywords'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'additionalNotes'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'accessRights'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'accessRightsInfo'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'license'...</span></span>
+<span><span class="co">#&gt; Set class...</span></span>
+<span><span class="co">#&gt; Done</span></span>
+<span><span class="co">#&gt; Processing propertySet : MdAuthors</span></span>
+<span><span class="co">#&gt; Set names...</span></span>
+<span><span class="co">#&gt; Set attributes...</span></span>
+<span><span class="co">#&gt; Apply types...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'authorID'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'familyName'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'givenName'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'affiliation'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'orcid'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'role'...</span></span>
+<span><span class="co">#&gt; Set class...</span></span>
+<span><span class="co">#&gt; Done</span></span>
+<span><span class="co">#&gt; Transposing Experiment...</span></span>
+<span><span class="co">#&gt; Processing propertySet : Experiment</span></span>
+<span><span class="co">#&gt; Set names...</span></span>
+<span><span class="co">#&gt; Set attributes...</span></span>
+<span><span class="co">#&gt; Apply types...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'name'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'temperature'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'light'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'humidity'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'incubator'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'container'...</span></span>
+<span><span class="co">#&gt;    Apply type 'numeric' to 'microcosmVolume'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'mediaType'...</span></span>
+<span><span class="co">#&gt;    Apply type 'numeric' to 'mediaConcentration'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'cultureConditions'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'comunityType'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'mediaAdditions'...</span></span>
+<span><span class="co">#&gt;    Apply type 'integer' to 'duration'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'comment'...</span></span>
+<span><span class="co">#&gt; Set class...</span></span>
+<span><span class="co">#&gt; Done</span></span>
+<span><span class="co">#&gt; Processing propertySet : Genus</span></span>
+<span><span class="co">#&gt; Set names...</span></span>
+<span><span class="co">#&gt; Set attributes...</span></span>
+<span><span class="co">#&gt; Apply types...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'speciesID'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'colour'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'density'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'functionalGroup'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'comment'...</span></span>
+<span><span class="co">#&gt; Set class...</span></span>
+<span><span class="co">#&gt; Done</span></span>
+<span><span class="co">#&gt; Processing propertySet : Treatments</span></span>
+<span><span class="co">#&gt; Set names...</span></span>
+<span><span class="co">#&gt; Set attributes...</span></span>
+<span><span class="co">#&gt; Apply types...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'treatmentID'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'treatmentLevelHeight'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'comment'...</span></span>
+<span><span class="co">#&gt; Set class...</span></span>
+<span><span class="co">#&gt; Done</span></span>
+<span><span class="co">#&gt; Processing propertySet : Measurement</span></span>
+<span><span class="co">#&gt; Set names...</span></span>
+<span><span class="co">#&gt; Set attributes...</span></span>
+<span><span class="co">#&gt; Apply types...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'measurementID'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'variable'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'method'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'unit'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'object'...</span></span>
+<span><span class="co">#&gt;    Apply type 'integer' to 'noOfSamplesInTimeSeries'...</span></span>
+<span><span class="co">#&gt;    Apply type 'numeric' to 'samplingVolume'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'dataExtractionID'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'measuredFrom'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'comment'...</span></span>
+<span><span class="co">#&gt; Set class...</span></span>
+<span><span class="co">#&gt; Done</span></span>
+<span><span class="co">#&gt; Processing propertySet : DataExtraction</span></span>
+<span><span class="co">#&gt; Set names...</span></span>
+<span><span class="co">#&gt; Set attributes...</span></span>
+<span><span class="co">#&gt; Apply types...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'dataExtractionID'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'method'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'parameter'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'value'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'comment'...</span></span>
+<span><span class="co">#&gt; Set class...</span></span>
+<span><span class="co">#&gt; Done</span></span>
+<span><span class="co">#&gt; Processing propertySet : DataFileMetaData</span></span>
+<span><span class="co">#&gt; Set names...</span></span>
+<span><span class="co">#&gt; Set attributes...</span></span>
+<span><span class="co">#&gt; Apply types...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'dataFileName'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'columnName'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'columnData'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'mappingColumn'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'type'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'description'...</span></span>
+<span><span class="co">#&gt;    Apply type 'character' to 'comment'...</span></span>
+<span><span class="co">#&gt; Set class...</span></span>
+<span><span class="co">#&gt; Done</span></span></code></pre></div>
 <p>The <code>verbose = TRUE</code> argument will produce messages which will show you what is happening and will help to identify problems.</p>
 </div>
 <div class="section level3">
@@ -508,76 +508,76 @@
 </li>
 </ul>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span>
-  <span class="va">x</span>,
-  printAttr <span class="op">=</span> <span class="cn">FALSE</span>,
-  printExtAttr <span class="op">=</span> <span class="cn">FALSE</span>,
-  printData <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span>
-<span class="co">#&gt;  dmdScheme - dmdSchemeSet</span>
-<span class="co">#&gt;      MdBibliometric - dmdSchemeData</span>
-<span class="co">#&gt;      MdAuthors - dmdSchemeData</span>
-<span class="co">#&gt;      Experiment - dmdSchemeData</span>
-<span class="va">....</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  printAttr <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  printExtAttr <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  printData <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt;  dmdScheme - dmdSchemeSet</span></span>
+<span><span class="co">#&gt;      MdBibliometric - dmdSchemeData</span></span>
+<span><span class="co">#&gt;      MdAuthors - dmdSchemeData</span></span>
+<span><span class="co">#&gt;      Experiment - dmdSchemeData</span></span>
+<span><span class="va">....</span></span></code></pre></div>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span>
-  <span class="va">x</span>,
-  printAttr <span class="op">=</span> <span class="cn">TRUE</span>,
-  printExtAttr <span class="op">=</span> <span class="cn">FALSE</span>,
-  printData <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span>
-<span class="co">#&gt;  dmdScheme - dmdSchemeSet</span>
-<span class="co">#&gt;      MdBibliometric - dmdSchemeData</span>
-<span class="co">#&gt; A       Names : uploadType | doi | publicationDate | title | description | version | language | keywords | additionalNotes | accessRights | accessRightsInfo | license</span>
-<span class="co">#&gt; A       Units : </span>
-<span class="va">....</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  printAttr <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  printExtAttr <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  printData <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt;  dmdScheme - dmdSchemeSet</span></span>
+<span><span class="co">#&gt;      MdBibliometric - dmdSchemeData</span></span>
+<span><span class="co">#&gt; A       Names : uploadType | doi | publicationDate | title | description | version | language | keywords | additionalNotes | accessRights | accessRightsInfo | license</span></span>
+<span><span class="co">#&gt; A       Units : </span></span>
+<span><span class="va">....</span></span></code></pre></div>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span>
-  <span class="va">x</span>,
-  printAttr <span class="op">=</span> <span class="cn">TRUE</span>,
-  printExtAttr <span class="op">=</span> <span class="cn">TRUE</span>,
-  printData <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span>
-<span class="co">#&gt;  dmdScheme - dmdSchemeSet</span>
-<span class="co">#&gt;      MdBibliometric - dmdSchemeData</span>
-<span class="co">#&gt; A       Names : uploadType | doi | publicationDate | title | description | version | language | keywords | additionalNotes | accessRights | accessRightsInfo | license</span>
-<span class="co">#&gt; A       Units : </span>
-<span class="va">....</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  printAttr <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  printExtAttr <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  printData <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt;  dmdScheme - dmdSchemeSet</span></span>
+<span><span class="co">#&gt;      MdBibliometric - dmdSchemeData</span></span>
+<span><span class="co">#&gt; A       Names : uploadType | doi | publicationDate | title | description | version | language | keywords | additionalNotes | accessRights | accessRightsInfo | license</span></span>
+<span><span class="co">#&gt; A       Units : </span></span>
+<span><span class="va">....</span></span></code></pre></div>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span>
-  <span class="va">x</span>,
-  printAttr <span class="op">=</span> <span class="cn">TRUE</span>,
-  printExtAttr <span class="op">=</span> <span class="cn">TRUE</span>,
-  printData <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span>
-<span class="co">#&gt;  dmdScheme - dmdSchemeSet</span>
-<span class="co">#&gt;      MdBibliometric - dmdSchemeData</span>
-<span class="co">#&gt; A       Names : uploadType | doi | publicationDate | title | description | version | language | keywords | additionalNotes | accessRights | accessRightsInfo | license</span>
-<span class="co">#&gt; A       Units : </span>
-<span class="va">....</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  printAttr <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  printExtAttr <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  printData <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt;  dmdScheme - dmdSchemeSet</span></span>
+<span><span class="co">#&gt;      MdBibliometric - dmdSchemeData</span></span>
+<span><span class="co">#&gt; A       Names : uploadType | doi | publicationDate | title | description | version | language | keywords | additionalNotes | accessRights | accessRightsInfo | license</span></span>
+<span><span class="co">#&gt; A       Units : </span></span>
+<span><span class="va">....</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="validating-your-metadata">Validating your metadata<a class="anchor" aria-label="anchor" href="#validating-your-metadata"></a>
 </h3>
 <p>The metadata in the spreadsheet can be validated by using the following command and which results in an object of class <code>dmdScheme_validation</code>.</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/validate.html">validate</a></span><span class="op">(</span> <span class="fu"><a href="../reference/scheme_path_xlsx.html">scheme_path_xlsx</a></span><span class="op">(</span><span class="op">)</span> <span class="op">)</span>
-<span class="co">#&gt; Validating Experiment</span>
-<span class="co">#&gt; Validating MdBibliometric</span>
-<span class="co">#&gt; Validating MdAuthors</span>
-<span class="co">#&gt; Validating Genus</span>
-<span class="co">#&gt; Validating Treatments</span>
-<span class="co">#&gt; Validating Measurement</span>
-<span class="co">#&gt; Validating DataExtraction</span>
-<span class="co">#&gt; Validating DataFileMetaData</span>
-<span class="co">#&gt; $error</span>
-<span class="co">#&gt; [1] 3</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $details</span>
-<span class="va">....</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/validate.html">validate</a></span><span class="op">(</span> <span class="fu"><a href="../reference/scheme_path_xlsx.html">scheme_path_xlsx</a></span><span class="op">(</span><span class="op">)</span> <span class="op">)</span></span>
+<span><span class="co">#&gt; Validating Experiment</span></span>
+<span><span class="co">#&gt; Validating MdBibliometric</span></span>
+<span><span class="co">#&gt; Validating MdAuthors</span></span>
+<span><span class="co">#&gt; Validating Genus</span></span>
+<span><span class="co">#&gt; Validating Treatments</span></span>
+<span><span class="co">#&gt; Validating Measurement</span></span>
+<span><span class="co">#&gt; Validating DataExtraction</span></span>
+<span><span class="co">#&gt; Validating DataFileMetaData</span></span>
+<span><span class="co">#&gt; $error</span></span>
+<span><span class="co">#&gt; [1] 3</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $details</span></span>
+<span><span class="va">....</span></span></code></pre></div>
 <p>To create a report (html, pdf or docx) yo can use the <code><a href="../reference/report.html">report()</a></code> function:</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/report.html">report</a></span><span class="op">(</span> <span class="fu"><a href="../reference/scheme_path_xlsx.html">scheme_path_xlsx</a></span><span class="op">(</span><span class="op">)</span> <span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/report.html">report</a></span><span class="op">(</span> <span class="fu"><a href="../reference/scheme_path_xlsx.html">scheme_path_xlsx</a></span><span class="op">(</span><span class="op">)</span> <span class="op">)</span></span></code></pre></div>
 <p>which will open a html report in your browser.</p>
 </div>
 <div class="section level3">
@@ -585,37 +585,37 @@
 </h3>
 <p>You can export the data to an an <code>xml_document</code> object as defined in the <code>xml2</code> package to do further processing:</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_excel.html">read_excel</a></span><span class="op">(</span> <span class="fu"><a href="../reference/scheme_path_xlsx.html">scheme_path_xlsx</a></span><span class="op">(</span><span class="op">)</span> <span class="op">)</span>
-<span class="va">xml</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_xml.html">as_xml</a></span><span class="op">(</span> <span class="va">x</span>, file <span class="op">=</span> <span class="va">xmlFile</span><span class="op">)</span>
-<span class="va">xml</span>
-<span class="co">#&gt; {xml_document}</span>
-<span class="co">#&gt; &lt;dmdScheme fileName="dmdScheme_0.9.9.xlsx" dmdSchemeName="dmdScheme" dmdSchemeVersion="0.9.9" propertyName="dmdScheme" output="metadata"&gt;</span>
-<span class="co">#&gt; [1] &lt;MdBibliometricList&gt;\n  &lt;MdBibliometric&gt;\n    &lt;uploadType&gt;Dataset&lt;/upload ...</span>
-<span class="co">#&gt; [2] &lt;MdAuthorsList&gt;\n  &lt;MdAuthors authorID="1"&gt;\n    &lt;authorID&gt;1&lt;/authorID&gt;\n ...</span>
-<span class="va">....</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_excel.html">read_excel</a></span><span class="op">(</span> <span class="fu"><a href="../reference/scheme_path_xlsx.html">scheme_path_xlsx</a></span><span class="op">(</span><span class="op">)</span> <span class="op">)</span></span>
+<span><span class="va">xml</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_xml.html">as_xml</a></span><span class="op">(</span> <span class="va">x</span>, file <span class="op">=</span> <span class="va">xmlFile</span><span class="op">)</span></span>
+<span><span class="va">xml</span></span>
+<span><span class="co">#&gt; {xml_document}</span></span>
+<span><span class="co">#&gt; &lt;dmdScheme fileName="dmdScheme_0.9.9.xlsx" dmdSchemeName="dmdScheme" dmdSchemeVersion="0.9.9" propertyName="dmdScheme" output="metadata"&gt;</span></span>
+<span><span class="co">#&gt; [1] &lt;MdBibliometricList&gt;\n  &lt;MdBibliometric&gt;\n    &lt;uploadType&gt;Dataset&lt;/upload ...</span></span>
+<span><span class="co">#&gt; [2] &lt;MdAuthorsList&gt;\n  &lt;MdAuthors authorID="1"&gt;\n    &lt;authorID&gt;1&lt;/authorID&gt;\n ...</span></span>
+<span><span class="va">....</span></span></code></pre></div>
 <p>You can save the xml to a file by using</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">xmlFile</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".xml"</span><span class="op">)</span>
-
-<span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/write_xml.html" class="external-link">write_xml</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">xml</span>, file <span class="op">=</span> <span class="va">xmlFile</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">xmlFile</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".xml"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/write_xml.html" class="external-link">write_xml</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">xml</span>, file <span class="op">=</span> <span class="va">xmlFile</span><span class="op">)</span></span></code></pre></div>
 <p>or directly in one command</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">xmlFile</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".xml"</span><span class="op">)</span>
-
-<span class="fu"><a href="../reference/write_xml.html">write_xml</a></span><span class="op">(</span> x <span class="op">=</span> <span class="va">x</span>, file <span class="op">=</span> <span class="va">xmlFile</span> <span class="op">)</span>
-<span class="co">#&gt; [1] "/tmp/Rtmp8o2pZI/file356414d4d270.xml"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">xmlFile</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".xml"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/write_xml.html">write_xml</a></span><span class="op">(</span> x <span class="op">=</span> <span class="va">x</span>, file <span class="op">=</span> <span class="va">xmlFile</span> <span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "/tmp/Rtmp147KID/file3b0540d3fc30.xml"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="re-import-from-xml-into-r">Re-import from xml into R<a class="anchor" aria-label="anchor" href="#re-import-from-xml-into-r"></a>
 </h3>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_xml.html">read_xml</a></span><span class="op">(</span> <span class="va">xmlFile</span> <span class="op">)</span>
-<span class="va">x</span>
-<span class="co">#&gt;  dmdScheme - dmdSchemeSet</span>
-<span class="co">#&gt;      MdBibliometric - dmdSchemeData</span>
-<span class="co">#&gt; A       Names : uploadType | doi | publicationDate | title | description | version | language | keywords | additionalNotes | accessRights | accessRightsInfo | license</span>
-<span class="co">#&gt; A       Units : </span>
-<span class="va">....</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_xml.html">read_xml</a></span><span class="op">(</span> <span class="va">xmlFile</span> <span class="op">)</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt;  dmdScheme - dmdSchemeSet</span></span>
+<span><span class="co">#&gt;      MdBibliometric - dmdSchemeData</span></span>
+<span><span class="co">#&gt; A       Names : uploadType | doi | publicationDate | title | description | version | language | keywords | additionalNotes | accessRights | accessRightsInfo | license</span></span>
+<span><span class="co">#&gt; A       Units : </span></span>
+<span><span class="va">....</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -630,12 +630,12 @@
 <p>It is important that the final scheme contains example data as - internal processing of the <code>.xlsx</code> file require example data and will fail if a scheme without example data is provided, and - it is much more user friendly if the user of a package not only sees the empty scheme, but also a filled in scheme with example data.</p>
 <p>This <code>.xlsx</code> file can be edited following the limitations as specified below. After modifications have been done and the spreadsheet has been saved, the scheme package can be created by using</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/scheme_make.html">scheme_make</a></span><span class="op">(</span> <span class="st">"TheFile.xlsx"</span> <span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/scheme_make.html">scheme_make</a></span><span class="op">(</span> <span class="st">"TheFile.xlsx"</span> <span class="op">)</span></span></code></pre></div>
 <p>which will create a file named <code>NAME_VERSION.tar.gz</code> in the directory <code>path</code> based on the scheme definition in <code>TheFile.xlsx</code>. <code>NAME</code> and <code>VERSION</code> are the scheme name and scheme version as specified in the cell <code>(H:1)</code> in sheet <code>Experiment</code>.</p>
 <p>The following two commands will install the new scheme and use it:</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/scheme.html">scheme_install</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"NAME_VERSION.tar.gz"</span><span class="op">)</span>
-<span class="fu"><a href="../reference/scheme.html">scheme_use</a></span><span class="op">(</span><span class="st">"NAME"</span>, <span class="st">"VERSION"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/scheme.html">scheme_install</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"NAME_VERSION.tar.gz"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/scheme.html">scheme_use</a></span><span class="op">(</span><span class="st">"NAME"</span>, <span class="st">"VERSION"</span><span class="op">)</span></span></code></pre></div>
 <p>To upload the scheme to the main repository on <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository" class="external-link">github</a>, please either clone the repo and send a pull request or file an issue with the scheme package as an attachment.</p>
 </div>
 <div class="section level3">
@@ -804,7 +804,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
     </footer>

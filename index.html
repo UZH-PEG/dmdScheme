@@ -10,8 +10,8 @@
                   dmdScheme. See R.M. Krug and O.L. Petchey (2019) &lt;DOI:10.5281/zenodo.3581970&gt;.">
 <title>Domain Specific MetaData Scheme • dmdScheme</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Domain Specific MetaData Scheme">
 <meta property="og:description" content="Forms the core for developing own domain specific metadata schemes. 
@@ -30,7 +30,7 @@
     
     <a class="navbar-brand me-2" href="index.html">dmdScheme</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.5</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -110,24 +110,24 @@
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>The easiest way is to install from CRAN</p>
-<pre class="{r}"><code><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"dmdScheme"</span><span class="op">)</span></code></pre>
+<pre class="{r}"><code><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"dmdScheme"</span><span class="op">)</span></span></code></pre>
 <p>The CRAN release might be behind the R-Universe (which reflects the <code>master</code> branch), but would be the conservative choice.</p>
 <p>The recommended way to install the version which is the last one on the <code>master</code> branch from the <a href="https://uzh-peg.r-universe.dev/" class="external-link">R-Universe</a> where the stable released will always be available:</p>
-<pre class="{r}"><code><span class="co"># Enable universe by uzh-peg</span>
-<span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>
-  uzhpeg <span class="op">=</span> <span class="st">'https://uzh-peg.r-universe.dev'</span>,
-  CRAN <span class="op">=</span> <span class="st">'https://cloud.r-project.org'</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># Install dmdScheme</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'dmdScheme'</span><span class="op">)</span></code></pre>
+<pre class="{r}"><code><span><span class="co"># Enable universe by uzh-peg</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>  uzhpeg <span class="op">=</span> <span class="st">'https://uzh-peg.r-universe.dev'</span>,</span>
+<span>  CRAN <span class="op">=</span> <span class="st">'https://cloud.r-project.org'</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Install dmdScheme</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'dmdScheme'</span><span class="op">)</span></span></code></pre>
 <p>If you are feling adventurous, want to live at the bleeding edge and can live with non-working features, you can install the <strong>dev</strong> branch. This branch is under development and <strong>not guranteed to be stable</strong>! Features and functionality can appear or be removed without prior notice:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">## install the remotes package if not installed yet</span>
-<span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org" class="external-link">"remotes"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"Exp-Micro-Ecol-Hub/dmdScheme"</span>, ref <span class="op">=</span> <span class="st">"dev"</span>, build_opts <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">## install the remotes package if not installed yet</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org" class="external-link">"remotes"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"Exp-Micro-Ecol-Hub/dmdScheme"</span>, ref <span class="op">=</span> <span class="st">"dev"</span>, build_opts <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
 <p>Other branches are not generally recommended for installation unless you are developing <code>dmdScheme</code> or need certain features available in other brances!</p>
 </div>
 <div class="section level2">
@@ -135,8 +135,8 @@
 </h2>
 <p>When you load the package, the definition of the scheme is downloaded from the <a href="https://github.com/Exp-Micro-Ecol-Hub/dmdSchemeRepository/tree/master" class="external-link">dmdScheme repository</a> and installed in a temporary scheme library in a temporary directory for usage in this R session only. As this scheme library is stored in a temporary directory, it will be deleted when you quit your R session and must be re-downloaded each time you start a new session and load the package. To create a permanent package library you have to create a cache in the user directory. To do this, run</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://UZH-PEG.github.io/dmdScheme/" class="external-link">dmdScheme</a></span><span class="op">)</span>
-<span class="fu"><a href="reference/cache.html">cache</a></span><span class="op">(</span>createPermanent <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://UZH-PEG.github.io/dmdScheme/" class="external-link">dmdScheme</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/cache.html">cache</a></span><span class="op">(</span>createPermanent <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>and restart your R session. Now the definitions of the installed <code>dmdSchemes</code> will be installed in this user cache and be available permanently. For further info, see the documentation of the command <code><a href="reference/cache.html">cache()</a></code> in the <code>dmdScheme</code> package.</p>
 </div>
 <div class="section level2">
@@ -184,10 +184,8 @@
 <div class="section level2">
 <h2 id="presentations-1">Presentations<a class="anchor" aria-label="anchor" href="#presentations-1"></a>
 </h2>
-<ul>
-<li>December 2018: <a href="https://rkrug.github.io/emeScheme_Introduction/The_emeScheme.html" class="external-link">The dmdScheme - an Introduction</a> by Rainer M Krug<br><a href="https://doi.org/10.5281/zenodo.2244998" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.2244998.svg" alt="DOI"></a>
-</li>
-</ul>
+<ul><li>December 2018: <a href="https://rkrug.github.io/emeScheme_Introduction/The_emeScheme.html" class="external-link">The dmdScheme - an Introduction</a> by Rainer M Krug<br><a href="https://doi.org/10.5281/zenodo.2244998" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.2244998.svg" alt="DOI"></a>
+</li></ul>
 <hr>
 <p>Please see the <a href="https://UZH-PEG.github.io/dmdScheme/" class="external-link">github repository</a> or the <a href="https://uzh-peg.github.io/dmdScheme/">dmdScheme Homepage</a> for details.</p>
 </div>
@@ -250,7 +248,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
     </footer>
